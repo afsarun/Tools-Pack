@@ -9,6 +9,9 @@
       content="Tools Pack: a fast, modern, responsive multi-tool website. Calculator, unit converter, text utilities, Base64, URL tools, JSON formatter, password/UUID/SHA-256 generators, image resizer, color contrast checker, timers, and quick notes — all in one file."
     />
     <meta name="theme-color" content="#1E1E2F" />
+    <script>
+      window.__TP_ALLOW_PUSHSTATE__ = true;
+    </script>
 
     <!--
     Google Ads Ready:
@@ -2469,6 +2472,318 @@
       })();
     </script>
 
-    word sentence_no sentence
+    <script>
+      /* ============================
+   Tools Pack — SEO Router (EN+BN)
+   Drop-in for one-page sites
+============================= */
+      (() => {
+        // 1) language choice: auto-detect or override with localStorage.setItem('tp:lang', 'bn' | 'en')
+        const lang = (
+          localStorage.getItem("tp:lang") ||
+          navigator.language ||
+          "en"
+        )
+          .toLowerCase()
+          .startsWith("bn")
+          ? "bn"
+          : "en";
+
+        // 2) metadata map: id -> slug + {en, bn}
+        const META = {
+          "tool-age": {
+            slug: "age-calculator",
+            en: {
+              title: "Online Age Calculator — Years, Months & Days",
+              desc: "Instantly calculate your age in years, months, and days. Includes next birthday reminder.",
+            },
+            bn: {
+              title: "অনলাইন বয়স নির্ণায়ক — বছর, মাস ও দিন",
+              desc: "জন্মতারিখ দিয়ে সহজে বয়স বের করুন (বছর, মাস, দিন)। পরবর্তী জন্মদিনের রিমাইন্ডারসহ।",
+            },
+          },
+          "tool-calculator": {
+            slug: "calculator",
+            en: {
+              title: "Free Online Calculator — Basic Arithmetic",
+              desc: "Fast calculator for add, subtract, multiply, divide and percentages.",
+            },
+            bn: {
+              title: "ফ্রি অনলাইন ক্যালকুলেটর — যোগ, বিয়োগ, গুণ, ভাগ",
+              desc: "দ্রুত ক্যালকুলেটর দিয়ে যোগ, বিয়োগ, গুণ, ভাগ এবং শতকরা বের করুন।",
+            },
+          },
+          "tool-unit": {
+            slug: "unit-converter",
+            en: {
+              title: "Unit Converter Online — Length, Weight & Temperature",
+              desc: "Convert meters↔kilometers, kg↔grams, Celsius↔Fahrenheit, and more.",
+            },
+            bn: {
+              title: "ইউনিট কনভার্টার — দৈর্ঘ্য, ওজন ও তাপমাত্রা",
+              desc: "মিটার↔কিলোমিটার, কেজি↔গ্রাম, সেলসিয়াস↔ফারেনহাইট সহ নানান রূপান্তর।",
+            },
+          },
+          "tool-text": {
+            slug: "text-utilities",
+            en: {
+              title: "Text Utilities — Case Converter & Word Counter",
+              desc: "Upper/lowercase, remove spaces, and count words/characters online.",
+            },
+            bn: {
+              title: "টেক্সট টুলস — বড়/ছোট হাতা ও শব্দ গণনা",
+              desc: "টেক্সটকে বড়/ছোট হাতায় রূপান্তর, স্পেস সরানো ও শব্দ-অক্ষর গণনা।",
+            },
+          },
+          "tool-b64": {
+            slug: "base64",
+            en: {
+              title: "Base64 Encoder & Decoder — Unicode-Safe",
+              desc: "Encode/decode Base64 safely. Supports Unicode and emoji.",
+            },
+            bn: {
+              title: "বেস৬৪ এনকোডার/ডিকোডার — ইউনিকোড সাপোর্টেড",
+              desc: "টেক্সটকে Base64 এ এনকোড/ডিকোড করুন—বাংলা/ইমোজি সাপোর্ট।",
+            },
+          },
+          "tool-url": {
+            slug: "url-encoder-decoder",
+            en: {
+              title: "URL Encoder & Decoder Online",
+              desc: "Encode or decode URLs and URI components instantly.",
+            },
+            bn: {
+              title: "ইউআরএল এনকোডার/ডিকোডার",
+              desc: "লিংক এনকোড বা ডিকোড করুন—URI কম্পোনেন্টসহ।",
+            },
+          },
+          "tool-json": {
+            slug: "json-formatter",
+            en: {
+              title: "JSON Formatter & Validator — Pretty Print",
+              desc: "Format, minify, and validate JSON with copy support.",
+            },
+            bn: {
+              title: "JSON ফরম্যাটার/ভ্যালিডেটর",
+              desc: "JSON সুন্দরভাবে ফরম্যাট, মিনিফাই ও ভ্যালিডেট করুন।",
+            },
+          },
+          "tool-pass": {
+            slug: "password-generator",
+            en: {
+              title: "Secure Password Generator — Strong & Random",
+              desc: "Create crypto-secure passwords with letters, numbers, symbols.",
+            },
+            bn: {
+              title: "নিরাপদ পাসওয়ার্ড জেনারেটর",
+              desc: "অক্ষর/সংখ্যা/সিম্বলসহ শক্তিশালী পাসওয়ার্ড তৈরি করুন।",
+            },
+          },
+          "tool-uuid": {
+            slug: "uuid-v4",
+            en: {
+              title: "UUID v4 Generator Online — RFC 4122",
+              desc: "Generate UUID v4 instantly and copy with one click.",
+            },
+            bn: {
+              title: "UUID v4 জেনারেটর",
+              desc: "ইউনিক আইডি (UUID v4) তৈরি ও কপি করুন।",
+            },
+          },
+          "tool-hash": {
+            slug: "sha256-hash",
+            en: {
+              title: "SHA-256 Hash Generator — WebCrypto",
+              desc: "Create SHA-256 hashes from text/files securely in the browser.",
+            },
+            bn: {
+              title: "হ্যাশ জেনারেটর (SHA-256)",
+              desc: "টেক্সট/ফাইল থেকে SHA-256 হ্যাশ তৈরি করুন (ব্রাউজারে নিরাপদ)।",
+            },
+          },
+          "tool-image": {
+            slug: "image-resizer-compressor",
+            en: {
+              title: "Image Resizer & Compressor — JPG/PNG/WebP",
+              desc: "Resize/compress images and export as JPEG, PNG or WebP.",
+            },
+            bn: {
+              title: "ইমেজ রিসাইজার/কমপ্রেসর",
+              desc: "ছবি ছোট-বড় করুন বা কমপ্রেস করুন—JPG/PNG/WebP এক্সপোর্ট।",
+            },
+          },
+          "tool-color": {
+            slug: "color-picker-contrast",
+            en: {
+              title: "Color Picker & Contrast Checker — WCAG 2.1",
+              desc: "Pick colors and check contrast ratio for accessibility.",
+            },
+            bn: {
+              title: "কালার পিকার ও কনট্রাস্ট চেকার",
+              desc: "রঙ নির্বাচন করুন ও অ্যাক্সেসিবিলিটি কনট্রাস্ট যাচাই করুন।",
+            },
+          },
+          "tool-time": {
+            slug: "stopwatch-countdown",
+            en: {
+              title: "Online Stopwatch & Countdown Timer",
+              desc: "Precise stopwatch and countdown with pause/reset and alarm.",
+            },
+            bn: {
+              title: "স্টপওয়াচ ও কাউন্টডাউন টাইমার",
+              desc: "নির্ভুল টাইমার—পজ/রিসেট/অ্যালার্মসহ।",
+            },
+          },
+          "tool-notes": {
+            slug: "quick-notes",
+            en: {
+              title: "Quick Notes — Auto-Save in Browser",
+              desc: "Write notes with local auto-save. Export/import as .txt.",
+            },
+            bn: {
+              title: "দ্রুত নোটস — ব্রাউজারে অটো-সেভ",
+              desc: "নোট লিখুন, অটো-সেভ হোক; TXT এক্সপোর্ট/ইমপোর্ট করুন।",
+            },
+          },
+          "tool-pdf": {
+            slug: "text-to-pdf",
+            en: {
+              title: "Text → PDF Converter — Unicode Safe",
+              desc: "Convert text to PDF with page size, margins, headers/footers.",
+            },
+            bn: {
+              title: "টেক্সট → PDF কনভার্টার — ইউনিকোড নিরাপদ",
+              desc: "টেক্সটকে PDF বানান—পেজ সাইজ, মার্জিন, হেডার/ফুটারসহ।",
+            },
+          },
+        };
+
+        // 3) helpers to ensure/update tags
+        const ensureMeta = (name) => {
+          let el = document.querySelector(`meta[name="${name}"]`);
+          if (!el) {
+            el = document.createElement("meta");
+            el.setAttribute("name", name);
+            document.head.appendChild(el);
+          }
+          return el;
+        };
+        const ensureLinkRel = (rel, id) => {
+          let el =
+            document.getElementById(id) ||
+            document.querySelector(`link[rel="${rel}"]#${id}`);
+          if (!el) {
+            el = document.createElement("link");
+            el.rel = rel;
+            el.id = id;
+            document.head.appendChild(el);
+          }
+          return el;
+        };
+        const ensureScript = (id) => {
+          let el = document.getElementById(id);
+          if (!el) {
+            el = document.createElement("script");
+            el.type = "application/ld+json";
+            el.id = id;
+            document.head.appendChild(el);
+          }
+          return el;
+        };
+
+        // 4) core setter
+        let currentId = null;
+        const setSEOFor = (cardId, push = true) => {
+          const conf = META[cardId];
+          if (!conf) return;
+          if (currentId === cardId) return; // avoid churn
+          currentId = cardId;
+
+          const data = conf[lang];
+          const slug = conf.slug;
+          const origin = location.origin || "";
+          const pretty = `/${slug}`;
+
+          // Title + description
+          document.title = `${data.title} | Tools Pack`;
+          ensureMeta("description").setAttribute("content", data.desc);
+
+          // Canonical (always pretty path)
+          const canonical = ensureLinkRel("canonical", "tp-canonical");
+          canonical.setAttribute("href", `${origin}${pretty}`);
+
+          // JSON-LD (WebApplication)
+          const json = {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            name: `Tools Pack — ${data.title.replace(
+              /\s*\|\s*Tools Pack$/i,
+              ""
+            )}`,
+            url: `${origin}${pretty}`,
+            applicationCategory: "Utility",
+            operatingSystem: "All",
+            inLanguage: lang,
+            description: data.desc,
+          };
+          ensureScript("tp-jsonld").textContent = JSON.stringify(json);
+
+          // Update URL (virtual route). If refresh 404 is a worry, use hash; else use pushState.
+          // Prefer pretty URL for SEO; fall back to hash on Netlify subdomain.
+          const useHash =
+            location.hostname.endsWith(".netlify.app") &&
+            !window.__TP_ALLOW_PUSHSTATE__;
+          if (useHash) {
+            if (location.hash !== `#${slug}`) location.hash = `#${slug}`;
+          } else if (push) {
+            history.replaceState({}, "", pretty);
+          }
+        };
+
+        // 5) map slug -> id and id -> slug
+        const idBySlug = Object.fromEntries(
+          Object.entries(META).map(([id, v]) => [v.slug, id])
+        );
+
+        // 6) on load: if arrived with /slug or #slug, scroll to card & set SEO
+        const bootTo = () => {
+          const slug =
+            location.pathname.replace(/^\//, "") ||
+            location.hash.replace(/^#/, "");
+          const targetId =
+            idBySlug[slug] || document.querySelector(".tool-card")?.id;
+          if (targetId) {
+            document
+              .getElementById(targetId)
+              ?.scrollIntoView({ behavior: "instant", block: "start" });
+            setSEOFor(targetId, false);
+          }
+        };
+
+        // 7) observe which card is centered to update SEO automatically
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting && e.intersectionRatio > 0.55) {
+                setSEOFor(e.target.id, true);
+              }
+            });
+          },
+          { root: null, threshold: [0.56], rootMargin: "-30% 0px -40% 0px" }
+        );
+
+        document.querySelectorAll(".tool-card").forEach((el) => io.observe(el));
+
+        // 8) also react to hash changes (e.g., from command palette jump or manual)
+        window.addEventListener("hashchange", () => {
+          const slug = location.hash.replace(/^#/, "");
+          const id = idBySlug[slug] || slug; // allow #tool-age too
+          if (document.getElementById(id)) setSEOFor(id, false);
+        });
+
+        // kick off
+        bootTo();
+      })();
+    </script>
   </body>
 </html>
