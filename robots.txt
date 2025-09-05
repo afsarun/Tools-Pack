@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tools-pack.netlify.app/sitemap.xml
+Sitemap: https://tools-pack.netlify.app/sitemap.txt
