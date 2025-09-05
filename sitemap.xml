@@ -115,7 +115,7 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/stopwatch/"/>
   </url>
 
-  <!-- Quick Notes -->
+  <!-- Notes -->
   <url>
     <loc>https://tools-pack.netlify.app/notes/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/notes/"/>
