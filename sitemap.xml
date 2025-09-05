@@ -3,7 +3,6 @@
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml"
 >
-
   <!-- Home -->
   <url>
     <loc>https://tools-pack.netlify.app/</loc>
@@ -76,7 +75,7 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/password-uuid/"/>
   </url>
 
-  <!-- UUID v4 -->
+  <!-- UUID v4 (EN) / uuid4 (BN) -->
   <url>
     <loc>https://tools-pack.netlify.app/uuid-v4/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/uuid-v4/"/>
@@ -131,5 +130,4 @@
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/text-to-pdf/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/text-to-pdf/"/>
   </url>
-
 </urlset>
