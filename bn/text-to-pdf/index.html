@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="bn">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>টেক্সট → PDF কনভার্টার — ইউনিকোড সাপোর্ট | Tools Pack</title>
+    <meta
+      name="description"
+      content="টেক্সটকে PDF এ রূপান্তর করুন—পেজ সাইজ, মার্জিন, হেডার/ফুটার সহ আপনার ব্রাউজারের প্রিন্ট টু PDF ব্যবহার করে।"
+    />
+    <link
+      rel="canonical"
+      href="https://tools-pack.netlify.app/bn/text-to-pdf/"
+    />
+    <link rel="stylesheet" href="../../assets/style.css" />
+    <meta name="theme-color" content="#1E1E2F" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="টেক্সট → PDF — Tools Pack" />
+    <meta
+      property="og:description"
+      content="ইউনিকোড-সেফ টেক্সট টু PDF কনভার্টার।"
+    />
+    <meta
+      property="og:url"
+      content="https://tools-pack.netlify.app/bn/text-to-pdf/"
+    />
+    <meta
+      property="og:image"
+      content="https://tools-pack.netlify.app/og/pdf.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "টেক্সট টু PDF",
+        "url": "https://tools-pack.netlify.app/bn/text-to-pdf/",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All",
+        "description": "টেক্সটকে PDF এ রূপান্তর করুন পেজ অপশনসহ।",
+        "inLanguage": "bn"
+      }
+    </script>
+    <style>
+      :root {
+        --muted: #9aa0a6;
+        --danger: #ff6b6b;
+      }
+      body {
+        font-family: "Noto Sans Bengali", system-ui, sans-serif;
+        background: #1e1e2f;
+        color: #eee;
+      }
+      .textarea {
+        width: 100%;
+        height: 220px;
+        margin: 10px 0;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+      .pill,
+      .field,
+      .select,
+      .btn {
+        font: inherit;
+      }
+      .btn {
+        padding: 0.6rem 1rem;
+        border: 1px solid #3a3a55;
+        background: #2a2a42;
+        cursor: pointer;
+        border-radius: 8px;
+      }
+      .btn-primary {
+        border-color: #5965f3;
+        background: #5965f3;
+        color: #fff;
+      }
+      .muted {
+        color: var(--muted);
+      }
+      .small {
+        font-size: 0.9rem;
+      }
+      footer {
+        text-align: center;
+        padding: 20px 0;
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <header class="sticky">
+      <div class="wrap brand">
+        <a href="/bn/"><div class="logo"></div></a>
+        <div>
+          <h1 style="margin: 0">টেক্সট → PDF</h1>
+          <div class="sub">ইউনিকোড সাপোর্ট • প্রিন্ট টু PDF</div>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <article class="card">
+        <div class="row">
+          <select id="page" class="select" aria-label="পেজ সাইজ">
+            <option value="A4">A4</option>
+            <option value="Letter">লেটার</option>
+            <option value="Legal">লিগ্যাল</option>
+          </select>
+
+          <select id="orient" class="select" aria-label="অরিয়েন্টেশন">
+            <option value="portrait">পোর্ট্রেট</option>
+            <option value="landscape">ল্যান্ডস্কেপ</option>
+          </select>
+
+          <label
+            class="field"
+            style="display: flex; align-items: center; gap: 10px"
+          >
+            <span class="muted">মার্জিন</span>
+            <input
+              id="margin"
+              type="number"
+              class="field"
+              value="15"
+              min="5"
+              max="40"
+            />
+            <span class="pill mono">মিমি</span>
+          </label>
+
+          <label class="pill"
+            ><input id="hdr" type="checkbox" checked /> হেডার</label
+          >
+          <label class="pill"><input id="ftr" type="checkbox" /> ফুটার</label>
+        </div>
+
+        <textarea
+          id="txt"
+          class="textarea"
+          placeholder="এখানে আপনার টেক্সট লিখুন বা পেস্ট করুন… বাংলা/ইউনিকোড/ইমোজি ✅"
+        ></textarea>
+
+        <div class="row">
+          <button class="btn btn-primary" id="print">প্রিভিউ ও প্রিন্ট</button>
+          <button class="btn" id="sample">নমুনা টেক্সট</button>
+        </div>
+
+        <div id="status" class="muted small">
+          প্রিন্ট ডায়ালগে “Save as PDF” নির্বাচন করুন।
+        </div>
+      </article>
+    </main>
+
+    <footer>© <span id="y"></span> Tools Pack</footer>
+
+    <script>
+      (function () {
+        // Elements
+        const pageEl = document.getElementById("page");
+        const orientEl = document.getElementById("orient");
+        const marginEl = document.getElementById("margin");
+        const hdrEl = document.getElementById("hdr");
+        const ftrEl = document.getElementById("ftr");
+        const txtEl = document.getElementById("txt");
+        const printBtn = document.getElementById("print");
+        const sampleBtn = document.getElementById("sample");
+        const statusEl = document.getElementById("status");
+
+        // Footer year
+        const y = document.getElementById("y");
+        if (y) y.textContent = new Date().getFullYear();
+
+        // Helpers
+        const escapeHtml = (s) =>
+          s.replace(
+            /[&<>]/g,
+            (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[ch])
+          );
+
+        const gather = () => ({
+          page: pageEl.value || "A4",
+          orient: orientEl.value || "portrait",
+          margin: Math.max(5, Math.min(40, Number(marginEl.value) || 15)),
+          headerOn: !!hdrEl.checked,
+          footerOn: !!ftrEl.checked,
+          body: txtEl.value || "",
+        });
+
+        const buildOverlayHTML = (vals) => {
+          const title = document.title.replace(/\s*\|\s*.*$/, "");
+          const header = vals.headerOn
+            ? `<header style="margin:0 0 12px 0;font-size:11pt;color:#555">${escapeHtml(
+                title
+              )}</header>`
+            : "";
+          const footer = vals.footerOn
+            ? `<footer style="margin:12px 0 0 0;font-size:10pt;color:#777">তৈরি হয়েছে ${new Date().toLocaleString()}</footer>`
+            : "";
+          return `${header}
+<div class="tp-container">${escapeHtml(vals.body)}</div>
+${footer}`;
+        };
+
+        function openPrint() {
+          const v = gather();
+          if (!v.body.trim()) {
+            statusEl.textContent = "অনুগ্রহ করে আগে কিছু টেক্সট লিখুন।";
+            statusEl.style.color = "var(--danger)";
+            setTimeout(() => {
+              statusEl.style.color = "var(--muted)";
+            }, 1400);
+            return;
+          }
+
+          // Create print root
+          const root = document.createElement("div");
+          root.id = "tp-print-root";
+          root.setAttribute("aria-hidden", "true");
+          root.innerHTML = buildOverlayHTML(v);
+          document.body.appendChild(root);
+
+          // Inject print CSS
+          const style = document.createElement("style");
+          style.id = "tp-print-style";
+          style.textContent = `
+@page { size: ${v.page} ${v.orient}; margin: ${v.margin}mm; }
+#tp-print-root { display: none; background:#fff; color:#000; }
+@media screen { #tp-print-root { display: none; } }
+@media print {
+  body { background:#fff !important; }
+  body > *:not(#tp-print-root) { display:none !important; }
+  #tp-print-root {
+    display:block !important;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, 'Noto Sans Bengali', sans-serif;
+    font-size: 12pt;
+    line-height: 1.5;
+    margin:0; padding:0;
+  }
+  #tp-print-root .tp-container {
+    white-space: pre-wrap;
+    word-break: break-word;
+    min-height: 60vh;
+  }
+}`;
+          document.head.appendChild(style);
+
+          // Print then cleanup
+          setTimeout(() => {
+            window.print();
+            setTimeout(() => {
+              style.remove();
+              root.remove();
+            }, 500);
+          }, 50);
+        }
+
+        // Wire up events
+        printBtn.addEventListener("click", openPrint);
+        sampleBtn.addEventListener("click", () => {
+          txtEl.value = `Tools Pack — টেক্সট → PDF
+
+✓ বাংলা, ইমোজি 😄, আরবি العربية ইত্যাদি সাপোর্ট করে।
+✓ পেজ সাইজ, অরিয়েন্টেশন, মার্জিন বেছে নিন।
+✓ “প্রিভিউ ও প্রিন্ট” চাপুন → প্রিন্ট ডায়ালগে “Save as PDF” নির্বাচন করুন।`;
+          statusEl.textContent = "নমুনা টেক্সট যোগ হয়েছে।";
+          statusEl.style.color = "var(--muted)";
+        });
+      })();
+    </script>
+  </body>
+</html>

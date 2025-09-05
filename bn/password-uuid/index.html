@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="bn">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>
+      নিরাপদ পাসওয়ার্ড জেনারেটর — শক্তিশালী & র‍্যান্ডম | Tools Pack
+    </title>
+    <meta
+      name="description"
+      content="অক্ষর/সংখ্যা/সিম্বলসহ শক্তিশালী পাসওয়ার্ড তৈরি করুন।"
+    />
+    <link
+      rel="canonical"
+      href="https://tools-pack.netlify.app/bn/password-uuid/"
+    />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://tools-pack.netlify.app/password-uuid/"
+    />
+    <link
+      rel="alternate"
+      hreflang="bn"
+      href="https://tools-pack.netlify.app/bn/password-uuid/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://tools-pack.netlify.app/"
+    />
+    <link rel="stylesheet" href="../../assets/style.css" />
+    <meta name="theme-color" content="#1E1E2F" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="নিরাপদ পাসওয়ার্ড জেনারেটর — Tools Pack"
+    />
+    <meta
+      property="og:description"
+      content="শক্তিশালী র‍্যান্ডম পাসওয়ার্ড জেনারেট করুন।"
+    />
+    <meta
+      property="og:url"
+      content="https://tools-pack.netlify.app/bn/password-uuid/"
+    />
+    <meta
+      property="og:image"
+      content="https://tools-pack.netlify.app/og/password.png"
+    />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "পাসওয়ার্ড জেনারেটর",
+        "url": "https://tools-pack.netlify.app/bn/password-uuid/",
+        "applicationCategory": "SecurityApplication",
+        "operatingSystem": "All",
+        "description": "শক্তিশালী র‍্যান্ডম পাসওয়ার্ড জেনারেট।",
+        "inLanguage": "bn"
+      }
+    </script>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        background: #1e1e2f;
+        color: #eee;
+      }
+      .textarea {
+        width: 100%;
+        margin-top: 10px;
+        font-size: 1.2rem;
+        text-align: center;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 10px;
+        align-items: center;
+      }
+      .muted {
+        font-size: 0.9rem;
+        color: #aaa;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="sticky">
+      <div class="wrap brand">
+        <a href="/bn/"><div class="logo"></div></a>
+        <div>
+          <h1 style="margin: 0">পাসওয়ার্ড জেনারেটর</h1>
+          <div class="sub">শক্তিশালী • র‍্যান্ডম • নিরাপদ</div>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <article class="card">
+        <h2>পাসওয়ার্ড তৈরি করুন</h2>
+
+        <div class="row">
+          <label class="field">
+            <span class="muted">দৈর্ঘ্য</span>
+            <input
+              id="len"
+              type="number"
+              class="field"
+              value="12"
+              min="6"
+              max="64"
+            />
+          </label>
+          <label class="pill"
+            ><input type="checkbox" id="lower" checked /> a–z</label
+          >
+          <label class="pill"
+            ><input type="checkbox" id="upper" checked /> A–Z</label
+          >
+          <label class="pill"
+            ><input type="checkbox" id="num" checked /> 0–9</label
+          >
+          <label class="pill"><input type="checkbox" id="sym" /> !@#</label>
+        </div>
+
+        <textarea
+          id="out"
+          class="textarea mono"
+          rows="2"
+          readonly
+          placeholder="Generated password…"
+        ></textarea>
+
+        <div style="margin-top: 10px">
+          <button class="btn btn-primary" id="gen">জেনারেট</button>
+          <button class="btn" id="copy">কপি</button>
+        </div>
+        <div id="status" class="muted small"></div>
+      </article>
+    </main>
+
+    <footer>© <span id="y"></span> Tools Pack</footer>
+
+    <script>
+      const $ = (s) => document.querySelector(s);
+      y.textContent = new Date().getFullYear();
+
+      const sets = {
+        lower: "abcdefghijklmnopqrstuvwxyz",
+        upper: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+        num: "0123456789",
+        sym: "!@#$%^&*()-_=+[]{};:,.<>?/|",
+      };
+
+      gen.onclick = () => {
+        let pool = "";
+        if (lower.checked) pool += sets.lower;
+        if (upper.checked) pool += sets.upper;
+        if (num.checked) pool += sets.num;
+        if (sym.checked) pool += sets.sym;
+
+        if (!pool) {
+          status.textContent = "অন্তত একটি অপশন নির্বাচন করুন।";
+          out.value = "";
+          return;
+        }
+
+        let pwd = "";
+        for (let i = 0; i < +len.value; i++) {
+          const r = Math.floor(Math.random() * pool.length);
+          pwd += pool[r];
+        }
+        out.value = pwd;
+        status.textContent = "✅ নতুন পাসওয়ার্ড তৈরি হয়েছে।";
+      };
+
+      copy.onclick = () => {
+        if (!out.value) {
+          status.textContent = "⚠️ কোনো পাসওয়ার্ড নেই।";
+          return;
+        }
+        navigator.clipboard.writeText(out.value);
+        status.textContent = "📋 কপি হয়েছে।";
+      };
+    </script>
+  </body>
+</html>

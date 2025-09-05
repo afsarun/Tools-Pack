@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="bn">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>কালার পিকার ও কনট্রাস্ট চেকার — WCAG 2.1 | Tools Pack</title>
+    <meta
+      name="description"
+      content="রঙ বাছাই করুন ও অ্যাক্সেসিবিলিটি কনট্রাস্ট অনুপাত যাচাই করুন।"
+    />
+
+    <!-- Canonical & hreflang -->
+    <link
+      rel="canonical"
+      href="https://tools-pack.netlify.app/bn/color-contrast/"
+    />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://tools-pack.netlify.app/color-contrast/"
+    />
+    <link
+      rel="alternate"
+      hreflang="bn"
+      href="https://tools-pack.netlify.app/bn/color-contrast/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://tools-pack.netlify.app/"
+    />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../assets/style.css" />
+    <meta name="theme-color" content="#1E1E2F" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="কালার পিকার ও কনট্রাস্ট চেকার — Tools Pack"
+    />
+    <meta
+      property="og:description"
+      content="রঙ বাছাই করুন ও WCAG কনট্রাস্ট রেশিও যাচাই করুন।"
+    />
+    <meta
+      property="og:url"
+      content="https://tools-pack.netlify.app/bn/color-contrast/"
+    />
+    <meta
+      property="og:image"
+      content="https://tools-pack.netlify.app/og/color.png"
+    />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- JSON-LD: WebApplication -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "কালার পিকার ও কনট্রাস্ট চেকার",
+        "url": "https://tools-pack.netlify.app/bn/color-contrast/",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All",
+        "description": "WCAG কনট্রাস্ট রেশিও যাচাই।",
+        "inLanguage": "bn"
+      }
+    </script>
+  </head>
+
+  <body>
+    <header class="sticky">
+      <div class="wrap brand">
+        <a href="/bn/" aria-label="হোমে ফিরুন"><div class="logo"></div></a>
+        <div>
+          <h1 style="margin: 0">কালার পিকার ও কনট্রাস্ট চেকার</h1>
+          <div class="sub">WCAG 2.1 • Tools Pack</div>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section aria-label="Color Picker & Contrast Checker Tool">
+        <div class="tool">
+          <div class="row">
+            <label for="fg" class="muted">ফোরগ্রাউন্ড রঙ</label>
+            <input type="color" id="fg" value="#000000" />
+            <input type="text" id="fgHex" class="field mono" value="#000000" />
+          </div>
+
+          <div class="row">
+            <label for="bg" class="muted">ব্যাকগ্রাউন্ড রঙ</label>
+            <input type="color" id="bg" value="#ffffff" />
+            <input type="text" id="bgHex" class="field mono" value="#ffffff" />
+          </div>
+
+          <div class="preview" id="previewBox">
+            <p>উদাহরণ টেক্সট (Sample Text)</p>
+          </div>
+
+          <p class="muted">
+            কনট্রাস্ট রেশিও: <strong id="ratio">—</strong>
+            <span id="wcag"></span>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>© <span id="y"></span> Tools Pack • ১০০% ব্রাউজারেই রান হয়</footer>
+
+    <script>
+      // Footer year
+      document.getElementById("y").textContent = new Date().getFullYear();
+
+      const fg = document.getElementById("fg");
+      const bg = document.getElementById("bg");
+      const fgHex = document.getElementById("fgHex");
+      const bgHex = document.getElementById("bgHex");
+      const preview = document.getElementById("previewBox");
+      const ratioEl = document.getElementById("ratio");
+      const wcagEl = document.getElementById("wcag");
+
+      // Convert hex to luminance
+      function luminance(hex) {
+        const rgb = hex
+          .replace("#", "")
+          .match(/.{2}/g)
+          .map((x) => parseInt(x, 16) / 255)
+          .map((v) =>
+            v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4)
+          );
+        return 0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2];
+      }
+
+      // Contrast ratio
+      function contrast(fg, bg) {
+        const L1 = luminance(fg);
+        const L2 = luminance(bg);
+        return (Math.max(L1, L2) + 0.05) / (Math.min(L1, L2) + 0.05);
+      }
+
+      function update() {
+        const f = fg.value;
+        const b = bg.value;
+
+        fgHex.value = f;
+        bgHex.value = b;
+        preview.style.color = f;
+        preview.style.backgroundColor = b;
+
+        const ratio = contrast(f, b);
+        ratioEl.textContent = ratio.toFixed(2);
+
+        // WCAG rating
+        let rating = "";
+        if (ratio >= 7) {
+          rating = "AAA (Normal)";
+        } else if (ratio >= 4.5) {
+          rating = "AA (Normal) / AAA (Large)";
+        } else if (ratio >= 3) {
+          rating = "AA (Large)";
+        } else {
+          rating = "❌ Fail";
+        }
+        wcagEl.textContent = rating;
+      }
+
+      fg.addEventListener("input", update);
+      bg.addEventListener("input", update);
+      fgHex.addEventListener("input", () => {
+        if (/^#([0-9A-F]{6})$/i.test(fgHex.value)) fg.value = fgHex.value;
+        update();
+      });
+      bgHex.addEventListener("input", () => {
+        if (/^#([0-9A-F]{6})$/i.test(bgHex.value)) bg.value = bgHex.value;
+        update();
+      });
+
+      update();
+    </script>
+  </body>
+</html>

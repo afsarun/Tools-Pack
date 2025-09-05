@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="bn">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>ইউআরএল এনকোডার/ডিকোডার (URI) | Tools Pack</title>
+    <meta
+      name="description"
+      content="লিংক/URI কম্পোনেন্ট এনকোড বা ডিকোড করুন।"
+    />
+
+    <!-- Canonical & hreflang -->
+    <link rel="canonical" href="https://tools-pack.netlify.app/bn/url-tools/" />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://tools-pack.netlify.app/url-tools/"
+    />
+    <link
+      rel="alternate"
+      hreflang="bn"
+      href="https://tools-pack.netlify.app/bn/url-tools/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://tools-pack.netlify.app/"
+    />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../assets/style.css" />
+    <meta name="theme-color" content="#1E1E2F" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="ইউআরএল এনকোডার/ডিকোডার — Tools Pack" />
+    <meta
+      property="og:description"
+      content="লিংক/URI কম্পোনেন্ট এনকোড বা ডিকোড করুন।"
+    />
+    <meta
+      property="og:url"
+      content="https://tools-pack.netlify.app/bn/url-tools/"
+    />
+    <meta
+      property="og:image"
+      content="https://tools-pack.netlify.app/og/url.png"
+    />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- JSON-LD: WebApplication -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "ইউআরএল এনকোডার/ডিকোডার",
+        "url": "https://tools-pack.netlify.app/bn/url-tools/",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All",
+        "description": "URL/URI এনকোড-ডিকোড।",
+        "inLanguage": "bn"
+      }
+    </script>
+  </head>
+
+  <body>
+    <header class="sticky">
+      <div class="wrap brand">
+        <a href="/bn/" aria-label="হোমে ফিরুন"><div class="logo"></div></a>
+        <div>
+          <h1 style="margin: 0">ইউআরএল এনকোডার/ডিকোডার</h1>
+          <div class="sub">URI Component Tool • Tools Pack</div>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section aria-label="URL Encoder/Decoder Tool">
+        <div class="tool">
+          <label for="urlInput" class="muted">টেক্সট বা লিংক লিখুন</label>
+          <textarea
+            id="urlInput"
+            class="field"
+            rows="5"
+            placeholder="এখানে লিংক বা টেক্সট লিখুন…"
+          ></textarea>
+
+          <div class="row">
+            <button id="btnEncode" class="btn btn-primary">Encode</button>
+            <button id="btnDecode" class="btn">Decode</button>
+            <button id="btnClear" class="btn btn-muted">Clear</button>
+          </div>
+
+          <label for="urlOutput" class="muted">ফলাফল</label>
+          <textarea
+            id="urlOutput"
+            class="field mono"
+            rows="5"
+            readonly
+          ></textarea>
+        </div>
+      </section>
+    </main>
+
+    <footer>© <span id="y"></span> Tools Pack • ১০০% ব্রাউজারেই রান হয়</footer>
+
+    <script>
+      // Footer year
+      document.getElementById("y").textContent = new Date().getFullYear();
+
+      // Input/Output refs
+      const input = document.getElementById("urlInput");
+      const output = document.getElementById("urlOutput");
+
+      // Encode
+      document.getElementById("btnEncode").addEventListener("click", () => {
+        try {
+          output.value = encodeURIComponent(input.value);
+        } catch (e) {
+          output.value = "⚠️ Encoding error: " + e.message;
+        }
+      });
+
+      // Decode
+      document.getElementById("btnDecode").addEventListener("click", () => {
+        try {
+          output.value = decodeURIComponent(input.value);
+        } catch (e) {
+          output.value = "⚠️ Decoding error: " + e.message;
+        }
+      });
+
+      // Clear
+      document.getElementById("btnClear").addEventListener("click", () => {
+        input.value = "";
+        output.value = "";
+      });
+    </script>
+  </body>
+</html>

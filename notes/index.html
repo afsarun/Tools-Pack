@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Quick Notes — Auto-Save in Browser | Tools Pack</title>
+    <meta
+      name="description"
+      content="Write notes with local auto-save. Export/import as .txt."
+    />
+    <link rel="canonical" href="https://tools-pack.netlify.app/notes/" />
+    <link rel="stylesheet" href="../assets/style.css" />
+    <meta name="theme-color" content="#1E1E2F" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Quick Notes — Tools Pack" />
+    <meta
+      property="og:description"
+      content="Auto-save notes locally (no server)."
+    />
+    <meta property="og:url" content="https://tools-pack.netlify.app/notes/" />
+    <meta
+      property="og:image"
+      content="https://tools-pack.netlify.app/og/notes.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Quick Notes",
+        "url": "https://tools-pack.netlify.app/notes/",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All",
+        "description": "Local auto-save notes; export/import.",
+        "inLanguage": "en"
+      }
+    </script>
+  </head>
+  <body>
+    <header class="sticky">
+      <div class="wrap brand">
+        <a href="/"><div class="logo"></div></a>
+        <div>
+          <h1 style="margin: 0">Quick Notes</h1>
+          <div class="sub">Auto-save</div>
+        </div>
+      </div>
+    </header>
+    <main class="wrap">
+      <article class="card">
+        <textarea
+          id="notes"
+          class="textarea"
+          placeholder="Write anything… Saved to your browser."
+        ></textarea>
+        <div>
+          <button class="btn" id="clear">Clear</button
+          ><button class="btn" id="ex">Export .txt</button
+          ><label class="btn" for="imp" style="cursor: pointer">Import</label
+          ><input
+            id="imp"
+            type="file"
+            accept=".txt,text/plain"
+            style="display: none"
+          />
+        </div>
+        <div class="muted small" id="status">Saved.</div>
+      </article>
+    </main>
+    <footer>© <span id="y"></span> Tools Pack</footer>
+    <script>
+      y.textContent = new Date().getFullYear();
+      const KEY = "tools-pack:notes:v1";
+      notes.value = localStorage.getItem(KEY) || "";
+      let T = null;
+      const save = () => {
+        localStorage.setItem(KEY, notes.value);
+        status.textContent = "Saved " + new Date().toLocaleTimeString();
+      };
+      notes.addEventListener("input", () => {
+        clearTimeout(T);
+        T = setTimeout(save, 400);
+      });
+      clear.onclick = () => {
+        if (confirm("Clear all notes?")) {
+          notes.value = "";
+          save();
+        }
+      };
+      ex.onclick = () => {
+        const b = new Blob([notes.value], { type: "text/plain" }),
+          u = URL.createObjectURL(b),
+          a = document.createElement("a");
+        a.href = u;
+        a.download = "notes.txt";
+        a.click();
+        URL.revokeObjectURL(u);
+      };
+      imp.onchange = async () => {
+        const f = imp.files[0];
+        if (!f) return;
+        notes.value = await f.text();
+        save();
+      };
+    </script>
+  </body>
+</html>

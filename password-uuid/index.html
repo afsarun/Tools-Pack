@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Secure Password Generator — Strong & Random | Tools Pack</title>
+    <meta
+      name="description"
+      content="Create crypto-secure passwords with lowercase, uppercase, digits and symbols."
+    />
+    <link
+      rel="canonical"
+      href="https://tools-pack.netlify.app/password-uuid/"
+    />
+    <link rel="stylesheet" href="../assets/style.css" />
+    <meta name="theme-color" content="#1E1E2F" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Password Generator — Tools Pack" />
+    <meta property="og:description" content="Crypto-secure strong passwords." />
+    <meta
+      property="og:url"
+      content="https://tools-pack.netlify.app/password-uuid/"
+    />
+    <meta
+      property="og:image"
+      content="https://tools-pack.netlify.app/og/password.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Password Generator",
+        "url": "https://tools-pack.netlify.app/password-uuid/",
+        "applicationCategory": "SecurityApplication",
+        "operatingSystem": "All",
+        "description": "Generate strong, random passwords in your browser.",
+        "inLanguage": "en"
+      }
+    </script>
+    <style>
+      .toast {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #1e1e2f;
+        color: #fff;
+        padding: 8px 14px;
+        border-radius: 6px;
+        font-size: 14px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+      .toast.show {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="sticky">
+      <div class="wrap brand">
+        <a href="/"><div class="logo"></div></a>
+        <div>
+          <h1 style="margin: 0">Password Generator</h1>
+          <div class="sub">Crypto-secure</div>
+        </div>
+      </div>
+    </header>
+    <main class="wrap">
+      <article class="card">
+        <label
+          class="field"
+          style="display: flex; align-items: center; gap: 10px"
+          ><span class="muted">Length</span>
+          <input id="len" type="range" min="8" max="128" value="16" /><span
+            class="pill mono"
+            id="lenv"
+            >16</span
+          ></label
+        >
+        <div
+          class="grid"
+          style="
+            grid-template-columns: repeat(12, 1fr);
+            gap: 10px;
+            margin-bottom: 10px;
+          "
+        >
+          <label class="pill" style="grid-column: span 3"
+            ><input id="l" type="checkbox" checked /> a-z</label
+          >
+          <label class="pill" style="grid-column: span 3"
+            ><input id="u" type="checkbox" checked /> A-Z</label
+          >
+          <label class="pill" style="grid-column: span 3"
+            ><input id="n" type="checkbox" checked /> 0-9</label
+          >
+          <label class="pill" style="grid-column: span 3"
+            ><input id="s" type="checkbox" checked /> !@#$…</label
+          >
+        </div>
+        <div class="copygroup">
+          <input id="out" class="field mono" readonly /><button
+            class="btn btn-primary"
+            id="gen"
+          >
+            Generate</button
+          ><button class="btn" id="cpy">Copy</button>
+        </div>
+      </article>
+    </main>
+    <footer>© <span id="y"></span> Tools Pack</footer>
+
+    <!-- Toast message -->
+    <div class="toast" id="toast">Password copied ✅</div>
+
+    <script>
+      // year
+      y.textContent = new Date().getFullYear();
+
+      // show range value
+      len.oninput = (e) => (lenv.textContent = e.target.value);
+
+      // character sets
+      const sets = {
+        l: [..."abcdefghijklmnopqrstuvwxyz"],
+        u: [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"],
+        n: [..."0123456789"],
+        s: [..."!@#$%^&*()-_=+[]{};:,.<>?/|~"],
+      };
+
+      const pick = (a) =>
+        a[
+          Math.floor(
+            (crypto.getRandomValues(new Uint32Array(1))[0] / 2 ** 32) * a.length
+          )
+        ];
+
+      // password generator function
+      const generatePassword = () => {
+        const use = [];
+        if (l.checked) use.push(sets.l);
+        if (u.checked) use.push(sets.u);
+        if (n.checked) use.push(sets.n);
+        if (s.checked) use.push(sets.s);
+        if (!use.length) use.push(sets.l, sets.n);
+
+        const L = +len.value,
+          out = [];
+        // at least one from each selected set
+        use.forEach((set) => out.push(pick(set)));
+
+        const flat = use.flat(),
+          bytes = new Uint32Array(L - out.length);
+        crypto.getRandomValues(bytes);
+
+        for (let i = 0; i < bytes.length; i++)
+          out.push(flat[bytes[i] % flat.length]);
+
+        // shuffle
+        for (let i = out.length - 1; i > 0; i--) {
+          const j = crypto.getRandomValues(new Uint32Array(1))[0] % (i + 1);
+          [out[i], out[j]] = [out[j], out[i]];
+        }
+
+        return out.join("");
+      };
+
+      // buttons
+      gen.onclick = () => (out.value = generatePassword());
+
+      cpy.onclick = () => {
+        if (out.value) {
+          navigator.clipboard.writeText(out.value);
+          showToast();
+        }
+      };
+
+      // generate one on load
+      out.value = generatePassword();
+
+      // toast function
+      function showToast() {
+        const t = document.getElementById("toast");
+        t.classList.add("show");
+        setTimeout(() => t.classList.remove("show"), 2000);
+      }
+    </script>
+  </body>
+</html>

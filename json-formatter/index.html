@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>JSON Formatter & Validator — Pretty Print | Tools Pack</title>
+    <meta
+      name="description"
+      content="Format, minify and validate JSON in your browser. Unicode-safe, fast, no tracking."
+    />
+    <link
+      rel="canonical"
+      href="https://tools-pack.netlify.app/json-formatter/"
+    />
+    <link rel="stylesheet" href="../assets/style.css" />
+    <meta name="theme-color" content="#1E1E2F" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="JSON Formatter — Tools Pack" />
+    <meta
+      property="og:description"
+      content="Format & validate JSON instantly, copy pretty output."
+    />
+    <meta
+      property="og:url"
+      content="https://tools-pack.netlify.app/json-formatter/"
+    />
+    <meta
+      property="og:image"
+      content="https://tools-pack.netlify.app/og/json-formatter.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- JSON-LD: WebApplication -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "JSON Formatter & Validator",
+        "url": "https://tools-pack.netlify.app/json-formatter/",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "description": "Format, minify and validate JSON locally in your browser.",
+        "inLanguage": "en"
+      }
+    </script>
+
+    <!-- JSON-LD: FAQPage -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is my JSON uploaded to a server?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. All processing happens in your browser."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does it support Unicode/Bangla?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. It is Unicode-safe."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <header class="sticky">
+      <div class="wrap brand">
+        <a href="/" aria-label="Back to home"><div class="logo"></div></a>
+        <div>
+          <h1 style="margin: 0">JSON Formatter / Validator</h1>
+          <div class="sub">Pretty • Minify • Validate</div>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <article class="card">
+        <h2>Format / Validate</h2>
+        <textarea
+          id="in"
+          class="textarea"
+          placeholder='{"hello":"world"}'
+        ></textarea>
+        <div>
+          <button class="btn btn-primary" id="fmt">Format</button>
+          <button class="btn" id="min">Minify</button>
+          <button class="btn" id="val">Validate</button>
+          <button class="btn" id="cpy">Copy Output</button>
+        </div>
+        <textarea
+          id="out"
+          class="textarea"
+          readonly
+          placeholder="Output…"
+        ></textarea>
+        <div id="status" class="muted"></div>
+      </article>
+    </main>
+
+    <footer>© <span id="y"></span> Tools Pack</footer>
+    <script>
+      document.getElementById('y').textContent=new Date().getFullYear();
+      const IN=in, OUT=out, ST=status;
+      const ok=(msg,good)=>{ST.textContent=msg;ST.style.color=good?'var(--ok)':'var(--danger)'}
+      fmt.onclick=()=>{try{const o=JSON.parse(IN.value);OUT.value=JSON.stringify(o,null,2);ok('Valid JSON • Formatted',true)}catch(e){OUT.value='';ok('Invalid JSON: '+e.message,false)}}
+      min.onclick=()=>{try{const o=JSON.parse(IN.value);OUT.value=JSON.stringify(o);ok('Valid JSON • Minified',true)}catch(e){OUT.value='';ok('Invalid JSON: '+e.message,false)}}
+      val.onclick=()=>{try{JSON.parse(IN.value);ok('Valid JSON ✔',true)}catch(e){ok('Invalid JSON: '+e.message,false)}}
+      cpy.onclick=()=>{navigator.clipboard.writeText(OUT.value||'')}
+    </script>
+  </body>
+</html>

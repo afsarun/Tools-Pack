@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Online Age Calculator — Years, Months & Days | Tools Pack</title>
+    <meta
+      name="description"
+      content="Instantly calculate age in years, months, and days with next-birthday countdown."
+    />
+    <link
+      rel="canonical"
+      href="https://tools-pack.netlify.app/age-calculator/"
+    />
+    <link rel="stylesheet" href="../assets/style.css" />
+    <meta name="theme-color" content="#1E1E2F" />
+
+    <!-- Inline overrides just for the date picker UI -->
+    <style>
+      /* Container to place the icon inside the input */
+      .input-with-icon {
+        position: relative;
+        display: block;
+      }
+
+      /* Give room for the icon inside the input on the right */
+      .input-with-icon > input.field {
+        padding-right: 44px;
+      }
+
+      /* Hide Chrome/Edge/Safari native indicator so we don't see two icons */
+      .input-with-icon > input[type="date"]::-webkit-calendar-picker-indicator {
+        opacity: 0; /* keeps it clickable if needed */
+      }
+
+      /* Our calendar button (sits inside the input) */
+      .input-with-icon > .cal-btn {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 28px;
+        height: 28px;
+        border: 0;
+        padding: 0;
+        background: transparent;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        cursor: pointer;
+        background-color: rgb(248, 230, 230);
+      }
+      /* Hover/focus feedback */
+      .input-with-icon > .cal-btn:hover {
+        background-color: rgb(248, 230, 230, 0.8);
+      }
+      .input-with-icon > .cal-btn:focus-visible {
+        outline: 2px solid var(--focus, #5b8def);
+        outline-offset: 2px;
+      }
+      /* Highlight input when any element inside gains focus */
+      .input-with-icon:focus-within > input.field {
+        border-color: var(--focus, #5b8def);
+        box-shadow: 0 0 0 2px
+          color-mix(in oklab, var(--focus, #5b8def) 25%, transparent);
+      }
+      .input-with-icon > .cal-btn svg {
+        width: 20px;
+        height: 20px;
+        opacity: 0.7;
+      }
+      .input-with-icon > input:disabled + .cal-btn {
+        opacity: 0.4;
+        pointer-events: none;
+      }
+
+      /* Dark-mode friendly hover */
+      @media (prefers-color-scheme: dark) {
+        .input-with-icon > .cal-btn:hover {
+          background: rgba(255, 255, 255, 0.08);
+        }
+      }
+
+      /* Minor tweaks for this page */
+      #out.textarea {
+        min-height: 120px;
+      }
+      #next {
+        margin-top: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="sticky">
+      <div class="wrap brand">
+        <a href="/"><div class="logo"></div></a>
+        <div>
+          <h1 style="margin: 0">Age Calculator</h1>
+          <div class="sub">Years • Months • Days</div>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <article class="card">
+        <h2>Enter dates</h2>
+
+        <div
+          class="grid"
+          style="grid-template-columns: repeat(12, 1fr); gap: 10px"
+        >
+          <!-- DOB -->
+          <label class="field" style="grid-column: span 6">
+            <span class="muted">Date of birth</span>
+            <div class="input-with-icon">
+              <input
+                id="dob"
+                class="field"
+                type="date"
+                placeholder="YYYY-MM-DD"
+                inputmode="numeric"
+              />
+              <button
+                class="cal-btn"
+                id="dobBtn"
+                type="button"
+                aria-label="Open calendar for date of birth"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+                  <path d="M16 2v4M8 2v4M3 10h18"></path>
+                </svg>
+              </button>
+            </div>
+          </label>
+
+          <!-- As of -->
+          <label class="field" style="grid-column: span 6">
+            <span class="muted">As of</span>
+            <div class="input-with-icon">
+              <input
+                id="asof"
+                class="field"
+                type="date"
+                placeholder="YYYY-MM-DD"
+                inputmode="numeric"
+              />
+              <button
+                class="cal-btn"
+                id="asofBtn"
+                type="button"
+                aria-label="Open calendar for 'As of' date"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+                  <path d="M16 2v4M8 2v4M3 10h18"></path>
+                </svg>
+              </button>
+            </div>
+          </label>
+        </div>
+
+        <div style="margin-top: 10px">
+          <button class="btn btn-primary" id="calc" type="button">
+            Calculate
+          </button>
+          <button class="btn" id="reset" type="button">Reset</button>
+          <button class="btn" id="copy" type="button">Copy</button>
+        </div>
+
+        <textarea
+          id="out"
+          class="textarea mono"
+          readonly
+          placeholder="Result…"
+        ></textarea>
+        <div class="muted" id="next" aria-live="polite"></div>
+      </article>
+    </main>
+
+    <footer>© <span id="y"></span> Tools Pack</footer>
+
+    <script>
+      const $ = (s) => document.querySelector(s);
+
+      // Footer year
+      y.textContent = new Date().getFullYear();
+
+      // Helpers
+      const todayStr = () => {
+        const t = new Date();
+        const y = t.getFullYear();
+        const m = String(t.getMonth() + 1).padStart(2, "0");
+        const d = String(t.getDate()).padStart(2, "0");
+        return `${y}-${m}-${d}`;
+      };
+
+      const parse = (s) => {
+        const [y, m, d] = (s || "").split("-").map(Number);
+        return y && m && d ? { y, m, d } : null;
+      };
+      const toD = (o) => new Date(o.y, o.m - 1, o.d);
+      const isLeap = (y) => (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0;
+
+      const diff = (b, a) => {
+        let y = a.y - b.y,
+          m = a.m - b.m,
+          d = a.d - b.d;
+        if (d < 0) {
+          d += new Date(a.y, a.m - 1, 0).getDate(); // days in previous month of A
+          m--;
+        }
+        if (m < 0) {
+          m += 12;
+          y--;
+        }
+        return { y, m, d };
+      };
+
+      const days = (A, B) =>
+        Math.round(
+          (Date.UTC(B.getFullYear(), B.getMonth(), B.getDate()) -
+            Date.UTC(A.getFullYear(), A.getMonth(), A.getDate())) /
+            86400000
+        );
+
+      // Proper Feb 29 handling: on non-leap years, birthday = Feb 28
+      const bday = (dob, yr) => {
+        const isFeb29 = dob.m === 2 && dob.d === 29;
+        const leap = isLeap(yr);
+        const month = isFeb29 && !leap ? 2 : dob.m; // February stays 2
+        const day = isFeb29 && !leap ? 28 : dob.d;
+        return new Date(yr, month - 1, day);
+      };
+
+      // Defaults & constraints
+      const today = todayStr();
+      asof.value = today;
+      dob.max = asof.max = today;
+
+      // One function to open the native picker when available
+      const openPicker = (inputEl) => {
+        try {
+          if (typeof inputEl.showPicker === "function") {
+            inputEl.showPicker(); // Chrome/Edge/Safari (newer)
+          } else {
+            inputEl.focus(); // Fallback
+          }
+        } catch {
+          inputEl.focus();
+        }
+      };
+
+      // Auto-open DOB picker on load
+      window.addEventListener("load", () => openPicker(dob));
+
+      // Calendar buttons
+      dobBtn.addEventListener("click", () => openPicker(dob));
+      asofBtn.addEventListener("click", () => openPicker(asof));
+
+      // Allow Enter key to trigger calc from either input
+      [dob, asof].forEach((el) => {
+        el.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") calc.click();
+        });
+      });
+
+      // Calculate
+      calc.onclick = () => {
+        const B = parse(dob.value);
+        const A = parse(asof.value || todayStr());
+
+        if (!B) {
+          out.value = "Select date of birth.";
+          openPicker(dob);
+          return;
+        }
+        if (!A) {
+          out.value = "Select 'As of' date.";
+          openPicker(asof);
+          return;
+        }
+
+        const Bd = toD(B),
+          Ad = toD(A);
+        if (Ad < Bd) {
+          out.value = "Error: 'As of' is before birth.";
+          next.textContent = "";
+          return;
+        }
+
+        const a = diff(B, A);
+        const total = days(Bd, Ad);
+
+        let nb = bday(B, A.y);
+        if (days(Ad, nb) < 0) nb = bday(B, A.y + 1);
+
+        const left = days(Ad, nb);
+        const turning = a.y + (left ? 1 : 0);
+
+        out.value =
+          `Age: ${a.y} years, ${a.m} months, ${a.d} days\n` +
+          `Total days lived: ${total.toLocaleString()}`;
+
+        next.textContent =
+          left === 0
+            ? `🎉 Today (${nb.toDateString()}) — turning ${a.y}`
+            : `Next birthday in ${left} day(s) — ${nb.toDateString()} (turning ${turning})`;
+      };
+
+      // Reset
+      reset.onclick = () => {
+        dob.value = "";
+        asof.value = todayStr();
+        out.value = "";
+        next.textContent = "";
+        openPicker(dob);
+      };
+
+      // Copy
+      copy.onclick = () => {
+        const text =
+          out.value + (next.textContent ? `\n${next.textContent}` : "");
+        navigator.clipboard.writeText(text);
+      };
+    </script>
+  </body>
+</html>

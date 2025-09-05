@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="bn">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>JSON ফরম্যাটার/ভ্যালিডেটর — প্রিটি প্রিন্ট | Tools Pack</title>
+    <meta
+      name="description"
+      content="JSON সুন্দরভাবে ফরম্যাট, মিনিফাই ও ভ্যালিডেট করুন। ইউনিকোড নিরাপদ, দ্রুত, কোনো ট্র্যাকিং নেই।"
+    />
+    <link
+      rel="canonical"
+      href="https://tools-pack.netlify.app/bn/json-formatter/"
+    />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://tools-pack.netlify.app/json-formatter/"
+    />
+    <link
+      rel="alternate"
+      hreflang="bn"
+      href="https://tools-pack.netlify.app/bn/json-formatter/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://tools-pack.netlify.app/"
+    />
+    <link rel="stylesheet" href="../../assets/style.css" />
+    <meta name="theme-color" content="#1E1E2F" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="JSON ফরম্যাটার — Tools Pack" />
+    <meta
+      property="og:description"
+      content="ফরম্যাট/মিনিফাই/ভ্যালিডেট — কপি সাপোর্টসহ।"
+    />
+    <meta
+      property="og:url"
+      content="https://tools-pack.netlify.app/bn/json-formatter/"
+    />
+    <meta
+      property="og:image"
+      content="https://tools-pack.netlify.app/og/json-formatter.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "JSON ফরম্যাটার/ভ্যালিডেটর",
+        "url": "https://tools-pack.netlify.app/bn/json-formatter/",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "description": "JSON ফরম্যাট, মিনিফাই ও ভ্যালিডেট—ব্রাউজারেই।",
+        "inLanguage": "bn"
+      }
+    </script>
+  </head>
+  <body>
+    <header class="sticky">
+      <div class="wrap brand">
+        <a href="/bn/"><div class="logo"></div></a>
+        <div>
+          <h1 style="margin: 0">JSON ফরম্যাটার / ভ্যালিডেটর</h1>
+          <div class="sub">প্রিটি • মিনিফাই • ভ্যালিডেট</div>
+        </div>
+      </div>
+    </header>
+    <main class="wrap">
+      <article class="card">
+        <h2>ফরম্যাট / ভ্যালিডেট</h2>
+        <textarea
+          id="in"
+          class="textarea mono"
+          placeholder='{"hello":"world"}'
+        ></textarea>
+        <div>
+          <button class="btn btn-primary" id="fmt">ফরম্যাট</button>
+          <button class="btn" id="min">মিনিফাই</button>
+          <button class="btn" id="val">ভ্যালিডেট</button>
+          <button class="btn" id="cpy">আউটপুট কপি</button>
+        </div>
+        <textarea
+          id="out"
+          class="textarea mono"
+          readonly
+          placeholder="আউটপুট…"
+        ></textarea>
+        <div id="status" class="muted"></div>
+      </article>
+    </main>
+    <footer>© <span id="y"></span> Tools Pack</footer>
+    <script>
+      y.textContent=new Date().getFullYear();
+      const ok=(m,g)=>{status.textContent=m;status.style.color=g?'var(--ok)':'var(--danger)'}
+      fmt.onclick=()=>{try{const o=JSON.parse(in.value);out.value=JSON.stringify(o,null,2);ok('Valid JSON • Formatted',true)}catch(e){out.value='';ok('Invalid JSON: '+e.message,false)}}
+      min.onclick=()=>{try{const o=JSON.parse(in.value);out.value=JSON.stringify(o);ok('Valid JSON • Minified',true)}catch(e){out.value='';ok('Invalid JSON: '+e.message,false)}}
+      val.onclick=()=>{try{JSON.parse(in.value);ok('Valid JSON ✔',true)}catch(e){ok('Invalid JSON: '+e.message,false)}}
+      cpy.onclick=()=>navigator.clipboard.writeText(out.value||'');
+    </script>
+  </body>
+</html>

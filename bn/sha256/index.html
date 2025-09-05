@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="bn">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>হ্যাশ জেনারেটর (SHA-256) — WebCrypto | Tools Pack</title>
+    <meta
+      name="description"
+      content="টেক্সট/ফাইল থেকে SHA-256 হ্যাশ তৈরি করুন—ব্রাউজারে নিরাপদ।"
+    />
+
+    <!-- Canonical & hreflang -->
+    <link rel="canonical" href="https://tools-pack.netlify.app/bn/sha256/" />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://tools-pack.netlify.app/sha256/"
+    />
+    <link
+      rel="alternate"
+      hreflang="bn"
+      href="https://tools-pack.netlify.app/bn/sha256/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://tools-pack.netlify.app/"
+    />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../assets/style.css" />
+    <meta name="theme-color" content="#1E1E2F" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="হ্যাশ জেনারেটর (SHA-256) — Tools Pack" />
+    <meta
+      property="og:description"
+      content="টেক্সট বা ফাইল থেকে SHA-256 হ্যাশ বের করুন—লোকালেই রান হয়।"
+    />
+    <meta
+      property="og:url"
+      content="https://tools-pack.netlify.app/bn/sha256/"
+    />
+    <meta
+      property="og:image"
+      content="https://tools-pack.netlify.app/og/sha256.png"
+    />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- JSON-LD: WebApplication -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "হ্যাশ জেনারেটর (SHA-256)",
+        "url": "https://tools-pack.netlify.app/bn/sha256/",
+        "applicationCategory": "SecurityApplication",
+        "operatingSystem": "All",
+        "description": "SHA-256 হ্যাশ (টেক্সট/ফাইল) — লোকালেই।",
+        "inLanguage": "bn"
+      }
+    </script>
+  </head>
+
+  <body>
+    <header class="sticky">
+      <div class="wrap brand">
+        <a href="/bn/" aria-label="হোমে ফিরুন"><div class="logo"></div></a>
+        <div>
+          <h1 style="margin: 0">SHA-256 হ্যাশ জেনারেটর</h1>
+          <div class="sub">WebCrypto API • Tools Pack</div>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section aria-label="SHA-256 Hash Generator Tool">
+        <div class="tool">
+          <label for="hashInput" class="muted">টেক্সট লিখুন</label>
+          <textarea
+            id="hashInput"
+            class="field"
+            rows="4"
+            placeholder="এখানে টেক্সট লিখুন…"
+          ></textarea>
+
+          <div class="row">
+            <button id="btnHashText" class="btn btn-primary">Hash Text</button>
+            <input type="file" id="fileInput" class="file" />
+            <button id="btnClear" class="btn btn-muted">Clear</button>
+          </div>
+
+          <label for="hashOutput" class="muted">SHA-256 আউটপুট</label>
+          <textarea
+            id="hashOutput"
+            class="field mono"
+            rows="4"
+            readonly
+          ></textarea>
+        </div>
+      </section>
+    </main>
+
+    <footer>© <span id="y"></span> Tools Pack • ১০০% ব্রাউজারেই রান হয়</footer>
+
+    <script>
+      // Footer year
+      document.getElementById("y").textContent = new Date().getFullYear();
+
+      const input = document.getElementById("hashInput");
+      const fileInput = document.getElementById("fileInput");
+      const output = document.getElementById("hashOutput");
+
+      // Utility: buffer to hex string
+      function buf2hex(buffer) {
+        return [...new Uint8Array(buffer)]
+          .map((b) => b.toString(16).padStart(2, "0"))
+          .join("");
+      }
+
+      // Hash text
+      document
+        .getElementById("btnHashText")
+        .addEventListener("click", async () => {
+          try {
+            const data = new TextEncoder().encode(input.value);
+            const digest = await crypto.subtle.digest("SHA-256", data);
+            output.value = buf2hex(digest);
+          } catch (e) {
+            output.value = "⚠️ Error: " + e.message;
+          }
+        });
+
+      // Hash file
+      fileInput.addEventListener("change", async () => {
+        const file = fileInput.files[0];
+        if (!file) return;
+        try {
+          const buffer = await file.arrayBuffer();
+          const digest = await crypto.subtle.digest("SHA-256", buffer);
+          output.value = buf2hex(digest);
+        } catch (e) {
+          output.value = "⚠️ File hash error: " + e.message;
+        }
+      });
+
+      // Clear
+      document.getElementById("btnClear").addEventListener("click", () => {
+        input.value = "";
+        output.value = "";
+        fileInput.value = "";
+      });
+    </script>
+  </body>
+</html>

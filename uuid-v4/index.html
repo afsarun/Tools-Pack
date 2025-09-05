@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>UUID v4 Generator Online — RFC 4122 | Tools Pack</title>
+    <meta
+      name="description"
+      content="Generate UUID v4 instantly and copy with one click."
+    />
+    <link rel="canonical" href="https://tools-pack.netlify.app/uuid-v4/" />
+    <link rel="stylesheet" href="../assets/style.css" />
+    <meta name="theme-color" content="#1E1E2F" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="UUID v4 — Tools Pack" />
+    <meta property="og:description" content="Random UUID generator (v4)." />
+    <meta property="og:url" content="https://tools-pack.netlify.app/uuid-v4/" />
+    <meta
+      property="og:image"
+      content="https://tools-pack.netlify.app/og/uuid.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "UUID v4 Generator",
+        "url": "https://tools-pack.netlify.app/uuid-v4/",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All",
+        "description": "Generate random RFC 4122 UUID v4 values.",
+        "inLanguage": "en"
+      }
+    </script>
+  </head>
+  <body>
+    <header class="sticky">
+      <div class="wrap brand">
+        <a href="/"><div class="logo"></div></a>
+        <div>
+          <h1 style="margin: 0">UUID v4</h1>
+          <div class="sub">RFC 4122</div>
+        </div>
+      </div>
+    </header>
+    <main class="wrap">
+      <article class="card">
+        <div class="copygroup">
+          <input id="out" class="field mono" readonly /><button
+            class="btn btn-primary"
+            id="gen"
+          >
+            Generate</button
+          ><button class="btn" id="cpy">Copy</button>
+        </div>
+      </article>
+    </main>
+    <footer>© <span id="y"></span> Tools Pack</footer>
+    <script>
+      y.textContent = new Date().getFullYear();
+      const uuid = () => {
+        const a = new Uint8Array(16);
+        crypto.getRandomValues(a);
+        a[6] = (a[6] & 0x0f) | 0x40;
+        a[8] = (a[8] & 0x3f) | 0x80;
+        const b = [...a].map(
+          (v, i) =>
+            (i === 4 || i === 6 || i === 8 || i === 10 ? "-" : "") +
+            v.toString(16).padStart(2, "0")
+        );
+        return b.join("").replace(/^-/, "");
+      };
+      gen.onclick = () => (out.value = uuid());
+      cpy.onclick = () => navigator.clipboard.writeText(out.value || "");
+      out.value = uuid();
+    </script>
+  </body>
+</html>

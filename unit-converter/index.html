@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Unit Converter — Length, Weight & Temperature | Tools Pack</title>
+    <meta
+      name="description"
+      content="Convert between metric and imperial units: m↔km, kg↔lb, °C↔°F and more."
+    />
+    <link
+      rel="canonical"
+      href="https://tools-pack.netlify.app/unit-converter/"
+    />
+    <link rel="stylesheet" href="../assets/style.css" />
+    <meta name="theme-color" content="#1E1E2F" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Unit Converter — Tools Pack" />
+    <meta
+      property="og:description"
+      content="Length, weight and temperature conversions."
+    />
+    <meta
+      property="og:url"
+      content="https://tools-pack.netlify.app/unit-converter/"
+    />
+    <meta
+      property="og:image"
+      content="https://tools-pack.netlify.app/og/unit.png"
+    />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Unit Converter",
+        "url": "https://tools-pack.netlify.app/unit-converter/",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All",
+        "description": "Convert length, weight and temperature instantly.",
+        "inLanguage": "en"
+      }
+    </script>
+
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        background: #1e1e2f;
+        color: #f0f0f0;
+        margin: 0;
+        padding: 2rem;
+      }
+      /* header {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+      h1 {
+        font-size: 1.8rem;
+      } */
+      .converter {
+        max-width: 800px;
+        margin: 0 auto;
+        background: #2a2a40;
+        padding: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        margin-top: 5rem;
+      }
+      .row {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+      }
+      input,
+      select {
+        flex: 1;
+        padding: 0.6rem;
+        border-radius: 6px;
+        border: 1px solid #444;
+        background: #1e1e2f;
+        color: #fff;
+      }
+      label {
+        font-size: 0.9rem;
+        margin-bottom: 0.25rem;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="sticky">
+      <div class="wrap brand">
+        <a href="/"><div class="logo"></div></a>
+        <div>
+          <h1 style="margin: 0">Unit Converter</h1>
+          <div class="sub">
+            Convert between length, weight, and temperature.
+          </div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="converter">
+        <!-- Length -->
+        <div>
+          <label for="lengthInput">Length</label>
+          <div class="row">
+            <input type="number" id="lengthInput" placeholder="Enter value" />
+            <select id="lengthFrom">
+              <option value="m">Meters (m)</option>
+              <option value="km">Kilometers (km)</option>
+              <option value="mi">Miles (mi)</option>
+              <option value="ft">Feet (ft)</option>
+            </select>
+            <select id="lengthTo">
+              <option value="km">Kilometers (km)</option>
+              <option value="m">Meters (m)</option>
+              <option value="mi">Miles (mi)</option>
+              <option value="ft">Feet (ft)</option>
+            </select>
+          </div>
+          <p id="lengthResult"></p>
+        </div>
+
+        <!-- Weight -->
+        <div>
+          <label for="weightInput">Weight</label>
+          <div class="row">
+            <input type="number" id="weightInput" placeholder="Enter value" />
+            <select id="weightFrom">
+              <option value="kg">Kilograms (kg)</option>
+              <option value="g">Grams (g)</option>
+              <option value="lb">Pounds (lb)</option>
+            </select>
+            <select id="weightTo">
+              <option value="lb">Pounds (lb)</option>
+              <option value="kg">Kilograms (kg)</option>
+              <option value="g">Grams (g)</option>
+            </select>
+          </div>
+          <p id="weightResult"></p>
+        </div>
+
+        <!-- Temperature -->
+        <div>
+          <label for="tempInput">Temperature</label>
+          <div class="row">
+            <input type="number" id="tempInput" placeholder="Enter value" />
+            <select id="tempFrom">
+              <option value="C">Celsius (°C)</option>
+              <option value="F">Fahrenheit (°F)</option>
+              <option value="K">Kelvin (K)</option>
+            </select>
+            <select id="tempTo">
+              <option value="F">Fahrenheit (°F)</option>
+              <option value="C">Celsius (°C)</option>
+              <option value="K">Kelvin (K)</option>
+            </select>
+          </div>
+          <p id="tempResult"></p>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      // Length conversion factors (to meters)
+      const lengthFactors = { m: 1, km: 1000, mi: 1609.34, ft: 0.3048 };
+
+      function convertLength() {
+        const val = parseFloat(document.getElementById("lengthInput").value);
+        if (isNaN(val)) return;
+        const from = document.getElementById("lengthFrom").value;
+        const to = document.getElementById("lengthTo").value;
+        const result = val * (lengthFactors[from] / lengthFactors[to]);
+        document.getElementById(
+          "lengthResult"
+        ).textContent = `= ${result.toFixed(4)} ${to}`;
+      }
+
+      // Weight conversion factors (to kg)
+      const weightFactors = { kg: 1, g: 0.001, lb: 0.453592 };
+
+      function convertWeight() {
+        const val = parseFloat(document.getElementById("weightInput").value);
+        if (isNaN(val)) return;
+        const from = document.getElementById("weightFrom").value;
+        const to = document.getElementById("weightTo").value;
+        const result = val * (weightFactors[from] / weightFactors[to]);
+        document.getElementById(
+          "weightResult"
+        ).textContent = `= ${result.toFixed(4)} ${to}`;
+      }
+
+      // Temperature conversion
+      function convertTemp() {
+        const val = parseFloat(document.getElementById("tempInput").value);
+        if (isNaN(val)) return;
+        const from = document.getElementById("tempFrom").value;
+        const to = document.getElementById("tempTo").value;
+        let result = val;
+
+        if (from === "C") {
+          if (to === "F") result = (val * 9) / 5 + 32;
+          else if (to === "K") result = val + 273.15;
+        } else if (from === "F") {
+          if (to === "C") result = ((val - 32) * 5) / 9;
+          else if (to === "K") result = ((val - 32) * 5) / 9 + 273.15;
+        } else if (from === "K") {
+          if (to === "C") result = val - 273.15;
+          else if (to === "F") result = ((val - 273.15) * 9) / 5 + 32;
+        }
+
+        document.getElementById("tempResult").textContent = `= ${result.toFixed(
+          2
+        )} ${to}`;
+      }
+
+      // Event listeners
+      document
+        .getElementById("lengthInput")
+        .addEventListener("input", convertLength);
+      document
+        .getElementById("lengthFrom")
+        .addEventListener("change", convertLength);
+      document
+        .getElementById("lengthTo")
+        .addEventListener("change", convertLength);
+
+      document
+        .getElementById("weightInput")
+        .addEventListener("input", convertWeight);
+      document
+        .getElementById("weightFrom")
+        .addEventListener("change", convertWeight);
+      document
+        .getElementById("weightTo")
+        .addEventListener("change", convertWeight);
+
+      document
+        .getElementById("tempInput")
+        .addEventListener("input", convertTemp);
+      document
+        .getElementById("tempFrom")
+        .addEventListener("change", convertTemp);
+      document.getElementById("tempTo").addEventListener("change", convertTemp);
+    </script>
+  </body>
+</html>

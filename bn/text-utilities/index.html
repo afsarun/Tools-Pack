@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="bn">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>টেক্সট টুলস — বড়/ছোট হাতা ও শব্দ গণনা | Tools Pack</title>
+    <meta
+      name="description"
+      content="টেক্সটকে বড়/ছোট হাতায় রূপান্তর, স্পেস সরানো ও শব্দ-অক্ষর গণনা।"
+    />
+    <link
+      rel="canonical"
+      href="https://tools-pack.netlify.app/bn/text-utilities/"
+    />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://tools-pack.netlify.app/text-utilities/"
+    />
+    <link
+      rel="alternate"
+      hreflang="bn"
+      href="https://tools-pack.netlify.app/bn/text-utilities/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://tools-pack.netlify.app/"
+    />
+
+    <link rel="stylesheet" href="../../assets/style.css" />
+    <meta name="theme-color" content="#1E1E2F" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "টেক্সট টুলস",
+        "url": "https://tools-pack.netlify.app/bn/text-utilities/",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All",
+        "description": "কেস কনভার্শন ও ওয়ার্ড কাউন্ট।",
+        "inLanguage": "bn"
+      }
+    </script>
+
+    <style>
+      body {
+        font-family: "Noto Sans Bengali", sans-serif;
+        background: #1e1e2f;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+      }
+      header {
+        text-align: center;
+        padding: 1rem;
+      }
+      main {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 1rem;
+      }
+      textarea {
+        width: 100%;
+        height: 200px;
+        background: #2a2a40;
+        border: 1px solid #444;
+        border-radius: 8px;
+        padding: 10px;
+        color: #fff;
+        font-size: 1rem;
+      }
+      .actions {
+        margin: 1rem 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+      button {
+        background: #4cafef;
+        border: none;
+        padding: 0.6rem 1rem;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: 0.2s;
+      }
+      button:hover {
+        background: #2d9cdb;
+      }
+      .stats {
+        background: #2a2a40;
+        border: 1px solid #444;
+        padding: 0.8rem;
+        border-radius: 8px;
+        margin-top: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="sticky">
+      <div class="wrap brand">
+        <a href="/bn/"><div class="logo"></div></a>
+        <div>
+          <h1 style="margin: 0">Text ফরম্যাটার / ভ্যালিডেটর</h1>
+          <div class="sub">বড় হাতা • ছোট হাতা • স্পেস সরান</div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <textarea
+        id="textInput"
+        placeholder="এখানে আপনার টেক্সট লিখুন..."
+      ></textarea>
+
+      <div class="actions">
+        <button onclick="toUpperCaseText()">🔠 বড় হাতা</button>
+        <button onclick="toLowerCaseText()">🔡 ছোট হাতা</button>
+        <button onclick="removeSpaces()">🚫 স্পেস সরান</button>
+      </div>
+
+      <div class="stats" id="statsBox">👉 শব্দ: 0 | অক্ষর: 0</div>
+    </main>
+
+    <script>
+      const input = document.getElementById("textInput");
+      const stats = document.getElementById("statsBox");
+
+      function toUpperCaseText() {
+        input.value = input.value.toUpperCase();
+        updateCount();
+      }
+
+      function toLowerCaseText() {
+        input.value = input.value.toLowerCase();
+        updateCount();
+      }
+
+      function removeSpaces() {
+        input.value = input.value.replace(/\s+/g, " ").trim();
+        updateCount();
+      }
+
+      function updateCount() {
+        const text = input.value.trim();
+        const words = text ? text.split(/\s+/).length : 0;
+        const chars = text.length;
+        stats.textContent = `🔤 শব্দ: ${words} | ✍️ অক্ষর: ${chars}`;
+      }
+
+      // auto update on typing
+      input.addEventListener("input", updateCount);
+    </script>
+  </body>
+</html>

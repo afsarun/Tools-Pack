@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>URL Encoder & Decoder Online | Tools Pack</title>
+    <meta
+      name="description"
+      content="Encode or decode URLs and URI components instantly."
+    />
+    <link rel="canonical" href="https://tools-pack.netlify.app/url-tools/" />
+    <link rel="stylesheet" href="../assets/style.css" />
+    <meta name="theme-color" content="#1E1E2F" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="URL Encoder/Decoder — Tools Pack" />
+    <meta property="og:description" content="URI component encode/decode." />
+    <meta
+      property="og:url"
+      content="https://tools-pack.netlify.app/url-tools/"
+    />
+    <meta
+      property="og:image"
+      content="https://tools-pack.netlify.app/og/url.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "URL Encoder/Decoder",
+        "url": "https://tools-pack.netlify.app/url-tools/",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All",
+        "description": "Encode/decode URL or URI components.",
+        "inLanguage": "en"
+      }
+    </script>
+  </head>
+  <body>
+    <header class="sticky">
+      <div class="wrap brand">
+        <a href="/"><div class="logo"></div></a>
+        <div>
+          <h1 style="margin: 0">URL Encoder / Decoder</h1>
+          <div class="sub">URI Component</div>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <article class="card">
+        <textarea
+          id="in"
+          class="textarea mono"
+          placeholder="Enter URL or text…"
+        ></textarea>
+        <div>
+          <button class="btn btn-primary" id="enc" type="button">Encode</button>
+          <button class="btn" id="dec" type="button">Decode</button>
+          <button class="btn" id="cpy" type="button">Copy Output</button>
+        </div>
+        <textarea
+          id="out"
+          class="textarea mono"
+          readonly
+          placeholder="Output…"
+        ></textarea>
+        <div class="muted" id="status" aria-live="polite"></div>
+      </article>
+    </main>
+
+    <footer>© <span id="y"></span> Tools Pack</footer>
+
+    <script>
+      // Always query elements; don't rely on implicit globals (window.in etc.)
+      const yearEl = document.getElementById("y");
+      const inputEl = document.getElementById("in");
+      const outputEl = document.getElementById("out");
+      const encBtn = document.getElementById("enc");
+      const decBtn = document.getElementById("dec");
+      const cpyBtn = document.getElementById("cpy");
+      const statusEl = document.getElementById("status");
+
+      yearEl.textContent = new Date().getFullYear();
+
+      // Encode/Decode as URI COMPONENT (safe for query param values, path segments, etc.)
+      encBtn.onclick = () => {
+        outputEl.value = encodeURIComponent(inputEl.value);
+        statusEl.textContent = "";
+      };
+
+      decBtn.onclick = () => {
+        try {
+          // Be forgiving: convert '+' to spaces (x-www-form-urlencoded convention)
+          const txt = inputEl.value.replace(/\+/g, " ");
+          outputEl.value = decodeURIComponent(txt);
+          statusEl.textContent = "";
+        } catch (e) {
+          outputEl.value = "";
+          statusEl.textContent = "Decode error: " + e.message;
+        }
+      };
+
+      cpyBtn.onclick = async () => {
+        try {
+          await navigator.clipboard.writeText(outputEl.value || "");
+          statusEl.textContent = outputEl.value
+            ? "Output copied."
+            : "Nothing to copy.";
+        } catch (e) {
+          statusEl.textContent = "Copy failed: " + e.message;
+        }
+      };
+
+      // Shortcuts: Ctrl/Cmd+Enter = Encode, Shift+Enter = Decode
+      inputEl.addEventListener("keydown", (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === "Enter") encBtn.click();
+        else if (e.shiftKey && e.key === "Enter") decBtn.click();
+      });
+    </script>
+  </body>
+</html>

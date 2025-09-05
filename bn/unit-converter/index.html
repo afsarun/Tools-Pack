@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="bn">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>ইউনিট কনভার্টার — দৈর্ঘ্য, ওজন ও তাপমাত্রা | Tools Pack</title>
+    <meta
+      name="description"
+      content="মিটার↔কিলোমিটার, কেজি↔পাউন্ড, সেলসিয়াস↔ফারেনহাইট—দ্রুত রূপান্তর।"
+    />
+    <link
+      rel="canonical"
+      href="https://tools-pack.netlify.app/bn/unit-converter/"
+    />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://tools-pack.netlify.app/unit-converter/"
+    />
+    <link
+      rel="alternate"
+      hreflang="bn"
+      href="https://tools-pack.netlify.app/bn/unit-converter/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://tools-pack.netlify.app/"
+    />
+    <link rel="stylesheet" href="../../assets/style.css" />
+    <meta name="theme-color" content="#1E1E2F" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="ইউনিট কনভার্টার — Tools Pack" />
+    <meta property="og:description" content="দৈর্ঘ্য/ওজন/তাপমাত্রা রূপান্তর।" />
+    <meta
+      property="og:url"
+      content="https://tools-pack.netlify.app/bn/unit-converter/"
+    />
+    <meta
+      property="og:image"
+      content="https://tools-pack.netlify.app/og/unit.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "ইউনিট কনভার্টার",
+        "url": "https://tools-pack.netlify.app/bn/unit-converter/",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All",
+        "description": "দৈর্ঘ্য, ওজন ও তাপমাত্রা কনভার্ট।",
+        "inLanguage": "bn"
+      }
+    </script>
+  </head>
+  <body>
+    <header class="sticky">
+      <div class="wrap brand">
+        <a href="/bn/"><div class="logo"></div></a>
+        <div>
+          <h1 style="margin: 0">ইউনিট কনভার্টার</h1>
+          <div class="sub">দৈর্ঘ্য • ওজন • তাপমাত্রা</div>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <article class="card">
+        <div class="row">
+          <select id="cat" class="select" aria-label="ক্যাটাগরি">
+            <option value="length">দৈর্ঘ্য</option>
+            <option value="weight">ওজন</option>
+            <option value="temperature">তাপমাত্রা</option>
+          </select>
+          <input
+            id="val"
+            class="field"
+            type="number"
+            step="any"
+            placeholder="মান"
+          />
+        </div>
+        <div class="row">
+          <select id="from" class="select" aria-label="কোন ইউনিট থেকে"></select>
+          <select id="to" class="select" aria-label="কোন ইউনিটে"></select>
+        </div>
+        <input
+          id="res"
+          class="field mono"
+          readonly
+          placeholder="রূপান্তরিত মান"
+        />
+      </article>
+    </main>
+
+    <footer>© <span id="y"></span> Tools Pack</footer>
+
+    <script>
+      // ---- Elements
+      const $ = (s) => document.querySelector(s);
+      const yEl = $("#y");
+      const cat = $("#cat");
+      const val = $("#val");
+      const from = $("#from");
+      const to = $("#to");
+      const res = $("#res");
+
+      if (yEl) yEl.textContent = new Date().getFullYear();
+
+      // ---- Data
+      const units = {
+        length: {
+          m: 1,
+          km: 1000,
+          cm: 0.01,
+          mm: 0.001,
+          mi: 1609.344,
+          yd: 0.9144,
+          ft: 0.3048,
+          in: 0.0254,
+        },
+        weight: {
+          kg: 1,
+          g: 0.001,
+          mg: 0.000001,
+          lb: 0.45359237,
+          oz: 0.028349523125,
+          tonne: 1000,
+        },
+        temperature: ["C", "F", "K"],
+      };
+
+      // ---- Populate unit selects based on category
+      function populate() {
+        from.innerHTML = "";
+        to.innerHTML = "";
+
+        if (cat.value === "temperature") {
+          for (const u of units.temperature) {
+            from.add(new Option(u, u));
+            to.add(new Option(u, u));
+          }
+          from.value = "C";
+          to.value = "F";
+        } else {
+          const keys = Object.keys(units[cat.value]);
+          for (const u of keys) {
+            from.add(new Option(u, u));
+            to.add(new Option(u, u));
+          }
+          from.value = keys[0];
+          to.value = keys[1] || keys[0];
+        }
+      }
+
+      // ---- Convert
+      function convert() {
+        const v = parseFloat(val.value);
+        if (Number.isNaN(v)) {
+          res.value = "";
+          return;
+        }
+
+        let out;
+
+        if (cat.value === "temperature") {
+          // Normalize to Celsius
+          let c;
+          if (from.value === "C") c = v;
+          else if (from.value === "F") c = (v - 32) / 1.8;
+          else if (from.value === "K") c = v - 273.15;
+
+          // Celsius to target
+          if (to.value === "C") out = c;
+          else if (to.value === "F") out = c * 1.8 + 32;
+          else if (to.value === "K") out = c + 273.15;
+        } else {
+          const base = v * units[cat.value][from.value]; // to base (m / kg)
+          out = base / units[cat.value][to.value];
+        }
+
+        // Format nicely (trim trailing zeros, keep up to 8 dp)
+        res.value = Number(out.toFixed(8)).toString();
+      }
+
+      // ---- Events
+      val.addEventListener("input", convert);
+      from.addEventListener("change", convert);
+      to.addEventListener("change", convert);
+      cat.addEventListener("change", () => {
+        populate();
+        convert();
+      });
+
+      // ---- Init
+      populate();
+      convert();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="bn">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>ফ্রি অনলাইন ক্যালকুলেটর — যোগ/বিয়োগ/গুণ/ভাগ | Tools Pack</title>
+    <meta
+      name="description"
+      content="বেসিক অংক ও শতকরা বের করুন—দ্রুত, হালকা, প্রাইভেসি-ফার্স্ট।"
+    />
+    <link
+      rel="canonical"
+      href="https://tools-pack.netlify.app/bn/calculator/"
+    />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://tools-pack.netlify.app/calculator/"
+    />
+    <link
+      rel="alternate"
+      hreflang="bn"
+      href="https://tools-pack.netlify.app/bn/calculator/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://tools-pack.netlify.app/"
+    />
+    <link rel="stylesheet" href="../../assets/style.css" />
+    <meta name="theme-color" content="#1E1E2F" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="ক্যালকুলেটর — Tools Pack" />
+    <meta property="og:description" content="যোগ, বিয়োগ, গুণ, ভাগ ও %।" />
+    <meta
+      property="og:url"
+      content="https://tools-pack.netlify.app/bn/calculator/"
+    />
+    <meta
+      property="og:image"
+      content="https://tools-pack.netlify.app/og/calculator.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "ক্যালকুলেটর",
+        "url": "https://tools-pack.netlify.app/bn/calculator/",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All",
+        "description": "বেসিক ক্যালকুলেটর — কোনো ট্র্যাকিং নেই।",
+        "inLanguage": "bn"
+      }
+    </script>
+  </head>
+  <body>
+    <header class="sticky">
+      <div class="wrap brand">
+        <a href="/bn/"><div class="logo"></div></a>
+        <div>
+          <h1 style="margin: 0">ক্যালকুলেটর</h1>
+          <div class="sub">বেসিক অংক • %</div>
+        </div>
+      </div>
+    </header>
+    <main class="wrap">
+      <article class="card">
+        <h2>হিসাব করুন</h2>
+        <textarea
+          id="expr"
+          class="textarea"
+          placeholder="যেমন: (12 + 7) / 3 * 2"
+        ></textarea>
+        <div>
+          <button class="btn btn-primary" id="evalBtn">Evaluate</button
+          ><button class="btn" id="clrBtn">Clear</button>
+        </div>
+        <input
+          id="out"
+          class="field mono"
+          readonly
+          placeholder="ফলাফল এখানে…"
+        />
+        <p class="muted">Allowed: 0–9, + − × ÷ * / ( ) . %</p>
+      </article>
+    </main>
+    <footer>© <span id="y"></span> Tools Pack</footer>
+    <script>
+      y.textContent = new Date().getFullYear();
+      const clean = (s) => s.replace(/[×]/g, "*").replace(/[÷]/g, "/");
+      const ok = (s) => /^[0-9+\-*/().% \t]+$/.test(s);
+      evalBtn.onclick = () => {
+        const s = clean(expr.value.trim());
+        if (!s) {
+          out.value = "";
+          return;
+        }
+        if (!ok(s)) {
+          out.value = "Error: invalid characters.";
+          return;
+        }
+        try {
+          out.value = String(Function('"use strict";return(' + s + ")")());
+        } catch (e) {
+          out.value = "Error: " + e.message;
+        }
+      };
+      clrBtn.onclick = () => {
+        expr.value = "";
+        out.value = "";
+      };
+    </script>
+  </body>
+</html>

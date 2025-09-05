@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Base64 Encoder & Decoder — Unicode Safe | Tools Pack</title>
+    <meta
+      name="description"
+      content="Encode/decode Base64 safely (Unicode/emoji supported)."
+    />
+    <link rel="canonical" href="https://tools-pack.netlify.app/base64/" />
+    <link rel="stylesheet" href="../assets/style.css" />
+    <meta name="theme-color" content="#1E1E2F" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Base64 — Tools Pack" />
+    <meta property="og:description" content="Text ⇄ Base64 (Unicode safe)." />
+    <meta property="og:url" content="https://tools-pack.netlify.app/base64/" />
+    <meta
+      property="og:image"
+      content="https://tools-pack.netlify.app/og/base64.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Base64 Encoder/Decoder",
+        "url": "https://tools-pack.netlify.app/base64/",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All",
+        "description": "Encode/decode Base64 with Unicode support.",
+        "inLanguage": "en"
+      }
+    </script>
+  </head>
+  <body>
+    <header class="sticky">
+      <div class="wrap brand">
+        <a href="/"><div class="logo"></div></a>
+        <div>
+          <h1 style="margin: 0">Base64 Encode / Decode</h1>
+          <div class="sub">Unicode-safe</div>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <article class="card">
+        <textarea
+          id="inText"
+          class="textarea mono"
+          placeholder="Text or Base64…"
+        ></textarea>
+        <div>
+          <button class="btn btn-primary" id="enc">Encode</button>
+          <button class="btn" id="dec">Decode</button>
+          <button class="btn" id="cpy">Copy Output</button>
+        </div>
+        <textarea
+          id="outText"
+          class="textarea mono"
+          readonly
+          placeholder="Output…"
+        ></textarea>
+      </article>
+    </main>
+
+    <footer>© <span id="year"></span> Tools Pack</footer>
+
+    <script>
+      // Year
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Elements
+      const inText = document.getElementById("inText");
+      const outText = document.getElementById("outText");
+      const encBtn = document.getElementById("enc");
+      const decBtn = document.getElementById("dec");
+      const cpyBtn = document.getElementById("cpy");
+
+      // Helpers (Unicode safe)
+      const b64enc = (str) => {
+        const bytes = new TextEncoder().encode(str);
+        let binary = "";
+        bytes.forEach((b) => (binary += String.fromCharCode(b)));
+        return btoa(binary);
+      };
+
+      const b64dec = (b64) => {
+        const binary = atob(b64);
+        const bytes = new Uint8Array(binary.length);
+        for (let i = 0; i < binary.length; i++) {
+          bytes[i] = binary.charCodeAt(i);
+        }
+        return new TextDecoder().decode(bytes);
+      };
+
+      // Events
+      encBtn.onclick = () => {
+        outText.value = b64enc(inText.value);
+      };
+
+      decBtn.onclick = () => {
+        try {
+          outText.value = b64dec(inText.value.trim());
+        } catch (e) {
+          outText.value = "Decode error: " + e.message;
+        }
+      };
+
+      cpyBtn.onclick = () => {
+        navigator.clipboard.writeText(outText.value || "");
+      };
+    </script>
+  </body>
+</html>

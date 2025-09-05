@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="bn">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>UUID v4 জেনারেটর — RFC 4122 | Tools Pack</title>
+    <meta name="description" content="তাৎক্ষণিক UUID v4 তৈরি ও কপি করুন।" />
+
+    <!-- Canonical & alternates -->
+    <link rel="canonical" href="https://tools-pack.netlify.app/bn/uuid4/" />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://tools-pack.netlify.app/uuid-v4/"
+    />
+    <link
+      rel="alternate"
+      hreflang="bn"
+      href="https://tools-pack.netlify.app/bn/uuid4/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://tools-pack.netlify.app/"
+    />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../assets/style.css" />
+    <meta name="theme-color" content="#1E1E2F" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="UUID v4 জেনারেটর — Tools Pack" />
+    <meta
+      property="og:description"
+      content="RFC 4122 অনুযায়ী UUID v4 তৈরি করুন।"
+    />
+    <meta
+      property="og:url"
+      content="https://tools-pack.netlify.app/bn/uuid4/"
+    />
+    <meta
+      property="og:image"
+      content="https://tools-pack.netlify.app/og/uuid.png"
+    />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "UUID v4 জেনারেটর",
+        "url": "https://tools-pack.netlify.app/bn/uuid4/",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All",
+        "description": "RFC 4122 অনুযায়ী UUID v4 জেনারেটর।",
+        "inLanguage": "bn"
+      }
+    </script>
+
+    <!-- (Optional) page-local tweaks; your global styles already cover most UI -->
+    <style>
+      .textarea {
+        width: 100%;
+        margin-top: 10px;
+        font-size: 1.1rem;
+        text-align: center;
+      }
+      .row {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+      }
+      .muted {
+        font-size: 0.9rem;
+        color: #aaa;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="sticky">
+      <div class="wrap brand">
+        <a href="/bn/"><div class="logo" aria-hidden="true"></div></a>
+        <div>
+          <h1 style="margin: 0">UUID v4 জেনারেটর</h1>
+          <div class="sub">RFC 4122 • র‍্যান্ডম • ইউনিক</div>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <article class="card">
+        <h2>UUID v4 তৈরি করুন</h2>
+
+        <textarea
+          id="out"
+          class="textarea mono"
+          rows="2"
+          readonly
+          placeholder="Generated UUID…"
+        ></textarea>
+
+        <div class="row">
+          <button class="btn btn-primary" id="gen" type="button">
+            জেনারেট
+          </button>
+          <button class="btn" id="copy" type="button">কপি</button>
+        </div>
+        <div id="status" class="muted small" aria-live="polite"></div>
+      </article>
+    </main>
+
+    <footer>© <span id="y"></span> Tools Pack</footer>
+
+    <script>
+      // Elements (no implicit globals)
+      const yearEl = document.getElementById("y");
+      const outEl = document.getElementById("out");
+      const genBtn = document.getElementById("gen");
+      const copyBtn = document.getElementById("copy");
+      const statusEl = document.getElementById("status");
+
+      yearEl.textContent = new Date().getFullYear();
+
+      // Prefer native crypto.randomUUID(); fallback to secure v4 if missing
+      function uuidv4() {
+        if (crypto && typeof crypto.randomUUID === "function") {
+          return crypto.randomUUID();
+        }
+        if (!(crypto && crypto.getRandomValues)) {
+          throw new Error("এই ব্রাউজারে Web Crypto নেই।");
+        }
+        const bytes = new Uint8Array(16);
+        crypto.getRandomValues(bytes);
+        // Set version (0100) and variant (10xx)
+        bytes[6] = (bytes[6] & 0x0f) | 0x40;
+        bytes[8] = (bytes[8] & 0x3f) | 0x80;
+        const hex = [...bytes]
+          .map((b) => b.toString(16).padStart(2, "0"))
+          .join("");
+        return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(
+          12,
+          16
+        )}-${hex.slice(16, 20)}-${hex.slice(20)}`;
+      }
+
+      genBtn.onclick = () => {
+        try {
+          outEl.value = uuidv4();
+          statusEl.textContent = "✅ নতুন UUID তৈরি হয়েছে।";
+        } catch (e) {
+          outEl.value = "";
+          statusEl.textContent = "⚠️ ত্রুটি: " + e.message;
+        }
+      };
+
+      copyBtn.onclick = async () => {
+        if (!outEl.value) {
+          statusEl.textContent = "⚠️ কোনো UUID নেই।";
+          return;
+        }
+        try {
+          await navigator.clipboard.writeText(outEl.value);
+          statusEl.textContent = "📋 কপি হয়েছে।";
+        } catch (e) {
+          statusEl.textContent = "❌ কপি করা গেল না: " + e.message;
+        }
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Text Utilities — Case Converter & Word Counter | Tools Pack</title>
+    <meta
+      name="description"
+      content="Upper/lowercase, collapse/remove spaces, and live word/character count."
+    />
+    <link
+      rel="canonical"
+      href="https://tools-pack.netlify.app/text-utilities/"
+    />
+    <link rel="stylesheet" href="../assets/style.css" />
+    <meta name="theme-color" content="#1E1E2F" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Text Utilities — Tools Pack" />
+    <meta
+      property="og:description"
+      content="Clean text, convert case, count words/characters."
+    />
+    <meta
+      property="og:url"
+      content="https://tools-pack.netlify.app/text-utilities/"
+    />
+    <meta
+      property="og:image"
+      content="https://tools-pack.netlify.app/og/text.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Text Utilities",
+        "url": "https://tools-pack.netlify.app/text-utilities/",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All",
+        "description": "Case conversion and word/char count.",
+        "inLanguage": "en"
+      }
+    </script>
+  </head>
+  <body>
+    <header class="sticky">
+      <div class="wrap brand">
+        <a href="/"><div class="logo"></div></a>
+        <div>
+          <h1 style="margin: 0">Text Utilities</h1>
+          <div class="sub">Case • Clean • Count</div>
+        </div>
+      </div>
+    </header>
+    <main class="wrap">
+      <article class="card">
+        <textarea id="t" class="textarea" placeholder="Paste text…"></textarea>
+        <div>
+          <button class="btn" id="up">UPPERCASE</button
+          ><button class="btn" id="low">lowercase</button>
+          <button class="btn" id="collapse">Collapse spaces</button
+          ><button class="btn" id="remove">Remove ALL spaces</button
+          ><button class="btn" id="copy">Copy</button>
+        </div>
+        <div class="muted" id="stats">Words: 0 • Characters: 0</div>
+      </article>
+    </main>
+    <footer>© <span id="y"></span> Tools Pack</footer>
+    <script>
+      y.textContent = new Date().getFullYear();
+      const u = () => {
+        const s = t.value;
+        stats.textContent = `Words: ${
+          (s.trim().match(/\S+/g) || []).length
+        } • Characters: ${s.length}`;
+      };
+      t.addEventListener("input", u);
+      u();
+      up.onclick = () => {
+        t.value = t.value.toUpperCase();
+        u();
+      };
+      low.onclick = () => {
+        t.value = t.value.toLowerCase();
+        u();
+      };
+      collapse.onclick = () => {
+        t.value = t.value.replace(/\s+/g, " ").trim();
+        u();
+      };
+      remove.onclick = () => {
+        t.value = t.value.replace(/ +/g, "");
+        u();
+      };
+      copy.onclick = () => navigator.clipboard.writeText(t.value);
+    </script>
+  </body>
+</html>

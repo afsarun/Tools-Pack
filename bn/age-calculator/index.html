@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="bn">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>অনলাইন বয়স নির্ণায়ক — বছর, মাস ও দিন | Tools Pack</title>
+    <meta
+      name="description"
+      content="জন্মতারিখ দিয়ে সহজে বয়স বের করুন (বছর, মাস, দিন)। পরবর্তী জন্মদিনের রিমাইন্ডারসহ।"
+    />
+    <link
+      rel="canonical"
+      href="https://tools-pack.netlify.app/bn/age-calculator/"
+    />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://tools-pack.netlify.app/age-calculator/"
+    />
+    <link
+      rel="alternate"
+      hreflang="bn"
+      href="https://tools-pack.netlify.app/bn/age-calculator/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://tools-pack.netlify.app/"
+    />
+    <link rel="stylesheet" href="../../assets/style.css" />
+    <meta name="theme-color" content="#1E1E2F" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="বয়স নির্ণায়ক — Tools Pack" />
+    <meta property="og:description" content="বছর/মাস/দিন + পরবর্তী জন্মদিন।" />
+    <meta
+      property="og:url"
+      content="https://tools-pack.netlify.app/bn/age-calculator/"
+    />
+    <meta
+      property="og:image"
+      content="https://tools-pack.netlify.app/og/age.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "বয়স নির্ণায়ক",
+        "url": "https://tools-pack.netlify.app/bn/age-calculator/",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All",
+        "description": "বয়স ও পরবর্তী জন্মদিন গণনা।",
+        "inLanguage": "bn"
+      }
+    </script>
+  </head>
+  <body>
+    <header class="sticky">
+      <div class="wrap brand">
+        <a href="/bn/"><div class="logo"></div></a>
+        <div>
+          <h1 style="margin: 0">বয়স নির্ণায়ক</h1>
+          <div class="sub">বছর • মাস • দিন</div>
+        </div>
+      </div>
+    </header>
+    <main class="wrap">
+      <article class="card">
+        <h2>তারিখ দিন</h2>
+        <div
+          class="grid"
+          style="grid-template-columns: repeat(12, 1fr); gap: 10px"
+        >
+          <label class="field" style="grid-column: span 6"
+            ><span class="muted">জন্মতারিখ</span>
+            <input id="dob" class="field" type="date" />
+          </label>
+          <label class="field" style="grid-column: span 6"
+            ><span class="muted">তারিখ পর্যন্ত</span>
+            <input id="asof" class="field" type="date" />
+          </label>
+        </div>
+        <div style="margin-top: 10px">
+          <button class="btn btn-primary" id="calc">গণনা</button>
+          <button class="btn" id="reset">রিসেট</button>
+          <button class="btn" id="copy">কপি</button>
+        </div>
+        <textarea
+          id="out"
+          class="textarea mono"
+          readonly
+          placeholder="ফলাফল…"
+        ></textarea>
+        <div class="muted" id="next"></div>
+      </article>
+    </main>
+    <footer>© <span id="y"></span> Tools Pack</footer>
+
+    <script>
+      const $ = (s) => document.querySelector(s);
+      y.textContent = new Date().getFullYear();
+
+      const todayStr = () => {
+        const t = new Date(),
+          y = t.getFullYear(),
+          m = String(t.getMonth() + 1).padStart(2, "0"),
+          d = String(t.getDate()).padStart(2, "0");
+        return `${y}-${m}-${d}`;
+      };
+
+      asof.value = todayStr();
+      dob.max = asof.max = todayStr();
+
+      // Auto open date picker with fallback
+      function openDatePicker() {
+        if (dob.showPicker) {
+          try {
+            dob.showPicker();
+          } catch {
+            dob.focus();
+          }
+        } else {
+          dob.focus();
+        }
+      }
+
+      // পেজ লোড হলে একটু delay দিয়ে ওপেন
+      window.addEventListener("load", () => {
+        setTimeout(openDatePicker, 150);
+      });
+
+      // যদি না খোলে → প্রথম ক্লিকে আবার চেষ্টা
+      document.body.addEventListener(
+        "click",
+        () => {
+          openDatePicker();
+        },
+        { once: true }
+      );
+
+      const parse = (s) => {
+        const [y, m, d] = (s || "").split("-").map(Number);
+        return y && m && d ? { y, m, d } : null;
+      };
+
+      const toD = (o) => new Date(o.y, o.m - 1, o.d);
+      const isLeap = (y) => (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0;
+
+      const diff = (b, a) => {
+        let y = a.y - b.y,
+          m = a.m - b.m,
+          d = a.d - b.d;
+        if (d < 0) {
+          d += new Date(a.y, a.m - 1, 0).getDate();
+          m--;
+        }
+        if (m < 0) {
+          m += 12;
+          y--;
+        }
+        return { y, m, d };
+      };
+
+      const days = (A, B) =>
+        Math.round(
+          (Date.UTC(B.getFullYear(), B.getMonth(), B.getDate()) -
+            Date.UTC(A.getFullYear(), A.getMonth(), A.getDate())) /
+            86400000
+        );
+
+      const bday = (dob, yr) =>
+        new Date(
+          yr,
+          (dob.m === 2 && dob.d === 29 && !isLeap(yr) ? 1 : dob.m) - 1,
+          dob.m === 2 && dob.d === 29 && !isLeap(yr) ? 28 : dob.d
+        );
+
+      calc.onclick = () => {
+        const B = parse(dob.value),
+          A = parse(asof.value || todayStr());
+        if (!B) {
+          out.value = "জন্মতারিখ দিন।";
+          openDatePicker();
+          return;
+        }
+        if (!A) {
+          out.value = "'তারিখ পর্যন্ত' ফাঁকা।";
+          asof.focus();
+          return;
+        }
+        const Bd = toD(B),
+          Ad = toD(A);
+        if (Ad < Bd) {
+          out.value = "ত্রুটি: 'তারিখ পর্যন্ত' জন্মতারিখের আগে।";
+          next.textContent = "";
+          return;
+        }
+        const a = diff(B, A),
+          total = days(Bd, Ad);
+        let nb = bday(B, A.y);
+        if (days(Ad, nb) < 0) nb = bday(B, A.y + 1);
+        const left = days(Ad, nb),
+          turning = a.y + (left ? 1 : 0);
+        out.value = `বয়স: ${a.y} বছর, ${a.m} মাস, ${
+          a.d
+        } দিন\nমোট দিন: ${total.toLocaleString()}`;
+        next.textContent =
+          left === 0
+            ? `🎉 আজ (${nb.toDateString()}) — ${a.y}`
+            : `পরের জন্মদিন ${left} দিন পর — ${nb.toDateString()} (হবে ${turning})`;
+      };
+
+      reset.onclick = () => {
+        dob.value = "";
+        asof.value = todayStr();
+        out.value = "";
+        next.textContent = "";
+        openDatePicker();
+      };
+
+      copy.onclick = () =>
+        navigator.clipboard.writeText(
+          out.value + (next.textContent ? `\n${next.textContent}` : "")
+        );
+    </script>
+  </body>
+</html>

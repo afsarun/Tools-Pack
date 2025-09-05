@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="bn">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>দ্রুত নোটস — ব্রাউজারে অটো-সেভ | Tools Pack</title>
+    <meta
+      name="description"
+      content="নোট লিখুন, অটো-সেভ হোক; TXT এক্সপোর্ট/ইমপোর্ট করুন।"
+    />
+    <meta name="theme-color" content="#1E1E2F" />
+
+    <!-- Canonical & hreflang -->
+    <link rel="canonical" href="https://tools-pack.netlify.app/bn/notes/" />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://tools-pack.netlify.app/notes/"
+    />
+    <link
+      rel="alternate"
+      hreflang="bn"
+      href="https://tools-pack.netlify.app/bn/notes/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://tools-pack.netlify.app/"
+    />
+    <link rel="stylesheet" href="../../assets/style.css" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "দ্রুত নোটস",
+        "url": "https://tools-pack.netlify.app/bn/notes/",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All",
+        "description": "লোকাল অটো-সেভ নোটস; এক্সপোর্ট/ইমপোর্ট।",
+        "inLanguage": "bn"
+      }
+    </script>
+
+    <style>
+      :root {
+        --bg: #1e1e2f;
+        --card: #2a2a40;
+        --accent: #4cafef;
+        --text: #f0f0f0;
+      }
+      body {
+        margin: 0;
+        font-family: system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      header {
+        padding: 1rem;
+        text-align: center;
+        background: var(--card);
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+      main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+        max-width: 800px;
+        margin: auto;
+        width: 100%;
+      }
+      textarea {
+        flex: 1;
+        width: 100%;
+        padding: 1rem;
+        font-size: 1rem;
+        background: #111122;
+        border: 1px solid #444;
+        border-radius: 8px;
+        color: var(--text);
+        resize: vertical;
+      }
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+      button,
+      label[for="fileInput"] {
+        background: var(--accent);
+        border: none;
+        color: #fff;
+        padding: 0.6rem 1rem;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.95rem;
+        transition: 0.2s;
+      }
+      button:hover,
+      label[for="fileInput"]:hover {
+        background: #2196f3;
+      }
+      input[type="file"] {
+        display: none;
+      }
+      footer {
+        text-align: center;
+        font-size: 0.85rem;
+        padding: 1rem;
+        color: #aaa;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="sticky">
+      <div class="wrap brand">
+        <a href="/bn/"><div class="logo"></div></a>
+        <div>
+          <h1 style="margin: 0">JSON ফরম্যাটার / ভ্যালিডেটর</h1>
+          <div class="sub">প্রিটি • মিনিফাই • ভ্যালিডেট</div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <textarea
+        id="notes"
+        placeholder="এখানে আপনার নোট লিখুন... (ব্রাউজারে অটো-সেভ হবে)"
+      ></textarea>
+      <div class="actions">
+        <button id="exportBtn">⬇ TXT এক্সপোর্ট</button>
+        <label for="fileInput">⬆ TXT ইমপোর্ট</label>
+        <input type="file" id="fileInput" accept=".txt" />
+        <button id="clearBtn">🗑 সব মুছুন</button>
+      </div>
+    </main>
+    <footer>© Tools Pack — লোকাল ব্রাউজার অটো-সেভ</footer>
+
+    <script>
+      const textarea = document.getElementById("notes");
+      const exportBtn = document.getElementById("exportBtn");
+      const fileInput = document.getElementById("fileInput");
+      const clearBtn = document.getElementById("clearBtn");
+
+      // Load saved notes
+      textarea.value = localStorage.getItem("quickNotes") || "";
+
+      // Auto-save on input
+      textarea.addEventListener("input", () => {
+        localStorage.setItem("quickNotes", textarea.value);
+      });
+
+      // Export notes to TXT
+      exportBtn.addEventListener("click", () => {
+        const blob = new Blob([textarea.value], { type: "text/plain" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "notes.txt";
+        a.click();
+        URL.revokeObjectURL(url);
+      });
+
+      // Import notes from TXT
+      fileInput.addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          textarea.value = event.target.result;
+          localStorage.setItem("quickNotes", textarea.value);
+        };
+        reader.readAsText(file);
+      });
+
+      // Clear notes
+      clearBtn.addEventListener("click", () => {
+        if (confirm("সব নোট মুছতে চান?")) {
+          textarea.value = "";
+          localStorage.removeItem("quickNotes");
+        }
+      });
+    </script>
+  </body>
+</html>

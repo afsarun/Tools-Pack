@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Online Calculator — Basic Arithmetic | Tools Pack</title>
+    <meta
+      name="description"
+      content="Free online calculator for basic arithmetic and percentages. Fast, lightweight, privacy-first."
+    />
+    <link rel="canonical" href="https://tools-pack.netlify.app/calculator/" />
+    <link rel="stylesheet" href="../assets/style.css" />
+    <meta name="theme-color" content="#1E1E2F" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Online Calculator — Tools Pack" />
+    <meta
+      property="og:description"
+      content="Add, subtract, multiply, divide and % quickly in your browser."
+    />
+    <meta
+      property="og:url"
+      content="https://tools-pack.netlify.app/calculator/"
+    />
+    <meta
+      property="og:image"
+      content="https://tools-pack.netlify.app/og/calculator.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- JSON-LD: WebApplication -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Online Calculator",
+        "url": "https://tools-pack.netlify.app/calculator/",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All",
+        "description": "Free online calculator for basic arithmetic and percentages. No tracking.",
+        "inLanguage": "en"
+      }
+    </script>
+
+    <!-- JSON-LD: FAQPage (optional but helpful) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Does this calculator work offline?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, after first load it works in your browser without sending data to any server."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are my calculations tracked?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Tools Pack is privacy-first and does not send your input anywhere."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <header class="sticky">
+      <div class="wrap brand">
+        <a href="/" aria-label="Back to home"><div class="logo"></div></a>
+        <div>
+          <h1 style="margin: 0">Calculator</h1>
+          <div class="sub">Basic arithmetic • %</div>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <article class="card">
+        <h2>Calculate</h2>
+        <textarea
+          id="expr"
+          class="textarea"
+          placeholder="e.g., (12 + 7) / 3 * 2"
+        ></textarea>
+        <div>
+          <button class="btn btn-primary" id="evalBtn">Evaluate</button>
+          <button class="btn" id="clrBtn">Clear</button>
+        </div>
+        <input
+          id="out"
+          class="field"
+          readonly
+          placeholder="Result appears here"
+        />
+        <p class="muted">Allowed: digits, + - × ÷ * / ( ) . %</p>
+      </article>
+    </main>
+
+    <footer>© <span id="y"></span> Tools Pack</footer>
+    <script>
+      document.getElementById("y").textContent = new Date().getFullYear();
+      const expr = document.getElementById("expr"),
+        out = document.getElementById("out");
+      const clean = (s) => s.replace(/[×]/g, "*").replace(/[÷]/g, "/");
+      const ok = (s) => /^[0-9+\-*/().% \t]+$/.test(s);
+      document.getElementById("evalBtn").onclick = () => {
+        const s = clean(expr.value.trim());
+        if (!s) {
+          out.value = "";
+          return;
+        }
+        if (!ok(s)) {
+          out.value = "Error: invalid characters.";
+          return;
+        }
+        try {
+          out.value = String(Function('"use strict";return(' + s + ")")());
+        } catch (e) {
+          out.value = "Error: " + e.message;
+        }
+      };
+      document.getElementById("clrBtn").onclick = () => {
+        expr.value = "";
+        out.value = "";
+      };
+    </script>
+  </body>
+</html>

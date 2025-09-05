@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="bn">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>স্টপওয়াচ ও কাউন্টডাউন টাইমার | Tools Pack</title>
+    <meta
+      name="description"
+      content="নির্ভুল স্টপওয়াচ ও কাউন্টডাউন—পজ/রিসেট/অ্যালার্মসহ।"
+    />
+    <link rel="canonical" href="https://tools-pack.netlify.app/bn/stopwatch/" />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://tools-pack.netlify.app/stopwatch/"
+    />
+    <link
+      rel="alternate"
+      hreflang="bn"
+      href="https://tools-pack.netlify.app/bn/stopwatch/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://tools-pack.netlify.app/"
+    />
+    <link rel="stylesheet" href="../../assets/style.css" />
+    <meta name="theme-color" content="#1E1E2F" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="স্টপওয়াচ ও কাউন্টডাউন — Tools Pack" />
+    <meta
+      property="og:description"
+      content="নির্ভুল স্টপওয়াচ ও কাউন্টডাউন—পজ/রিসেট/অ্যালার্মসহ।"
+    />
+    <meta
+      property="og:url"
+      content="https://tools-pack.netlify.app/bn/stopwatch/"
+    />
+    <meta
+      property="og:image"
+      content="https://tools-pack.netlify.app/og/timer.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "স্টপওয়াচ ও কাউন্টডাউন",
+        "url": "https://tools-pack.netlify.app/bn/stopwatch/",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All",
+        "description": "Accurate stopwatch & countdown.",
+        "inLanguage": "bn"
+      }
+    </script>
+    <style>
+      body {
+        font-family: "Noto Sans Bengali", system-ui, sans-serif;
+        background: #1e1e2f;
+        color: #eee;
+        margin: 0;
+        padding: 0;
+      }
+      header {
+        text-align: center;
+        padding: 1rem;
+      }
+      main {
+        max-width: 800px;
+        margin: auto;
+        padding: 1rem;
+      }
+      .card {
+        background: #2a2a40;
+        border: 1px solid #444;
+        border-radius: 10px;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+      }
+      h2 {
+        margin-top: 0;
+      }
+      .display {
+        font-size: 2rem;
+        text-align: center;
+        margin: 1rem 0;
+        font-weight: bold;
+      }
+      .actions {
+        text-align: center;
+        margin-top: 0.5rem;
+      }
+      button {
+        margin: 0.3rem;
+        padding: 0.6rem 1rem;
+        border: none;
+        border-radius: 6px;
+        background: #5965f3;
+        color: #fff;
+        font-size: 1rem;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #4453d0;
+      }
+      .secondary {
+        background: #3a3a55;
+      }
+      .secondary:hover {
+        background: #2c2c44;
+      }
+      .muted {
+        color: #9aa0a6;
+        font-size: 0.9rem;
+      }
+      ul {
+        padding-left: 1.2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="sticky">
+      <div class="wrap brand">
+        <a href="/bn/" aria-label="হোমে ফিরুন"><div class="logo"></div></a>
+        <div>
+          <h1 style="margin: 0">⏱️ স্টপওয়াচ ও কাউন্টডাউন</h1>
+          <div class="sub">পজ/রিসেট/অ্যালার্মসহ নির্ভুল সময় নির্ণায়ক</div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <!-- Stopwatch -->
+      <article class="card">
+        <h2>স্টপওয়াচ</h2>
+        <div class="display" id="swDisplay">00:00:00.0</div>
+        <div class="actions">
+          <button id="swStart">স্টার্ট</button>
+          <button id="swPause" class="secondary">পজ</button>
+          <button id="swReset" class="secondary">রিসেট</button>
+          <button id="swLap" class="secondary">ল্যাপ</button>
+        </div>
+        <ul id="swLaps" class="muted"></ul>
+      </article>
+
+      <!-- Countdown -->
+      <article class="card">
+        <h2>কাউন্টডাউন</h2>
+        <label>
+          <span class="muted">সময় (সেকেন্ড)</span><br />
+          <input
+            type="number"
+            id="cdInput"
+            min="1"
+            value="60"
+            style="width: 120px; padding: 5px; font-size: 1rem"
+          />
+        </label>
+        <div class="display" id="cdDisplay">01:00</div>
+        <div class="actions">
+          <button id="cdStart">স্টার্ট</button>
+          <button id="cdPause" class="secondary">পজ</button>
+          <button id="cdReset" class="secondary">রিসেট</button>
+        </div>
+        <div class="muted" id="cdStatus"></div>
+      </article>
+    </main>
+    <footer style="text-align: center; padding: 1rem; color: #9aa0a6">
+      © <span id="y"></span> Tools Pack
+    </footer>
+
+    <script>
+      // Footer year
+      document.getElementById("y").textContent = new Date().getFullYear();
+
+      /* Stopwatch */
+      let swInterval,
+        swStartTime,
+        swElapsed = 0;
+      const swDisplay = document.getElementById("swDisplay");
+      const swLaps = document.getElementById("swLaps");
+
+      function formatSW(ms) {
+        const total = ms / 1000;
+        const h = String(Math.floor(total / 3600)).padStart(2, "0");
+        const m = String(Math.floor((total % 3600) / 60)).padStart(2, "0");
+        const s = String(Math.floor(total % 60)).padStart(2, "0");
+        const d = Math.floor((ms % 1000) / 100);
+        return `${h}:${m}:${s}.${d}`;
+      }
+
+      function updateSW() {
+        const diff = Date.now() - swStartTime + swElapsed;
+        swDisplay.textContent = formatSW(diff);
+      }
+
+      document.getElementById("swStart").onclick = () => {
+        if (swInterval) return;
+        swStartTime = Date.now();
+        swInterval = setInterval(updateSW, 100);
+      };
+      document.getElementById("swPause").onclick = () => {
+        if (!swInterval) return;
+        clearInterval(swInterval);
+        swElapsed += Date.now() - swStartTime;
+        swInterval = null;
+      };
+      document.getElementById("swReset").onclick = () => {
+        clearInterval(swInterval);
+        swInterval = null;
+        swElapsed = 0;
+        swDisplay.textContent = "00:00:00.0";
+        swLaps.innerHTML = "";
+      };
+      document.getElementById("swLap").onclick = () => {
+        if (!swInterval) return;
+        const li = document.createElement("li");
+        li.textContent = swDisplay.textContent;
+        swLaps.appendChild(li);
+      };
+
+      /* Countdown */
+      let cdInterval,
+        cdRemaining = 0,
+        cdRunning = false;
+      const cdInput = document.getElementById("cdInput");
+      const cdDisplay = document.getElementById("cdDisplay");
+      const cdStatus = document.getElementById("cdStatus");
+
+      function formatCD(sec) {
+        const m = String(Math.floor(sec / 60)).padStart(2, "0");
+        const s = String(sec % 60).padStart(2, "0");
+        return `${m}:${s}`;
+      }
+
+      function updateCD() {
+        if (cdRemaining <= 0) {
+          clearInterval(cdInterval);
+          cdInterval = null;
+          cdRunning = false;
+          cdDisplay.textContent = "00:00";
+          cdStatus.textContent = "⏰ সময় শেষ!";
+          try {
+            const beep = new Audio(
+              "https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg"
+            );
+            beep.play();
+          } catch (e) {
+            alert("⏰ সময় শেষ!");
+          }
+          return;
+        }
+        cdRemaining--;
+        cdDisplay.textContent = formatCD(cdRemaining);
+      }
+
+      document.getElementById("cdStart").onclick = () => {
+        if (cdRunning) return;
+        cdRemaining = Number(cdInput.value) || 0;
+        if (cdRemaining <= 0) return;
+        cdDisplay.textContent = formatCD(cdRemaining);
+        cdInterval = setInterval(updateCD, 1000);
+        cdRunning = true;
+        cdStatus.textContent = "চলছে...";
+      };
+
+      document.getElementById("cdPause").onclick = () => {
+        if (!cdRunning) return;
+        clearInterval(cdInterval);
+        cdRunning = false;
+        cdStatus.textContent = "পজ করা হয়েছে";
+      };
+
+      document.getElementById("cdReset").onclick = () => {
+        clearInterval(cdInterval);
+        cdInterval = null;
+        cdRunning = false;
+        cdRemaining = 0;
+        const def = Number(cdInput.value) || 0;
+        cdDisplay.textContent = def ? formatCD(def) : "00:00";
+        cdStatus.textContent = "";
+      };
+    </script>
+  </body>
+</html>
