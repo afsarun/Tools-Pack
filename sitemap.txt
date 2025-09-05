@@ -30,3 +30,5 @@ https://tools-pack.netlify.app/notes/
 https://tools-pack.netlify.app/bn/notes/
 https://tools-pack.netlify.app/text-to-pdf/
 https://tools-pack.netlify.app/bn/text-to-pdf/
+https://tools-pack.netlify.app/PercentCalculator/
+https://tools-pack.netlify.app/bn/PercentCalculator/
