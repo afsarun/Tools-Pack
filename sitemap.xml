@@ -3,9 +3,17 @@
   xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml"
 >
-  <!-- Home -->
+
+  <!-- Home (EN) -->
   <url>
     <loc>https://tools-pack.netlify.app/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/"/>
+  </url>
+  <!-- Home (BN) -->
+  <url>
+    <loc>https://tools-pack.netlify.app/bn/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/"/>
@@ -18,10 +26,22 @@
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/json-formatter/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/json-formatter/"/>
   </url>
+  <url>
+    <loc>https://tools-pack.netlify.app/bn/json-formatter/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/json-formatter/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/json-formatter/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/json-formatter/"/>
+  </url>
 
   <!-- Calculator -->
   <url>
     <loc>https://tools-pack.netlify.app/calculator/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/calculator/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/calculator/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/calculator/"/>
+  </url>
+  <url>
+    <loc>https://tools-pack.netlify.app/bn/calculator/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/calculator/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/calculator/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/calculator/"/>
@@ -34,10 +54,22 @@
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/unit-converter/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/unit-converter/"/>
   </url>
+  <url>
+    <loc>https://tools-pack.netlify.app/bn/unit-converter/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/unit-converter/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/unit-converter/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/unit-converter/"/>
+  </url>
 
   <!-- Age Calculator -->
   <url>
     <loc>https://tools-pack.netlify.app/age-calculator/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/age-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/age-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/age-calculator/"/>
+  </url>
+  <url>
+    <loc>https://tools-pack.netlify.app/bn/age-calculator/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/age-calculator/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/age-calculator/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/age-calculator/"/>
@@ -50,10 +82,22 @@
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/text-utilities/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/text-utilities/"/>
   </url>
+  <url>
+    <loc>https://tools-pack.netlify.app/bn/text-utilities/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/text-utilities/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/text-utilities/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/text-utilities/"/>
+  </url>
 
   <!-- Base64 -->
   <url>
     <loc>https://tools-pack.netlify.app/base64/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/base64/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/base64/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/base64/"/>
+  </url>
+  <url>
+    <loc>https://tools-pack.netlify.app/bn/base64/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/base64/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/base64/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/base64/"/>
@@ -66,10 +110,22 @@
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/url-tools/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/url-tools/"/>
   </url>
+  <url>
+    <loc>https://tools-pack.netlify.app/bn/url-tools/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/url-tools/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/url-tools/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/url-tools/"/>
+  </url>
 
   <!-- Password & UUID -->
   <url>
     <loc>https://tools-pack.netlify.app/password-uuid/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/password-uuid/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/password-uuid/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/password-uuid/"/>
+  </url>
+  <url>
+    <loc>https://tools-pack.netlify.app/bn/password-uuid/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/password-uuid/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/password-uuid/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/password-uuid/"/>
@@ -82,10 +138,22 @@
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/uuid4/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/uuid-v4/"/>
   </url>
+  <url>
+    <loc>https://tools-pack.netlify.app/bn/uuid4/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/uuid-v4/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/uuid4/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/uuid-v4/"/>
+  </url>
 
   <!-- SHA-256 -->
   <url>
     <loc>https://tools-pack.netlify.app/sha256/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/sha256/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/sha256/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/sha256/"/>
+  </url>
+  <url>
+    <loc>https://tools-pack.netlify.app/bn/sha256/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/sha256/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/sha256/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/sha256/"/>
@@ -98,10 +166,22 @@
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/image-resizer/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/image-resizer/"/>
   </url>
+  <url>
+    <loc>https://tools-pack.netlify.app/bn/image-resizer/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/image-resizer/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/image-resizer/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/image-resizer/"/>
+  </url>
 
   <!-- Color Contrast -->
   <url>
     <loc>https://tools-pack.netlify.app/color-contrast/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/color-contrast/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/color-contrast/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/color-contrast/"/>
+  </url>
+  <url>
+    <loc>https://tools-pack.netlify.app/bn/color-contrast/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/color-contrast/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/color-contrast/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/color-contrast/"/>
@@ -114,10 +194,22 @@
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/stopwatch/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/stopwatch/"/>
   </url>
+  <url>
+    <loc>https://tools-pack.netlify.app/bn/stopwatch/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/stopwatch/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/stopwatch/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/stopwatch/"/>
+  </url>
 
   <!-- Notes -->
   <url>
     <loc>https://tools-pack.netlify.app/notes/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/notes/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/notes/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/notes/"/>
+  </url>
+  <url>
+    <loc>https://tools-pack.netlify.app/bn/notes/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/notes/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/notes/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/notes/"/>
@@ -130,4 +222,11 @@
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/text-to-pdf/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/text-to-pdf/"/>
   </url>
+  <url>
+    <loc>https://tools-pack.netlify.app/bn/text-to-pdf/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/text-to-pdf/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/text-to-pdf/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/text-to-pdf/"/>
+  </url>
+
 </urlset>
