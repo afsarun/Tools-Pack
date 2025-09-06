@@ -42,6 +42,8 @@
       content="https://tools-pack.netlify.app/percent-calculator/"
     />
     <link rel="stylesheet" href="../assets/style.css" />
+
+    <!-- WebApplication JSON-LD -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -51,11 +53,89 @@
         "applicationCategory": "Calculator",
         "operatingSystem": "All",
         "description": "A% of B, what percent is A of B, percent change, value after increase/decrease.",
-        "inLanguage": document?.documentElement?.dataset?.locale || "en"
+        "inLanguage": "en"
       }
     </script>
 
-    <!-- Minimal page styles (match Tools Pack look). You can replace with your global /assets/style.css if you prefer. -->
+    <!-- Breadcrumbs JSON-LD (matches visible breadcrumbs) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://tools-pack.netlify.app/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Calculators",
+            "item": "https://tools-pack.netlify.app/#calculator"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Percentage Calculator",
+            "item": "https://tools-pack.netlify.app/percent-calculator/"
+          }
+        ]
+      }
+    </script>
+
+    <!-- FAQ JSON-LD (matches visible FAQ) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What calculations does this tool support?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It supports A% of B, what percent A is of B, percent change between two values, and value after a percentage increase or decrease."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need to type the % sign?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Enter plain numbers only; the calculator treats A as a percentage automatically."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is percent change calculated?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Percent change = ((New − Old) ÷ Old) × 100. Positive means increase; negative means decrease."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use decimals and negative values?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Decimals are supported across all fields, and negative values are allowed where meaningful (e.g., a negative change)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What if the denominator is 0?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Division by 0 is undefined. The tool will show an error when a calculation requires dividing by 0."
+            }
+          }
+        ]
+      }
+    </script>
+
+    <!-- Minimal page styles (extra bits for breadcrumbs/TOC) -->
     <style>
       :root {
         --bg: #1e1e2f;
@@ -138,7 +218,6 @@
           rgba(34, 211, 238, 0.25)
         );
       }
-
       .tabs {
         display: flex;
         flex-wrap: wrap;
@@ -167,7 +246,6 @@
           grid-template-columns: 1fr 1fr;
         }
       }
-
       .card {
         background: var(--card);
         border: 1px solid var(--border);
@@ -210,7 +288,6 @@
       input[type="number"] {
         -moz-appearance: textfield;
       }
-
       .btn {
         background: linear-gradient(135deg, var(--accent), var(--accent-2));
         color: #0b0b14;
@@ -245,7 +322,6 @@
         margin-top: 6px;
         color: var(--muted);
       }
-
       .hidden {
         display: none;
       }
@@ -255,19 +331,68 @@
         font-size: 13px;
         text-align: center;
       }
+      /* breadcrumbs + toc */
+      .breadcrumbs {
+        font-size: 14px;
+        margin: 8px 0 6px;
+        color: var(--muted);
+      }
+      .breadcrumbs a,
+      .toc a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .toc {
+        font-size: 13px;
+        color: var(--muted);
+        margin-bottom: 14px;
+      }
     </style>
   </head>
   <body>
+    <!-- Global header (brand) -->
     <header class="sticky">
       <div class="wrap brand">
         <a href="/"><div class="logo"></div></a>
         <div>
           <h1 style="margin: 0">Percentage Calculator</h1>
-          <div class="sub">Crypto-secure</div>
+          <div class="sub">
+            A% of B • What % is A of B • Percent change • After %
+            increase/decrease
+          </div>
         </div>
       </div>
     </header>
+    <!-- Ad #1: top banner (constrained, no full-width expansion) -->
+    <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
+      <span class="ad-label">Ad</span>
+      <ins
+        class="adsbygoogle"
+        style="display: inline-block"
+        data-ad-client="ca-pub-1234567890123456"
+        data-ad-slot="1111111111"
+        data-ad-format="auto"
+        data-full-width-responsive="false"
+        data-adtest="on"
+      ></ins>
+    </div>
     <div class="container">
+      <!-- Breadcrumbs (UPDATED for this tool) -->
+      <nav class="breadcrumbs" aria-label="breadcrumb">
+        <a href="/">Home</a> › <a href="/#calculator">Calculators</a> ›
+        <span>Percentage Calculator</span>
+      </nav>
+
+      <!-- TOC (UPDATED sections for this tool) -->
+      <p class="toc">
+        <a href="#t1">A% of B</a> · <a href="#t2">What % is A of B?</a> ·
+        <a href="#t3">Percent Change</a> ·
+        <a href="#t4">After % Increase/Decrease</a> ·
+        <a href="#how-to-use">How to use</a> · <a href="#faq">FAQ</a> ·
+        <a href="#related">Related tools</a>
+      </p>
+
+      <!-- Local title + language -->
       <header>
         <div>
           <div class="title" data-i18n="title">Percentage Calculator</div>
@@ -493,6 +618,114 @@
           Formula: B × (1 ± A ÷ 100)
         </div>
       </section>
+      <div class="ad-wrap ad-article" aria-label="Advertisement">
+        <span class="ad-label">Ad</span>
+        <ins
+          class="adsbygoogle"
+          style="display: block; text-align: center"
+          data-ad-client="ca-pub-1234567890123456"
+          data-ad-slot="2222222222"
+          data-ad-format="fluid"
+          data-ad-layout="in-article"
+          data-adtest="on"
+        ></ins>
+      </div>
+      <!-- How to use (UPDATED for this tool) -->
+      <article class="card" id="how-to-use">
+        <h2>How to use</h2>
+        <ol>
+          <li>
+            Select the calculator tab you need: <strong>A% of B</strong>,
+            <strong>What % is A of B?</strong>, <strong>Percent Change</strong>,
+            or <strong>After % Increase/Decrease</strong>.
+          </li>
+          <li>Enter numbers only (no “%” symbol). Decimals are allowed.</li>
+          <li>
+            Results update as you type or when you click
+            <strong>Calculate</strong>.
+          </li>
+          <li>
+            Use <strong>Copy</strong> to copy the result text; use
+            <strong>Clear</strong> to reset fields.
+          </li>
+          <li>
+            For “After % Increase/Decrease”, choose <strong>Increase</strong> or
+            <strong>Decrease</strong> before calculating.
+          </li>
+        </ol>
+        <h3>Tips</h3>
+        <ul>
+          <li>
+            Percent change is positive for increases and negative for decreases.
+          </li>
+          <li>If a denominator is 0, the calculation is undefined.</li>
+          <li>
+            Use up to 8 decimal places; trailing zeros are trimmed for
+            readability.
+          </li>
+        </ul>
+      </article>
+
+      <!-- FAQ (UPDATED to match % tool) -->
+      <article class="card faq" id="faq">
+        <h2>FAQ</h2>
+
+        <details>
+          <summary>What calculations does this tool support?</summary>
+          <p>
+            It supports A% of B, what percent A is of B, percent change between
+            two values, and value after a percentage increase or decrease.
+          </p>
+        </details>
+
+        <details>
+          <summary>Do I need to type the % sign?</summary>
+          <p>
+            No. Enter plain numbers only; the calculator treats A as a
+            percentage automatically.
+          </p>
+        </details>
+
+        <details>
+          <summary>How is percent change calculated?</summary>
+          <p>
+            Percent change = <code>((New − Old) ÷ Old) × 100</code>. Positive
+            means increase; negative means decrease.
+          </p>
+        </details>
+
+        <details>
+          <summary>Can I use decimals and negative values?</summary>
+          <p>
+            Yes. Decimals are supported across all fields, and negative values
+            are allowed where meaningful (e.g., a negative change).
+          </p>
+        </details>
+
+        <details>
+          <summary>What if the denominator is 0?</summary>
+          <p>
+            Division by 0 is undefined. The tool will show an error when a
+            calculation requires dividing by 0.
+          </p>
+        </details>
+      </article>
+
+      <!-- Related tools (UPDATED) -->
+      <article class="card" id="related">
+        <h2>Related tools</h2>
+        <p class="muted">More calculators &amp; converters:</p>
+        <p>
+          <a class="btn" href="/calculator/">Basic Calculator</a>
+          <a class="btn" href="/unit-converter/">Unit Converter</a>
+          <a class="btn" href="/age-calculator/">Age Calculator</a>
+          <a class="btn" href="/percent-calculator/">Percentage Calculator</a>
+        </p>
+        <p class="small">
+          Prefer বাংলা? Try the
+          <a href="/bn/percent-calculator/" hreflang="bn">বাংলা সংস্করণ</a>.
+        </p>
+      </article>
 
       <footer>
         <span class="small" data-i18n="footer"
@@ -538,9 +771,7 @@
             div0: "Undefined: division by 0",
             empty: "Please enter values",
           },
-          labels: {
-            result: "Result",
-          },
+          labels: { result: "Result" },
         },
         bn: {
           title: "শতকরা হিসাব",
@@ -571,13 +802,8 @@
           t4_formula: "সূত্র: B × (1 ± A ÷ 100)",
           footer:
             "টিপস: টাইপ করলেই ফলাফল আপডেট হবে। কপি বাটন চাপলে ফলাফল কপি হবে।",
-          errors: {
-            div0: "অসংজ্ঞায়িত: শূন্য দিয়ে ভাগ",
-            empty: "মান দিন",
-          },
-          labels: {
-            result: "ফলাফল",
-          },
+          errors: { div0: "অসংজ্ঞায়িত: শূন্য দিয়ে ভাগ", empty: "মান দিন" },
+          labels: { result: "ফলাফল" },
         },
       };
 
@@ -593,14 +819,13 @@
           const text = key.split(".").reduce((acc, k) => acc?.[k], dict);
           if (typeof text === "string") el.textContent = text;
         });
-        // toggle buttons
         $("#btn-en").classList.toggle("active", lang === "en");
         $("#btn-bn").classList.toggle("active", lang === "bn");
         $("#btn-en").setAttribute("aria-pressed", lang === "en");
         $("#btn-bn").setAttribute("aria-pressed", lang === "bn");
       }
 
-      // Tab logic
+      // Tabs
       $$(".tab-btn").forEach((btn) => {
         btn.addEventListener("click", () => {
           const id = btn.dataset.tab;
@@ -615,31 +840,28 @@
         });
       });
 
-      // Utility formatters
+      // Utility
       function fmt(n) {
         if (!isFinite(n)) return "";
-        // Show up to 8 decimals, trim trailing zeros
         const s = Number(n).toLocaleString(undefined, {
           maximumFractionDigits: 8,
         });
         return s;
       }
-
       function parseVal(id) {
         const v = parseFloat($(id).value);
         return isNaN(v) ? null : v;
       }
-
       async function copyText(text) {
         try {
           await navigator.clipboard.writeText(text);
         } catch {}
       }
 
-      // --- Calculators ---
+      // Calculators
       function t1_calc() {
-        const A = parseVal("#t1_a");
-        const B = parseVal("#t1_b");
+        const A = parseVal("#t1_a"),
+          B = parseVal("#t1_b");
         if (A === null || B === null)
           return ($(
             "#t1_out"
@@ -651,8 +873,8 @@
         return val;
       }
       function t2_calc() {
-        const A = parseVal("#t2_a");
-        const B = parseVal("#t2_b");
+        const A = parseVal("#t2_a"),
+          B = parseVal("#t2_b");
         if (A === null || B === null)
           return ($(
             "#t2_out"
@@ -666,8 +888,8 @@
         return pct;
       }
       function t3_calc() {
-        const O = parseVal("#t3_old");
-        const N = parseVal("#t3_new");
+        const O = parseVal("#t3_old"),
+          N = parseVal("#t3_new");
         if (O === null || N === null)
           return ($(
             "#t3_out"
@@ -682,8 +904,8 @@
         return pct;
       }
       function t4_calc() {
-        const B = parseVal("#t4_b");
-        const A = parseVal("#t4_a");
+        const B = parseVal("#t4_b"),
+          A = parseVal("#t4_a");
         const dir =
           document.querySelector('input[name="t4_dir"]:checked')?.value || "up";
         if (A === null || B === null)
@@ -759,7 +981,7 @@
         r.addEventListener("change", t4_calc)
       );
 
-      // Keyboard: Enter triggers calculate in current panel
+      // Keyboard Enter triggers calculate in current panel
       $$('input[type="number"]').forEach((inp) =>
         inp.addEventListener("keydown", (e) => {
           if (e.key === "Enter") {

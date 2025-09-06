@@ -8,12 +8,37 @@
       name="description"
       content="Create crypto-secure passwords with lowercase, uppercase, digits and symbols."
     />
+    <meta
+      name="robots"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+
+    <!-- Canonical & hreflang -->
     <link
       rel="canonical"
       href="https://tools-pack.netlify.app/password-uuid/"
     />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://tools-pack.netlify.app/password-uuid/"
+    />
+    <link
+      rel="alternate"
+      hreflang="bn"
+      href="https://tools-pack.netlify.app/bn/password-uuid/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://tools-pack.netlify.app/"
+    />
+
+    <!-- Styles -->
     <link rel="stylesheet" href="../assets/style.css" />
     <meta name="theme-color" content="#1E1E2F" />
+
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Password Generator — Tools Pack" />
     <meta property="og:description" content="Crypto-secure strong passwords." />
@@ -25,7 +50,18 @@
       property="og:image"
       content="https://tools-pack.netlify.app/og/password.png"
     />
+
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- AdSense: Auto Ads (replace with your publisher ID) -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Structured data: WebApplication -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -38,6 +74,86 @@
         "inLanguage": "en"
       }
     </script>
+
+    <!-- Structured data: Breadcrumbs -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://tools-pack.netlify.app/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Security Tools",
+            "item": "https://tools-pack.netlify.app/#security"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Password Generator",
+            "item": "https://tools-pack.netlify.app/password-uuid/"
+          }
+        ]
+      }
+    </script>
+
+    <!-- Structured data: FAQ (matches visible FAQ below) -->
+    <script type="application/ld+json" id="faq-jsonld">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Are passwords stored or sent to a server?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Everything runs in your browser only. We do not send or store your passwords on any server."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this generator crypto-secure?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. It uses the Web Crypto API (window.crypto.getRandomValues) for high-quality randomness."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What length should I use?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We recommend 16+ characters, and 20+ for sensitive accounts. Longer is stronger."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why include symbols?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Symbols increase the character set size and entropy, making passwords harder to guess. Some sites may restrict certain symbols—toggle them off if needed."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does it work offline?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Once loaded, the generator continues to work without internet."
+            }
+          }
+        ]
+      }
+    </script>
+
+    <!-- Page-only CSS -->
     <style>
       .toast {
         position: fixed;
@@ -56,30 +172,102 @@
         opacity: 1;
         pointer-events: auto;
       }
+
+      .breadcrumbs {
+        font-size: 14px;
+        margin: 12px 0;
+        color: var(--muted, #9aa0b4);
+      }
+      .breadcrumbs a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .toc a {
+        text-decoration: none;
+      }
+
+      .faq details {
+        border: 1px solid #2b2b44;
+        border-radius: 8px;
+        padding: 10px 12px;
+        margin-bottom: 10px;
+      }
+      .faq summary {
+        cursor: pointer;
+        font-weight: 600;
+      }
+
+      .muted-small {
+        font-size: 12px;
+        color: var(--muted, #9aa0b4);
+      }
+
+      .related a {
+        display: inline-block;
+        margin: 6px 8px 0 0;
+      }
+
+      .ad-spacer {
+        margin: 18px 0;
+      }
+
+      .copygroup input {
+        user-select: all;
+      }
     </style>
   </head>
   <body>
     <header class="sticky">
       <div class="wrap brand">
-        <a href="/"><div class="logo"></div></a>
+        <a href="/"><div class="logo" aria-label="Tools Pack"></div></a>
         <div>
           <h1 style="margin: 0">Password Generator</h1>
           <div class="sub">Crypto-secure</div>
         </div>
+        <div style="margin-left: auto">
+          <a class="muted" href="/bn/password-uuid/" hreflang="bn">বাংলা</a>
+        </div>
       </div>
     </header>
+    <!-- Ad #1: top banner (constrained, no full-width expansion) -->
+    <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
+      <span class="ad-label">Ad</span>
+      <ins
+        class="adsbygoogle"
+        style="display: inline-block"
+        data-ad-client="ca-pub-1234567890123456"
+        data-ad-slot="1111111111"
+        data-ad-format="auto"
+        data-full-width-responsive="false"
+        data-adtest="on"
+      ></ins>
+    </div>
     <main class="wrap">
-      <article class="card">
+      <!-- Breadcrumbs (updated for this tool) -->
+      <nav class="breadcrumbs" aria-label="breadcrumb">
+        <a href="/">Home</a> › <a href="/#security">Security Tools</a> ›
+        <span>Password Generator</span>
+      </nav>
+
+      <!-- Quick TOC (updated anchors for this tool) -->
+      <p class="toc muted-small">
+        <a href="#generator">Generator</a> ·
+        <a href="#how-to-use">How to use</a> · <a href="#faq">FAQ</a> ·
+        <a href="#related">Related tools</a>
+      </p>
+
+      <!-- Tool Card -->
+      <article class="card" id="generator">
         <label
           class="field"
           style="display: flex; align-items: center; gap: 10px"
-          ><span class="muted">Length</span>
-          <input id="len" type="range" min="8" max="128" value="16" /><span
-            class="pill mono"
-            id="lenv"
-            >16</span
-          ></label
         >
+          <span class="muted">Length</span>
+          <input id="len" type="range" min="8" max="128" value="16" />
+          <span class="pill mono" id="lenv">16</span>
+        </label>
+
         <div
           class="grid"
           style="
@@ -101,20 +289,145 @@
             ><input id="s" type="checkbox" checked /> !@#$…</label
           >
         </div>
+
         <div class="copygroup">
-          <input id="out" class="field mono" readonly /><button
+          <input
+            id="out"
+            class="field mono"
+            readonly
+            aria-label="Generated password"
+          />
+          <button
             class="btn btn-primary"
             id="gen"
+            aria-label="Generate password"
           >
-            Generate</button
-          ><button class="btn" id="cpy">Copy</button>
+            Generate
+          </button>
+          <button class="btn" id="cpy" aria-label="Copy password">Copy</button>
         </div>
+        <div class="ad-wrap ad-article" aria-label="Advertisement">
+          <span class="ad-label">Ad</span>
+          <ins
+            class="adsbygoogle"
+            style="display: block; text-align: center"
+            data-ad-client="ca-pub-1234567890123456"
+            data-ad-slot="2222222222"
+            data-ad-format="fluid"
+            data-ad-layout="in-article"
+            data-adtest="on"
+          ></ins>
+        </div>
+        <p class="muted-small" style="margin-top: 8px">
+          Tip: For maximum security, use <strong>20+ characters</strong> with
+          all sets enabled.
+        </p>
+      </article>
+
+      <!-- How to use (updated for Password Generator) -->
+      <article class="card" id="how-to-use">
+        <h2>How to use</h2>
+        <ol>
+          <li>Choose a <strong>Length</strong> with the slider (16–128).</li>
+          <li>
+            Toggle the character sets you want: <strong>a–z</strong>,
+            <strong>A–Z</strong>, <strong>0–9</strong>, and
+            <strong>symbols</strong>.
+          </li>
+          <li>
+            Click <strong>Generate</strong> to create a new random password.
+          </li>
+          <li>Click <strong>Copy</strong> to copy it to your clipboard.</li>
+          <li>Regenerate as needed until you’re satisfied.</li>
+        </ol>
+        <h3>Security tips</h3>
+        <ul>
+          <li>Prefer 20+ characters for important accounts.</li>
+          <li>Use a password manager to store passwords securely.</li>
+          <li>
+            If a site blocks certain symbols, disable symbols and regenerate.
+          </li>
+        </ul>
+      </article>
+
+      <!-- FAQ (visible content now matches the JSON-LD above) -->
+      <article class="card faq" id="faq">
+        <h2>FAQ</h2>
+
+        <details>
+          <summary>Are passwords stored or sent to a server?</summary>
+          <p>
+            No. Everything runs in your browser only. We do not send or store
+            your passwords on any server.
+          </p>
+        </details>
+
+        <details>
+          <summary>Is this generator crypto-secure?</summary>
+          <p>
+            Yes. It uses the Web Crypto API
+            (<code>window.crypto.getRandomValues</code>) for high-quality
+            randomness.
+          </p>
+        </details>
+
+        <details>
+          <summary>What length should I use?</summary>
+          <p>
+            We recommend 16+ characters, and 20+ for sensitive accounts. Longer
+            is stronger.
+          </p>
+        </details>
+
+        <details>
+          <summary>Why include symbols?</summary>
+          <p>
+            Symbols increase the character set size and entropy, making
+            passwords harder to guess. Some sites may restrict certain
+            symbols—toggle them off if needed.
+          </p>
+        </details>
+
+        <details>
+          <summary>Does it work offline?</summary>
+          <p>
+            Yes. Once loaded, the generator continues to work without internet.
+          </p>
+        </details>
+      </article>
+
+      <!-- Related tools (updated to security/ID utilities) -->
+      <article class="card" id="related">
+        <h2>Related tools</h2>
+        <p class="muted">Security &amp; encoding utilities:</p>
+        <p>
+          <a class="btn" href="/uuid-v4/">UUID v4 Generator</a>
+          <a class="btn" href="/sha256/">SHA-256 Hash</a>
+          <a class="btn" href="/base64/">Base64 Encode/Decode</a>
+          <a class="btn" href="/url-tools/">URL Tools</a>
+        </p>
+        <p class="small">
+          Prefer বাংলা? Try the
+          <a href="/bn/password-uuid/" hreflang="bn">বাংলা সংস্করণ</a>.
+        </p>
       </article>
     </main>
-    <footer>© <span id="y"></span> Tools Pack</footer>
+
+    <footer>
+      © <span id="y"></span> Tools Pack · <a href="/privacy/">Privacy</a> ·
+      <a href="/terms/">Terms</a>
+    </footer>
 
     <!-- Toast message -->
-    <div class="toast" id="toast">Password copied ✅</div>
+    <div class="toast" id="toast" role="status" aria-live="polite">
+      Password copied ✅
+    </div>
+
+    <noscript>
+      <div class="wrap">
+        <p>Please enable JavaScript to use the password generator.</p>
+      </div>
+    </noscript>
 
     <script>
       // year
@@ -131,12 +444,9 @@
         s: [..."!@#$%^&*()-_=+[]{};:,.<>?/|~"],
       };
 
-      const pick = (a) =>
-        a[
-          Math.floor(
-            (crypto.getRandomValues(new Uint32Array(1))[0] / 2 ** 32) * a.length
-          )
-        ];
+      const randUint32 = () => crypto.getRandomValues(new Uint32Array(1))[0];
+
+      const pick = (a) => a[Math.floor((randUint32() / 2 ** 32) * a.length)];
 
       // password generator function
       const generatePassword = () => {
@@ -145,32 +455,31 @@
         if (u.checked) use.push(sets.u);
         if (n.checked) use.push(sets.n);
         if (s.checked) use.push(sets.s);
-        if (!use.length) use.push(sets.l, sets.n);
+        if (!use.length) use.push(sets.l, sets.n); // fallback: at least letters+digits
 
-        const L = +len.value,
-          out = [];
-        // at least one from each selected set
+        const L = +len.value;
+        const out = [];
+
+        // ensure at least one char from each selected set
         use.forEach((set) => out.push(pick(set)));
 
-        const flat = use.flat(),
-          bytes = new Uint32Array(L - out.length);
+        // fill the rest from the union
+        const flat = use.flat();
+        const need = L - out.length;
+        const bytes = new Uint32Array(need);
         crypto.getRandomValues(bytes);
+        for (let i = 0; i < need; i++) out.push(flat[bytes[i] % flat.length]);
 
-        for (let i = 0; i < bytes.length; i++)
-          out.push(flat[bytes[i] % flat.length]);
-
-        // shuffle
+        // shuffle (Fisher–Yates) with crypto randomness
         for (let i = out.length - 1; i > 0; i--) {
-          const j = crypto.getRandomValues(new Uint32Array(1))[0] % (i + 1);
+          const j = randUint32() % (i + 1);
           [out[i], out[j]] = [out[j], out[i]];
         }
-
         return out.join("");
       };
 
       // buttons
       gen.onclick = () => (out.value = generatePassword());
-
       cpy.onclick = () => {
         if (out.value) {
           navigator.clipboard.writeText(out.value);
@@ -187,6 +496,10 @@
         t.classList.add("show");
         setTimeout(() => t.classList.remove("show"), 2000);
       }
+
+      // Initialize AdSense in-article/display units
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
     </script>
   </body>
 </html>

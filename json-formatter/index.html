@@ -3,18 +3,36 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+
     <title>JSON Formatter & Validator — Pretty Print | Tools Pack</title>
     <meta
       name="description"
       content="Format, minify and validate JSON in your browser. Unicode-safe, fast, no tracking."
     />
+    <meta name="theme-color" content="#1E1E2F" />
     <link
       rel="canonical"
       href="https://tools-pack.netlify.app/json-formatter/"
     />
-    <link rel="stylesheet" href="../assets/style.css" />
-    <meta name="theme-color" content="#1E1E2F" />
 
+    <!-- Hreflang (EN/BN/x-default) -->
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://tools-pack.netlify.app/json-formatter/"
+    />
+    <link
+      rel="alternate"
+      hreflang="bn"
+      href="https://tools-pack.netlify.app/bn/json-formatter/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://tools-pack.netlify.app/"
+    />
+
+    <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="JSON Formatter — Tools Pack" />
     <meta
@@ -29,7 +47,66 @@
       property="og:image"
       content="https://tools-pack.netlify.app/og/json-formatter.png"
     />
+    <meta property="og:site_name" content="Tools Pack" />
     <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/style.css" />
+
+    <!-- Performance + AdSense preconnect -->
+    <link
+      rel="preconnect"
+      href="https://pagead2.googlesyndication.com"
+      crossorigin
+    />
+    <link rel="dns-prefetch" href="//pagead2.googlesyndication.com" />
+
+    <!-- AdSense Auto ads (replace with your publisher id) -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+      crossorigin="anonymous"
+    ></script>
+
+    <style>
+      /* Avoid CLS by reserving space for in-content ad */
+      .ad-container {
+        min-height: 280px;
+        display: block;
+        margin: 1rem 0;
+      }
+      nav.breadcrumb {
+        font-size: 0.9rem;
+        color: var(--muted, #8891a1);
+        margin: 0.75rem 0 0;
+      }
+      nav.breadcrumb a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .faq details {
+        border: 1px solid #2a3142;
+        border-radius: 12px;
+        padding: 0.75rem 1rem;
+        margin: 0.75rem 0;
+      }
+      .faq summary {
+        cursor: pointer;
+        font-weight: 600;
+      }
+      .related ul {
+        display: grid;
+        gap: 0.5rem;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        padding-left: 1rem;
+      }
+      .toc {
+        margin: 0.75rem 0 1rem;
+      }
+      .toc a {
+        text-decoration: none;
+      }
+    </style>
 
     <!-- JSON-LD: WebApplication -->
     <script type="application/ld+json">
@@ -45,7 +122,35 @@
       }
     </script>
 
-    <!-- JSON-LD: FAQPage -->
+    <!-- JSON-LD: BreadcrumbList -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://tools-pack.netlify.app/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Developer Tools",
+            "item": "https://tools-pack.netlify.app/text-utilities/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "JSON Formatter",
+            "item": "https://tools-pack.netlify.app/json-formatter/"
+          }
+        ]
+      }
+    </script>
+
+    <!-- JSON-LD: FAQPage (answers plain text; links only in visible FAQ) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -56,7 +161,7 @@
             "name": "Is my JSON uploaded to a server?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No. All processing happens in your browser."
+              "text": "No. All processing happens locally in your browser."
             }
           },
           {
@@ -65,6 +170,22 @@
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "Yes. It is Unicode-safe."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I pretty print and validate?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Paste JSON, click Format to pretty print with 2-space indentation. Click Validate to only check correctness without output."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where can I minify or use related tools?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use the Minify button for compact JSON. For URL encoding/decoding and Base64, use the related tools section on the page."
             }
           }
         ]
@@ -79,42 +200,229 @@
           <h1 style="margin: 0">JSON Formatter / Validator</h1>
           <div class="sub">Pretty • Minify • Validate</div>
         </div>
+        <div style="margin-left: auto">
+          <a class="muted" href="/bn/json-formatter/" hreflang="bn">বাংলা</a>
+        </div>
       </div>
     </header>
-
+    <!-- Ad #1: top banner (constrained, no full-width expansion) -->
+    <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
+      <span class="ad-label">Ad</span>
+      <ins
+        class="adsbygoogle"
+        style="display: inline-block"
+        data-ad-client="ca-pub-1234567890123456"
+        data-ad-slot="1111111111"
+        data-ad-format="auto"
+        data-full-width-responsive="false"
+        data-adtest="on"
+      ></ins>
+    </div>
     <main class="wrap">
-      <article class="card">
+      <!-- Breadcrumbs (page-level, consistent with header) -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> › <a href="/text-utilities/">Developer Tools</a> ›
+        <span aria-current="page">JSON Formatter</span>
+      </nav>
+
+      <!-- TOC -->
+      <p class="toc">
+        <a href="#json-tool">Tool</a> · <a href="#how-to-use">How to use</a> ·
+        <a href="#faq">FAQ</a> ·
+        <a href="#related">Related tools</a>
+      </p>
+      <!-- Tool -->
+      <article class="card" id="json-tool">
         <h2>Format / Validate</h2>
+
+        <label class="muted" for="in">Input JSON</label>
         <textarea
           id="in"
           class="textarea"
           placeholder='{"hello":"world"}'
+          aria-label="JSON input"
         ></textarea>
-        <div>
-          <button class="btn btn-primary" id="fmt">Format</button>
-          <button class="btn" id="min">Minify</button>
-          <button class="btn" id="val">Validate</button>
-          <button class="btn" id="cpy">Copy Output</button>
+
+        <div class="btn-row" role="group" aria-label="Actions">
+          <button
+            class="btn btn-primary"
+            id="fmt"
+            aria-label="Pretty print JSON"
+          >
+            Format
+          </button>
+          <button class="btn" id="min" aria-label="Minify JSON">Minify</button>
+          <button class="btn" id="val" aria-label="Validate JSON">
+            Validate
+          </button>
+          <button class="btn" id="cpy" aria-label="Copy output">
+            Copy Output
+          </button>
         </div>
+        <div class="ad-wrap ad-article" aria-label="Advertisement">
+          <span class="ad-label">Ad</span>
+          <ins
+            class="adsbygoogle"
+            style="display: block; text-align: center"
+            data-ad-client="ca-pub-1234567890123456"
+            data-ad-slot="2222222222"
+            data-ad-format="fluid"
+            data-ad-layout="in-article"
+            data-adtest="on"
+          ></ins>
+        </div>
+        <label class="muted" for="out">Output</label>
         <textarea
           id="out"
           class="textarea"
           readonly
           placeholder="Output…"
+          aria-label="Formatted/minified JSON output"
         ></textarea>
-        <div id="status" class="muted"></div>
+        <div id="status" class="muted" role="status" aria-live="polite"></div>
+      </article>
+
+      <!-- How to use -->
+      <article class="card" id="how-to-use">
+        <h2>How to use</h2>
+        <ol>
+          <li>Paste or type JSON into <strong>Input</strong>.</li>
+          <li>
+            Click <strong>Format</strong> to pretty print (2-space indent) and
+            show the result in <strong>Output</strong>.
+          </li>
+          <li>Click <strong>Minify</strong> for compact one-line JSON.</li>
+          <li>
+            Click <strong>Validate</strong> to check correctness without
+            producing output.
+          </li>
+          <li>
+            Use <strong>Copy Output</strong> to copy the result to your
+            clipboard.
+          </li>
+        </ol>
+        <h3>Tips</h3>
+        <ul>
+          <li>
+            Nothing is uploaded — processing happens locally in your browser.
+          </li>
+          <li>Supports Unicode (e.g., বাংলা, emojis 👍).</li>
+          <li>
+            If you see an error, it’s usually a missing comma, bracket, or
+            quote; the message points to where parsing failed.
+          </li>
+          <li>Works offline after first load.</li>
+        </ul>
+      </article>
+
+      <!-- FAQ -->
+      <article class="card faq" id="faq">
+        <h2>FAQ</h2>
+        <details>
+          <summary>Is my JSON uploaded to a server?</summary>
+          <p>No. All processing happens locally in your browser.</p>
+        </details>
+        <details>
+          <summary>Does it support Unicode/Bangla?</summary>
+          <p>Yes. It is Unicode-safe.</p>
+        </details>
+        <details>
+          <summary>How do I pretty print and validate?</summary>
+          <p>
+            Paste JSON, click <em>Format</em> to pretty print; click
+            <em>Validate</em> to only check correctness.
+          </p>
+        </details>
+        <details>
+          <summary>How do I minify or find related tools?</summary>
+          <p>
+            Use the <em>Minify</em> button here. See
+            <a href="#related">Related tools</a> below for URL/Base64 utilities.
+          </p>
+        </details>
+      </article>
+
+      <!-- Related tools -->
+      <article class="card" id="related">
+        <h2>Related tools</h2>
+        <p class="muted">More developer &amp; encoding utilities:</p>
+        <p>
+          <a class="btn" href="/url-tools/">URL Tools</a>
+          <a class="btn" href="/base64/">Base64 Encode/Decode</a>
+          <a class="btn" href="/text-utilities/">Text Utilities</a>
+          <a class="btn" href="/sha256/">SHA-256 Hash</a>
+        </p>
+        <p class="small">
+          Prefer বাংলা? Try the
+          <a href="/bn/json-formatter/" hreflang="bn">বাংলা সংস্করণ</a>.
+        </p>
       </article>
     </main>
 
     <footer>© <span id="y"></span> Tools Pack</footer>
+
     <script>
-      document.getElementById('y').textContent=new Date().getFullYear();
-      const IN=in, OUT=out, ST=status;
-      const ok=(msg,good)=>{ST.textContent=msg;ST.style.color=good?'var(--ok)':'var(--danger)'}
-      fmt.onclick=()=>{try{const o=JSON.parse(IN.value);OUT.value=JSON.stringify(o,null,2);ok('Valid JSON • Formatted',true)}catch(e){OUT.value='';ok('Invalid JSON: '+e.message,false)}}
-      min.onclick=()=>{try{const o=JSON.parse(IN.value);OUT.value=JSON.stringify(o);ok('Valid JSON • Minified',true)}catch(e){OUT.value='';ok('Invalid JSON: '+e.message,false)}}
-      val.onclick=()=>{try{JSON.parse(IN.value);ok('Valid JSON ✔',true)}catch(e){ok('Invalid JSON: '+e.message,false)}}
-      cpy.onclick=()=>{navigator.clipboard.writeText(OUT.value||'')}
+      // Year
+      document.getElementById("y").textContent = new Date().getFullYear();
+
+      // DOM refs
+      const IN = document.getElementById("in");
+      const OUT = document.getElementById("out");
+      const ST = document.getElementById("status");
+      const fmtB = document.getElementById("fmt");
+      const minB = document.getElementById("min");
+      const valB = document.getElementById("val");
+      const cpyB = document.getElementById("cpy");
+
+      const ok = (msg, good) => {
+        ST.textContent = msg;
+        ST.style.color = good ? "var(--ok, #35c08a)" : "var(--danger, #ff6b6b)";
+      };
+
+      fmtB.addEventListener("click", () => {
+        try {
+          const o = JSON.parse(IN.value);
+          OUT.value = JSON.stringify(o, null, 2);
+          ok("Valid JSON • Formatted", true);
+        } catch (e) {
+          OUT.value = "";
+          ok("Invalid JSON: " + e.message, false);
+        }
+      });
+
+      minB.addEventListener("click", () => {
+        try {
+          const o = JSON.parse(IN.value);
+          OUT.value = JSON.stringify(o);
+          ok("Valid JSON • Minified", true);
+        } catch (e) {
+          OUT.value = "";
+          ok("Invalid JSON: " + e.message, false);
+        }
+      });
+
+      valB.addEventListener("click", () => {
+        try {
+          JSON.parse(IN.value);
+          ok("Valid JSON ✔", true);
+        } catch (e) {
+          ok("Invalid JSON: " + e.message, false);
+        }
+      });
+
+      cpyB.addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(OUT.value || "");
+          ok("Output copied to clipboard", true);
+        } catch {
+          ok("Copy failed (clipboard blocked?)", false);
+        }
+      });
+
+      // Render the in-content ad
+      try {
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      } catch {}
     </script>
   </body>
 </html>

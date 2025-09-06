@@ -6,27 +6,48 @@
     <title>Tools Pack — Online Utilities (No Ads, No Tracking)</title>
     <meta
       name="description"
-      content="Fast, modern, privacy-first online tools: Calculator, JSON Formatter, Unit Converter and more. 100% runs in your browser."
+      content="Fast, modern, privacy-first online tools: Calculator, JSON Formatter, Unit Converter, Image Resizer, Color Contrast, Stopwatch, Notes and more. 100% runs in your browser."
     />
-    <link rel="canonical" href="https://tools-pack.netlify.app/" />
-    <link rel="stylesheet" href="assets/style.css" />
+
     <meta name="theme-color" content="#1E1E2F" />
+    <link rel="canonical" href="https://tools-pack.netlify.app/" />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://tools-pack.netlify.app/"
+    />
+    <link
+      rel="alternate"
+      hreflang="bn"
+      href="https://tools-pack.netlify.app/bn/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://tools-pack.netlify.app/"
+    />
+    <link rel="stylesheet" href="assets/style.css" />
 
     <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tools Pack" />
     <meta property="og:title" content="Tools Pack — Online Utilities" />
     <meta
       property="og:description"
-      content="Calculator, JSON Formatter, Unit Converter and more."
+      content="Calculator, JSON Formatter, Unit Converter and more — all client-side."
     />
     <meta property="og:url" content="https://tools-pack.netlify.app/" />
     <meta
       property="og:image"
       content="https://tools-pack.netlify.app/og/home.png"
     />
+    <meta
+      property="og:image:alt"
+      content="Tools Pack — fast, privacy-first utilities"
+    />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- JSON-LD: WebSite -->
+    <!-- JSON-LD: WebSite (Sitelinks Search Box) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -35,9 +56,20 @@
         "url": "https://tools-pack.netlify.app/",
         "potentialAction": {
           "@type": "SearchAction",
-          "target": "https://tools-pack.netlify.app/?q={search_term}",
-          "query-input": "required name=search_term"
+          "target": "https://tools-pack.netlify.app/?q={search_term_string}",
+          "query-input": "required name=search_term_string"
         }
+      }
+    </script>
+
+    <!-- JSON-LD: Organization / Logo -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Tools Pack",
+        "url": "https://tools-pack.netlify.app/",
+        "logo": "https://tools-pack.netlify.app/assets/logo.png"
       }
     </script>
 
@@ -50,47 +82,178 @@
           {
             "@type": "ListItem",
             "position": 1,
-            "url": "https://tools-pack.netlify.app/json-formatter/"
+            "item": {
+              "@type": "WebPage",
+              "url": "https://tools-pack.netlify.app/percent-calculator/",
+              "name": "Percent Calculator"
+            }
           },
           {
             "@type": "ListItem",
             "position": 2,
-            "url": "https://tools-pack.netlify.app/calculator/"
+            "item": {
+              "@type": "WebPage",
+              "url": "https://tools-pack.netlify.app/age-calculator/",
+              "name": "Age Calculator"
+            }
           },
           {
             "@type": "ListItem",
             "position": 3,
-            "url": "https://tools-pack.netlify.app/unit-converter/"
+            "item": {
+              "@type": "WebPage",
+              "url": "https://tools-pack.netlify.app/calculator/",
+              "name": "Calculator"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "item": {
+              "@type": "WebPage",
+              "url": "https://tools-pack.netlify.app/unit-converter/",
+              "name": "Unit Converter"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "item": {
+              "@type": "WebPage",
+              "url": "https://tools-pack.netlify.app/text-to-pdf/",
+              "name": "Text to PDF"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 6,
+            "item": {
+              "@type": "WebPage",
+              "url": "https://tools-pack.netlify.app/text-utilities/",
+              "name": "Text Utilities"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 7,
+            "item": {
+              "@type": "WebPage",
+              "url": "https://tools-pack.netlify.app/base64/",
+              "name": "Base64 Tools"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 8,
+            "item": {
+              "@type": "WebPage",
+              "url": "https://tools-pack.netlify.app/url-tools/",
+              "name": "URL Tools"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 9,
+            "item": {
+              "@type": "WebPage",
+              "url": "https://tools-pack.netlify.app/password-uuid/",
+              "name": "Password & UUID Generator"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 10,
+            "item": {
+              "@type": "WebPage",
+              "url": "https://tools-pack.netlify.app/uuid-v4/",
+              "name": "UUID v4"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 11,
+            "item": {
+              "@type": "WebPage",
+              "url": "https://tools-pack.netlify.app/sha256/",
+              "name": "SHA-256 Hash"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 12,
+            "item": {
+              "@type": "WebPage",
+              "url": "https://tools-pack.netlify.app/image-resizer-compressor/",
+              "name": "Image Resizer & Compressor"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 13,
+            "item": {
+              "@type": "WebPage",
+              "url": "https://tools-pack.netlify.app/color-picker-contrast/",
+              "name": "Color Picker & Contrast"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 14,
+            "item": {
+              "@type": "WebPage",
+              "url": "https://tools-pack.netlify.app/stopwatch-countdown/",
+              "name": "Stopwatch & Countdown Timer"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 15,
+            "item": {
+              "@type": "WebPage",
+              "url": "https://tools-pack.netlify.app/quick-notes/",
+              "name": "Quick Notes"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 16,
+            "item": {
+              "@type": "WebPage",
+              "url": "https://tools-pack.netlify.app/json-formatter/",
+              "name": "JSON Formatter"
+            }
           }
         ]
       }
     </script>
   </head>
+
   <body>
-    <header class="sticky">
+    <header class="sticky" role="banner">
       <div class="wrap brand">
         <div class="logo" aria-hidden="true"></div>
         <div>
-          <h1 style="margin: 0">Tools Pack</h1>
+          <h1 class="site-title" style="margin: 0">Tools Pack</h1>
           <div class="sub">Minimal • Fast • Privacy-first</div>
         </div>
       </div>
     </header>
 
-    <main class="wrap">
+    <main class="wrap" role="main">
       <section class="grid" aria-label="Tools">
         <article class="card">
-          <h2>Percentage Calculator</h2>
+          <h2>Percent Calculator</h2>
           <p class="muted">
             A% of B, what percent is A of B, percent change, and after %
             increase/decrease.
           </p>
           <p>
-            <a class="btn btn-primary" href="/PercentCalculator/"
-              >Open Percentage Calculator</a
+            <a class="btn btn-primary" href="/percent-calculator/"
+              >Open Percent Calculator</a
             >
           </p>
         </article>
+
         <article class="card">
           <h2>Age Calculator</h2>
           <p class="muted">Find your exact age in years, months, and days.</p>
@@ -118,6 +281,7 @@
             >
           </p>
         </article>
+
         <article class="card">
           <h2>Text → PDF</h2>
           <p class="muted">Convert plain text to PDF instantly.</p>
@@ -125,6 +289,7 @@
             <a class="btn btn-primary" href="/text-to-pdf/">Open Text → PDF</a>
           </p>
         </article>
+
         <article class="card">
           <h2>Text Utilities</h2>
           <p class="muted">Upper/lowercase, word count, remove spaces.</p>
@@ -152,11 +317,17 @@
         </article>
 
         <article class="card">
-          <h2>Password & UUID Generator</h2>
+          <h2>Password &amp; UUID Generator</h2>
           <p class="muted">Generate secure passwords and UUID v4.</p>
           <p>
             <a class="btn btn-primary" href="/password-uuid/">Open Generator</a>
           </p>
+        </article>
+
+        <article class="card">
+          <h2>UUID v4</h2>
+          <p class="muted">Generate RFC 4122 version-4 UUIDs.</p>
+          <p><a class="btn btn-primary" href="/uuid-v4/">Open UUID v4</a></p>
         </article>
 
         <article class="card">
@@ -168,51 +339,44 @@
         </article>
 
         <article class="card">
-          <h2>Image Resizer</h2>
-          <p class="muted">Resize and compress images with canvas.</p>
+          <h2>Image Resizer &amp; Compressor</h2>
+          <p class="muted">Resize and compress images (JPG/PNG/WebP).</p>
           <p>
-            <a class="btn btn-primary" href="/image-resizer/"
+            <a class="btn btn-primary" href="/image-resizer-compressor/"
               >Open Image Resizer</a
             >
           </p>
         </article>
 
         <article class="card">
-          <h2>Color Contrast Checker</h2>
+          <h2>Color Picker &amp; Contrast</h2>
           <p class="muted">Check WCAG contrast between colors.</p>
           <p>
-            <a class="btn btn-primary" href="/color-contrast/"
+            <a class="btn btn-primary" href="/color-picker-contrast/"
               >Open Contrast Checker</a
             >
           </p>
         </article>
 
         <article class="card">
-          <h2>Stopwatch & Timer</h2>
+          <h2>Stopwatch &amp; Countdown</h2>
           <p class="muted">Track time with stopwatch or countdown.</p>
           <p>
-            <a class="btn btn-primary" href="/stopwatch/">Open Stopwatch</a>
+            <a class="btn btn-primary" href="/stopwatch-countdown/"
+              >Open Stopwatch</a
+            >
           </p>
         </article>
 
         <article class="card">
           <h2>Quick Notes</h2>
           <p class="muted">Save notes in your browser (localStorage).</p>
-          <p>
-            <a class="btn btn-primary" href="/notes/">Open Notes</a>
-          </p>
+          <p><a class="btn btn-primary" href="/quick-notes/">Open Notes</a></p>
         </article>
 
         <article class="card">
-          <h2>uuid-v4</h2>
-          <p class="muted">uuid-v4.</p>
-          <p>
-            <a class="btn btn-primary" href="/uuid-v4/">Open Text → PDF</a>
-          </p>
-        </article>
-        <article class="card">
           <h2>JSON Formatter</h2>
-          <p class="muted">Format, minify, validate JSON. Unicode-safe.</p>
+          <p class="muted">Format, minify, and validate JSON. Unicode-safe.</p>
           <p>
             <a class="btn btn-primary" href="/json-formatter/"
               >Open JSON Formatter</a
@@ -223,8 +387,12 @@
     </main>
 
     <footer>© <span id="y"></span> Tools Pack • Runs 100% locally.</footer>
+
     <script>
       document.getElementById("y").textContent = new Date().getFullYear();
     </script>
+    <noscript
+      >Your browser has JavaScript disabled; some tools require it.</noscript
+    >
   </body>
 </html>

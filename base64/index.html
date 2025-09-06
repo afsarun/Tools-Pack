@@ -6,20 +6,46 @@
     <title>Base64 Encoder & Decoder — Unicode Safe | Tools Pack</title>
     <meta
       name="description"
-      content="Encode/decode Base64 safely (Unicode/emoji supported)."
+      content="Encode and decode Base64 safely with full Unicode/emoji support. Runs 100% in your browser."
     />
     <link rel="canonical" href="https://tools-pack.netlify.app/base64/" />
     <link rel="stylesheet" href="../assets/style.css" />
     <meta name="theme-color" content="#1E1E2F" />
+
+    <!-- Hreflang alternates -->
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://tools-pack.netlify.app/base64/"
+    />
+    <link
+      rel="alternate"
+      hreflang="bn"
+      href="https://tools-pack.netlify.app/bn/base64/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://tools-pack.netlify.app/base64/"
+    />
+
+    <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tools Pack" />
     <meta property="og:title" content="Base64 — Tools Pack" />
-    <meta property="og:description" content="Text ⇄ Base64 (Unicode safe)." />
+    <meta
+      property="og:description"
+      content="Text ⇄ Base64 (Unicode-safe, emoji supported). All in your browser."
+    />
     <meta property="og:url" content="https://tools-pack.netlify.app/base64/" />
     <meta
       property="og:image"
       content="https://tools-pack.netlify.app/og/base64.png"
     />
+    <meta property="og:image:alt" content="Base64 Encode/Decode — Tools Pack" />
     <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- JSON-LD: WebApplication -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -28,57 +54,426 @@
         "url": "https://tools-pack.netlify.app/base64/",
         "applicationCategory": "Utility",
         "operatingSystem": "All",
-        "description": "Encode/decode Base64 with Unicode support.",
+        "description": "Encode/decode Base64 with Unicode/emoji support, locally in your browser.",
         "inLanguage": "en"
       }
     </script>
+
+    <!-- JSON-LD: Breadcrumbs -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Tools Pack",
+            "item": "https://tools-pack.netlify.app/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Base64 Encoder/Decoder",
+            "item": "https://tools-pack.netlify.app/base64/"
+          }
+        ]
+      }
+    </script>
+
+    <!-- JSON-LD: FAQ rich results -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is this Base64 tool Unicode-safe?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. It uses TextEncoder/TextDecoder to correctly handle Unicode and emoji, so characters beyond ASCII work fine."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I make URL-safe Base64?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Replace + with - and / with _. Padding = signs may be removed depending on your use case. Example: base64.replace(/\\+/g,'-').replace(/\\//g,'_').replace(/=+$/,'')."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does any data leave my browser?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. All encoding/decoding is performed locally in your browser. Nothing is uploaded."
+            }
+          }
+        ]
+      }
+    </script>
+
+    <!-- ========= Google AdSense loader =========
+         Replace client with your own publisher ID.
+         Keep data-adtest="on" while testing; remove when live. -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234567890123456"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Page-specific styles (ads + small layout tweaks) -->
+    <style>
+      /* Ads: reserve space & constrain width for low CLS */
+      .ad-wrap {
+        margin: 12px 0;
+      }
+      .ad-label {
+        display: block;
+        font-size: 12px;
+        color: var(--muted, #888);
+        margin-bottom: 4px;
+      }
+      .adsbygoogle {
+        display: block;
+      }
+
+      /* Top banner size caps */
+      .ad-top {
+        margin-inline: auto;
+      }
+      @media (min-width: 900px) {
+        .ad-top {
+          max-width: 728px;
+        }
+        .ad-top .adsbygoogle {
+          min-height: 90px;
+        }
+      }
+      @media (max-width: 899px) and (min-width: 600px) {
+        .ad-top {
+          max-width: 468px;
+        }
+        .ad-top .adsbygoogle {
+          min-height: 60px;
+        }
+      }
+      @media (max-width: 599px) {
+        .ad-top {
+          max-width: 320px;
+        }
+        .ad-top .adsbygoogle {
+          min-height: 100px;
+        }
+      }
+
+      /* In-article ad a bit narrower than card */
+      .ad-article {
+        max-width: 600px;
+        margin-inline: auto;
+      }
+      @media (max-width: 600px) {
+        .ad-article {
+          max-width: 360px;
+        }
+      }
+
+      /* Content polish */
+      #outText.textarea {
+        min-height: 140px;
+      }
+      .related {
+        margin-top: 20px;
+      }
+      .related h3 {
+        margin-bottom: 8px;
+        font-size: 1rem;
+      }
+      .link-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .link-list a {
+        text-decoration: none;
+      }
+
+      /* How-to & FAQ spacing */
+      #how-to-use ol {
+        margin: 8px 0 12px 18px;
+      }
+      #faq h3 {
+        margin-top: 12px;
+        font-size: 1rem;
+      }
+      #faq p {
+        margin: 6px 0 12px;
+      }
+
+      /* Buttons full-width on small screens */
+      @media (max-width: 600px) {
+        .btn {
+          width: 100%;
+          margin-top: 8px;
+        }
+        .btn.btn-primary {
+          margin-top: 0;
+        }
+      }
+    </style>
   </head>
+
   <body>
-    <header class="sticky">
+    <header class="sticky" role="banner">
       <div class="wrap brand">
-        <a href="/"><div class="logo"></div></a>
+        <a href="/" aria-label="Back to home"
+          ><div class="logo" aria-hidden="true"></div
+        ></a>
         <div>
           <h1 style="margin: 0">Base64 Encode / Decode</h1>
           <div class="sub">Unicode-safe</div>
         </div>
+        <div style="margin-left: auto">
+          <a class="muted" href="/bn/base64/" hreflang="bn">বাংলা</a>
+        </div>
       </div>
     </header>
 
-    <main class="wrap">
-      <article class="card">
+    <!-- Ad #1: top banner (constrained) -->
+    <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
+      <span class="ad-label">Ad</span>
+      <ins
+        class="adsbygoogle"
+        style="display: inline-block"
+        data-ad-client="ca-pub-1234567890123456"
+        data-ad-slot="1111111111"
+        data-ad-format="auto"
+        data-full-width-responsive="false"
+        data-adtest="on"
+      ></ins>
+    </div>
+
+    <main class="wrap" role="main">
+      <!-- Breadcrumbs -->
+      <nav class="breadcrumbs" aria-label="breadcrumb">
+        <a href="/">Home</a> › <a href="/#text">Text Tools</a> ›
+        <span>Base64 Encoder/Decoder</span>
+      </nav>
+
+      <!-- TOC -->
+      <p class="toc">
+        <a href="#convert">Convert</a> · <a href="#how-to-use">How to use</a> ·
+        <a href="#faq">FAQ</a> · <a href="#related">Related tools</a>
+      </p>
+
+      <!-- Tool -->
+      <article class="card" id="convert">
+        <h2>Convert text ⇄ Base64</h2>
+
         <textarea
           id="inText"
           class="textarea mono"
           placeholder="Text or Base64…"
         ></textarea>
-        <div>
-          <button class="btn btn-primary" id="enc">Encode</button>
-          <button class="btn" id="dec">Decode</button>
-          <button class="btn" id="cpy">Copy Output</button>
+
+        <div style="margin-top: 10px">
+          <button class="btn btn-primary" id="enc" type="button">Encode</button>
+          <button class="btn" id="dec" type="button">Decode</button>
+          <button class="btn" id="cpy" type="button">Copy output</button>
         </div>
+
+        <!-- Ad #2: in-article (fluid) -->
+        <div class="ad-wrap ad-article" aria-label="Advertisement">
+          <span class="ad-label">Ad</span>
+          <ins
+            class="adsbygoogle"
+            style="display: block; text-align: center"
+            data-ad-client="ca-pub-1234567890123456"
+            data-ad-slot="2222222222"
+            data-ad-format="fluid"
+            data-ad-layout="in-article"
+            data-adtest="on"
+          ></ins>
+        </div>
+
         <textarea
           id="outText"
           class="textarea mono"
           readonly
           placeholder="Output…"
         ></textarea>
+        <div class="muted" id="tip" aria-live="polite"></div>
+      </article>
+
+      <!-- How to use -->
+      <article class="card" id="how-to-use">
+        <h2>How to use</h2>
+        <ol>
+          <li>
+            Paste <strong>text</strong> to encode or a
+            <strong>Base64 string</strong> to decode into the top box.
+          </li>
+          <li>
+            Click <strong>Encode</strong> to get Base64, or
+            <strong>Decode</strong> to get text.<br />Shortcut: press
+            <kbd>Enter</kbd> to Encode, <kbd>Shift</kbd>+<kbd>Enter</kbd> to
+            Decode.
+          </li>
+          <li>Use <strong>Copy output</strong> to copy the result.</li>
+        </ol>
+
+        <h3>Tips</h3>
+        <ul>
+          <li>
+            Unicode/emoji-safe: uses
+            <code>TextEncoder</code>/<code>TextDecoder</code>, so non-ASCII
+            works correctly.
+          </li>
+          <li>
+            URL-safe variant: replace <code>+</code> → <code>-</code> and
+            <code>/</code> → <code>_</code>; padding <code>=</code> may be
+            trimmed.
+          </li>
+          <li>
+            Decoder accepts whitespace, URL-safe characters, and auto-adds
+            missing padding.
+          </li>
+          <li>
+            For Data URLs, strip the prefix like
+            <code>data:...;base64,</code> before decoding.
+          </li>
+          <li>Works offline once loaded; no data leaves your browser.</li>
+        </ul>
+      </article>
+
+      <!-- FAQ -->
+      <article class="card faq" id="faq">
+        <h2>FAQ</h2>
+
+        <details>
+          <summary>Is this Unicode-safe?</summary>
+          <p>
+            Yes. We encode bytes via <code>TextEncoder</code> and decode via
+            <code>TextDecoder</code>, so emoji and non-ASCII scripts round-trip
+            correctly.
+          </p>
+        </details>
+
+        <details>
+          <summary>How do I make URL-safe Base64?</summary>
+          <p>
+            Replace <code>+</code> with <code>-</code> and <code>/</code> with
+            <code>_</code>. You may remove trailing <code>=</code>. This tool’s
+            decoder accepts URL-safe input automatically.
+          </p>
+        </details>
+
+        <details>
+          <summary>Why do I get “InvalidCharacterError” when decoding?</summary>
+          <p>
+            Usually due to stray characters or bad padding. Remove whitespace
+            and ensure the length is a multiple of 4 (add <code>=</code> as
+            needed). This tool normalizes most of that for you.
+          </p>
+        </details>
+
+        <details>
+          <summary>Can I decode Data URLs?</summary>
+          <p>
+            Yes—remove the <code>data:*;base64,</code> prefix first, then paste
+            only the Base64 part.
+          </p>
+        </details>
+
+        <details>
+          <summary>Does any of my data leave my browser?</summary>
+          <p>No. All encoding/decoding happens locally.</p>
+        </details>
+
+        <details>
+          <summary>Does it work offline?</summary>
+          <p>Yes. After the first load, the page works without internet.</p>
+        </details>
+      </article>
+
+      <!-- Related tools -->
+      <article class="card" id="related">
+        <h2>Related tools</h2>
+        <p class="muted">More text &amp; encoding utilities:</p>
+        <p>
+          <a class="btn" href="/text-to-pdf/">Text → PDF</a>
+          <a class="btn" href="/json-formatter/">JSON Formatter</a>
+          <a class="btn" href="/url-tools/">URL Tools</a>
+        </p>
+        <p class="small">
+          Prefer বাংলা? Try the
+          <a href="/bn/base64/" hreflang="bn">বাংলা সংস্করণ</a>.
+        </p>
       </article>
     </main>
 
-    <footer>© <span id="year"></span> Tools Pack</footer>
+    <footer>
+      © <span id="year"></span> Tools Pack •
+      <a class="muted" href="/">Home</a> •
+      <a class="muted" href="/bn/base64/" hreflang="bn">বাংলা</a>
+    </footer>
 
     <script>
-      // Year
-      document.getElementById("year").textContent = new Date().getFullYear();
-
       // Elements
+      const year = document.getElementById("year");
       const inText = document.getElementById("inText");
       const outText = document.getElementById("outText");
       const encBtn = document.getElementById("enc");
       const decBtn = document.getElementById("dec");
       const cpyBtn = document.getElementById("cpy");
+      const tip = document.getElementById("tip");
 
-      // Helpers (Unicode safe)
+      // Footer year
+      year.textContent = new Date().getFullYear();
+
+      // ===== Load AdSense slots lazily when visible =====
+      const initAds = () => {
+        window.adsbygoogle = window.adsbygoogle || [];
+        const slots = document.querySelectorAll(
+          "ins.adsbygoogle:not([data-loaded])"
+        );
+        if (!slots.length) return;
+
+        const push = (el) => {
+          try {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            el.setAttribute("data-loaded", "1");
+          } catch (e) {
+            /* ignore */
+          }
+        };
+
+        if ("IntersectionObserver" in window) {
+          const io = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  push(entry.target);
+                  io.unobserve(entry.target);
+                }
+              });
+            },
+            { rootMargin: "200px 0px" }
+          );
+          slots.forEach((el) => io.observe(el));
+        } else {
+          // Fallback: push immediately
+          slots.forEach(push);
+        }
+      };
+      window.addEventListener("load", initAds);
+
+      // ===== Helpers (Unicode-safe Base64) =====
       const b64enc = (str) => {
         const bytes = new TextEncoder().encode(str);
         let binary = "";
@@ -89,28 +484,60 @@
       const b64dec = (b64) => {
         const binary = atob(b64);
         const bytes = new Uint8Array(binary.length);
-        for (let i = 0; i < binary.length; i++) {
-          bytes[i] = binary.charCodeAt(i);
-        }
+        for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
         return new TextDecoder().decode(bytes);
       };
 
-      // Events
+      // Normalize incoming Base64 (accepts URL-safe and missing padding)
+      const normalizeB64 = (s) => {
+        let cleaned = (s || "")
+          .replace(/\s+/g, "") // remove whitespace/line breaks
+          .replace(/-/g, "+")
+          .replace(/_/g, "/");
+        const pad = cleaned.length % 4;
+        if (pad) cleaned += "=".repeat(4 - pad);
+        return cleaned;
+      };
+
+      // ===== Events =====
       encBtn.onclick = () => {
         outText.value = b64enc(inText.value);
+        tip.textContent = "Encoded using Unicode-safe Base64.";
       };
 
       decBtn.onclick = () => {
         try {
-          outText.value = b64dec(inText.value.trim());
+          const cleaned = normalizeB64(inText.value.trim());
+          outText.value = b64dec(cleaned);
+          tip.textContent = "Decoded successfully.";
         } catch (e) {
           outText.value = "Decode error: " + e.message;
+          tip.textContent = "";
         }
       };
 
       cpyBtn.onclick = () => {
         navigator.clipboard.writeText(outText.value || "");
+        tip.textContent = outText.value
+          ? "Output copied to clipboard."
+          : "Nothing to copy.";
       };
+
+      // Allow Enter to encode by default, Shift+Enter to decode
+      inText.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" && !e.shiftKey) {
+          e.preventDefault();
+          encBtn.click();
+        } else if (e.key === "Enter" && e.shiftKey) {
+          e.preventDefault();
+          decBtn.click();
+        }
+      });
     </script>
+
+    <noscript
+      >Your browser has JavaScript disabled; this tool needs JavaScript to
+      work.</noscript
+    >
   </body>
 </html>

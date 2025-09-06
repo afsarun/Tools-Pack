@@ -6,7 +6,7 @@
     <title>Online Age Calculator — Years, Months & Days | Tools Pack</title>
     <meta
       name="description"
-      content="Instantly calculate age in years, months, and days with next-birthday countdown."
+      content="Instantly calculate age in years, months, and days with a next-birthday countdown. Works fully offline in your browser."
     />
     <link
       rel="canonical"
@@ -15,25 +15,144 @@
     <link rel="stylesheet" href="../assets/style.css" />
     <meta name="theme-color" content="#1E1E2F" />
 
-    <!-- Inline overrides just for the date picker UI -->
+    <!-- Hreflang alternates -->
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://tools-pack.netlify.app/age-calculator/"
+    />
+    <link
+      rel="alternate"
+      hreflang="bn"
+      href="https://tools-pack.netlify.app/bn/age-calculator/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://tools-pack.netlify.app/age-calculator/"
+    />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tools Pack" />
+    <meta property="og:title" content="Online Age Calculator — Tools Pack" />
+    <meta
+      property="og:description"
+      content="Instant age in years, months, days — plus next-birthday countdown."
+    />
+    <meta
+      property="og:url"
+      content="https://tools-pack.netlify.app/age-calculator/"
+    />
+    <meta
+      property="og:image"
+      content="https://tools-pack.netlify.app/og/age-calculator.png"
+    />
+    <meta property="og:image:alt" content="Age Calculator — Tools Pack" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- JSON-LD: WebApplication -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Age Calculator",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All",
+        "url": "https://tools-pack.netlify.app/age-calculator/",
+        "inLanguage": "en",
+        "description": "Instantly calculate age in years, months, and days with next-birthday countdown."
+      }
+    </script>
+
+    <!-- JSON-LD: Breadcrumbs -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Tools Pack",
+            "item": "https://tools-pack.netlify.app/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Age Calculator",
+            "item": "https://tools-pack.netlify.app/age-calculator/"
+          }
+        ]
+      }
+    </script>
+
+    <!-- JSON-LD: FAQ rich results (keep concise) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I calculate my exact age?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Enter your date of birth and (optionally) an 'As of' date. The tool shows years, months, days, total days lived, and your next-birthday countdown."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does it handle leap day birthdays (Feb 29)?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. On non-leap years, Feb 29 birthdays are observed on Feb 28 for next-birthday logic."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does any of my data leave my browser?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. All calculations run locally in your browser; nothing is sent to a server."
+            }
+          }
+        ]
+      }
+    </script>
+
+    <!-- ========= Google AdSense loader =========
+         Replace client with your own publisher ID.
+         Keep data-adtest="on" while testing; remove when live. -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234567890123456"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Inline styles for ad slots + page-specific UI -->
     <style>
-      /* Container to place the icon inside the input */
+      /* ===== Layout grid for the two inputs ===== */
+      .age-grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 12px;
+      }
+      .age-grid > .field {
+        grid-column: span 6;
+      }
+
+      /* ===== Input with inline calendar icon ===== */
       .input-with-icon {
         position: relative;
         display: block;
       }
-
-      /* Give room for the icon inside the input on the right */
       .input-with-icon > input.field {
         padding-right: 44px;
       }
-
-      /* Hide Chrome/Edge/Safari native indicator so we don't see two icons */
       .input-with-icon > input[type="date"]::-webkit-calendar-picker-indicator {
-        opacity: 0; /* keeps it clickable if needed */
+        opacity: 0;
       }
-
-      /* Our calendar button (sits inside the input) */
       .input-with-icon > .cal-btn {
         position: absolute;
         right: 8px;
@@ -51,17 +170,16 @@
         cursor: pointer;
         background-color: rgb(248, 230, 230);
       }
-      /* Hover/focus feedback */
       .input-with-icon > .cal-btn:hover {
-        background-color: rgb(248, 230, 230, 0.8);
+        background-color: rgba(248, 230, 230, 0.8);
       }
       .input-with-icon > .cal-btn:focus-visible {
         outline: 2px solid var(--focus, #5b8def);
         outline-offset: 2px;
       }
-      /* Highlight input when any element inside gains focus */
       .input-with-icon:focus-within > input.field {
         border-color: var(--focus, #5b8def);
+        box-shadow: 0 0 0 2px rgba(91, 141, 239, 0.25);
         box-shadow: 0 0 0 2px
           color-mix(in oklab, var(--focus, #5b8def) 25%, transparent);
       }
@@ -75,43 +193,147 @@
         pointer-events: none;
       }
 
-      /* Dark-mode friendly hover */
-      @media (prefers-color-scheme: dark) {
-        .input-with-icon > .cal-btn:hover {
-          background: rgba(255, 255, 255, 0.08);
-        }
-      }
-
-      /* Minor tweaks for this page */
+      /* Minor page tweaks */
       #out.textarea {
         min-height: 120px;
       }
       #next {
         margin-top: 8px;
       }
+
+      /* ===== Related tools section ===== */
+      .related {
+        margin-top: 20px;
+      }
+      .related h3 {
+        margin-bottom: 8px;
+        font-size: 1rem;
+      }
+      .link-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .link-list a {
+        text-decoration: none;
+      }
+
+      /* ===== How-to & FAQ spacing ===== */
+      #how-to-use ol {
+        margin: 8px 0 12px 18px;
+      }
+      #faq h3 {
+        margin-top: 12px;
+        font-size: 1rem;
+      }
+      #faq p {
+        margin: 6px 0 12px;
+      }
+
+      /* ===== Responsive media queries ===== */
+      @media (max-width: 900px) {
+        .age-grid {
+          gap: 10px;
+        }
+      }
+      @media (max-width: 600px) {
+        .age-grid {
+          grid-template-columns: 1fr;
+        }
+        .age-grid > .field {
+          grid-column: 1 / -1 !important;
+        }
+        .input-with-icon > input.field {
+          padding-right: 48px;
+          font-size: 16px;
+        }
+        .input-with-icon > .cal-btn {
+          width: 32px;
+          height: 32px;
+          right: 6px;
+        }
+        .btn {
+          width: 100%;
+          margin-top: 8px;
+        }
+        .btn.btn-primary {
+          margin-top: 0;
+        }
+        #out.textarea {
+          min-height: 160px;
+        }
+      }
+      @media (max-width: 360px) {
+        .input-with-icon > .cal-btn {
+          right: 4px;
+        }
+      }
+
+      /* Dark-mode hover */
+      @media (prefers-color-scheme: dark) {
+        .input-with-icon > .cal-btn:hover {
+          background: rgba(255, 255, 255, 0.08);
+        }
+      }
+
+      /* ===== Ad slot label (if styled in global, this is no-op) ===== */
     </style>
   </head>
+
   <body>
-    <header class="sticky">
+    <header class="sticky" role="banner">
       <div class="wrap brand">
-        <a href="/"><div class="logo"></div></a>
+        <a href="/" aria-label="Back to home"
+          ><div class="logo" aria-hidden="true"></div
+        ></a>
         <div>
-          <h1 style="margin: 0">Age Calculator</h1>
+          <h1 class="site-title" style="margin: 0">Age Calculator</h1>
           <div class="sub">Years • Months • Days</div>
+        </div>
+        <div style="margin-left: auto">
+          <a class="muted" href="/bn/age-calculator/" hreflang="bn">বাংলা</a>
         </div>
       </div>
     </header>
 
-    <main class="wrap">
-      <article class="card">
+    <!-- Ad #1: top banner (constrained, no full-width expansion) -->
+    <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
+      <span class="ad-label">Ad</span>
+      <ins
+        class="adsbygoogle"
+        style="display: inline-block"
+        data-ad-client="ca-pub-1234567890123456"
+        data-ad-slot="1111111111"
+        data-ad-format="auto"
+        data-full-width-responsive="false"
+        data-adtest="on"
+      ></ins>
+    </div>
+
+    <main class="wrap" role="main">
+      <!-- Breadcrumbs -->
+      <nav class="breadcrumbs" aria-label="breadcrumb">
+        <a href="/">Home</a> › <a href="/#time">Time Tools</a> ›
+        <span>Age Calculator</span>
+      </nav>
+
+      <!-- TOC -->
+      <p class="toc">
+        <a href="#enter-dates">Enter dates</a> ·
+        <a href="#how-to-use">How to use</a> · <a href="#faq">FAQ</a> ·
+        <a href="#related">Related tools</a>
+      </p>
+
+      <!-- Tool -->
+      <article class="card" id="enter-dates">
         <h2>Enter dates</h2>
 
-        <div
-          class="grid"
-          style="grid-template-columns: repeat(12, 1fr); gap: 10px"
-        >
+        <div class="age-grid">
           <!-- DOB -->
-          <label class="field" style="grid-column: span 6">
+          <label class="field">
             <span class="muted">Date of birth</span>
             <div class="input-with-icon">
               <input
@@ -120,6 +342,8 @@
                 type="date"
                 placeholder="YYYY-MM-DD"
                 inputmode="numeric"
+                autocomplete="bday"
+                required
               />
               <button
                 class="cal-btn"
@@ -144,7 +368,7 @@
           </label>
 
           <!-- As of -->
-          <label class="field" style="grid-column: span 6">
+          <label class="field">
             <span class="muted">As of</span>
             <div class="input-with-icon">
               <input
@@ -153,6 +377,8 @@
                 type="date"
                 placeholder="YYYY-MM-DD"
                 inputmode="numeric"
+                autocomplete="off"
+                required
               />
               <button
                 class="cal-btn"
@@ -185,6 +411,20 @@
           <button class="btn" id="copy" type="button">Copy</button>
         </div>
 
+        <!-- Ad #2: in-article (fluid), fits content width nicely -->
+        <div class="ad-wrap ad-article" aria-label="Advertisement">
+          <span class="ad-label">Ad</span>
+          <ins
+            class="adsbygoogle"
+            style="display: block; text-align: center; height: 80px"
+            data-ad-client="ca-pub-1234567890123456"
+            data-ad-slot="2222222222"
+            data-ad-format="fluid"
+            data-ad-layout="in-article"
+            data-adtest="on"
+          ></ins>
+        </div>
+
         <textarea
           id="out"
           class="textarea mono"
@@ -193,17 +433,172 @@
         ></textarea>
         <div class="muted" id="next" aria-live="polite"></div>
       </article>
+
+      <!-- How to use -->
+      <article class="card" id="how-to-use">
+        <h2>How to use</h2>
+        <ol>
+          <li>
+            Select your <strong>Date of birth</strong>. Use the calendar button
+            to open the native picker.
+          </li>
+          <li>
+            <strong>As of</strong> defaults to today—change it if you want age
+            on another date (past or future).
+          </li>
+          <li>
+            Click <strong>Calculate</strong> (or press <kbd>Enter</kbd>) to see
+            years, months, days and total days lived.
+          </li>
+          <li>
+            Use <strong>Copy</strong> to copy the result, or
+            <strong>Reset</strong> to clear and start over.
+          </li>
+        </ol>
+
+        <h3>Tips</h3>
+        <ul>
+          <li>
+            Calendar buttons call the browser’s native date picker; if
+            unsupported, the field just focuses.
+          </li>
+          <li>
+            Leap-day birthdays (Feb&nbsp;29) are handled: in non-leap years, the
+            next birthday is observed on Feb&nbsp;28.
+          </li>
+          <li>
+            “As of” can be future-dated to see how old you’ll be on that day.
+          </li>
+          <li>Works offline once loaded; no data leaves your browser.</li>
+        </ul>
+      </article>
+
+      <!-- FAQ -->
+      <article class="card faq" id="faq">
+        <h2>FAQ</h2>
+
+        <details>
+          <summary>How do I calculate my exact age?</summary>
+          <p>
+            Enter your date of birth and (optionally) an “As of” date. The tool
+            shows years, months, days, total days lived, and your next-birthday
+            countdown.
+          </p>
+        </details>
+
+        <details>
+          <summary>Does it handle leap day birthdays (Feb 29)?</summary>
+          <p>
+            Yes. On non-leap years, Feb&nbsp;29 birthdays are observed on
+            Feb&nbsp;28 for next-birthday logic.
+          </p>
+        </details>
+
+        <details>
+          <summary>How is the next birthday calculated?</summary>
+          <p>
+            The next birthday is the next calendar occurrence of your birth
+            month/day (with Feb&nbsp;29→Feb&nbsp;28 in non-leap years). The
+            counter shows how many days remain.
+          </p>
+        </details>
+
+        <details>
+          <summary>Can I set a future “As of” date?</summary>
+          <p>Yes. Set any future date to see how old you’ll be on that day.</p>
+        </details>
+
+        <details>
+          <summary>Does any of my data leave my browser?</summary>
+          <p>No. All calculations run locally; nothing is uploaded.</p>
+        </details>
+
+        <details>
+          <summary>Does it work offline?</summary>
+          <p>Yes. After the first load, it works without internet.</p>
+        </details>
+      </article>
+
+      <!-- Related tools -->
+      <article class="card" id="related">
+        <h2>Related tools</h2>
+        <p class="muted">More date &amp; time utilities:</p>
+        <p>
+          <a class="btn" href="/stopwatch-countdown/"
+            >Stopwatch &amp; Countdown</a
+          >
+          <a class="btn" href="/calculator/">Calculator</a>
+          <a class="btn" href="/unit-converter/">Unit Converter</a>
+        </p>
+        <p class="small">
+          Prefer বাংলা? Try the
+          <a href="/bn/age-calculator/" hreflang="bn">বাংলা সংস্করণ</a>.
+        </p>
+      </article>
     </main>
 
-    <footer>© <span id="y"></span> Tools Pack</footer>
+    <footer>
+      © <span id="y"></span> Tools Pack • <a class="muted" href="/">Home</a> •
+      <a class="muted" href="/bn/age-calculator/" hreflang="bn">বাংলা</a>
+    </footer>
 
     <script>
+      // Shorthand query helper
       const $ = (s) => document.querySelector(s);
 
-      // Footer year
-      y.textContent = new Date().getFullYear();
+      // ✅ Bind elements explicitly (no implicit global IDs)
+      const yEl = document.getElementById("y");
+      const dob = document.getElementById("dob");
+      const asof = document.getElementById("asof");
+      const dobBtn = document.getElementById("dobBtn");
+      const asofBtn = document.getElementById("asofBtn");
+      const calc = document.getElementById("calc");
+      const reset = document.getElementById("reset");
+      const copy = document.getElementById("copy");
+      const out = document.getElementById("out");
+      const next = document.getElementById("next");
 
-      // Helpers
+      // Footer year
+      yEl.textContent = new Date().getFullYear();
+
+      // ===== Load AdSense slots lazily when visible =====
+      const initAds = () => {
+        window.adsbygoogle = window.adsbygoogle || [];
+        const slots = document.querySelectorAll(
+          "ins.adsbygoogle:not([data-loaded])"
+        );
+        if (!slots.length) return;
+
+        const push = (el) => {
+          try {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            el.setAttribute("data-loaded", "1");
+          } catch (e) {
+            /* ignore */
+          }
+        };
+
+        if ("IntersectionObserver" in window) {
+          const io = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  push(entry.target);
+                  io.unobserve(entry.target);
+                }
+              });
+            },
+            { rootMargin: "200px 0px" }
+          );
+          slots.forEach((el) => io.observe(el));
+        } else {
+          // Fallback: push immediately
+          slots.forEach(push);
+        }
+      };
+      window.addEventListener("load", initAds);
+
+      // ===== Calculator logic =====
       const todayStr = () => {
         const t = new Date();
         const y = t.getFullYear();
@@ -220,6 +615,7 @@
       const isLeap = (y) => (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0;
 
       const diff = (b, a) => {
+        // b = birth {y,m,d}, a = as-of {y,m,d}
         let y = a.y - b.y,
           m = a.m - b.m,
           d = a.d - b.d;
@@ -234,20 +630,20 @@
         return { y, m, d };
       };
 
-      const days = (A, B) =>
+      const daysBetween = (A, B) =>
         Math.round(
           (Date.UTC(B.getFullYear(), B.getMonth(), B.getDate()) -
             Date.UTC(A.getFullYear(), A.getMonth(), A.getDate())) /
             86400000
         );
 
-      // Proper Feb 29 handling: on non-leap years, birthday = Feb 28
+      // Proper Feb 29 handling: on non-leap years, birthday observed Feb 28
       const bday = (dob, yr) => {
-        const isFeb29 = dob.m === 2 && dob.d === 29;
+        const feb29 = dob.m === 2 && dob.d === 29;
         const leap = isLeap(yr);
-        const month = isFeb29 && !leap ? 2 : dob.m; // February stays 2
-        const day = isFeb29 && !leap ? 28 : dob.d;
-        return new Date(yr, month - 1, day);
+        const m = feb29 && !leap ? 2 : dob.m;
+        const d = feb29 && !leap ? 28 : dob.d;
+        return new Date(yr, m - 1, d);
       };
 
       // Defaults & constraints
@@ -255,14 +651,11 @@
       asof.value = today;
       dob.max = asof.max = today;
 
-      // One function to open the native picker when available
+      // Open the native picker when available
       const openPicker = (inputEl) => {
         try {
-          if (typeof inputEl.showPicker === "function") {
-            inputEl.showPicker(); // Chrome/Edge/Safari (newer)
-          } else {
-            inputEl.focus(); // Fallback
-          }
+          if (typeof inputEl.showPicker === "function") inputEl.showPicker();
+          else inputEl.focus();
         } catch {
           inputEl.focus();
         }
@@ -275,7 +668,7 @@
       dobBtn.addEventListener("click", () => openPicker(dob));
       asofBtn.addEventListener("click", () => openPicker(asof));
 
-      // Allow Enter key to trigger calc from either input
+      // Allow Enter key to trigger calc
       [dob, asof].forEach((el) => {
         el.addEventListener("keydown", (e) => {
           if (e.key === "Enter") calc.click();
@@ -307,13 +700,16 @@
         }
 
         const a = diff(B, A);
-        const total = days(Bd, Ad);
+        const total = daysBetween(Bd, Ad);
 
+        // Next birthday
         let nb = bday(B, A.y);
-        if (days(Ad, nb) < 0) nb = bday(B, A.y + 1);
+        if (daysBetween(Ad, nb) < 0) nb = bday(B, A.y + 1);
+        const left = daysBetween(Ad, nb);
 
-        const left = days(Ad, nb);
+        // Message for next birthday
         const turning = a.y + (left ? 1 : 0);
+        const nbStr = nb.toDateString();
 
         out.value =
           `Age: ${a.y} years, ${a.m} months, ${a.d} days\n` +
@@ -321,8 +717,8 @@
 
         next.textContent =
           left === 0
-            ? `🎉 Today (${nb.toDateString()}) — turning ${a.y}`
-            : `Next birthday in ${left} day(s) — ${nb.toDateString()} (turning ${turning})`;
+            ? `🎉 Happy birthday! Today (${nbStr}) — turned ${a.y}.`
+            : `Next birthday in ${left} day(s) — ${nbStr} (turning ${turning}).`;
       };
 
       // Reset
@@ -341,5 +737,10 @@
         navigator.clipboard.writeText(text);
       };
     </script>
+
+    <noscript
+      >Your browser has JavaScript disabled; this tool needs JavaScript to
+      work.</noscript
+    >
   </body>
 </html>

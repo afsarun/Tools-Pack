@@ -175,3 +175,96 @@ footer {
     grid-column: span 6;
   }
 }
+
+/* add for google   */
+/* add for google   */
+/* add for google   */
+/* add for google   */
+/* --- compact ad slot --- */
+.ad-wrap {
+  margin: 6px 0 8px; /* tighter */
+}
+.ad-label {
+  display: inline-block;
+  font-size: 11px; /* smaller label */
+  line-height: 1;
+  color: var(--muted, #888);
+  margin: 0 0 2px 0;
+}
+.adsbygoogle {
+  display: block;
+}
+
+/* cap width; keep centered */
+.ad-top {
+  margin-inline: auto;
+}
+
+/* Desktop: reserve less height (60px) */
+@media (min-width: 900px) {
+  .ad-top {
+    max-width: 728px;
+  }
+  .ad-top .adsbygoogle {
+    min-height: 60px;
+  }
+}
+
+/* Tablet: 50px tall */
+@media (max-width: 899px) and (min-width: 600px) {
+  .ad-top {
+    max-width: 468px;
+  }
+  .ad-top .adsbygoogle {
+    min-height: 50px;
+  }
+}
+
+/* Mobile: 50px tall (instead of 100) */
+@media (max-width: 599px) {
+  .ad-top {
+    max-width: 320px;
+  }
+  .ad-top .adsbygoogle {
+    min-height: 50px;
+  }
+}
+
+/* If no creative is inserted (adblock/no-fill), remove the slot entirely */
+.ad-top .adsbygoogle:empty {
+  display: none;
+}
+
+/* In-article: keep it narrower than the card for better aesthetics */
+.ad-article {
+  max-width: 600px;
+  margin-inline: auto;
+}
+@media (max-width: 600px) {
+  .ad-article {
+    max-width: 360px;
+  }
+}
+/* Related tools: make the chip row wrap with gaps */
+#related p:nth-of-type(2) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px; /* space between buttons */
+  margin-top: 8px;
+}
+
+/* Buttons: behave nicely inside the flex row */
+#related .btn {
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+}
+
+/* On small screens, let long labels wrap to two lines */
+@media (max-width: 520px) {
+  #related .btn {
+    white-space: normal; /* was causing overlaps when forced to one line */
+    line-height: 1.2;
+    padding: 8px 10px; /* a bit more vertical room for two-line chips */
+  }
+}

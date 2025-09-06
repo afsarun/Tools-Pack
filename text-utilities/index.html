@@ -8,12 +8,37 @@
       name="description"
       content="Upper/lowercase, collapse/remove spaces, and live word/character count."
     />
+    <meta
+      name="robots"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+
+    <!-- Canonical & hreflang -->
     <link
       rel="canonical"
       href="https://tools-pack.netlify.app/text-utilities/"
     />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://tools-pack.netlify.app/text-utilities/"
+    />
+    <link
+      rel="alternate"
+      hreflang="bn"
+      href="https://tools-pack.netlify.app/bn/text-utilities/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://tools-pack.netlify.app/"
+    />
+
+    <!-- Styles -->
     <link rel="stylesheet" href="../assets/style.css" />
     <meta name="theme-color" content="#1E1E2F" />
+
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Text Utilities — Tools Pack" />
     <meta
@@ -28,7 +53,18 @@
       property="og:image"
       content="https://tools-pack.netlify.app/og/text.png"
     />
+
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- AdSense: Auto Ads -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Structured data: WebApplication -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -41,58 +77,425 @@
         "inLanguage": "en"
       }
     </script>
+
+    <!-- Structured data: Breadcrumbs -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://tools-pack.netlify.app/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Text Tools",
+            "item": "https://tools-pack.netlify.app/#text"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Text Utilities",
+            "item": "https://tools-pack.netlify.app/text-utilities/"
+          }
+        ]
+      }
+    </script>
+
+    <!-- Structured data: FAQ (matches visible FAQ) -->
+    <script type="application/ld+json" id="faq-jsonld">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Do you send my text to a server?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. All actions (case change, space cleanup, copy, counting) happen locally in your browser. Your text is not uploaded."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is the word count calculated?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Words are counted by splitting on whitespace using a simple regex (\\S+). Characters include everything you see, including spaces and newlines."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What’s the difference between “Collapse spaces” and “Remove ALL spaces”?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Collapse spaces replaces any run of whitespace (\\s+) with a single space and trims the ends. Remove ALL spaces deletes all whitespace entirely (spaces, tabs, newlines)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Will punctuation, emojis, or non-Latin scripts change?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Case conversion affects letters only. Punctuation and emojis are preserved. Scripts without case (e.g., Bengali) are unaffected by UPPER/lower conversion."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does it work offline?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. After the first load, the page continues to work offline."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is there a size limit?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "There is no hard limit, but very large pastes may feel slow on low-memory devices. For extremely large texts, process in chunks."
+            }
+          }
+        ]
+      }
+    </script>
+
+    <!-- Page-only CSS -->
+    <style>
+      .breadcrumbs {
+        font-size: 14px;
+        margin: 12px 0;
+        color: var(--muted, #9aa0b4);
+      }
+      .breadcrumbs a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .toc {
+        font-size: 12px;
+        color: var(--muted, #9aa0b4);
+        margin-bottom: 8px;
+      }
+      .toc a {
+        text-decoration: none;
+      }
+      .ad-spacer {
+        margin: 18px 0;
+      }
+      .faq details {
+        border: 1px solid #2b2b44;
+        border-radius: 8px;
+        padding: 10px 12px;
+        margin-bottom: 10px;
+      }
+      .faq summary {
+        cursor: pointer;
+        font-weight: 600;
+      }
+      .small {
+        font-size: 12px;
+      }
+      .toast {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #1e1e2f;
+        color: #fff;
+        padding: 8px 14px;
+        border-radius: 6px;
+        font-size: 14px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+      .toast.show {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    </style>
   </head>
   <body>
     <header class="sticky">
       <div class="wrap brand">
-        <a href="/"><div class="logo"></div></a>
+        <a href="/"><div class="logo" aria-label="Tools Pack"></div></a>
         <div>
           <h1 style="margin: 0">Text Utilities</h1>
           <div class="sub">Case • Clean • Count</div>
         </div>
+        <div style="margin-left: auto">
+          <a class="muted" href="/bn/text-utilities/" hreflang="bn">বাংলা</a>
+        </div>
       </div>
     </header>
+    <!-- Ad #1: top banner (constrained, no full-width expansion) -->
+    <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
+      <span class="ad-label">Ad</span>
+      <ins
+        class="adsbygoogle"
+        style="display: inline-block"
+        data-ad-client="ca-pub-1234567890123456"
+        data-ad-slot="1111111111"
+        data-ad-format="auto"
+        data-full-width-responsive="false"
+        data-adtest="on"
+      ></ins>
+    </div>
     <main class="wrap">
-      <article class="card">
-        <textarea id="t" class="textarea" placeholder="Paste text…"></textarea>
+      <!-- Breadcrumbs -->
+      <nav class="breadcrumbs" aria-label="breadcrumb">
+        <a href="/">Home</a> › <a href="/#text">Text Tools</a> ›
+        <span>Text Utilities</span>
+      </nav>
+
+      <!-- Quick TOC -->
+      <p class="toc">
+        <a href="#tool">Tool</a> · <a href="#how-to-use">How to use</a> ·
+        <a href="#faq">FAQ</a> ·
+        <a href="#related">Related tools</a>
+      </p>
+
+      <!-- Tool -->
+      <article class="card" id="tool">
+        <textarea
+          id="t"
+          class="textarea"
+          placeholder="Paste text…"
+          aria-label="Text input"
+        ></textarea>
         <div>
-          <button class="btn" id="up">UPPERCASE</button
-          ><button class="btn" id="low">lowercase</button>
-          <button class="btn" id="collapse">Collapse spaces</button
-          ><button class="btn" id="remove">Remove ALL spaces</button
-          ><button class="btn" id="copy">Copy</button>
+          <button class="btn" id="up" type="button">UPPERCASE</button>
+          <button class="btn" id="low" type="button">lowercase</button>
+          <button class="btn" id="collapse" type="button">
+            Collapse spaces
+          </button>
+          <button class="btn" id="remove" type="button">
+            Remove ALL spaces
+          </button>
+          <button class="btn" id="copy" type="button">Copy</button>
         </div>
-        <div class="muted" id="stats">Words: 0 • Characters: 0</div>
+
+        <div class="ad-wrap ad-article" aria-label="Advertisement">
+          <span class="ad-label">Ad</span>
+          <ins
+            class="adsbygoogle"
+            style="display: block; text-align: center"
+            data-ad-client="ca-pub-1234567890123456"
+            data-ad-slot="2222222222"
+            data-ad-format="fluid"
+            data-ad-layout="in-article"
+            data-adtest="on"
+          ></ins>
+        </div>
+        <div class="muted" id="stats" aria-live="polite">
+          Words: 0 • Characters: 0
+        </div>
+        <p class="small muted" style="margin-top: 6px">
+          All processing happens locally in your browser (no upload).
+        </p>
+      </article>
+
+      <!-- In-article Ad (Responsive Fluid) -->
+      <div class="ad-spacer">
+        <ins
+          class="adsbygoogle"
+          style="display: block; text-align: center"
+          data-ad-layout="in-article"
+          data-ad-format="fluid"
+          data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+          data-ad-slot="1234567890"
+        ></ins>
+      </div>
+
+      <!-- Display Ad (Auto/Responsive) -->
+      <div class="ad-spacer">
+        <ins
+          class="adsbygoogle"
+          style="display: block"
+          data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+          data-ad-slot="1234567891"
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        ></ins>
+      </div>
+
+      <!-- How to use -->
+      <article class="card" id="how-to-use">
+        <h2>How to use</h2>
+        <ol>
+          <li>Paste or type your text into the box.</li>
+          <li>
+            Use <strong>UPPERCASE</strong> or <strong>lowercase</strong> to
+            change letter case.
+          </li>
+          <li>
+            Use <strong>Collapse spaces</strong> to turn any extra whitespace
+            into single spaces and trim the ends.
+          </li>
+          <li>
+            Use <strong>Remove ALL spaces</strong> to delete every whitespace
+            character (spaces, tabs, newlines).
+          </li>
+          <li>
+            Click <strong>Copy</strong> to copy the result. The
+            <strong>Words/Characters</strong> counter updates live.
+          </li>
+        </ol>
+        <h3>Tips</h3>
+        <ul>
+          <li>Everything runs locally—your text is never uploaded.</li>
+          <li>Works offline after the first load.</li>
+          <li>
+            <em>Note:</em> “Collapse spaces” will also convert line breaks to a
+            single space. If you need line breaks, avoid this action.
+          </li>
+          <li>
+            Made a mistake? Use your browser’s undo
+            (<kbd>Ctrl/⌘</kbd>+<kbd>Z</kbd>).
+          </li>
+        </ul>
+      </article>
+
+      <!-- FAQ -->
+      <article class="card faq" id="faq">
+        <h2>FAQ</h2>
+
+        <details>
+          <summary>Do you send my text to a server?</summary>
+          <p>
+            No. All actions (case change, space cleanup, copy, counting) happen
+            locally in your browser. Your text is not uploaded.
+          </p>
+        </details>
+
+        <details>
+          <summary>How is the word count calculated?</summary>
+          <p>
+            Words are counted by splitting on whitespace using a simple regex
+            (<code>\S+</code>). Characters include everything you see, including
+            spaces and newlines.
+          </p>
+        </details>
+
+        <details>
+          <summary>
+            What’s the difference between “Collapse spaces” and “Remove ALL
+            spaces”?
+          </summary>
+          <p>
+            <strong>Collapse spaces</strong> replaces any run of whitespace
+            (<code>\s+</code>) with a single space and trims the ends.
+            <strong>Remove ALL spaces</strong> deletes all whitespace entirely
+            (spaces, tabs, newlines).
+          </p>
+        </details>
+
+        <details>
+          <summary>
+            Will punctuation, emojis, or non-Latin scripts change?
+          </summary>
+          <p>
+            No. Case conversion affects letters only. Punctuation and emojis are
+            preserved. Scripts without case (e.g., Bengali) are unaffected by
+            UPPER/lower conversion.
+          </p>
+        </details>
+
+        <details>
+          <summary>Does it work offline?</summary>
+          <p>Yes. After the first load, the page continues to work offline.</p>
+        </details>
+
+        <details>
+          <summary>Is there a size limit?</summary>
+          <p>
+            There is no hard limit, but very large pastes may feel slow on
+            low-memory devices. For extremely large texts, process in chunks.
+          </p>
+        </details>
+      </article>
+
+      <!-- Related tools -->
+      <article class="card" id="related">
+        <h2>Related tools</h2>
+        <p class="muted">More text &amp; encoding utilities:</p>
+        <p>
+          <a class="btn" href="/text-to-pdf/">Text → PDF</a>
+          <a class="btn" href="/json-formatter/">JSON Formatter</a>
+          <a class="btn" href="/base64/">Base64 Encode/Decode</a>
+          <a class="btn" href="/url-tools/">URL Tools</a>
+        </p>
+        <p class="small">
+          Prefer বাংলা? Try the
+          <a href="/bn/text-utilities/" hreflang="bn">বাংলা সংস্করণ</a>.
+        </p>
       </article>
     </main>
-    <footer>© <span id="y"></span> Tools Pack</footer>
+
+    <footer>
+      © <span id="y"></span> Tools Pack · <a href="/privacy/">Privacy</a> ·
+      <a href="/terms/">Terms</a>
+    </footer>
+
+    <!-- Toast -->
+    <div class="toast" id="toast" role="status" aria-live="polite">
+      Copied ✅
+    </div>
+
+    <noscript>
+      <div class="wrap">
+        <p>Please enable JavaScript to use Text Utilities.</p>
+      </div>
+    </noscript>
+
     <script>
+      // Footer year
       y.textContent = new Date().getFullYear();
-      const u = () => {
+
+      // Update stats
+      const updateStats = () => {
         const s = t.value;
-        stats.textContent = `Words: ${
-          (s.trim().match(/\S+/g) || []).length
-        } • Characters: ${s.length}`;
+        const words = (s.trim().match(/\S+/g) || []).length;
+        stats.textContent = `Words: ${words} • Characters: ${s.length}`;
       };
-      t.addEventListener("input", u);
-      u();
+      t.addEventListener("input", updateStats);
+      updateStats();
+
+      // Actions
       up.onclick = () => {
         t.value = t.value.toUpperCase();
-        u();
+        updateStats();
       };
       low.onclick = () => {
         t.value = t.value.toLowerCase();
-        u();
+        updateStats();
       };
       collapse.onclick = () => {
         t.value = t.value.replace(/\s+/g, " ").trim();
-        u();
+        updateStats();
       };
       remove.onclick = () => {
-        t.value = t.value.replace(/ +/g, "");
-        u();
+        t.value = t.value.replace(/\s+/g, "");
+        updateStats();
       };
-      copy.onclick = () => navigator.clipboard.writeText(t.value);
+      copy.onclick = async () => {
+        await navigator.clipboard.writeText(t.value);
+        showToast();
+      };
+
+      // Toast
+      function showToast() {
+        const el = document.getElementById("toast");
+        el.classList.add("show");
+        setTimeout(() => el.classList.remove("show"), 1800);
+      }
+
+      // Initialize AdSense units
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
     </script>
   </body>
 </html>

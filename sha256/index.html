@@ -1,28 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-locale="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>SHA-256 Hash Generator — WebCrypto | Tools Pack</title>
     <meta
       name="description"
-      content="Create SHA-256 hashes from text or files securely in your browser."
+      content="Create SHA-256 hashes from text or files securely in your browser. No upload, privacy-friendly."
     />
     <link rel="canonical" href="https://tools-pack.netlify.app/sha256/" />
-    <link rel="stylesheet" href="../assets/style.css" />
-    <meta name="theme-color" content="#1E1E2F" />
+
+    <!-- Hreflang for i18n -->
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://tools-pack.netlify.app/sha256/"
+    />
+    <link
+      rel="alternate"
+      hreflang="bn"
+      href="https://tools-pack.netlify.app/bn/sha256/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://tools-pack.netlify.app/"
+    />
+
+    <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="SHA-256 Hash — Tools Pack" />
     <meta
       property="og:description"
-      content="Hash text or files using WebCrypto."
+      content="Hash text or files using WebCrypto. Everything runs in your browser."
     />
     <meta property="og:url" content="https://tools-pack.netlify.app/sha256/" />
     <meta
       property="og:image"
       content="https://tools-pack.netlify.app/og/hash.png"
     />
+    <meta property="og:site_name" content="Tools Pack" />
+    <meta property="og:locale" content="en_US" />
     <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Theme color + CSS -->
+    <meta name="theme-color" content="#1E1E2F" />
+    <link rel="stylesheet" href="../assets/style.css" />
+
+    <!-- AdSense (replace with your client id) -->
+    <!-- IMPORTANT: Your site must be approved in AdSense. -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- WebApplication schema -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -35,56 +68,393 @@
         "inLanguage": "en"
       }
     </script>
+
+    <!-- FAQ schema (matches the FAQ section below) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I use this SHA-256 tool?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Type or paste your text into the box—or choose a file—then click Compute (or press Ctrl/Cmd+Enter). The SHA-256 hex digest appears instantly below. All hashing happens locally in your browser."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does my text or file get uploaded?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Hashing uses the WebCrypto API in your browser. Nothing is sent to a server."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I hash large files?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, up to your browser’s available memory. For very large files, use a desktop tool that supports streaming."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is SHA-256 reversible?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. SHA-256 is a one-way cryptographic hash, not encryption; you cannot get the original content back from the hash."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What can I use SHA-256 for?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Typical uses: verifying file integrity, generating content fingerprints, or storing checksums."
+            }
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <header class="sticky">
       <div class="wrap brand">
-        <a href="/"><div class="logo"></div></a>
+        <a href="/"><div class="logo" aria-label="Tools Pack"></div></a>
         <div>
           <h1 style="margin: 0">Hash Generator</h1>
           <div class="sub">SHA-256 • WebCrypto</div>
         </div>
+        <div style="margin-left: auto">
+          <a class="muted" href="/bn/sha256/" hreflang="bn">বাংলা</a>
+        </div>
       </div>
     </header>
-    <main class="wrap">
-      <article class="card">
+    <!-- Ad #1: top banner (constrained, no full-width expansion) -->
+    <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
+      <span class="ad-label">Ad</span>
+      <ins
+        class="adsbygoogle"
+        style="display: inline-block"
+        data-ad-client="ca-pub-1234567890123456"
+        data-ad-slot="1111111111"
+        data-ad-format="auto"
+        data-full-width-responsive="false"
+        data-adtest="on"
+      ></ins>
+    </div>
+    <main class="wrap" id="main">
+      <!-- Breadcrumbs -->
+      <nav class="breadcrumbs" aria-label="breadcrumb">
+        <a href="/">Home</a> › <a href="/#text">Text Tools</a> ›
+        <span>SHA-256 Hash</span>
+      </nav>
+
+      <!-- TOC -->
+      <p class="toc">
+        <a href="#hash-tool">Hash tool</a> ·
+        <a href="#how-to-use">How to use</a> · <a href="#faq">FAQ</a> ·
+        <a href="#related">Related tools</a>
+      </p>
+
+      <!-- Ad: top responsive banner -->
+      <section class="card" aria-label="Advertisement">
+        <ins
+          class="adsbygoogle"
+          style="display: block"
+          data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+          data-ad-slot="0000000000"
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        ></ins>
+        <script>
+          (window.adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+      </section>
+
+      <!-- MAIN TOOL -->
+      <article class="card" id="hash-tool">
+        <label
+          for="txt"
+          class="muted"
+          style="display: block; margin-bottom: 0.5rem"
+          >Text to hash</label
+        >
         <textarea
           id="txt"
           class="textarea mono"
-          placeholder="Text to hash (or choose a file below)…"
+          placeholder="Type or paste text here…"
         ></textarea>
-        <div>
-          <input id="file" class="field" type="file" /><button
+
+        <div
+          style="
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            margin-top: 0.75rem;
+            flex-wrap: wrap;
+          "
+        >
+          <label for="file" class="muted" style="min-width: 9rem"
+            >…or choose a file:</label
+          >
+          <input id="file" class="field" type="file" />
+          <button
             class="btn btn-primary"
             id="run"
+            type="button"
+            aria-label="Compute SHA-256"
           >
             Compute
           </button>
+          <button class="btn" id="clear" type="button" aria-label="Clear">
+            Clear
+          </button>
         </div>
-        <input
-          id="out"
-          class="field mono"
-          readonly
-          placeholder="SHA-256 hex digest"
-        />
+
+        <div
+          style="
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            margin-top: 0.75rem;
+            flex-wrap: wrap;
+          "
+        >
+          <input
+            id="out"
+            class="field mono"
+            readonly
+            placeholder="SHA-256 hex digest"
+            aria-label="SHA-256 output"
+            aria-live="polite"
+            style="flex: 1"
+          />
+          <button class="btn" id="copy" type="button" aria-label="Copy hash">
+            Copy
+          </button>
+        </div>
+        <div class="ad-wrap ad-article" aria-label="Advertisement">
+          <span class="ad-label">Ad</span>
+          <ins
+            class="adsbygoogle"
+            style="display: block; text-align: center"
+            data-ad-client="ca-pub-1234567890123456"
+            data-ad-slot="2222222222"
+            data-ad-format="fluid"
+            data-ad-layout="in-article"
+            data-adtest="on"
+          ></ins>
+        </div>
+        <p class="muted" style="margin-top: 0.5rem">
+          Privacy: hashing happens <strong>locally</strong> with WebCrypto;
+          nothing is uploaded.
+        </p>
       </article>
+
+      <!-- In-article Ad (AdSense in-article format works fine inside content) -->
+
+      <!-- How to use -->
+      <article class="card" id="how-to-use">
+        <h2>How to use</h2>
+        <ol>
+          <li>
+            Type or paste text into the box, <em>or</em> click
+            <strong>…or choose a file</strong> to select a file.
+          </li>
+          <li>
+            Click <strong>Compute</strong> (or press
+            <kbd>Ctrl/Cmd</kbd>+<kbd>Enter</kbd>). The SHA-256 hex digest
+            appears below.
+          </li>
+          <li>
+            Click <strong>Copy</strong> to copy the hash to your clipboard.
+          </li>
+          <li>
+            Use <strong>Clear</strong> to reset the inputs and start again.
+          </li>
+        </ol>
+        <h3>Tips</h3>
+        <ul>
+          <li>Works offline once loaded.</li>
+          <li>
+            For very large files, your browser must load the whole file into
+            memory. Consider a desktop tool with streaming for multi-GB files.
+          </li>
+          <li>
+            SHA-256 is <em>deterministic</em>: the same input always produces
+            the same output.
+          </li>
+          <li>
+            Hashes are <em>one-way</em> (not encryption). You can’t reverse a
+            hash to get the original content.
+          </li>
+        </ul>
+      </article>
+
+      <!-- FAQ -->
+      <article class="card faq" id="faq">
+        <h2>FAQ</h2>
+
+        <details>
+          <summary>How do I use this SHA-256 tool?</summary>
+          <p>
+            Enter text or pick a file, then click <strong>Compute</strong> (or
+            press <kbd>Ctrl/Cmd</kbd>+<kbd>Enter</kbd>). The hex digest will be
+            shown in the output box.
+          </p>
+        </details>
+
+        <details>
+          <summary>Does my text or file get uploaded?</summary>
+          <p>
+            No. All hashing is performed locally in your browser using the
+            WebCrypto API. Nothing leaves your device.
+          </p>
+        </details>
+
+        <details>
+          <summary>Can I hash large files?</summary>
+          <p>
+            Yes—subject to available memory in your browser. For multi-GB files,
+            use a desktop tool that supports streaming.
+          </p>
+        </details>
+
+        <details>
+          <summary>Is SHA-256 reversible?</summary>
+          <p>
+            No. SHA-256 is a cryptographic hash function. It’s designed to be
+            one-way and collision-resistant.
+          </p>
+        </details>
+
+        <details>
+          <summary>What is SHA-256 used for?</summary>
+          <p>
+            Common uses include verifying file integrity, creating content
+            fingerprints, and storing checksums.
+          </p>
+        </details>
+      </article>
+
+      <!-- Related tools -->
+      <article class="card" id="related">
+        <h2>Related tools</h2>
+        <p class="muted">More text &amp; encoding utilities:</p>
+        <p>
+          <a class="btn" href="/text-to-pdf/">Text → PDF</a>
+          <a class="btn" href="/json-formatter/">JSON Formatter</a>
+          <a class="btn" href="/base64/">Base64 Encode/Decode</a>
+          <a class="btn" href="/url-tools/">URL Tools</a>
+        </p>
+        <p class="small">
+          Prefer বাংলা? Try the
+          <a href="/bn/sha256/" hreflang="bn">বাংলা সংস্করণ</a>.
+        </p>
+      </article>
+
+      <!-- Bottom Ad -->
+      <section class="card" aria-label="Advertisement">
+        <ins
+          class="adsbygoogle"
+          style="display: block"
+          data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+          data-ad-slot="0000000000"
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        ></ins>
+        <script>
+          (window.adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+      </section>
     </main>
+
     <footer>© <span id="y"></span> Tools Pack</footer>
+
+    <noscript>
+      <div class="wrap card" role="status">
+        This tool requires JavaScript (WebCrypto) to run entirely in your
+        browser.
+      </div>
+    </noscript>
+
     <script>
-      y.textContent = new Date().getFullYear();
-      const toHex = (b) =>
-        [...new Uint8Array(b)]
+      // year
+      document.getElementById("y").textContent = new Date().getFullYear();
+
+      // helpers
+      const $ = (sel) => document.querySelector(sel);
+      const toHex = (buf) =>
+        [...new Uint8Array(buf)]
           .map((x) => x.toString(16).padStart(2, "0"))
           .join("");
-      const sha = async (d) => toHex(await crypto.subtle.digest("SHA-256", d));
-      run.onclick = async () => {
-        const f = file.files[0];
-        if (f) {
-          out.value = await sha(await f.arrayBuffer());
-        } else {
-          out.value = await sha(new TextEncoder().encode(txt.value));
+      const sha = async (data) =>
+        toHex(await crypto.subtle.digest("SHA-256", data));
+
+      // elements
+      const txt = $("#txt");
+      const file = $("#file");
+      const run = $("#run");
+      const out = $("#out");
+      const copyBtn = $("#copy");
+      const clearBtn = $("#clear");
+
+      // actions
+      async function compute() {
+        try {
+          const f = file.files && file.files[0];
+          if (f) {
+            out.value = await sha(await f.arrayBuffer());
+          } else {
+            out.value = await sha(new TextEncoder().encode(txt.value || ""));
+          }
+          out.focus();
+          out.select();
+        } catch (err) {
+          out.value = "Error: " + (err && err.message ? err.message : err);
         }
-      };
+      }
+
+      run.addEventListener("click", compute);
+      document.addEventListener("keydown", (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === "Enter") compute();
+      });
+
+      copyBtn.addEventListener("click", async () => {
+        if (!out.value) return;
+        try {
+          await navigator.clipboard.writeText(out.value);
+          copyBtn.textContent = "Copied!";
+          setTimeout(() => (copyBtn.textContent = "Copy"), 1200);
+        } catch {
+          // fallback
+          out.select();
+          document.execCommand("copy");
+        }
+      });
+
+      clearBtn.addEventListener("click", () => {
+        txt.value = "";
+        file.value = "";
+        out.value = "";
+        txt.focus();
+      });
+
+      // drag & drop (optional UX)
+      txt.addEventListener("dragover", (e) => {
+        e.preventDefault();
+      });
+      txt.addEventListener("drop", async (e) => {
+        e.preventDefault();
+        const f = e.dataTransfer.files && e.dataTransfer.files[0];
+        if (f) {
+          file.files = e.dataTransfer.files;
+          await compute();
+        }
+      });
     </script>
   </body>
 </html>

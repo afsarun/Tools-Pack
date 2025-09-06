@@ -1,19 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-locale="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Unit Converter — Length, Weight & Temperature | Tools Pack</title>
     <meta
       name="description"
-      content="Convert between metric and imperial units: m↔km, kg↔lb, °C↔°F and more."
+      content="Convert between metric and imperial units: m↔km, kg↔lb, °C↔°F and more. Fast, accurate, and privacy-friendly."
     />
     <link
       rel="canonical"
       href="https://tools-pack.netlify.app/unit-converter/"
     />
-    <link rel="stylesheet" href="../assets/style.css" />
-    <meta name="theme-color" content="#1E1E2F" />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://tools-pack.netlify.app/unit-converter/"
+    />
+    <link
+      rel="alternate"
+      hreflang="bn"
+      href="https://tools-pack.netlify.app/bn/unit-converter/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://tools-pack.netlify.app/"
+    />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -30,11 +43,25 @@
       property="og:image"
       content="https://tools-pack.netlify.app/og/unit.png"
     />
+    <meta property="og:site_name" content="Tools Pack" />
+    <meta property="og:locale" content="en_US" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- Schema.org JSON-LD -->
+    <!-- Theme/CSS -->
+    <meta name="theme-color" content="#1E1E2F" />
+    <link rel="stylesheet" href="../assets/style.css" />
+
+    <!-- AdSense (replace with your client id) -->
+    <!-- IMPORTANT: Your site must be approved in AdSense and follow policies. -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- WebApplication schema -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -48,207 +75,425 @@
       }
     </script>
 
+    <!-- FAQ schema (mirrors the FAQ section below) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I use the Unit Converter?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Enter a value, pick the From and To units, and the result updates instantly. Works for length, weight, and temperature."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this tool send data to a server?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. All conversions are computed locally in your browser."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why are there decimals in results?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Some unit ratios are non-terminating (e.g., miles to kilometers). We round to a reasonable number of decimals while keeping accuracy."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are these conversions exact?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "SI-based conversions are exact by definition (e.g., 1 km = 1000 m). Others like miles↔kilometers use standard precise constants."
+            }
+          }
+        ]
+      }
+    </script>
+
     <style>
-      body {
-        font-family: system-ui, sans-serif;
-        background: #1e1e2f;
-        color: #f0f0f0;
-        margin: 0;
-        padding: 2rem;
+      /* Page-local tweaks that harmonize with your existing theme */
+      main.wrap {
+        margin-top: 1rem;
       }
-      /* header {
-        text-align: center;
-        margin-bottom: 2rem;
-      }
-      h1 {
-        font-size: 1.8rem;
-      } */
       .converter {
-        max-width: 800px;
+        max-width: 900px;
         margin: 0 auto;
-        background: #2a2a40;
-        padding: 1.5rem;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-        margin-top: 5rem;
+      }
+      .grid-3 {
+        display: grid;
+        gap: 1rem;
       }
       .row {
         display: flex;
         gap: 0.5rem;
-        margin-bottom: 1rem;
+        flex-wrap: wrap;
+        align-items: center;
       }
-      input,
-      select {
-        flex: 1;
-        padding: 0.6rem;
-        border-radius: 6px;
-        border: 1px solid #444;
-        background: #1e1e2f;
-        color: #fff;
+      .row input,
+      .row select {
+        flex: 1 1 180px;
       }
-      label {
-        font-size: 0.9rem;
-        margin-bottom: 0.25rem;
-        display: block;
+      .result {
+        min-height: 1.5em;
+        margin: 0.25rem 0 0;
+      }
+      .unit-block + .unit-block {
+        margin-top: 1rem;
+      }
+      .muted small kbd {
+        border: 1px solid #555;
+        padding: 0 0.3em;
+        border-radius: 0.25rem;
       }
     </style>
   </head>
   <body>
     <header class="sticky">
       <div class="wrap brand">
-        <a href="/"><div class="logo"></div></a>
+        <a href="/"><div class="logo" aria-label="Tools Pack"></div></a>
         <div>
           <h1 style="margin: 0">Unit Converter</h1>
           <div class="sub">
             Convert between length, weight, and temperature.
           </div>
         </div>
+        <div style="margin-left: auto">
+          <a class="muted" href="/bn/unit-converter/" hreflang="bn">বাংলা</a>
+        </div>
       </div>
     </header>
-    <main>
-      <section class="converter">
-        <!-- Length -->
-        <div>
+    <!-- Ad #1: top banner (constrained, no full-width expansion) -->
+    <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
+      <span class="ad-label">Ad</span>
+      <ins
+        class="adsbygoogle"
+        style="display: inline-block"
+        data-ad-client="ca-pub-1234567890123456"
+        data-ad-slot="1111111111"
+        data-ad-format="auto"
+        data-full-width-responsive="false"
+        data-adtest="on"
+      ></ins>
+    </div>
+    <main class="wrap" id="main">
+      <!-- Breadcrumbs -->
+      <nav class="breadcrumbs" aria-label="breadcrumb">
+        <a href="/">Home</a> › <a href="/#convert">Converters</a> ›
+        <span>Unit Converter</span>
+      </nav>
+
+      <!-- TOC -->
+      <p class="toc">
+        <a href="#converter">Convert units</a> ·
+        <a href="#how-to-use">How to use</a> · <a href="#faq">FAQ</a> ·
+        <a href="#related">Related tools</a>
+      </p>
+
+      <!-- Converter -->
+      <section class="card converter" id="converter">
+        <h2>Convert Units</h2>
+
+        <div class="unit-block">
           <label for="lengthInput">Length</label>
           <div class="row">
-            <input type="number" id="lengthInput" placeholder="Enter value" />
-            <select id="lengthFrom">
+            <input
+              type="number"
+              id="lengthInput"
+              class="field"
+              placeholder="Enter value"
+              inputmode="decimal"
+            />
+            <select id="lengthFrom" class="field">
               <option value="m">Meters (m)</option>
               <option value="km">Kilometers (km)</option>
               <option value="mi">Miles (mi)</option>
               <option value="ft">Feet (ft)</option>
             </select>
-            <select id="lengthTo">
+            <select id="lengthTo" class="field">
               <option value="km">Kilometers (km)</option>
               <option value="m">Meters (m)</option>
               <option value="mi">Miles (mi)</option>
               <option value="ft">Feet (ft)</option>
             </select>
           </div>
-          <p id="lengthResult"></p>
+          <p
+            id="lengthResult"
+            class="result mono"
+            role="status"
+            aria-live="polite"
+          ></p>
         </div>
 
-        <!-- Weight -->
-        <div>
+        <div class="unit-block">
           <label for="weightInput">Weight</label>
           <div class="row">
-            <input type="number" id="weightInput" placeholder="Enter value" />
-            <select id="weightFrom">
+            <input
+              type="number"
+              id="weightInput"
+              class="field"
+              placeholder="Enter value"
+              inputmode="decimal"
+            />
+            <select id="weightFrom" class="field">
               <option value="kg">Kilograms (kg)</option>
               <option value="g">Grams (g)</option>
               <option value="lb">Pounds (lb)</option>
             </select>
-            <select id="weightTo">
+            <select id="weightTo" class="field">
               <option value="lb">Pounds (lb)</option>
               <option value="kg">Kilograms (kg)</option>
               <option value="g">Grams (g)</option>
             </select>
           </div>
-          <p id="weightResult"></p>
+          <p
+            id="weightResult"
+            class="result mono"
+            role="status"
+            aria-live="polite"
+          ></p>
         </div>
 
-        <!-- Temperature -->
-        <div>
+        <div class="unit-block">
           <label for="tempInput">Temperature</label>
           <div class="row">
-            <input type="number" id="tempInput" placeholder="Enter value" />
-            <select id="tempFrom">
+            <input
+              type="number"
+              id="tempInput"
+              class="field"
+              placeholder="Enter value"
+              inputmode="decimal"
+            />
+            <select id="tempFrom" class="field">
               <option value="C">Celsius (°C)</option>
               <option value="F">Fahrenheit (°F)</option>
               <option value="K">Kelvin (K)</option>
             </select>
-            <select id="tempTo">
+            <select id="tempTo" class="field">
               <option value="F">Fahrenheit (°F)</option>
               <option value="C">Celsius (°C)</option>
               <option value="K">Kelvin (K)</option>
             </select>
           </div>
-          <p id="tempResult"></p>
+          <p
+            id="tempResult"
+            class="result mono"
+            role="status"
+            aria-live="polite"
+          ></p>
         </div>
+
+        <p class="muted" style="margin-top: 0.75rem">
+          Tip: Use the keyboard. Type a value and press <kbd>Tab</kbd> to jump,
+          or <kbd>Shift</kbd>+<kbd>Tab</kbd> to go back.
+        </p>
+      </section>
+
+      <div class="ad-wrap ad-article" aria-label="Advertisement">
+        <span class="ad-label">Ad</span>
+        <ins
+          class="adsbygoogle"
+          style="display: block; text-align: center"
+          data-ad-client="ca-pub-1234567890123456"
+          data-ad-slot="2222222222"
+          data-ad-format="fluid"
+          data-ad-layout="in-article"
+          data-adtest="on"
+        ></ins>
+      </div>
+
+      <!-- How to use -->
+      <article class="card" id="how-to-use">
+        <h2>How to use</h2>
+        <ol>
+          <li>Enter a number in the input field.</li>
+          <li>
+            Select the <strong>From</strong> and <strong>To</strong> units.
+          </li>
+          <li>
+            The result updates <strong>instantly</strong> as you type or change
+            units.
+          </li>
+          <li>
+            Use the keyboard to move faster:
+            <kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd> between fields.
+          </li>
+          <li>
+            To reverse a conversion, just swap the dropdowns (e.g., km→m to
+            m→km).
+          </li>
+        </ol>
+        <h3>Tips</h3>
+        <ul>
+          <li>No data leaves your browser. Everything runs locally.</li>
+          <li>
+            Some conversions produce long decimals; we show a rounded result
+            while preserving accuracy.
+          </li>
+          <li>Negative temperatures are supported (e.g., −10&nbsp;°C).</li>
+          <li>Works offline after the first load.</li>
+        </ul>
+      </article>
+
+      <!-- FAQ -->
+      <article class="card faq" id="faq">
+        <h2>FAQ</h2>
+        <details>
+          <summary>How do I use the Unit Converter?</summary>
+          <p>
+            Enter a value, pick the From and To units, and the result updates
+            instantly. Works for length, weight, and temperature.
+          </p>
+        </details>
+        <details>
+          <summary>Does this tool send data to a server?</summary>
+          <p>No. All conversions are computed locally in your browser.</p>
+        </details>
+        <details>
+          <summary>Why are there decimals in results?</summary>
+          <p>
+            Some unit ratios are non-terminating (e.g., miles to kilometers). We
+            round to a reasonable number of decimals while keeping accuracy.
+          </p>
+        </details>
+        <details>
+          <summary>Are these conversions exact?</summary>
+          <p>
+            SI-based conversions are exact by definition (e.g., 1&nbsp;km =
+            1000&nbsp;m). Others like miles↔kilometers use standard precise
+            constants.
+          </p>
+        </details>
+      </article>
+
+      <!-- Related tools -->
+      <article class="card" id="related">
+        <h2>Related tools</h2>
+        <p class="muted">More calculators &amp; converters:</p>
+        <p>
+          <a class="btn" href="/calculator/">Calculator</a>
+          <a class="btn" href="/percent-calculator/">Percent Calculator</a>
+          <a class="btn" href="/age-calculator/">Age Calculator</a>
+          <a class="btn" href="/stopwatch-countdown/"
+            >Stopwatch &amp; Countdown</a
+          >
+        </p>
+        <p class="small">
+          Prefer বাংলা? Try the
+          <a href="/bn/unit-converter/" hreflang="bn">বাংলা সংস্করণ</a>.
+        </p>
+      </article>
+
+      <!-- Bottom Ad -->
+      <section class="card" aria-label="Advertisement">
+        <ins
+          class="adsbygoogle"
+          style="display: block"
+          data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+          data-ad-slot="0000000000"
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        ></ins>
+        <script>
+          (window.adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
       </section>
     </main>
 
+    <footer>© <span id="y"></span> Tools Pack</footer>
+
+    <noscript>
+      <div class="wrap card" role="status">
+        This converter requires JavaScript to run in your browser.
+      </div>
+    </noscript>
+
     <script>
+      // Year
+      document.getElementById("y").textContent = new Date().getFullYear();
+
+      // Helpers
+      const $ = (s) => document.querySelector(s);
+      const trimZeros = (s) =>
+        s.replace(/(\.\d*?[1-9])0+$/, "$1").replace(/\.0+$/, "");
+      const fmt = (n, d = 6) => trimZeros(n.toFixed(d));
+
       // Length conversion factors (to meters)
-      const lengthFactors = { m: 1, km: 1000, mi: 1609.34, ft: 0.3048 };
+      const lengthFactors = { m: 1, km: 1000, mi: 1609.344, ft: 0.3048 };
 
       function convertLength() {
-        const val = parseFloat(document.getElementById("lengthInput").value);
-        if (isNaN(val)) return;
-        const from = document.getElementById("lengthFrom").value;
-        const to = document.getElementById("lengthTo").value;
-        const result = val * (lengthFactors[from] / lengthFactors[to]);
-        document.getElementById(
-          "lengthResult"
-        ).textContent = `= ${result.toFixed(4)} ${to}`;
+        const val = parseFloat($("#lengthInput").value);
+        if (isNaN(val)) {
+          $("#lengthResult").textContent = "";
+          return;
+        }
+        const from = $("#lengthFrom").value;
+        const to = $("#lengthTo").value;
+        const result =
+          from === to ? val : val * (lengthFactors[from] / lengthFactors[to]);
+        $("#lengthResult").textContent = "= " + fmt(result, 6) + " " + to;
       }
 
       // Weight conversion factors (to kg)
-      const weightFactors = { kg: 1, g: 0.001, lb: 0.453592 };
+      const weightFactors = { kg: 1, g: 0.001, lb: 0.45359237 };
 
       function convertWeight() {
-        const val = parseFloat(document.getElementById("weightInput").value);
-        if (isNaN(val)) return;
-        const from = document.getElementById("weightFrom").value;
-        const to = document.getElementById("weightTo").value;
-        const result = val * (weightFactors[from] / weightFactors[to]);
-        document.getElementById(
-          "weightResult"
-        ).textContent = `= ${result.toFixed(4)} ${to}`;
+        const val = parseFloat($("#weightInput").value);
+        if (isNaN(val)) {
+          $("#weightResult").textContent = "";
+          return;
+        }
+        const from = $("#weightFrom").value;
+        const to = $("#weightTo").value;
+        const result =
+          from === to ? val : val * (weightFactors[from] / weightFactors[to]);
+        $("#weightResult").textContent = "= " + fmt(result, 6) + " " + to;
       }
 
       // Temperature conversion
       function convertTemp() {
-        const val = parseFloat(document.getElementById("tempInput").value);
-        if (isNaN(val)) return;
-        const from = document.getElementById("tempFrom").value;
-        const to = document.getElementById("tempTo").value;
+        const val = parseFloat($("#tempInput").value);
+        if (isNaN(val)) {
+          $("#tempResult").textContent = "";
+          return;
+        }
+        const from = $("#tempFrom").value;
+        const to = $("#tempTo").value;
         let result = val;
 
-        if (from === "C") {
-          if (to === "F") result = (val * 9) / 5 + 32;
-          else if (to === "K") result = val + 273.15;
-        } else if (from === "F") {
-          if (to === "C") result = ((val - 32) * 5) / 9;
-          else if (to === "K") result = ((val - 32) * 5) / 9 + 273.15;
-        } else if (from === "K") {
-          if (to === "C") result = val - 273.15;
-          else if (to === "F") result = ((val - 273.15) * 9) / 5 + 32;
+        if (from !== to) {
+          if (from === "C") {
+            if (to === "F") result = (val * 9) / 5 + 32;
+            else if (to === "K") result = val + 273.15;
+          } else if (from === "F") {
+            if (to === "C") result = ((val - 32) * 5) / 9;
+            else if (to === "K") result = ((val - 32) * 5) / 9 + 273.15;
+          } else if (from === "K") {
+            if (to === "C") result = val - 273.15;
+            else if (to === "F") result = ((val - 273.15) * 9) / 5 + 32;
+          }
         }
-
-        document.getElementById("tempResult").textContent = `= ${result.toFixed(
-          2
-        )} ${to}`;
+        $("#tempResult").textContent = "= " + fmt(result, 4) + " " + to;
       }
 
-      // Event listeners
-      document
-        .getElementById("lengthInput")
-        .addEventListener("input", convertLength);
-      document
-        .getElementById("lengthFrom")
-        .addEventListener("change", convertLength);
-      document
-        .getElementById("lengthTo")
-        .addEventListener("change", convertLength);
+      // Wire up events
+      $("#lengthInput").addEventListener("input", convertLength);
+      $("#lengthFrom").addEventListener("change", convertLength);
+      $("#lengthTo").addEventListener("change", convertLength);
 
-      document
-        .getElementById("weightInput")
-        .addEventListener("input", convertWeight);
-      document
-        .getElementById("weightFrom")
-        .addEventListener("change", convertWeight);
-      document
-        .getElementById("weightTo")
-        .addEventListener("change", convertWeight);
+      $("#weightInput").addEventListener("input", convertWeight);
+      $("#weightFrom").addEventListener("change", convertWeight);
+      $("#weightTo").addEventListener("change", convertWeight);
 
-      document
-        .getElementById("tempInput")
-        .addEventListener("input", convertTemp);
-      document
-        .getElementById("tempFrom")
-        .addEventListener("change", convertTemp);
-      document.getElementById("tempTo").addEventListener("change", convertTemp);
+      $("#tempInput").addEventListener("input", convertTemp);
+      $("#tempFrom").addEventListener("change", convertTemp);
+      $("#tempTo").addEventListener("change", convertTemp);
     </script>
   </body>
 </html>

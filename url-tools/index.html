@@ -2,18 +2,50 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+
     <title>URL Encoder & Decoder Online | Tools Pack</title>
     <meta
       name="description"
-      content="Encode or decode URLs and URI components instantly."
+      content="Encode or decode URLs and URI components instantly. Safe for query parameters and path segments."
     />
-    <link rel="canonical" href="https://tools-pack.netlify.app/url-tools/" />
-    <link rel="stylesheet" href="../assets/style.css" />
+    <meta
+      name="robots"
+      content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"
+    />
     <meta name="theme-color" content="#1E1E2F" />
+
+    <!-- Canonical + hreflang -->
+    <link rel="canonical" href="https://tools-pack.netlify.app/url-tools/" />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://tools-pack.netlify.app/url-tools/"
+    />
+    <link
+      rel="alternate"
+      hreflang="bn"
+      href="https://tools-pack.netlify.app/bn/url-tools/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://tools-pack.netlify.app/url-tools/"
+    />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../assets/style.css" />
+
+    <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tools Pack" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:title" content="URL Encoder/Decoder — Tools Pack" />
-    <meta property="og:description" content="URI component encode/decode." />
+    <meta
+      property="og:description"
+      content="Encode/decode URL or URI components."
+    />
     <meta
       property="og:url"
       content="https://tools-pack.netlify.app/url-tools/"
@@ -23,6 +55,20 @@
       content="https://tools-pack.netlify.app/og/url.png"
     />
     <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- AdSense (replace ca-pub-XXXX...) -->
+    <link
+      rel="preconnect"
+      href="https://pagead2.googlesyndication.com"
+      crossorigin
+    />
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXX"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Schema: WebApplication -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -35,45 +81,314 @@
         "inLanguage": "en"
       }
     </script>
+
+    <!-- Schema: Breadcrumbs -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://tools-pack.netlify.app/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Text Tools",
+            "item": "https://tools-pack.netlify.app/#text"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "URL Encoder/Decoder",
+            "item": "https://tools-pack.netlify.app/url-tools/"
+          }
+        ]
+      }
+    </script>
+
+    <!-- Schema: FAQ (kept in sync with on-page FAQ) -->
+    <script type="application/ld+json" id="faq-json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What’s the difference between encodeURI and encodeURIComponent?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "encodeURIComponent is for individual components (like query values or path segments) and escapes more characters. encodeURI is for full URLs and leaves reserved characters like : / ? & = intact."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I paste a full URL and still use Encode?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, but if you intend to encode only a parameter value, encode the value, not the whole URL, to avoid over-encoding reserved characters."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why does plus (+) decode to space?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "In application/x-www-form-urlencoded form data, + represents a space. This tool converts + to spaces before decoding to be helpful."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where can I format JSON or Base64 encode text?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use the JSON Formatter or Base64 tools on Tools Pack. See the Related tools section for quick links."
+            }
+          }
+        ]
+      }
+    </script>
+
+    <style>
+      /* Minimal helpers if your base CSS doesn't already include these */
+      .breadcrumb,
+      .breadcrumbs {
+        font-size: 0.9rem;
+        margin: 1rem auto;
+        opacity: 0.85;
+      }
+      .breadcrumb a,
+      .breadcrumbs a {
+        text-decoration: none;
+      }
+      .ad-wrap {
+        margin: 1rem 0;
+        display: grid;
+        place-items: center;
+      }
+      details > summary {
+        cursor: pointer;
+        font-weight: 600;
+      }
+      .link-list {
+        display: grid;
+        gap: 0.5rem;
+      }
+    </style>
   </head>
+
   <body>
     <header class="sticky">
       <div class="wrap brand">
-        <a href="/"><div class="logo"></div></a>
+        <a href="/"><div class="logo" aria-label="Tools Pack"></div></a>
         <div>
           <h1 style="margin: 0">URL Encoder / Decoder</h1>
-          <div class="sub">URI Component</div>
+          <div class="sub">Encode & decode URI components safely</div>
+        </div>
+        <div style="margin-left: auto">
+          <a class="muted" href="/bn/url-tools/" hreflang="bn">বাংলা</a>
         </div>
       </div>
     </header>
-
+    <!-- Ad #1: top banner (constrained, no full-width expansion) -->
+    <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
+      <span class="ad-label">Ad</span>
+      <ins
+        class="adsbygoogle"
+        style="display: inline-block"
+        data-ad-client="ca-pub-1234567890123456"
+        data-ad-slot="1111111111"
+        data-ad-format="auto"
+        data-full-width-responsive="false"
+        data-adtest="on"
+      ></ins>
+    </div>
     <main class="wrap">
-      <article class="card">
+      <!-- Breadcrumbs -->
+      <nav class="breadcrumbs" aria-label="breadcrumb">
+        <a href="/">Home</a> › <a href="/#text">Text Tools</a> ›
+        <span>URL Encoder/Decoder</span>
+      </nav>
+
+      <!-- TOC -->
+      <p class="toc">
+        <a href="#tool-url">Tool</a> · <a href="#how-to-use">How to use</a> ·
+        <a href="#faq">FAQ</a> · <a href="#related">Related tools</a>
+      </p>
+
+      <!-- Tool card -->
+      <article class="card" id="tool-url">
+        <label
+          for="in"
+          class="muted"
+          style="display: block; margin-bottom: 0.25rem"
+          >Input</label
+        >
         <textarea
           id="in"
           class="textarea mono"
-          placeholder="Enter URL or text…"
+          placeholder="Enter URL, query value, or text…"
         ></textarea>
-        <div>
+
+        <div
+          style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 0.5rem 0"
+        >
           <button class="btn btn-primary" id="enc" type="button">Encode</button>
           <button class="btn" id="dec" type="button">Decode</button>
           <button class="btn" id="cpy" type="button">Copy Output</button>
         </div>
+
+        <div class="ad-wrap ad-article" aria-label="Advertisement">
+          <span class="ad-label">Ad</span>
+          <ins
+            class="adsbygoogle"
+            style="display: block; text-align: center"
+            data-ad-client="ca-pub-1234567890123456"
+            data-ad-slot="2222222222"
+            data-ad-format="fluid"
+            data-ad-layout="in-article"
+            data-adtest="on"
+          ></ins>
+        </div>
+
+        <label
+          for="out"
+          class="muted"
+          style="display: block; margin: 0.5rem 0 0.25rem"
+          >Output</label
+        >
         <textarea
           id="out"
           class="textarea mono"
           readonly
           placeholder="Output…"
         ></textarea>
+
         <div class="muted" id="status" aria-live="polite"></div>
       </article>
+
+      <!-- How to use -->
+      <article class="card" id="how-to-use">
+        <h2>How to use</h2>
+        <ol>
+          <li>
+            Paste a full URL, a query value, or any text into <em>Input</em>.
+          </li>
+          <li>
+            Click <strong>Encode</strong> to percent-encode (safe for query
+            values & path segments), or <strong>Decode</strong> to reverse it.
+          </li>
+          <li>Use <strong>Copy Output</strong> to copy the result.</li>
+          <li>
+            Shortcuts: <kbd>Ctrl/⌘+Enter</kbd> = Encode,
+            <kbd>Shift+Enter</kbd> = Decode.
+          </li>
+        </ol>
+        <h3>Tips</h3>
+        <ul>
+          <li>
+            For <strong>full URLs</strong>, use <code>encodeURI</code>-style
+            behavior (this tool’s Encode uses
+            <code>encodeURIComponent</code> for components; see FAQ).
+          </li>
+          <li>
+            On Decode, <code>+</code> is treated as space for legacy
+            <code>application/x-www-form-urlencoded</code> data.
+          </li>
+          <li>
+            If you see a “Decode error”, your text may contain an invalid
+            percent sequence (e.g. a dangling <code>%</code>).
+          </li>
+          <li>Unicode and emoji are fully supported.</li>
+        </ul>
+      </article>
+
+      <!-- FAQ -->
+      <article class="card faq" id="faq">
+        <h2>FAQ</h2>
+
+        <details>
+          <summary>
+            What’s the difference between encodeURI and encodeURIComponent?
+          </summary>
+          <p>
+            <code>encodeURIComponent</code> is for individual components (like
+            query values or path segments) and escapes more characters.
+            <code>encodeURI</code> is for full URLs and leaves reserved
+            characters like <code>:</code> <code>/</code> <code>?</code>
+            <code>&amp;</code> <code>=</code> intact.
+          </p>
+        </details>
+
+        <details>
+          <summary>Can I paste a full URL and still use Encode?</summary>
+          <p>
+            Yes, but if you only need to encode a parameter value, encode just
+            the value, not the whole URL—otherwise reserved URL characters may
+            be over-encoded.
+          </p>
+        </details>
+
+        <details>
+          <summary>Why does plus (+) decode to space?</summary>
+          <p>
+            In <code>application/x-www-form-urlencoded</code> form data,
+            <code>+</code> represents a space. This tool converts
+            <code>+</code> to spaces before decoding to be helpful.
+          </p>
+        </details>
+
+        <details>
+          <summary>Where can I format JSON or Base64 encode text?</summary>
+          <p>
+            Use the <a href="/json-formatter/">JSON Formatter</a> or
+            <a href="/base64/">Base64</a> tools. See Related tools for links.
+          </p>
+        </details>
+      </article>
+
+      <!-- Related tools -->
+      <article class="card" id="related">
+        <h2>Related tools</h2>
+        <p class="muted">More text &amp; encoding utilities:</p>
+        <p>
+          <a class="btn" href="/json-formatter/">JSON Formatter</a>
+          <a class="btn" href="/base64/">Base64 Encode/Decode</a>
+          <a class="btn" href="/text-utilities/">Text Utilities</a>
+          <a class="btn" href="/sha256/">SHA-256 Hash</a>
+        </p>
+        <p class="small">
+          Prefer বাংলা? Try the
+          <a href="/bn/url-tools/" hreflang="bn">বাংলা সংস্করণ</a>.
+        </p>
+      </article>
+
+      <!-- Second ad slot (in-content) -->
+      <aside class="card" id="ads-2">
+        <div class="ad-wrap" aria-label="Advertisement">
+          <!-- add: AdSense slot -->
+          <ins
+            class="adsbygoogle"
+            style="display: block"
+            data-ad-client="ca-pub-XXXXXXX"
+            data-ad-slot="YYYYYYYYYY"
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+          ></ins>
+        </div>
+      </aside>
     </main>
 
     <footer>© <span id="y"></span> Tools Pack</footer>
 
     <script>
-      // Always query elements; don't rely on implicit globals (window.in etc.)
-      const yearEl = document.getElementById("y");
+      // Year
+      document.getElementById("y").textContent = new Date().getFullYear();
+
+      // Elements
       const inputEl = document.getElementById("in");
       const outputEl = document.getElementById("out");
       const encBtn = document.getElementById("enc");
@@ -81,9 +396,7 @@
       const cpyBtn = document.getElementById("cpy");
       const statusEl = document.getElementById("status");
 
-      yearEl.textContent = new Date().getFullYear();
-
-      // Encode/Decode as URI COMPONENT (safe for query param values, path segments, etc.)
+      // Encode/Decode as URI COMPONENT
       encBtn.onclick = () => {
         outputEl.value = encodeURIComponent(inputEl.value);
         statusEl.textContent = "";
@@ -91,7 +404,6 @@
 
       decBtn.onclick = () => {
         try {
-          // Be forgiving: convert '+' to spaces (x-www-form-urlencoded convention)
           const txt = inputEl.value.replace(/\+/g, " ");
           outputEl.value = decodeURIComponent(txt);
           statusEl.textContent = "";
@@ -112,11 +424,19 @@
         }
       };
 
-      // Shortcuts: Ctrl/Cmd+Enter = Encode, Shift+Enter = Decode
+      // Shortcuts
       inputEl.addEventListener("keydown", (e) => {
         if ((e.ctrlKey || e.metaKey) && e.key === "Enter") encBtn.click();
         else if (e.shiftKey && e.key === "Enter") decBtn.click();
       });
+
+      // Init ads (after AdSense script loads)
+      try {
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      } catch (e) {}
+      try {
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      } catch (e) {}
     </script>
   </body>
 </html>

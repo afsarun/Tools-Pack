@@ -12,7 +12,26 @@
     <link rel="stylesheet" href="../assets/style.css" />
     <meta name="theme-color" content="#1E1E2F" />
 
+    <!-- Hreflang alternates -->
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://tools-pack.netlify.app/calculator/"
+    />
+    <link
+      rel="alternate"
+      hreflang="bn"
+      href="https://tools-pack.netlify.app/bn/calculator/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://tools-pack.netlify.app/calculator/"
+    />
+
+    <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tools Pack" />
     <meta property="og:title" content="Online Calculator — Tools Pack" />
     <meta
       property="og:description"
@@ -26,6 +45,7 @@
       property="og:image"
       content="https://tools-pack.netlify.app/og/calculator.png"
     />
+    <meta property="og:image:alt" content="Calculator — Tools Pack" />
     <meta name="twitter:card" content="summary_large_image" />
 
     <!-- JSON-LD: WebApplication -->
@@ -42,7 +62,29 @@
       }
     </script>
 
-    <!-- JSON-LD: FAQPage (optional but helpful) -->
+    <!-- JSON-LD: Breadcrumbs -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Tools Pack",
+            "item": "https://tools-pack.netlify.app/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Calculator",
+            "item": "https://tools-pack.netlify.app/calculator/"
+          }
+        ]
+      }
+    </script>
+
+    <!-- JSON-LD: FAQPage (matches on-page FAQ) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -53,7 +95,7 @@
             "name": "Does this calculator work offline?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes, after first load it works in your browser without sending data to any server."
+              "text": "Yes. After the first load it runs entirely in your browser."
             }
           },
           {
@@ -63,71 +105,435 @@
               "@type": "Answer",
               "text": "No. Tools Pack is privacy-first and does not send your input anywhere."
             }
+          },
+          {
+            "@type": "Question",
+            "name": "How does % work here?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A number followed by % is treated as a percent. For example 12% becomes (12/100). So 12% * 200 = 24."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which operations are supported?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Basic arithmetic with parentheses: + − × ÷ (also * and /), decimals, and % as described above."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why do I sometimes see long decimals (e.g., 0.30000000000000004)?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Like most calculators in the browser, this uses floating-point math which can show tiny rounding artifacts for some decimals."
+            }
           }
         ]
       }
     </script>
+
+    <!-- ========= Google AdSense loader =========
+         Replace client with your own publisher ID.
+         Keep data-adtest="on" while testing; remove when live. -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234567890123456"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Page-specific styles (ads + small layout tweaks) -->
+    <style>
+      /* Ads: reserve space & constrain width for low CLS */
+      .ad-wrap {
+        margin: 12px 0;
+      }
+      .ad-label {
+        display: block;
+        font-size: 12px;
+        color: var(--muted, #888);
+        margin-bottom: 4px;
+      }
+      .adsbygoogle {
+        display: block;
+      }
+
+      .ad-top {
+        margin-inline: auto;
+      }
+      /* Desktop: 728x90 */
+      @media (min-width: 900px) {
+        .ad-top {
+          max-width: 728px;
+        }
+        .ad-top .adsbygoogle {
+          min-height: 90px;
+        }
+      }
+      /* Tablet: 468x60 */
+      @media (max-width: 899px) and (min-width: 600px) {
+        .ad-top {
+          max-width: 468px;
+        }
+        .ad-top .adsbygoogle {
+          min-height: 60px;
+        }
+      }
+      /* Mobile: 320x100 (or 320x50) */
+      @media (max-width: 599px) {
+        .ad-top {
+          max-width: 320px;
+        }
+        .ad-top .adsbygoogle {
+          min-height: 100px;
+        }
+      }
+
+      /* In-article ad a bit narrower than card */
+      .ad-article {
+        max-width: 600px;
+        margin-inline: auto;
+      }
+      @media (max-width: 600px) {
+        .ad-article {
+          max-width: 360px;
+        }
+      }
+
+      /* Buttons full-width on small screens */
+      @media (max-width: 600px) {
+        .btn {
+          width: 100%;
+          margin-top: 8px;
+        }
+        .btn.btn-primary {
+          margin-top: 0;
+        }
+      }
+
+      /* Misc */
+      #out.field {
+        font-variant-numeric: tabular-nums;
+      }
+      .related {
+        margin-top: 20px;
+      }
+      .related h3 {
+        margin-bottom: 8px;
+        font-size: 1rem;
+      }
+      .link-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .link-list a {
+        text-decoration: none;
+      }
+      #msg {
+        margin-top: 6px;
+      }
+    </style>
   </head>
   <body>
     <header class="sticky">
       <div class="wrap brand">
-        <a href="/" aria-label="Back to home"><div class="logo"></div></a>
+        <a href="/" aria-label="Back to home"
+          ><div class="logo" aria-hidden="true"></div
+        ></a>
         <div>
           <h1 style="margin: 0">Calculator</h1>
           <div class="sub">Basic arithmetic • %</div>
         </div>
+        <div style="margin-left: auto">
+          <a class="muted" href="/bn/calculator/" hreflang="bn">বাংলা</a>
+        </div>
       </div>
     </header>
 
+    <!-- Ad #1: top banner (constrained) -->
+    <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
+      <span class="ad-label">Ad</span>
+      <ins
+        class="adsbygoogle"
+        style="display: inline-block"
+        data-ad-client="ca-pub-1234567890123456"
+        data-ad-slot="1111111111"
+        data-ad-format="auto"
+        data-full-width-responsive="false"
+        data-adtest="on"
+      ></ins>
+    </div>
+
     <main class="wrap">
-      <article class="card">
+      <!-- Breadcrumbs (updated for Calculator) -->
+      <nav class="breadcrumbs" aria-label="breadcrumb">
+        <a href="/">Home</a> › <a href="/#math">Math Tools</a> ›
+        <span>Calculator</span>
+      </nav>
+
+      <!-- TOC (updated for Calculator) -->
+      <p class="toc">
+        <a href="#calc">Calculator</a> · <a href="#how-to-use">How to use</a> ·
+        <a href="#faq">FAQ</a> · <a href="#related">Related tools</a>
+      </p>
+
+      <!-- Calculator -->
+      <article class="card" id="calc">
         <h2>Calculate</h2>
         <textarea
           id="expr"
           class="textarea"
-          placeholder="e.g., (12 + 7) / 3 * 2"
+          placeholder="e.g., (12 + 7) / 3 * 2  or  12% * 200"
         ></textarea>
-        <div>
-          <button class="btn btn-primary" id="evalBtn">Evaluate</button>
-          <button class="btn" id="clrBtn">Clear</button>
+
+        <div style="margin-top: 10px">
+          <button class="btn btn-primary" id="evalBtn" type="button">
+            Evaluate
+          </button>
+          <button class="btn" id="clrBtn" type="button">Clear</button>
+          <button class="btn" id="cpyBtn" type="button">Copy result</button>
         </div>
+
+        <!-- Ad #2: in-article (fluid) -->
+        <div class="ad-wrap ad-article" aria-label="Advertisement">
+          <span class="ad-label">Ad</span>
+          <ins
+            class="adsbygoogle"
+            style="display: block; text-align: center"
+            data-ad-client="ca-pub-1234567890123456"
+            data-ad-slot="2222222222"
+            data-ad-format="fluid"
+            data-ad-layout="in-article"
+            data-adtest="on"
+          ></ins>
+        </div>
+
         <input
           id="out"
           class="field"
           readonly
           placeholder="Result appears here"
+          aria-label="Result"
         />
-        <p class="muted">Allowed: digits, + - × ÷ * / ( ) . %</p>
+        <p class="muted">
+          Allowed: digits, + − × ÷ * / ( ) . and % (as percent). Use parentheses
+          for order of operations.
+        </p>
+        <div id="msg" class="muted" aria-live="polite"></div>
+      </article>
+
+      <!-- How to use (updated for Calculator) -->
+      <article class="card" id="how-to-use">
+        <h2>How to use</h2>
+        <ol>
+          <li>
+            Type an expression in the box. Example: <code>(12+7)/3*2</code>.
+          </li>
+          <li>
+            Use <strong>%</strong> as percent. Example: <code>12% * 200</code> →
+            24 (internally <code>12/100</code>).
+          </li>
+          <li>
+            Press <strong>Enter</strong> to evaluate. Use
+            <strong>Shift+Enter</strong> to insert a newline.
+          </li>
+          <li>
+            Click <strong>Copy result</strong> to copy the output; use
+            <strong>Clear</strong> to reset.
+          </li>
+          <li>
+            × and ÷ are supported— they are normalized to <code>*</code> and
+            <code>/</code>.
+          </li>
+        </ol>
+        <h3>Tips</h3>
+        <ul>
+          <li>Works offline after the first load.</li>
+          <li>
+            For long decimals (e.g., 0.1+0.2), small rounding artifacts may
+            appear due to floating-point math.
+          </li>
+          <li>
+            Only basic arithmetic and parentheses are supported—no functions
+            (sin, sqrt, etc.).
+          </li>
+        </ul>
+      </article>
+
+      <!-- FAQ (updated for Calculator) -->
+      <article class="card faq" id="faq">
+        <h2>FAQ</h2>
+        <details>
+          <summary>Does this work offline?</summary>
+          <p>Yes. After the first load, it runs in your browser.</p>
+        </details>
+        <details>
+          <summary>Is my input tracked?</summary>
+          <p>No. Nothing is sent anywhere—everything stays in your browser.</p>
+        </details>
+        <details>
+          <summary>How does % work?</summary>
+          <p>
+            A number followed by % is treated as a fraction of 1. Example:
+            <code>12% * 200</code> is <code>(12/100) * 200 = 24</code>.
+          </p>
+        </details>
+        <details>
+          <summary>Which operations are supported?</summary>
+          <p>
+            + − × ÷ (or * and /), decimals, and parentheses for order of
+            operations.
+          </p>
+        </details>
+        <details>
+          <summary>Why do I see long decimals sometimes?</summary>
+          <p>
+            This uses floating-point math (like most calculators in browsers),
+            which can show tiny rounding artifacts for some values.
+          </p>
+        </details>
+      </article>
+
+      <!-- Related tools (adjusted for this tool) -->
+      <article class="card" id="related">
+        <h2>Related tools</h2>
+        <p class="muted">More math &amp; number utilities:</p>
+        <p>
+          <a class="btn" href="/unit-converter/">Unit Converter</a>
+          <a class="btn" href="/age-calculator/">Age Calculator</a>
+          <a class="btn" href="/text-utilities/">Text Utilities</a>
+        </p>
+        <p class="small">
+          Prefer বাংলা? Try the
+          <a href="/bn/calculator/" hreflang="bn">বাংলা সংস্করণ</a>.
+        </p>
       </article>
     </main>
 
-    <footer>© <span id="y"></span> Tools Pack</footer>
+    <footer>
+      © <span id="y"></span> Tools Pack • <a class="muted" href="/">Home</a> •
+      <a class="muted" href="/bn/calculator/" hreflang="bn">বাংলা</a>
+    </footer>
+
     <script>
+      // Year
       document.getElementById("y").textContent = new Date().getFullYear();
-      const expr = document.getElementById("expr"),
-        out = document.getElementById("out");
-      const clean = (s) => s.replace(/[×]/g, "*").replace(/[÷]/g, "/");
-      const ok = (s) => /^[0-9+\-*/().% \t]+$/.test(s);
-      document.getElementById("evalBtn").onclick = () => {
-        const s = clean(expr.value.trim());
+
+      // Elements
+      const expr = document.getElementById("expr");
+      const out = document.getElementById("out");
+      const msg = document.getElementById("msg");
+      const evalBtn = document.getElementById("evalBtn");
+      const clrBtn = document.getElementById("clrBtn");
+      const cpyBtn = document.getElementById("cpyBtn");
+
+      // ===== Lazy init AdSense when slots are visible =====
+      const initAds = () => {
+        window.adsbygoogle = window.adsbygoogle || [];
+        const slots = document.querySelectorAll(
+          "ins.adsbygoogle:not([data-loaded])"
+        );
+        if (!slots.length) return;
+
+        const push = (el) => {
+          try {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            el.setAttribute("data-loaded", "1");
+          } catch (e) {
+            /* ignore */
+          }
+        };
+
+        if ("IntersectionObserver" in window) {
+          const io = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  push(entry.target);
+                  io.unobserve(entry.target);
+                }
+              });
+            },
+            { rootMargin: "200px 0px" }
+          );
+          slots.forEach((el) => io.observe(el));
+        } else {
+          slots.forEach(push);
+        }
+      };
+      window.addEventListener("load", initAds);
+
+      // ===== Calculator helpers =====
+      const normalize = (s) => s.replace(/[×]/g, "*").replace(/[÷]/g, "/");
+
+      // Convert naked percents like "12%" into "(12/100)"
+      const percentsToFrac = (s) => s.replace(/(\d+(?:\.\d+)?)%/g, "($1/100)");
+
+      const allowed = (s) => /^[0-9+\-*/().% \t]+$/.test(s);
+
+      const evaluate = () => {
+        let s = expr.value.trim();
         if (!s) {
           out.value = "";
+          msg.textContent = "";
           return;
         }
-        if (!ok(s)) {
-          out.value = "Error: invalid characters.";
+
+        s = normalize(s);
+        s = percentsToFrac(s);
+
+        if (!allowed(s)) {
+          out.value = "";
+          msg.textContent = "Error: invalid characters.";
           return;
         }
+
         try {
-          out.value = String(Function('"use strict";return(' + s + ")")());
+          // Safe-ish eval: only after strict filtering above
+          const result = Function('"use strict";return(' + s + ")")();
+          out.value = String(result);
+          msg.textContent = "Done.";
         } catch (e) {
-          out.value = "Error: " + e.message;
+          out.value = "";
+          msg.textContent = "Error: " + e.message;
         }
       };
-      document.getElementById("clrBtn").onclick = () => {
+
+      // Events
+      evalBtn.onclick = evaluate;
+      clrBtn.onclick = () => {
         expr.value = "";
         out.value = "";
+        msg.textContent = "";
+        expr.focus();
       };
+      cpyBtn.onclick = () => {
+        if (!out.value) {
+          msg.textContent = "Nothing to copy.";
+          return;
+        }
+        navigator.clipboard.writeText(out.value).then(() => {
+          msg.textContent = "Result copied.";
+        });
+      };
+
+      // Enter evaluates (Shift+Enter inserts newline)
+      expr.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" && !e.shiftKey) {
+          e.preventDefault();
+          evaluate();
+        }
+      });
     </script>
+
+    <noscript
+      >Your browser has JavaScript disabled; this tool needs JavaScript to
+      work.</noscript
+    >
   </body>
 </html>

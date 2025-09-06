@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Quick Notes — Auto-Save in Browser | Tools Pack</title>
+    <meta
+      name="description"
+      content="Write notes with local auto-save. Export/import as .txt."
+    />
+    <meta
+      name="robots"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+
+    <!-- Canonical & hreflang -->
+    <link rel="canonical" href="https://tools-pack.netlify.app/notes/" />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://tools-pack.netlify.app/notes/"
+    />
+    <link
+      rel="alternate"
+      hreflang="bn"
+      href="https://tools-pack.netlify.app/bn/notes/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://tools-pack.netlify.app/"
+    />
+
+    <!-- Global Styles -->
+    <link rel="stylesheet" href="../assets/style.css" />
+    <meta name="theme-color" content="#1E1E2F" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Quick Notes — Tools Pack" />
+    <meta
+      property="og:description"
+      content="Auto-save notes locally (no server)."
+    />
+    <meta property="og:url" content="https://tools-pack.netlify.app/notes/" />
+    <meta
+      property="og:image"
+      content="https://tools-pack.netlify.app/og/notes.png"
+    />
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- AdSense loader -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Structured data: WebApplication -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Quick Notes",
+        "url": "https://tools-pack.netlify.app/notes/",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All",
+        "description": "Local auto-save notes; export/import.",
+        "inLanguage": "en"
+      }
+    </script>
+
+    <!-- Structured data: Breadcrumbs -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://tools-pack.netlify.app/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Text Tools",
+            "item": "https://tools-pack.netlify.app/#text"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Quick Notes",
+            "item": "https://tools-pack.netlify.app/notes/"
+          }
+        ]
+      }
+    </script>
+
+    <!-- Structured data: HowTo -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "How to use Quick Notes",
+        "description": "Write notes with auto-save, and export or import .txt files.",
+        "step": [
+          {
+            "@type": "HowToStep",
+            "name": "Type notes",
+            "text": "Start typing in the editor — it auto-saves after you pause."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Export",
+            "text": "Click Export .txt to download your notes."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Import",
+            "text": "Use Import to load a .txt file back."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Clear",
+            "text": "Click Clear to remove everything (with confirmation)."
+          }
+        ],
+        "tool": [{ "@type": "HowToTool", "name": "Quick Notes" }]
+      }
+    </script>
+
+    <!-- Structured data: FAQ (matches visible FAQ) -->
+    <script type="application/ld+json" id="faq-jsonld">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Where are my notes stored?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Your notes are stored in your browser’s localStorage on this device only. They are not uploaded to any server."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is there a size limit?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Browsers typically allow around 5 MB per site for localStorage. Very large notes may hit this limit."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I sync notes across devices?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No, not automatically. Use Export to save a .txt file and Import it on another device."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are notes encrypted?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Notes are stored as plain text in localStorage. Avoid storing sensitive data, or keep your device secure."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does it work offline?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Once the page is loaded, Quick Notes works without internet access."
+            }
+          }
+        ]
+      }
+    </script>
+
+    <!-- Page-only CSS (keeps your global CSS untouched) -->
+    <style>
+      /* .breadcrumbs {
+        font-size: 14px;
+        margin: 12px 0;
+        color: var(--muted, #9aa0b4);
+      }
+      .breadcrumbs a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .toc {
+        font-size: 12px;
+        color: var(--muted, #9aa0b4);
+        margin-bottom: 8px;
+      }
+      .toc a {
+        text-decoration: none;
+      }
+      .ad-wrap {
+        margin: 16px 0;
+      }
+      .faq details {
+        border: 1px solid #2b2b44;
+        border-radius: 8px;
+        padding: 10px 12px;
+        margin-bottom: 10px;
+      }
+      .faq summary {
+        cursor: pointer;
+        font-weight: 600;
+      }
+      .small {
+        font-size: 12px;
+      }
+      .lang-switch {
+        margin-left: auto;
+      }
+      .lang-switch a {
+        text-decoration: none;
+        font-size: 12px;
+        color: var(--muted, #9aa0b4);
+      } */
+    </style>
+  </head>
+  <body>
+    <header class="sticky">
+      <div
+        class="wrap brand"
+        style="display: flex; align-items: center; gap: 0.75rem"
+      >
+        <a href="/"><div class="logo" aria-label="Tools Pack"></div></a>
+        <div>
+          <h1 style="margin: 0">Quick Notes</h1>
+          <div class="sub">Auto-save</div>
+        </div>
+        <div class="lang-switch">
+          <a href="/bn/quick-notes/" hreflang="bn">বাংলা</a>
+        </div>
+      </div>
+    </header>
+    <!-- Ad #1: top banner (constrained, no full-width expansion) -->
+    <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
+      <span class="ad-label">Ad</span>
+      <ins
+        class="adsbygoogle"
+        style="display: inline-block"
+        data-ad-client="ca-pub-1234567890123456"
+        data-ad-slot="1111111111"
+        data-ad-format="auto"
+        data-full-width-responsive="false"
+        data-adtest="on"
+      ></ins>
+    </div>
+    <main class="wrap">
+      <!-- Breadcrumbs -->
+      <nav class="breadcrumbs" aria-label="breadcrumb">
+        <a href="/">Home</a> › <a href="/#text">Text Tools</a> ›
+        <span>Quick Notes</span>
+      </nav>
+
+      <!-- TOC -->
+      <p class="toc">
+        <a href="#notes-tool">Notes</a> · <a href="#how-to-use">How to use</a> ·
+        <a href="#faq">FAQ</a> · <a href="#related">Related tools</a>
+      </p>
+
+      <!-- Tool -->
+      <article class="card" id="notes-tool">
+        <textarea
+          id="notes"
+          class="textarea"
+          placeholder="Write anything… Saved to your browser."
+          aria-label="Notes editor"
+          aria-describedby="status"
+        ></textarea>
+        <div>
+          <button class="btn" id="clear" type="button">Clear</button>
+          <button class="btn" id="ex" type="button">Export .txt</button>
+          <label class="btn" for="imp" style="cursor: pointer">Import</label>
+          <input
+            id="imp"
+            type="file"
+            accept=".txt,text/plain"
+            style="display: none"
+          />
+        </div>
+        <div class="muted small" id="status" role="status" aria-live="polite">
+          Saved.
+        </div>
+        <p class="small muted" style="margin-top: 6px">
+          Notes are stored locally in this browser (no server).
+        </p>
+
+        <div class="ad-wrap ad-article" aria-label="Advertisement">
+          <span class="ad-label">Ad</span>
+          <ins
+            class="adsbygoogle"
+            style="display: block; text-align: center"
+            data-ad-client="ca-pub-1234567890123456"
+            data-ad-slot="2222222222"
+            data-ad-format="fluid"
+            data-ad-layout="in-article"
+            data-adtest="on"
+          ></ins>
+        </div>
+      </article>
+
+      <!-- How to use -->
+      <article class="card" id="how-to-use">
+        <h2>How to use</h2>
+        <ol>
+          <li>
+            Start typing in the box — it <strong>auto-saves</strong> after you
+            pause.
+          </li>
+          <li>
+            Click <strong>Export .txt</strong> to download your notes as a text
+            file.
+          </li>
+          <li>
+            Use <strong>Import</strong> to load a .txt file back into the
+            editor.
+          </li>
+          <li>
+            Click <strong>Clear</strong> to remove everything (you’ll be asked
+            to confirm).
+          </li>
+        </ol>
+        <h3>Tips</h3>
+        <ul>
+          <li>Works offline once loaded.</li>
+          <li>Avoid storing sensitive info—localStorage is not encrypted.</li>
+          <li>
+            If your note is huge, consider splitting files (localStorage is
+            ~5&nbsp;MB per site).
+          </li>
+        </ul>
+      </article>
+
+      <!-- FAQ -->
+      <article class="card faq" id="faq">
+        <h2>FAQ</h2>
+        <details>
+          <summary>Where are my notes stored?</summary>
+          <p>
+            On this device only, inside your browser’s localStorage. Nothing is
+            uploaded.
+          </p>
+        </details>
+        <details>
+          <summary>Is there a size limit?</summary>
+          <p>
+            Yes. Browsers typically allow around 5&nbsp;MB per site for
+            localStorage.
+          </p>
+        </details>
+        <details>
+          <summary>Can I sync across devices?</summary>
+          <p>
+            Not automatically. Use Export to save a .txt and Import it
+            elsewhere.
+          </p>
+        </details>
+        <details>
+          <summary>Are notes encrypted?</summary>
+          <p>
+            No. Keep your device secure and avoid highly sensitive information.
+          </p>
+        </details>
+        <details>
+          <summary>Does it work offline?</summary>
+          <p>Yes. After the first load, it works without internet.</p>
+        </details>
+      </article>
+
+      <!-- Related tools -->
+      <article class="card" id="related">
+        <h2>Related tools</h2>
+        <p class="muted">More text &amp; encoding utilities:</p>
+        <p>
+          <a class="btn" href="/text-to-pdf/">Text → PDF</a>
+          <a class="btn" href="/json-formatter/">JSON Formatter</a>
+          <a class="btn" href="/base64/">Base64 Encode/Decode</a>
+          <a class="btn" href="/url-tools/">URL Tools</a>
+        </p>
+        <p class="small">
+          Prefer বাংলা? Try the
+          <a href="/bn/notes/" hreflang="bn">বাংলা সংস্করণ</a>.
+        </p>
+      </article>
+    </main>
+
+    <footer>
+      © <span id="y"></span> Tools Pack · <a href="/privacy/">Privacy</a> ·
+      <a href="/terms/">Terms</a>
+    </footer>
+
+    <noscript
+      ><div class="wrap">
+        <p>Please enable JavaScript to use Quick Notes.</p>
+      </div></noscript
+    >
+
+    <script>
+      // year
+      y.textContent = new Date().getFullYear();
+
+      // Storage key
+      const KEY = "tools-pack:notes:v1";
+
+      // Load
+      notes.value = localStorage.getItem(KEY) || "";
+
+      let debounceTimer = null;
+      function save() {
+        try {
+          localStorage.setItem(KEY, notes.value);
+          status.textContent = "Saved " + new Date().toLocaleTimeString();
+        } catch (e) {
+          status.textContent = "Save failed (storage full?).";
+          console.error(e);
+        }
+      }
+
+      notes.addEventListener("input", () => {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(save, 400);
+      });
+
+      clear.onclick = () => {
+        if (confirm("Clear all notes?")) {
+          notes.value = "";
+          save();
+        }
+      };
+
+      ex.onclick = () => {
+        const blob = new Blob([notes.value], { type: "text/plain" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "notes.txt";
+        a.click();
+        URL.revokeObjectURL(url);
+      };
+
+      imp.onchange = async () => {
+        const f = imp.files[0];
+        if (!f) return;
+        notes.value = await f.text();
+        save();
+      };
+
+      // Initialize AdSense for all <ins class="adsbygoogle"> units (2 units on this page)
+      try {
+        document.querySelectorAll(".adsbygoogle").forEach(() => {
+          (window.adsbygoogle = window.adsbygoogle || []).push({});
+        });
+      } catch {}
+    </script>
+  </body>
+</html>

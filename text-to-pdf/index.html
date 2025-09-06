@@ -8,8 +8,26 @@
       name="description"
       content="Convert text to PDF using your browser's print to PDF. Choose page size, margins, header/footer."
     />
+
+    <!-- Canonical & Hreflang -->
     <link rel="canonical" href="https://tools-pack.netlify.app/text-to-pdf/" />
-    <link rel="stylesheet" href="../assets/style.css" />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://tools-pack.netlify.app/text-to-pdf/"
+    />
+    <link
+      rel="alternate"
+      hreflang="bn"
+      href="https://tools-pack.netlify.app/bn/text-to-pdf/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://tools-pack.netlify.app/"
+    />
+
+    <!-- Open Graph / Twitter -->
     <meta name="theme-color" content="#1E1E2F" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Text → PDF — Tools Pack" />
@@ -22,7 +40,27 @@
       property="og:image"
       content="https://tools-pack.netlify.app/og/pdf.png"
     />
+    <meta property="og:site_name" content="Tools Pack" />
     <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/style.css" />
+
+    <!-- Performance + AdSense -->
+    <link
+      rel="preconnect"
+      href="https://pagead2.googlesyndication.com"
+      crossorigin
+    />
+    <link rel="dns-prefetch" href="//pagead2.googlesyndication.com" />
+    <!-- Auto ads: replace client with your publisher id -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- WebApplication JSON-LD -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -35,6 +73,78 @@
         "inLanguage": "en"
       }
     </script>
+
+    <!-- Breadcrumbs JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://tools-pack.netlify.app/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Text Utilities",
+            "item": "https://tools-pack.netlify.app/text-utilities/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Text → PDF",
+            "item": "https://tools-pack.netlify.app/text-to-pdf/"
+          }
+        ]
+      }
+    </script>
+
+    <!-- FAQPage JSON-LD (answers MUST be plain text) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I convert text to PDF?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Paste or type your text, choose page size, orientation and margins, optionally enable header or footer, then click Preview & Print and choose Save as PDF in the browser print dialog."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does it support Bangla/Unicode/emoji?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The converter is Unicode-safe and works with Bangla, emoji and other scripts."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are files uploaded to a server?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Everything runs locally in your browser; nothing is uploaded."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I add a header or footer?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Toggle the Header or Footer options before printing. The header shows the page title; the footer shows the generated time."
+            }
+          }
+        ]
+      }
+    </script>
+
+    <!-- Page styles (plus a few extras for ads/FAQ/breadcrumb) -->
     <style>
       :root {
         --muted: #9aa0a6;
@@ -85,6 +195,46 @@
         padding: 20px 0;
         color: var(--muted);
       }
+      /* New: ad + FAQ + breadcrumb styling */
+      .ad-container {
+        display: block;
+        min-height: 280px;
+        margin: 16px 0;
+      }
+      nav.breadcrumb {
+        font-size: 0.9rem;
+        color: var(--muted);
+        margin: 0.5rem 0 0;
+      }
+      nav.breadcrumb a {
+        color: inherit;
+        text-decoration: none;
+      }
+      nav.breadcrumbs {
+        font-size: 0.9rem;
+        color: var(--muted);
+        margin: 0.75rem 0 0.25rem;
+      }
+      nav.breadcrumbs a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .faq details {
+        border: 1px solid #2a3142;
+        border-radius: 12px;
+        padding: 0.75rem 1rem;
+        margin: 0.75rem 0;
+      }
+      .faq summary {
+        cursor: pointer;
+        font-weight: 600;
+      }
+      .related ul {
+        display: grid;
+        gap: 0.5rem;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        padding-left: 1rem;
+      }
     </style>
   </head>
   <body>
@@ -94,12 +244,44 @@
         <div>
           <h1 style="margin: 0">Text → PDF</h1>
           <div class="sub">Unicode-safe • Print to PDF</div>
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a> ›
+            <a href="/text-utilities/">Text Utilities</a> › Text → PDF
+          </nav>
+        </div>
+        <div style="margin-left: auto">
+          <a class="muted" href="/bn/text-to-pdf/" hreflang="bn">বাংলা</a>
         </div>
       </div>
     </header>
-
+    <!-- Ad #1: top banner (constrained, no full-width expansion) -->
+    <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
+      <span class="ad-label">Ad</span>
+      <ins
+        class="adsbygoogle"
+        style="display: inline-block"
+        data-ad-client="ca-pub-1234567890123456"
+        data-ad-slot="1111111111"
+        data-ad-format="auto"
+        data-full-width-responsive="false"
+        data-adtest="on"
+      ></ins>
+    </div>
     <main class="wrap">
-      <article class="card">
+      <!-- Secondary Breadcrumbs (kept for design; now corrected) -->
+      <nav class="breadcrumbs" aria-label="breadcrumb">
+        <a href="/">Home</a> › <a href="/text-utilities/">Text Utilities</a> ›
+        <span>Text → PDF</span>
+      </nav>
+
+      <!-- TOC -->
+      <p class="toc">
+        <a href="#pdf-tool">Editor</a> · <a href="#how-to-use">How to use</a> ·
+        <a href="#faq">FAQ</a> · <a href="#related">Related tools</a>
+      </p>
+
+      <!-- Tool -->
+      <article class="card" id="pdf-tool">
         <div class="row">
           <select id="page" class="select" aria-label="Page size">
             <option value="A4">A4</option>
@@ -140,6 +322,18 @@
           placeholder="Type or paste your text… Supports Bangla/Unicode/emoji ✅"
         ></textarea>
 
+        <div class="ad-wrap ad-article" aria-label="Advertisement">
+          <span class="ad-label">Ad</span>
+          <ins
+            class="adsbygoogle"
+            style="display: block; text-align: center"
+            data-ad-client="ca-pub-1234567890123456"
+            data-ad-slot="2222222222"
+            data-ad-format="fluid"
+            data-ad-layout="in-article"
+            data-adtest="on"
+          ></ins>
+        </div>
         <div class="row">
           <button class="btn btn-primary" id="print">
             Preview &amp; Print
@@ -150,6 +344,99 @@
         <div id="status" class="muted small">
           Use “Save as PDF” in the print dialog.
         </div>
+      </article>
+
+      <!-- How to use -->
+      <article class="card" id="how-to-use">
+        <h2>How to use</h2>
+        <ol>
+          <li>
+            Paste or type your text into the box (Unicode/Bangla supported).
+          </li>
+          <li>
+            Choose <strong>Page size</strong>, <strong>Orientation</strong>, and
+            <strong>Margins</strong>.
+          </li>
+          <li>
+            Optionally enable <strong>Header</strong> and/or
+            <strong>Footer</strong> (title on top, generated time at bottom).
+          </li>
+          <li>Click <strong>Preview &amp; Print</strong>.</li>
+          <li>
+            In your browser’s print dialog, choose
+            <strong>Save as PDF</strong> and confirm.
+          </li>
+        </ol>
+        <h3>Tips</h3>
+        <ul>
+          <li>
+            <strong>A4</strong> is common in BD/EU; <strong>Letter</strong> is
+            common in the US.
+          </li>
+          <li>
+            If the browser adds its own page numbers/URL, turn off “Headers and
+            footers” in print settings.
+          </li>
+          <li>Everything runs locally in your browser; nothing is uploaded.</li>
+          <li>Works offline after first load.</li>
+        </ul>
+      </article>
+
+      <!-- FAQ -->
+      <article class="card faq" id="faq">
+        <h2>FAQ</h2>
+        <details>
+          <summary>Does it support Bangla/Unicode/emoji?</summary>
+          <p>
+            Yes. The converter is Unicode-safe and works with Bangla (বাংলা),
+            emoji, Arabic, and more.
+          </p>
+        </details>
+        <details>
+          <summary>Are my files or text uploaded?</summary>
+          <p>
+            No. Everything runs locally in your browser; nothing leaves your
+            device.
+          </p>
+        </details>
+        <details>
+          <summary>How do I add a header or footer?</summary>
+          <p>
+            Toggle <em>Header</em> and/or <em>Footer</em> before printing. The
+            header shows the page title; the footer shows the generated time.
+          </p>
+        </details>
+        <details>
+          <summary>Can I add page numbers?</summary>
+          <p>
+            Built-in numbering isn’t included. Your browser can add its own
+            numbers if “Headers and footers” are enabled in print settings.
+          </p>
+        </details>
+        <details>
+          <summary>Which page sizes are supported?</summary>
+          <p>
+            A4, Letter, and Legal are available in Portrait or Landscape.
+            Margins are adjustable in millimeters.
+          </p>
+        </details>
+      </article>
+
+      <!-- Related tools -->
+      <article class="card" id="related">
+        <h2>Related tools</h2>
+        <p class="muted">More text &amp; encoding utilities:</p>
+        <p>
+          <a class="btn" href="/text-to-pdf/">Text → PDF</a>
+          <a class="btn" href="/json-formatter/">JSON Formatter</a>
+          <a class="btn" href="/base64/">Base64 Encode/Decode</a>
+          <a class="btn" href="/url-tools/">URL Tools</a>
+          <a class="btn" href="/quick-notes/">Quick Notes</a>
+        </p>
+        <p class="small">
+          Prefer বাংলা? Try the
+          <a href="/bn/text-to-pdf/" hreflang="bn">বাংলা সংস্করণ</a>.
+        </p>
       </article>
     </main>
 
@@ -234,15 +521,9 @@ ${footer}`;
   #tp-print-root {
     display:block !important;
     font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, 'Noto Sans', sans-serif;
-    font-size: 12pt;
-    line-height: 1.5;
-    margin:0; padding:0;
+    font-size: 12pt; line-height: 1.5; margin:0; padding:0;
   }
-  #tp-print-root .tp-container {
-    white-space: pre-wrap;
-    word-break: break-word;
-    min-height: 60vh;
-  }
+  #tp-print-root .tp-container { white-space: pre-wrap; word-break: break-word; min-height: 60vh; }
 }`;
           document.head.appendChild(style);
 
@@ -267,6 +548,11 @@ ${footer}`;
           statusEl.textContent = "Sample inserted.";
           statusEl.style.color = "var(--muted)";
         });
+
+        // Render in-content ad
+        try {
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        } catch {}
       })();
     </script>
   </body>

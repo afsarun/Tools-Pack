@@ -1,0 +1,43 @@
+# EN (exact first, then wildcard)
+/PercentCalculator           /percent-calculator/                301!
+/PercentCalculator/          /percent-calculator/                301!
+/PercentCalculator/*         /percent-calculator/:splat          301!
+
+/image-resizer               /image-resizer-compressor/          301!
+/image-resizer/              /image-resizer-compressor/          301!
+/image-resizer/*             /image-resizer-compressor/:splat    301!
+
+/color-contrast              /color-picker-contrast/             301!
+/color-contrast/             /color-picker-contrast/             301!
+/color-contrast/*            /color-picker-contrast/:splat       301!
+
+/stopwatch                   /stopwatch-countdown/               301!
+/stopwatch/                  /stopwatch-countdown/               301!
+/stopwatch/*                 /stopwatch-countdown/:splat         301!
+
+/notes                       /quick-notes/                       301!
+/notes/                      /quick-notes/                       301!
+/notes/*                     /quick-notes/:splat                 301!
+
+
+# BN (exact first, then wildcard)
+/bn/PercentCalculator        /bn/percent-calculator/             301!
+/bn/PercentCalculator/       /bn/percent-calculator/             301!
+/bn/PercentCalculator/*      /bn/percent-calculator/:splat       301!
+
+/bn/image-resizer            /bn/image-resizer-compressor/       301!
+/bn/image-resizer/           /bn/image-resizer-compressor/       301!
+/bn/image-resizer/*          /bn/image-resizer-compressor/:splat 301!
+
+/bn/color-contrast           /bn/color-picker-contrast/          301!
+/bn/color-contrast/          /bn/color-picker-contrast/          301!
+/bn/color-contrast/*         /bn/color-picker-contrast/:splat    301!
+
+/bn/stopwatch                /bn/stopwatch-countdown/            301!
+/bn/stopwatch/               /bn/stopwatch-countdown/            301!
+/bn/stopwatch/*              /bn/stopwatch-countdown/:splat      301!
+
+/bn/notes                    /bn/quick-notes/                    301!
+/bn/notes/                   /bn/quick-notes/                    301!
+/bn/notes/*                  /bn/quick-notes/:splat              301!
+

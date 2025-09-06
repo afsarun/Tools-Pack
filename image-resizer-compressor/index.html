@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Image Resizer & Compressor — JPG/PNG/WebP | Tools Pack</title>
+    <meta
+      name="description"
+      content="Resize and compress images in your browser; export as JPEG, PNG, or WebP. Keep aspect ratio, choose quality, and download instantly."
+    />
+    <link
+      rel="canonical"
+      href="https://tools-pack.netlify.app/image-resizer/"
+    />
+    <link rel="stylesheet" href="../assets/style.css" />
+    <meta name="theme-color" content="#1E1E2F" />
+
+    <!-- Hreflang alternates -->
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://tools-pack.netlify.app/image-resizer/"
+    />
+    <link
+      rel="alternate"
+      hreflang="bn"
+      href="https://tools-pack.netlify.app/bn/image-resizer/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://tools-pack.netlify.app/image-resizer/"
+    />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tools Pack" />
+    <meta property="og:title" content="Image Resizer — Tools Pack" />
+    <meta
+      property="og:description"
+      content="Resize/compress images and download as JPG, PNG or WebP — fast and private."
+    />
+    <meta
+      property="og:url"
+      content="https://tools-pack.netlify.app/image-resizer/"
+    />
+    <meta
+      property="og:image"
+      content="https://tools-pack.netlify.app/og/image.png"
+    />
+    <meta
+      property="og:image:alt"
+      content="Image Resizer & Compressor — Tools Pack"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- JSON-LD: WebApplication -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Image Resizer & Compressor",
+        "url": "https://tools-pack.netlify.app/image-resizer/",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "All",
+        "description": "Resize and compress images in the browser; export as JPEG, PNG or WebP.",
+        "inLanguage": "en"
+      }
+    </script>
+
+    <!-- JSON-LD: Breadcrumbs -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Tools Pack",
+            "item": "https://tools-pack.netlify.app/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Image Tools",
+            "item": "https://tools-pack.netlify.app/#image"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Image Resizer & Compressor",
+            "item": "https://tools-pack.netlify.app/image-resizer/"
+          }
+        ]
+      }
+    </script>
+
+    <!-- JSON-LD: FAQ rich results -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I reduce image file size?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Upload an image, set a smaller width/height, pick JPEG or WebP, lower the Quality slider, then click Resize & Download."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What formats are supported?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You can export JPEG, PNG, or WebP. JPEG/WebP allow a Quality slider; PNG is lossless and ignores quality."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this remove EXIF/metadata?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Canvas export typically strips EXIF/metadata, which also helps reduce size."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is my image uploaded anywhere?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Everything runs locally in your browser; nothing is sent to a server."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why is the Quality slider disabled for PNG?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "PNG is lossless. Quality applies only to JPEG/WebP. Choose JPEG/WebP when you want smaller files."
+            }
+          }
+        ]
+      }
+    </script>
+
+    <!-- ========= Google AdSense loader =========
+         Replace client with your publisher ID.
+         Keep data-adtest="on" while testing; remove when live. -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234567890123456"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Page-specific styles (ads + layout tweaks) -->
+    <style>
+      /* Ad slots: reserve space & cap widths to avoid CLS */
+      .ad-wrap {
+        margin: 12px 0;
+      }
+      .ad-label {
+        display: block;
+        font-size: 12px;
+        color: var(--muted, #888);
+        margin-bottom: 4px;
+      }
+      .adsbygoogle {
+        display: block;
+      }
+      .ad-top {
+        margin-inline: auto;
+      }
+      @media (min-width: 900px) {
+        .ad-top {
+          max-width: 728px;
+        }
+        .ad-top .adsbygoogle {
+          min-height: 90px;
+        }
+      }
+      @media (max-width: 899px) and (min-width: 600px) {
+        .ad-top {
+          max-width: 468px;
+        }
+        .ad-top .adsbygoogle {
+          min-height: 60px;
+        }
+      }
+      @media (max-width: 599px) {
+        .ad-top {
+          max-width: 320px;
+        }
+        .ad-top .adsbygoogle {
+          min-height: 100px;
+        }
+      }
+      .ad-article {
+        max-width: 600px;
+        margin-inline: auto;
+      }
+      @media (max-width: 600px) {
+        .ad-article {
+          max-width: 360px;
+        }
+      }
+
+      /* Rows & grid */
+      .row {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .row .field,
+      .row .select,
+      .row .btn {
+        flex: 1 1 220px;
+      }
+      .ir-grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 10px;
+      }
+      .ir-col-6 {
+        grid-column: span 6;
+      }
+      @media (max-width: 900px) {
+        .ir-col-6 {
+          grid-column: 1 / -1;
+        }
+      }
+
+      /* Preview box */
+      .preview-box {
+        min-height: 150px;
+        background: #151527;
+        border-radius: 12px;
+        border: var(--border);
+      }
+      #img {
+        max-width: 100%;
+        max-height: 220px;
+        display: none;
+        border-radius: 10px;
+      }
+
+      /* Info & sections */
+      #info {
+        margin-top: 6px;
+      }
+      .related {
+        margin-top: 20px;
+      }
+      .related h3 {
+        margin-bottom: 8px;
+        font-size: 1rem;
+      }
+      .link-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .link-list a {
+        text-decoration: none;
+      }
+      #how-to-use ol {
+        margin: 8px 0 12px 18px;
+      }
+      #faq h3 {
+        margin-top: 12px;
+        font-size: 1rem;
+      }
+      #faq p {
+        margin: 6px 0 12px;
+      }
+
+      /* Buttons full-width on small screens */
+      @media (max-width: 600px) {
+        .btn {
+          width: 100%;
+          margin-top: 8px;
+        }
+        .btn.btn-primary {
+          margin-top: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="sticky">
+      <div class="wrap brand">
+        <a href="/" aria-label="Back to home"
+          ><div class="logo" aria-hidden="true"></div
+        ></a>
+        <div>
+          <h1 style="margin: 0">Image Resizer & Compressor</h1>
+          <div class="sub">Canvas • JPEG/PNG/WebP</div>
+        </div>
+        <div style="margin-left: auto">
+          <a class="muted" href="/bn/image-resizer/" hreflang="bn">বাংলা</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Ad #1: top banner (constrained) -->
+    <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
+      <span class="ad-label">Ad</span>
+      <ins
+        class="adsbygoogle"
+        style="display: inline-block"
+        data-ad-client="ca-pub-1234567890123456"
+        data-ad-slot="1111111111"
+        data-ad-format="auto"
+        data-full-width-responsive="false"
+        data-adtest="on"
+      ></ins>
+    </div>
+
+    <main class="wrap">
+      <!-- Breadcrumbs -->
+      <nav class="breadcrumbs" aria-label="breadcrumb">
+        <a href="/">Home</a> › <a href="/#image">Image Tools</a> ›
+        <span>Image Resizer & Compressor</span>
+      </nav>
+
+      <!-- TOC -->
+      <p class="toc">
+        <a href="#uploader">Upload</a> · <a href="#controls">Controls</a> ·
+        <a href="#how-to-use">How to use</a> · <a href="#faq">FAQ</a> ·
+        <a href="#related">Related tools</a>
+      </p>
+
+      <article class="card">
+        <h2>Resize & compress images</h2>
+
+        <!-- Upload -->
+        <h3 id="uploader" class="muted">Upload</h3>
+        <div class="row">
+          <input
+            id="file"
+            class="field"
+            type="file"
+            accept="image/*"
+            aria-label="Choose image file"
+          />
+        </div>
+
+        <div class="ir-grid">
+          <!-- Preview -->
+          <div class="field center ir-col-6 preview-box">
+            <img id="img" alt="Preview" />
+            <span id="empty" class="muted">Upload an image…</span>
+          </div>
+
+          <!-- Controls -->
+          <section
+            class="field ir-col-6"
+            id="controls"
+            style="display: flex; flex-direction: column; gap: 8px"
+          >
+            <div class="row">
+              <label class="pill">
+                W
+                <input
+                  id="w"
+                  type="number"
+                  class="field"
+                  min="1"
+                  inputmode="numeric"
+                  aria-label="Width (pixels)"
+                />
+              </label>
+              <label class="pill">
+                H
+                <input
+                  id="h"
+                  type="number"
+                  class="field"
+                  min="1"
+                  inputmode="numeric"
+                  aria-label="Height (pixels)"
+                />
+              </label>
+            </div>
+
+            <label class="pill"
+              ><input id="lock" type="checkbox" checked /> Keep aspect</label
+            >
+
+            <div class="row">
+              <select id="fmt" class="select" aria-label="Output format">
+                <option value="image/jpeg">JPEG</option>
+                <option value="image/png">PNG</option>
+                <option value="image/webp">WebP</option>
+              </select>
+
+              <label
+                id="qwrap"
+                class="field"
+                style="display: flex; align-items: center; gap: 10px"
+              >
+                <span class="muted">Quality</span>
+                <input
+                  id="q"
+                  type="range"
+                  min="0.1"
+                  max="1"
+                  step="0.05"
+                  value="0.8"
+                  aria-label="Quality slider"
+                />
+                <span class="pill mono" id="qv">0.80</span>
+              </label>
+            </div>
+
+            <div class="row">
+              <button id="auto" class="btn" type="button">Auto size</button>
+              <button id="run" class="btn btn-primary" type="button">
+                Resize & Download
+              </button>
+            </div>
+
+            <div id="info" class="muted small" aria-live="polite"></div>
+          </section>
+        </div>
+
+        <!-- Ad #2: in-article (fluid) -->
+        <div class="ad-wrap ad-article" aria-label="Advertisement">
+          <span class="ad-label">Ad</span>
+          <ins
+            class="adsbygoogle"
+            style="display: block; text-align: center"
+            data-ad-client="ca-pub-1234567890123456"
+            data-ad-slot="2222222222"
+            data-ad-format="fluid"
+            data-ad-layout="in-article"
+            data-adtest="on"
+          ></ins>
+        </div>
+
+        <!-- Hidden canvas for processing -->
+        <canvas id="c" style="display: none"></canvas>
+      </article>
+
+      <!-- How to use -->
+      <article class="card" id="how-to-use">
+        <h2>How to use</h2>
+        <ol>
+          <li>
+            Click <strong>Upload</strong> and choose an image (JPG/PNG/WebP).
+          </li>
+          <li>
+            Enter new <strong>W/H</strong>. Keep <em>Keep aspect</em> on for
+            proportional resize.
+          </li>
+          <li>
+            Select <strong>Format</strong> (JPEG/PNG/WebP). For smaller files,
+            prefer <strong>JPEG/WebP</strong>.
+          </li>
+          <li>
+            If JPEG/WebP, adjust <strong>Quality</strong> (lower = smaller
+            file).
+          </li>
+          <li>
+            Click <strong>Resize &amp; Download</strong> to save the result.
+          </li>
+        </ol>
+        <h3>Tips</h3>
+        <ul>
+          <li>
+            <strong>PNG ignores Quality.</strong> Use JPEG/WebP to compress
+            more.
+          </li>
+          <li>Large downsizing gives the biggest size reduction.</li>
+          <li>This tool runs locally—great for privacy and speed.</li>
+        </ul>
+      </article>
+
+      <!-- FAQ -->
+      <article class="card faq" id="faq">
+        <h2>FAQ</h2>
+        <details>
+          <summary>How do I reduce image file size?</summary>
+          <p>
+            Downscale width/height and use JPEG/WebP with a lower Quality
+            setting, then download.
+          </p>
+        </details>
+        <details>
+          <summary>What formats are supported?</summary>
+          <p>
+            Export as JPEG, PNG, or WebP. Quality applies only to JPEG/WebP.
+          </p>
+        </details>
+        <details>
+          <summary>Does this remove EXIF/metadata?</summary>
+          <p>Yes. Canvas export typically strips EXIF/metadata.</p>
+        </details>
+        <details>
+          <summary>Is my image uploaded anywhere?</summary>
+          <p>
+            No. Everything happens in your browser; nothing is sent to a server.
+          </p>
+        </details>
+        <details>
+          <summary>Why is the Quality slider disabled for PNG?</summary>
+          <p>
+            PNG is lossless, so there’s no quality/size trade-off exposed via
+            the slider.
+          </p>
+        </details>
+      </article>
+
+      <!-- Related tools -->
+      <article class="card" id="related">
+        <h2>Related tools</h2>
+        <p class="muted">More image &amp; color utilities:</p>
+        <p>
+          <a class="btn" href="/color-picker-contrast/"
+            >Color Picker &amp; Contrast</a
+          >
+          <a class="btn" href="/text-to-pdf/">Text → PDF</a>
+          <a class="btn" href="/base64/">Base64 Encode/Decode</a>
+        </p>
+        <p class="small">
+          Prefer বাংলা? Try the
+          <a href="/bn/image-resizer/" hreflang="bn">বাংলা সংস্করণ</a>.
+        </p>
+      </article>
+    </main>
+
+    <footer>
+      © <span id="y"></span> Tools Pack • <a class="muted" href="/">Home</a> •
+      <a class="muted" href="/bn/image-resizer/" hreflang="bn">বাংলা</a>
+    </footer>
+
+    <script>
+      const $ = (id) => document.getElementById(id);
+
+      // Footer year
+      $("y").textContent = new Date().getFullYear();
+
+      // ===== Lazy init AdSense when slots are visible =====
+      const initAds = () => {
+        window.adsbygoogle = window.adsbygoogle || [];
+        const slots = document.querySelectorAll(
+          "ins.adsbygoogle:not([data-loaded])"
+        );
+        if (!slots.length) return;
+
+        const push = (el) => {
+          try {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            el.setAttribute("data-loaded", "1");
+          } catch (e) {
+            /* ignore */
+          }
+        };
+
+        if ("IntersectionObserver" in window) {
+          const io = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  push(entry.target);
+                  io.unobserve(entry.target);
+                }
+              });
+            },
+            { rootMargin: "200px 0px" }
+          );
+          slots.forEach((el) => io.observe(el));
+        } else {
+          slots.forEach(push);
+        }
+      };
+      window.addEventListener("load", initAds);
+
+      // ===== Elements =====
+      const fileEl = $("file");
+      const imgEl = $("img");
+      const emptyEl = $("empty");
+      const wEl = $("w");
+      const hEl = $("h");
+      const lockEl = $("lock");
+      const fmtEl = $("fmt");
+      const qWrapEl = $("qwrap");
+      const qEl = $("q");
+      const qvEl = $("qv");
+      const autoBtn = $("auto");
+      const runBtn = $("run");
+      const infoEl = $("info");
+      const canvas = $("c");
+      const ctx = canvas.getContext("2d");
+
+      // ===== State =====
+      let srcW = 0,
+        srcH = 0;
+      let objectURL = null;
+
+      // ===== Helpers =====
+      const formatBytes = (bytes) => {
+        if (!Number.isFinite(bytes) || bytes <= 0) return "0 B";
+        const u = ["B", "KB", "MB", "GB", "TB"];
+        const i = Math.floor(Math.log(bytes) / Math.log(1024));
+        const v = bytes / Math.pow(1024, i);
+        return `${v.toFixed(v < 10 && i > 0 ? 2 : 1)} ${u[i]}`;
+      };
+
+      const refreshQualityUI = () => {
+        const lossy =
+          fmtEl.value === "image/jpeg" || fmtEl.value === "image/webp";
+        qEl.disabled = !lossy;
+        qWrapEl.style.opacity = lossy ? "1" : "0.6";
+      };
+
+      // ===== File load =====
+      fileEl.onchange = () => {
+        const f = fileEl.files && fileEl.files[0];
+        if (!f) return;
+
+        if (objectURL) {
+          URL.revokeObjectURL(objectURL);
+          objectURL = null;
+        }
+
+        objectURL = URL.createObjectURL(f);
+        imgEl.onload = () => {
+          srcW = imgEl.naturalWidth;
+          srcH = imgEl.naturalHeight;
+          wEl.value = srcW;
+          hEl.value = srcH;
+          emptyEl.style.display = "none";
+          imgEl.style.display = "block";
+          infoEl.textContent = `Source: ${srcW}×${srcH} — ${formatBytes(
+            f.size
+          )}`;
+          URL.revokeObjectURL(objectURL);
+          objectURL = null;
+        };
+        imgEl.onerror = () => {
+          imgEl.style.display = "none";
+          emptyEl.style.display = "inline";
+          infoEl.textContent = "Could not load image.";
+          if (objectURL) URL.revokeObjectURL(objectURL);
+          objectURL = null;
+        };
+        imgEl.src = objectURL;
+      };
+
+      // ===== Aspect lock & dimension fields =====
+      lockEl.onchange = () => {
+        /* UX parity */
+      };
+      wEl.oninput = () => {
+        const w = parseInt(wEl.value || 0, 10);
+        if (lockEl.checked && srcW && w > 0)
+          hEl.value = Math.round((w * srcH) / srcW);
+      };
+      hEl.oninput = () => {
+        const h = parseInt(hEl.value || 0, 10);
+        if (lockEl.checked && srcH && h > 0)
+          wEl.value = Math.round((h * srcW) / srcH);
+      };
+
+      // ===== Quality slider & format =====
+      qEl.oninput = (e) => (qvEl.textContent = (+e.target.value).toFixed(2));
+      fmtEl.onchange = refreshQualityUI;
+      refreshQualityUI();
+
+      // ===== Auto size =====
+      autoBtn.onclick = () => {
+        if (!srcW) return;
+        wEl.value = srcW;
+        hEl.value = srcH;
+        qEl.value = 0.8;
+        qvEl.textContent = "0.80";
+      };
+
+      // ===== toBlob polyfill (older Safari) =====
+      if (!HTMLCanvasElement.prototype.toBlob) {
+        HTMLCanvasElement.prototype.toBlob = function (
+          callback,
+          type,
+          quality
+        ) {
+          const dataURL = this.toDataURL(type, quality);
+          const byteString = atob(dataURL.split(",")[1]);
+          const len = byteString.length;
+          const bytes = new Uint8Array(len);
+          for (let i = 0; i < len; i++) bytes[i] = byteString.charCodeAt(i);
+          callback(new Blob([bytes], { type: type || "image/png" }));
+        };
+      }
+
+      // ===== Resize & download =====
+      runBtn.onclick = () => {
+        if (!srcW) {
+          alert("Upload an image first.");
+          return;
+        }
+
+        const W = Math.max(1, parseInt(wEl.value || srcW, 10));
+        const H = Math.max(1, parseInt(hEl.value || srcH, 10));
+        const mime = fmtEl.value;
+        const quality =
+          mime === "image/jpeg" || mime === "image/webp"
+            ? parseFloat(qEl.value) || 0.8
+            : undefined;
+
+        canvas.width = W;
+        canvas.height = H;
+
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = "high";
+        ctx.clearRect(0, 0, W, H);
+        ctx.drawImage(imgEl, 0, 0, W, H);
+
+        canvas.toBlob(
+          (blob) => {
+            if (!blob) {
+              alert("Export failed.");
+              return;
+            }
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            const ext = (mime.split("/")[1] || "png").replace("jpeg", "jpg");
+            a.href = url;
+            a.download = `image_${W}x${H}.${ext}`;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            URL.revokeObjectURL(url);
+
+            infoEl.textContent = `Output: ${W}×${H} — ~${formatBytes(
+              blob.size
+            )}`;
+          },
+          mime,
+          quality
+        );
+      };
+    </script>
+
+    <noscript
+      >Your browser has JavaScript disabled; this tool needs JavaScript to
+      work.</noscript
+    >
+  </body>
+</html>

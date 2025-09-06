@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Color Picker & Contrast Checker — WCAG 2.1 | Tools Pack</title>
+    <meta
+      name="description"
+      content="Pick colors and check WCAG 2.1 contrast ratios (AA/AAA) for accessible design. Runs 100% in your browser."
+    />
+    <link
+      rel="canonical"
+      href="https://tools-pack.netlify.app/color-contrast/"
+    />
+    <link rel="stylesheet" href="../assets/style.css" />
+    <meta name="theme-color" content="#1E1E2F" />
+
+    <!-- Hreflang alternates -->
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://tools-pack.netlify.app/color-contrast/"
+    />
+    <link
+      rel="alternate"
+      hreflang="bn"
+      href="https://tools-pack.netlify.app/bn/color-contrast/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://tools-pack.netlify.app/color-contrast/"
+    />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tools Pack" />
+    <meta property="og:title" content="Color Picker & Contrast — Tools Pack" />
+    <meta
+      property="og:description"
+      content="Contrast ratios for WCAG AA/AAA. Fast, privacy-first."
+    />
+    <meta
+      property="og:url"
+      content="https://tools-pack.netlify.app/color-contrast/"
+    />
+    <meta
+      property="og:image"
+      content="https://tools-pack.netlify.app/og/color.png"
+    />
+    <meta
+      property="og:image:alt"
+      content="Color Contrast Checker — Tools Pack"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- JSON-LD: WebApplication -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Color Picker & Contrast",
+        "url": "https://tools-pack.netlify.app/color-contrast/",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All",
+        "description": "Check WCAG contrast ratios for normal and large text, fully in-browser.",
+        "inLanguage": "en"
+      }
+    </script>
+
+    <!-- JSON-LD: Breadcrumbs -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Tools Pack",
+            "item": "https://tools-pack.netlify.app/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Color Picker & Contrast",
+            "item": "https://tools-pack.netlify.app/color-contrast/"
+          }
+        ]
+      }
+    </script>
+
+    <!-- JSON-LD: FAQ rich results -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What contrast ratio is required for WCAG AA and AAA?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "WCAG AA requires at least 4.5:1 for normal text and 3:1 for large text (≥18pt regular or ≥14pt bold). AAA requires 7:1 for normal text and 4.5:1 for large text."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this tool send my colors to a server?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. All calculations run locally in your browser; nothing is uploaded."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does it support 3-digit hex like #abc?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. #abc is normalized to #aabbcc automatically."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does the tool support transparency or gradients?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Contrast is computed for solid colors only (#RRGGBB or #RGB). For semi-transparent overlays, compute the flattened color against the background first."
+            }
+          }
+        ]
+      }
+    </script>
+
+    <!-- ========= Google AdSense loader =========
+         Replace client with your publisher ID.
+         Keep data-adtest="on" while testing; remove when live. -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234567890123456"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Page-specific styles (ads + layout) -->
+    <style>
+      /* Ad slots: reserve space & cap widths to avoid CLS */
+      .ad-wrap {
+        margin: 12px 0;
+      }
+      .ad-label {
+        display: block;
+        font-size: 12px;
+        color: var(--muted, #888);
+        margin-bottom: 4px;
+      }
+      .adsbygoogle {
+        display: block;
+      }
+
+      .ad-top {
+        margin-inline: auto;
+      }
+      @media (min-width: 900px) {
+        .ad-top {
+          max-width: 728px;
+        }
+        .ad-top .adsbygoogle {
+          min-height: 90px;
+        }
+      }
+      @media (max-width: 899px) and (min-width: 600px) {
+        .ad-top {
+          max-width: 468px;
+        }
+        .ad-top .adsbygoogle {
+          min-height: 60px;
+        }
+      }
+      @media (max-width: 599px) {
+        .ad-top {
+          max-width: 320px;
+        }
+        .ad-top .adsbygoogle {
+          min-height: 100px;
+        }
+      }
+
+      .ad-article {
+        max-width: 600px;
+        margin-inline: auto;
+      }
+      @media (max-width: 600px) {
+        .ad-article {
+          max-width: 360px;
+        }
+      }
+
+      /* Inputs row responsive */
+      .row {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .row .field {
+        flex: 1 1 320px;
+      }
+
+      /* Preview cards grid */
+      .cc-grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 10px;
+      }
+      .cc-col {
+        grid-column: span 6;
+        padding: 16px;
+        border-radius: 12px;
+      }
+      @media (max-width: 720px) {
+        .cc-col {
+          grid-column: 1 / -1;
+        }
+      }
+
+      /* Result status */
+      #result.status {
+        margin-top: 10px;
+      }
+      .ok {
+        color: #2e7d32;
+        font-weight: 600;
+      }
+      .bad {
+        color: #c62828;
+        font-weight: 600;
+      }
+
+      /* Sections */
+      .related {
+        margin-top: 20px;
+      }
+      .related h3 {
+        margin-bottom: 8px;
+        font-size: 1rem;
+      }
+      .link-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .link-list a {
+        text-decoration: none;
+      }
+
+      #how-to-use ol {
+        margin: 8px 0 12px 18px;
+      }
+      #faq h3 {
+        margin-top: 12px;
+        font-size: 1rem;
+      }
+      #faq p {
+        margin: 6px 0 12px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="sticky">
+      <div class="wrap brand">
+        <a href="/" aria-label="Back to home"
+          ><div class="logo" aria-hidden="true"></div
+        ></a>
+        <div>
+          <h1 style="margin: 0">Color Picker + Contrast</h1>
+          <div class="sub">WCAG 2.1</div>
+        </div>
+        <div style="margin-left: auto">
+          <a class="muted" href="/bn/color-contrast/" hreflang="bn">বাংলা</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Ad #1: top banner (constrained) -->
+    <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
+      <span class="ad-label">Ad</span>
+      <ins
+        class="adsbygoogle"
+        style="display: inline-block"
+        data-ad-client="ca-pub-1234567890123456"
+        data-ad-slot="1111111111"
+        data-ad-format="auto"
+        data-full-width-responsive="false"
+        data-adtest="on"
+      ></ins>
+    </div>
+
+    <main class="wrap">
+      <!-- Breadcrumbs -->
+      <nav class="breadcrumbs" aria-label="breadcrumb">
+        <a href="/">Home</a> › <a href="/#design">Design Tools</a> ›
+        <span>Color Picker &amp; Contrast</span>
+      </nav>
+
+      <!-- TOC -->
+      <p class="toc">
+        <a href="#cc-tool">Tool</a> · <a href="#how-to-use">How to use</a> ·
+        <a href="#faq">FAQ</a> · <a href="#related">Related tools</a>
+      </p>
+
+      <!-- Tool -->
+      <article class="card" id="cc-tool">
+        <h2>Pick colors &amp; check contrast</h2>
+
+        <div class="row">
+          <label
+            class="field"
+            style="display: flex; align-items: center; gap: 10px"
+          >
+            <input
+              id="fg"
+              type="color"
+              value="#FFFFFF"
+              aria-label="Text color"
+            />
+            <input
+              id="fgHex"
+              class="field mono"
+              value="#FFFFFF"
+              aria-label="Text color hex"
+            />
+            <button class="btn" id="copyFg" type="button">Copy</button>
+          </label>
+
+          <label
+            class="field"
+            style="display: flex; align-items: center; gap: 10px"
+          >
+            <input
+              id="bg"
+              type="color"
+              value="#000000"
+              aria-label="Background color"
+            />
+            <input
+              id="bgHex"
+              class="field mono"
+              value="#000000"
+              aria-label="Background color hex"
+            />
+            <button class="btn" id="copyBg" type="button">Copy</button>
+          </label>
+        </div>
+
+        <!-- Ad #2: in-article (fluid) -->
+        <div class="ad-wrap ad-article" aria-label="Advertisement">
+          <span class="ad-label">Ad</span>
+          <ins
+            class="adsbygoogle"
+            style="display: block; text-align: center"
+            data-ad-client="ca-pub-1234567890123456"
+            data-ad-slot="2222222222"
+            data-ad-format="fluid"
+            data-ad-layout="in-article"
+            data-adtest="on"
+          ></ins>
+        </div>
+
+        <div class="cc-grid">
+          <div id="sA" class="field cc-col">
+            <div class="muted small">Normal text</div>
+            <div>Almost before we knew it, we had left the ground.</div>
+          </div>
+          <div id="sB" class="field cc-col">
+            <div class="muted small">Large text</div>
+            <div style="font-size: 20px; font-weight: 700">
+              Sphinx of black quartz, judge my vow.
+            </div>
+          </div>
+        </div>
+
+        <div id="result" class="status" aria-live="polite"></div>
+      </article>
+
+      <!-- How to use -->
+      <article class="card" id="how-to-use">
+        <h2>How to use</h2>
+        <ol>
+          <li>
+            Pick a <strong>Text</strong> and <strong>Background</strong> color
+            using the color inputs or paste a hex value (e.g.,
+            <code>#1a73e8</code> or <code>#abc</code>).
+          </li>
+          <li>
+            The tool instantly shows the <strong>contrast ratio</strong> and
+            pass/fail badges for <strong>AA (normal/large)</strong> and
+            <strong>AAA (normal)</strong>.
+          </li>
+          <li>
+            Preview how the pair looks on <em>Normal</em> and
+            <em>Large</em> text. “Large” means ≥18pt normal or ≥14pt bold.
+          </li>
+          <li>Click <strong>Copy</strong> to copy the hex for either color.</li>
+          <li>All calculations run locally—nothing leaves your browser.</li>
+        </ol>
+        <h3>Tips</h3>
+        <ul>
+          <li>
+            Only solid colors are supported. For semi-transparent overlays,
+            first compute the flattened color against the background.
+          </li>
+          <li><code>#RGB</code> is auto-expanded to <code>#RRGGBB</code>.</li>
+          <li>
+            For non-text UI (icons, borders), WCAG suggests ≥3:1 against the
+            adjacent color.
+          </li>
+        </ul>
+      </article>
+
+      <!-- FAQ -->
+      <article class="card faq" id="faq">
+        <h2>FAQ</h2>
+        <details>
+          <summary>What are AA vs AAA requirements?</summary>
+          <p>
+            AA: ≥4.5:1 for normal text, ≥3:1 for large text. AAA: ≥7:1 for
+            normal text, ≥4.5:1 for large text.
+          </p>
+        </details>
+        <details>
+          <summary>What counts as “large” text?</summary>
+          <p>At least 18pt (≈24px) normal weight, or 14pt (≈18.67px) bold.</p>
+        </details>
+        <details>
+          <summary>Can I enter RGB or HSL?</summary>
+          <p>
+            This tool accepts hex (<code>#RRGGBB</code> or <code>#RGB</code>)
+            for accuracy and simplicity.
+          </p>
+        </details>
+        <details>
+          <summary>Does it work offline?</summary>
+          <p>Yes—after the first load, it works without internet.</p>
+        </details>
+        <details>
+          <summary>Is my data sent anywhere?</summary>
+          <p>No. Everything runs locally in your browser.</p>
+        </details>
+      </article>
+
+      <!-- Related tools -->
+      <article class="card related" id="related">
+        <h2>Related tools</h2>
+        <p class="muted">More design &amp; text utilities:</p>
+        <p>
+          <a class="btn" href="/text-utilities/">Text Utilities</a>
+          <a class="btn" href="/image-resizer-compressor/">Image Resizer</a>
+          <a class="btn" href="/json-formatter/">JSON Formatter</a>
+          <a class="btn" href="/url-tools/">URL Tools</a>
+        </p>
+        <p class="small">
+          Prefer বাংলা? Try the
+          <a href="/bn/color-contrast/" hreflang="bn">বাংলা সংস্করণ</a>.
+        </p>
+      </article>
+    </main>
+
+    <footer>
+      © <span id="y"></span> Tools Pack • <a class="muted" href="/">Home</a> •
+      <a class="muted" href="/bn/color-contrast/" hreflang="bn">বাংলা</a>
+    </footer>
+
+    <script>
+      // Elements (explicit bindings)
+      const yEl = document.getElementById("y");
+      const fg = document.getElementById("fg");
+      const bg = document.getElementById("bg");
+      const fgHex = document.getElementById("fgHex");
+      const bgHex = document.getElementById("bgHex");
+      const copyFg = document.getElementById("copyFg");
+      const copyBg = document.getElementById("copyBg");
+      const sA = document.getElementById("sA");
+      const sB = document.getElementById("sB");
+      const result = document.getElementById("result");
+
+      // Footer year
+      yEl.textContent = new Date().getFullYear();
+
+      // ===== Lazy init AdSense when slots are visible =====
+      const initAds = () => {
+        window.adsbygoogle = window.adsbygoogle || [];
+        const slots = document.querySelectorAll(
+          "ins.adsbygoogle:not([data-loaded])"
+        );
+        if (!slots.length) return;
+
+        const push = (el) => {
+          try {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            el.setAttribute("data-loaded", "1");
+          } catch (e) {
+            /* ignore */
+          }
+        };
+
+        if ("IntersectionObserver" in window) {
+          const io = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  push(entry.target);
+                  io.unobserve(entry.target);
+                }
+              });
+            },
+            { rootMargin: "200px 0px" }
+          );
+          slots.forEach((el) => io.observe(el));
+        } else {
+          slots.forEach(push);
+        }
+      };
+      window.addEventListener("load", initAds);
+
+      // ===== Contrast math (WCAG relative luminance) =====
+      const norm = (h) => {
+        let s = String(h || "")
+          .trim()
+          .toUpperCase();
+        if (!s.startsWith("#")) s = "#" + s;
+        if (s.length === 4)
+          s = "#" + [...s.slice(1)].map((ch) => ch + ch).join("");
+        return s.slice(0, 7);
+      };
+      const hexToRGB = (h) => {
+        const x = parseInt(h.slice(1), 16);
+        return { r: (x >> 16) & 255, g: (x >> 8) & 255, b: x & 255 };
+      };
+      const lin = (c) => {
+        c /= 255;
+        return c <= 0.04045 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+      };
+      const relL = ({ r, g, b }) =>
+        0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
+      const ratio = (F, B) => {
+        const L1 = relL(hexToRGB(F)),
+          L2 = relL(hexToRGB(B));
+        const hi = Math.max(L1, L2),
+          lo = Math.min(L1, L2);
+        return (hi + 0.05) / (lo + 0.05);
+      };
+
+      const apply = () => {
+        const f = norm(fgHex.value),
+          b = norm(bgHex.value);
+        fg.value = f;
+        bg.value = b;
+        fgHex.value = f;
+        bgHex.value = b;
+
+        sA.style.color = f;
+        sA.style.background = b;
+        sB.style.color = f;
+        sB.style.background = b;
+
+        const r = ratio(f, b);
+        const aa = r >= 4.5;
+        const aal = r >= 3.0;
+        const aaa = r >= 7.0;
+
+        result.innerHTML =
+          `Contrast: <b class="mono">${r.toFixed(2)}:1</b> • ` +
+          `<span class="${aa ? "ok" : "bad"}">AA (normal) ${
+            aa ? "PASS" : "FAIL"
+          }</span> • ` +
+          `<span class="${aal ? "ok" : "bad"}">AA (large) ${
+            aal ? "PASS" : "FAIL"
+          }</span> • ` +
+          `<span class="${aaa ? "ok" : "bad"}">AAA (normal) ${
+            aaa ? "PASS" : "FAIL"
+          }</span>`;
+      };
+
+      // Sync inputs
+      [fg, bg, fgHex, bgHex].forEach((el) => {
+        el.addEventListener("input", (e) => {
+          if (e.target === fg) fgHex.value = fg.value;
+          if (e.target === bg) bgHex.value = bg.value;
+          apply();
+        });
+      });
+
+      // Copy buttons
+      copyFg.onclick = () => navigator.clipboard.writeText(fgHex.value);
+      copyBg.onclick = () => navigator.clipboard.writeText(bgHex.value);
+
+      // Init
+      apply();
+    </script>
+
+    <noscript
+      >Your browser has JavaScript disabled; this tool needs JavaScript to
+      work.</noscript
+    >
+  </body>
+</html>

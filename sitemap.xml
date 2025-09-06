@@ -4,14 +4,13 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml"
 >
 
-  <!-- Home (EN) -->
+  <!-- Home -->
   <url>
     <loc>https://tools-pack.netlify.app/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/"/>
   </url>
-  <!-- Home (BN) -->
   <url>
     <loc>https://tools-pack.netlify.app/bn/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/"/>
@@ -159,60 +158,60 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/sha256/"/>
   </url>
 
-  <!-- Image Resizer -->
+  <!-- Image Resizer & Compressor -->
   <url>
-    <loc>https://tools-pack.netlify.app/image-resizer/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/image-resizer/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/image-resizer/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/image-resizer/"/>
+    <loc>https://tools-pack.netlify.app/image-resizer-compressor/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/image-resizer-compressor/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/image-resizer-compressor/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/image-resizer-compressor/"/>
   </url>
   <url>
-    <loc>https://tools-pack.netlify.app/bn/image-resizer/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/image-resizer/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/image-resizer/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/image-resizer/"/>
-  </url>
-
-  <!-- Color Contrast -->
-  <url>
-    <loc>https://tools-pack.netlify.app/color-contrast/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/color-contrast/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/color-contrast/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/color-contrast/"/>
-  </url>
-  <url>
-    <loc>https://tools-pack.netlify.app/bn/color-contrast/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/color-contrast/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/color-contrast/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/color-contrast/"/>
+    <loc>https://tools-pack.netlify.app/bn/image-resizer-compressor/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/image-resizer-compressor/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/image-resizer-compressor/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/image-resizer-compressor/"/>
   </url>
 
-  <!-- Stopwatch -->
+  <!-- Color Picker & Contrast -->
   <url>
-    <loc>https://tools-pack.netlify.app/stopwatch/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/stopwatch/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/stopwatch/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/stopwatch/"/>
+    <loc>https://tools-pack.netlify.app/color-picker-contrast/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/color-picker-contrast/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/color-picker-contrast/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/color-picker-contrast/"/>
   </url>
   <url>
-    <loc>https://tools-pack.netlify.app/bn/stopwatch/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/stopwatch/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/stopwatch/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/stopwatch/"/>
+    <loc>https://tools-pack.netlify.app/bn/color-picker-contrast/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/color-picker-contrast/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/color-picker-contrast/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/color-picker-contrast/"/>
   </url>
 
-  <!-- Notes -->
+  <!-- Stopwatch & Countdown -->
   <url>
-    <loc>https://tools-pack.netlify.app/notes/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/notes/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/notes/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/notes/"/>
+    <loc>https://tools-pack.netlify.app/stopwatch-countdown/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/stopwatch-countdown/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/stopwatch-countdown/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/stopwatch-countdown/"/>
   </url>
   <url>
-    <loc>https://tools-pack.netlify.app/bn/notes/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/notes/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/notes/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/notes/"/>
+    <loc>https://tools-pack.netlify.app/bn/stopwatch-countdown/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/stopwatch-countdown/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/stopwatch-countdown/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/stopwatch-countdown/"/>
+  </url>
+
+  <!-- Quick Notes -->
+  <url>
+    <loc>https://tools-pack.netlify.app/quick-notes/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/quick-notes/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/quick-notes/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/quick-notes/"/>
+  </url>
+  <url>
+    <loc>https://tools-pack.netlify.app/bn/quick-notes/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/quick-notes/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/quick-notes/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/quick-notes/"/>
   </url>
 
   <!-- Text → PDF -->
@@ -227,6 +226,20 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/text-to-pdf/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/text-to-pdf/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/text-to-pdf/"/>
+  </url>
+
+  <!-- Percent Calculator -->
+  <url>
+    <loc>https://tools-pack.netlify.app/percent-calculator/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/percent-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/percent-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/percent-calculator/"/>
+  </url>
+  <url>
+    <loc>https://tools-pack.netlify.app/bn/percent-calculator/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/percent-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/percent-calculator/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/percent-calculator/"/>
   </url>
 
 </urlset>

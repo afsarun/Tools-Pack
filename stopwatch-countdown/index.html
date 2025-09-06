@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>Online Stopwatch & Countdown Timer | Tools Pack</title>
+    <meta
+      name="description"
+      content="Precise stopwatch and countdown with pause/reset and alarm beep."
+    />
+    <link rel="canonical" href="https://tools-pack.netlify.app/stopwatch/" />
+
+    <!-- Hreflang -->
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://tools-pack.netlify.app/stopwatch/"
+    />
+    <link
+      rel="alternate"
+      hreflang="bn"
+      href="https://tools-pack.netlify.app/bn/stopwatch-countdown/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://tools-pack.netlify.app/"
+    />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../assets/style.css" />
+    <meta name="theme-color" content="#1E1E2F" />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Stopwatch & Countdown — Tools Pack" />
+    <meta
+      property="og:description"
+      content="Start, pause, reset; set countdown."
+    />
+    <meta
+      property="og:url"
+      content="https://tools-pack.netlify.app/stopwatch/"
+    />
+    <meta
+      property="og:image"
+      content="https://tools-pack.netlify.app/og/time.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- AdSense: replace client id -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Structured data: WebApplication -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Stopwatch & Countdown",
+        "url": "https://tools-pack.netlify.app/stopwatch/",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All",
+        "description": "Accurate stopwatch and countdown.",
+        "inLanguage": "en"
+      }
+    </script>
+
+    <!-- Structured data: Breadcrumbs -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Tools Pack",
+            "item": "https://tools-pack.netlify.app/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Stopwatch & Countdown",
+            "item": "https://tools-pack.netlify.app/stopwatch/"
+          }
+        ]
+      }
+    </script>
+
+    <!-- Structured data: FAQ (MUST match visible content below) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I use the stopwatch?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Click Start to begin, Pause to pause, and Reset to clear. Keyboard: Space toggles Start/Pause, R resets."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I set a countdown?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Enter minutes and seconds, then click Start Countdown. You will hear a short beep when it reaches 00:00."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Will it stay accurate if I switch tabs?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The timer uses monotonic time and timestamps to avoid drift. The display stays accurate even if the tab is throttled."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why can’t I hear the beep?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Most browsers block audio until you interact. Click anywhere first or press a button to unlock audio. Also check Silent mode and volume."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are my timings or inputs saved?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No data is sent to a server. Everything runs locally in your browser."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+
+  <body>
+    <header class="sticky">
+      <div class="wrap brand">
+        <a href="/"><div class="logo" aria-label="Tools Pack"></div></a>
+        <div>
+          <h1 style="margin: 0">Stopwatch & Countdown</h1>
+          <div class="sub">Precise timing</div>
+        </div>
+        <nav style="margin-left: auto">
+          <a class="btn btn-ghost" href="/bn/stopwatch-countdown/" hreflang="bn"
+            >বাংলা</a
+          >
+        </nav>
+      </div>
+    </header>
+    <!-- Ad #1: top banner (constrained, no full-width expansion) -->
+    <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
+      <span class="ad-label">Ad</span>
+      <ins
+        class="adsbygoogle"
+        style="display: inline-block"
+        data-ad-client="ca-pub-1234567890123456"
+        data-ad-slot="1111111111"
+        data-ad-format="auto"
+        data-full-width-responsive="false"
+        data-adtest="on"
+      ></ins>
+    </div>
+    <main class="wrap">
+      <!-- Breadcrumbs (updated for this tool) -->
+      <nav class="breadcrumbs" aria-label="breadcrumb">
+        <a href="/">Home</a> › <a href="/#time">Time Tools</a> ›
+        <span aria-current="page">Stopwatch &amp; Countdown</span>
+      </nav>
+
+      <!-- TOC (updated anchors & labels) -->
+      <p class="toc">
+        <a href="#tool-time">Stopwatch &amp; Countdown</a> ·
+        <a href="#how-to-use">How to use</a> · <a href="#faq">FAQ</a> ·
+        <a href="#related">Related tools</a>
+      </p>
+
+      <!-- Tool -->
+      <article class="card" id="tool-time">
+        <div
+          id="swDisp"
+          class="field center"
+          style="font-size: 28px; font-weight: 700"
+          aria-live="polite"
+        >
+          00:00.000
+        </div>
+
+        <div class="row" style="gap: 0.5rem; justify-content: center">
+          <button class="btn btn-primary" id="swStart" type="button">
+            Start
+          </button>
+          <button class="btn" id="swPause" type="button">Pause</button>
+          <button class="btn" id="swReset" type="button">Reset</button>
+        </div>
+        <div class="ad-wrap ad-article" aria-label="Advertisement">
+          <span class="ad-label">Ad</span>
+          <ins
+            class="adsbygoogle"
+            style="display: block; text-align: center"
+            data-ad-client="ca-pub-1234567890123456"
+            data-ad-slot="2222222222"
+            data-ad-format="fluid"
+            data-ad-layout="in-article"
+            data-adtest="on"
+          ></ins>
+        </div>
+        <hr style="border: none; border-top: var(--border)" />
+
+        <form class="row" onsubmit="return false" aria-label="Countdown inputs">
+          <label class="field" style="display: flex; flex-direction: column">
+            <span class="muted" style="font-size: 0.9rem">Minutes</span>
+            <input
+              id="m"
+              type="number"
+              min="0"
+              value="0"
+              placeholder="Minutes"
+              inputmode="numeric"
+              style="background-color: black; color: aliceblue"
+            />
+          </label>
+          <label class="field" style="display: flex; flex-direction: column">
+            <span class="muted" style="font-size: 0.9rem">Seconds</span>
+            <input
+              id="s"
+              type="number"
+              min="0"
+              max="59"
+              value="30"
+              placeholder="Seconds"
+              inputmode="numeric"
+              style="background-color: black; color: aliceblue"
+            />
+          </label>
+        </form>
+
+        <div class="row" style="gap: 0.5rem; justify-content: center">
+          <button class="btn" id="cdStart" type="button">
+            Start Countdown
+          </button>
+          <button class="btn" id="cdStop" type="button">Stop</button>
+        </div>
+
+        <div id="cdDisp" class="field center" aria-live="polite">00:30</div>
+      </article>
+
+      <!-- How to use (updated content) -->
+      <article class="card" id="how-to-use">
+        <h2>How to use</h2>
+        <h3>Stopwatch</h3>
+        <ol>
+          <li>Click <strong>Start</strong> to begin timing.</li>
+          <li>
+            Click <strong>Pause</strong> to pause; click
+            <strong>Start</strong> again to resume.
+          </li>
+          <li>
+            Click <strong>Reset</strong> to clear back to
+            <code>00:00.000</code>.
+          </li>
+          <li>
+            Keyboard: <strong>Space</strong> toggles Start/Pause,
+            <strong>R</strong> resets.
+          </li>
+        </ol>
+        <h3>Countdown</h3>
+        <ol>
+          <li>Enter <strong>Minutes</strong> and <strong>Seconds</strong>.</li>
+          <li>
+            Click <strong>Start Countdown</strong> (or press
+            <strong>Enter</strong>).
+          </li>
+          <li>When it reaches <code>00:00</code>, you’ll hear a short beep.</li>
+          <li>
+            Click <strong>Stop</strong> (or press <strong>Esc</strong>) to
+            cancel.
+          </li>
+        </ol>
+        <h3>Tips</h3>
+        <ul>
+          <li>
+            For audio: interact once (click anywhere) to unlock sound if your
+            browser blocks autoplay.
+          </li>
+          <li>
+            Accuracy: timers use monotonic time to avoid drift even if the tab
+            is throttled.
+          </li>
+          <li>
+            Works offline after the first load; no data leaves your device.
+          </li>
+        </ul>
+      </article>
+
+      <!-- FAQ (updated to match JSON-LD exactly) -->
+      <article class="card faq" id="faq">
+        <h2>FAQ</h2>
+
+        <details>
+          <summary>How do I use the stopwatch?</summary>
+          <p>
+            Click Start to begin, Pause to pause, and Reset to clear. Keyboard:
+            Space toggles Start/Pause, R resets.
+          </p>
+        </details>
+
+        <details>
+          <summary>How do I set a countdown?</summary>
+          <p>
+            Enter minutes and seconds, then click Start Countdown. You will hear
+            a short beep when it reaches 00:00.
+          </p>
+        </details>
+
+        <details>
+          <summary>Will it stay accurate if I switch tabs?</summary>
+          <p>
+            Yes. The timer uses monotonic time and timestamps to avoid drift.
+            The display stays accurate even if the tab is throttled.
+          </p>
+        </details>
+
+        <details>
+          <summary>Why can’t I hear the beep?</summary>
+          <p>
+            Most browsers block audio until you interact. Click anywhere first
+            or press a button to unlock audio. Also check Silent mode and
+            volume.
+          </p>
+        </details>
+
+        <details>
+          <summary>Are my timings or inputs saved?</summary>
+          <p>
+            No data is sent to a server. Everything runs locally in your
+            browser.
+          </p>
+        </details>
+      </article>
+
+      <!-- Related tools (updated) -->
+      <article class="card" id="related">
+        <h2>Related tools</h2>
+        <p class="muted">More time &amp; productivity utilities:</p>
+        <p>
+          <a class="btn" href="/age-calculator/">Age Calculator</a>
+          <a class="btn" href="/calculator/">Calculator</a>
+          <a class="btn" href="/quick-notes/">Quick Notes</a>
+          <a class="btn" href="/text-to-pdf/">Text → PDF</a>
+        </p>
+        <p class="small">
+          Prefer বাংলা? Try the
+          <a href="/bn/stopwatch-countdown/" hreflang="bn">বাংলা সংস্করণ</a>.
+        </p>
+      </article>
+
+      <!-- Bottom responsive ad -->
+      <aside aria-label="advertisement" class="card" style="padding: 0">
+        <ins
+          class="adsbygoogle"
+          style="display: block"
+          data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+          data-ad-slot="2222222222"
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        ></ins>
+        <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+      </aside>
+    </main>
+
+    <footer>© <span id="y"></span> Tools Pack</footer>
+
+    <script>
+      // ---------- Utilities ----------
+      const $ = (id) => document.getElementById(id);
+
+      // Elements
+      const yearEl = $("y");
+      const swDisp = $("swDisp");
+      const swStart = $("swStart");
+      const swPause = $("swPause");
+      const swReset = $("swReset");
+      const minEl = $("m");
+      const secEl = $("s");
+      const cdStart = $("cdStart");
+      const cdStop = $("cdStop");
+      const cdDisp = $("cdDisp");
+
+      yearEl.textContent = new Date().getFullYear();
+
+      // ---------- Stopwatch ----------
+      let swRAF = null;
+      let swStartTS = 0; // performance.now() at (re)start
+      let swElapsed = 0; // accumulated ms while paused/running
+
+      const fmtMS = (ms) => {
+        const m = Math.floor(ms / 60000);
+        const s = Math.floor((ms % 60000) / 1000);
+        const x = Math.floor(ms % 1000);
+        return `${String(m).padStart(2, "0")}:${String(s).padStart(
+          2,
+          "0"
+        )}.${String(x).padStart(3, "0")}`;
+      };
+
+      const swTick = () => {
+        const now = performance.now();
+        swDisp.textContent = fmtMS(swElapsed + (now - swStartTS));
+        swRAF = requestAnimationFrame(swTick);
+      };
+
+      function swStartRun() {
+        unlockAudio(); // prime audio on user gesture
+        if (swRAF) return; // already running
+        swStartTS = performance.now();
+        swRAF = requestAnimationFrame(swTick);
+      }
+
+      function swPauseRun() {
+        if (!swRAF) return;
+        cancelAnimationFrame(swRAF);
+        swRAF = null;
+        swElapsed += performance.now() - swStartTS;
+        swDisp.textContent = fmtMS(swElapsed);
+      }
+
+      function swResetRun() {
+        if (swRAF) cancelAnimationFrame(swRAF);
+        swRAF = null;
+        swElapsed = 0;
+        swDisp.textContent = "00:00.000";
+      }
+
+      swStart.onclick = swStartRun;
+      swPause.onclick = swPauseRun;
+      swReset.onclick = swResetRun;
+
+      // ---------- Countdown (drift-free) ----------
+      let cdTimer = null;
+      let cdEndAt = 0; // epoch ms when countdown ends
+
+      const fmtS = (t) => {
+        const mm = String(Math.floor(t / 60)).padStart(2, "0");
+        const ss = String(Math.max(0, Math.floor(t % 60))).padStart(2, "0");
+        return `${mm}:${ss}`;
+      };
+
+      // Shared AudioContext (safer for autoplay policies)
+      let ac = null;
+      function unlockAudio() {
+        const Ctx = window.AudioContext || window.webkitAudioContext;
+        if (!Ctx) return;
+        if (!ac) ac = new Ctx();
+        if (ac.state === "suspended") {
+          ac.resume().catch(() => {});
+        }
+      }
+
+      function beep() {
+        if (!ac) return; // no context, skip beep
+        const o = ac.createOscillator();
+        const g = ac.createGain();
+        o.type = "sine";
+        o.frequency.value = 880;
+        o.connect(g);
+        g.connect(ac.destination);
+        const t0 = ac.currentTime;
+        g.gain.setValueAtTime(0.0001, t0);
+        g.gain.exponentialRampToValueAtTime(0.2, t0 + 0.02);
+        g.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.6);
+        o.start(t0);
+        o.stop(t0 + 0.65);
+      }
+
+      const cdUpdate = () => {
+        const now = Date.now();
+        const secondsLeft = Math.max(0, Math.ceil((cdEndAt - now) / 1000));
+        cdDisp.textContent = fmtS(secondsLeft);
+        if (secondsLeft <= 0) {
+          clearInterval(cdTimer);
+          cdTimer = null;
+          beep();
+        }
+      };
+
+      const reflectInputs = () => {
+        const M = Math.max(0, parseInt(minEl.value || "0", 10));
+        let S = Math.max(0, parseInt(secEl.value || "0", 10));
+        if (S > 59) S = 59;
+        secEl.value = String(S);
+        cdDisp.textContent = fmtS(M * 60 + S);
+      };
+      minEl.addEventListener("input", reflectInputs);
+      secEl.addEventListener("input", reflectInputs);
+      reflectInputs();
+
+      function cdStartRun() {
+        unlockAudio();
+        const M = Math.max(0, parseInt(minEl.value || "0", 10));
+        const S = Math.max(0, Math.min(59, parseInt(secEl.value || "0", 10)));
+        const total = M * 60 + S;
+        if (total <= 0) return;
+
+        if (cdTimer) clearInterval(cdTimer);
+        cdEndAt = Date.now() + total * 1000 + 50; // tiny bias for first tick
+        cdUpdate();
+        cdTimer = setInterval(cdUpdate, 250);
+      }
+
+      function cdStopRun() {
+        if (cdTimer) clearInterval(cdTimer);
+        cdTimer = null;
+      }
+
+      cdStart.onclick = cdStartRun;
+      cdStop.onclick = cdStopRun;
+
+      // ---------- Keyboard shortcuts ----------
+      window.addEventListener("keydown", (e) => {
+        if (
+          e.target &&
+          (e.target.tagName === "INPUT" || e.target.isContentEditable)
+        )
+          return;
+
+        if (e.code === "Space") {
+          e.preventDefault();
+          if (swRAF) swPauseRun();
+          else swStartRun();
+        } else if (e.key.toLowerCase() === "r") {
+          swResetRun();
+        } else if (e.key === "Enter") {
+          cdStartRun();
+        } else if (e.key === "Escape") {
+          cdStopRun();
+        }
+      });
+
+      // Unlock audio on first interaction anywhere
+      window.addEventListener("pointerdown", unlockAudio, { once: true });
+    </script>
+
+    <noscript>
+      <div class="wrap card">
+        This page needs JavaScript for the timers and the ad slots.
+      </div>
+    </noscript>
+  </body>
+</html>
