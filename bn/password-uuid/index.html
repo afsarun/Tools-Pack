@@ -3,13 +3,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+
     <title>
       নিরাপদ পাসওয়ার্ড জেনারেটর — শক্তিশালী & র‍্যান্ডম | Tools Pack
     </title>
     <meta
       name="description"
-      content="অক্ষর/সংখ্যা/সিম্বলসহ শক্তিশালী পাসওয়ার্ড তৈরি করুন।"
+      content="অক্ষর/সংখ্যা/সিম্বলসহ শক্তিশালী পাসওয়ার্ড তৈরি করুন—Web Crypto নিরাপত্তাসহ, ১০০% ব্রাউজারেই।"
     />
+
+    <!-- Canonical & hreflang -->
     <link
       rel="canonical"
       href="https://tools-pack.netlify.app/bn/password-uuid/"
@@ -29,18 +32,21 @@
       hreflang="x-default"
       href="https://tools-pack.netlify.app/"
     />
+
+    <!-- Styles -->
     <link rel="stylesheet" href="../../assets/style.css" />
     <meta name="theme-color" content="#1E1E2F" />
 
-    <!-- Open Graph -->
+    <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tools Pack" />
     <meta
       property="og:title"
       content="নিরাপদ পাসওয়ার্ড জেনারেটর — Tools Pack"
     />
     <meta
       property="og:description"
-      content="শক্তিশালী র‍্যান্ডম পাসওয়ার্ড জেনারেট করুন।"
+      content="শক্তিশালী র‍্যান্ডম পাসওয়ার্ড জেনারেট করুন—Web Crypto, কপি বোতাম, এনট্রপি রিপোর্ট।"
     />
     <meta
       property="og:url"
@@ -50,11 +56,10 @@
       property="og:image"
       content="https://tools-pack.netlify.app/og/password.png"
     />
-
-    <!-- Twitter -->
+    <meta property="og:image:alt" content="পাসওয়ার্ড জেনারেটর — Tools Pack" />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- Schema.org JSON-LD -->
+    <!-- JSON-LD: WebApplication -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -63,48 +68,198 @@
         "url": "https://tools-pack.netlify.app/bn/password-uuid/",
         "applicationCategory": "SecurityApplication",
         "operatingSystem": "All",
-        "description": "শক্তিশালী র‍্যান্ডম পাসওয়ার্ড জেনারেট।",
+        "description": "শক্তিশালী র‍্যান্ডম পাসওয়ার্ড জেনারেট—Web Crypto নিরাপত্তাসহ।",
         "inLanguage": "bn"
       }
     </script>
+
+    <!-- JSON-LD: Breadcrumbs -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Tools Pack",
+            "item": "https://tools-pack.netlify.app/bn/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "পাসওয়ার্ড জেনারেটর",
+            "item": "https://tools-pack.netlify.app/bn/password-uuid/"
+          }
+        ]
+      }
+    </script>
+
+    <!-- JSON-LD: FAQPage -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "এই টুল কি অফলাইনে চলে?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "হ্যাঁ। প্রথমবার লোড হলে পরেরবার সম্পূর্ণ ব্রাউজারেই চলে।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "পাসওয়ার্ড কি সার্ভারে পাঠানো হয়?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "না। সবকিছু আপনার ব্রাউজারেই জেনারেট/কপি হয়—কোনো আপলোড/ট্র্যাকিং নেই।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "র‍্যান্ডমনেস কতটা নিরাপদ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "এই টুল Web Crypto API ব্যবহার করে ক্রিপ্টোগ্রাফিকালি নিরাপদ র‍্যান্ডম বাইট জেনারেট করে।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "দৈর্ঘ্য/ক্যারেক্টার সেট কীভাবে বাছব?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "১২–১৬ দৈর্ঘ্য ও ছোট/বড় হাতের অক্ষর + সংখ্যা + সিম্বল নিলে ভালো। ‘অস্পষ্ট অক্ষর বাদ’ দিলে পঠনযোগ্যতা বাড়ে।"
+            }
+          }
+        ]
+      }
+    </script>
+
+    <!-- Google AdSense (test mode while developing) -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234567890123456"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Page-specific tweaks (compact ads + related chips wrap) -->
     <style>
-      body {
-        font-family: system-ui, sans-serif;
-        background: #1e1e2f;
-        color: #eee;
+      /* Compact top ad area */
+      .ad-wrap {
+        margin: 6px 0 8px;
       }
-      .textarea {
-        width: 100%;
-        margin-top: 10px;
-        font-size: 1.2rem;
-        text-align: center;
+      .ad-label {
+        display: inline-block;
+        font-size: 11px;
+        line-height: 1;
+        color: var(--muted, #888);
+        margin: 0 0 2px 0;
       }
-      .row {
+      .adsbygoogle {
+        display: block;
+      }
+      .ad-top {
+        margin-inline: auto;
+      }
+      @media (min-width: 900px) {
+        .ad-top {
+          max-width: 728px;
+        }
+        .ad-top .adsbygoogle {
+          min-height: 60px;
+        }
+      }
+      @media (max-width: 899px) and (min-width: 600px) {
+        .ad-top {
+          max-width: 468px;
+        }
+        .ad-top .adsbygoogle {
+          min-height: 50px;
+        }
+      }
+      @media (max-width: 599px) {
+        .ad-top {
+          max-width: 320px;
+        }
+        .ad-top .adsbygoogle {
+          min-height: 50px;
+        }
+      }
+      .ad-top .adsbygoogle:empty {
+        display: none;
+      }
+
+      /* Related chips */
+      #related p:nth-of-type(2) {
         display: flex;
         flex-wrap: wrap;
-        gap: 10px;
-        margin-bottom: 10px;
-        align-items: center;
+        gap: 8px;
+        margin-top: 8px;
       }
-      .muted {
-        font-size: 0.9rem;
-        color: #aaa;
+      #related .btn {
+        display: inline-flex;
+        align-items: center;
+        max-width: 100%;
+      }
+      @media (max-width: 520px) {
+        #related .btn {
+          white-space: normal;
+          line-height: 1.2;
+          padding: 8px 10px;
+        }
       }
     </style>
   </head>
+
   <body>
     <header class="sticky">
       <div class="wrap brand">
-        <a href="/bn/"><div class="logo"></div></a>
+        <a href="/bn/" aria-label="হোমে ফিরুন"
+          ><div class="logo" aria-hidden="true"></div
+        ></a>
         <div>
           <h1 style="margin: 0">পাসওয়ার্ড জেনারেটর</h1>
           <div class="sub">শক্তিশালী • র‍্যান্ডম • নিরাপদ</div>
         </div>
+        <div style="margin-left: auto">
+          <a class="muted" href="/password-uuid/" hreflang="en">English</a>
+        </div>
       </div>
     </header>
 
+    <!-- Ad #1: Top banner -->
+    <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
+      <span class="ad-label">Ad</span>
+      <ins
+        class="adsbygoogle"
+        style="display: inline-block"
+        data-ad-client="ca-pub-1234567890123456"
+        data-ad-slot="1111111111"
+        data-ad-format="auto"
+        data-full-width-responsive="false"
+        data-adtest="on"
+      ></ins>
+    </div>
+
     <main class="wrap">
-      <article class="card">
+      <!-- Breadcrumbs -->
+      <nav class="breadcrumbs" aria-label="breadcrumb">
+        <a href="/bn/">হোম</a> › <a href="/bn/#security">সিকিউরিটি টুলস</a> ›
+        <span>পাসওয়ার্ড জেনারেটর</span>
+      </nav>
+
+      <!-- TOC -->
+      <p class="toc">
+        <a href="#gen">জেনারেটর</a> ·
+        <a href="#how-to-use">কীভাবে ব্যবহার করবেন</a> ·
+        <a href="#faq">প্রশ্নোত্তর</a> ·
+        <a href="#related">সম্পর্কিত টুলস</a>
+      </p>
+
+      <!-- Tool -->
+      <article class="card" id="gen">
         <h2>পাসওয়ার্ড তৈরি করুন</h2>
 
         <div class="row">
@@ -119,6 +274,7 @@
               max="64"
             />
           </label>
+
           <label class="pill"
             ><input type="checkbox" id="lower" checked /> a–z</label
           >
@@ -129,6 +285,10 @@
             ><input type="checkbox" id="num" checked /> 0–9</label
           >
           <label class="pill"><input type="checkbox" id="sym" /> !@#</label>
+          <label class="pill"
+            ><input type="checkbox" id="noAmb" /> অস্পষ্ট অক্ষর বাদ
+            (O,0,l,1,I,|)</label
+          >
         </div>
 
         <textarea
@@ -137,59 +297,315 @@
           rows="2"
           readonly
           placeholder="Generated password…"
+          aria-label="জেনারেটেড পাসওয়ার্ড"
         ></textarea>
 
         <div style="margin-top: 10px">
-          <button class="btn btn-primary" id="gen">জেনারেট</button>
-          <button class="btn" id="copy">কপি</button>
+          <button class="btn btn-primary" id="generate" type="button">
+            জেনারেট
+          </button>
+          <button class="btn" id="copy" type="button">কপি</button>
         </div>
-        <div id="status" class="muted small"></div>
+
+        <!-- Ad #2: In-article -->
+        <div class="ad-wrap ad-article" aria-label="Advertisement">
+          <span class="ad-label">Ad</span>
+          <ins
+            class="adsbygoogle"
+            style="display: inline-block; text-align: center"
+            data-ad-client="ca-pub-1234567890123456"
+            data-ad-slot="2222222222"
+            data-ad-format="fluid"
+            data-ad-layout="in-article"
+            data-adtest="on"
+          ></ins>
+        </div>
+
+        <div id="status" class="muted small" aria-live="polite"></div>
+      </article>
+
+      <!-- How to use -->
+      <article class="card" id="how-to-use">
+        <h2>কীভাবে ব্যবহার করবেন</h2>
+        <ol>
+          <li>
+            দৈর্ঘ্য বাছাই করুন, তারপর প্রয়োজনীয় ক্যারেক্টার সেট (a–z, A–Z, 0–9,
+            সিম্বল) সিলেক্ট করুন।
+          </li>
+          <li>
+            <strong>অস্পষ্ট অক্ষর বাদ</strong> দিলে O/0/l/1/I/| বাদ
+            যাবে—পঠনযোগ্যতা বাড়ে।
+          </li>
+          <li>
+            <strong>জেনারেট</strong> চাপলে নতুন পাসওয়ার্ড পাবেন;
+            <strong>কপি</strong> বোতামে ক্লিপবোর্ডে যাবে।
+          </li>
+          <li>
+            এনট্রপি (bits) যত বেশি, তত শক্তিশালী—দৈর্ঘ্য ও ক্যারেক্টার সেট
+            বাড়ালে এনট্রপি বাড়ে।
+          </li>
+        </ol>
+      </article>
+
+      <!-- FAQ -->
+      <article class="card faq" id="faq">
+        <h2>প্রশ্নোত্তর</h2>
+        <details>
+          <summary>এই টুল কি অফলাইনে চলে?</summary>
+          <p>হ্যাঁ, প্রথম লোডের পর পুরোটা ব্রাউজারেই চলে।</p>
+        </details>
+        <details>
+          <summary>পাসওয়ার্ড কি সার্ভারে যায়?</summary>
+          <p>না—সব জেনারেশন/কপি লোকালেই হয়।</p>
+        </details>
+        <details>
+          <summary>এনট্রপি মানে কী?</summary>
+          <p>
+            এটা অনুমানযোগ্যতার উল্টো—উচ্চ বিট মানে অনুমান করা কঠিন। রাফ ফর্মুলা:
+            <code>length × log2(poolSize)</code>।
+          </p>
+        </details>
+        <details>
+          <summary>কি-বোর্ডে শর্টকাট আছে?</summary>
+          <p>
+            <kbd>Ctrl/⌘ + Enter</kbd> দিলে দ্রুত জেনারেট হবে;
+            <kbd>Ctrl/⌘ + C</kbd> কপির জন্য স্ট্যান্ডার্ড।
+          </p>
+        </details>
+      </article>
+
+      <!-- Related tools -->
+      <article class="card" id="related">
+        <h2>সম্পর্কিত টুলস</h2>
+        <p class="muted">আরও সিকিউরিটি/ডেভ টুলস:</p>
+        <p>
+          <a class="btn" href="/bn/sha256/">SHA-256 হ্যাশ</a>
+          <a class="btn" href="/bn/json-formatter/">JSON ফরম্যাটার</a>
+          <a class="btn" href="/bn/url-tools/">URL এনকোডার/ডিকোডার</a>
+        </p>
+        <p class="small">
+          English preferred? See the
+          <a href="/password-uuid/" hreflang="en">English version</a>.
+        </p>
       </article>
     </main>
 
-    <footer>© <span id="y"></span> Tools Pack</footer>
+    <footer>
+      © <span id="y"></span> Tools Pack • <a class="muted" href="/bn/">হোম</a> •
+      <a class="muted" href="/password-uuid/" hreflang="en">English</a>
+    </footer>
 
     <script>
-      const $ = (s) => document.querySelector(s);
-      y.textContent = new Date().getFullYear();
+      // Year
+      document.getElementById("y").textContent = new Date().getFullYear();
 
-      const sets = {
+      // ===== Lazy init AdSense when slots are visible =====
+      const initAds = () => {
+        window.adsbygoogle = window.adsbygoogle || [];
+        const slots = document.querySelectorAll(
+          "ins.adsbygoogle:not([data-loaded])"
+        );
+        if (!slots.length) return;
+
+        const push = (el) => {
+          try {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            el.setAttribute("data-loaded", "1");
+          } catch (e) {
+            /* ignore */
+          }
+        };
+
+        if ("IntersectionObserver" in window) {
+          const io = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  push(entry.target);
+                  io.unobserve(entry.target);
+                }
+              });
+            },
+            { rootMargin: "200px 0px" }
+          );
+          slots.forEach((el) => io.observe(el));
+        } else {
+          slots.forEach(push);
+        }
+      };
+      window.addEventListener("load", initAds);
+
+      // ===== Password generator (Web Crypto) =====
+      const $ = (id) => document.getElementById(id);
+      const lenEl = $("len");
+      const lowerEl = $("lower");
+      const upperEl = $("upper");
+      const numEl = $("num");
+      const symEl = $("sym");
+      const noAmbEl = $("noAmb");
+      const outEl = $("out");
+      const genBtn = $("generate");
+      const copyBtn = $("copy");
+      const statusEl = $("status");
+
+      const SETS = {
         lower: "abcdefghijklmnopqrstuvwxyz",
         upper: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
         num: "0123456789",
         sym: "!@#$%^&*()-_=+[]{};:,.<>?/|",
       };
+      const AMBIGUOUS = new Set(["O", "0", "l", "1", "I", "|"]);
 
-      gen.onclick = () => {
+      const filterAmbiguous = (s) =>
+        [...s].filter((ch) => !AMBIGUOUS.has(ch)).join("");
+
+      const getPool = () => {
         let pool = "";
-        if (lower.checked) pool += sets.lower;
-        if (upper.checked) pool += sets.upper;
-        if (num.checked) pool += sets.num;
-        if (sym.checked) pool += sets.sym;
+        let usedSets = [];
+        if (lowerEl.checked) {
+          pool += SETS.lower;
+          usedSets.push("lower");
+        }
+        if (upperEl.checked) {
+          pool += SETS.upper;
+          usedSets.push("upper");
+        }
+        if (numEl.checked) {
+          pool += SETS.num;
+          usedSets.push("num");
+        }
+        if (symEl.checked) {
+          pool += SETS.sym;
+          usedSets.push("sym");
+        }
+        if (noAmbEl.checked) {
+          pool = filterAmbiguous(pool);
+          usedSets = usedSets
+            .map((k) => {
+              const f = filterAmbiguous(SETS[k]);
+              return f.length ? k : null;
+            })
+            .filter(Boolean);
+        }
+        return { pool, usedSets };
+      };
 
-        if (!pool) {
-          status.textContent = "অন্তত একটি অপশন নির্বাচন করুন।";
-          out.value = "";
+      // Cryptographically strong random integer in [0, max)
+      function randInt(max) {
+        if (max <= 0) return 0;
+        const arr = new Uint32Array(1);
+        const limit = Math.floor(0x100000000 / max) * max; // avoid modulo bias
+        let x;
+        do {
+          crypto.getRandomValues(arr);
+          x = arr[0];
+        } while (x >= limit);
+        return x % max;
+      }
+
+      const pick = (str) => str[randInt(str.length)];
+
+      function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = randInt(i + 1);
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+      }
+
+      function entropyBits(length, poolSize) {
+        if (poolSize <= 1) return 0;
+        return length * Math.log2(poolSize);
+      }
+
+      function strengthLabel(bits) {
+        if (bits >= 100) return "🔒 খুবই শক্তিশালী";
+        if (bits >= 80) return "🟢 শক্তিশালী";
+        if (bits >= 60) return "🟡 মাঝারি";
+        return "🔴 দুর্বল";
+      }
+
+      function generatePassword() {
+        const length = Math.max(
+          6,
+          Math.min(64, parseInt(lenEl.value || "12", 10))
+        );
+        const { pool, usedSets } = getPool();
+
+        if (!pool || usedSets.length === 0) {
+          outEl.value = "";
+          statusEl.textContent = "⚠️ অন্তত একটি ক্যারেক্টার সেট নির্বাচন করুন।";
+          statusEl.style.color = "var(--danger,#ff5c5c)";
           return;
         }
 
-        let pwd = "";
-        for (let i = 0; i < +len.value; i++) {
-          const r = Math.floor(Math.random() * pool.length);
-          pwd += pool[r];
+        let poolMap = {
+          lower: SETS.lower,
+          upper: SETS.upper,
+          num: SETS.num,
+          sym: SETS.sym,
+        };
+        if (noAmbEl.checked) {
+          for (const k in poolMap) poolMap[k] = filterAmbiguous(poolMap[k]);
         }
-        out.value = pwd;
-        status.textContent = "✅ নতুন পাসওয়ার্ড তৈরি হয়েছে।";
-      };
 
-      copy.onclick = () => {
-        if (!out.value) {
-          status.textContent = "⚠️ কোনো পাসওয়ার্ড নেই।";
+        // Ensure each selected set contributes at least one char
+        const chars = [];
+        for (const k of usedSets) {
+          const set = poolMap[k];
+          if (!set.length) continue;
+          chars.push(pick(set));
+        }
+
+        // Fill the rest from the full pool
+        while (chars.length < length) {
+          chars.push(pick(pool));
+        }
+
+        // Shuffle to avoid predictable first positions
+        const pwd = shuffle(chars).join("");
+        outEl.value = pwd;
+
+        const bits = entropyBits(length, pool.length);
+        statusEl.textContent = `✅ নতুন পাসওয়ার্ড তৈরি হয়েছে — আনুমানিক এনট্রপি ~ ${bits.toFixed(
+          1
+        )} bits (${strengthLabel(bits)})`;
+        statusEl.style.color = "var(--muted,#aaa)";
+      }
+
+      genBtn.addEventListener("click", generatePassword);
+
+      // Keyboard shortcut: Ctrl/⌘ + Enter => Generate
+      document.addEventListener("keydown", (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+          e.preventDefault();
+          generatePassword();
+        }
+      });
+
+      copyBtn.addEventListener("click", async () => {
+        if (!outEl.value) {
+          statusEl.textContent = "⚠️ কোনো পাসওয়ার্ড নেই।";
+          statusEl.style.color = "var(--danger,#ff5c5c)";
           return;
         }
-        navigator.clipboard.writeText(out.value);
-        status.textContent = "📋 কপি হয়েছে।";
-      };
+        try {
+          await navigator.clipboard.writeText(outEl.value);
+          statusEl.textContent = "📋 কপি হয়েছে।";
+          statusEl.style.color = "var(--ok,#46c06f)";
+        } catch {
+          statusEl.textContent = "কপি করা যায়নি।";
+          statusEl.style.color = "var(--danger,#ff5c5c)";
+        }
+      });
+
+      // Generate one by default for convenience
+      generatePassword();
     </script>
+
+    <noscript
+      >জাভাস্ক্রিপ্ট চালু করুন—এই টুলটি কাজ করতে জাভাস্ক্রিপ্ট
+      প্রয়োজন।</noscript
+    >
   </body>
 </html>

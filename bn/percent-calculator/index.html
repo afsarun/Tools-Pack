@@ -268,7 +268,33 @@
         </div>
       </div>
     </header>
+
+    <!-- Ad #1: Top banner -->
+    <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
+      <span class="ad-label">Ad</span>
+      <ins
+        class="adsbygoogle"
+        style="display: inline-block"
+        data-ad-client="ca-pub-1234567890123456"
+        data-ad-slot="1111111111"
+        data-ad-format="auto"
+        data-full-width-responsive="false"
+        data-adtest="on"
+      ></ins>
+    </div>
+
     <div class="container">
+      <nav class="breadcrumbs" aria-label="breadcrumb">
+        <a href="/bn/">হোম</a> › <a href="/bn/#math">গণিত টুলস</a> ›
+        <span>শতকরা ক্যালকুলেটর</span>
+      </nav>
+
+      <!-- TOC -->
+      <p class="toc">
+        <a href="#how-to-use">কীভাবে ব্যবহার করবেন</a> ·
+        <a href="#faq">প্রশ্নোত্তর</a> ·
+        <a href="#related">সম্পর্কিত টুলস</a>
+      </p>
       <header>
         <div>
           <div class="title" data-i18n="title">Percentage Calculator</div>
@@ -494,7 +520,74 @@
           Formula: B × (1 ± A ÷ 100)
         </div>
       </section>
+      <!-- Ad #1: Top banner -->
+      <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
+        <span class="ad-label">Ad</span>
+        <ins
+          class="adsbygoogle"
+          style="display: inline-block"
+          data-ad-client="ca-pub-1234567890123456"
+          data-ad-slot="1111111111"
+          data-ad-format="auto"
+          data-full-width-responsive="false"
+          data-adtest="on"
+        ></ins>
+      </div>
+      <!-- How to use -->
+      <article class="card" id="how-to-use">
+        <h2>কীভাবে ব্যবহার করবেন</h2>
+        <ol>
+          <li>প্রতিটি কার্ডে ইনপুট দিন; টাইপ করলেই ফলাফল আপডেট হবে।</li>
+          <li>
+            <strong>হিসাব</strong> বাটনে ক্লিক করেও ফলাফল দেখতে পারেন;
+            <strong>কপি</strong> চাপলে ফলাফল ক্লিপবোর্ডে যাবে।
+          </li>
+          <li><kbd>Enter</kbd> চাপলে বর্তমান কার্ডের হিসাব চলবে।</li>
+          <li>
+            শূন্য দিয়ে ভাগ হলে ফলাফল সংজ্ঞায়িত নয়—উপযুক্ত সতর্কবার্তা দেখানো
+            হবে।
+          </li>
+        </ol>
+      </article>
 
+      <!-- FAQ -->
+      <article class="card faq" id="faq">
+        <h2>প্রশ্নোত্তর</h2>
+        <details>
+          <summary>এই টুল কি অফলাইনে চলে?</summary>
+          <p>হ্যাঁ, প্রথম লোডের পর পুরোটা ব্রাউজারেই চলে।</p>
+        </details>
+        <details>
+          <summary>ইনপুট কি সার্ভারে যায়?</summary>
+          <p>না—সবকিছু আপনার ব্রাউজারেই থাকে; কোনো ট্র্যাকিং নেই।</p>
+        </details>
+        <details>
+          <summary>ডেসিমাল/ভগ্নাংশ চলবে?</summary>
+          <p>হ্যাঁ—সব ইনপুটে দশমিক সমর্থিত (<code>step="any"</code>)।</p>
+        </details>
+        <details>
+          <summary>শতকরা পরিবর্তন কীভাবে হিসাব হয়?</summary>
+          <p>
+            সূত্র: <code>((নতুন − পুরোনো) ÷ পুরোনো) × 100</code>। পুরোনো মান
+            শূন্য হলে ভাগ করা যায় না।
+          </p>
+        </details>
+      </article>
+
+      <!-- Related tools -->
+      <article class="card" id="related">
+        <h2>সম্পর্কিত টুলস</h2>
+        <p class="muted">আরও গণিত/সংখ্যা বিষয়ক টুলস:</p>
+        <p>
+          <a class="btn" href="/bn/calculator/">ক্যালকুলেটর</a>
+          <a class="btn" href="/bn/unit-converter/">ইউনিট কনভার্টার</a>
+          <a class="btn" href="/bn/age-calculator/">বয়স ক্যালকুলেটর</a>
+        </p>
+        <p class="small">
+          English preferred? See the
+          <a href="/percent-calculator/" hreflang="en">English version</a>.
+        </p>
+      </article>
       <footer>
         <span class="small" data-i18n="footer"
           >Tip: values update live as you type. Use the Copy button to copy the

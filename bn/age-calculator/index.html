@@ -6,8 +6,10 @@
     <title>অনলাইন বয়স নির্ণায়ক — বছর, মাস ও দিন | Tools Pack</title>
     <meta
       name="description"
-      content="জন্মতারিখ দিয়ে সহজে বয়স বের করুন (বছর, মাস, দিন)। পরবর্তী জন্মদিনের রিমাইন্ডারসহ।"
+      content="জন্মতারিখ দিয়ে সহজে বয়স বের করুন (বছর, মাস, দিন)। পরবর্তী জন্মদিনের দিন-গোনা সহ।"
     />
+
+    <!-- Canonical / hreflang -->
     <link
       rel="canonical"
       href="https://tools-pack.netlify.app/bn/age-calculator/"
@@ -27,9 +29,14 @@
       hreflang="x-default"
       href="https://tools-pack.netlify.app/"
     />
+
+    <!-- Styles -->
     <link rel="stylesheet" href="../../assets/style.css" />
     <meta name="theme-color" content="#1E1E2F" />
+
+    <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tools Pack" />
     <meta property="og:title" content="বয়স নির্ণায়ক — Tools Pack" />
     <meta property="og:description" content="বছর/মাস/দিন + পরবর্তী জন্মদিন।" />
     <meta
@@ -40,7 +47,10 @@
       property="og:image"
       content="https://tools-pack.netlify.app/og/age.png"
     />
+    <meta property="og:image:alt" content="Age Calculator — Tools Pack" />
     <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- JSON-LD: WebApplication -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -53,96 +63,419 @@
         "inLanguage": "bn"
       }
     </script>
+
+    <!-- JSON-LD: Breadcrumbs (Bangla) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "হোম",
+            "item": "https://tools-pack.netlify.app/bn/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "গণিত টুলস",
+            "item": "https://tools-pack.netlify.app/bn/#math"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "বয়স নির্ণায়ক",
+            "item": "https://tools-pack.netlify.app/bn/age-calculator/"
+          }
+        ]
+      }
+    </script>
+
+    <!-- JSON-LD: FAQPage (matches on-page FAQ) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "বয়স কীভাবে গণনা করা হয়?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "জন্মতারিখ ও 'তারিখ পর্যন্ত' ইনপুটের ক্যালেন্ডার পার্থক্য থেকে বছর, মাস ও দিন বের করা হয়।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "২৯ ফেব্রুয়ারির জন্মদিন হলে কীভাবে ধরা হয়?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "যে বছর লিপ ইয়ার নয়, সে বছর পরবর্তী জন্মদিন ২৮ ফেব্রুয়ারি ধরা হয়।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "ডেটা কি কোথাও পাঠানো বা সংরক্ষণ করা হয়?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "না। সব হিসাব আপনার ব্রাউজারেই চলে—কিছুই সার্ভারে যায় না।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "অফলাইনে কাজ করবে?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "হ্যাঁ—প্রথমবার লোডের পর অফলাইনে চলে।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "'তারিখ পর্যন্ত' কি ভবিষ্যৎ/অতীত যেকোনো তারিখ দেওয়া যাবে?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "হ্যাঁ—জন্মতারিখের সমান বা পরের যেকোনো তারিখ বেছে নিতে পারবেন।"
+            }
+          }
+        ]
+      }
+    </script>
+
+    <!-- Google AdSense (use your publisher ID; keep data-adtest while testing) -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-xxxxxxxxxxxxxxxx"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Page-specific tweaks: compact ads + related chips wrap -->
+    <style>
+      /* Ads: compact, low CLS */
+      .ad-wrap {
+        margin: 6px 0 10px;
+      }
+      .ad-label {
+        display: inline-block;
+        font-size: 11px;
+        line-height: 1;
+        color: var(--muted, #888);
+        margin: 0 0 2px;
+      }
+      .adsbygoogle {
+        display: block;
+      }
+      .ad-top {
+        margin-inline: auto;
+      }
+      @media (min-width: 900px) {
+        .ad-top {
+          max-width: 728px;
+        }
+        .ad-top .adsbygoogle {
+          min-height: 60px;
+        }
+      }
+      @media (max-width: 899px) and (min-width: 600px) {
+        .ad-top {
+          max-width: 468px;
+        }
+        .ad-top .adsbygoogle {
+          min-height: 50px;
+        }
+      }
+      @media (max-width: 599px) {
+        .ad-top {
+          max-width: 320px;
+        }
+        .ad-top .adsbygoogle {
+          min-height: 50px;
+        }
+      }
+      .ad-top .adsbygoogle:empty {
+        display: none;
+      }
+
+      /* Related chips on small screens */
+      #related p:nth-of-type(2) {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 8px;
+      }
+      #related .btn {
+        display: inline-flex;
+        align-items: center;
+        max-width: 100%;
+      }
+      @media (max-width: 520px) {
+        #related .btn {
+          white-space: normal;
+          line-height: 1.2;
+          padding: 8px 10px;
+        }
+      }
+    </style>
   </head>
+
   <body>
     <header class="sticky">
       <div class="wrap brand">
-        <a href="/bn/"><div class="logo"></div></a>
+        <a href="/bn/" aria-label="হোমে ফিরুন"
+          ><div class="logo" aria-hidden="true"></div
+        ></a>
         <div>
           <h1 style="margin: 0">বয়স নির্ণায়ক</h1>
           <div class="sub">বছর • মাস • দিন</div>
         </div>
+        <div style="margin-left: auto">
+          <a class="muted" href="/age-calculator/" hreflang="en">English</a>
+        </div>
       </div>
     </header>
+
+    <!-- Ad #1: হেডারের পরে (Top banner) -->
+    <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
+      <span class="ad-label">Ad</span>
+      <ins
+        class="adsbygoogle"
+        style="display: inline-block"
+        data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
+        data-ad-slot="1111111111"
+        data-ad-format="auto"
+        data-full-width-responsive="false"
+        data-adtest="on"
+      ></ins>
+    </div>
+
     <main class="wrap">
-      <article class="card">
+      <!-- Breadcrumbs (Bangla) -->
+      <nav class="breadcrumbs" aria-label="breadcrumb">
+        <a href="/bn/">হোম</a> › <a href="/bn/#math">গণিত টুলস</a> ›
+        <span>বয়স নির্ণায়ক</span>
+      </nav>
+
+      <!-- TOC (Bangla) -->
+      <p class="toc">
+        <a href="#calc">বয়স নির্ণায়ক</a> ·
+        <a href="#how-to-use">কীভাবে ব্যবহার করবেন</a> ·
+        <a href="#faq">প্রশ্নোত্তর</a> · <a href="#related">সম্পর্কিত টুলস</a>
+      </p>
+
+      <!-- Calculator -->
+      <article class="card" id="calc">
         <h2>তারিখ দিন</h2>
+
         <div
           class="grid"
           style="grid-template-columns: repeat(12, 1fr); gap: 10px"
         >
-          <label class="field" style="grid-column: span 6"
-            ><span class="muted">জন্মতারিখ</span>
+          <label class="field" style="grid-column: span 6">
+            <span class="muted">জন্মতারিখ</span>
             <input id="dob" class="field" type="date" />
           </label>
-          <label class="field" style="grid-column: span 6"
-            ><span class="muted">তারিখ পর্যন্ত</span>
+          <label class="field" style="grid-column: span 6">
+            <span class="muted">তারিখ পর্যন্ত</span>
             <input id="asof" class="field" type="date" />
           </label>
         </div>
+
         <div style="margin-top: 10px">
-          <button class="btn btn-primary" id="calc">গণনা</button>
-          <button class="btn" id="reset">রিসেট</button>
-          <button class="btn" id="copy">কপি</button>
+          <button class="btn btn-primary" id="calcBtn" type="button">
+            গণনা
+          </button>
+          <button class="btn" id="resetBtn" type="button">রিসেট</button>
+          <button class="btn" id="copyBtn" type="button">কপি</button>
         </div>
+
+        <!-- Ad #2: ফলাফলের আগে (in-article) -->
+        <div class="ad-wrap ad-article" aria-label="Advertisement">
+          <span class="ad-label">Ad</span>
+          <ins
+            class="adsbygoogle"
+            style="display: block; text-align: center"
+            data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
+            data-ad-slot="2222222222"
+            data-ad-format="fluid"
+            data-ad-layout="in-article"
+            data-adtest="on"
+          ></ins>
+        </div>
+
         <textarea
           id="out"
           class="textarea mono"
           readonly
           placeholder="ফলাফল…"
         ></textarea>
-        <div class="muted" id="next"></div>
+        <div class="muted" id="next" aria-live="polite"></div>
+      </article>
+
+      <!-- How to use (Bangla) -->
+      <article class="card" id="how-to-use">
+        <h2>কীভাবে ব্যবহার করবেন</h2>
+        <ol>
+          <li>
+            জন্মতারিখ নির্বাচন করুন। <strong>তারিখ পর্যন্ত</strong> আজকের তারিখ
+            হিসেবে সেট থাকবে—প্রয়োজনে বদলাতে পারবেন।
+          </li>
+          <li>
+            <strong>গণনা</strong> চাপুন—বছর, মাস, দিনসহ মোট দিনের হিসাব দেখাবে।
+          </li>
+          <li>
+            <strong>কপি</strong> বোতামে ক্লিক করে ফল কপি করতে পারেন;
+            <strong>রিসেট</strong> দিয়ে সব মুছে আবার শুরু করুন।
+          </li>
+          <li>
+            লিপ ইয়ার নয় এমন বছরে ২৯ ফেব্রুয়ারির জন্মদিনকে ২৮ ফেব্রুয়ারি ধরা হয়।
+          </li>
+        </ol>
+        <h3>টিপস</h3>
+        <ul>
+          <li>প্রথমবার লোডের পর অফলাইনে কাজ করে।</li>
+          <li>সব হিসাব ব্রাউজারেই হয়—ডেটা পাঠানো বা সংরক্ষণ করা হয় না।</li>
+          <li>
+            <strong>তারিখ পর্যন্ত</strong> জন্মতারিখের সমান বা পরের যেকোনো তারিখ
+            দিতে পারবেন।
+          </li>
+        </ul>
+      </article>
+
+      <!-- FAQ (Bangla) -->
+      <article class="card faq" id="faq">
+        <h2>প্রশ্নোত্তর</h2>
+        <details>
+          <summary>বয়স কীভাবে বের করা হয়?</summary>
+          <p>
+            জন্মতারিখ ও ‘তারিখ পর্যন্ত’ ইনপুটের মধ্যে ক্যালেন্ডার পার্থক্য হিসাব
+            করে বছর, মাস ও দিন বের করা হয়।
+          </p>
+        </details>
+        <details>
+          <summary>ডেটা কি সার্ভারে যায়?</summary>
+          <p>
+            না—সবকিছু আপনার ব্রাউজারেই প্রক্রিয়াকরণ হয়; কোনো ডেটা পাঠানো হয় না।
+          </p>
+        </details>
+        <details>
+          <summary>২৯ ফেব্রুয়ারি জন্ম হলে কী হবে?</summary>
+          <p>
+            যে বছর লিপ ইয়ার নয়, সে বছর পরবর্তী জন্মদিন ২৮ ফেব্রুয়ারি ধরা হয়।
+          </p>
+        </details>
+        <details>
+          <summary>অফলাইনে কাজ করবে?</summary>
+          <p>হ্যাঁ, প্রথমবার লোডের পরে ইন্টারনেট ছাড়া চলবে।</p>
+        </details>
+        <details>
+          <summary>ভবিষ্যৎ ‘তারিখ পর্যন্ত’ দেওয়া যাবে?</summary>
+          <p>হ্যাঁ—জন্মতারিখের সমান বা পরের যেকোনো তারিখ বেছে নিতে পারবেন।</p>
+        </details>
+      </article>
+
+      <!-- Related tools -->
+      <article class="card" id="related">
+        <h2>সম্পর্কিত টুলস</h2>
+        <p class="muted">আরও গণিত ও সংখ্যা-বিষয়ক টুলস:</p>
+        <p>
+          <a class="btn" href="/bn/calculator/">ক্যালকুলেটর</a>
+          <a class="btn" href="/bn/percent-calculator/">শতকরা ক্যালকুলেটর</a>
+          <a class="btn" href="/bn/unit-converter/">ইউনিট কনভার্টার</a>
+        </p>
+        <p class="small">
+          English preferred? See the
+          <a href="/age-calculator/" hreflang="en">English version</a>.
+        </p>
       </article>
     </main>
-    <footer>© <span id="y"></span> Tools Pack</footer>
+
+    <footer>
+      © <span id="y"></span> Tools Pack • <a class="muted" href="/bn/">হোম</a> •
+      <a class="muted" href="/age-calculator/" hreflang="en">English</a>
+    </footer>
 
     <script>
-      const $ = (s) => document.querySelector(s);
-      y.textContent = new Date().getFullYear();
+      // Footer year
+      document.getElementById("y").textContent = new Date().getFullYear();
 
+      // ===== Lazy init AdSense when slots are visible =====
+      const initAds = () => {
+        window.adsbygoogle = window.adsbygoogle || [];
+        const slots = document.querySelectorAll(
+          "ins.adsbygoogle:not([data-loaded])"
+        );
+        if (!slots.length) return;
+
+        const push = (el) => {
+          try {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            el.setAttribute("data-loaded", "1");
+          } catch (e) {
+            /* ignore */
+          }
+        };
+
+        if ("IntersectionObserver" in window) {
+          const io = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  push(entry.target);
+                  io.unobserve(entry.target);
+                }
+              });
+            },
+            { rootMargin: "200px 0px" }
+          );
+          slots.forEach((el) => io.observe(el));
+        } else {
+          slots.forEach(push);
+        }
+      };
+      window.addEventListener("load", initAds);
+
+      // ===== Elements =====
+      const dob = document.getElementById("dob");
+      const asof = document.getElementById("asof");
+      const out = document.getElementById("out");
+      const next = document.getElementById("next");
+      const calcBtn = document.getElementById("calcBtn");
+      const resetBtn = document.getElementById("resetBtn");
+      const copyBtn = document.getElementById("copyBtn");
+
+      // ===== Defaults & picker helpers =====
       const todayStr = () => {
         const t = new Date(),
-          y = t.getFullYear(),
-          m = String(t.getMonth() + 1).padStart(2, "0"),
-          d = String(t.getDate()).padStart(2, "0");
+          y = t.getFullYear();
+        const m = String(t.getMonth() + 1).padStart(2, "0");
+        const d = String(t.getDate()).padStart(2, "0");
         return `${y}-${m}-${d}`;
       };
-
       asof.value = todayStr();
       dob.max = asof.max = todayStr();
 
-      // Auto open date picker with fallback
       function openDatePicker() {
-        if (dob.showPicker) {
+        if (dob && dob.showPicker) {
           try {
             dob.showPicker();
           } catch {
             dob.focus();
           }
-        } else {
+        } else if (dob) {
           dob.focus();
         }
       }
-
-      // পেজ লোড হলে একটু delay দিয়ে ওপেন
-      window.addEventListener("load", () => {
-        setTimeout(openDatePicker, 150);
+      // ছোট delay দিয়ে ওপেন; প্রথম একবার ক্লিকেও fallback
+      window.addEventListener("load", () => setTimeout(openDatePicker, 150));
+      document.body.addEventListener("click", () => openDatePicker(), {
+        once: true,
       });
 
-      // যদি না খোলে → প্রথম ক্লিকে আবার চেষ্টা
-      document.body.addEventListener(
-        "click",
-        () => {
-          openDatePicker();
-        },
-        { once: true }
-      );
-
+      // ===== Date utils =====
       const parse = (s) => {
         const [y, m, d] = (s || "").split("-").map(Number);
         return y && m && d ? { y, m, d } : null;
       };
-
       const toD = (o) => new Date(o.y, o.m - 1, o.d);
       const isLeap = (y) => (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0;
 
@@ -161,23 +494,25 @@
         return { y, m, d };
       };
 
-      const days = (A, B) =>
+      const daysBetween = (A, B) =>
         Math.round(
           (Date.UTC(B.getFullYear(), B.getMonth(), B.getDate()) -
             Date.UTC(A.getFullYear(), A.getMonth(), A.getDate())) /
             86400000
         );
 
-      const bday = (dob, yr) =>
+      const nextBdayInYear = (dobObj, yr) =>
         new Date(
           yr,
-          (dob.m === 2 && dob.d === 29 && !isLeap(yr) ? 1 : dob.m) - 1,
-          dob.m === 2 && dob.d === 29 && !isLeap(yr) ? 28 : dob.d
+          (dobObj.m === 2 && dobObj.d === 29 && !isLeap(yr) ? 1 : dobObj.m) - 1,
+          dobObj.m === 2 && dobObj.d === 29 && !isLeap(yr) ? 28 : dobObj.d
         );
 
-      calc.onclick = () => {
-        const B = parse(dob.value),
-          A = parse(asof.value || todayStr());
+      // ===== Actions =====
+      calcBtn.onclick = () => {
+        const B = parse(dob.value);
+        const A = parse(asof.value || todayStr());
+
         if (!B) {
           out.value = "জন্মতারিখ দিন।";
           openDatePicker();
@@ -188,6 +523,7 @@
           asof.focus();
           return;
         }
+
         const Bd = toD(B),
           Ad = toD(A);
         if (Ad < Bd) {
@@ -195,22 +531,27 @@
           next.textContent = "";
           return;
         }
-        const a = diff(B, A),
-          total = days(Bd, Ad);
-        let nb = bday(B, A.y);
-        if (days(Ad, nb) < 0) nb = bday(B, A.y + 1);
-        const left = days(Ad, nb),
-          turning = a.y + (left ? 1 : 0);
-        out.value = `বয়স: ${a.y} বছর, ${a.m} মাস, ${
-          a.d
-        } দিন\nমোট দিন: ${total.toLocaleString()}`;
+
+        const age = diff(B, A);
+        const total = daysBetween(Bd, Ad);
+
+        let nb = nextBdayInYear(B, A.y);
+        if (daysBetween(Ad, nb) < 0) nb = nextBdayInYear(B, A.y + 1);
+
+        const left = daysBetween(Ad, nb);
+        const turning = age.y + (left ? 1 : 0);
+
+        out.value =
+          `বয়স: ${age.y} বছর, ${age.m} মাস, ${age.d} দিন\n` +
+          `মোট দিন: ${total.toLocaleString()}`;
+
         next.textContent =
           left === 0
-            ? `🎉 আজ (${nb.toDateString()}) — ${a.y}`
+            ? `🎉 আজ (${nb.toDateString()}) — ${age.y}`
             : `পরের জন্মদিন ${left} দিন পর — ${nb.toDateString()} (হবে ${turning})`;
       };
 
-      reset.onclick = () => {
+      resetBtn.onclick = () => {
         dob.value = "";
         asof.value = todayStr();
         out.value = "";
@@ -218,10 +559,15 @@
         openDatePicker();
       };
 
-      copy.onclick = () =>
+      copyBtn.onclick = () =>
         navigator.clipboard.writeText(
           out.value + (next.textContent ? `\n${next.textContent}` : "")
         );
     </script>
+
+    <noscript
+      >জাভাস্ক্রিপ্ট চালু করুন—এই টুলটি কাজ করতে জাভাস্ক্রিপ্ট
+      প্রয়োজন।</noscript
+    >
   </body>
 </html>

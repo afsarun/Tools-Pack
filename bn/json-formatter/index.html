@@ -3,11 +3,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+
     <title>JSON ফরম্যাটার/ভ্যালিডেটর — প্রিটি প্রিন্ট | Tools Pack</title>
     <meta
       name="description"
       content="JSON সুন্দরভাবে ফরম্যাট, মিনিফাই ও ভ্যালিডেট করুন। ইউনিকোড নিরাপদ, দ্রুত, কোনো ট্র্যাকিং নেই।"
     />
+
+    <!-- Canonical & hreflang -->
     <link
       rel="canonical"
       href="https://tools-pack.netlify.app/bn/json-formatter/"
@@ -27,13 +30,18 @@
       hreflang="x-default"
       href="https://tools-pack.netlify.app/"
     />
+
+    <!-- Styles -->
     <link rel="stylesheet" href="../../assets/style.css" />
     <meta name="theme-color" content="#1E1E2F" />
+
+    <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tools Pack" />
     <meta property="og:title" content="JSON ফরম্যাটার — Tools Pack" />
     <meta
       property="og:description"
-      content="ফরম্যাট/মিনিফাই/ভ্যালিডেট — কপি সাপোর্টসহ।"
+      content="ফরম্যাট/মিনিফাই/ভ্যালিডেট — কপি সাপোর্টসহ, ১০০% ব্রাউজারেই।"
     />
     <meta
       property="og:url"
@@ -43,7 +51,10 @@
       property="og:image"
       content="https://tools-pack.netlify.app/og/json-formatter.png"
     />
+    <meta property="og:image:alt" content="JSON ফরম্যাটার — Tools Pack" />
     <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- JSON-LD: WebApplication -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -56,48 +67,413 @@
         "inLanguage": "bn"
       }
     </script>
+
+    <!-- JSON-LD: Breadcrumbs -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Tools Pack",
+            "item": "https://tools-pack.netlify.app/bn/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "JSON ফরম্যাটার/ভ্যালিডেটর",
+            "item": "https://tools-pack.netlify.app/bn/json-formatter/"
+          }
+        ]
+      }
+    </script>
+
+    <!-- JSON-LD: FAQPage -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "এই টুল কি অফলাইনে চলে?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "হ্যাঁ। প্রথমবার লোড হলে পরেরবার সম্পূর্ণ ব্রাউজারেই চলে।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "আমার ডেটা কি কোথাও পাঠানো হয়?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "না। পেস্ট/টাইপ করা JSON কখনোই সার্ভারে যায় না—সবকিছু আপনার ব্রাউজারেই থাকে।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "ফরম্যাট/মিনিফাই-এর পার্থক্য কী?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "ফরম্যাট আউটপুটকে ইন্ডেন্টসহ মানব-পাঠ্যকর করে; মিনিফাই সব স্পেস/লাইনে ব্রেক বাদ দিয়ে সাইজ ছোট করে।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "খুব বড় JSON দিলে কি কাজ করবে?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "ব্রাউজারের মেমোরি সীমার মধ্যে কাজ করবে। কয়েক MB+ হলে প্রসেসিং সময় বেশি লাগতে পারে।"
+            }
+          }
+        ]
+      }
+    </script>
+
+    <!-- Google AdSense (test mode while developing) -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234567890123456"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Page-specific tweaks (compact ads + related chips wrap) -->
+    <style>
+      /* Compact top ad area */
+      .ad-wrap {
+        margin: 6px 0 8px;
+      }
+      .ad-label {
+        display: inline-block;
+        font-size: 11px;
+        line-height: 1;
+        color: var(--muted, #888);
+        margin: 0 0 2px 0;
+      }
+      .adsbygoogle {
+        display: block;
+      }
+      .ad-top {
+        margin-inline: auto;
+      }
+      @media (min-width: 900px) {
+        .ad-top {
+          max-width: 728px;
+        }
+        .ad-top .adsbygoogle {
+          min-height: 60px;
+        }
+      }
+      @media (max-width: 899px) and (min-width: 600px) {
+        .ad-top {
+          max-width: 468px;
+        }
+        .ad-top .adsbygoogle {
+          min-height: 50px;
+        }
+      }
+      @media (max-width: 599px) {
+        .ad-top {
+          max-width: 320px;
+        }
+        .ad-top .adsbygoogle {
+          min-height: 50px;
+        }
+      }
+      .ad-top .adsbygoogle:empty {
+        display: none;
+      }
+
+      /* Related chips */
+      #related p:nth-of-type(2) {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 8px;
+      }
+      #related .btn {
+        display: inline-flex;
+        align-items: center;
+        max-width: 100%;
+      }
+      @media (max-width: 520px) {
+        #related .btn {
+          white-space: normal;
+          line-height: 1.2;
+          padding: 8px 10px;
+        }
+      }
+    </style>
   </head>
+
   <body>
     <header class="sticky">
       <div class="wrap brand">
-        <a href="/bn/"><div class="logo"></div></a>
+        <a href="/bn/" aria-label="হোমে ফিরুন"
+          ><div class="logo" aria-hidden="true"></div
+        ></a>
         <div>
           <h1 style="margin: 0">JSON ফরম্যাটার / ভ্যালিডেটর</h1>
           <div class="sub">প্রিটি • মিনিফাই • ভ্যালিডেট</div>
         </div>
+        <div style="margin-left: auto">
+          <a class="muted" href="/json-formatter/" hreflang="en">English</a>
+        </div>
       </div>
     </header>
+
+    <!-- Ad #1: Top banner -->
+    <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
+      <span class="ad-label">Ad</span>
+      <ins
+        class="adsbygoogle"
+        style="display: inline-block"
+        data-ad-client="ca-pub-1234567890123456"
+        data-ad-slot="1111111111"
+        data-ad-format="auto"
+        data-full-width-responsive="false"
+        data-adtest="on"
+      ></ins>
+    </div>
+
     <main class="wrap">
-      <article class="card">
+      <!-- Breadcrumbs -->
+      <nav class="breadcrumbs" aria-label="breadcrumb">
+        <a href="/bn/">হোম</a> › <a href="/bn/#dev">ডেভ টুলস</a> ›
+        <span>JSON ফরম্যাটার/ভ্যালিডেটর</span>
+      </nav>
+
+      <!-- TOC -->
+      <p class="toc">
+        <a href="#tool">ফরম্যাটার</a> ·
+        <a href="#how-to-use">কীভাবে ব্যবহার করবেন</a> ·
+        <a href="#faq">প্রশ্নোত্তর</a> ·
+        <a href="#related">সম্পর্কিত টুলস</a>
+      </p>
+
+      <!-- Tool -->
+      <article class="card" id="tool">
         <h2>ফরম্যাট / ভ্যালিডেট</h2>
+
         <textarea
           id="in"
           class="textarea mono"
-          placeholder='{"hello":"world"}'
+          placeholder='{"hello":"world","emoji":"🙂"}'
+          aria-label="ইনপুট JSON"
         ></textarea>
-        <div>
-          <button class="btn btn-primary" id="fmt">ফরম্যাট</button>
-          <button class="btn" id="min">মিনিফাই</button>
-          <button class="btn" id="val">ভ্যালিডেট</button>
-          <button class="btn" id="cpy">আউটপুট কপি</button>
+
+        <div style="margin-top: 10px">
+          <button class="btn btn-primary" id="fmt" type="button">
+            ফরম্যাট
+          </button>
+          <button class="btn" id="min" type="button">মিনিফাই</button>
+          <button class="btn" id="val" type="button">ভ্যালিডেট</button>
+          <button class="btn" id="cpy" type="button">আউটপুট কপি</button>
         </div>
+
+        <!-- Ad #2: In-article -->
+        <div class="ad-wrap ad-article" aria-label="Advertisement">
+          <span class="ad-label">Ad</span>
+          <ins
+            class="adsbygoogle"
+            style="display: inline-block; text-align: center"
+            data-ad-client="ca-pub-1234567890123456"
+            data-ad-slot="2222222222"
+            data-ad-format="fluid"
+            data-ad-layout="in-article"
+            data-adtest="on"
+          ></ins>
+        </div>
+
         <textarea
           id="out"
           class="textarea mono"
           readonly
           placeholder="আউটপুট…"
+          aria-label="আউটপুট JSON"
         ></textarea>
-        <div id="status" class="muted"></div>
+
+        <div id="status" class="muted" aria-live="polite"></div>
+      </article>
+
+      <!-- How to use -->
+      <article class="card" id="how-to-use">
+        <h2>কীভাবে ব্যবহার করবেন</h2>
+        <ol>
+          <li>উপরে JSON পেস্ট/টাইপ করুন।</li>
+          <li><strong>ফরম্যাট</strong> দিলে সুন্দর ইন্ডেন্টেড আউটপুট পাবেন।</li>
+          <li>
+            <strong>মিনিফাই</strong> দিলে স্পেস/লাইনব্রেক বাদ দিয়ে ছোট সাইজ।
+          </li>
+          <li>
+            <strong>ভ্যালিডেট</strong> JSON সিনট্যাক্স ঠিক আছে কি না দেখায়।
+          </li>
+          <li><strong>আউটপুট কপি</strong> দিয়ে ফলাফল ক্লিপবোর্ডে কপি করুন।</li>
+          <li><kbd>Ctrl/⌘ + Enter</kbd> চাপলে দ্রুত ফরম্যাট হবে।</li>
+        </ol>
+      </article>
+
+      <!-- FAQ -->
+      <article class="card faq" id="faq">
+        <h2>প্রশ্নোত্তর</h2>
+        <details>
+          <summary>অফলাইনে চালানো যাবে?</summary>
+          <p>হ্যাঁ, প্রথম লোডের পর পুরোটা ব্রাউজারেই চলে।</p>
+        </details>
+        <details>
+          <summary>ডেটা কি সার্ভারে যায়?</summary>
+          <p>না—কিছুই আপলোড হয় না; ১০০% লোকাল।</p>
+        </details>
+        <details>
+          <summary>Unicode/ইমোজি সাপোর্ট আছে?</summary>
+          <p>হ্যাঁ—ইনপুট/আউটপুট উভয়ই ইউনিকোড নিরাপদ।</p>
+        </details>
+        <details>
+          <summary>বড় JSON দিলে কী হবে?</summary>
+          <p>
+            ব্রাউজারের মেমোরির উপর নির্ভর করবে; খুব বড় হলে কিছুটা সময় লাগতে
+            পারে।
+          </p>
+        </details>
+      </article>
+
+      <!-- Related tools -->
+      <article class="card" id="related">
+        <h2>সম্পর্কিত টুলস</h2>
+        <p class="muted">আরও টেক্সট/ডেভেলপার টুলস:</p>
+        <p>
+          <a class="btn" href="/bn/text-utilities/">টেক্সট টুলস</a>
+          <a class="btn" href="/bn/url-tools/">URL এনকোডার/ডিকোডার</a>
+          <a class="btn" href="/bn/sha256/">SHA-256 হ্যাশ</a>
+        </p>
+        <p class="small">
+          English preferred? See the
+          <a href="/json-formatter/" hreflang="en">English version</a>.
+        </p>
       </article>
     </main>
-    <footer>© <span id="y"></span> Tools Pack</footer>
+
+    <footer>
+      © <span id="y"></span> Tools Pack • <a class="muted" href="/bn/">হোম</a> •
+      <a class="muted" href="/json-formatter/" hreflang="en">English</a>
+    </footer>
+
     <script>
-      y.textContent=new Date().getFullYear();
-      const ok=(m,g)=>{status.textContent=m;status.style.color=g?'var(--ok)':'var(--danger)'}
-      fmt.onclick=()=>{try{const o=JSON.parse(in.value);out.value=JSON.stringify(o,null,2);ok('Valid JSON • Formatted',true)}catch(e){out.value='';ok('Invalid JSON: '+e.message,false)}}
-      min.onclick=()=>{try{const o=JSON.parse(in.value);out.value=JSON.stringify(o);ok('Valid JSON • Minified',true)}catch(e){out.value='';ok('Invalid JSON: '+e.message,false)}}
-      val.onclick=()=>{try{JSON.parse(in.value);ok('Valid JSON ✔',true)}catch(e){ok('Invalid JSON: '+e.message,false)}}
-      cpy.onclick=()=>navigator.clipboard.writeText(out.value||'');
+      // Year
+      document.getElementById("y").textContent = new Date().getFullYear();
+
+      // ===== Lazy init AdSense when slots are visible =====
+      const initAds = () => {
+        window.adsbygoogle = window.adsbygoogle || [];
+        const slots = document.querySelectorAll(
+          "ins.adsbygoogle:not([data-loaded])"
+        );
+        if (!slots.length) return;
+
+        const push = (el) => {
+          try {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            el.setAttribute("data-loaded", "1");
+          } catch (e) {
+            /* ignore */
+          }
+        };
+
+        if ("IntersectionObserver" in window) {
+          const io = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  push(entry.target);
+                  io.unobserve(entry.target);
+                }
+              });
+            },
+            { rootMargin: "200px 0px" }
+          );
+          slots.forEach((el) => io.observe(el));
+        } else {
+          slots.forEach(push);
+        }
+      };
+      window.addEventListener("load", initAds);
+
+      // ===== JSON tool logic =====
+      const $ = (id) => document.getElementById(id);
+      const inEl = $("in");
+      const outEl = $("out");
+      const statusEl = $("status");
+      const fmtBtn = $("fmt");
+      const minBtn = $("min");
+      const valBtn = $("val");
+      const cpyBtn = $("cpy");
+
+      const ok = (msg, good) => {
+        statusEl.textContent = msg;
+        statusEl.style.color = good
+          ? "var(--ok,#46c06f)"
+          : "var(--danger,#ff5c5c)";
+      };
+
+      const tryParse = () => {
+        try {
+          return [JSON.parse(inEl.value), null];
+        } catch (e) {
+          return [null, e];
+        }
+      };
+
+      fmtBtn.onclick = () => {
+        const [obj, err] = tryParse();
+        if (err) {
+          outEl.value = "";
+          ok("Invalid JSON: " + err.message, false);
+          return;
+        }
+        outEl.value = JSON.stringify(obj, null, 2);
+        ok("Valid JSON • Formatted", true);
+      };
+
+      minBtn.onclick = () => {
+        const [obj, err] = tryParse();
+        if (err) {
+          outEl.value = "";
+          ok("Invalid JSON: " + err.message, false);
+          return;
+        }
+        outEl.value = JSON.stringify(obj);
+        ok("Valid JSON • Minified", true);
+      };
+
+      valBtn.onclick = () => {
+        const [, err] = tryParse();
+        if (err) ok("Invalid JSON: " + err.message, false);
+        else ok("Valid JSON ✔", true);
+      };
+
+      cpyBtn.onclick = async () => {
+        try {
+          await navigator.clipboard.writeText(outEl.value || "");
+          ok("আউটপুট কপি হয়েছে।", true);
+        } catch {
+          ok("কপি করা যায়নি।", false);
+        }
+      };
+
+      // Keyboard shortcut: Ctrl/⌘ + Enter => Format
+      inEl.addEventListener("keydown", (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+          e.preventDefault();
+          fmtBtn.click();
+        }
+      });
     </script>
+
+    <noscript
+      >জাভাস্ক্রিপ্ট চালু করুন—এই টুলটি কাজ করতে জাভাস্ক্রিপ্ট
+      প্রয়োজন।</noscript
+    >
   </body>
 </html>

@@ -3,11 +3,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+
     <title>টেক্সট টুলস — বড়/ছোট হাতা ও শব্দ গণনা | Tools Pack</title>
     <meta
       name="description"
-      content="টেক্সটকে বড়/ছোট হাতায় রূপান্তর, স্পেস সরানো ও শব্দ-অক্ষর গণনা।"
+      content="টেক্সটকে বড়/ছোট হাতায় রূপান্তর, শিরোনাম/বাক্য কেস, স্পেস ঠিক করা ও শব্দ-অক্ষর গণনা—সবকিছু ১০০% ব্রাউজারেই।"
     />
+
+    <!-- Canonical & hreflang -->
     <link
       rel="canonical"
       href="https://tools-pack.netlify.app/bn/text-utilities/"
@@ -28,10 +31,29 @@
       href="https://tools-pack.netlify.app/"
     />
 
+    <!-- Styles -->
     <link rel="stylesheet" href="../../assets/style.css" />
     <meta name="theme-color" content="#1E1E2F" />
 
-    <!-- Structured Data -->
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tools Pack" />
+    <meta property="og:title" content="টেক্সট টুলস — Tools Pack" />
+    <meta
+      property="og:description"
+      content="বড়/ছোট হাতা, শিরোনাম/বাক্য কেস, স্পেস ঠিক, শব্দ-অক্ষর গণনা।"
+    />
+    <meta
+      property="og:url"
+      content="https://tools-pack.netlify.app/bn/text-utilities/"
+    />
+    <meta
+      property="og:image"
+      content="https://tools-pack.netlify.app/og/text.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- JSON-LD: WebApplication -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -45,113 +67,367 @@
       }
     </script>
 
+    <!-- JSON-LD: Breadcrumbs -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Tools Pack",
+            "item": "https://tools-pack.netlify.app/bn/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "টেক্সট টুলস",
+            "item": "https://tools-pack.netlify.app/bn/text-utilities/"
+          }
+        ]
+      }
+    </script>
+
+    <!-- Page-only tweaks -->
     <style>
+      :root {
+        --muted: #a5a7c0;
+        --border: #2f3152;
+      }
       body {
-        font-family: "Noto Sans Bengali", sans-serif;
         background: #1e1e2f;
         color: #fff;
+        font-family: "Noto Sans Bengali", system-ui, sans-serif;
         margin: 0;
-        padding: 0;
       }
-      header {
-        text-align: center;
-        padding: 1rem;
-      }
-      main {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 1rem;
-      }
-      textarea {
+      .textarea {
         width: 100%;
-        height: 200px;
+        min-height: 220px;
         background: #2a2a40;
         border: 1px solid #444;
-        border-radius: 8px;
-        padding: 10px;
+        border-radius: 10px;
+        padding: 12px;
         color: #fff;
         font-size: 1rem;
       }
       .actions {
-        margin: 1rem 0;
         display: flex;
         flex-wrap: wrap;
-        gap: 0.5rem;
+        gap: 8px;
+        margin: 10px 0;
       }
-      button {
-        background: #4cafef;
-        border: none;
-        padding: 0.6rem 1rem;
-        border-radius: 6px;
+      .btn {
+        border: 1px solid var(--border);
+        background: #2a2a42;
+        color: #fff;
+        border-radius: 8px;
+        padding: 0.55rem 0.9rem;
         cursor: pointer;
-        font-weight: bold;
-        transition: 0.2s;
       }
-      button:hover {
-        background: #2d9cdb;
+      .btn-primary {
+        background: #5965f3;
+        border-color: #5965f3;
+      }
+      .btn-ghost {
+        background: transparent;
       }
       .stats {
-        background: #2a2a40;
-        border: 1px solid #444;
-        padding: 0.8rem;
-        border-radius: 8px;
-        margin-top: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+      .mono {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas,
+          "Liberation Mono", monospace;
+      }
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: #3a3a55;
+        border-radius: 999px;
+        padding: 6px 10px;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+      }
+      .small {
+        font-size: 0.9rem;
+        color: var(--muted);
       }
     </style>
   </head>
+
   <body>
     <header class="sticky">
       <div class="wrap brand">
-        <a href="/bn/"><div class="logo"></div></a>
+        <a href="/bn/" aria-label="হোমে ফিরুন"
+          ><div class="logo" aria-hidden="true"></div
+        ></a>
         <div>
-          <h1 style="margin: 0">Text ফরম্যাটার / ভ্যালিডেটর</h1>
-          <div class="sub">বড় হাতা • ছোট হাতা • স্পেস সরান</div>
+          <h1 style="margin: 0">টেক্সট টুলস</h1>
+          <div class="sub">বড়/ছোট হাতা • স্পেস ঠিক • শব্দ/অক্ষর গণনা</div>
+        </div>
+        <div style="margin-left: auto">
+          <a class="muted" href="/text-utilities/" hreflang="en">English</a>
         </div>
       </div>
     </header>
-    <main>
-      <textarea
-        id="textInput"
-        placeholder="এখানে আপনার টেক্সট লিখুন..."
-      ></textarea>
+    <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
+      <span class="ad-label">Ad</span>
+      <ins
+        class="adsbygoogle"
+        style="display: inline-block"
+        data-ad-client="ca-pub-1234567890123456"
+        data-ad-slot="1111111111"
+        data-ad-format="auto"
+        data-full-width-responsive="false"
+        data-adtest="on"
+      ></ins>
+    </div>
+    <main class="wrap">
+      <!-- Breadcrumbs -->
+      <nav class="breadcrumbs" aria-label="breadcrumb">
+        <a href="/bn/">হোম</a> › <a href="/bn/#text">টেক্সট টুলস</a> ›
+        <span>টেক্সট ইউটিলিটিজ</span>
+      </nav>
 
-      <div class="actions">
-        <button onclick="toUpperCaseText()">🔠 বড় হাতা</button>
-        <button onclick="toLowerCaseText()">🔡 ছোট হাতা</button>
-        <button onclick="removeSpaces()">🚫 স্পেস সরান</button>
-      </div>
+      <!-- TOC -->
+      <p class="toc">
+        <a href="#tool">এডিটর</a> · <a href="#how">কীভাবে ব্যবহার করবেন</a> ·
+        <a href="#related">সম্পর্কিত</a>
+      </p>
 
-      <div class="stats" id="statsBox">👉 শব্দ: 0 | অক্ষর: 0</div>
+      <!-- Tool -->
+      <article class="card" id="tool">
+        <h2>এডিটর</h2>
+
+        <textarea
+          id="textInput"
+          class="textarea"
+          placeholder="এখানে আপনার টেক্সট লিখুন…"
+        ></textarea>
+
+        <div class="actions">
+          <button class="btn btn-primary" id="btnUpper">🔠 বড় হাতা</button>
+          <button class="btn" id="btnLower">🔡 ছোট হাতা</button>
+          <button class="btn" id="btnTitle">📝 শিরোনাম কেস</button>
+          <button class="btn" id="btnSentence">✒️ বাক্য কেস</button>
+          <button class="btn" id="btnSpaces">🚫 স্পেস ঠিক করুন</button>
+          <button class="btn" id="btnLinejoin">↩️ লাইনব্রেক → স্পেস</button>
+          <button class="btn" id="btnSort">🔽 লাইন সাজান (A→Z)</button>
+          <button class="btn" id="btnDedupe">🧹 ডুপ্লিকেট লাইন সরান</button>
+          <button class="btn btn-ghost" id="btnCopy">📋 কপি</button>
+          <button class="btn btn-ghost" id="btnClear">🗑 ক্লিয়ার</button>
+          <button class="btn btn-ghost" id="btnDownload">
+            ⬇ TXT এক্সপোর্ট
+          </button>
+          <label for="fileInput" class="btn btn-ghost">⬆ TXT ইমপোর্ট</label>
+          <input
+            id="fileInput"
+            type="file"
+            accept=".txt,text/plain"
+            style="display: none"
+          />
+        </div>
+        <!-- Ad #2: In-article -->
+        <div
+          class="ad-wrap ad-article"
+          aria-label="Advertisement"
+          style="margin-top: 10px"
+        >
+          <span class="ad-label">Ad</span>
+          <ins
+            class="adsbygoogle"
+            style="display: inline-block; text-align: center"
+            data-ad-client="ca-pub-1234567890123456"
+            data-ad-slot="2222222222"
+            data-ad-format="fluid"
+            data-ad-layout="in-article"
+            data-adtest="on"
+          ></ins>
+        </div>
+        <div class="stats">
+          <span id="wc">শব্দ: 0</span>
+          <span id="cc">অক্ষর: 0</span>
+          <span id="lc">লাইন: 0</span>
+          <span id="bc">বাইট (UTF-8): 0</span>
+          <span id="status" class="small">—</span>
+        </div>
+      </article>
+
+      <!-- How to -->
+      <article class="card" id="how">
+        <h2>কীভাবে ব্যবহার করবেন</h2>
+        <ol>
+          <li>টেক্সট লিখে প্রয়োজনমতো কেস/স্পেস টুল ব্যবহার করুন।</li>
+          <li>
+            <strong>কপি</strong> দিয়ে আউটপুট ক্লিপবোর্ডে নিন;
+            <strong>এক্সপোর্ট</strong> করলে TXT ফাইল পাবেন।
+          </li>
+          <li>
+            বাংলা অক্ষরে কেস পরিবর্তন প্রযোজ্য নয়—ল্যাটিন/ইংরেজি টেক্সটে প্রভাব
+            পড়বে।
+          </li>
+        </ol>
+      </article>
+
+      <!-- Related -->
+      <article class="card" id="related">
+        <h2>সম্পর্কিত</h2>
+        <p class="muted">আরও টেক্সট/ডকুমেন্ট টুলস:</p>
+        <p>
+          <a class="btn" href="/bn/quick-notes/">দ্রুত নোটস</a>
+          <a class="btn" href="/bn/text-to-pdf/">টেক্সট → PDF</a>
+          <a class="btn" href="/bn/json-formatter/">JSON ফরম্যাটার</a>
+        </p>
+      </article>
     </main>
 
+    <footer>
+      © <span id="y"></span> Tools Pack • <a class="muted" href="/bn/">হোম</a>
+    </footer>
+
     <script>
-      const input = document.getElementById("textInput");
-      const stats = document.getElementById("statsBox");
+      // Year
+      document.getElementById("y").textContent = new Date().getFullYear();
 
-      function toUpperCaseText() {
-        input.value = input.value.toUpperCase();
+      // Elements
+      const $ = (id) => document.getElementById(id);
+      const input = $("textInput");
+      const wc = $("wc"),
+        cc = $("cc"),
+        lc = $("lc"),
+        bc = $("bc"),
+        statusEl = $("status");
+
+      // Utilities
+      const enc = new TextEncoder();
+      const updateCount = () => {
+        const t = input.value;
+        const words = (t.trim().match(/\S+/g) || []).length;
+        wc.textContent = `শব্দ: ${words}`;
+        cc.textContent = `অক্ষর: ${t.length}`;
+        lc.textContent = `লাইন: ${t ? t.split(/\r?\n/).length : 0}`;
+        bc.textContent = `বাইট (UTF-8): ${enc.encode(t).length}`;
+      };
+      const set = (v, note = "—") => {
+        input.value = v;
         updateCount();
-      }
+        statusEl.textContent = note;
+      };
 
-      function toLowerCaseText() {
-        input.value = input.value.toLowerCase();
-        updateCount();
-      }
+      // Case helpers (Latin-focused; Bangla unaffected)
+      const titleCase = (s) =>
+        s.replace(
+          /\S+/g,
+          (w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()
+        );
+      const sentenceCase = (s) =>
+        s
+          .toLowerCase()
+          .replace(
+            /(^|[.!?।]\s+)([a-z])/g,
+            (m, p1, p2) => p1 + p2.toUpperCase()
+          );
 
-      function removeSpaces() {
-        input.value = input.value.replace(/\s+/g, " ").trim();
-        updateCount();
-      }
+      // Actions
+      $("btnUpper").onclick = () =>
+        set(input.value.toUpperCase(), "🔠 বড় হাতা");
+      $("btnLower").onclick = () =>
+        set(input.value.toLowerCase(), "🔡 ছোট হাতা");
+      $("btnTitle").onclick = () =>
+        set(titleCase(input.value), "📝 শিরোনাম কেস");
+      $("btnSentence").onclick = () =>
+        set(sentenceCase(input.value), "✒️ বাক্য কেস");
+      $("btnSpaces").onclick = () =>
+        set(
+          input.value.replace(/\s+/g, " ").trim(),
+          "🚫 অতিরিক্ত স্পেস সরানো হয়েছে"
+        );
+      $("btnLinejoin").onclick = () =>
+        set(
+          input.value
+            .replace(/\r?\n+/g, " ")
+            .replace(/\s+/g, " ")
+            .trim(),
+          "↩️ লাইনব্রেক স্পেসে রূপান্তর"
+        );
+      $("btnSort").onclick = () => {
+        const lines = input.value.split(/\r?\n/);
+        lines.sort((a, b) => a.localeCompare(b));
+        set(lines.join("\n"), "🔽 লাইন সাজানো হয়েছে");
+      };
+      $("btnDedupe").onclick = () => {
+        const seen = new Set();
+        const out = [];
+        for (const line of input.value.split(/\r?\n/)) {
+          if (!seen.has(line)) {
+            seen.add(line);
+            out.push(line);
+          }
+        }
+        set(out.join("\n"), "🧹 ডুপ্লিকেট লাইন মুছে ফেলা হয়েছে");
+      };
 
-      function updateCount() {
-        const text = input.value.trim();
-        const words = text ? text.split(/\s+/).length : 0;
-        const chars = text.length;
-        stats.textContent = `🔤 শব্দ: ${words} | ✍️ অক্ষর: ${chars}`;
-      }
+      $("btnCopy").onclick = async () => {
+        try {
+          await navigator.clipboard.writeText(input.value || "");
+          statusEl.textContent = "📋 কপি হয়েছে।";
+        } catch {
+          statusEl.textContent = "কপি করা যায়নি।";
+        }
+      };
+      $("btnClear").onclick = () => set("", "🗑 খালি করা হয়েছে");
 
-      // auto update on typing
+      $("btnDownload").onclick = () => {
+        const blob = new Blob([input.value], {
+          type: "text/plain;charset=utf-8",
+        });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        const ts = new Date();
+        const f = `text_${ts.getFullYear()}${String(ts.getMonth() + 1).padStart(
+          2,
+          "0"
+        )}${String(ts.getDate()).padStart(2, "0")}.txt`;
+        a.href = url;
+        a.download = f;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+        statusEl.textContent = "⬇ TXT ডাউনলোড হয়েছে।";
+      };
+
+      $("fileInput").addEventListener("change", (e) => {
+        const f = e.target.files && e.target.files[0];
+        if (!f) return;
+        const r = new FileReader();
+        r.onload = (ev) =>
+          set(String(ev.target.result || ""), "⬆ TXT ইমপোর্ট হয়েছে");
+        r.readAsText(f);
+        e.target.value = "";
+      });
+
+      // Auto update
       input.addEventListener("input", updateCount);
+      updateCount();
+
+      // Keyboard: Ctrl/Cmd + Enter => remove extra spaces
+      input.addEventListener("keydown", (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+          e.preventDefault();
+          $("btnSpaces").click();
+        }
+      });
     </script>
   </body>
 </html>

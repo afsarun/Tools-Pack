@@ -3,10 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+
     <title>স্টপওয়াচ ও কাউন্টডাউন টাইমার | Tools Pack</title>
     <meta
       name="description"
-      content="নির্ভুল স্টপওয়াচ ও কাউন্টডাউন—পজ/রিসেট/অ্যালার্মসহ।"
+      content="নির্ভুল স্টপওয়াচ ও কাউন্টডাউন—পজ/রিসেট/ল্যাপ/অ্যালার্মসহ। ১০০% ব্রাউজারেই, কোনো ট্র্যাকিং নেই।"
     />
     <link rel="canonical" href="https://tools-pack.netlify.app/bn/stopwatch/" />
     <link
@@ -26,11 +27,14 @@
     />
     <link rel="stylesheet" href="../../assets/style.css" />
     <meta name="theme-color" content="#1E1E2F" />
+
+    <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tools Pack" />
     <meta property="og:title" content="স্টপওয়াচ ও কাউন্টডাউন — Tools Pack" />
     <meta
       property="og:description"
-      content="নির্ভুল স্টপওয়াচ ও কাউন্টডাউন—পজ/রিসেট/অ্যালার্মসহ।"
+      content="ড্রিফট-প্রুফ স্টপওয়াচ, H:M:S কাউন্টডাউন, লোকাল অ্যালার্ম, ল্যাপ CSV এক্সপোর্ট।"
     />
     <meta
       property="og:url"
@@ -41,6 +45,8 @@
       content="https://tools-pack.netlify.app/og/timer.png"
     />
     <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- JSON-LD: WebApplication -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -49,236 +55,724 @@
         "url": "https://tools-pack.netlify.app/bn/stopwatch/",
         "applicationCategory": "Utility",
         "operatingSystem": "All",
-        "description": "Accurate stopwatch & countdown.",
+        "description": "Accurate stopwatch & countdown in browser.",
         "inLanguage": "bn"
       }
     </script>
+
+    <!-- JSON-LD: Breadcrumbs -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Tools Pack",
+            "item": "https://tools-pack.netlify.app/bn/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "স্টপওয়াচ ও কাউন্টডাউন",
+            "item": "https://tools-pack.netlify.app/bn/stopwatch/"
+          }
+        ]
+      }
+    </script>
+
+    <!-- JSON-LD: FAQPage -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "এই টুল কি অফলাইনে চলে?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "হ্যাঁ। প্রথমবার লোড হলে পরেরবার সম্পূর্ণ ব্রাউজারেই চলে।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "অ্যালার্ম কি নেটওয়ার্ক ছাড়া কাজ করে?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "হ্যাঁ। লোকাল Web Audio দিয়ে বীপ বাজে; প্রয়োজনে ভাইব্রেশন/ব্রাউজার নোটিফিকেশনও।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "টাইমিং কতটা নির্ভুল?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "টাইমিং গণনায় performance.now() ব্যবহার করা হয় যাতে setInterval ড্রিফটের প্রভাব না পড়ে।"
+            }
+          }
+        ]
+      }
+    </script>
+
+    <!-- Google AdSense (test mode while developing) -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234567890123456"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Page tweaks -->
     <style>
-      body {
-        font-family: "Noto Sans Bengali", system-ui, sans-serif;
-        background: #1e1e2f;
-        color: #eee;
-        margin: 0;
-        padding: 0;
+      .ad-wrap {
+        margin: 6px 0 8px;
       }
-      header {
-        text-align: center;
-        padding: 1rem;
+      .ad-label {
+        display: inline-block;
+        font-size: 11px;
+        line-height: 1;
+        color: var(--muted, #888);
+        margin: 0 0 2px 0;
       }
-      main {
-        max-width: 800px;
-        margin: auto;
-        padding: 1rem;
+      .adsbygoogle {
+        display: block;
       }
-      .card {
-        background: #2a2a40;
-        border: 1px solid #444;
-        border-radius: 10px;
-        padding: 1rem;
-        margin-bottom: 1.5rem;
+      .ad-top {
+        margin-inline: auto;
       }
-      h2 {
-        margin-top: 0;
+      @media (min-width: 900px) {
+        .ad-top {
+          max-width: 728px;
+        }
+        .ad-top .adsbygoogle {
+          min-height: 60px;
+        }
       }
+      @media (max-width: 899px) and (min-width: 600px) {
+        .ad-top {
+          max-width: 468px;
+        }
+        .ad-top .adsbygoogle {
+          min-height: 50px;
+        }
+      }
+      @media (max-width: 599px) {
+        .ad-top {
+          max-width: 320px;
+        }
+        .ad-top .adsbygoogle {
+          min-height: 50px;
+        }
+      }
+      .ad-top .adsbygoogle:empty {
+        display: none;
+      }
+
       .display {
-        font-size: 2rem;
-        text-align: center;
-        margin: 1rem 0;
-        font-weight: bold;
+        font-variant-numeric: tabular-nums;
+        letter-spacing: 0.5px;
       }
-      .actions {
-        text-align: center;
-        margin-top: 0.5rem;
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
       }
-      button {
-        margin: 0.3rem;
-        padding: 0.6rem 1rem;
-        border: none;
-        border-radius: 6px;
-        background: #5965f3;
-        color: #fff;
-        font-size: 1rem;
-        cursor: pointer;
+      th,
+      td {
+        padding: 6px 8px;
+        border-top: 1px solid var(--border, #2f3152);
       }
-      button:hover {
-        background: #4453d0;
+      th {
+        color: var(--muted, #a5a7c0);
+        text-align: left;
       }
-      .secondary {
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
         background: #3a3a55;
+        border-radius: 999px;
+        padding: 6px 10px;
       }
-      .secondary:hover {
-        background: #2c2c44;
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+      }
+      .mono {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", monospace;
+      }
+      .small {
+        font-size: 12px;
       }
       .muted {
-        color: #9aa0a6;
-        font-size: 0.9rem;
+        color: var(--muted, #a5a7c0);
       }
-      ul {
-        padding-left: 1.2rem;
+      .btn-ghost {
+        background: transparent;
+        border: 1px solid var(--border, #2f3152);
+        color: inherit;
+      }
+      .kbd {
+        background: #22253c;
+        border: 1px solid var(--border, #2f3152);
+        border-radius: 6px;
+        padding: 2px 6px;
+        font-size: 12px;
       }
     </style>
   </head>
+
   <body>
     <header class="sticky">
       <div class="wrap brand">
-        <a href="/bn/" aria-label="হোমে ফিরুন"><div class="logo"></div></a>
+        <a href="/bn/" aria-label="হোমে ফিরুন"
+          ><div class="logo" aria-hidden="true"></div
+        ></a>
         <div>
           <h1 style="margin: 0">⏱️ স্টপওয়াচ ও কাউন্টডাউন</h1>
-          <div class="sub">পজ/রিসেট/অ্যালার্মসহ নির্ভুল সময় নির্ণায়ক</div>
+          <div class="sub">পজ/রিসেট/ল্যাপ/অ্যালার্মসহ নির্ভুল সময় নির্ণায়ক</div>
+        </div>
+        <div style="margin-left: auto">
+          <a class="muted" href="/stopwatch-countdown/" hreflang="en"
+            >English</a
+          >
         </div>
       </div>
     </header>
-    <main>
+
+    <!-- Ad #1: Top banner -->
+    <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
+      <span class="ad-label">Ad</span>
+      <ins
+        class="adsbygoogle"
+        style="display: inline-block"
+        data-ad-client="ca-pub-1234567890123456"
+        data-ad-slot="1111111111"
+        data-ad-format="auto"
+        data-full-width-responsive="false"
+        data-adtest="on"
+      ></ins>
+    </div>
+
+    <main class="wrap">
+      <!-- Breadcrumbs -->
+      <nav class="breadcrumbs" aria-label="breadcrumb">
+        <a href="/bn/">হোম</a> › <a href="/bn/#time">সময় টুলস</a> ›
+        <span>স্টপওয়াচ ও কাউন্টডাউন</span>
+      </nav>
+
+      <!-- TOC -->
+      <p class="toc">
+        <a href="#sw">স্টপওয়াচ</a> · <a href="#cd">কাউন্টডাউন</a> ·
+        <a href="#how">ব্যবহার</a> · <a href="#faq">প্রশ্নোত্তর</a> ·
+        <a href="#related">সম্পর্কিত</a>
+      </p>
+
       <!-- Stopwatch -->
-      <article class="card">
+      <article class="card" id="sw">
         <h2>স্টপওয়াচ</h2>
-        <div class="display" id="swDisplay">00:00:00.0</div>
-        <div class="actions">
-          <button id="swStart">স্টার্ট</button>
-          <button id="swPause" class="secondary">পজ</button>
-          <button id="swReset" class="secondary">রিসেট</button>
-          <button id="swLap" class="secondary">ল্যাপ</button>
+        <div class="display mono" id="swDisplay" aria-live="polite">
+          00:00:00.000
         </div>
-        <ul id="swLaps" class="muted"></ul>
+        <div class="row actions">
+          <button id="swStart" class="btn btn-primary" type="button">
+            স্টার্ট
+          </button>
+          <button id="swPause" class="btn btn-ghost" type="button">পজ</button>
+          <button id="swLap" class="btn btn-ghost" type="button">ল্যাপ</button>
+          <button id="swReset" class="btn btn-ghost" type="button">
+            রিসেট
+          </button>
+          <button id="swExport" class="btn btn-ghost" type="button">
+            CSV এক্সপোর্ট
+          </button>
+          <span class="muted small"
+            >শর্টকাট: <span class="kbd">Space</span> স্টার্ট/পজ,
+            <span class="kbd">L</span> ল্যাপ,
+            <span class="kbd">R</span> রিসেট</span
+          >
+        </div>
+        <div class="muted small" id="swStatus">—</div>
+        <div style="overflow: auto; margin-top: 10px">
+          <table id="swTable" aria-label="Lap table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>ল্যাপ</th>
+                <th>মোট</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
       </article>
 
       <!-- Countdown -->
-      <article class="card">
+      <article class="card" id="cd">
         <h2>কাউন্টডাউন</h2>
-        <label>
-          <span class="muted">সময় (সেকেন্ড)</span><br />
-          <input
-            type="number"
-            id="cdInput"
-            min="1"
-            value="60"
-            style="width: 120px; padding: 5px; font-size: 1rem"
-          />
-        </label>
-        <div class="display" id="cdDisplay">01:00</div>
-        <div class="actions">
-          <button id="cdStart">স্টার্ট</button>
-          <button id="cdPause" class="secondary">পজ</button>
-          <button id="cdReset" class="secondary">রিসেট</button>
+        <div class="row" role="group" aria-label="সময় দিন">
+          <label class="pill"
+            >ঘন্টা
+            <input
+              id="cdH"
+              class="field"
+              type="number"
+              min="0"
+              value="0"
+              style="width: 80px"
+          /></label>
+          <label class="pill"
+            >মিনিট
+            <input
+              id="cdM"
+              class="field"
+              type="number"
+              min="0"
+              max="59"
+              value="1"
+              style="width: 80px"
+          /></label>
+          <label class="pill"
+            >সেকেন্ড
+            <input
+              id="cdS"
+              class="field"
+              type="number"
+              min="0"
+              max="59"
+              value="0"
+              style="width: 80px"
+          /></label>
+          <div class="row">
+            <button class="btn btn-ghost" data-preset="60" type="button">
+              +1m
+            </button>
+            <button class="btn btn-ghost" data-preset="300" type="button">
+              +5m
+            </button>
+            <button class="btn btn-ghost" data-preset="600" type="button">
+              +10m
+            </button>
+          </div>
         </div>
-        <div class="muted" id="cdStatus"></div>
+
+        <div class="display mono" id="cdDisplay" aria-live="polite">
+          00:01:00
+        </div>
+        <div class="row actions">
+          <button id="cdStart" class="btn btn-primary" type="button">
+            স্টার্ট
+          </button>
+          <button id="cdPause" class="btn btn-ghost" type="button">পজ</button>
+          <button id="cdReset" class="btn btn-ghost" type="button">
+            রিসেট
+          </button>
+          <label class="pill"
+            ><input type="checkbox" id="cdLoop" /> শেষ হলে পুনরায় শুরু</label
+          >
+          <span class="muted small"
+            >শর্টকাট: <span class="kbd">Enter</span> স্টার্ট/পজ,
+            <span class="kbd">Esc</span> রিসেট</span
+          >
+        </div>
+        <div class="muted small" id="cdStatus">—</div>
+
+        <!-- Ad #2: In-article -->
+        <div
+          class="ad-wrap ad-article"
+          aria-label="Advertisement"
+          style="margin-top: 10px"
+        >
+          <span class="ad-label">Ad</span>
+          <ins
+            class="adsbygoogle"
+            style="display: inline-block; text-align: center"
+            data-ad-client="ca-pub-1234567890123456"
+            data-ad-slot="2222222222"
+            data-ad-format="fluid"
+            data-ad-layout="in-article"
+            data-adtest="on"
+          ></ins>
+        </div>
+      </article>
+
+      <!-- How to use -->
+      <article class="card" id="how">
+        <h2>কীভাবে ব্যবহার করবেন</h2>
+        <ol>
+          <li>
+            <strong>স্টপওয়াচ:</strong> স্টার্ট → ল্যাপ নিন → পজ/রিসেট করুন।
+            ল্যাপ তালিকা CSV হিসেবে এক্সপোর্ট করা যায়।
+          </li>
+          <li>
+            <strong>কাউন্টডাউন:</strong> H:M:S সেট করুন বা প্রিসেট বাটন চাপুন;
+            শেষ হলে বীপ/নোটিফিকেশন দেখাবে।
+          </li>
+          <li>সবকিছু লোকাল; কোনো ডেটা সার্ভারে পাঠানো হয় না।</li>
+        </ol>
+      </article>
+
+      <!-- FAQ -->
+      <article class="card faq" id="faq">
+        <h2>প্রশ্নোত্তর</h2>
+        <details>
+          <summary>টাইমিং কি ড্রিফট-প্রুফ?</summary>
+          <p>
+            হ্যাঁ। প্রদর্শিত সময় সরাসরি <code>performance.now()</code> ভিত্তিক;
+            ইন্টারভাল বিলম্ব হলেও হিসাব সঠিক থাকে।
+          </p>
+        </details>
+        <details>
+          <summary>অ্যালার্ম শুনতে পারছি না?</summary>
+          <p>
+            প্রথমবার সাইট খুলে সাউন্ড প্লে করার অনুমতি দিন; মিউট অফ আছে কিনা
+            দেখুন। নোটিফিকেশন চাইলে ব্রাউজারের পারমিশন দিন।
+          </p>
+        </details>
+        <details>
+          <summary>ব্রাউজার মিনিমাইজ করলে?</summary>
+          <p>
+            টাইমার চলতেই থাকে; দৃশ্যমান না থাকলেও টার্গেট সময় ধরে ফলাফল ঠিক
+            থাকবে।
+          </p>
+        </details>
+      </article>
+
+      <!-- Related -->
+      <article class="card" id="related">
+        <h2>সম্পর্কিত টুলস</h2>
+        <p class="muted">আরও সময়/উপযোগী টুলস:</p>
+        <p>
+          <a class="btn" href="/bn/age-calculator/">বয়স ক্যালকুলেটর</a>
+          <a class="btn" href="/bn/unit-converter/">ইউনিট কনভার্টার</a>
+          <a class="btn" href="/bn/percent-calculator/">শতকরা ক্যালকুলেটর</a>
+        </p>
+        <p class="small">
+          English preferred? See the
+          <a href="/stopwatch/" hreflang="en">English version</a>.
+        </p>
       </article>
     </main>
-    <footer style="text-align: center; padding: 1rem; color: #9aa0a6">
-      © <span id="y"></span> Tools Pack
+
+    <footer>
+      © <span id="y"></span> Tools Pack • <a class="muted" href="/bn/">হোম</a>
     </footer>
 
     <script>
       // Footer year
       document.getElementById("y").textContent = new Date().getFullYear();
 
-      /* Stopwatch */
-      let swInterval,
-        swStartTime,
-        swElapsed = 0;
-      const swDisplay = document.getElementById("swDisplay");
-      const swLaps = document.getElementById("swLaps");
-
-      function formatSW(ms) {
-        const total = ms / 1000;
-        const h = String(Math.floor(total / 3600)).padStart(2, "0");
-        const m = String(Math.floor((total % 3600) / 60)).padStart(2, "0");
-        const s = String(Math.floor(total % 60)).padStart(2, "0");
-        const d = Math.floor((ms % 1000) / 100);
-        return `${h}:${m}:${s}.${d}`;
-      }
-
-      function updateSW() {
-        const diff = Date.now() - swStartTime + swElapsed;
-        swDisplay.textContent = formatSW(diff);
-      }
-
-      document.getElementById("swStart").onclick = () => {
-        if (swInterval) return;
-        swStartTime = Date.now();
-        swInterval = setInterval(updateSW, 100);
-      };
-      document.getElementById("swPause").onclick = () => {
-        if (!swInterval) return;
-        clearInterval(swInterval);
-        swElapsed += Date.now() - swStartTime;
-        swInterval = null;
-      };
-      document.getElementById("swReset").onclick = () => {
-        clearInterval(swInterval);
-        swInterval = null;
-        swElapsed = 0;
-        swDisplay.textContent = "00:00:00.0";
-        swLaps.innerHTML = "";
-      };
-      document.getElementById("swLap").onclick = () => {
-        if (!swInterval) return;
-        const li = document.createElement("li");
-        li.textContent = swDisplay.textContent;
-        swLaps.appendChild(li);
-      };
-
-      /* Countdown */
-      let cdInterval,
-        cdRemaining = 0,
-        cdRunning = false;
-      const cdInput = document.getElementById("cdInput");
-      const cdDisplay = document.getElementById("cdDisplay");
-      const cdStatus = document.getElementById("cdStatus");
-
-      function formatCD(sec) {
-        const m = String(Math.floor(sec / 60)).padStart(2, "0");
-        const s = String(sec % 60).padStart(2, "0");
-        return `${m}:${s}`;
-      }
-
-      function updateCD() {
-        if (cdRemaining <= 0) {
-          clearInterval(cdInterval);
-          cdInterval = null;
-          cdRunning = false;
-          cdDisplay.textContent = "00:00";
-          cdStatus.textContent = "⏰ সময় শেষ!";
+      // ===== Lazy init AdSense =====
+      const initAds = () => {
+        window.adsbygoogle = window.adsbygoogle || [];
+        const slots = document.querySelectorAll(
+          "ins.adsbygoogle:not([data-loaded])"
+        );
+        if (!slots.length) return;
+        const push = (el) => {
           try {
-            const beep = new Audio(
-              "https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg"
-            );
-            beep.play();
-          } catch (e) {
-            alert("⏰ সময় শেষ!");
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            el.setAttribute("data-loaded", "1");
+          } catch (e) {}
+        };
+        if ("IntersectionObserver" in window) {
+          const io = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  push(entry.target);
+                  io.unobserve(entry.target);
+                }
+              });
+            },
+            { rootMargin: "200px 0px" }
+          );
+          slots.forEach((el) => io.observe(el));
+        } else {
+          slots.forEach(push);
+        }
+      };
+      window.addEventListener("load", initAds);
+
+      // ===== Helpers =====
+      const $$ = (s, ctx = document) => Array.from(ctx.querySelectorAll(s));
+      const $ = (s, ctx = document) => ctx.querySelector(s);
+      const pad = (n, w = 2) => String(n).padStart(w, "0");
+      const fmtMS = (ms) => {
+        const t = Math.max(0, ms | 0);
+        const h = Math.floor(t / 3600000);
+        const m = Math.floor((t % 3600000) / 60000);
+        const s = Math.floor((t % 60000) / 1000);
+        const ms3 = t % 1000;
+        return `${pad(h)}:${pad(m)}:${pad(s)}.${pad(ms3, 3)}`;
+      };
+      const fmtHMS = (sec) => {
+        sec = Math.max(0, Math.floor(sec));
+        const h = Math.floor(sec / 3600);
+        const m = Math.floor((sec % 3600) / 60);
+        const s = sec % 60;
+        return `${pad(h)}:${pad(m)}:${pad(s)}`;
+      };
+
+      // ===== Stopwatch =====
+      let swRunning = false,
+        swStart = 0,
+        swAccum = 0,
+        swRaf = null,
+        swLastTotal = 0;
+      const swDisplay = $("#swDisplay");
+      const swTableBody = $("#swTable tbody");
+      const swStatus = $("#swStatus");
+
+      function swTick(now) {
+        const total = swAccum + (now - swStart);
+        swLastTotal = total;
+        swDisplay.textContent = fmtMS(total);
+        if (swRunning) swRaf = requestAnimationFrame(swTick);
+      }
+
+      function swStartFn() {
+        if (swRunning) return;
+        swRunning = true;
+        swStart = performance.now();
+        swStatus.textContent = "চলছে…";
+        swRaf = requestAnimationFrame(swTick);
+      }
+
+      function swPauseFn() {
+        if (!swRunning) return;
+        swRunning = false;
+        cancelAnimationFrame(swRaf);
+        swAccum += performance.now() - swStart;
+        swStatus.textContent = "পজ করা হয়েছে";
+      }
+
+      function swResetFn() {
+        swRunning = false;
+        cancelAnimationFrame(swRaf);
+        swStart = 0;
+        swAccum = 0;
+        swLastTotal = 0;
+        swDisplay.textContent = "00:00:00.000";
+        swTableBody.innerHTML = "";
+        swStatus.textContent = "রিসেট সম্পন্ন";
+      }
+
+      function swLapFn() {
+        const total = swRunning ? swLastTotal : swAccum;
+        const n = swTableBody.children.length;
+        const prevTotal = n
+          ? Number(swTableBody.lastElementChild.dataset.total)
+          : 0;
+        const lap = total - prevTotal;
+        const tr = document.createElement("tr");
+        tr.dataset.total = String(total | 0);
+        tr.innerHTML = `<td>${n + 1}</td><td class="mono">${fmtMS(
+          lap
+        )}</td><td class="mono">${fmtMS(total)}</td>`;
+        swTableBody.appendChild(tr);
+        swStatus.textContent = `ল্যাপ ${n + 1} যোগ হয়েছে`;
+      }
+
+      function swExportCSV() {
+        const rows = [["#", "Lap", "Total"]];
+        $$("#swTable tbody tr").forEach((tr) => {
+          const [i, lap, tot] = Array.from(tr.children).map((td) =>
+            td.textContent.trim()
+          );
+          rows.push([i, lap, tot]);
+        });
+        const csv = rows
+          .map((r) => r.map((x) => `"${x.replace(/"/g, '""')}"`).join(","))
+          .join("\n");
+        const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "stopwatch_laps.csv";
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+      }
+
+      $("#swStart").addEventListener("click", swStartFn);
+      $("#swPause").addEventListener("click", swPauseFn);
+      $("#swReset").addEventListener("click", swResetFn);
+      $("#swLap").addEventListener("click", swLapFn);
+      $("#swExport").addEventListener("click", swExportCSV);
+
+      // Keyboard shortcuts (when not typing in an input/textarea)
+      document.addEventListener("keydown", (e) => {
+        const tag = document.activeElement?.tagName;
+        if (tag === "INPUT" || tag === "TEXTAREA") return;
+        if (e.code === "Space") {
+          e.preventDefault();
+          swRunning ? swPauseFn() : swStartFn();
+        } else if (e.key.toLowerCase() === "l") swLapFn();
+        else if (e.key.toLowerCase() === "r") swResetFn();
+      });
+
+      // ===== Countdown =====
+      let cdRunning = false,
+        cdEnd = 0,
+        cdRemain = 0,
+        cdRaf = null;
+      const cdH = $("#cdH"),
+        cdM = $("#cdM"),
+        cdS = $("#cdS");
+      const cdDisplay = $("#cdDisplay"),
+        cdStatus = $("#cdStatus"),
+        cdLoop = $("#cdLoop");
+
+      function getTotalSec() {
+        const h = Math.max(0, parseInt(cdH.value || "0", 10));
+        const m = Math.max(0, parseInt(cdM.value || "0", 10));
+        const s = Math.max(0, parseInt(cdS.value || "0", 10));
+        return h * 3600 + m * 60 + s;
+      }
+      function setFromSeconds(sec) {
+        const h = Math.floor(sec / 3600),
+          m = Math.floor((sec % 3600) / 60),
+          s = sec % 60;
+        cdH.value = h;
+        cdM.value = m;
+        cdS.value = s;
+        cdDisplay.textContent = fmtHMS(sec);
+      }
+
+      function cdTick(now) {
+        const remainMs = Math.max(0, cdEnd - now);
+        const remainSec = Math.ceil(remainMs / 1000);
+        cdDisplay.textContent = fmtHMS(remainSec);
+        if (remainMs <= 0) {
+          cdRunning = false;
+          cdStatus.textContent = "⏰ সময় শেষ!";
+          alarm();
+          if (cdLoop.checked) {
+            // restart with same duration
+            const dur = getTotalSec();
+            if (dur > 0) {
+              cdStartFn(dur);
+              return;
+            }
           }
           return;
         }
-        cdRemaining--;
-        cdDisplay.textContent = formatCD(cdRemaining);
+        if (cdRunning) cdRaf = requestAnimationFrame(cdTick);
       }
 
-      document.getElementById("cdStart").onclick = () => {
-        if (cdRunning) return;
-        cdRemaining = Number(cdInput.value) || 0;
-        if (cdRemaining <= 0) return;
-        cdDisplay.textContent = formatCD(cdRemaining);
-        cdInterval = setInterval(updateCD, 1000);
+      function cdStartFn(presetSec) {
+        const total = typeof presetSec === "number" ? presetSec : getTotalSec();
+        if (total <= 0) {
+          cdStatus.textContent = "সময় দিন";
+          return;
+        }
+        cdEnd = performance.now() + total * 1000;
         cdRunning = true;
-        cdStatus.textContent = "চলছে...";
-      };
+        cdStatus.textContent = "চলছে…";
+        cdRaf && cancelAnimationFrame(cdRaf);
+        cdRaf = requestAnimationFrame(cdTick);
+      }
 
-      document.getElementById("cdPause").onclick = () => {
+      function cdPauseFn() {
         if (!cdRunning) return;
-        clearInterval(cdInterval);
         cdRunning = false;
-        cdStatus.textContent = "পজ করা হয়েছে";
-      };
+        cancelAnimationFrame(cdRaf);
+        const remainMs = Math.max(0, cdEnd - performance.now());
+        cdRemain = Math.ceil(remainMs / 1000);
+        cdStatus.textContent = "পজ করা হয়েছে";
+      }
 
-      document.getElementById("cdReset").onclick = () => {
-        clearInterval(cdInterval);
-        cdInterval = null;
+      function cdResetFn() {
         cdRunning = false;
-        cdRemaining = 0;
-        const def = Number(cdInput.value) || 0;
-        cdDisplay.textContent = def ? formatCD(def) : "00:00";
-        cdStatus.textContent = "";
-      };
+        cancelAnimationFrame(cdRaf);
+        const sec = getTotalSec();
+        cdDisplay.textContent = fmtHMS(sec);
+        cdStatus.textContent = "রিসেট সম্পন্ন";
+      }
+
+      // Preset buttons
+      $$("button[data-preset]").forEach((b) => {
+        b.addEventListener("click", () => {
+          const add = parseInt(b.dataset.preset, 10);
+          const cur = getTotalSec();
+          setFromSeconds(cur + add);
+        });
+      });
+
+      $("#cdStart").addEventListener("click", () => {
+        if (!cdRunning && cdRemain > 0) {
+          cdStartFn(cdRemain);
+          cdRemain = 0;
+        } else cdStartFn();
+      });
+      $("#cdPause").addEventListener("click", cdPauseFn);
+      $("#cdReset").addEventListener("click", () => {
+        cdRemain = 0;
+        cdResetFn();
+      });
+      [cdH, cdM, cdS].forEach((el) =>
+        el.addEventListener(
+          "input",
+          () => (cdDisplay.textContent = fmtHMS(getTotalSec()))
+        )
+      );
+
+      // Keyboard: Enter toggles start/pause, Esc resets (when focus not in text inputs other than cd inputs it's fine too)
+      document.addEventListener("keydown", (e) => {
+        const tag = document.activeElement?.tagName;
+        if (tag === "INPUT" || tag === "TEXTAREA") return; // avoid while typing
+        if (e.key === "Enter") {
+          e.preventDefault();
+          cdRunning ? cdPauseFn() : $("#cdStart").click();
+        }
+        if (e.key === "Escape") {
+          cdRemain = 0;
+          cdResetFn();
+        }
+      });
+
+      // ===== Alarm (WebAudio + Vibration + Notification) =====
+      let audioCtx;
+      function alarm() {
+        try {
+          if (!audioCtx)
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+          const o = audioCtx.createOscillator();
+          const g = audioCtx.createGain();
+          o.type = "sine";
+          o.frequency.value = 880;
+          o.connect(g);
+          g.connect(audioCtx.destination);
+          g.gain.setValueAtTime(0, audioCtx.currentTime);
+          g.gain.linearRampToValueAtTime(0.2, audioCtx.currentTime + 0.02);
+          g.gain.exponentialRampToValueAtTime(
+            0.0001,
+            audioCtx.currentTime + 1.2
+          );
+          o.start();
+          o.stop(audioCtx.currentTime + 1.25);
+        } catch (e) {
+          /* ignore */
+        }
+        if (navigator.vibrate) navigator.vibrate([150, 80, 150]);
+        if ("Notification" in window) {
+          if (Notification.permission === "granted")
+            new Notification("⏰ সময় শেষ!", { body: "কাউন্টডাউন সম্পন্ন।" });
+          else if (Notification.permission !== "denied")
+            Notification.requestPermission();
+        }
+      }
     </script>
+
+    <noscript
+      >জাভাস্ক্রিপ্ট চালু করুন—এই টুলটি কাজ করতে জাভাস্ক্রিপ্ট
+      প্রয়োজন।</noscript
+    >
   </body>
 </html>

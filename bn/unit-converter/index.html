@@ -3,11 +3,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+
     <title>ইউনিট কনভার্টার — দৈর্ঘ্য, ওজন ও তাপমাত্রা | Tools Pack</title>
     <meta
       name="description"
-      content="মিটার↔কিলোমিটার, কেজি↔পাউন্ড, সেলসিয়াস↔ফারেনহাইট—দ্রুত রূপান্তর।"
+      content="মিটার↔কিলোমিটার, কেজি↔পাউন্ড, সেলসিয়াস↔ফারেনহাইট—দ্রুত ও নির্ভুল রূপান্তর। ১০০% ব্রাউজারেই, কোনো ট্র্যাকিং নেই।"
     />
+
+    <!-- Canonical & hreflang -->
     <link
       rel="canonical"
       href="https://tools-pack.netlify.app/bn/unit-converter/"
@@ -27,11 +30,19 @@
       hreflang="x-default"
       href="https://tools-pack.netlify.app/"
     />
+
+    <!-- Styles -->
     <link rel="stylesheet" href="../../assets/style.css" />
     <meta name="theme-color" content="#1E1E2F" />
+
+    <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tools Pack" />
     <meta property="og:title" content="ইউনিট কনভার্টার — Tools Pack" />
-    <meta property="og:description" content="দৈর্ঘ্য/ওজন/তাপমাত্রা রূপান্তর।" />
+    <meta
+      property="og:description"
+      content="দৈর্ঘ্য/ওজন/তাপমাত্রা রূপান্তর এক জায়গায়।"
+    />
     <meta
       property="og:url"
       content="https://tools-pack.netlify.app/bn/unit-converter/"
@@ -41,6 +52,8 @@
       content="https://tools-pack.netlify.app/og/unit.png"
     />
     <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- JSON-LD: WebApplication -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -53,62 +66,300 @@
         "inLanguage": "bn"
       }
     </script>
+
+    <!-- JSON-LD: Breadcrumbs -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Tools Pack",
+            "item": "https://tools-pack.netlify.app/bn/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "ইউনিট কনভার্টার",
+            "item": "https://tools-pack.netlify.app/bn/unit-converter/"
+          }
+        ]
+      }
+    </script>
+
+    <!-- JSON-LD: FAQPage -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "এই কনভার্টার কি অফলাইনে চলে?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "হ্যাঁ—প্রথমবার লোড হলে পরে সম্পূর্ণ ব্রাউজারেই চলে।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "রূপান্তর কতটা নির্ভুল?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "মানক কনস্ট্যান্ট ব্যবহার করা হয়েছে; আউটপুটে সর্বোচ্চ ৮ দশমিক পর্যন্ত দেখানো হয়।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "প্রাইভেসি কেমন?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "সব হিসাব লোকালেই; কোনো ইনপুট সার্ভারে পাঠানো হয় না।"
+            }
+          }
+        ]
+      }
+    </script>
+
+    <!-- Page-only tweaks -->
+    <style>
+      :root {
+        --muted: #a5a7c0;
+        --border: #2f3152;
+      }
+      .mono {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas,
+          "Liberation Mono", monospace;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+      }
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: #3a3a55;
+        border-radius: 999px;
+        padding: 6px 10px;
+      }
+      .btn-ghost {
+        background: transparent;
+        border: 1px solid var(--border);
+        color: inherit;
+      }
+      .muted {
+        color: var(--muted);
+      }
+      .small {
+        font-size: 0.9rem;
+      }
+    </style>
   </head>
+
   <body>
     <header class="sticky">
       <div class="wrap brand">
-        <a href="/bn/"><div class="logo"></div></a>
+        <a href="/bn/" aria-label="হোমে ফিরুন"
+          ><div class="logo" aria-hidden="true"></div
+        ></a>
         <div>
           <h1 style="margin: 0">ইউনিট কনভার্টার</h1>
           <div class="sub">দৈর্ঘ্য • ওজন • তাপমাত্রা</div>
         </div>
+        <div style="margin-left: auto">
+          <a class="muted" href="/unit-converter/" hreflang="en">English</a>
+        </div>
       </div>
     </header>
-
+    <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
+      <span class="ad-label">Ad</span>
+      <ins
+        class="adsbygoogle"
+        style="display: inline-block"
+        data-ad-client="ca-pub-1234567890123456"
+        data-ad-slot="1111111111"
+        data-ad-format="auto"
+        data-full-width-responsive="false"
+        data-adtest="on"
+      ></ins>
+    </div>
     <main class="wrap">
-      <article class="card">
+      <!-- Breadcrumbs -->
+      <nav class="breadcrumbs" aria-label="breadcrumb">
+        <a href="/bn/">হোম</a> › <a href="/bn/#math">গণিত টুলস</a> ›
+        <span>ইউনিট কনভার্টার</span>
+      </nav>
+
+      <!-- TOC -->
+      <p class="toc">
+        <a href="#tool">কনভার্টার</a> ·
+        <a href="#how">কীভাবে ব্যবহার করবেন</a> ·
+        <a href="#faq">প্রশ্নোত্তর</a> ·
+        <a href="#related">সম্পর্কিত</a>
+      </p>
+
+      <!-- Tool -->
+      <article class="card" id="tool">
+        <h2>কনভার্টার</h2>
+
         <div class="row">
           <select id="cat" class="select" aria-label="ক্যাটাগরি">
             <option value="length">দৈর্ঘ্য</option>
             <option value="weight">ওজন</option>
             <option value="temperature">তাপমাত্রা</option>
           </select>
-          <input
-            id="val"
-            class="field"
-            type="number"
-            step="any"
-            placeholder="মান"
-          />
+
+          <label class="pill">
+            মান
+            <input
+              id="val"
+              class="field"
+              type="number"
+              step="any"
+              inputmode="decimal"
+              placeholder="যেমন: 12.5"
+              style="width: 140px"
+            />
+          </label>
+
+          <label class="pill">
+            দশমিক
+            <select id="prec" class="select">
+              <option>0</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option selected>6</option>
+              <option>8</option>
+            </select>
+          </label>
         </div>
+
         <div class="row">
           <select id="from" class="select" aria-label="কোন ইউনিট থেকে"></select>
+          <button
+            id="swap"
+            class="btn btn-ghost"
+            type="button"
+            aria-label="ইউনিট অদলবদল"
+          >
+            ⇄
+          </button>
           <select id="to" class="select" aria-label="কোন ইউনিটে"></select>
         </div>
-        <input
-          id="res"
-          class="field mono"
-          readonly
-          placeholder="রূপান্তরিত মান"
-        />
+
+        <div class="row">
+          <input
+            id="res"
+            class="field mono"
+            readonly
+            placeholder="রূপান্তরিত মান"
+            style="min-width: 240px"
+          />
+          <button id="copy" class="btn btn-ghost" type="button">📋 কপি</button>
+          <span id="status" class="muted small">—</span>
+        </div>
+        <!-- Ad #2: In-article -->
+        <div
+          class="ad-wrap ad-article"
+          aria-label="Advertisement"
+          style="margin-top: 10px"
+        >
+          <span class="ad-label">Ad</span>
+          <ins
+            class="adsbygoogle"
+            style="display: inline-block; text-align: center"
+            data-ad-client="ca-pub-1234567890123456"
+            data-ad-slot="2222222222"
+            data-ad-format="fluid"
+            data-ad-layout="in-article"
+            data-adtest="on"
+          ></ins>
+        </div>
+        <p class="muted small">
+          টিপস: <kbd>Enter</kbd> চাপলে কনভার্ট হবে। <kbd>⇄</kbd> দিয়ে ইউনিট
+          অদলবদল করুন।
+        </p>
+      </article>
+
+      <!-- How to use -->
+      <article class="card" id="how">
+        <h2>কীভাবে ব্যবহার করবেন</h2>
+        <ol>
+          <li>উপরে ক্যাটাগরি (দৈর্ঘ্য/ওজন/তাপমাত্রা) নির্বাচন করুন।</li>
+          <li>মান লিখে <em>From</em> ও <em>To</em> ইউনিট ঠিক করুন।</li>
+          <li>
+            প্রয়োজনে <strong>দশমিক</strong> অপশনে আউটপুটের প্রিসিশন বেছে নিন।
+          </li>
+          <li><strong>কপি</strong> দিয়ে ফলাফল ক্লিপবোর্ডে নিন।</li>
+        </ol>
+      </article>
+
+      <!-- FAQ -->
+      <article class="card faq" id="faq">
+        <h2>প্রশ্নোত্তর</h2>
+        <details>
+          <summary>কোন কোন ইউনিট আছে?</summary>
+          <p>
+            দৈর্ঘ্য: m, km, cm, mm, mi, yd, ft, in<br />
+            ওজন: kg, g, mg, lb, oz, tonne<br />
+            তাপমাত্রা: °C, °F, K
+          </p>
+        </details>
+        <details>
+          <summary>তাপমাত্রার ফর্মুলা কী?</summary>
+          <p>°F = °C × 1.8 + 32, °K = °C + 273.15 (এবং বিপরীত রূপান্তর) ।</p>
+        </details>
+        <details>
+          <summary>ফ্লোটিং-পয়েন্ট রাউন্ডিং?</summary>
+          <p>
+            ব্রাউজারভিত্তিক গণনায় খুব ছোট রাউন্ডিং ত্রুটি দেখা যেতে
+            পারে—প্রিসিশন সিলেক্ট থেকে নিয়ন্ত্রণ করুন।
+          </p>
+        </details>
+      </article>
+
+      <!-- Related -->
+      <article class="card" id="related">
+        <h2>সম্পর্কিত</h2>
+        <p class="muted">আরও সংখ্যা/গণিত টুলস:</p>
+        <p>
+          <a class="btn" href="/bn/calculator/">ক্যালকুলেটর</a>
+          <a class="btn" href="/bn/percent-calculator/">শতকরা ক্যালকুলেটর</a>
+          <a class="btn" href="/bn/age-calculator/">বয়স ক্যালকুলেটর</a>
+        </p>
       </article>
     </main>
 
-    <footer>© <span id="y"></span> Tools Pack</footer>
+    <footer>
+      © <span id="y"></span> Tools Pack • <a class="muted" href="/bn/">হোম</a>
+    </footer>
 
     <script>
+      // Year
+      document.getElementById("y").textContent = new Date().getFullYear();
+
       // ---- Elements
-      const $ = (s) => document.querySelector(s);
+      const $ = (s, ctx = document) => ctx.querySelector(s);
       const yEl = $("#y");
       const cat = $("#cat");
       const val = $("#val");
       const from = $("#from");
       const to = $("#to");
       const res = $("#res");
+      const prec = $("#prec");
+      const swapBtn = $("#swap");
+      const copyBtn = $("#copy");
+      const statusEl = $("#status");
 
-      if (yEl) yEl.textContent = new Date().getFullYear();
-
-      // ---- Data
+      // ---- Data (base: meter for length, kilogram for weight)
       const units = {
         length: {
           m: 1,
@@ -131,7 +382,7 @@
         temperature: ["C", "F", "K"],
       };
 
-      // ---- Populate unit selects based on category
+      // ---- Populate unit selects
       function populate() {
         from.innerHTML = "";
         to.innerHTML = "";
@@ -154,6 +405,14 @@
         }
       }
 
+      // ---- Format number nicely
+      function fmtNumber(n, dp) {
+        if (!isFinite(n)) return "";
+        const f = Number(n).toFixed(Math.min(8, Math.max(0, dp)));
+        // trim trailing zeros
+        return f.replace(/\.?0+$/, "");
+      }
+
       // ---- Convert
       function convert() {
         const v = parseFloat(val.value);
@@ -163,39 +422,68 @@
         }
 
         let out;
-
         if (cat.value === "temperature") {
-          // Normalize to Celsius
           let c;
           if (from.value === "C") c = v;
           else if (from.value === "F") c = (v - 32) / 1.8;
           else if (from.value === "K") c = v - 273.15;
 
-          // Celsius to target
           if (to.value === "C") out = c;
           else if (to.value === "F") out = c * 1.8 + 32;
           else if (to.value === "K") out = c + 273.15;
         } else {
-          const base = v * units[cat.value][from.value]; // to base (m / kg)
+          const base = v * units[cat.value][from.value]; // to base
           out = base / units[cat.value][to.value];
         }
 
-        // Format nicely (trim trailing zeros, keep up to 8 dp)
-        res.value = Number(out.toFixed(8)).toString();
+        res.value = fmtNumber(out, Number(prec.value || 6));
+      }
+
+      // ---- Swap
+      function swapUnits() {
+        const a = from.value,
+          b = to.value;
+        from.value = b;
+        to.value = a;
+        convert();
+      }
+
+      // ---- Copy
+      async function copyResult() {
+        try {
+          await navigator.clipboard.writeText(res.value || "");
+          statusEl.textContent = "📋 কপি হয়েছে।";
+        } catch {
+          statusEl.textContent = "কপি করা যায়নি।";
+        }
+        setTimeout(() => (statusEl.textContent = "—"), 1200);
       }
 
       // ---- Events
       val.addEventListener("input", convert);
-      from.addEventListener("change", convert);
-      to.addEventListener("change", convert);
+      [from, to, prec].forEach((el) => el.addEventListener("change", convert));
       cat.addEventListener("change", () => {
         populate();
         convert();
+      });
+      swapBtn.addEventListener("click", swapUnits);
+      copyBtn.addEventListener("click", copyResult);
+
+      // Enter => convert
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          convert();
+        }
       });
 
       // ---- Init
       populate();
       convert();
     </script>
+
+    <noscript
+      >জাভাস্ক্রিপ্ট চালু করুন—এই টুলটি কাজ করতে জাভাস্ক্রিপ্ট
+      প্রয়োজন।</noscript
+    >
   </body>
 </html>

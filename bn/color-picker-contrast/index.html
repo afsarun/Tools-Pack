@@ -35,8 +35,9 @@
     <link rel="stylesheet" href="../../assets/style.css" />
     <meta name="theme-color" content="#1E1E2F" />
 
-    <!-- Open Graph -->
+    <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tools Pack" />
     <meta
       property="og:title"
       content="কালার পিকার ও কনট্রাস্ট চেকার — Tools Pack"
@@ -53,8 +54,7 @@
       property="og:image"
       content="https://tools-pack.netlify.app/og/color.png"
     />
-
-    <!-- Twitter -->
+    <meta property="og:image:alt" content="কালার পিকার — Tools Pack" />
     <meta name="twitter:card" content="summary_large_image" />
 
     <!-- JSON-LD: WebApplication -->
@@ -70,32 +70,242 @@
         "inLanguage": "bn"
       }
     </script>
+
+    <!-- JSON-LD: Breadcrumbs -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Tools Pack",
+            "item": "https://tools-pack.netlify.app/bn/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "কালার পিকার ও কনট্রাস্ট",
+            "item": "https://tools-pack.netlify.app/bn/color-contrast/"
+          }
+        ]
+      }
+    </script>
+
+    <!-- JSON-LD: FAQPage -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "এই টুল কি অফলাইনে চলে?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "হ্যাঁ। প্রথমবার লোড হলে পরেরবার সম্পূর্ণ ব্রাউজারেই চলে।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "কোন রেশিওতে AA/AAA পাস ধরা হয়?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "AA (Normal) ≥ 4.5:1, AA (Large) ≥ 3:1, AAA (Normal) ≥ 7:1।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "#RGB (৩-সংখ্যা) হেক্স সাপোর্টেড?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "হ্যাঁ—#abc কে #aabbcc এ বিস্তৃত করে কনট্রাস্ট হিসাব করা হয়।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "আলফা (স্বচ্ছতা) সাপোর্টেড?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "এই সংস্করণে ইনপুটগুলো solid হেক্স (#RRGGBB/#RGB)। আলফা প্রিভিউতে ধরা হয় না।"
+            }
+          }
+        ]
+      }
+    </script>
+
+    <!-- Google AdSense (test mode while developing) -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234567890123456"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Page-specific tweaks (compact ads + related chips wrap) -->
+    <style>
+      /* Compact top ad area */
+      .ad-wrap {
+        margin: 6px 0 8px;
+      }
+      .ad-label {
+        display: inline-block;
+        font-size: 11px;
+        line-height: 1;
+        color: var(--muted, #888);
+        margin: 0 0 2px 0;
+      }
+      .adsbygoogle {
+        display: block;
+      }
+      .ad-top {
+        margin-inline: auto;
+      }
+      @media (min-width: 900px) {
+        .ad-top {
+          max-width: 728px;
+        }
+        .ad-top .adsbygoogle {
+          min-height: 60px;
+        }
+      }
+      @media (max-width: 899px) and (min-width: 600px) {
+        .ad-top {
+          max-width: 468px;
+        }
+        .ad-top .adsbygoogle {
+          min-height: 50px;
+        }
+      }
+      @media (max-width: 599px) {
+        .ad-top {
+          max-width: 320px;
+        }
+        .ad-top .adsbygoogle {
+          min-height: 50px;
+        }
+      }
+      .ad-top .adsbygoogle:empty {
+        display: none;
+      }
+
+      /* Tool layout */
+      .tool .row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 10px 0;
+      }
+      .tool .mono {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", "Courier New", monospace;
+      }
+      .preview {
+        border: 1px dashed var(--border, #333);
+        border-radius: 8px;
+        padding: 16px;
+        margin-top: 12px;
+      }
+
+      /* Related chips: prevent overlap on small screens */
+      #related p:nth-of-type(2) {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 8px;
+      }
+      #related .btn {
+        display: inline-flex;
+        align-items: center;
+        max-width: 100%;
+      }
+      @media (max-width: 520px) {
+        #related .btn {
+          white-space: normal;
+          line-height: 1.2;
+          padding: 8px 10px;
+        }
+      }
+    </style>
   </head>
 
   <body>
     <header class="sticky">
       <div class="wrap brand">
-        <a href="/bn/" aria-label="হোমে ফিরুন"><div class="logo"></div></a>
+        <a href="/bn/" aria-label="হোমে ফিরুন"
+          ><div class="logo" aria-hidden="true"></div
+        ></a>
         <div>
           <h1 style="margin: 0">কালার পিকার ও কনট্রাস্ট চেকার</h1>
-          <div class="sub">WCAG 2.1 • Tools Pack</div>
+          <div class="sub">WCAG 2.1 • কনট্রাস্ট রেশিও</div>
+        </div>
+        <div style="margin-left: auto">
+          <a class="muted" href="/color-picker-contrast/" hreflang="en"
+            >English</a
+          >
         </div>
       </div>
     </header>
 
+    <!-- Ad #1: Top banner -->
+    <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
+      <span class="ad-label">Ad</span>
+      <ins
+        class="adsbygoogle"
+        style="display: inline-block"
+        data-ad-client="ca-pub-1234567890123456"
+        data-ad-slot="1111111111"
+        data-ad-format="auto"
+        data-full-width-responsive="false"
+        data-adtest="on"
+      ></ins>
+    </div>
+
     <main class="wrap">
-      <section aria-label="Color Picker & Contrast Checker Tool">
+      <!-- Breadcrumbs -->
+      <nav class="breadcrumbs" aria-label="breadcrumb">
+        <a href="/bn/">হোম</a> › <a href="/bn/#design">ডিজাইন টুলস</a> ›
+        <span>কালার পিকার</span>
+      </nav>
+
+      <!-- TOC -->
+      <p class="toc">
+        <a href="#picker">কালার পিকার</a> ·
+        <a href="#how-to-use">কীভাবে ব্যবহার করবেন</a> ·
+        <a href="#faq">প্রশ্নোত্তর</a> ·
+        <a href="#related">সম্পর্কিত টুলস</a>
+      </p>
+
+      <!-- Picker -->
+      <article class="card" id="picker">
+        <h2>রঙ নির্বাচন ও কনট্রাস্ট</h2>
+
         <div class="tool">
           <div class="row">
-            <label for="fg" class="muted">ফোরগ্রাউন্ড রঙ</label>
+            <label for="fg" class="muted">ফোরগ্রাউন্ড</label>
             <input type="color" id="fg" value="#000000" />
-            <input type="text" id="fgHex" class="field mono" value="#000000" />
+            <input
+              type="text"
+              id="fgHex"
+              class="field mono"
+              value="#000000"
+              aria-label="ফোরগ্রাউন্ড হেক্স"
+            />
+            <button class="btn" id="swapBtn" type="button" title="রঙ অদলবদল">
+              ↔
+            </button>
           </div>
 
           <div class="row">
-            <label for="bg" class="muted">ব্যাকগ্রাউন্ড রঙ</label>
+            <label for="bg" class="muted">ব্যাকগ্রাউন্ড</label>
             <input type="color" id="bg" value="#ffffff" />
-            <input type="text" id="bgHex" class="field mono" value="#ffffff" />
+            <input
+              type="text"
+              id="bgHex"
+              class="field mono"
+              value="#ffffff"
+              aria-label="ব্যাকগ্রাউন্ড হেক্স"
+            />
           </div>
 
           <div class="preview" id="previewBox">
@@ -107,15 +317,125 @@
             <span id="wcag"></span>
           </p>
         </div>
-      </section>
+
+        <!-- Ad #2: In-article -->
+        <div class="ad-wrap ad-article" aria-label="Advertisement">
+          <span class="ad-label">Ad</span>
+          <ins
+            class="adsbygoogle"
+            style="display: inline-block; text-align: center"
+            data-ad-client="ca-pub-1234567890123456"
+            data-ad-slot="2222222222"
+            data-ad-format="fluid"
+            data-ad-layout="in-article"
+            data-adtest="on"
+          ></ins>
+        </div>
+      </article>
+
+      <!-- How to use -->
+      <article class="card" id="how-to-use">
+        <h2>কীভাবে ব্যবহার করবেন</h2>
+        <ol>
+          <li>ফোরগ্রাউন্ড/ব্যাকগ্রাউন্ড রঙ বাছাই করুন বা হেক্স কোড লিখুন।</li>
+          <li>
+            #RGB (যেমন <code>#abc</code>) দিলে স্বয়ংক্রিয়ভাবে
+            <code>#aabbcc</code> ধরা হয়।
+          </li>
+          <li>
+            রেশিও ≥ <strong>4.5</strong> হলে AA (Normal), ≥
+            <strong>7</strong> হলে AAA (Normal)।
+          </li>
+          <li>↔ বোতামে রঙ অদলবদল করা যায়।</li>
+          <li>এই টুলটি অফলাইনে চলতে পারে; কোনো ডেটা সার্ভারে যায় না।</li>
+        </ol>
+      </article>
+
+      <!-- FAQ -->
+      <article class="card faq" id="faq">
+        <h2>প্রশ্নোত্তর</h2>
+        <details>
+          <summary>অফলাইনে চালানো যাবে?</summary>
+          <p>হ্যাঁ, প্রথম লোডের পর পুরোটা ব্রাউজারেই চলে।</p>
+        </details>
+        <details>
+          <summary>AA/AAA থ্রেশহোল্ড কত?</summary>
+          <p>AA (Normal) ≥ 4.5:1, AA (Large) ≥ 3:1, AAA (Normal) ≥ 7:1।</p>
+        </details>
+        <details>
+          <summary>#RGB (৩-সংখ্যা) সাপোর্টেড?</summary>
+          <p>হ্যাঁ—#abc → #aabbcc করে কনট্রাস্ট ক্যালকুলেট করা হয়।</p>
+        </details>
+        <details>
+          <summary>আলফা/স্বচ্ছতা ধরা হয়?</summary>
+          <p>না—এই সংস্করণে solid হেক্স (RGB) ব্যবহার করা হয়েছে।</p>
+        </details>
+      </article>
+
+      <!-- Related tools -->
+      <article class="card" id="related">
+        <h2>সম্পর্কিত টুলস</h2>
+        <p class="muted">ডিজাইন/মিডিয়া বিষয়ক আরও টুলস:</p>
+        <p>
+          <a class="btn" href="/bn/image-resizer-compressor/"
+            >ইমেজ রিসাইজার/কমপ্রেসর</a
+          >
+          <a class="btn" href="/bn/text-to-pdf/">টেক্সট → PDF</a>
+          <a class="btn" href="/bn/json-formatter/">JSON ফরম্যাটার</a>
+        </p>
+        <p class="small">
+          English preferred? See the
+          <a href="/color-picker-contrast/" hreflang="en">English version</a>.
+        </p>
+      </article>
     </main>
 
-    <footer>© <span id="y"></span> Tools Pack • ১০০% ব্রাউজারেই রান হয়</footer>
+    <footer>
+      © <span id="y"></span> Tools Pack • <a class="muted" href="/bn/">হোম</a> •
+      <a class="muted" href="/color-contrast/" hreflang="en">English</a>
+    </footer>
 
     <script>
-      // Footer year
+      // Year
       document.getElementById("y").textContent = new Date().getFullYear();
 
+      // ===== Lazy init AdSense when slots are visible =====
+      const initAds = () => {
+        window.adsbygoogle = window.adsbygoogle || [];
+        const slots = document.querySelectorAll(
+          "ins.adsbygoogle:not([data-loaded])"
+        );
+        if (!slots.length) return;
+
+        const push = (el) => {
+          try {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            el.setAttribute("data-loaded", "1");
+          } catch (e) {
+            /* ignore */
+          }
+        };
+
+        if ("IntersectionObserver" in window) {
+          const io = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  push(entry.target);
+                  io.unobserve(entry.target);
+                }
+              });
+            },
+            { rootMargin: "200px 0px" }
+          );
+          slots.forEach((el) => io.observe(el));
+        } else {
+          slots.forEach(push);
+        }
+      };
+      window.addEventListener("load", initAds);
+
+      // ===== Color/contrast helpers =====
       const fg = document.getElementById("fg");
       const bg = document.getElementById("bg");
       const fgHex = document.getElementById("fgHex");
@@ -123,8 +443,17 @@
       const preview = document.getElementById("previewBox");
       const ratioEl = document.getElementById("ratio");
       const wcagEl = document.getElementById("wcag");
+      const swapBtn = document.getElementById("swapBtn");
 
-      // Convert hex to luminance
+      const expand3 = (h) => `#${h[1]}${h[1]}${h[2]}${h[2]}${h[3]}${h[3]}`;
+      const isHex3 = (s) => /^#([0-9a-fA-F]{3})$/.test(s);
+      const isHex6 = (s) => /^#([0-9a-fA-F]{6})$/.test(s);
+      const normHex = (s) => {
+        if (isHex3(s)) return expand3(s).toLowerCase();
+        if (isHex6(s)) return s.toLowerCase();
+        return null;
+      };
+
       function luminance(hex) {
         const rgb = hex
           .replace("#", "")
@@ -136,7 +465,6 @@
         return 0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2];
       }
 
-      // Contrast ratio
       function contrast(fg, bg) {
         const L1 = luminance(fg);
         const L2 = luminance(bg);
@@ -144,18 +472,21 @@
       }
 
       function update() {
-        const f = fg.value;
-        const b = bg.value;
+        let f = fg.value;
+        let b = bg.value;
 
-        fgHex.value = f;
-        bgHex.value = b;
-        preview.style.color = f;
-        preview.style.backgroundColor = b;
+        const nf = normHex(f);
+        const nb = normHex(b);
+        if (!nf || !nb) return;
 
-        const ratio = contrast(f, b);
+        fgHex.value = nf;
+        bgHex.value = nb;
+        preview.style.color = nf;
+        preview.style.backgroundColor = nb;
+
+        const ratio = contrast(nf, nb);
         ratioEl.textContent = ratio.toFixed(2);
 
-        // WCAG rating
         let rating = "";
         if (ratio >= 7) {
           rating = "AAA (Normal)";
@@ -172,15 +503,30 @@
       fg.addEventListener("input", update);
       bg.addEventListener("input", update);
       fgHex.addEventListener("input", () => {
-        if (/^#([0-9A-F]{6})$/i.test(fgHex.value)) fg.value = fgHex.value;
+        const v = normHex(fgHex.value.trim());
+        if (v) fg.value = v;
         update();
       });
       bgHex.addEventListener("input", () => {
-        if (/^#([0-9A-F]{6})$/i.test(bgHex.value)) bg.value = bgHex.value;
+        const v = normHex(bgHex.value.trim());
+        if (v) bg.value = v;
         update();
       });
+      swapBtn &&
+        swapBtn.addEventListener("click", () => {
+          const f = fg.value;
+          const b = bg.value;
+          fg.value = b;
+          bg.value = f;
+          update();
+        });
 
       update();
     </script>
+
+    <noscript
+      >জাভাস্ক্রিপ্ট চালু করুন—এই টুলটি কাজ করতে জাভাস্ক্রিপ্ট
+      প্রয়োজন।</noscript
+    >
   </body>
 </html>

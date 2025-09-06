@@ -7,7 +7,7 @@
     <title>ইউআরএল এনকোডার/ডিকোডার (URI) | Tools Pack</title>
     <meta
       name="description"
-      content="লিংক/URI কম্পোনেন্ট এনকোড বা ডিকোড করুন।"
+      content="লিংক/URI কম্পোনেন্ট এনকোড বা ডিকোড করুন—কম্পোনেন্ট বা পূর্ণ URL মোড, স্পেস ‘+’ সাপোর্টসহ।"
     />
 
     <!-- Canonical & hreflang -->
@@ -34,6 +34,7 @@
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tools Pack" />
     <meta property="og:title" content="ইউআরএল এনকোডার/ডিকোডার — Tools Pack" />
     <meta
       property="og:description"
@@ -47,8 +48,10 @@
       property="og:image"
       content="https://tools-pack.netlify.app/og/url.png"
     />
-
-    <!-- Twitter -->
+    <meta
+      property="og:image:alt"
+      content="ইউআরএল এনকোডার/ডিকোডার — Tools Pack"
+    />
     <meta name="twitter:card" content="summary_large_image" />
 
     <!-- JSON-LD: WebApplication -->
@@ -64,80 +67,399 @@
         "inLanguage": "bn"
       }
     </script>
+
+    <!-- JSON-LD: Breadcrumbs -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Tools Pack",
+            "item": "https://tools-pack.netlify.app/bn/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "ইউআরএল এনকোডার/ডিকোডার",
+            "item": "https://tools-pack.netlify.app/bn/url-tools/"
+          }
+        ]
+      }
+    </script>
+
+    <!-- JSON-LD: FAQPage -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "কম্পোনেন্ট ও পূর্ণ URL মোডের পার্থক্য কী?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "কম্পোনেন্ট (encodeURIComponent) একেকটা অংশ (যেমন কুয়েরি ভ্যালু) এনকোড করে; পূর্ণ URL (encodeURI) সম্পূর্ণ লিংকে সংরক্ষিত ক্যারেক্টারগুলো অক্ষত রাখে।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "স্পেস ‘+’ হিসেবে দেখাবে কি?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "চেকবক্স অন করলে x-www-form-urlencoded ধরনে স্পেস ‘+’ হিসেবে এনকোড/ডিকোড হবে। ডিফল্টে %20।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "ডেটা কি সার্ভারে যায়?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "না—সবকিছু আপনার ব্রাউজারেই প্রক্রিয়াকরণ হয়।"
+            }
+          }
+        ]
+      }
+    </script>
+
+    <!-- Page tweaks -->
+    <style>
+      :root {
+        --muted: #a5a7c0;
+        --border: #2f3152;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+      }
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: #3a3a55;
+        border-radius: 999px;
+        padding: 6px 10px;
+      }
+      .muted {
+        color: var(--muted);
+      }
+      .small {
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+      .mono {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", monospace;
+      }
+      .btn-ghost {
+        background: transparent;
+        border: 1px solid var(--border);
+        color: inherit;
+      }
+      textarea.field {
+        min-height: 140px;
+      }
+    </style>
   </head>
 
   <body>
     <header class="sticky">
       <div class="wrap brand">
-        <a href="/bn/" aria-label="হোমে ফিরুন"><div class="logo"></div></a>
+        <a href="/bn/" aria-label="হোমে ফিরুন"
+          ><div class="logo" aria-hidden="true"></div
+        ></a>
         <div>
           <h1 style="margin: 0">ইউআরএল এনকোডার/ডিকোডার</h1>
-          <div class="sub">URI Component Tool • Tools Pack</div>
+          <div class="sub">URI/URL • Encode/Decode</div>
+        </div>
+        <div style="margin-left: auto">
+          <a class="muted" href="/url-tools/" hreflang="en">English</a>
         </div>
       </div>
     </header>
-
+    <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
+      <span class="ad-label">Ad</span>
+      <ins
+        class="adsbygoogle"
+        style="display: inline-block"
+        data-ad-client="ca-pub-1234567890123456"
+        data-ad-slot="1111111111"
+        data-ad-format="auto"
+        data-full-width-responsive="false"
+        data-adtest="on"
+      ></ins>
+    </div>
     <main class="wrap">
-      <section aria-label="URL Encoder/Decoder Tool">
-        <div class="tool">
-          <label for="urlInput" class="muted">টেক্সট বা লিংক লিখুন</label>
-          <textarea
-            id="urlInput"
-            class="field"
-            rows="5"
-            placeholder="এখানে লিংক বা টেক্সট লিখুন…"
-          ></textarea>
+      <!-- Breadcrumbs -->
+      <nav class="breadcrumbs" aria-label="breadcrumb">
+        <a href="/bn/">হোম</a> › <a href="/bn/#dev">ডেভ টুলস</a> ›
+        <span>ইউআরএল এনকোডার/ডিকোডার</span>
+      </nav>
 
-          <div class="row">
-            <button id="btnEncode" class="btn btn-primary">Encode</button>
-            <button id="btnDecode" class="btn">Decode</button>
-            <button id="btnClear" class="btn btn-muted">Clear</button>
-          </div>
+      <!-- TOC -->
+      <p class="toc">
+        <a href="#tool">টুল</a> · <a href="#how">কীভাবে ব্যবহার করবেন</a> ·
+        <a href="#faq">প্রশ্নোত্তর</a> ·
+        <a href="#related">সম্পর্কিত</a>
+      </p>
 
-          <label for="urlOutput" class="muted">ফলাফল</label>
-          <textarea
-            id="urlOutput"
-            class="field mono"
-            rows="5"
-            readonly
-          ></textarea>
+      <!-- Tool -->
+      <article class="card" id="tool">
+        <h2>URL/URI Encode/Decode</h2>
+
+        <div class="row">
+          <label class="pill"
+            ><input type="radio" name="mode" value="component" checked />
+            কম্পোনেন্ট</label
+          >
+          <label class="pill"
+            ><input type="radio" name="mode" value="full" /> পূর্ণ URL</label
+          >
+          <label class="pill"
+            ><input type="checkbox" id="spacePlus" /> স্পেসকে
+            <code>+</code> হিসেবে ধরুন</label
+          >
         </div>
-      </section>
+
+        <label for="urlInput" class="muted">ইনপুট</label>
+        <textarea
+          id="urlInput"
+          class="field"
+          placeholder="এখানে টেক্সট বা লিংক লিখুন…"
+        ></textarea>
+
+        <div class="row" style="margin-top: 8px">
+          <button id="btnEncode" class="btn btn-primary" type="button">
+            এনকোড
+          </button>
+          <button id="btnDecode" class="btn" type="button">ডিকোড</button>
+          <button
+            id="btnSwap"
+            class="btn btn-ghost"
+            type="button"
+            aria-label="ইনপুট ↔ আউটপুট অদলবদল"
+          >
+            ⇄ অদলবদল
+          </button>
+          <button id="btnCopy" class="btn btn-ghost" type="button">
+            📋 আউটপুট কপি
+          </button>
+          <button id="btnClear" class="btn btn-ghost" type="button">
+            🗑 সাফ করুন
+          </button>
+          <span id="status" class="small">—</span>
+        </div>
+        <!-- Ad #2: In-article -->
+        <div
+          class="ad-wrap ad-article"
+          aria-label="Advertisement"
+          style="margin-top: 10px"
+        >
+          <span class="ad-label">Ad</span>
+          <ins
+            class="adsbygoogle"
+            style="display: inline-block; text-align: center"
+            data-ad-client="ca-pub-1234567890123456"
+            data-ad-slot="2222222222"
+            data-ad-format="fluid"
+            data-ad-layout="in-article"
+            data-adtest="on"
+          ></ins>
+        </div>
+        <label
+          for="urlOutput"
+          class="muted"
+          style="margin-top: 8px; display: block"
+          >আউটপুট</label
+        >
+        <textarea
+          id="urlOutput"
+          class="field mono"
+          readonly
+          placeholder="ফলাফল এখানে…"
+        ></textarea>
+
+        <p class="small" style="margin-top: 8px">
+          শর্টকাট: <kbd>Ctrl/⌘ + E</kbd> এনকোড, <kbd>Ctrl/⌘ + D</kbd> ডিকোড,
+          <kbd>Esc</kbd> সাফ।
+        </p>
+      </article>
+
+      <!-- How to use -->
+      <article class="card" id="how">
+        <h2>কীভাবে ব্যবহার করবেন</h2>
+        <ol>
+          <li>
+            <strong>কম্পোনেন্ট</strong> মোডে একেকটা অংশ (যেমন কুয়েরি ভ্যালু)
+            নিরাপদভাবে এনকোড হয় (<code>encodeURIComponent</code>)।
+          </li>
+          <li>
+            <strong>পূর্ণ URL</strong> মোডে সম্পূর্ণ লিংক এনকোড/ডিকোড হয়,
+            সংরক্ষিত ক্যারেক্টারগুলো অক্ষত থাকে (<code>encodeURI</code>)।
+          </li>
+          <li>
+            প্রয়োজনে <strong>স্পেস → +</strong> অপশন অন/অফ করুন (ওয়েব-ফর্ম
+            স্টাইল)।
+          </li>
+        </ol>
+      </article>
+
+      <!-- FAQ -->
+      <article class="card faq" id="faq">
+        <h2>প্রশ্নোত্তর</h2>
+        <details>
+          <summary>%20 বনাম +—কখন কোনটা?</summary>
+          <p>
+            স্ট্যান্ডার্ড URL এনকোডিংয়ে স্পেস সাধারণত %20।
+            x-www-form-urlencoded (ওয়েব-ফর্ম) ধরণে স্পেসকে <code>+</code> ধরা
+            হয়—এ জন্য টগল রয়েছে।
+          </p>
+        </details>
+        <details>
+          <summary>ইউনিকোড/ইমোজি সাপোর্ট আছে?</summary>
+          <p>হ্যাঁ—ইউনিকোড ও ইমোজি পুরোপুরি সাপোর্টেড।</p>
+        </details>
+        <details>
+          <summary>প্রাইভেসি?</summary>
+          <p>
+            সবকিছু লোকাল ব্রাউজারেই প্রক্রিয়াকরণ হয়; কোনো ডেটা সার্ভারে পাঠানো
+            হয় না।
+          </p>
+        </details>
+      </article>
+
+      <!-- Related -->
+      <article class="card" id="related">
+        <h2>সম্পর্কিত</h2>
+        <p class="muted">আরও ডেভ/টেক্সট টুলস:</p>
+        <p>
+          <a class="btn" href="/bn/json-formatter/">JSON ফরম্যাটার</a>
+          <a class="btn" href="/bn/sha256/">SHA-256 হ্যাশ</a>
+          <a class="btn" href="/bn/text-utilities/">টেক্সট টুলস</a>
+        </p>
+      </article>
     </main>
 
-    <footer>© <span id="y"></span> Tools Pack • ১০০% ব্রাউজারেই রান হয়</footer>
+    <footer>
+      © <span id="y"></span> Tools Pack • <a class="muted" href="/bn/">হোম</a>
+    </footer>
 
     <script>
-      // Footer year
+      // Year
       document.getElementById("y").textContent = new Date().getFullYear();
 
-      // Input/Output refs
-      const input = document.getElementById("urlInput");
-      const output = document.getElementById("urlOutput");
+      // Elements
+      const $ = (s, ctx = document) => ctx.querySelector(s);
+      const input = $("#urlInput");
+      const output = $("#urlOutput");
+      const statusEl = $("#status");
+      const spacePlus = $("#spacePlus");
+      const modeRadios = document.getElementsByName("mode");
 
-      // Encode
-      document.getElementById("btnEncode").addEventListener("click", () => {
+      const getMode = () =>
+        [...modeRadios].find((r) => r.checked)?.value || "component";
+
+      function encodeValue() {
+        const mode = getMode();
+        const raw = input.value || "";
+        let out = "";
         try {
-          output.value = encodeURIComponent(input.value);
+          if (mode === "full") {
+            out = encodeURI(raw);
+          } else {
+            out = encodeURIComponent(raw);
+            if (spacePlus.checked) out = out.replace(/%20/g, "+");
+          }
+          output.value = out;
+          setStatus("✅ এনকোড সম্পন্ন");
         } catch (e) {
-          output.value = "⚠️ Encoding error: " + e.message;
+          output.value = "";
+          setStatus("⚠️ এনকোডিং ত্রুটি: " + e.message);
         }
-      });
+      }
 
-      // Decode
-      document.getElementById("btnDecode").addEventListener("click", () => {
+      function decodeValue() {
+        const mode = getMode();
+        let raw = input.value || "";
         try {
-          output.value = decodeURIComponent(input.value);
+          if (spacePlus.checked) raw = raw.replace(/\+/g, "%20");
+          const out =
+            mode === "full" ? decodeURI(raw) : decodeURIComponent(raw);
+          output.value = out;
+          setStatus("✅ ডিকোড সম্পন্ন");
         } catch (e) {
-          output.value = "⚠️ Decoding error: " + e.message;
+          output.value = "";
+          setStatus("⚠️ ডিকোডিং ত্রুটি: " + e.message);
         }
-      });
+      }
 
-      // Clear
-      document.getElementById("btnClear").addEventListener("click", () => {
+      function swapIO() {
+        const a = input.value;
+        input.value = output.value;
+        output.value = a;
+        setStatus("↔ অদলবদল করা হয়েছে");
+      }
+
+      async function copyOut() {
+        try {
+          await navigator.clipboard.writeText(output.value || "");
+          setStatus("📋 কপি হয়েছে।");
+        } catch {
+          setStatus("কপি করা যায়নি।");
+        }
+      }
+
+      function clearAll() {
         input.value = "";
         output.value = "";
+        setStatus("🗑 সাফ করা হয়েছে");
+      }
+
+      function setStatus(msg) {
+        statusEl.textContent = msg;
+        clearTimeout(setStatus._t);
+        setStatus._t = setTimeout(() => (statusEl.textContent = "—"), 1400);
+      }
+
+      // Wire up
+      $("#btnEncode").addEventListener("click", encodeValue);
+      $("#btnDecode").addEventListener("click", decodeValue);
+      $("#btnSwap").addEventListener("click", swapIO);
+      $("#btnCopy").addEventListener("click", copyOut);
+      $("#btnClear").addEventListener("click", clearAll);
+      spacePlus.addEventListener("change", () =>
+        setStatus(spacePlus.checked ? "স্পেস ‘+’ মোড অন" : "স্পেস ‘+’ মোড অফ")
+      );
+      [...modeRadios].forEach((r) =>
+        r.addEventListener("change", () =>
+          setStatus(r.value === "full" ? "পূর্ণ URL মোড" : "কম্পোনেন্ট মোড")
+        )
+      );
+
+      // Shortcuts
+      document.addEventListener("keydown", (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "e") {
+          e.preventDefault();
+          encodeValue();
+        }
+        if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "d") {
+          e.preventDefault();
+          decodeValue();
+        }
+        if (e.key === "Escape") {
+          e.preventDefault();
+          clearAll();
+        }
       });
     </script>
+
+    <noscript
+      >জাভাস্ক্রিপ্ট চালু করুন—এই টুলটি কাজ করতে জাভাস্ক্রিপ্ট
+      প্রয়োজন।</noscript
+    >
   </body>
 </html>

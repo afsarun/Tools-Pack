@@ -7,7 +7,7 @@
     <title>দ্রুত নোটস — ব্রাউজারে অটো-সেভ | Tools Pack</title>
     <meta
       name="description"
-      content="নোট লিখুন, অটো-সেভ হোক; TXT এক্সপোর্ট/ইমপোর্ট করুন।"
+      content="নোট লিখুন, অটো-সেভ হোক; TXT এক্সপোর্ট/ইমপোর্ট করুন—সবকিছু ১০০% ব্রাউজারেই, কোনো ট্র্যাকিং নেই।"
     />
     <meta name="theme-color" content="#1E1E2F" />
 
@@ -28,9 +28,30 @@
       hreflang="x-default"
       href="https://tools-pack.netlify.app/"
     />
+
+    <!-- Styles -->
     <link rel="stylesheet" href="../../assets/style.css" />
 
-    <!-- Structured Data -->
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tools Pack" />
+    <meta property="og:title" content="দ্রুত নোটস — Tools Pack" />
+    <meta
+      property="og:description"
+      content="অটো-সেভ নোটস; TXT এক্সপোর্ট/ইমপোর্ট—সবকিছু ব্রাউজারেই।"
+    />
+    <meta
+      property="og:url"
+      content="https://tools-pack.netlify.app/bn/notes/"
+    />
+    <meta
+      property="og:image"
+      content="https://tools-pack.netlify.app/og/notes.png"
+    />
+    <meta property="og:image:alt" content="দ্রুত নোটস — Tools Pack" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- JSON-LD: WebApplication -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -39,154 +60,461 @@
         "url": "https://tools-pack.netlify.app/bn/notes/",
         "applicationCategory": "Utility",
         "operatingSystem": "All",
-        "description": "লোকাল অটো-সেভ নোটস; এক্সপোর্ট/ইমপোর্ট।",
+        "description": "লোকাল অটো-সেভ নোটস; TXT এক্সপোর্ট/ইমপোর্ট।",
         "inLanguage": "bn"
       }
     </script>
 
+    <!-- JSON-LD: Breadcrumbs -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Tools Pack",
+            "item": "https://tools-pack.netlify.app/bn/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "দ্রুত নোটস",
+            "item": "https://tools-pack.netlify.app/bn/notes/"
+          }
+        ]
+      }
+    </script>
+
+    <!-- JSON-LD: FAQPage -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "এই নোটস কি অফলাইনে চলে?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "হ্যাঁ। প্রথমবার লোড হলে পরেরবার সম্পূর্ণ ব্রাউজারেই চলে।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "ডেটা কি সার্ভারে আপলোড হয়?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "না। সবকিছু আপনার ডিভাইসের localStorage-এ সেভ থাকে—কোনো ট্র্যাকিং নেই।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "এক্সপোর্ট/ইমপোর্ট কীভাবে করব?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "এক্সপোর্ট করলে একটি TXT ডাউনলোড হবে; ইমপোর্টে TXT ফাইল সিলেক্ট করলে কনটেন্ট লোড হবে।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "ডেটা ক্লিয়ার করলে কি ফেরত পাওয়া যাবে?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "না। ‘সব মুছুন’ দিলে localStorage থেকে নোটস মুছে যাবে—সতর্ক হয়ে ব্যবহার করুন।"
+            }
+          }
+        ]
+      }
+    </script>
+
+    <!-- Google AdSense (test mode while developing) -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234567890123456"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Page tweaks -->
     <style>
-      :root {
-        --bg: #1e1e2f;
-        --card: #2a2a40;
-        --accent: #4cafef;
-        --text: #f0f0f0;
+      .ad-wrap {
+        margin: 6px 0 8px;
       }
-      body {
-        margin: 0;
-        font-family: system-ui, sans-serif;
-        background: var(--bg);
-        color: var(--text);
+      .ad-label {
+        display: inline-block;
+        font-size: 11px;
+        line-height: 1;
+        color: var(--muted, #888);
+        margin: 0 0 2px 0;
+      }
+      .adsbygoogle {
+        display: block;
+      }
+      .ad-top {
+        margin-inline: auto;
+      }
+      @media (min-width: 900px) {
+        .ad-top {
+          max-width: 728px;
+        }
+        .ad-top .adsbygoogle {
+          min-height: 60px;
+        }
+      }
+      @media (max-width: 899px) and (min-width: 600px) {
+        .ad-top {
+          max-width: 468px;
+        }
+        .ad-top .adsbygoogle {
+          min-height: 50px;
+        }
+      }
+      @media (max-width: 599px) {
+        .ad-top {
+          max-width: 320px;
+        }
+        .ad-top .adsbygoogle {
+          min-height: 50px;
+        }
+      }
+      .ad-top .adsbygoogle:empty {
+        display: none;
+      }
+      .stats {
         display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-      }
-      header {
-        padding: 1rem;
-        text-align: center;
-        background: var(--card);
-        font-size: 1.2rem;
-        font-weight: 600;
-      }
-      main {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        padding: 1rem;
-        gap: 1rem;
-        max-width: 800px;
-        margin: auto;
-        width: 100%;
-      }
-      textarea {
-        flex: 1;
-        width: 100%;
-        padding: 1rem;
-        font-size: 1rem;
-        background: #111122;
-        border: 1px solid #444;
-        border-radius: 8px;
-        color: var(--text);
-        resize: vertical;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 8px;
+        color: var(--muted, #a5a7c0);
+        font-size: 12px;
       }
       .actions {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.5rem;
+        gap: 8px;
+        margin-top: 10px;
       }
-      button,
-      label[for="fileInput"] {
-        background: var(--accent);
-        border: none;
-        color: #fff;
-        padding: 0.6rem 1rem;
-        border-radius: 6px;
-        cursor: pointer;
-        font-size: 0.95rem;
-        transition: 0.2s;
+      .actions .btn {
+        display: inline-flex;
+        align-items: center;
       }
-      button:hover,
-      label[for="fileInput"]:hover {
-        background: #2196f3;
-      }
-      input[type="file"] {
-        display: none;
-      }
-      footer {
-        text-align: center;
-        font-size: 0.85rem;
-        padding: 1rem;
-        color: #aaa;
+      .save-status {
+        margin-left: auto;
       }
     </style>
   </head>
+
   <body>
     <header class="sticky">
       <div class="wrap brand">
-        <a href="/bn/"><div class="logo"></div></a>
+        <a href="/bn/" aria-label="হোমে ফিরুন"
+          ><div class="logo" aria-hidden="true"></div
+        ></a>
         <div>
-          <h1 style="margin: 0">JSON ফরম্যাটার / ভ্যালিডেটর</h1>
-          <div class="sub">প্রিটি • মিনিফাই • ভ্যালিডেট</div>
+          <h1 style="margin: 0">দ্রুত নোটস</h1>
+          <div class="sub">অটো-সেভ • TXT ইমপোর্ট/এক্সপোর্ট</div>
+        </div>
+        <div style="margin-left: auto">
+          <a class="muted" href="/quick-notes/" hreflang="en">English</a>
         </div>
       </div>
     </header>
-    <main>
-      <textarea
-        id="notes"
-        placeholder="এখানে আপনার নোট লিখুন... (ব্রাউজারে অটো-সেভ হবে)"
-      ></textarea>
-      <div class="actions">
-        <button id="exportBtn">⬇ TXT এক্সপোর্ট</button>
-        <label for="fileInput">⬆ TXT ইমপোর্ট</label>
-        <input type="file" id="fileInput" accept=".txt" />
-        <button id="clearBtn">🗑 সব মুছুন</button>
-      </div>
+
+    <!-- Ad #1: Top banner -->
+    <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
+      <span class="ad-label">Ad</span>
+      <ins
+        class="adsbygoogle"
+        style="display: inline-block"
+        data-ad-client="ca-pub-1234567890123456"
+        data-ad-slot="1111111111"
+        data-ad-format="auto"
+        data-full-width-responsive="false"
+        data-adtest="on"
+      ></ins>
+    </div>
+
+    <main class="wrap">
+      <!-- Breadcrumbs -->
+      <nav class="breadcrumbs" aria-label="breadcrumb">
+        <a href="/bn/">হোম</a> › <a href="/bn/#text">টেক্সট টুলস</a> ›
+        <span>দ্রুত নোটস</span>
+      </nav>
+
+      <!-- TOC -->
+      <p class="toc">
+        <a href="#notes-card">নোটস</a> ·
+        <a href="#how-to-use">কীভাবে ব্যবহার করবেন</a> ·
+        <a href="#faq">প্রশ্নোত্তর</a> ·
+        <a href="#related">সম্পর্কিত টুলস</a>
+      </p>
+
+      <!-- Notes tool -->
+      <article class="card" id="notes-card">
+        <h2>নোট লিখুন</h2>
+
+        <textarea
+          id="notes"
+          class="textarea"
+          rows="12"
+          placeholder="এখানে আপনার নোট লিখুন... (ব্রাউজারে অটো-সেভ হবে)"
+        ></textarea>
+
+        <div class="actions">
+          <button id="exportBtn" class="btn" type="button">
+            ⬇ TXT এক্সপোর্ট
+          </button>
+          <label for="fileInput" class="btn">⬆ TXT ইমপোর্ট</label>
+          <input
+            type="file"
+            id="fileInput"
+            accept=".txt,text/plain"
+            style="display: none"
+          />
+          <button id="copyBtn" class="btn" type="button">📋 কপি</button>
+          <button id="clearBtn" class="btn" type="button">🗑 সব মুছুন</button>
+        </div>
+
+        <div class="stats">
+          <span id="wc">শব্দ: 0</span>
+          <span id="cc">অক্ষর: 0</span>
+          <span id="lc">লাইন: 0</span>
+          <span id="save" class="save-status">—</span>
+        </div>
+
+        <!-- Ad #2: In-article -->
+        <div
+          class="ad-wrap ad-article"
+          aria-label="Advertisement"
+          style="margin-top: 10px"
+        >
+          <span class="ad-label">Ad</span>
+          <ins
+            class="adsbygoogle"
+            style="display: inline-block; text-align: center"
+            data-ad-client="ca-pub-1234567890123456"
+            data-ad-slot="2222222222"
+            data-ad-format="fluid"
+            data-ad-layout="in-article"
+            data-adtest="on"
+          ></ins>
+        </div>
+      </article>
+
+      <!-- How to use -->
+      <article class="card" id="how-to-use">
+        <h2>কীভাবে ব্যবহার করবেন</h2>
+        <ol>
+          <li>উপরে নোট লিখুন—টাইপ করলেই অটো-সেভ হবে (localStorage)।</li>
+          <li>
+            <strong>TXT এক্সপোর্ট</strong> দিলে TXT ফাইল ডাউনলোড হবে;
+            <strong>TXT ইমপোর্ট</strong> দিয়ে ফাইল থেকে নোট লোড করুন।
+          </li>
+          <li>
+            <strong>কপি</strong> দিয়ে পুরো নোট ক্লিপবোর্ডে যাবে;
+            <strong>সব মুছুন</strong> দিলে লোকাল ডেটা ক্লিয়ার হবে।
+          </li>
+          <li>ডেটা কেবল আপনার ডিভাইসেই থাকে—কোনো নেটওয়ার্কে পাঠানো হয় না।</li>
+        </ol>
+      </article>
+
+      <!-- FAQ -->
+      <article class="card faq" id="faq">
+        <h2>প্রশ্নোত্তর</h2>
+        <details>
+          <summary>অফলাইনে চালানো যাবে?</summary>
+          <p>হ্যাঁ, প্রথম লোডের পর পুরোটা ব্রাউজারেই চলে।</p>
+        </details>
+        <details>
+          <summary>ডেটা কোথায় সেভ থাকে?</summary>
+          <p>
+            আপনার ব্রাউজারের <code>localStorage</code>-এ। ক্যাশ/ডেটা ক্লিয়ার
+            করলে মুছে যেতে পারে।
+          </p>
+        </details>
+        <details>
+          <summary>বড় নোট লিখলে সমস্যা হবে?</summary>
+          <p>
+            ব্রাউজারের স্টোরেজ সীমা পর্যন্ত কাজ করবে (সাধারণত কয়েক MB)। খুব বড়
+            হলে পারফরম্যান্স কমতে পারে।
+          </p>
+        </details>
+        <details>
+          <summary>ফাইল ফরম্যাট কী?</summary>
+          <p>
+            UTF-8 <strong>.txt</strong>। অন্য ফরম্যাটে কনভার্ট করে নিতে পারেন।
+          </p>
+        </details>
+      </article>
+
+      <!-- Related tools -->
+      <article class="card" id="related">
+        <h2>সম্পর্কিত টুলস</h2>
+        <p class="muted">আরও টেক্সট/ডেভ টুলস:</p>
+        <p>
+          <a class="btn" href="/bn/text-utilities/">টেক্সট টুলস</a>
+          <a class="btn" href="/bn/text-to-pdf/">টেক্সট → PDF</a>
+          <a class="btn" href="/bn/json-formatter/">JSON ফরম্যাটার</a>
+        </p>
+        <p class="small">
+          English preferred? See the
+          <a href="/quick-notes/" hreflang="en">English version</a>.
+        </p>
+      </article>
     </main>
-    <footer>© Tools Pack — লোকাল ব্রাউজার অটো-সেভ</footer>
+
+    <footer>
+      © <span id="y"></span> Tools Pack • <a class="muted" href="/bn/">হোম</a> •
+      <a class="muted" href="/quick-notes/" hreflang="en">English</a>
+    </footer>
 
     <script>
-      const textarea = document.getElementById("notes");
-      const exportBtn = document.getElementById("exportBtn");
-      const fileInput = document.getElementById("fileInput");
-      const clearBtn = document.getElementById("clearBtn");
+      // Footer year
+      document.getElementById("y").textContent = new Date().getFullYear();
+
+      // ===== Lazy init AdSense when slots are visible =====
+      const initAds = () => {
+        window.adsbygoogle = window.adsbygoogle || [];
+        const slots = document.querySelectorAll(
+          "ins.adsbygoogle:not([data-loaded])"
+        );
+        if (!slots.length) return;
+        const push = (el) => {
+          try {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            el.setAttribute("data-loaded", "1");
+          } catch (e) {}
+        };
+        if ("IntersectionObserver" in window) {
+          const io = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  push(entry.target);
+                  io.unobserve(entry.target);
+                }
+              });
+            },
+            { rootMargin: "200px 0px" }
+          );
+          slots.forEach((el) => io.observe(el));
+        } else {
+          slots.forEach(push);
+        }
+      };
+      window.addEventListener("load", initAds);
+
+      // ===== Notes logic =====
+      const $ = (id) => document.getElementById(id);
+      const notesEl = $("notes");
+      const exportBtn = $("exportBtn");
+      const fileInput = $("fileInput");
+      const copyBtn = $("copyBtn");
+      const clearBtn = $("clearBtn");
+      const wcEl = $("wc"),
+        ccEl = $("cc"),
+        lcEl = $("lc"),
+        saveEl = $("save");
+      const KEY = "tp_quickNotes";
 
       // Load saved notes
-      textarea.value = localStorage.getItem("quickNotes") || "";
+      notesEl.value = localStorage.getItem(KEY) || "";
+      updateStats();
 
-      // Auto-save on input
-      textarea.addEventListener("input", () => {
-        localStorage.setItem("quickNotes", textarea.value);
+      // Debounced autosave
+      let t;
+      function save() {
+        clearTimeout(t);
+        saveEl.textContent = "সেভ হচ্ছে…";
+        t = setTimeout(() => {
+          localStorage.setItem(KEY, notesEl.value);
+          const now = new Date();
+          const hh = String(now.getHours()).padStart(2, "0");
+          const mm = String(now.getMinutes()).padStart(2, "0");
+          saveEl.textContent = `সেভ হয়েছে • ${hh}:${mm}`;
+        }, 400);
+      }
+
+      // Stats
+      function updateStats() {
+        const text = notesEl.value || "";
+        const words = (text.trim().match(/\S+/g) || []).length;
+        const chars = text.length;
+        const lines = text ? text.split(/\r?\n/).length : 0;
+        wcEl.textContent = `শব্দ: ${words}`;
+        ccEl.textContent = `অক্ষর: ${chars}`;
+        lcEl.textContent = `লাইন: ${lines}`;
+      }
+
+      notesEl.addEventListener("input", () => {
+        save();
+        updateStats();
       });
 
-      // Export notes to TXT
+      // Export TXT
+      function fileName() {
+        const d = new Date();
+        const y = d.getFullYear();
+        const m = String(d.getMonth() + 1).padStart(2, "0");
+        const day = String(d.getDate()).padStart(2, "0");
+        const hh = String(d.getHours()).padStart(2, "0");
+        const mm = String(d.getMinutes()).padStart(2, "0");
+        return `notes_${y}${m}${day}_${hh}${mm}.txt`;
+      }
       exportBtn.addEventListener("click", () => {
-        const blob = new Blob([textarea.value], { type: "text/plain" });
+        const blob = new Blob([notesEl.value], {
+          type: "text/plain;charset=utf-8",
+        });
         const url = URL.createObjectURL(blob);
         const a = document.createElement("a");
         a.href = url;
-        a.download = "notes.txt";
+        a.download = fileName();
+        document.body.appendChild(a);
         a.click();
+        a.remove();
         URL.revokeObjectURL(url);
       });
 
-      // Import notes from TXT
+      // Import TXT
       fileInput.addEventListener("change", (e) => {
-        const file = e.target.files[0];
+        const file = e.target.files && e.target.files[0];
         if (!file) return;
         const reader = new FileReader();
-        reader.onload = (event) => {
-          textarea.value = event.target.result;
-          localStorage.setItem("quickNotes", textarea.value);
+        reader.onload = (ev) => {
+          notesEl.value = ev.target.result || "";
+          localStorage.setItem(KEY, notesEl.value);
+          updateStats();
+          saveEl.textContent = "ইমপোর্ট সম্পন্ন ✔";
         };
         reader.readAsText(file);
+        fileInput.value = "";
       });
 
-      // Clear notes
+      // Copy
+      copyBtn.addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(notesEl.value || "");
+          saveEl.textContent = "📋 কপি হয়েছে।";
+        } catch {
+          saveEl.textContent = "কপি করা যায়নি।";
+        }
+      });
+
+      // Clear
       clearBtn.addEventListener("click", () => {
-        if (confirm("সব নোট মুছতে চান?")) {
-          textarea.value = "";
-          localStorage.removeItem("quickNotes");
+        if (confirm("সব নোট মুছতে চান? এই কাজটি ফেরত নেওয়া যাবে না।")) {
+          notesEl.value = "";
+          localStorage.removeItem(KEY);
+          updateStats();
+          saveEl.textContent = "সব মুছে ফেলা হয়েছে।";
         }
       });
     </script>
+
+    <noscript
+      >জাভাস্ক্রিপ্ট চালু করুন—এই টুলটি কাজ করতে জাভাস্ক্রিপ্ট
+      প্রয়োজন।</noscript
+    >
   </body>
 </html>

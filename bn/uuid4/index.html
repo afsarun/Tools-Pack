@@ -3,8 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+
     <title>UUID v4 জেনারেটর — RFC 4122 | Tools Pack</title>
-    <meta name="description" content="তাৎক্ষণিক UUID v4 তৈরি ও কপি করুন।" />
+    <meta
+      name="description"
+      content="তাৎক্ষণিকভাবে RFC 4122 অনুযায়ী UUID v4 তৈরি করুন—বাল্ক আউটপুট, ড্যাশ/কেস ফরম্যাট, কপি ও ডাউনলোডসহ।"
+    />
 
     <!-- Canonical & alternates -->
     <link rel="canonical" href="https://tools-pack.netlify.app/bn/uuid4/" />
@@ -33,7 +37,7 @@
     <meta property="og:title" content="UUID v4 জেনারেটর — Tools Pack" />
     <meta
       property="og:description"
-      content="RFC 4122 অনুযায়ী UUID v4 তৈরি করুন।"
+      content="RFC 4122 অনুযায়ী UUID v4 তৈরি করুন—লোকাল ব্রাউজারেই।"
     />
     <meta
       property="og:url"
@@ -43,8 +47,6 @@
       property="og:image"
       content="https://tools-pack.netlify.app/og/uuid.png"
     />
-
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
 
     <!-- Schema.org JSON-LD -->
@@ -56,30 +58,105 @@
         "url": "https://tools-pack.netlify.app/bn/uuid4/",
         "applicationCategory": "Utility",
         "operatingSystem": "All",
-        "description": "RFC 4122 অনুযায়ী UUID v4 জেনারেটর।",
+        "description": "RFC 4122 অনুযায়ী UUID v4 জেনারেটর (লোকাল-অনলি)।",
         "inLanguage": "bn"
       }
     </script>
 
-    <!-- (Optional) page-local tweaks; your global styles already cover most UI -->
-    <style>
-      .textarea {
-        width: 100%;
-        margin-top: 10px;
-        font-size: 1.1rem;
-        text-align: center;
+    <!-- Breadcrumbs -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Tools Pack",
+            "item": "https://tools-pack.netlify.app/bn/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "UUID v4",
+            "item": "https://tools-pack.netlify.app/bn/uuid4/"
+          }
+        ]
       }
+    </script>
+
+    <!-- FAQ -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "UUID v4 কীভাবে তৈরি হয়?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Web Crypto ব্যবহার করে 128-বিট র‍্যান্ডম ভ্যালু থেকে ভার্সন (0100) ও ভেরিয়েন্ট (10xx) বিট সেট করে তৈরি করা হয়।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "ড্যাশ/কেস বদলালে কি UUID অবৈধ হয়?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "ড্যাশ সরানো বা অক্ষর বড়/ছোট করা UUID-এর মান পরিবর্তন করে না; শুধু উপস্থাপন ভিন্ন হয়।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "ডেটা কি সার্ভারে যায়?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "না—সব জেনারেশন ও কপি আপনার ব্রাউজারেই হয়।"
+            }
+          }
+        ]
+      }
+    </script>
+
+    <!-- Page-local tweaks -->
+    <style>
       .row {
         display: flex;
+        flex-wrap: wrap;
         gap: 10px;
-        margin-top: 10px;
+        align-items: center;
+      }
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: #3a3a55;
+        border-radius: 999px;
+        padding: 6px 10px;
       }
       .muted {
+        color: #a5a7c0;
+      }
+      .small {
         font-size: 0.9rem;
-        color: #aaa;
+      }
+      .mono {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas,
+          "Liberation Mono", monospace;
+      }
+      .textarea {
+        width: 100%;
+        margin-top: 8px;
+      }
+      .stat {
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
       }
     </style>
   </head>
+
   <body>
     <header class="sticky">
       <div class="wrap brand">
@@ -88,45 +165,206 @@
           <h1 style="margin: 0">UUID v4 জেনারেটর</h1>
           <div class="sub">RFC 4122 • র‍্যান্ডম • ইউনিক</div>
         </div>
+        <div style="margin-left: auto">
+          <a class="muted" href="/uuid-v4/" hreflang="en">English</a>
+        </div>
       </div>
     </header>
-
+    <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
+      <span class="ad-label">Ad</span>
+      <ins
+        class="adsbygoogle"
+        style="display: inline-block"
+        data-ad-client="ca-pub-1234567890123456"
+        data-ad-slot="1111111111"
+        data-ad-format="auto"
+        data-full-width-responsive="false"
+        data-adtest="on"
+      ></ins>
+    </div>
     <main class="wrap">
-      <article class="card">
+      <!-- Breadcrumbs -->
+      <nav class="breadcrumbs" aria-label="breadcrumb">
+        <a href="/bn/">হোম</a> › <a href="/bn/#dev">ডেভ টুলস</a> ›
+        <span>UUID v4</span>
+      </nav>
+
+      <!-- TOC -->
+      <p class="toc">
+        <a href="#gen">জেনারেটর</a> · <a href="#how">কীভাবে ব্যবহার করবেন</a> ·
+        <a href="#faq">প্রশ্নোত্তর</a> ·
+        <a href="#related">সম্পর্কিত</a>
+      </p>
+
+      <!-- Generator -->
+      <article class="card" id="gen">
         <h2>UUID v4 তৈরি করুন</h2>
 
-        <textarea
-          id="out"
-          class="textarea mono"
-          rows="2"
-          readonly
-          placeholder="Generated UUID…"
-        ></textarea>
-
         <div class="row">
+          <label class="pill"
+            >পরিমাণ
+            <input
+              id="count"
+              type="number"
+              class="field"
+              value="5"
+              min="1"
+              max="200"
+              inputmode="numeric"
+              style="width: 90px"
+            />
+          </label>
+
+          <label class="pill"
+            ><input type="checkbox" id="keepDash" checked /> ড্যাশ রাখুন</label
+          >
+          <label class="pill"
+            ><input type="checkbox" id="upper" /> বড় হাতা (A–F)</label
+          >
+          <label class="pill"
+            ><input type="checkbox" id="brace" /> {ব্রেস}</label
+          >
+          <label class="pill"
+            ><input type="checkbox" id="urn" /> urn:uuid: প্রিফিক্স</label
+          >
+
+          <label class="pill"
+            >সেপারেটর
+            <select id="sep" class="select">
+              <option value="nl" selected>নতুন লাইন</option>
+              <option value="comma">কমা (,)</option>
+              <option value="space">স্পেস</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="row" style="margin-top: 6px">
           <button class="btn btn-primary" id="gen" type="button">
             জেনারেট
           </button>
           <button class="btn" id="copy" type="button">কপি</button>
+          <button class="btn" id="download" type="button">⬇ TXT ডাউনলোড</button>
+          <button class="btn" id="clear" type="button">🗑 ক্লিয়ার</button>
+          <span id="status" class="muted small" aria-live="polite">—</span>
         </div>
-        <div id="status" class="muted small" aria-live="polite"></div>
+
+        <textarea
+          id="out"
+          class="textarea mono field"
+          rows="8"
+          readonly
+          placeholder="Generated UUIDs…"
+        ></textarea>
+
+        <p class="muted small stat">
+          <span id="lines">লাইন: 0</span> •
+          <span id="bytes">বাইট (UTF-8): 0</span>
+        </p>
+        <!-- Ad #2: In-article -->
+        <div
+          class="ad-wrap ad-article"
+          aria-label="Advertisement"
+          style="margin-top: 10px"
+        >
+          <span class="ad-label">Ad</span>
+          <ins
+            class="adsbygoogle"
+            style="display: inline-block; text-align: center"
+            data-ad-client="ca-pub-1234567890123456"
+            data-ad-slot="2222222222"
+            data-ad-format="fluid"
+            data-ad-layout="in-article"
+            data-adtest="on"
+          ></ins>
+        </div>
+        <p class="small muted">
+          শর্টকাট: <kbd>Ctrl/⌘ + Enter</kbd> জেনারেট • <kbd>Ctrl/⌘ + C</kbd> কপি
+        </p>
+      </article>
+
+      <!-- How to use -->
+      <article class="card" id="how">
+        <h2>কীভাবে ব্যবহার করবেন</h2>
+        <ol>
+          <li>
+            পরিমাণ বেছে নিন (১–২০০) এবং প্রয়োজনে ড্যাশ/কেস/ব্রেস/URN ফরম্যাট সেট
+            করুন।
+          </li>
+          <li><strong>জেনারেট</strong> চাপুন — সাথে সাথে UUID তৈরি হবে।</li>
+          <li>
+            <strong>কপি</strong> বা <strong>TXT ডাউনলোড</strong> দিয়ে আউটপুট
+            সংরক্ষণ করুন।
+          </li>
+        </ol>
+      </article>
+
+      <!-- FAQ -->
+      <article class="card faq" id="faq">
+        <h2>প্রশ্নোত্তর</h2>
+        <details>
+          <summary>UUID v4 ফরম্যাট কী?</summary>
+          <p>
+            <code>xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx</code> — এখানে
+            <code>4</code> হলো ভার্সন, <code>y</code> হলো ভেরিয়েন্ট (8/9/A/B)।
+          </p>
+        </details>
+        <details>
+          <summary>বাল্ক জেনারেশনে ডুপ্লিকেট পড়তে পারে?</summary>
+          <p>
+            সম্ভাবনা অত্যন্ত কম (১.৭e38 সম্ভাব্য মান); তবু ক্রিটিক্যাল সিস্টেমে
+            ইউনিকনেস আলাদা করে যাচাই করুন।
+          </p>
+        </details>
+        <details>
+          <summary>র‍্যান্ডমনেসের উৎস কী?</summary>
+          <p>
+            <code>crypto.randomUUID()</code> বা
+            <code>crypto.getRandomValues()</code> — উভয়ই Web Crypto API।
+          </p>
+        </details>
+        <details>
+          <summary>প্রাইভেসি?</summary>
+          <p>সব জেনারেশন লোকাল ব্রাউজারেই — কোনো ডেটা সার্ভারে পাঠানো হয় না।</p>
+        </details>
+      </article>
+
+      <!-- Related -->
+      <article class="card" id="related">
+        <h2>সম্পর্কিত</h2>
+        <p class="muted">আরও সিকিউরিটি/ডেভ টুলস:</p>
+        <p>
+          <a class="btn" href="/bn/password-uuid/">পাসওয়ার্ড জেনারেটর</a>
+          <a class="btn" href="/bn/sha256/">SHA-256 হ্যাশ</a>
+          <a class="btn" href="/bn/json-formatter/">JSON ফরম্যাটার</a>
+        </p>
       </article>
     </main>
 
-    <footer>© <span id="y"></span> Tools Pack</footer>
+    <footer>
+      © <span id="y"></span> Tools Pack • <a class="muted" href="/bn/">হোম</a>
+    </footer>
 
     <script>
-      // Elements (no implicit globals)
-      const yearEl = document.getElementById("y");
-      const outEl = document.getElementById("out");
-      const genBtn = document.getElementById("gen");
-      const copyBtn = document.getElementById("copy");
-      const statusEl = document.getElementById("status");
+      "use strict";
+      // Year
+      document.getElementById("y").textContent = new Date().getFullYear();
 
-      yearEl.textContent = new Date().getFullYear();
+      // Elements
+      const $ = (s, ctx = document) => ctx.querySelector(s);
+      const outEl = $("#out");
+      const statusEl = $("#status");
+      const linesEl = $("#lines");
+      const bytesEl = $("#bytes");
 
-      // Prefer native crypto.randomUUID(); fallback to secure v4 if missing
-      function uuidv4() {
+      const countEl = $("#count");
+      const keepDashEl = $("#keepDash");
+      const upperEl = $("#upper");
+      const braceEl = $("#brace");
+      const urnEl = $("#urn");
+      const sepEl = $("#sep");
+
+      // UUID v4
+      function rawUuidV4() {
         if (crypto && typeof crypto.randomUUID === "function") {
           return crypto.randomUUID();
         }
@@ -135,7 +373,7 @@
         }
         const bytes = new Uint8Array(16);
         crypto.getRandomValues(bytes);
-        // Set version (0100) and variant (10xx)
+        // version 4 (0100), variant (10xx)
         bytes[6] = (bytes[6] & 0x0f) | 0x40;
         bytes[8] = (bytes[8] & 0x3f) | 0x80;
         const hex = [...bytes]
@@ -147,28 +385,107 @@
         )}-${hex.slice(16, 20)}-${hex.slice(20)}`;
       }
 
-      genBtn.onclick = () => {
-        try {
-          outEl.value = uuidv4();
-          statusEl.textContent = "✅ নতুন UUID তৈরি হয়েছে।";
-        } catch (e) {
-          outEl.value = "";
-          statusEl.textContent = "⚠️ ত্রুটি: " + e.message;
-        }
-      };
+      function formatUuid(u) {
+        let s = String(u);
+        if (!keepDashEl.checked) s = s.replace(/-/g, "");
+        if (upperEl.checked) s = s.toUpperCase();
+        if (braceEl.checked) s = `{${s}}`;
+        if (urnEl.checked) s = `urn:uuid:${s.replace(/^\{|\}$/g, "")}`;
+        return s;
+      }
 
-      copyBtn.onclick = async () => {
-        if (!outEl.value) {
-          statusEl.textContent = "⚠️ কোনো UUID নেই।";
-          return;
+      function getSeparator() {
+        const m = sepEl.value;
+        if (m === "nl") return "\n";
+        if (m === "comma") return ", ";
+        return " ";
+      }
+
+      function updateStats(text) {
+        const enc = new TextEncoder();
+        linesEl.textContent = `লাইন: ${text ? text.split("\n").length : 0}`;
+        bytesEl.textContent = `বাইট (UTF-8): ${enc.encode(text || "").length}`;
+      }
+
+      function setStatus(msg) {
+        statusEl.textContent = msg;
+        clearTimeout(setStatus._t);
+        setStatus._t = setTimeout(() => (statusEl.textContent = "—"), 1400);
+      }
+
+      function generate() {
+        const n = Math.max(1, Math.min(200, Number(countEl.value) || 1));
+        const arr = [];
+        for (let i = 0; i < n; i++) {
+          arr.push(formatUuid(rawUuidV4()));
         }
+        const out = arr.join(getSeparator());
+        outEl.value = out;
+        updateStats(out);
+        setStatus(`✅ ${n}টি UUID তৈরি হয়েছে`);
+      }
+
+      async function copyOut() {
         try {
-          await navigator.clipboard.writeText(outEl.value);
-          statusEl.textContent = "📋 কপি হয়েছে।";
+          await navigator.clipboard.writeText(outEl.value || "");
+          setStatus("📋 কপি হয়েছে।");
         } catch (e) {
-          statusEl.textContent = "❌ কপি করা গেল না: " + e.message;
+          setStatus("❌ কপি করা গেল না");
         }
-      };
+      }
+
+      function downloadTxt() {
+        const blob = new Blob([outEl.value || ""], {
+          type: "text/plain;charset=utf-8",
+        });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        const ts = new Date();
+        const fname = `uuid_v4_${ts.getFullYear()}${String(
+          ts.getMonth() + 1
+        ).padStart(2, "0")}${String(ts.getDate()).padStart(2, "0")}.txt`;
+        a.href = url;
+        a.download = fname;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+        setStatus("⬇ TXT ডাউনলোড হয়েছে।");
+      }
+
+      function clearAll() {
+        outEl.value = "";
+        updateStats("");
+        setStatus("🗑 খালি করা হয়েছে");
+      }
+
+      // Wire up
+      $("#gen").addEventListener("click", generate);
+      $("#copy").addEventListener("click", copyOut);
+      $("#download").addEventListener("click", downloadTxt);
+      $("#clear").addEventListener("click", clearAll);
+
+      outEl.addEventListener("input", () => updateStats(outEl.value));
+
+      // Keyboard shortcuts
+      document.addEventListener("keydown", (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+          e.preventDefault();
+          generate();
+        }
+        if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "c") {
+          e.preventDefault();
+          copyOut();
+        }
+      });
+
+      // Initial stats
+      updateStats("");
     </script>
+
+    <noscript
+      >জাভাস্ক্রিপ্ট চালু করুন—এই টুলটি কাজ করতে জাভাস্ক্রিপ্ট
+      প্রয়োজন।</noscript
+    >
   </body>
 </html>

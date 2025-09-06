@@ -7,7 +7,7 @@
     <title>হ্যাশ জেনারেটর (SHA-256) — WebCrypto | Tools Pack</title>
     <meta
       name="description"
-      content="টেক্সট/ফাইল থেকে SHA-256 হ্যাশ তৈরি করুন—ব্রাউজারে নিরাপদ।"
+      content="টেক্সট/ফাইল থেকে SHA-256 হ্যাশ তৈরি করুন—ব্রাউজারে নিরাপদ, কোনো আপলোড/ট্র্যাকিং নেই।"
     />
 
     <!-- Canonical & hreflang -->
@@ -34,10 +34,11 @@
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tools Pack" />
     <meta property="og:title" content="হ্যাশ জেনারেটর (SHA-256) — Tools Pack" />
     <meta
       property="og:description"
-      content="টেক্সট বা ফাইল থেকে SHA-256 হ্যাশ বের করুন—লোকালেই রান হয়।"
+      content="টেক্সট বা ফাইল থেকে SHA-256 হ্যাশ বের করুন—সবকিছু লোকাল ব্রাউজারেই।"
     />
     <meta
       property="og:url"
@@ -47,8 +48,10 @@
       property="og:image"
       content="https://tools-pack.netlify.app/og/sha256.png"
     />
-
-    <!-- Twitter -->
+    <meta
+      property="og:image:alt"
+      content="SHA-256 হ্যাশ জেনারেটর — Tools Pack"
+    />
     <meta name="twitter:card" content="summary_large_image" />
 
     <!-- JSON-LD: WebApplication -->
@@ -64,96 +67,420 @@
         "inLanguage": "bn"
       }
     </script>
+
+    <!-- JSON-LD: Breadcrumbs -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Tools Pack",
+            "item": "https://tools-pack.netlify.app/bn/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "SHA-256 হ্যাশ জেনারেটর",
+            "item": "https://tools-pack.netlify.app/bn/sha256/"
+          }
+        ]
+      }
+    </script>
+
+    <!-- JSON-LD: FAQPage -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "এই টুল কি অফলাইনে চলে?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "হ্যাঁ। প্রথমবার লোড হলে পরেরবার সম্পূর্ণ ব্রাউজারেই চলে।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "ডেটা কি সার্ভারে আপলোড হয়?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "না। টেক্সট/ফাইলের ডেটা কোথাও পাঠানো হয় না—হ্যাশিং লোকালেই হয়।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "বড় ফাইল দিলে হবে?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "ব্রাউজারের মেমোরি সীমার মধ্যে কাজ করবে; খুব বড় ফাইলে সময় বেশি লাগতে পারে।"
+            }
+          }
+        ]
+      }
+    </script>
+
+    <!-- Google AdSense (test mode while developing) -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234567890123456"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Page tweaks (ads + small UI polish) -->
+    <style>
+      .ad-wrap {
+        margin: 6px 0 8px;
+      }
+      .ad-label {
+        display: inline-block;
+        font-size: 11px;
+        line-height: 1;
+        color: var(--muted, #888);
+        margin: 0 0 2px 0;
+      }
+      .adsbygoogle {
+        display: block;
+      }
+      .ad-top {
+        margin-inline: auto;
+      }
+      @media (min-width: 900px) {
+        .ad-top {
+          max-width: 728px;
+        }
+        .ad-top .adsbygoogle {
+          min-height: 60px;
+        }
+      }
+      @media (max-width: 899px) and (min-width: 600px) {
+        .ad-top {
+          max-width: 468px;
+        }
+        .ad-top .adsbygoogle {
+          min-height: 50px;
+        }
+      }
+      @media (max-width: 599px) {
+        .ad-top {
+          max-width: 320px;
+        }
+        .ad-top .adsbygoogle {
+          min-height: 50px;
+        }
+      }
+      .ad-top .adsbygoogle:empty {
+        display: none;
+      }
+      .file-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .mono {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", monospace;
+      }
+      .help {
+        color: var(--muted);
+        font-size: 12px;
+        margin-top: 6px;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+      }
+      .muted small {
+        opacity: 0.9;
+      }
+    </style>
   </head>
 
   <body>
     <header class="sticky">
       <div class="wrap brand">
-        <a href="/bn/" aria-label="হোমে ফিরুন"><div class="logo"></div></a>
+        <a href="/bn/" aria-label="হোমে ফিরুন"
+          ><div class="logo" aria-hidden="true"></div
+        ></a>
         <div>
           <h1 style="margin: 0">SHA-256 হ্যাশ জেনারেটর</h1>
           <div class="sub">WebCrypto API • Tools Pack</div>
         </div>
+        <div style="margin-left: auto">
+          <a class="muted" href="/sha256/" hreflang="en">English</a>
+        </div>
       </div>
     </header>
 
+    <!-- Ad #1: Top banner -->
+    <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
+      <span class="ad-label">Ad</span>
+      <ins
+        class="adsbygoogle"
+        style="display: inline-block"
+        data-ad-client="ca-pub-1234567890123456"
+        data-ad-slot="1111111111"
+        data-ad-format="auto"
+        data-full-width-responsive="false"
+        data-adtest="on"
+      ></ins>
+    </div>
+
     <main class="wrap">
-      <section aria-label="SHA-256 Hash Generator Tool">
-        <div class="tool">
-          <label for="hashInput" class="muted">টেক্সট লিখুন</label>
-          <textarea
-            id="hashInput"
-            class="field"
-            rows="4"
-            placeholder="এখানে টেক্সট লিখুন…"
-          ></textarea>
+      <!-- Breadcrumbs -->
+      <nav class="breadcrumbs" aria-label="breadcrumb">
+        <a href="/bn/">হোম</a> › <a href="/bn/#security">সিকিউরিটি টুলস</a> ›
+        <span>SHA-256 হ্যাশ জেনারেটর</span>
+      </nav>
 
-          <div class="row">
-            <button id="btnHashText" class="btn btn-primary">Hash Text</button>
-            <input type="file" id="fileInput" class="file" />
-            <button id="btnClear" class="btn btn-muted">Clear</button>
-          </div>
+      <!-- TOC -->
+      <p class="toc">
+        <a href="#tool">হ্যাশ টুল</a> ·
+        <a href="#how-to-use">কীভাবে ব্যবহার করবেন</a> ·
+        <a href="#faq">প্রশ্নোত্তর</a> ·
+        <a href="#related">সম্পর্কিত টুলস</a>
+      </p>
 
-          <label for="hashOutput" class="muted">SHA-256 আউটপুট</label>
-          <textarea
-            id="hashOutput"
-            class="field mono"
-            rows="4"
-            readonly
-          ></textarea>
+      <!-- Tool -->
+      <article class="card" id="tool">
+        <h2>টেক্সট/ফাইল থেকে SHA-256</h2>
+
+        <label for="hashInput" class="muted">টেক্সট লিখুন</label>
+        <textarea
+          id="hashInput"
+          class="textarea mono"
+          rows="4"
+          placeholder="এখানে টেক্সট লিখুন…"
+        ></textarea>
+
+        <div class="row" style="margin-top: 10px">
+          <button id="btnHashText" class="btn btn-primary" type="button">
+            টেক্সট থেকে হ্যাশ
+          </button>
+
+          <label for="fileInput" class="btn file-label" style="cursor: pointer">
+            ⬆ ফাইল থেকে হ্যাশ
+          </label>
+          <input type="file" id="fileInput" class="file" />
+
+          <button id="btnCopy" class="btn" type="button">📋 কপি</button>
+          <button id="btnClear" class="btn" type="button">🗑 ক্লিয়ার</button>
         </div>
-      </section>
+
+        <!-- Ad #2: In-article -->
+        <div
+          class="ad-wrap ad-article"
+          aria-label="Advertisement"
+          style="margin-top: 10px"
+        >
+          <span class="ad-label">Ad</span>
+          <ins
+            class="adsbygoogle"
+            style="display: inline-block; text-align: center"
+            data-ad-client="ca-pub-1234567890123456"
+            data-ad-slot="2222222222"
+            data-ad-format="fluid"
+            data-ad-layout="in-article"
+            data-adtest="on"
+          ></ins>
+        </div>
+
+        <label
+          for="hashOutput"
+          class="muted"
+          style="margin-top: 8px; display: block"
+          >SHA-256 আউটপুট</label
+        >
+        <textarea
+          id="hashOutput"
+          class="textarea mono"
+          rows="4"
+          readonly
+          placeholder="হ্যাশ এখানে…"
+        ></textarea>
+
+        <div id="status" class="help" aria-live="polite">—</div>
+      </article>
+
+      <!-- How to use -->
+      <article class="card" id="how-to-use">
+        <h2>কীভাবে ব্যবহার করবেন</h2>
+        <ol>
+          <li>
+            উপরে টেক্সট লিখে <strong>টেক্সট থেকে হ্যাশ</strong> চাপুন—নিচে
+            SHA-256 দেখাবে।
+          </li>
+          <li>
+            অথবা <strong>ফাইল থেকে হ্যাশ</strong> দিয়ে ফাইল সিলেক্ট করুন;
+            ফাইলের হ্যাশ হিসাব হবে।
+          </li>
+          <li>
+            <strong>কপি</strong> বাটনে আউটপুট ক্লিপবোর্ডে যাবে;
+            <strong>ক্লিয়ার</strong> দিলে সব ফিল্ড খালি হবে।
+          </li>
+          <li>সবকিছু আপনার ব্রাউজারেই প্রসেস হয়—কোনো ডেটা আপলোড হয় না।</li>
+        </ol>
+      </article>
+
+      <!-- FAQ -->
+      <article class="card faq" id="faq">
+        <h2>প্রশ্নোত্তর</h2>
+        <details>
+          <summary>অফলাইনে চালানো যাবে?</summary>
+          <p>হ্যাঁ, প্রথম লোডের পর পুরোটা ব্রাউজারেই চলে।</p>
+        </details>
+        <details>
+          <summary>বড় ফাইল দিলে ধীর হবে?</summary>
+          <p>
+            খুব বড় ফাইলে সময় বেশি লাগতে পারে—ব্রাউজারের মেমোরির উপর নির্ভর
+            করে।
+          </p>
+        </details>
+        <details>
+          <summary>কোন অ্যালগরিদম?</summary>
+          <p>SHA-256 (Web Crypto API)।</p>
+        </details>
+      </article>
+
+      <!-- Related tools -->
+      <article class="card" id="related">
+        <h2>সম্পর্কিত টুলস</h2>
+        <p class="muted">আরও সিকিউরিটি/ডেভ টুলস:</p>
+        <p>
+          <a class="btn" href="/bn/password-uuid/">পাসওয়ার্ড জেনারেটর</a>
+          <a class="btn" href="/bn/json-formatter/">JSON ফরম্যাটার</a>
+          <a class="btn" href="/bn/url-tools/">URL এনকোডার/ডিকোডার</a>
+        </p>
+        <p class="small">
+          English preferred? See the
+          <a href="/sha256/" hreflang="en">English version</a>.
+        </p>
+      </article>
     </main>
 
-    <footer>© <span id="y"></span> Tools Pack • ১০০% ব্রাউজারেই রান হয়</footer>
+    <footer>
+      © <span id="y"></span> Tools Pack • <a class="muted" href="/bn/">হোম</a> •
+      <a class="muted" href="/sha256/" hreflang="en">English</a>
+    </footer>
 
     <script>
       // Footer year
       document.getElementById("y").textContent = new Date().getFullYear();
 
-      const input = document.getElementById("hashInput");
-      const fileInput = document.getElementById("fileInput");
-      const output = document.getElementById("hashOutput");
+      // ===== Lazy init AdSense when slots are visible =====
+      const initAds = () => {
+        window.adsbygoogle = window.adsbygoogle || [];
+        const slots = document.querySelectorAll(
+          "ins.adsbygoogle:not([data-loaded])"
+        );
+        if (!slots.length) return;
+        const push = (el) => {
+          try {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            el.setAttribute("data-loaded", "1");
+          } catch (e) {}
+        };
+        if ("IntersectionObserver" in window) {
+          const io = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  push(entry.target);
+                  io.unobserve(entry.target);
+                }
+              });
+            },
+            { rootMargin: "200px 0px" }
+          );
+          slots.forEach((el) => io.observe(el));
+        } else {
+          slots.forEach(push);
+        }
+      };
+      window.addEventListener("load", initAds);
 
-      // Utility: buffer to hex string
+      // ===== SHA-256 tool logic =====
+      const $ = (id) => document.getElementById(id);
+      const inEl = $("hashInput");
+      const fileEl = $("fileInput");
+      const outEl = $("hashOutput");
+      const statusEl = $("status");
+      const btnText = $("btnHashText");
+      const btnCopy = $("btnCopy");
+      const btnClear = $("btnClear");
+
+      // Utility: ArrayBuffer -> hex
       function buf2hex(buffer) {
         return [...new Uint8Array(buffer)]
           .map((b) => b.toString(16).padStart(2, "0"))
           .join("");
       }
 
-      // Hash text
-      document
-        .getElementById("btnHashText")
-        .addEventListener("click", async () => {
-          try {
-            const data = new TextEncoder().encode(input.value);
-            const digest = await crypto.subtle.digest("SHA-256", data);
-            output.value = buf2hex(digest);
-          } catch (e) {
-            output.value = "⚠️ Error: " + e.message;
-          }
-        });
+      async function hashText() {
+        try {
+          const data = new TextEncoder().encode(inEl.value || "");
+          const digest = await crypto.subtle.digest("SHA-256", data);
+          outEl.value = buf2hex(digest);
+          statusEl.textContent = "✅ টেক্সট হ্যাশ সম্পন্ন।";
+        } catch (e) {
+          outEl.value = "";
+          statusEl.textContent = "⚠️ ত্রুটি: " + e.message;
+        }
+      }
 
-      // Hash file
-      fileInput.addEventListener("change", async () => {
-        const file = fileInput.files[0];
+      async function hashFile(file) {
         if (!file) return;
         try {
+          statusEl.textContent = "⏳ ফাইল হ্যাশ হচ্ছে…";
           const buffer = await file.arrayBuffer();
           const digest = await crypto.subtle.digest("SHA-256", buffer);
-          output.value = buf2hex(digest);
+          outEl.value = buf2hex(digest);
+          const sizeKB = (file.size / 1024).toFixed(1);
+          statusEl.textContent = `✅ ফাইল হ্যাশ সম্পন্ন • ${file.name} (${sizeKB} KB)`;
         } catch (e) {
-          output.value = "⚠️ File hash error: " + e.message;
+          outEl.value = "";
+          statusEl.textContent = "⚠️ ফাইল হ্যাশ ত্রুটি: " + e.message;
+        }
+      }
+
+      btnText.addEventListener("click", hashText);
+      fileEl.addEventListener("change", (e) => hashFile(e.target.files?.[0]));
+
+      btnCopy.addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(outEl.value || "");
+          statusEl.textContent = "📋 কপি হয়েছে।";
+        } catch {
+          statusEl.textContent = "কপি করা যায়নি।";
         }
       });
 
-      // Clear
-      document.getElementById("btnClear").addEventListener("click", () => {
-        input.value = "";
-        output.value = "";
-        fileInput.value = "";
+      btnClear.addEventListener("click", () => {
+        inEl.value = "";
+        outEl.value = "";
+        fileEl.value = "";
+        statusEl.textContent = "—";
+        inEl.focus();
+      });
+
+      // Keyboard: Ctrl/⌘ + Enter => hash text
+      inEl.addEventListener("keydown", (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+          e.preventDefault();
+          hashText();
+        }
       });
     </script>
+
+    <noscript
+      >জাভাস্ক্রিপ্ট চালু করুন—এই টুলটি কাজ করতে জাভাস্ক্রিপ্ট
+      প্রয়োজন।</noscript
+    >
   </body>
 </html>

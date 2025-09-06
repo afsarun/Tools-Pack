@@ -3,22 +3,45 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+
     <title>টেক্সট → PDF কনভার্টার — ইউনিকোড সাপোর্ট | Tools Pack</title>
     <meta
       name="description"
-      content="টেক্সটকে PDF এ রূপান্তর করুন—পেজ সাইজ, মার্জিন, হেডার/ফুটার সহ আপনার ব্রাউজারের প্রিন্ট টু PDF ব্যবহার করে।"
+      content="টেক্সটকে PDF এ রূপান্তর করুন—পেজ সাইজ, মার্জিন, হেডার/ফুটারসহ। সবকিছু ১০০% ব্রাউজারেই, কোনো ট্র্যাকিং নেই।"
     />
+
+    <!-- Canonical & hreflang -->
     <link
       rel="canonical"
       href="https://tools-pack.netlify.app/bn/text-to-pdf/"
     />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://tools-pack.netlify.app/text-to-pdf/"
+    />
+    <link
+      rel="alternate"
+      hreflang="bn"
+      href="https://tools-pack.netlify.app/bn/text-to-pdf/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://tools-pack.netlify.app/"
+    />
+
+    <!-- Styles -->
     <link rel="stylesheet" href="../../assets/style.css" />
     <meta name="theme-color" content="#1E1E2F" />
+
+    <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tools Pack" />
     <meta property="og:title" content="টেক্সট → PDF — Tools Pack" />
     <meta
       property="og:description"
-      content="ইউনিকোড-সেফ টেক্সট টু PDF কনভার্টার।"
+      content="ইউনিকোড-সেফ টেক্সট টু PDF কনভার্টার—পেজ অপশনসহ।"
     />
     <meta
       property="og:url"
@@ -28,7 +51,10 @@
       property="og:image"
       content="https://tools-pack.netlify.app/og/pdf.png"
     />
+    <meta property="og:image:alt" content="টেক্সট → PDF — Tools Pack" />
     <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- JSON-LD: WebApplication -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -41,20 +67,140 @@
         "inLanguage": "bn"
       }
     </script>
+
+    <!-- JSON-LD: Breadcrumbs -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Tools Pack",
+            "item": "https://tools-pack.netlify.app/bn/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "টেক্সট → PDF",
+            "item": "https://tools-pack.netlify.app/bn/text-to-pdf/"
+          }
+        ]
+      }
+    </script>
+
+    <!-- JSON-LD: FAQPage -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "এই টুল কি অফলাইনে চলে?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "হ্যাঁ—প্রথমবার লোড হলে পরে সম্পূর্ণ ব্রাউজারেই কাজ করে।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "ডেটা কি সার্ভারে যায়?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "না। আপনার টেক্সট কেবল ব্রাউজারেই থাকে; প্রিন্ট ডায়ালগ দিয়ে আপনি নিজে PDF সেভ করেন।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "ফন্ট/ইউনিকোড সাপোর্ট?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "বাংলা, ইমোজি, আরবি ইত্যাদি ইউনিকোড টেক্সট সাপোর্টেড—সিস্টেম ফন্ট অনুযায়ী রেন্ডার হবে।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "হেডার/ফুটার যোগ হবে কীভাবে?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "পৃষ্ঠা উপরে টাইটেল ও নিচে তৈরি হওয়ার সময় দেখাতে চাইলে হেডার/ফুটার চেকবক্স অন করুন।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "মার্জিন/পেজ সাইজ কীভাবে নিয়ন্ত্রণ করব?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "টুলে মার্জিন (মিমি), পেজ সাইজ (A4/Letter/Legal) ও ওরিয়েন্টেশন বেছে নিন; প্রিন্ট প্রিভিউতে তা প্রয়োগ হবে।"
+            }
+          }
+        ]
+      }
+    </script>
+
+    <!-- Google AdSense (test mode while developing) -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234567890123456"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Page tweaks -->
     <style>
       :root {
         --muted: #9aa0a6;
         --danger: #ff6b6b;
       }
+      .ad-wrap {
+        margin: 6px 0 8px;
+      }
+      .ad-label {
+        display: inline-block;
+        font-size: 11px;
+        line-height: 1;
+        color: var(--muted, #888);
+        margin: 0 0 2px 0;
+      }
+      .adsbygoogle {
+        display: block;
+      }
+      .ad-top {
+        margin-inline: auto;
+      }
+      @media (min-width: 900px) {
+        .ad-top {
+          max-width: 728px;
+        }
+        .ad-top .adsbygoogle {
+          min-height: 60px;
+        }
+      }
+      @media (max-width: 899px) and (min-width: 600px) {
+        .ad-top {
+          max-width: 468px;
+        }
+        .ad-top .adsbygoogle {
+          min-height: 50px;
+        }
+      }
+      @media (max-width: 599px) {
+        .ad-top {
+          max-width: 320px;
+        }
+        .ad-top .adsbygoogle {
+          min-height: 50px;
+        }
+      }
+      .ad-top .adsbygoogle:empty {
+        display: none;
+      }
+
       body {
-        font-family: "Noto Sans Bengali", system-ui, sans-serif;
         background: #1e1e2f;
         color: #eee;
-      }
-      .textarea {
-        width: 100%;
-        height: 220px;
-        margin: 10px 0;
+        font-family: "Noto Sans Bengali", system-ui, sans-serif;
       }
       .row {
         display: flex;
@@ -62,18 +208,17 @@
         gap: 10px;
         margin-bottom: 10px;
       }
-      .pill,
-      .field,
-      .select,
-      .btn {
-        font: inherit;
+      .textarea {
+        width: 100%;
+        height: 220px;
+        margin: 10px 0;
       }
       .btn {
         padding: 0.6rem 1rem;
         border: 1px solid #3a3a55;
         background: #2a2a42;
-        cursor: pointer;
         border-radius: 8px;
+        cursor: pointer;
       }
       .btn-primary {
         border-color: #5965f3;
@@ -86,26 +231,62 @@
       .small {
         font-size: 0.9rem;
       }
-      footer {
-        text-align: center;
-        padding: 20px 0;
-        color: var(--muted);
+      .mono {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", monospace;
       }
     </style>
   </head>
+
   <body>
     <header class="sticky">
       <div class="wrap brand">
-        <a href="/bn/"><div class="logo"></div></a>
+        <a href="/bn/" aria-label="হোমে ফিরুন"
+          ><div class="logo" aria-hidden="true"></div
+        ></a>
         <div>
           <h1 style="margin: 0">টেক্সট → PDF</h1>
           <div class="sub">ইউনিকোড সাপোর্ট • প্রিন্ট টু PDF</div>
         </div>
+        <div style="margin-left: auto">
+          <a class="muted" href="/text-to-pdf/" hreflang="en">English</a>
+        </div>
       </div>
     </header>
 
+    <!-- Ad #1: Top banner -->
+    <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
+      <span class="ad-label">Ad</span>
+      <ins
+        class="adsbygoogle"
+        style="display: inline-block"
+        data-ad-client="ca-pub-1234567890123456"
+        data-ad-slot="1111111111"
+        data-ad-format="auto"
+        data-full-width-responsive="false"
+        data-adtest="on"
+      ></ins>
+    </div>
+
     <main class="wrap">
-      <article class="card">
+      <!-- Breadcrumbs -->
+      <nav class="breadcrumbs" aria-label="breadcrumb">
+        <a href="/bn/">হোম</a> › <a href="/bn/#text">টেক্সট টুলস</a> ›
+        <span>টেক্সট → PDF</span>
+      </nav>
+
+      <!-- TOC -->
+      <p class="toc">
+        <a href="#tool">কনভার্টার</a> ·
+        <a href="#how">কীভাবে ব্যবহার করবেন</a> ·
+        <a href="#faq">প্রশ্নোত্তর</a> ·
+        <a href="#related">সম্পর্কিত টুলস</a>
+      </p>
+
+      <!-- Tool -->
+      <article class="card" id="tool">
+        <h2>টেক্সট → PDF কনভার্টার</h2>
+
         <div class="row">
           <select id="page" class="select" aria-label="পেজ সাইজ">
             <option value="A4">A4</option>
@@ -113,7 +294,7 @@
             <option value="Legal">লিগ্যাল</option>
           </select>
 
-          <select id="orient" class="select" aria-label="অরিয়েন্টেশন">
+          <select id="orient" class="select" aria-label="অরিয়েন্টেশন">
             <option value="portrait">পোর্ট্রেট</option>
             <option value="landscape">ল্যান্ডস্কেপ</option>
           </select>
@@ -143,25 +324,142 @@
         <textarea
           id="txt"
           class="textarea"
-          placeholder="এখানে আপনার টেক্সট লিখুন বা পেস্ট করুন… বাংলা/ইউনিকোড/ইমোজি ✅"
+          placeholder="এখানে আপনার টেক্সট লিখুন/পেস্ট করুন… বাংলা/ইউনিকোড/ইমোজি ✅"
         ></textarea>
 
         <div class="row">
-          <button class="btn btn-primary" id="print">প্রিভিউ ও প্রিন্ট</button>
-          <button class="btn" id="sample">নমুনা টেক্সট</button>
+          <button class="btn btn-primary" id="print" type="button">
+            প্রিভিউ ও প্রিন্ট
+          </button>
+          <button class="btn" id="sample" type="button">নমুনা টেক্সট</button>
         </div>
 
-        <div id="status" class="muted small">
-          প্রিন্ট ডায়ালগে “Save as PDF” নির্বাচন করুন।
+        <!-- Ad #2: In-article -->
+        <div
+          class="ad-wrap ad-article"
+          aria-label="Advertisement"
+          style="margin-top: 10px"
+        >
+          <span class="ad-label">Ad</span>
+          <ins
+            class="adsbygoogle"
+            style="display: inline-block; text-align: center"
+            data-ad-client="ca-pub-1234567890123456"
+            data-ad-slot="2222222222"
+            data-ad-format="fluid"
+            data-ad-layout="in-article"
+            data-adtest="on"
+          ></ins>
         </div>
+
+        <div id="status" class="muted small" aria-live="polite">
+          প্রিন্ট ডায়ালগে <strong>Save as PDF</strong> নির্বাচন করুন।
+        </div>
+      </article>
+
+      <!-- How to use -->
+      <article class="card" id="how">
+        <h2>কীভাবে ব্যবহার করবেন</h2>
+        <ol>
+          <li>
+            পেজ সাইজ, অরিয়েন্টেশন ও মার্জিন বেছে নিন; প্রয়োজনে হেডার/ফুটার অন
+            করুন।
+          </li>
+          <li>টেক্সট বক্সে কনটেন্ট লিখুন বা পেস্ট করুন (ইউনিকোড নিরাপদ)।</li>
+          <li>
+            <strong>প্রিভিউ ও প্রিন্ট</strong> চাপুন → ব্রাউজারের প্রিন্ট
+            ডায়ালগে <em>Save as PDF</em> সিলেক্ট করুন।
+          </li>
+          <li>ডার্ক মোড থাকলেও PDF আউটপুট সাদা ব্যাকগ্রাউন্ডে প্রিন্ট হবে।</li>
+        </ol>
+      </article>
+
+      <!-- FAQ -->
+      <article class="card faq" id="faq">
+        <h2>প্রশ্নোত্তর</h2>
+        <details>
+          <summary>অফলাইনে চলবে?</summary>
+          <p>হ্যাঁ—প্রথম লোডের পর সবকিছু ব্রাউজারেই সম্পন্ন হয়।</p>
+        </details>
+        <details>
+          <summary>ফন্ট কী ব্যবহার হবে?</summary>
+          <p>
+            সিস্টেম/ব্রাউজারের ডিফল্ট ফন্ট—বাংলা, ইমোজি ইত্যাদি ইউনিকোড টেক্সট
+            সাপোর্ট করে।
+          </p>
+        </details>
+        <details>
+          <summary>পেজ নম্বর/হেডার-ফুটার?</summary>
+          <p>
+            টুলের হেডার/ফুটার অপশন অন করলে টাইটেল ও তৈরি হওয়ার সময় দেখাবে। পেজ
+            নম্বর দরকার হলে প্রিন্ট ডায়ালগের <em>Headers & Footers</em> অপশন
+            ব্যবহার করতে পারেন (ব্রাউজারভেদে ভিন্ন হতে পারে)।
+          </p>
+        </details>
+        <details>
+          <summary>প্রাইভেসি?</summary>
+          <p>কোনো ডেটা সার্ভারে পাঠানো হয় না—সব কাজ লোকালেই।</p>
+        </details>
+      </article>
+
+      <!-- Related -->
+      <article class="card" id="related">
+        <h2>সম্পর্কিত টুলস</h2>
+        <p class="muted">আরও টেক্সট/ডকুমেন্ট টুলস:</p>
+        <p>
+          <a class="btn" href="/bn/quick-notes/">দ্রুত নোটস</a>
+          <a class="btn" href="/bn/text-utilities/">টেক্সট টুলস</a>
+          <a class="btn" href="/bn/json-formatter/">JSON ফরম্যাটার</a>
+        </p>
+        <p class="small">
+          English preferred? See the
+          <a href="/text-to-pdf/" hreflang="en">English version</a>.
+        </p>
       </article>
     </main>
 
-    <footer>© <span id="y"></span> Tools Pack</footer>
+    <footer>
+      © <span id="y"></span> Tools Pack • <a class="muted" href="/bn/">হোম</a>
+    </footer>
 
     <script>
+      // Footer year
+      document.getElementById("y").textContent = new Date().getFullYear();
+
+      // ===== Lazy init AdSense when slots are visible =====
+      const initAds = () => {
+        window.adsbygoogle = window.adsbygoogle || [];
+        const slots = document.querySelectorAll(
+          "ins.adsbygoogle:not([data-loaded])"
+        );
+        if (!slots.length) return;
+        const push = (el) => {
+          try {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            el.setAttribute("data-loaded", "1");
+          } catch (e) {}
+        };
+        if ("IntersectionObserver" in window) {
+          const io = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  push(entry.target);
+                  io.unobserve(entry.target);
+                }
+              });
+            },
+            { rootMargin: "200px 0px" }
+          );
+          slots.forEach((el) => io.observe(el));
+        } else {
+          slots.forEach(push);
+        }
+      };
+      window.addEventListener("load", initAds);
+
+      // ===== Text -> PDF logic =====
       (function () {
-        // Elements
         const pageEl = document.getElementById("page");
         const orientEl = document.getElementById("orient");
         const marginEl = document.getElementById("margin");
@@ -172,11 +470,6 @@
         const sampleBtn = document.getElementById("sample");
         const statusEl = document.getElementById("status");
 
-        // Footer year
-        const y = document.getElementById("y");
-        if (y) y.textContent = new Date().getFullYear();
-
-        // Helpers
         const escapeHtml = (s) =>
           s.replace(
             /[&<>]/g,
@@ -212,9 +505,7 @@ ${footer}`;
           if (!v.body.trim()) {
             statusEl.textContent = "অনুগ্রহ করে আগে কিছু টেক্সট লিখুন।";
             statusEl.style.color = "var(--danger)";
-            setTimeout(() => {
-              statusEl.style.color = "var(--muted)";
-            }, 1400);
+            setTimeout(() => (statusEl.style.color = "var(--muted)"), 1400);
             return;
           }
 
@@ -230,8 +521,8 @@ ${footer}`;
           style.id = "tp-print-style";
           style.textContent = `
 @page { size: ${v.page} ${v.orient}; margin: ${v.margin}mm; }
-#tp-print-root { display: none; background:#fff; color:#000; }
-@media screen { #tp-print-root { display: none; } }
+#tp-print-root { display:none; background:#fff; color:#000; }
+@media screen { #tp-print-root { display:none; } }
 @media print {
   body { background:#fff !important; }
   body > *:not(#tp-print-root) { display:none !important; }
@@ -256,22 +547,27 @@ ${footer}`;
             setTimeout(() => {
               style.remove();
               root.remove();
-            }, 500);
+            }, 400);
           }, 50);
         }
 
-        // Wire up events
         printBtn.addEventListener("click", openPrint);
+
         sampleBtn.addEventListener("click", () => {
           txtEl.value = `Tools Pack — টেক্সট → PDF
 
-✓ বাংলা, ইমোজি 😄, আরবি العربية ইত্যাদি সাপোর্ট করে।
-✓ পেজ সাইজ, অরিয়েন্টেশন, মার্জিন বেছে নিন।
+✓ বাংলা, ইমোজি 😄, আরবি العربية ইত্যাদি ইউনিকোড টেক্সট সাপোর্ট।
+✓ পেজ সাইজ, অরিয়েন্টেশন, মার্জিন বেছে নিন।
 ✓ “প্রিভিউ ও প্রিন্ট” চাপুন → প্রিন্ট ডায়ালগে “Save as PDF” নির্বাচন করুন।`;
           statusEl.textContent = "নমুনা টেক্সট যোগ হয়েছে।";
           statusEl.style.color = "var(--muted)";
         });
       })();
     </script>
+
+    <noscript
+      >জাভাস্ক্রিপ্ট চালু করুন—এই টুলটি কাজ করতে জাভাস্ক্রিপ্ট
+      প্রয়োজন।</noscript
+    >
   </body>
 </html>
