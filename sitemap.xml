@@ -7,12 +7,14 @@
   <!-- Home -->
   <url>
     <loc>https://tools-pack.netlify.app/</loc>
+    <lastmod>2025-09-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/"/>
   </url>
   <url>
     <loc>https://tools-pack.netlify.app/bn/</loc>
+    <lastmod>2025-09-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/"/>
@@ -21,12 +23,14 @@
   <!-- JSON Formatter -->
   <url>
     <loc>https://tools-pack.netlify.app/json-formatter/</loc>
+    <lastmod>2025-09-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/json-formatter/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/json-formatter/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/json-formatter/"/>
   </url>
   <url>
     <loc>https://tools-pack.netlify.app/bn/json-formatter/</loc>
+    <lastmod>2025-09-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/json-formatter/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/json-formatter/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/json-formatter/"/>
@@ -35,12 +39,14 @@
   <!-- Calculator -->
   <url>
     <loc>https://tools-pack.netlify.app/calculator/</loc>
+    <lastmod>2025-09-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/calculator/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/calculator/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/calculator/"/>
   </url>
   <url>
     <loc>https://tools-pack.netlify.app/bn/calculator/</loc>
+    <lastmod>2025-09-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/calculator/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/calculator/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/calculator/"/>
@@ -49,12 +55,14 @@
   <!-- Unit Converter -->
   <url>
     <loc>https://tools-pack.netlify.app/unit-converter/</loc>
+    <lastmod>2025-09-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/unit-converter/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/unit-converter/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/unit-converter/"/>
   </url>
   <url>
     <loc>https://tools-pack.netlify.app/bn/unit-converter/</loc>
+    <lastmod>2025-09-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/unit-converter/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/unit-converter/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/unit-converter/"/>
@@ -63,12 +71,14 @@
   <!-- Age Calculator -->
   <url>
     <loc>https://tools-pack.netlify.app/age-calculator/</loc>
+    <lastmod>2025-09-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/age-calculator/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/age-calculator/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/age-calculator/"/>
   </url>
   <url>
     <loc>https://tools-pack.netlify.app/bn/age-calculator/</loc>
+    <lastmod>2025-09-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/age-calculator/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/age-calculator/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/age-calculator/"/>
@@ -77,12 +87,14 @@
   <!-- Text Utilities -->
   <url>
     <loc>https://tools-pack.netlify.app/text-utilities/</loc>
+    <lastmod>2025-09-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/text-utilities/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/text-utilities/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/text-utilities/"/>
   </url>
   <url>
     <loc>https://tools-pack.netlify.app/bn/text-utilities/</loc>
+    <lastmod>2025-09-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/text-utilities/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/text-utilities/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/text-utilities/"/>
@@ -91,12 +103,14 @@
   <!-- Base64 -->
   <url>
     <loc>https://tools-pack.netlify.app/base64/</loc>
+    <lastmod>2025-09-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/base64/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/base64/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/base64/"/>
   </url>
   <url>
     <loc>https://tools-pack.netlify.app/bn/base64/</loc>
+    <lastmod>2025-09-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/base64/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/base64/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/base64/"/>
@@ -105,12 +119,14 @@
   <!-- URL Tools -->
   <url>
     <loc>https://tools-pack.netlify.app/url-tools/</loc>
+    <lastmod>2025-09-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/url-tools/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/url-tools/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/url-tools/"/>
   </url>
   <url>
     <loc>https://tools-pack.netlify.app/bn/url-tools/</loc>
+    <lastmod>2025-09-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/url-tools/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/url-tools/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/url-tools/"/>
@@ -119,12 +135,14 @@
   <!-- Password & UUID -->
   <url>
     <loc>https://tools-pack.netlify.app/password-uuid/</loc>
+    <lastmod>2025-09-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/password-uuid/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/password-uuid/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/password-uuid/"/>
   </url>
   <url>
     <loc>https://tools-pack.netlify.app/bn/password-uuid/</loc>
+    <lastmod>2025-09-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/password-uuid/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/password-uuid/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/password-uuid/"/>
@@ -133,12 +151,14 @@
   <!-- UUID v4 (EN) / uuid4 (BN) -->
   <url>
     <loc>https://tools-pack.netlify.app/uuid-v4/</loc>
+    <lastmod>2025-09-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/uuid-v4/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/uuid4/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/uuid-v4/"/>
   </url>
   <url>
     <loc>https://tools-pack.netlify.app/bn/uuid4/</loc>
+    <lastmod>2025-09-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/uuid-v4/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/uuid4/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/uuid-v4/"/>
@@ -147,12 +167,14 @@
   <!-- SHA-256 -->
   <url>
     <loc>https://tools-pack.netlify.app/sha256/</loc>
+    <lastmod>2025-09-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/sha256/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/sha256/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/sha256/"/>
   </url>
   <url>
     <loc>https://tools-pack.netlify.app/bn/sha256/</loc>
+    <lastmod>2025-09-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/sha256/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/sha256/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/sha256/"/>
@@ -161,12 +183,14 @@
   <!-- Image Resizer & Compressor -->
   <url>
     <loc>https://tools-pack.netlify.app/image-resizer-compressor/</loc>
+    <lastmod>2025-09-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/image-resizer-compressor/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/image-resizer-compressor/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/image-resizer-compressor/"/>
   </url>
   <url>
     <loc>https://tools-pack.netlify.app/bn/image-resizer-compressor/</loc>
+    <lastmod>2025-09-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/image-resizer-compressor/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/image-resizer-compressor/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/image-resizer-compressor/"/>
@@ -175,12 +199,14 @@
   <!-- Color Picker & Contrast -->
   <url>
     <loc>https://tools-pack.netlify.app/color-picker-contrast/</loc>
+    <lastmod>2025-09-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/color-picker-contrast/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/color-picker-contrast/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/color-picker-contrast/"/>
   </url>
   <url>
     <loc>https://tools-pack.netlify.app/bn/color-picker-contrast/</loc>
+    <lastmod>2025-09-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/color-picker-contrast/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/color-picker-contrast/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/color-picker-contrast/"/>
@@ -189,12 +215,14 @@
   <!-- Stopwatch & Countdown -->
   <url>
     <loc>https://tools-pack.netlify.app/stopwatch-countdown/</loc>
+    <lastmod>2025-09-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/stopwatch-countdown/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/stopwatch-countdown/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/stopwatch-countdown/"/>
   </url>
   <url>
     <loc>https://tools-pack.netlify.app/bn/stopwatch-countdown/</loc>
+    <lastmod>2025-09-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/stopwatch-countdown/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/stopwatch-countdown/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/stopwatch-countdown/"/>
@@ -203,12 +231,14 @@
   <!-- Quick Notes -->
   <url>
     <loc>https://tools-pack.netlify.app/quick-notes/</loc>
+    <lastmod>2025-09-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/quick-notes/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/quick-notes/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/quick-notes/"/>
   </url>
   <url>
     <loc>https://tools-pack.netlify.app/bn/quick-notes/</loc>
+    <lastmod>2025-09-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/quick-notes/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/quick-notes/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/quick-notes/"/>
@@ -217,12 +247,14 @@
   <!-- Text → PDF -->
   <url>
     <loc>https://tools-pack.netlify.app/text-to-pdf/</loc>
+    <lastmod>2025-09-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/text-to-pdf/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/text-to-pdf/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/text-to-pdf/"/>
   </url>
   <url>
     <loc>https://tools-pack.netlify.app/bn/text-to-pdf/</loc>
+    <lastmod>2025-09-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/text-to-pdf/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/text-to-pdf/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/text-to-pdf/"/>
@@ -231,12 +263,14 @@
   <!-- Percent Calculator -->
   <url>
     <loc>https://tools-pack.netlify.app/percent-calculator/</loc>
+    <lastmod>2025-09-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/percent-calculator/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/percent-calculator/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/percent-calculator/"/>
   </url>
   <url>
     <loc>https://tools-pack.netlify.app/bn/percent-calculator/</loc>
+    <lastmod>2025-09-07</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools-pack.netlify.app/percent-calculator/"/>
     <xhtml:link rel="alternate" hreflang="bn" href="https://tools-pack.netlify.app/bn/percent-calculator/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools-pack.netlify.app/percent-calculator/"/>
