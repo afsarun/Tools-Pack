@@ -1,23 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" data-locale="en">
+<html lang="bn" data-locale="bn">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Percentage Calculator — A% of B, Percent Change | Tools Pack</title>
+    <title>শতকরা ক্যালকুলেটর — A% of B, শতকরা পরিবর্তন | Tools Pack</title>
     <meta
       name="description"
-      content="Fast, accurate percentage calculator: A% of B, what percent is A of B, percent change, and value after increase/decrease. No tracking."
+      content="দ্রুত ও নির্ভুল শতকরা ক্যালকুলেটর: A% of B, A — B-এর কত শতাংশ, শতকরা পরিবর্তন, এবং % বাড়লে/কমলে মান। ট্র্যাকিং নেই।"
     />
 
     <!-- SEO -->
     <link
       rel="canonical"
-      href="https://tools-pack.netlify.app/percent-calculator/"
-    />
-    <link
-      rel="alternate"
-      hreflang="en"
-      href="https://tools-pack.netlify.app/percent-calculator/"
+      href="https://tools-pack.netlify.app/bn/percent-calculator/"
     />
     <link
       rel="alternate"
@@ -26,37 +21,125 @@
     />
     <link
       rel="alternate"
+      hreflang="en"
+      href="https://tools-pack.netlify.app/percent-calculator/"
+    />
+    <link
+      rel="alternate"
       hreflang="x-default"
       href="https://tools-pack.netlify.app/"
     />
 
-    <link rel="stylesheet" href="../../assets/style.css" />
     <meta name="theme-color" content="#1E1E2F" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Percentage Calculator — Tools Pack" />
+    <meta property="og:title" content="শতকরা ক্যালকুলেটর — Tools Pack" />
     <meta
       property="og:description"
-      content="A% of B, what percent is A of B, percent change, and after increase/decrease."
+      content="A% of B, A — B-এর কত শতাংশ, শতকরা পরিবর্তন, এবং % বাড়লে/কমলে মান।"
     />
     <meta
       property="og:url"
-      content="https://tools-pack.netlify.app/percent-calculator/"
+      content="https://tools-pack.netlify.app/bn/percent-calculator/"
     />
 
+    <!-- Styles -->
+    <link rel="stylesheet" href="../../assets/style.css" />
+
+    <!-- WebApplication JSON-LD (Bangla-only, valid JSON) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "Percentage Calculator",
-        "url": "https://tools-pack.netlify.app/percent-calculator/",
-        "applicationCategory": "Calculator",
+        "@id": "https://tools-pack.netlify.app/bn/percent-calculator/#webapp",
+        "name": "শতকরা ক্যালকুলেটর",
+        "url": "https://tools-pack.netlify.app/bn/percent-calculator/",
+        "applicationCategory": "UtilitiesApplication",
         "operatingSystem": "All",
-        "description": "A% of B, what percent is A of B, percent change, value after increase/decrease.",
-        "inLanguage": document?.documentElement?.dataset?.locale || "en"
+        "description": "A% of B, A — B-এর কত শতাংশ, শতকরা পরিবর্তন, এবং % বাড়লে/কমলে মান।",
+        "inLanguage": "bn"
       }
     </script>
 
-    <!-- Minimal page styles (match Tools Pack look). You can replace with your global /assets/style.css if you prefer. -->
+    <!-- Breadcrumbs JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "হোম",
+            "item": { "@id": "https://tools-pack.netlify.app/" }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "টুলস",
+            "item": { "@id": "https://tools-pack.netlify.app/#calculator" }
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "শতকরা ক্যালকুলেটর",
+            "item": {
+              "@id": "https://tools-pack.netlify.app/bn/percent-calculator/"
+            }
+          }
+        ]
+      }
+    </script>
+
+    <!-- FAQ JSON-LD (Bangla) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "এই টুলে কোন কোন হিসাব করা যায়?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A% of B, A — B-এর কত শতাংশ, দুই মানের শতকরা পরিবর্তন, এবং % বাড়লে বা কমলে নতুন মান।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "% চিহ্ন টাইপ করতে হবে?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "না। শুধু সংখ্যা লিখুন; A-কে স্বয়ংক্রিয়ভাবে শতাংশ ধরা হবে।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "শতকরা পরিবর্তন কীভাবে হিসাব হয়?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "শতকরা পরিবর্তন = ((নতুন − পুরোনো) ÷ পুরোনো) × 100; ধনাত্মক হলে বৃদ্ধি, ঋণাত্মক হলে হ্রাস বোঝায়।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "দশমিক ও ঋণাত্মক মান ব্যবহার করা যাবে?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "হ্যাঁ। সব ফিল্ডে দশমিক দেয়া যায় এবং প্রয়োজন অনুযায়ী ঋণাত্মক মানও দেয়া যায়।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "ভাগফল 0 হলে কী হবে?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "শূন্য দিয়ে ভাগ অসংজ্ঞায়িত। যেসব ক্ষেত্রে 0 দিয়ে ভাগ লাগবে সেখানে টুল একটি ত্রুটি বার্তা দেখাবে।"
+            }
+          }
+        ]
+      }
+    </script>
+
     <style>
       :root {
         --bg: #1e1e2f;
@@ -99,13 +182,13 @@
         margin: 40px auto;
         padding: 0 16px;
       }
-      header {
+      /* header {
         display: flex;
         gap: 16px;
         align-items: center;
         justify-content: space-between;
         margin-bottom: 20px;
-      }
+      } */
       .title {
         font-size: clamp(22px, 3.6vw, 36px);
         font-weight: 800;
@@ -114,32 +197,6 @@
       .muted {
         color: var(--muted);
       }
-      .lang {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        background: var(--card);
-        border: 1px solid var(--border);
-        border-radius: 999px;
-        padding: 6px;
-      }
-      .lang button {
-        background: transparent;
-        border: 0;
-        color: var(--muted);
-        padding: 8px 12px;
-        border-radius: 999px;
-        cursor: pointer;
-      }
-      .lang button.active {
-        color: var(--text);
-        background: linear-gradient(
-          145deg,
-          rgba(124, 58, 237, 0.35),
-          rgba(34, 211, 238, 0.25)
-        );
-      }
-
       .tabs {
         display: flex;
         flex-wrap: wrap;
@@ -158,17 +215,6 @@
         outline: 2px solid var(--ring);
         box-shadow: inset 0 0 0 1px var(--accent);
       }
-      .grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
-      @media (min-width: 720px) {
-        .grid {
-          grid-template-columns: 1fr 1fr;
-        }
-      }
-
       .card {
         background: var(--card);
         border: 1px solid var(--border);
@@ -211,7 +257,6 @@
       input[type="number"] {
         -moz-appearance: textfield;
       }
-
       .btn {
         background: linear-gradient(135deg, var(--accent), var(--accent-2));
         color: #0b0b14;
@@ -226,7 +271,6 @@
         color: var(--text);
         border: 1px solid var(--border);
       }
-
       .result {
         background: #17182a;
         border: 1px dashed var(--ring);
@@ -246,7 +290,6 @@
         margin-top: 6px;
         color: var(--muted);
       }
-
       .hidden {
         display: none;
       }
@@ -256,20 +299,39 @@
         font-size: 13px;
         text-align: center;
       }
+      .breadcrumbs {
+        font-size: 14px;
+        margin: 8px 0 6px;
+        color: var(--muted);
+      }
+      .breadcrumbs a,
+      .toc a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .toc {
+        font-size: 13px;
+        color: var(--muted);
+        margin-bottom: 14px;
+      }
     </style>
   </head>
   <body>
     <header class="sticky">
       <div class="wrap brand">
-        <a href="/bn/"><div class="logo"></div></a>
+        <a href="/bn/" aria-label="হোমে ফিরুন"
+          ><div class="logo" aria-hidden="true"></div
+        ></a>
         <div>
           <h1 style="margin: 0">Tools Pack</h1>
           <div class="sub">প্রিটি • মিনিফাই • ভ্যালিডেট</div>
         </div>
+        <div style="margin-left: auto">
+          <a class="muted" href="/percent-calculator/" hreflang="en">English</a>
+        </div>
       </div>
     </header>
-
-    <!-- Ad #1: Top banner -->
+    <!-- Ad #1 -->
     <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
       <span class="ad-label">Ad</span>
       <ins
@@ -284,6 +346,7 @@
     </div>
 
     <div class="container">
+      <!-- Breadcrumbs -->
       <nav class="breadcrumbs" aria-label="breadcrumb">
         <a href="/bn/">হোম</a> › <a href="/bn/#math">গণিত টুলস</a> ›
         <span>শতকরা ক্যালকুলেটর</span>
@@ -291,261 +354,199 @@
 
       <!-- TOC -->
       <p class="toc">
+        <a href="#t1">A% of B</a> · <a href="#t2">A, B-এর কত শতাংশ?</a> ·
+        <a href="#t3">শতকরা পরিবর্তন</a> · <a href="#t4">% বাড়লে/কমলে মান</a> ·
         <a href="#how-to-use">কীভাবে ব্যবহার করবেন</a> ·
         <a href="#faq">প্রশ্নোত্তর</a> ·
         <a href="#related">সম্পর্কিত টুলস</a>
       </p>
+
+      <!-- Local title -->
       <header>
         <div>
-          <div class="title" data-i18n="title">Percentage Calculator</div>
-          <div class="muted" data-i18n="subtitle">
-            A% of B, what percent is A of B, percent change, and after %
-            increase/decrease.
+          <div class="title">শতকরা ক্যালকুলেটর</div>
+          <div class="muted">
+            A% of B, A — B-এর কত শতাংশ, শতকরা পরিবর্তন, এবং % বাড়লে/কমলে মান।
           </div>
-        </div>
-        <div class="lang" role="group" aria-label="Language">
-          <button id="btn-en" class="active" data-lang="en" aria-pressed="true">
-            EN
-          </button>
-          <button id="btn-bn" data-lang="bn" aria-pressed="false">BN</button>
         </div>
       </header>
 
-      <nav class="tabs" role="tablist" aria-label="Calculator types">
-        <button
-          class="tab-btn"
-          role="tab"
-          aria-selected="true"
-          data-tab="t1"
-          data-i18n="tab1"
-        >
+      <!-- Tabs -->
+      <nav class="tabs" role="tablist" aria-label="ক্যালকুলেটর ধরণ">
+        <button class="tab-btn" role="tab" aria-selected="true" data-tab="t1">
           A% of B
         </button>
-        <button
-          class="tab-btn"
-          role="tab"
-          aria-selected="false"
-          data-tab="t2"
-          data-i18n="tab2"
-        >
-          What % is A of B?
+        <button class="tab-btn" role="tab" aria-selected="false" data-tab="t2">
+          A, B-এর কত শতাংশ?
         </button>
-        <button
-          class="tab-btn"
-          role="tab"
-          aria-selected="false"
-          data-tab="t3"
-          data-i18n="tab3"
-        >
-          Percent Change
+        <button class="tab-btn" role="tab" aria-selected="false" data-tab="t3">
+          শতকরা পরিবর্তন
         </button>
-        <button
-          class="tab-btn"
-          role="tab"
-          aria-selected="false"
-          data-tab="t4"
-          data-i18n="tab4"
-        >
-          After % Increase/Decrease
+        <button class="tab-btn" role="tab" aria-selected="false" data-tab="t4">
+          % বাড়লে/কমলে মান
         </button>
       </nav>
 
       <!-- A% of B -->
       <section id="t1" class="card" role="tabpanel">
-        <h2 data-i18n="t1_head">A% of B</h2>
+        <h2>A% of B</h2>
         <div class="row">
-          <label for="t1_a" data-i18n="percent_a">Percent (A)</label>
+          <label for="t1_a">শতকরা (A)</label>
           <input
             id="t1_a"
             type="number"
             step="any"
             inputmode="decimal"
-            placeholder="e.g., 15"
+            placeholder="যেমন, 15"
             aria-describedby="t1_hint"
           />
         </div>
         <div class="row">
-          <label for="t1_b" data-i18n="value_b">Value (B)</label>
+          <label for="t1_b">মান (B)</label>
           <input
             id="t1_b"
             type="number"
             step="any"
             inputmode="decimal"
-            placeholder="e.g., 200"
+            placeholder="যেমন, 200"
           />
         </div>
         <div class="row">
-          <button class="btn" id="t1_calc" data-i18n="calc_btn">
-            Calculate
-          </button>
-          <button class="btn secondary" id="t1_clear" data-i18n="clear_btn">
-            Clear
-          </button>
-          <button class="btn secondary" id="t1_copy" data-i18n="copy_btn">
-            Copy
-          </button>
+          <button class="btn" id="t1_calc">হিসাব</button>
+          <button class="btn secondary" id="t1_clear">ক্লিয়ার</button>
+          <button class="btn secondary" id="t1_copy">কপি</button>
         </div>
         <div class="result" id="t1_out" aria-live="polite"></div>
-        <div id="t1_hint" class="help formula small" data-i18n="t1_formula">
-          Formula: (A ÷ 100) × B
-        </div>
+        <div id="t1_hint" class="help formula small">সূত্র: (A ÷ 100) × B</div>
       </section>
 
       <!-- What percent is A of B -->
       <section id="t2" class="card hidden" role="tabpanel" aria-hidden="true">
-        <h2 data-i18n="t2_head">What percent is A of B?</h2>
+        <h2>A, B-এর কত শতাংশ?</h2>
         <div class="row">
-          <label for="t2_a" data-i18n="part_a">Part (A)</label>
+          <label for="t2_a">অংশ (A)</label>
           <input
             id="t2_a"
             type="number"
             step="any"
             inputmode="decimal"
-            placeholder="e.g., 30"
+            placeholder="যেমন, 30"
           />
         </div>
         <div class="row">
-          <label for="t2_b" data-i18n="whole_b">Whole (B)</label>
+          <label for="t2_b">সর্বমোট (B)</label>
           <input
             id="t2_b"
             type="number"
             step="any"
             inputmode="decimal"
-            placeholder="e.g., 200"
+            placeholder="যেমন, 200"
           />
         </div>
         <div class="row">
-          <button class="btn" id="t2_calc" data-i18n="calc_btn">
-            Calculate
-          </button>
-          <button class="btn secondary" id="t2_clear" data-i18n="clear_btn">
-            Clear
-          </button>
-          <button class="btn secondary" id="t2_copy" data-i18n="copy_btn">
-            Copy
-          </button>
+          <button class="btn" id="t2_calc">হিসাব</button>
+          <button class="btn secondary" id="t2_clear">ক্লিয়ার</button>
+          <button class="btn secondary" id="t2_copy">কপি</button>
         </div>
         <div class="result" id="t2_out" aria-live="polite"></div>
-        <div class="help formula small" data-i18n="t2_formula">
-          Formula: (A ÷ B) × 100
-        </div>
+        <div class="help formula small">সূত্র: (A ÷ B) × 100</div>
       </section>
 
       <!-- Percent change -->
       <section id="t3" class="card hidden" role="tabpanel" aria-hidden="true">
-        <h2 data-i18n="t3_head">Percent Change</h2>
+        <h2>শতকরা পরিবর্তন</h2>
         <div class="row">
-          <label for="t3_old" data-i18n="old_val">Old value</label>
+          <label for="t3_old">পুরোনো মান</label>
           <input
             id="t3_old"
             type="number"
             step="any"
             inputmode="decimal"
-            placeholder="e.g., 80"
+            placeholder="যেমন, 80"
           />
         </div>
         <div class="row">
-          <label for="t3_new" data-i18n="new_val">New value</label>
+          <label for="t3_new">নতুন মান</label>
           <input
             id="t3_new"
             type="number"
             step="any"
             inputmode="decimal"
-            placeholder="e.g., 100"
+            placeholder="যেমন, 100"
           />
         </div>
         <div class="row">
-          <button class="btn" id="t3_calc" data-i18n="calc_btn">
-            Calculate
-          </button>
-          <button class="btn secondary" id="t3_clear" data-i18n="clear_btn">
-            Clear
-          </button>
-          <button class="btn secondary" id="t3_copy" data-i18n="copy_btn">
-            Copy
-          </button>
+          <button class="btn" id="t3_calc">হিসাব</button>
+          <button class="btn secondary" id="t3_clear">ক্লিয়ার</button>
+          <button class="btn secondary" id="t3_copy">কপি</button>
         </div>
         <div class="result" id="t3_out" aria-live="polite"></div>
-        <div class="help formula small" data-i18n="t3_formula">
-          Formula: ((New − Old) ÷ Old) × 100
+        <div class="help formula small">
+          সূত্র: ((নতুন − পুরোনো) ÷ পুরোনো) × 100
         </div>
       </section>
 
       <!-- After % increase/decrease -->
       <section id="t4" class="card hidden" role="tabpanel" aria-hidden="true">
-        <h2 data-i18n="t4_head">After % Increase/Decrease</h2>
+        <h2>% বাড়লে/কমলে মান</h2>
         <div class="row">
-          <label for="t4_b" data-i18n="value_b">Value (B)</label>
+          <label for="t4_b">মান (B)</label>
           <input
             id="t4_b"
             type="number"
             step="any"
             inputmode="decimal"
-            placeholder="e.g., 250"
+            placeholder="যেমন, 250"
           />
         </div>
         <div class="row">
-          <label for="t4_a" data-i18n="percent_a">Percent (A)</label>
+          <label for="t4_a">শতকরা (A)</label>
           <input
             id="t4_a"
             type="number"
             step="any"
             inputmode="decimal"
-            placeholder="e.g., 12.5"
+            placeholder="যেমন, 12.5"
           />
         </div>
-        <div class="row" role="group" aria-label="Change type">
+        <div class="row" role="group" aria-label="পরিবর্তনের ধরন">
           <label class="small" style="min-width: auto"
             ><input type="radio" name="t4_dir" value="up" checked />
-            <span data-i18n="inc">Increase</span></label
+            বৃদ্ধি</label
           >
           <label class="small" style="min-width: auto"
-            ><input type="radio" name="t4_dir" value="down" />
-            <span data-i18n="dec">Decrease</span></label
+            ><input type="radio" name="t4_dir" value="down" /> হ্রাস</label
           >
         </div>
         <div class="row">
-          <button class="btn" id="t4_calc" data-i18n="calc_btn">
-            Calculate
-          </button>
-          <button class="btn secondary" id="t4_clear" data-i18n="clear_btn">
-            Clear
-          </button>
-          <button class="btn secondary" id="t4_copy" data-i18n="copy_btn">
-            Copy
-          </button>
+          <button class="btn" id="t4_calc">হিসাব</button>
+          <button class="btn secondary" id="t4_clear">ক্লিয়ার</button>
+          <button class="btn secondary" id="t4_copy">কপি</button>
         </div>
         <div class="result" id="t4_out" aria-live="polite"></div>
-        <div class="help formula small" data-i18n="t4_formula">
-          Formula: B × (1 ± A ÷ 100)
-        </div>
+        <div class="help formula small">সূত্র: B × (1 ± A ÷ 100)</div>
       </section>
-      <!-- Ad #1: Top banner -->
-      <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
-        <span class="ad-label">Ad</span>
-        <ins
-          class="adsbygoogle"
-          style="display: inline-block"
-          data-ad-client="ca-pub-1234567890123456"
-          data-ad-slot="1111111111"
-          data-ad-format="auto"
-          data-full-width-responsive="false"
-          data-adtest="on"
-        ></ins>
-      </div>
+
       <!-- How to use -->
       <article class="card" id="how-to-use">
         <h2>কীভাবে ব্যবহার করবেন</h2>
         <ol>
-          <li>প্রতিটি কার্ডে ইনপুট দিন; টাইপ করলেই ফলাফল আপডেট হবে।</li>
           <li>
-            <strong>হিসাব</strong> বাটনে ক্লিক করেও ফলাফল দেখতে পারেন;
-            <strong>কপি</strong> চাপলে ফলাফল ক্লিপবোর্ডে যাবে।
+            প্রয়োজনীয় ট্যাব বেছে নিন: <strong>A% of B</strong>,
+            <strong>A, B-এর কত শতাংশ?</strong>, <strong>শতকরা পরিবর্তন</strong>,
+            বা <strong>% বাড়লে/কমলে মান</strong>।
           </li>
-          <li><kbd>Enter</kbd> চাপলে বর্তমান কার্ডের হিসাব চলবে।</li>
+          <li>শুধু সংখ্যা লিখুন ( % চিহ্ন নয় ); দশমিক দেয়া যাবে।</li>
           <li>
-            শূন্য দিয়ে ভাগ হলে ফলাফল সংজ্ঞায়িত নয়—উপযুক্ত সতর্কবার্তা দেখানো
-            হবে।
+            <strong>হিসাব</strong> চাপলে বা টাইপ করার সাথে সাথে ফলাফল দেখাবে।
+          </li>
+          <li>
+            <strong>কপি</strong> দিয়ে ফলাফল কপি করুন;
+            <strong>ক্লিয়ার</strong> দিয়ে ফিল্ড খালি করুন।
+          </li>
+          <li>
+            “% বাড়লে/কমলে মান”–এ আগে <strong>বৃদ্ধি</strong> বা
+            <strong>হ্রাস</strong> নির্বাচন করুন।
           </li>
         </ol>
       </article>
@@ -562,8 +563,11 @@
           <p>না—সবকিছু আপনার ব্রাউজারেই থাকে; কোনো ট্র্যাকিং নেই।</p>
         </details>
         <details>
-          <summary>ডেসিমাল/ভগ্নাংশ চলবে?</summary>
-          <p>হ্যাঁ—সব ইনপুটে দশমিক সমর্থিত (<code>step="any"</code>)।</p>
+          <summary>দশমিক/ঋণাত্মক মান চলবে?</summary>
+          <p>
+            হ্যাঁ—সব ইনপুটে দশমিক সমর্থিত (<code>step="any"</code>) এবং
+            প্রয়োজনে ঋণাত্মকও ব্যবহারযোগ্য।
+          </p>
         </details>
         <details>
           <summary>শতকরা পরিবর্তন কীভাবে হিসাব হয়?</summary>
@@ -588,113 +592,17 @@
           <a href="/percent-calculator/" hreflang="en">English version</a>.
         </p>
       </article>
+
       <footer>
-        <span class="small" data-i18n="footer"
-          >Tip: values update live as you type. Use the Copy button to copy the
-          result.</span
+        <span class="small"
+          >টিপস: টাইপ করলেই ফলাফল আপডেট হবে। কপি বাটন চাপলে ফলাফল কপি হবে।</span
         >
       </footer>
     </div>
 
     <script>
-      // --- i18n strings ---
-      const I18N = {
-        en: {
-          title: "Percentage Calculator",
-          subtitle:
-            "A% of B, what percent is A of B, percent change, and after % increase/decrease.",
-          tab1: "A% of B",
-          tab2: "What % is A of B?",
-          tab3: "Percent Change",
-          tab4: "After % Increase/Decrease",
-          t1_head: "A% of B",
-          t2_head: "What percent is A of B?",
-          t3_head: "Percent Change",
-          t4_head: "After % Increase/Decrease",
-          percent_a: "Percent (A)",
-          value_b: "Value (B)",
-          part_a: "Part (A)",
-          whole_b: "Whole (B)",
-          old_val: "Old value",
-          new_val: "New value",
-          inc: "Increase",
-          dec: "Decrease",
-          calc_btn: "Calculate",
-          clear_btn: "Clear",
-          copy_btn: "Copy",
-          t1_formula: "Formula: (A ÷ 100) × B",
-          t2_formula: "Formula: (A ÷ B) × 100",
-          t3_formula: "Formula: ((New − Old) ÷ Old) × 100",
-          t4_formula: "Formula: B × (1 ± A ÷ 100)",
-          footer:
-            "Tip: values update live as you type. Use the Copy button to copy the result.",
-          errors: {
-            div0: "Undefined: division by 0",
-            empty: "Please enter values",
-          },
-          labels: {
-            result: "Result",
-          },
-        },
-        bn: {
-          title: "শতকরা হিসাব",
-          subtitle:
-            "A% of B, A — B-এর কত শতাংশ, শতকরা পরিবর্তন, এবং % বাড়লে/কমলে মান।",
-          tab1: "A% of B",
-          tab2: "A, B-এর কত শতাংশ?",
-          tab3: "শতকরা পরিবর্তন",
-          tab4: "% বাড়লে/কমলে মান",
-          t1_head: "A% of B",
-          t2_head: "A, B-এর কত শতাংশ?",
-          t3_head: "শতকরা পরিবর্তন",
-          t4_head: "% বাড়লে/কমলে মান",
-          percent_a: "শতকরা (A)",
-          value_b: "মান (B)",
-          part_a: "অংশ (A)",
-          whole_b: "সর্বমোট (B)",
-          old_val: "পুরোনো মান",
-          new_val: "নতুন মান",
-          inc: "বৃদ্ধি",
-          dec: "হ্রাস",
-          calc_btn: "হিসাব",
-          clear_btn: "ক্লিয়ার",
-          copy_btn: "কপি",
-          t1_formula: "সূত্র: (A ÷ 100) × B",
-          t2_formula: "সূত্র: (A ÷ B) × 100",
-          t3_formula: "সূত্র: ((নতুন − পুরোনো) ÷ পুরোনো) × 100",
-          t4_formula: "সূত্র: B × (1 ± A ÷ 100)",
-          footer:
-            "টিপস: টাইপ করলেই ফলাফল আপডেট হবে। কপি বাটন চাপলে ফলাফল কপি হবে।",
-          errors: {
-            div0: "অসংজ্ঞায়িত: শূন্য দিয়ে ভাগ",
-            empty: "মান দিন",
-          },
-          labels: {
-            result: "ফলাফল",
-          },
-        },
-      };
-
-      const $ = (sel, ctx = document) => ctx.querySelector(sel);
-      const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
-
-      function setLocale(lang) {
-        const dict = I18N[lang] || I18N.en;
-        document.documentElement.setAttribute("lang", lang);
-        document.documentElement.dataset.locale = lang;
-        $$("[data-i18n]").forEach((el) => {
-          const key = el.dataset.i18n;
-          const text = key.split(".").reduce((acc, k) => acc?.[k], dict);
-          if (typeof text === "string") el.textContent = text;
-        });
-        // toggle buttons
-        $("#btn-en").classList.toggle("active", lang === "en");
-        $("#btn-bn").classList.toggle("active", lang === "bn");
-        $("#btn-en").setAttribute("aria-pressed", lang === "en");
-        $("#btn-bn").setAttribute("aria-pressed", lang === "bn");
-      }
-
-      // Tab logic
+      // Tab switching
+      const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
       $$(".tab-btn").forEach((btn) => {
         btn.addEventListener("click", () => {
           const id = btn.dataset.tab;
@@ -709,91 +617,76 @@
         });
       });
 
-      // Utility formatters
+      // Helpers
+      const $ = (s, c = document) => c.querySelector(s);
+      const LABEL_RESULT = "ফলাফল";
+      const ERR_DIV0 = "অসংজ্ঞায়িত: শূন্য দিয়ে ভাগ";
+
       function fmt(n) {
         if (!isFinite(n)) return "";
-        // Show up to 8 decimals, trim trailing zeros
-        const s = Number(n).toLocaleString(undefined, {
+        return Number(n).toLocaleString(undefined, {
           maximumFractionDigits: 8,
         });
-        return s;
       }
-
-      function parseVal(id) {
-        const v = parseFloat($(id).value);
+      function val(sel) {
+        const v = parseFloat($(sel).value);
         return isNaN(v) ? null : v;
       }
-
-      async function copyText(text) {
+      async function copyText(t) {
         try {
-          await navigator.clipboard.writeText(text);
+          await navigator.clipboard.writeText(t);
         } catch {}
       }
 
-      // --- Calculators ---
+      // Calculators
       function t1_calc() {
-        const A = parseVal("#t1_a");
-        const B = parseVal("#t1_b");
+        const A = val("#t1_a"),
+          B = val("#t1_b");
         if (A === null || B === null)
-          return ($(
-            "#t1_out"
-          ).textContent = `${I18N[curLang].labels.result}: –`);
-        const val = (A / 100) * B;
-        $("#t1_out").textContent = `${I18N[curLang].labels.result}: ${fmt(
-          val
-        )}`;
-        return val;
+          return ($("#t1_out").textContent = `${LABEL_RESULT}: –`);
+        const out = (A / 100) * B;
+        $("#t1_out").textContent = `${LABEL_RESULT}: ${fmt(out)}`;
+        return out;
       }
       function t2_calc() {
-        const A = parseVal("#t2_a");
-        const B = parseVal("#t2_b");
+        const A = val("#t2_a"),
+          B = val("#t2_b");
         if (A === null || B === null)
-          return ($(
-            "#t2_out"
-          ).textContent = `${I18N[curLang].labels.result}: –`);
-        if (B === 0)
-          return ($("#t2_out").textContent = I18N[curLang].errors.div0);
+          return ($("#t2_out").textContent = `${LABEL_RESULT}: –`);
+        if (B === 0) return ($("#t2_out").textContent = ERR_DIV0);
         const pct = (A / B) * 100;
-        $("#t2_out").textContent = `${I18N[curLang].labels.result}: ${fmt(
-          pct
-        )}%`;
+        $("#t2_out").textContent = `${LABEL_RESULT}: ${fmt(pct)}%`;
         return pct;
       }
       function t3_calc() {
-        const O = parseVal("#t3_old");
-        const N = parseVal("#t3_new");
+        const O = val("#t3_old"),
+          N = val("#t3_new");
         if (O === null || N === null)
-          return ($(
-            "#t3_out"
-          ).textContent = `${I18N[curLang].labels.result}: –`);
-        if (O === 0)
-          return ($("#t3_out").textContent = I18N[curLang].errors.div0);
+          return ($("#t3_out").textContent = `${LABEL_RESULT}: –`);
+        if (O === 0) return ($("#t3_out").textContent = ERR_DIV0);
         const pct = ((N - O) / O) * 100;
-        const sign = pct >= 0 ? "+" : "";
-        $("#t3_out").textContent = `${
-          I18N[curLang].labels.result
-        }: ${sign}${fmt(pct)}%`;
+        $("#t3_out").textContent = `${LABEL_RESULT}: ${
+          pct >= 0 ? "+" : ""
+        }${fmt(pct)}%`;
         return pct;
       }
       function t4_calc() {
-        const B = parseVal("#t4_b");
-        const A = parseVal("#t4_a");
+        const B = val("#t4_b"),
+          A = val("#t4_a");
         const dir =
           document.querySelector('input[name="t4_dir"]:checked')?.value || "up";
         if (A === null || B === null)
-          return ($(
-            "#t4_out"
-          ).textContent = `${I18N[curLang].labels.result}: –`);
+          return ($("#t4_out").textContent = `${LABEL_RESULT}: –`);
         const delta = (A / 100) * B;
-        const val = dir === "up" ? B + delta : B - delta;
+        const valOut = dir === "up" ? B + delta : B - delta;
         const sign = dir === "up" ? "+" : "−";
-        $("#t4_out").textContent = `${I18N[curLang].labels.result}: ${fmt(
-          val
+        $("#t4_out").textContent = `${LABEL_RESULT}: ${fmt(
+          valOut
         )} (Δ ${sign}${fmt(delta)})`;
-        return val;
+        return valOut;
       }
 
-      // Wire buttons & realtime updates
+      // Wire buttons & live update
       $("#t1_calc").addEventListener("click", t1_calc);
       $("#t2_calc").addEventListener("click", t2_calc);
       $("#t3_calc").addEventListener("click", t3_calc);
@@ -837,49 +730,33 @@
         copyText($("#t4_out").textContent)
       );
 
-      ["#t1_a", "#t1_b"].forEach((sel) =>
-        $(sel).addEventListener("input", t1_calc)
+      ["#t1_a", "#t1_b"].forEach((s) =>
+        $(s).addEventListener("input", t1_calc)
       );
-      ["#t2_a", "#t2_b"].forEach((sel) =>
-        $(sel).addEventListener("input", t2_calc)
+      ["#t2_a", "#t2_b"].forEach((s) =>
+        $(s).addEventListener("input", t2_calc)
       );
-      ["#t3_old", "#t3_new"].forEach((sel) =>
-        $(sel).addEventListener("input", t3_calc)
+      ["#t3_old", "#t3_new"].forEach((s) =>
+        $(s).addEventListener("input", t3_calc)
       );
-      ["#t4_a", "#t4_b"].forEach((sel) =>
-        $(sel).addEventListener("input", t4_calc)
+      ["#t4_a", "#t4_b"].forEach((s) =>
+        $(s).addEventListener("input", t4_calc)
       );
-      $$('input[name="t4_dir"]').forEach((r) =>
-        r.addEventListener("change", t4_calc)
-      );
-
-      // Keyboard: Enter triggers calculate in current panel
-      $$('input[type="number"]').forEach((inp) =>
-        inp.addEventListener("keydown", (e) => {
-          if (e.key === "Enter") {
-            const panel = e.target.closest("section")?.id;
-            ({ t1: t1_calc, t2: t2_calc, t3: t3_calc, t4: t4_calc })[panel]?.();
-          }
-        })
+      Array.from(document.querySelectorAll('input[name="t4_dir"]')).forEach(
+        (r) => r.addEventListener("change", t4_calc)
       );
 
-      // Locale & language toggle
-      const qs = new URLSearchParams(location.search);
-      const initial = (
-        qs.get("lang") ||
-        document.documentElement.dataset.locale ||
-        "en"
-      ).toLowerCase();
-      let curLang = initial === "bn" ? "bn" : "en";
-      setLocale(curLang);
-      $("#btn-en").addEventListener("click", () => {
-        curLang = "en";
-        setLocale("en");
-      });
-      $("#btn-bn").addEventListener("click", () => {
-        curLang = "bn";
-        setLocale("bn");
-      });
+      // Enter key triggers current panel calculation
+      Array.from(document.querySelectorAll('input[type="number"]')).forEach(
+        (inp) => {
+          inp.addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+              const id = e.target.closest("section")?.id;
+              ({ t1: t1_calc, t2: t2_calc, t3: t3_calc, t4: t4_calc })[id]?.();
+            }
+          });
+        }
+      );
     </script>
   </body>
 </html>
