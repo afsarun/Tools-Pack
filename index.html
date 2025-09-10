@@ -3,13 +3,21 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Tools Pack — Online Utilities (No Ads, No Tracking)</title>
+    <title>Tools Pack — Online Utilities</title>
     <meta
       name="description"
       content="Fast, modern, privacy-first online tools: Calculator, JSON Formatter, Unit Converter, Image Resizer, Color Contrast, Stopwatch, Notes and more. 100% runs in your browser."
     />
 
+    <!-- AdSense account meta (safe to include before approval) -->
+    <meta name="google-adsense-account" content="ca-pub-XXXXXXXXXXXXXXXX" />
+
+    <!-- (Optional) Search Console site verification -->
+    <!-- <meta name="google-site-verification" content="PASTE_CODE_HERE" /> -->
+
     <meta name="theme-color" content="#1E1E2F" />
+
+    <!-- Canonical + hreflang -->
     <link rel="canonical" href="https://tools-pack.netlify.app/" />
     <link
       rel="alternate"
@@ -26,6 +34,8 @@
       hreflang="x-default"
       href="https://tools-pack.netlify.app/"
     />
+
+    <!-- Styles -->
     <link rel="stylesheet" href="assets/style.css" />
 
     <!-- Open Graph / Twitter -->
@@ -237,20 +247,27 @@
           <div class="sub">Minimal • Fast • Privacy-first</div>
         </div>
 
-        <!-- Right-side language switch -->
-        <div style="margin-left: auto">
-          <!-- Update href to the page's Bangla path if needed, e.g. /bn/percent-calculator/ -->
-
+        <nav
+          style="
+            margin-left: auto;
+            display: flex;
+            gap: 16px;
+            align-items: center;
+          "
+        >
           <a
             class="muted"
             href="/bn/"
             hreflang="bn"
             lang="bn"
             aria-label="বাংলা সংস্করণ"
+            >বাংলা</a
           >
-            বাংলা Version
-          </a>
-        </div>
+          <a class="muted" href="/about/">About</a>
+          <a class="muted" href="/privacy/">Privacy</a>
+          <a class="muted" href="/terms/">Terms</a>
+          <a class="muted" href="/contact/">Contact</a>
+        </nav>
       </div>
     </header>
 
@@ -401,7 +418,11 @@
       </section>
     </main>
 
-    <footer>© <span id="y"></span> Tools Pack • Runs 100% locally.</footer>
+    <footer class="wrap">
+      © <span id="y"></span> Tools Pack • Runs 100% locally. &nbsp;|&nbsp;
+      <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> ·
+      <a href="/about/">About</a> · <a href="/contact/">Contact</a>
+    </footer>
 
     <script>
       document.getElementById("y").textContent = new Date().getFullYear();

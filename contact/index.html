@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Contact — Tools Pack</title>
+    <meta
+      name="description"
+      content="Contact the Tools Pack team — send questions, bug reports, or feature requests."
+    />
+
+    <!-- Canonical + hreflang -->
+    <link rel="canonical" href="https://tools-pack.netlify.app/contact/" />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://tools-pack.netlify.app/contact/"
+    />
+    <link
+      rel="alternate"
+      hreflang="bn"
+      href="https://tools-pack.netlify.app/bn/contact/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://tools-pack.netlify.app/contact/"
+    />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/style.css" />
+
+    <!-- (Optional) OG/Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tools Pack" />
+    <meta property="og:title" content="Contact — Tools Pack" />
+    <meta
+      property="og:description"
+      content="Email us or use the contact form."
+    />
+    <meta property="og:url" content="https://tools-pack.netlify.app/contact/" />
+    <meta
+      property="og:image"
+      content="https://tools-pack.netlify.app/og/home.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Page-scoped styles for the contact form -->
+    <style>
+      .contact-form {
+        background: var(--card, #161a23);
+        border: 1px solid var(--border, #262b36);
+        border-radius: var(--radius, 14px);
+        box-shadow: var(--shadow, 0 8px 24px rgba(0, 0, 0, 0.28));
+        padding: 20px;
+        margin-top: 12px;
+      }
+      .contact-form .fields {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: 1fr;
+      }
+      @media (min-width: 720px) {
+        .contact-form .fields {
+          grid-template-columns: 1fr 1fr;
+        }
+        .contact-form .field.full,
+        .contact-form .actions {
+          grid-column: 1 / -1;
+        }
+      }
+      .contact-form .field label {
+        display: block;
+        font-size: 0.95rem;
+        color: var(--muted, #9aa3b2);
+        margin-bottom: 6px;
+      }
+      .contact-form .field .req {
+        color: var(--accent, #4f8cff);
+        margin-left: 4px;
+      }
+      .contact-form input[type="text"],
+      .contact-form input[type="email"],
+      .contact-form textarea {
+        width: 100%;
+        padding: 12px 14px;
+        border-radius: var(--radius-sm, 10px);
+        border: 1px solid var(--border, #262b36);
+        background: color-mix(in oklab, var(--card, #161a23) 90%, black 10%);
+        color: var(--text, #e7eaf1);
+        outline: none;
+        transition: border-color 0.15s
+            var(--ease, cubic-bezier(0.2, 0.8, 0.2, 1)),
+          box-shadow 0.15s var(--ease, cubic-bezier(0.2, 0.8, 0.2, 1));
+      }
+      .contact-form input::placeholder,
+      .contact-form textarea::placeholder {
+        color: color-mix(in oklab, var(--muted, #9aa3b2) 70%, transparent);
+      }
+      .contact-form input:focus,
+      .contact-form textarea:focus {
+        border-color: var(--accent, #4f8cff);
+        box-shadow: var(--ring, 0 0 0 3px rgba(79, 140, 255, 0.25));
+      }
+      .contact-form input:invalid,
+      .contact-form textarea:invalid {
+        border-color: color-mix(in oklab, red 65%, var(--border, #262b36));
+      }
+      .contact-form input:valid,
+      .contact-form textarea:valid {
+        border-color: color-mix(
+          in oklab,
+          var(--accent, #4f8cff) 55%,
+          var(--border, #262b36)
+        );
+      }
+      .contact-form .actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 4px;
+      }
+      .contact-form .hint {
+        color: var(--muted, #9aa3b2);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .contact-form input,
+        .contact-form textarea {
+          transition: none;
+        }
+      }
+
+      .prose {
+        min-height: 100vh;
+        margin-top: 5rem;
+      }
+    </style>
+  </head>
+
+  <body class="wrap">
+    <!-- Header -->
+    <header class="sticky" role="banner">
+      <div class="brand" style="display: flex; gap: 16px; align-items: center">
+        <a href="/" aria-label="Back to home">
+          <div class="logo" aria-hidden="true"></div>
+        </a>
+        <div>
+          <h1 class="site-title" style="margin: 0">Tools Pack</h1>
+          <div class="sub">Minimal • Fast • Privacy-first</div>
+        </div>
+        <nav
+          style="
+            margin-left: auto;
+            display: flex;
+            gap: 16px;
+            align-items: center;
+          "
+        >
+          <a class="muted" href="/bn/" hreflang="bn" lang="bn">বাংলা</a>
+          <a class="muted" href="/about/">About</a>
+          <a class="muted" href="/privacy/">Privacy</a>
+          <a class="muted" href="/terms/">Terms</a>
+          <a class="muted" href="/contact/">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main -->
+    <main role="main" class="prose">
+      <h1>Contact</h1>
+      <p>
+        Questions, bug reports, or feature requests? Email us or use the form
+        below.
+      </p>
+
+      <p>
+        <strong>Email:</strong>
+        <a href="mailto:you@example.com">you@example.com</a>
+      </p>
+
+      <!-- Contact Form -->
+      <form
+        class="contact-form"
+        action="mailto:you@example.com?subject=Tools%20Pack%20Contact"
+        method="post"
+        enctype="text/plain"
+      >
+        <div class="fields">
+          <div class="field">
+            <label for="name"
+              >Your Name <span class="req" aria-hidden="true">*</span></label
+            >
+            <input
+              id="name"
+              name="name"
+              type="text"
+              required
+              autocomplete="name"
+            />
+          </div>
+
+          <div class="field">
+            <label for="email">Email (optional)</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              inputmode="email"
+              autocomplete="email"
+              placeholder="name@example.com"
+            />
+          </div>
+
+          <div class="field full">
+            <label for="message"
+              >Message <span class="req" aria-hidden="true">*</span></label
+            >
+            <textarea
+              id="message"
+              name="message"
+              rows="6"
+              required
+              placeholder="Write your message..."
+            ></textarea>
+          </div>
+
+          <div class="actions">
+            <button type="submit" class="btn btn-primary">Send</button>
+            <small class="hint"
+              >Submitting opens your default email app to send the
+              message.</small
+            >
+          </div>
+        </div>
+      </form>
+    </main>
+
+    <!-- Footer -->
+    <footer class="wrap">
+      © <span id="y"></span> Tools Pack • Runs 100% locally. &nbsp;|&nbsp;
+      <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> ·
+      <a href="/about/">About</a> · <a href="/contact/">Contact</a>
+    </footer>
+
+    <script>
+      document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+    <noscript
+      >Your browser has JavaScript disabled; some tools may not work.</noscript
+    >
+  </body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>About — Tools Pack</title>
+    <meta
+      name="description"
+      content="Learn about Tools Pack — a collection of fast, privacy-first utilities that run in your browser."
+    />
+    <link rel="canonical" href="https://tools-pack.netlify.app/about/" />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://tools-pack.netlify.app/about/"
+    />
+    <link
+      rel="alternate"
+      hreflang="bn"
+      href="https://tools-pack.netlify.app/bn/about/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://tools-pack.netlify.app/about/"
+    />
+    <link rel="stylesheet" href="/assets/style.css" />
+    <style>
+      .prose {
+        min-height: 80vh;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    </style>
+  </head>
+  <body class="wrap">
+    <!-- Header -->
+    <header class="sticky" role="banner">
+      <div class="brand" style="display: flex; gap: 16px; align-items: center">
+        <a href="/" aria-label="Back to home">
+          <div class="logo" aria-hidden="true"></div>
+        </a>
+        <div>
+          <h1 class="site-title" style="margin: 0">Tools Pack</h1>
+          <div class="sub">Minimal • Fast • Privacy-first</div>
+        </div>
+        <nav
+          style="
+            margin-left: auto;
+            display: flex;
+            gap: 16px;
+            align-items: center;
+          "
+        >
+          <a class="muted" href="/bn/" hreflang="bn" lang="bn">বাংলা</a>
+          <a class="muted" href="/about/">About</a>
+          <a class="muted" href="/privacy/">Privacy</a>
+          <a class="muted" href="/terms/">Terms</a>
+          <a class="muted" href="/contact/">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main -->
+    <main role="main" class="prose">
+      <h1>About Tools Pack</h1>
+      <p>
+        Tools Pack is a collection of fast, privacy-first utilities that run
+        entirely in your browser. Our focus is simplicity, trust, and a smooth
+        experience in both English and Bangla.
+      </p>
+
+      <h2>What makes it different</h2>
+      <ul>
+        <li>
+          <strong>Client-side first:</strong> most tools keep your input on your
+          device.
+        </li>
+        <li><strong>Lightweight:</strong> quick load, minimal bloat.</li>
+        <li>
+          <strong>Bilingual:</strong> mirrored EN/BN pages with proper
+          <code>hreflang</code>.
+        </li>
+      </ul>
+    </main>
+
+    <!-- Footer -->
+    <footer class="wrap">
+      © <span id="y"></span> Tools Pack • Runs 100% locally. &nbsp;|&nbsp;
+      <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> ·
+      <a href="/about/">About</a> · <a href="/contact/">Contact</a>
+    </footer>
+
+    <script>
+      document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+    <noscript
+      >Your browser has JavaScript disabled; some tools may not work.</noscript
+    >
+  </body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="bn">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>যোগাযোগ — Tools Pack</title>
+    <meta
+      name="description"
+      content="Tools Pack টিমের সাথে যোগাযোগ করুন—ইমেইল ও ফিডব্যাক পাঠাতে এই পেজটি ব্যবহার করুন।"
+    />
+
+    <meta name="google-adsense-account" content="ca-pub-XXXXXXXXXXXXXXXX" />
+    <meta name="theme-color" content="#1E1E2F" />
+
+    <link rel="canonical" href="https://tools-pack.netlify.app/bn/contact/" />
+    <link
+      rel="alternate"
+      hreflang="bn"
+      href="https://tools-pack.netlify.app/bn/contact/"
+    />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://tools-pack.netlify.app/contact/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://tools-pack.netlify.app/contact/"
+    />
+
+    <link rel="stylesheet" href="../../assets/style.css" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tools Pack" />
+    <meta property="og:title" content="যোগাযোগ — Tools Pack" />
+    <meta property="og:description" content="ইমেইল বা ফিডব্যাক পাঠান।" />
+    <meta
+      property="og:url"
+      content="https://tools-pack.netlify.app/bn/contact/"
+    />
+    <meta
+      property="og:image"
+      content="https://tools-pack.netlify.app/og/home.png"
+    />
+    <meta
+      property="og:image:alt"
+      content="Tools Pack — দ্রুত, প্রাইভেসি-ফার্স্ট ইউটিলিটিজ"
+    />
+    <meta property="og:locale" content="bn_BD" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "name": "যোগাযোগ",
+        "inLanguage": "bn",
+        "url": "https://tools-pack.netlify.app/bn/contact/"
+      }
+    </script>
+
+    <style>
+      /* Contact form card */
+      .contact-form {
+        background: var(--card, #161a23);
+        border: 1px solid var(--border, #262b36);
+        border-radius: var(--radius, 14px);
+        box-shadow: var(--shadow, 0 8px 24px rgba(0, 0, 0, 0.28));
+        padding: 20px;
+      }
+
+      /* Grid layout */
+      .contact-form .fields {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: 1fr;
+      }
+      @media (min-width: 720px) {
+        .contact-form .fields {
+          grid-template-columns: 1fr 1fr;
+        }
+        .contact-form .field.full,
+        .contact-form .actions {
+          grid-column: 1 / -1;
+        }
+      }
+
+      /* Field + labels */
+      .contact-form .field label {
+        display: block;
+        font-size: 0.95rem;
+        color: var(--muted, #9aa3b2);
+        margin-bottom: 6px;
+      }
+      .contact-form .field .req {
+        color: var(--accent, #4f8cff);
+        margin-left: 4px;
+      }
+
+      /* Inputs & textarea */
+      .contact-form input[type="text"],
+      .contact-form input[type="email"],
+      .contact-form textarea {
+        width: 100%;
+        padding: 12px 14px;
+        border-radius: var(--radius-sm, 10px);
+        border: 1px solid var(--border, #262b36);
+        background: color-mix(in oklab, var(--card, #161a23) 90%, black 10%);
+        color: var(--text, #e7eaf1);
+        outline: none;
+        transition: border-color 0.15s
+            var(--ease, cubic-bezier(0.2, 0.8, 0.2, 1)),
+          box-shadow 0.15s var(--ease, cubic-bezier(0.2, 0.8, 0.2, 1));
+      }
+      .contact-form input::placeholder,
+      .contact-form textarea::placeholder {
+        color: color-mix(in oklab, var(--muted, #9aa3b2) 70%, transparent);
+      }
+
+      /* Focus state */
+      .contact-form input:focus,
+      .contact-form textarea:focus {
+        border-color: var(--accent, #4f8cff);
+        box-shadow: var(--ring, 0 0 0 3px rgba(79, 140, 255, 0.25));
+      }
+
+      /* Invalid / valid hints via native validation */
+      .contact-form input:invalid,
+      .contact-form textarea:invalid {
+        border-color: color-mix(in oklab, red 65%, var(--border, #262b36));
+      }
+      .contact-form input:valid,
+      .contact-form textarea:valid {
+        border-color: color-mix(
+          in oklab,
+          var(--accent, #4f8cff) 55%,
+          var(--border, #262b36)
+        );
+      }
+
+      /* Actions row */
+      .contact-form .actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 4px;
+      }
+      .contact-form .hint {
+        color: var(--muted, #9aa3b2);
+      }
+
+      /* Respect reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        .contact-form input,
+        .contact-form textarea {
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+  <body class="wrap">
+    <header class="sticky" role="banner">
+      <div class="brand" style="display: flex; gap: 16px; align-items: center">
+        <a href="/bn/" aria-label="হোমে ফিরুন"
+          ><div class="logo" aria-hidden="true"></div
+        ></a>
+        <div>
+          <h1 class="site-title" style="margin: 0">Tools Pack</h1>
+          <div class="sub">মিনিমাল • দ্রুত • প্রাইভেসি-ফার্স্ট</div>
+        </div>
+        <nav
+          style="
+            margin-left: auto;
+            display: flex;
+            gap: 16px;
+            align-items: center;
+          "
+        >
+          <a class="muted" href="/" hreflang="en" lang="en">English</a>
+          <a class="muted" href="/bn/privacy/">গোপনীয়তা নীতি</a>
+          <a class="muted" href="/bn/terms/">শর্তাবলি</a>
+          <a class="muted" href="/bn/about/">আমাদের সম্পর্কে</a>
+        </nav>
+      </div>
+    </header>
+
+    <main role="main" class="prose">
+      <h1>যোগাযোগ</h1>
+      <p>প্রশ্ন, বাগ রিপোর্ট বা ফিচার রিকোয়েস্ট পাঠাতে ইমেইল করুন:</p>
+
+      <p>
+        <strong>ইমেইল:</strong>
+        <a href="mailto:you@example.com">you@example.com</a>
+        <!-- আপনার ইমেইল দিন -->
+      </p>
+
+      <h2>ফিডব্যাক ফর্ম (ইমেইল ওপেন হবে)</h2>
+      <form
+        class="contact-form"
+        action="mailto:you@example.com?subject=Tools%20Pack%20Feedback"
+        method="post"
+        enctype="text/plain"
+      >
+        <div class="fields">
+          <div class="field">
+            <label for="name"
+              >আপনার নাম <span class="req" aria-hidden="true">*</span></label
+            >
+            <input
+              id="name"
+              name="name"
+              type="text"
+              required
+              autocomplete="name"
+            />
+          </div>
+
+          <div class="field">
+            <label for="email">ইমেইল (ঐচ্ছিক)</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              inputmode="email"
+              autocomplete="email"
+              placeholder="name@example.com"
+            />
+          </div>
+
+          <div class="field full">
+            <label for="message"
+              >বার্তা <span class="req" aria-hidden="true">*</span></label
+            >
+            <textarea
+              id="message"
+              name="message"
+              rows="6"
+              required
+              placeholder="আপনার মতামত লিখুন..."
+            ></textarea>
+          </div>
+
+          <div class="actions">
+            <button type="submit" class="btn btn-primary">পাঠান</button>
+            <small class="hint"
+              >ফর্ম সাবমিট করলে আপনার ডিফল্ট ইমেইল অ্যাপ খুলবে।</small
+            >
+          </div>
+        </div>
+      </form>
+
+      <p class="muted" style="margin-top: 12px">
+        দ্রষ্টব্য: উপরের ফর্মটি আপনার ডিফল্ট ইমেইল অ্যাপ খুলবে।
+      </p>
+    </main>
+
+    <footer class="wrap">
+      © <span id="y"></span> Tools Pack • ১০০% ব্রাউজারেই রান হয় &nbsp;|&nbsp;
+      <a href="/bn/privacy/">গোপনীয়তা নীতি</a> ·
+      <a href="/bn/terms/">শর্তাবলি</a> ·
+      <a href="/bn/about/">আমাদের সম্পর্কে</a> ·
+      <a href="/bn/contact/">যোগাযোগ</a>
+    </footer>
+
+    <script>
+      document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+    <noscript
+      >আপনার ব্রাউজারে JavaScript বন্ধ আছে; কিছু টুল কাজ নাও করতে
+      পারে।</noscript
+    >
+  </body>
+</html>

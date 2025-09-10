@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Terms of Use — Tools Pack</title>
+    <meta
+      name="description"
+      content="Terms of Use for Tools Pack: acceptable use, disclaimer, intellectual property, changes, and contact."
+    />
+
+    <!-- Canonical + hreflang -->
+    <link rel="canonical" href="https://tools-pack.netlify.app/terms/" />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://tools-pack.netlify.app/terms/"
+    />
+    <link
+      rel="alternate"
+      hreflang="bn"
+      href="https://tools-pack.netlify.app/bn/terms/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://tools-pack.netlify.app/terms/"
+    />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/style.css" />
+
+    <!-- (Optional) OG/Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tools Pack" />
+    <meta property="og:title" content="Terms of Use — Tools Pack" />
+    <meta
+      property="og:description"
+      content="Terms governing your use of Tools Pack."
+    />
+    <meta property="og:url" content="https://tools-pack.netlify.app/terms/" />
+    <meta
+      property="og:image"
+      content="https://tools-pack.netlify.app/og/home.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <style>
+      .prose {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    </style>
+  </head>
+
+  <body class="wrap">
+    <!-- Header -->
+    <header class="sticky" role="banner">
+      <div class="brand" style="display: flex; gap: 16px; align-items: center">
+        <a href="/" aria-label="Back to home">
+          <div class="logo" aria-hidden="true"></div>
+        </a>
+        <div>
+          <h1 class="site-title" style="margin: 0">Tools Pack</h1>
+          <div class="sub">Minimal • Fast • Privacy-first</div>
+        </div>
+        <nav
+          style="
+            margin-left: auto;
+            display: flex;
+            gap: 16px;
+            align-items: center;
+          "
+        >
+          <a class="muted" href="/bn/" hreflang="bn" lang="bn">বাংলা</a>
+          <a class="muted" href="/about/">About</a>
+          <a class="muted" href="/privacy/">Privacy</a>
+          <a class="muted" href="/terms/">Terms</a>
+          <a class="muted" href="/contact/">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main -->
+    <main role="main" class="prose">
+      <h1>Terms of Use</h1>
+      <p>By using Tools Pack, you agree to the terms below.</p>
+
+      <h2>Disclaimer</h2>
+      <p>
+        All tools are provided <em>“as is”</em> without warranties of any kind.
+        For critical work, independently verify results.
+      </p>
+
+      <h2>Acceptable Use</h2>
+      <ul>
+        <li>
+          Do not use the site for illegal, abusive, or harmful activities.
+        </li>
+        <li>
+          Do not send excessive automated requests or attempt to overload or
+          disrupt the service.
+        </li>
+      </ul>
+
+      <h2>Intellectual Property</h2>
+      <p>All trademarks and brand names belong to their respective owners.</p>
+
+      <h2>Changes</h2>
+      <p>
+        We may update these terms at any time by publishing a new version on
+        this page.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        Questions? Email <a href="mailto:you@example.com">you@example.com</a>.
+      </p>
+    </main>
+
+    <!-- Footer -->
+    <footer class="wrap">
+      © <span id="y"></span> Tools Pack • Runs 100% locally. &nbsp;|&nbsp;
+      <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> ·
+      <a href="/about/">About</a> · <a href="/contact/">Contact</a>
+    </footer>
+
+    <script>
+      document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+    <noscript
+      >Your browser has JavaScript disabled; some tools may not work.</noscript
+    >
+  </body>
+</html>

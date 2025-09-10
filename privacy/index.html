@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" data-locale="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Privacy Policy — Tools Pack</title>
+    <meta
+      name="description"
+      content="Tools Pack Privacy Policy: what data stays on your device, how cookies/ads work, and how you control your preferences."
+    />
+
+    <!-- AdSense account (safe pre-approval) -->
+    <meta name="google-adsense-account" content="ca-pub-XXXXXXXXXXXXXXXX" />
+
+    <meta name="theme-color" content="#1E1E2F" />
+
+    <!-- Canonical + hreflang -->
+    <link rel="canonical" href="https://tools-pack.netlify.app/privacy/" />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://tools-pack.netlify.app/privacy/"
+    />
+    <link
+      rel="alternate"
+      hreflang="bn"
+      href="https://tools-pack.netlify.app/bn/privacy/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://tools-pack.netlify.app/privacy/"
+    />
+
+    <!-- Styles (adjust path if your folder depth differs) -->
+    <link rel="stylesheet" href="../assets/style.css" />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tools Pack" />
+    <meta property="og:title" content="Privacy Policy — Tools Pack" />
+    <meta
+      property="og:description"
+      content="Tools Pack Privacy Policy: data handling, ads, and your controls."
+    />
+    <meta property="og:url" content="https://tools-pack.netlify.app/privacy/" />
+    <meta
+      property="og:image"
+      content="https://tools-pack.netlify.app/og/home.png"
+    />
+    <meta
+      property="og:image:alt"
+      content="Tools Pack — fast, privacy-first utilities"
+    />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <style>
+      .prose {
+        min-height: 120vh;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    </style>
+    <!-- JSON-LD: WebPage -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Privacy Policy",
+        "inLanguage": "en",
+        "url": "https://tools-pack.netlify.app/privacy/"
+      }
+    </script>
+  </head>
+  <body class="wrap">
+    <!-- Header -->
+    <header class="sticky" role="banner">
+      <div class="brand" style="display: flex; gap: 16px; align-items: center">
+        <a href="/en/" aria-label="Go to home">
+          <div class="logo" aria-hidden="true"></div>
+        </a>
+        <div>
+          <h1 class="site-title" style="margin: 0">Tools Pack</h1>
+          <div class="sub">Minimal • Fast • Privacy-first</div>
+        </div>
+        <nav
+          style="
+            margin-left: auto;
+            display: flex;
+            gap: 16px;
+            align-items: center;
+          "
+          aria-label="Primary"
+        >
+          <a class="muted" href="/bn/" hreflang="bn" lang="bn">বাংলা</a>
+          <a class="muted" href="/about/">About</a>
+          <a class="muted" href="/terms/">Terms</a>
+          <a class="muted" href="/contact/">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main -->
+    <main role="main" class="prose">
+      <h1>Privacy Policy</h1>
+      <p><strong>Last updated:</strong> <span id="last-updated"></span></p>
+
+      <p>
+        Tools Pack is a collection of client-side utility tools. Most tools run
+        directly in your browser; we do not store your inputs on our server.
+      </p>
+
+      <h2>What we collect</h2>
+      <ul>
+        <li><strong>No account required.</strong></li>
+        <li>
+          <strong>LocalStorage data:</strong> some tools (e.g., Notes) use your
+          browser’s <em>localStorage</em>. This stays on your device.
+        </li>
+        <li>
+          <strong>Diagnostics/analytics:</strong> to improve the site we may
+          measure anonymized, aggregate metrics like page views or device type—
+          not personally identifiable information.
+        </li>
+      </ul>
+
+      <h2>Advertising</h2>
+      <p>
+        We may use Google AdSense. Google and its partners may use cookies to
+        serve ads (personalized or non-personalized).
+      </p>
+      <p>
+        Learn how Google uses data:
+        <a
+          rel="noopener nofollow"
+          href="https://policies.google.com/technologies/partner-sites"
+          >policies.google.com/technologies/partner-sites</a
+        >
+      </p>
+
+      <h2>Cookies & your controls</h2>
+      <ul>
+        <li>Manage or clear cookies/site data from your browser settings.</li>
+        <li>You can clear any localStorage data from your browser.</li>
+        <li>Control ad personalization in your Google account settings.</li>
+      </ul>
+
+      <h2>Children’s privacy</h2>
+      <p>
+        Our site is not directed to children, and we do not knowingly collect
+        personal information from children.
+      </p>
+
+      <h2>Changes to this policy</h2>
+      <p>
+        We may update this policy when needed; any new version will be published
+        on this page.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        Questions? Email us:
+        <a href="mailto:you@example.com">you@example.com</a>
+        <!-- Replace with your email -->
+      </p>
+    </main>
+
+    <!-- Footer -->
+    <footer class="wrap">
+      © <span id="y"></span> Tools Pack • Runs 100% in your browser
+      &nbsp;|&nbsp; <a href="/privacy/">Privacy Policy</a> ·
+      <a href="/terms/">Terms</a> · <a href="/about/">About</a> ·
+      <a href="/contact/">Contact</a>
+    </footer>
+
+    <script>
+      document.getElementById("y").textContent = new Date().getFullYear();
+      document.getElementById("last-updated").textContent = new Date()
+        .toISOString()
+        .slice(0, 10);
+    </script>
+
+    <noscript>JavaScript is disabled; some tools may not work.</noscript>
+  </body>
+</html>
