@@ -35,7 +35,7 @@
     <meta property="og:title" content="Percentage Calculator — Tools Pack" />
     <meta
       property="og:description"
-      content="A% of B, what percent is A of B, percent change, and after increase/decrease."
+      content="A% of B, what percent is A of B, percent change, and value after increase/decrease."
     />
     <meta
       property="og:url"
@@ -45,7 +45,7 @@
     <!-- Site styles (one level up from /percent-calculator/) -->
     <link rel="stylesheet" href="../assets/style.css" />
 
-    <!-- WebApplication JSON-LD (valid static JSON) -->
+    <!-- WebApplication JSON-LD -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -60,7 +60,7 @@
       }
     </script>
 
-    <!-- Breadcrumbs JSON-LD -->
+    <!-- ✅ Fixed Breadcrumbs JSON-LD (item is a URL string) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -70,21 +70,19 @@
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": { "@id": "https://tools-pack.netlify.app/" }
+            "item": "https://tools-pack.netlify.app/"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Calculators",
-            "item": { "@id": "https://tools-pack.netlify.app/#calculator" }
+            "item": "https://tools-pack.netlify.app/#math"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Percentage Calculator",
-            "item": {
-              "@id": "https://tools-pack.netlify.app/percent-calculator/"
-            }
+            "item": "https://tools-pack.netlify.app/percent-calculator/"
           }
         ]
       }
@@ -182,13 +180,6 @@
         margin: 40px auto;
         padding: 0 16px;
       }
-      /* header {
-        display: flex;
-        gap: 16px;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 20px;
-      } */
       .title {
         font-size: clamp(22px, 3.6vw, 36px);
         font-weight: 800;
@@ -244,6 +235,7 @@
         border-radius: 10px;
         padding: 10px 12px;
         box-shadow: inset 0 0 0 1px transparent;
+        -moz-appearance: textfield;
       }
       input[type="number"]:focus {
         outline: none;
@@ -253,9 +245,6 @@
       input::-webkit-inner-spin-button {
         -webkit-appearance: none;
         margin: 0;
-      }
-      input[type="number"] {
-        -moz-appearance: textfield;
       }
       .btn {
         background: linear-gradient(135deg, var(--accent), var(--accent-2));
@@ -320,7 +309,7 @@
     <!-- Global header -->
     <header class="sticky">
       <div class="wrap brand">
-        <a href="/"><div class="logo"></div></a>
+        <a href="/"><div class="logo" aria-hidden="true"></div></a>
         <div>
           <h1 style="margin: 0">Tools Pack</h1>
           <div class="sub">Pretty • Minify • Validate</div>
@@ -348,7 +337,7 @@
     </div>
 
     <div class="container">
-      <!-- Breadcrumbs -->
+      <!-- Breadcrumbs (UI) -->
       <nav class="breadcrumbs" aria-label="breadcrumb">
         <a href="/">Home</a> › <a href="/#math">Math Tools</a> ›
         <span>Percentage Calculator</span>
@@ -363,7 +352,7 @@
         <a href="#related">Related tools</a>
       </p>
 
-      <!-- Local title -->
+      <!-- Title -->
       <header>
         <div>
           <div class="title">Percentage Calculator</div>
