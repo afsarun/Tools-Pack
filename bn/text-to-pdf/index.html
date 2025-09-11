@@ -9,7 +9,10 @@
       name="description"
       content="টেক্সটকে PDF এ রূপান্তর করুন—পেজ সাইজ, মার্জিন, হেডার/ফুটারসহ। সবকিছু ১০০% ব্রাউজারেই, কোনো ট্র্যাকিং নেই।"
     />
-
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;700&display=swap"
+    />
     <!-- Canonical & hreflang -->
     <link
       rel="canonical"
@@ -234,6 +237,11 @@
       .mono {
         font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
           "Liberation Mono", monospace;
+      }
+      @media print {
+        #tp-print-root {
+          font-family: "Noto Sans Bengali", system-ui, sans-serif !important;
+        }
       }
     </style>
   </head>
