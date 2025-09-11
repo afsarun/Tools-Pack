@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tools Pack — Analytics Admin</title>
+  <link rel="stylesheet" href="./admin.css" />
+</head>
+<body>
+  <div class="wrap">
+    <h1>Analytics Admin</h1>
+
+    <section id="login">
+      <h2>Login</h2>
+      <p class="muted">Enter the admin password you set in Netlify env.</p>
+      <form id="loginForm">
+        <input type="password" id="password" placeholder="Admin password" required />
+        <button type="submit">Login</button>
+      </form>
+      <p id="loginMsg" class="msg"></p>
+    </section>
+
+    <section id="dash" class="hidden">
+      <div class="topbar">
+        <div>
+          <label>Range:
+            <select id="range">
+              <option value="7">Last 7 days</option>
+              <option value="30">Last 30 days</option>
+              <option value="90">Last 90 days</option>
+            </select>
+          </label>
+        </div>
+        <button id="logout">Logout</button>
+      </div>
+
+      <div id="cards" class="cards">
+        <div class="card"><div class="k">Pageviews</div><div class="v" id="pv">–</div></div>
+        <div class="card"><div class="k">Total events</div><div class="v" id="ev">–</div></div>
+      </div>
+
+      <div class="grid">
+        <div class="panel">
+          <h3>Top pages</h3>
+          <table id="topPages"><thead><tr><th>Path</th><th>Count</th></tr></thead><tbody></tbody></table>
+        </div>
+        <div class="panel">
+          <h3>Top referrers</h3>
+          <table id="topRef"><thead><tr><th>Referrer</th><th>Count</th></tr></thead><tbody></tbody></table>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Recent events</h3>
+        <table id="events"><thead><tr><th>Time</th><th>Type</th><th>Path</th><th>Referrer</th></tr></thead><tbody></tbody></table>
+      </div>
+    </section>
+  </div>
+
+  <script src="./admin.js" defer></script>
+</body>
+</html>
