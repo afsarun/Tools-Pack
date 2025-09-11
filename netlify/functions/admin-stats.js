@@ -1,5 +1,3 @@
-const fetch = (...args) =>
-  import("node-fetch").then(({ default: fetch }) => fetch(...args));
 const { ok, bad, verifyToken, CORS_HEADERS } = require("./_common.js");
 
 function groupBy(arr, keyFn) {
@@ -24,8 +22,9 @@ exports.handler = async (event, context) => {
 
   const SUPABASE_URL = process.env.SUPABASE_URL;
   const SUPABASE_SERVICE_ROLE = process.env.SUPABASE_SERVICE_ROLE;
-  if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE)
+  if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE) {
     return bad(500, "Server not configured");
+  }
 
   const q = event.queryStringParameters || {};
   const sinceDays = parseInt(q.since || "7", 10);
@@ -49,6 +48,7 @@ exports.handler = async (event, context) => {
     const text = await resp.text();
     return bad(500, `Supabase error: ${text}`);
   }
+
   const events = await resp.json();
 
   const totalEvents = events.length;

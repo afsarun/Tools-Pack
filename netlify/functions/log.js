@@ -1,5 +1,3 @@
-const fetch = (...args) =>
-  import("node-fetch").then(({ default: fetch }) => fetch(...args));
 const { ok, bad, sha256Hex, CORS_HEADERS } = require("./_common.js");
 
 exports.handler = async (event, context) => {
@@ -33,6 +31,7 @@ exports.handler = async (event, context) => {
   )
     .split(",")[0]
     .trim();
+
   const ipHash = clientIp
     ? sha256Hex((process.env.IP_SALT || "salt") + clientIp)
     : null;
