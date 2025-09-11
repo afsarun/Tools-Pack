@@ -235,6 +235,8 @@
         grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
         padding-left: 1rem;
       }
+
+      /* Live preview: #txt font-size set from JS (pt→px) */
     </style>
   </head>
   <body>
@@ -254,6 +256,7 @@
         </div>
       </div>
     </header>
+
     <!-- Ad #1: top banner (constrained, no full-width expansion) -->
     <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
       <span class="ad-label">Ad</span>
@@ -267,6 +270,7 @@
         data-adtest="on"
       ></ins>
     </div>
+
     <main class="wrap">
       <!-- Secondary Breadcrumbs (kept for design; now corrected) -->
       <nav class="breadcrumbs" aria-label="breadcrumb">
@@ -310,6 +314,23 @@
             <span class="pill mono">mm</span>
           </label>
 
+          <!-- NEW: font size (pt) -->
+          <label
+            class="field"
+            style="display: flex; align-items: center; gap: 30px"
+          >
+            <span class="muted">Font size</span>
+            <input
+              id="fsize"
+              type="number"
+              class="field"
+              value="12"
+              min="8"
+              max="48"
+            />
+            <span class="pill mono">pt</span>
+          </label>
+
           <label class="pill"
             ><input id="hdr" type="checkbox" checked /> Header</label
           >
@@ -341,7 +362,7 @@
           <button class="btn" id="sample">Sample</button>
         </div>
 
-        <div id="status" class="muted small">
+        <div id="status" class="muted small" aria-live="polite">
           Use “Save as PDF” in the print dialog.
         </div>
       </article>
@@ -358,13 +379,16 @@
             <strong>Margins</strong>.
           </li>
           <li>
+            Set <strong>Font size</strong> (pt) — applies to both editor preview
+            and the PDF output.
+          </li>
+          <li>
             Optionally enable <strong>Header</strong> and/or
             <strong>Footer</strong> (title on top, generated time at bottom).
           </li>
-          <li>Click <strong>Preview &amp; Print</strong>.</li>
           <li>
-            In your browser’s print dialog, choose
-            <strong>Save as PDF</strong> and confirm.
+            Click <strong>Preview &amp; Print</strong> and choose
+            <strong>Save as PDF</strong> in the print dialog.
           </li>
         </ol>
         <h3>Tips</h3>
@@ -444,10 +468,13 @@
 
     <script>
       (function () {
+        const PT_TO_PX = 96 / 72; // CSS points to pixels for on-screen preview
+
         // Elements
         const pageEl = document.getElementById("page");
         const orientEl = document.getElementById("orient");
         const marginEl = document.getElementById("margin");
+        const fsizeEl = document.getElementById("fsize"); // NEW
         const hdrEl = document.getElementById("hdr");
         const ftrEl = document.getElementById("ftr");
         const txtEl = document.getElementById("txt");
@@ -466,38 +493,53 @@
             (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[ch])
           );
 
+        const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
+
+        // Live preview font-size for the editor (pt -> px)
+        const applyPreviewFontSize = () => {
+          const pt = clamp(Number(fsizeEl?.value) || 12, 8, 48);
+          txtEl.style.fontSize = (pt * PT_TO_PX).toFixed(2) + "px";
+        };
+
         const gather = () => ({
           page: pageEl.value || "A4",
           orient: orientEl.value || "portrait",
-          margin: Math.max(5, Math.min(40, Number(marginEl.value) || 15)),
+          margin: clamp(Number(marginEl.value) || 15, 5, 40),
+          size: clamp(Number(fsizeEl?.value) || 12, 8, 48), // NEW
           headerOn: !!hdrEl.checked,
           footerOn: !!ftrEl.checked,
           body: txtEl.value || "",
         });
 
+        // Init preview font-size
+        applyPreviewFontSize();
+        fsizeEl.addEventListener("input", applyPreviewFontSize);
+
         const buildOverlayHTML = (vals) => {
           const title = document.title.replace(/\s*\|\s*.*$/, "");
           const header = vals.headerOn
-            ? `<header style="margin:0 0 12px 0;font-size:11pt;color:#555">${escapeHtml(
-                title
-              )}</header>`
+            ? `<header style="margin:0 0 12px 0;font-size:${Math.max(
+                9,
+                vals.size - 1
+              )}pt;color:#555">${escapeHtml(title)}</header>`
             : "";
           const footer = vals.footerOn
-            ? `<footer style="margin:12px 0 0 0;font-size:10pt;color:#777">Generated on ${new Date().toLocaleString()}</footer>`
+            ? `<footer style="margin:12px 0 0 0;font-size:${Math.max(
+                9,
+                vals.size - 2
+              )}pt;color:#777">Generated on ${new Date().toLocaleString()}</footer>`
             : "";
           return `${header}
 <div class="tp-container">${escapeHtml(vals.body)}</div>
 ${footer}`;
         };
 
-        function openPrint() {
+        async function openPrint() {
           const v = gather();
           if (!v.body.trim()) {
             statusEl.textContent = "Please enter some text first.";
             statusEl.style.color = "var(--danger)";
-            setTimeout(() => {
-              statusEl.style.color = "var(--muted)";
-            }, 1400);
+            setTimeout(() => (statusEl.style.color = "var(--muted)"), 1400);
             return;
           }
 
@@ -521,20 +563,29 @@ ${footer}`;
   #tp-print-root {
     display:block !important;
     font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, 'Noto Sans', sans-serif;
-    font-size: 12pt; line-height: 1.5; margin:0; padding:0;
+    font-size: ${v.size}pt;
+    line-height: 1.5;
+    margin:0; padding:0;
   }
-  #tp-print-root .tp-container { white-space: pre-wrap; word-break: break-word; min-height: 60vh; }
+  #tp-print-root .tp-container {
+    white-space: pre-wrap;
+    word-break: break-word;
+    min-height: 60vh;
+  }
 }`;
           document.head.appendChild(style);
 
-          // Print then cleanup
+          // Ensure styles & layout are applied before printing
+          await new Promise((r) =>
+            requestAnimationFrame(() => requestAnimationFrame(r))
+          );
+
+          window.print();
+
           setTimeout(() => {
-            window.print();
-            setTimeout(() => {
-              style.remove();
-              root.remove();
-            }, 500);
-          }, 50);
+            style.remove();
+            root.remove();
+          }, 500);
         }
 
         // Wire up events
@@ -544,6 +595,7 @@ ${footer}`;
 
 ✓ Works with Bangla (বাংলা), emoji 😄, Arabic العربية, etc.
 ✓ Choose page size, orientation, margins.
+✓ Adjust font size (pt) — affects both the editor preview and PDF output.
 ✓ Click “Preview & Print” → choose “Save as PDF”.`;
           statusEl.textContent = "Sample inserted.";
           statusEl.style.color = "var(--muted)";

@@ -9,10 +9,49 @@
       name="description"
       content="টেক্সটকে PDF এ রূপান্তর করুন—পেজ সাইজ, মার্জিন, হেডার/ফুটারসহ। সবকিছু ১০০% ব্রাউজারেই, কোনো ট্র্যাকিং নেই।"
     />
+
+    <!-- Unicode Bengali -->
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;700&display=swap"
     />
+
+    <!-- SutonnyMJ (legacy Bijoy) — put files at /assets/fonts/ -->
+    <link
+      rel="preload"
+      href="../../assets/fonts/SutonnyMJ.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="../../assets/fonts/SutonnyMJ.woff"
+      as="font"
+      type="font/woff"
+      crossorigin
+    />
+
+    <style>
+      @font-face {
+        font-family: "SutonnyMJ";
+        src: local("SutonnyMJ"),
+          url("../../assets/fonts/SutonnyMJ.woff2") format("woff2"),
+          url("../../assets/fonts/SutonnyMJ.woff") format("woff");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+        /* বিজয়ের সাধারণ পাংচুয়েশনসহ রেঞ্জ (†=U+2020) */
+        unicode-range: U+0000-00FF, U+2000-206F;
+        /* নোট: সমস্যা থাকলে unicode-range সম্পূর্ণ তুলে দিন */
+      }
+
+      .font-bijoy {
+        font-family: "SutonnyMJ", "Noto Sans Bengali", system-ui, sans-serif !important;
+        letter-spacing: 0;
+      }
+    </style>
+
     <!-- Canonical & hreflang -->
     <link
       rel="canonical"
@@ -38,7 +77,7 @@
     <link rel="stylesheet" href="../../assets/style.css" />
     <meta name="theme-color" content="#1E1E2F" />
 
-    <!-- Open Graph / Twitter -->
+    <!-- OG/Twitter -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Tools Pack" />
     <meta property="og:title" content="টেক্সট → PDF — Tools Pack" />
@@ -57,7 +96,7 @@
     <meta property="og:image:alt" content="টেক্সট → PDF — Tools Pack" />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- JSON-LD: WebApplication -->
+    <!-- JSON-LD -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -70,8 +109,6 @@
         "inLanguage": "bn"
       }
     </script>
-
-    <!-- JSON-LD: Breadcrumbs -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -92,8 +129,6 @@
         ]
       }
     </script>
-
-    <!-- JSON-LD: FAQPage -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -143,7 +178,7 @@
       }
     </script>
 
-    <!-- Google AdSense (test mode while developing) -->
+    <!-- AdSense (dev/test) -->
     <script
       async
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234567890123456"
@@ -163,8 +198,8 @@
         display: inline-block;
         font-size: 11px;
         line-height: 1;
-        color: var(--muted, #888);
-        margin: 0 0 2px 0;
+        color: var(--muted);
+        margin: 0 0 2px;
       }
       .adsbygoogle {
         display: block;
@@ -238,11 +273,12 @@
         font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
           "Liberation Mono", monospace;
       }
-      @media print {
-        #tp-print-root {
-          font-family: "Noto Sans Bengali", system-ui, sans-serif !important;
-        }
+
+      /* Editor preview: Bijoy toggle */
+      #txt.font-bijoy {
+        font-family: "SutonnyMJ", "Noto Sans Bengali", system-ui, sans-serif;
       }
+      /* NOTE: no global print font here; the injected print CSS controls it */
     </style>
   </head>
 
@@ -262,7 +298,7 @@
       </div>
     </header>
 
-    <!-- Ad #1: Top banner -->
+    <!-- Ad #1 -->
     <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
       <span class="ad-label">Ad</span>
       <ins
@@ -277,13 +313,11 @@
     </div>
 
     <main class="wrap">
-      <!-- Breadcrumbs -->
       <nav class="breadcrumbs" aria-label="breadcrumb">
         <a href="/bn/">হোম</a> › <a href="/bn/#text">টেক্সট টুলস</a> ›
         <span>টেক্সট → PDF</span>
       </nav>
 
-      <!-- TOC -->
       <p class="toc">
         <a href="#tool">কনভার্টার</a> ·
         <a href="#how">কীভাবে ব্যবহার করবেন</a> ·
@@ -291,7 +325,6 @@
         <a href="#related">সম্পর্কিত টুলস</a>
       </p>
 
-      <!-- Tool -->
       <article class="card" id="tool">
         <h2>টেক্সট → PDF কনভার্টার</h2>
 
@@ -323,10 +356,33 @@
             <span class="pill mono">মিমি</span>
           </label>
 
+          <!-- NEW: font size (pt) -->
+          <label
+            class="field"
+            style="display: flex; align-items: center; gap: 10px"
+          >
+            <span class="muted">ফন্ট সাইজ</span>
+            <input
+              id="fsize"
+              type="number"
+              class="field"
+              value="12"
+              min="8"
+              max="48"
+            />
+            <span class="pill mono">pt</span>
+          </label>
+
           <label class="pill"
             ><input id="hdr" type="checkbox" checked /> হেডার</label
           >
           <label class="pill"><input id="ftr" type="checkbox" /> ফুটার</label>
+
+          <!-- Legacy Bijoy toggle -->
+          <label class="pill">
+            <input id="bijoy" type="checkbox" />
+            লিগ্যাসি (বিজয়/SutonnyMJ)
+          </label>
         </div>
 
         <textarea
@@ -342,7 +398,7 @@
           <button class="btn" id="sample" type="button">নমুনা টেক্সট</button>
         </div>
 
-        <!-- Ad #2: In-article -->
+        <!-- Ad #2 -->
         <div
           class="ad-wrap ad-article"
           aria-label="Advertisement"
@@ -365,7 +421,6 @@
         </div>
       </article>
 
-      <!-- How to use -->
       <article class="card" id="how">
         <h2>কীভাবে ব্যবহার করবেন</h2>
         <ol>
@@ -373,7 +428,7 @@
             পেজ সাইজ, অরিয়েন্টেশন ও মার্জিন বেছে নিন; প্রয়োজনে হেডার/ফুটার অন
             করুন।
           </li>
-          <li>টেক্সট বক্সে কনটেন্ট লিখুন বা পেস্ট করুন (ইউনিকোড নিরাপদ)।</li>
+          <li>ফন্ট সাইজ (pt) সেট করুন—এডিটর ও PDF-এ দুটোতেই প্রযোজ্য।</li>
           <li>
             <strong>প্রিভিউ ও প্রিন্ট</strong> চাপুন → ব্রাউজারের প্রিন্ট
             ডায়ালগে <em>Save as PDF</em> সিলেক্ট করুন।
@@ -382,7 +437,6 @@
         </ol>
       </article>
 
-      <!-- FAQ -->
       <article class="card faq" id="faq">
         <h2>প্রশ্নোত্তর</h2>
         <details>
@@ -400,8 +454,9 @@
           <summary>পেজ নম্বর/হেডার-ফুটার?</summary>
           <p>
             টুলের হেডার/ফুটার অপশন অন করলে টাইটেল ও তৈরি হওয়ার সময় দেখাবে। পেজ
-            নম্বর দরকার হলে প্রিন্ট ডায়ালগের <em>Headers & Footers</em> অপশন
-            ব্যবহার করতে পারেন (ব্রাউজারভেদে ভিন্ন হতে পারে)।
+            নম্বর দরকার হলে প্রিন্ট ডায়ালগের
+            <em>Headers &amp; Footers</em> অপশন ব্যবহার করতে পারেন (ব্রাউজারভেদে
+            ভিন্ন হতে পারে)।
           </p>
         </details>
         <details>
@@ -410,7 +465,6 @@
         </details>
       </article>
 
-      <!-- Related -->
       <article class="card" id="related">
         <h2>সম্পর্কিত টুলস</h2>
         <p class="muted">আরও টেক্সট/ডকুমেন্ট টুলস:</p>
@@ -434,7 +488,7 @@
       // Footer year
       document.getElementById("y").textContent = new Date().getFullYear();
 
-      // ===== Lazy init AdSense when slots are visible =====
+      // Lazy AdSense init
       const initAds = () => {
         window.adsbygoogle = window.adsbygoogle || [];
         const slots = document.querySelectorAll(
@@ -468,11 +522,15 @@
 
       // ===== Text -> PDF logic =====
       (function () {
+        const PT_TO_PX = 96 / 72; // CSS pt→px mapping for on-screen preview
+
         const pageEl = document.getElementById("page");
         const orientEl = document.getElementById("orient");
         const marginEl = document.getElementById("margin");
+        const fsizeEl = document.getElementById("fsize"); // NEW
         const hdrEl = document.getElementById("hdr");
         const ftrEl = document.getElementById("ftr");
+        const bijoyEl = document.getElementById("bijoy");
         const txtEl = document.getElementById("txt");
         const printBtn = document.getElementById("print");
         const sampleBtn = document.getElementById("sample");
@@ -484,31 +542,56 @@
             (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[ch])
           );
 
+        // Live preview font-size in the editor
+        const applyPreviewFontSize = () => {
+          const pt = Math.max(8, Math.min(48, Number(fsizeEl.value) || 12));
+          txtEl.style.fontSize = (pt * PT_TO_PX).toFixed(2) + "px";
+        };
+
         const gather = () => ({
           page: pageEl.value || "A4",
           orient: orientEl.value || "portrait",
           margin: Math.max(5, Math.min(40, Number(marginEl.value) || 15)),
+          size: Math.max(8, Math.min(48, Number(fsizeEl.value) || 12)), // NEW
           headerOn: !!hdrEl.checked,
           footerOn: !!ftrEl.checked,
+          bijoy: !!(bijoyEl && bijoyEl.checked),
           body: txtEl.value || "",
         });
+
+        // Init preview font-size
+        applyPreviewFontSize();
+        fsizeEl.addEventListener("input", applyPreviewFontSize);
+
+        // Toggle preview font in the editor
+        if (bijoyEl) {
+          bijoyEl.addEventListener("change", () => {
+            bijoyEl.checked
+              ? txtEl.classList.add("font-bijoy")
+              : txtEl.classList.remove("font-bijoy");
+          });
+        }
 
         const buildOverlayHTML = (vals) => {
           const title = document.title.replace(/\s*\|\s*.*$/, "");
           const header = vals.headerOn
-            ? `<header style="margin:0 0 12px 0;font-size:11pt;color:#555">${escapeHtml(
-                title
-              )}</header>`
+            ? `<header style="margin:0 0 12px 0;font-size:${Math.max(
+                9,
+                vals.size - 1
+              )}pt;color:#555">${escapeHtml(title)}</header>`
             : "";
           const footer = vals.footerOn
-            ? `<footer style="margin:12px 0 0 0;font-size:10pt;color:#777">তৈরি হয়েছে ${new Date().toLocaleString()}</footer>`
+            ? `<footer style="margin:12px 0 0 0;font-size:${Math.max(
+                9,
+                vals.size - 2
+              )}pt;color:#777">তৈরি হয়েছে ${new Date().toLocaleString()}</footer>`
             : "";
           return `${header}
 <div class="tp-container">${escapeHtml(vals.body)}</div>
 ${footer}`;
         };
 
-        function openPrint() {
+        async function openPrint() {
           const v = gather();
           if (!v.body.trim()) {
             statusEl.textContent = "অনুগ্রহ করে আগে কিছু টেক্সট লিখুন।";
@@ -520,11 +603,12 @@ ${footer}`;
           // Create print root
           const root = document.createElement("div");
           root.id = "tp-print-root";
+          if (v.bijoy) root.classList.add("font-bijoy"); // switch to SutonnyMJ if toggled
           root.setAttribute("aria-hidden", "true");
           root.innerHTML = buildOverlayHTML(v);
           document.body.appendChild(root);
 
-          // Inject print CSS
+          // Inject print CSS (authoritative)
           const style = document.createElement("style");
           style.id = "tp-print-style";
           style.textContent = `
@@ -537,9 +621,14 @@ ${footer}`;
   #tp-print-root {
     display:block !important;
     font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, 'Noto Sans Bengali', sans-serif;
-    font-size: 12pt;
+    font-size: ${v.size}pt;
     line-height: 1.5;
     margin:0; padding:0;
+  }
+  /* বিজয় অন থাকলে—সব ডেসেন্ড্যান্টেও Sutonny বাধ্যতামূলক */
+  #tp-print-root.font-bijoy,
+  #tp-print-root.font-bijoy * {
+    font-family: 'SutonnyMJ','Noto Sans Bengali',system-ui,sans-serif !important;
   }
   #tp-print-root .tp-container {
     white-space: pre-wrap;
@@ -549,14 +638,25 @@ ${footer}`;
 }`;
           document.head.appendChild(style);
 
-          // Print then cleanup
+          // === গুরুত্বপূর্ণ: DOM apply + ফন্ট লোড হওয়া পর্যন্ত অপেক্ষা করুন ===
+          await new Promise((r) =>
+            requestAnimationFrame(() => requestAnimationFrame(r))
+          );
+          if (v.bijoy) {
+            try {
+              await document.fonts.load('12pt "SutonnyMJ"');
+            } catch {}
+          }
+          try {
+            await document.fonts.ready;
+          } catch {}
+
+          window.print();
+
           setTimeout(() => {
-            window.print();
-            setTimeout(() => {
-              style.remove();
-              root.remove();
-            }, 400);
-          }, 50);
+            style.remove();
+            root.remove();
+          }, 400);
         }
 
         printBtn.addEventListener("click", openPrint);
@@ -566,7 +666,10 @@ ${footer}`;
 
 ✓ বাংলা, ইমোজি 😄, আরবি العربية ইত্যাদি ইউনিকোড টেক্সট সাপোর্ট।
 ✓ পেজ সাইজ, অরিয়েন্টেশন, মার্জিন বেছে নিন।
-✓ “প্রিভিউ ও প্রিন্ট” চাপুন → প্রিন্ট ডায়ালগে “Save as PDF” নির্বাচন করুন।`;
+✓ ফন্ট সাইজ (pt) পরিবর্তন করুন—এডিটর ও PDF দুই জায়গাতেই প্রযোজ্য।
+✓ “প্রিভিউ ও প্রিন্ট” চাপুন → প্রিন্ট ডায়ালগে “Save as PDF” নির্বাচন করুন।
+
+(বিজয় পরীক্ষা) †gvnv Avwg bZzvq — Toggle ‘লিগ্যাসি (বিজয়/SutonnyMJ)’ অন করে প্রিন্ট দিন।`;
           statusEl.textContent = "নমুনা টেক্সট যোগ হয়েছে।";
           statusEl.style.color = "var(--muted)";
         });
