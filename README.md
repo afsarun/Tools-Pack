@@ -1,17 +1,17 @@
 # Tools Pack — Online Utilities
 
-All-in-one free tools: JSON Formatter, Calculator, Age Calculator, Text Utilities, PDF Converter, Image Compressor, etc.  
+All-in-one free tools: JSON Formatter, Calculator, Age Calculator, Text Utilities, PDF Converter, Image Compressor, etc.
 
 🔗 Live site: [https://tools-pack.netlify.app/](https://tools-pack.netlify.app/)
 
 ## Features
+
 - Unicode-safe Bengali & English support
 - Works 100% in browser (no data sent to server)
 - JSON-LD structured data for SEO
 - Mobile-friendly responsive UI
 
 👉 Explore all tools in detail at the main site!
-
 
 ## 🌍 English Tools
 
@@ -33,7 +33,7 @@ All-in-one free tools: JSON Formatter, Calculator, Age Calculator, Text Utilitie
 6. [Text Utilities](https://tools-pack.netlify.app/text-utilities/)  
    👉 Change case, remove extra spaces, count characters, etc.
 
-7. [Base64 Tools](https://tools-pack.netlify.app/base64-tools/)  
+7. [Base64 Tools](https://tools-pack.netlify.app/base64/)  
    👉 Encode or decode Base64 text.
 
 8. [URL Tools](https://tools-pack.netlify.app/url-tools/)  
@@ -42,10 +42,10 @@ All-in-one free tools: JSON Formatter, Calculator, Age Calculator, Text Utilitie
 9. [Password & UUID Generator](https://tools-pack.netlify.app/password-uuid/)  
    👉 Generate secure random passwords and unique IDs.
 
-10. [UUID v4 Generator](https://tools-pack.netlify.app/uuid-generator/)  
+10. [UUID v4 Generator](https://tools-pack.netlify.app/uuid-v4/)  
     👉 Create universally unique identifiers.
 
-11. [SHA-256 Hash Generator](https://tools-pack.netlify.app/sha256-hash/)  
+11. [SHA-256 Hash Generator](https://tools-pack.netlify.app/sha256/)  
     👉 Generate SHA-256 hash for any text.
 
 12. [Image Resizer / Compressor](https://tools-pack.netlify.app/image-resizer-compressor/)  
@@ -88,7 +88,7 @@ All-in-one free tools: JSON Formatter, Calculator, Age Calculator, Text Utilitie
 6. [টেক্সট টুলস](https://tools-pack.netlify.app/bn/text-utilities/)  
    👉 অক্ষর গণনা, বড় হাত/ছোট হাত পরিবর্তন, ফাঁকা জায়গা মুছুন।
 
-7. [Base64 টুলস](https://tools-pack.netlify.app/bn/base64-tools/)  
+7. [Base64 টুলস](https://tools-pack.netlify.app/bn/base64/)  
    👉 Base64 এনকোড ও ডিকোড করুন।
 
 8. [URL টুলস](https://tools-pack.netlify.app/bn/url-tools/)  
@@ -97,10 +97,10 @@ All-in-one free tools: JSON Formatter, Calculator, Age Calculator, Text Utilitie
 9. [পাসওয়ার্ড ও UUID জেনারেটর](https://tools-pack.netlify.app/bn/password-uuid/)  
    👉 নিরাপদ পাসওয়ার্ড ও ইউনিক আইডি তৈরি করুন।
 
-10. [UUID v4 জেনারেটর](https://tools-pack.netlify.app/bn/uuid-generator/)  
+10. [UUID v4 জেনারেটর](https://tools-pack.netlify.app/bn/uuid4/)  
     👉 ইউনিক আইডেন্টিফায়ার তৈরি করুন।
 
-11. [SHA-256 হ্যাশ জেনারেটর](https://tools-pack.netlify.app/bn/sha256-hash/)  
+11. [SHA-256 হ্যাশ জেনারেটর](https://tools-pack.netlify.app/bn/sha256/)  
     👉 যেকোনো টেক্সট থেকে হ্যাশ তৈরি করুন।
 
 12. [ইমেজ রিসাইজার / কমপ্রেসর](https://tools-pack.netlify.app/bn/image-resizer-compressor/)  
@@ -119,4 +119,4 @@ All-in-one free tools: JSON Formatter, Calculator, Age Calculator, Text Utilitie
     👉 টেক্সটকে PDF-এ রূপান্তর করুন, মার্জিন/হেডারসহ।
 
 17. [শতকরা ক্যালকুলেটর](https://tools-pack.netlify.app/bn/percent-calculator/)  
-    👉 শতকরা হিসাব, A% of B, শতাংশ পরিবর্তন।  
+    👉 শতকরা হিসাব, A% of B, শতাংশ পরিবর্তন।
