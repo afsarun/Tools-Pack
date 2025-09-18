@@ -8,11 +8,12 @@
       name="description"
       content="Tools Pack গোপনীয়তা নীতি: কোন ডেটা কোথায় থাকে, কুকি/বিজ্ঞাপন ব্যবহারের নিয়ম, এবং আপনার পছন্দসমূহ।"
     />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#1E1E2F" />
 
-    <!-- AdSense account (safe pre-approval) -->
+    <!-- AdSense account (safe pre-approval). Replace with your real publisher ID -->
     <meta name="google-adsense-account" content="ca-pub-XXXXXXXXXXXXXXXX" />
 
-    <meta name="theme-color" content="#1E1E2F" />
     <!-- Canonical + hreflang -->
     <link rel="canonical" href="https://tools-pack.netlify.app/bn/privacy/" />
     <link
@@ -31,8 +32,8 @@
       href="https://tools-pack.netlify.app/privacy/"
     />
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="../../assets/style.css" />
+    <!-- Styles (root-relative so it works from any depth) -->
+    <link rel="stylesheet" href="/assets/style.css" />
 
     <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
@@ -127,6 +128,7 @@
         Google কীভাবে ডেটা ব্যবহার করে জানুন:
         <a
           rel="noopener nofollow"
+          target="_blank"
           href="https://policies.google.com/technologies/partner-sites"
           >policies.google.com/technologies/partner-sites</a
         >
@@ -135,10 +137,11 @@
       <h2>কুকি ও নিয়ন্ত্রণ</h2>
       <ul>
         <li>
-          আপনার ব্রাউজারের সেটিংস থেকে কুকি/সাইট ডেটা নিয়ন্ত্রণ বা মুছে দিতে
-          পারেন।
+          ব্রাউজারের সেটিংস থেকে কুকি/সাইট ডেটা নিয়ন্ত্রণ বা মুছে দিতে পারেন।
         </li>
-        <li>localStorage ডেটা চানলে ব্রাউজার থেকে মুছে ফেলতে পারেন।</li>
+        <li>
+          <code>localStorage</code> ডেটা আপনার ব্রাউজার থেকেই মুছতে পারবেন।
+        </li>
         <li>
           আপনার Google অ্যাকাউন্টে বিজ্ঞাপন ব্যক্তিগতকরণ সেটিংস নিয়ন্ত্রণ করতে
           পারেন।
@@ -174,19 +177,19 @@
 
     <script>
       document.getElementById("y").textContent = new Date().getFullYear();
+      // Set a fixed last-updated date if you prefer; this shows today's date.
       document.getElementById("last-updated").textContent = new Date()
         .toISOString()
         .slice(0, 10);
     </script>
+
+    <!-- Root-relative scripts (avoid ../../ path issues) -->
+    <script src="/assets/tracker.js" defer data-trk-site="tools-pack"></script>
+    <script src="/assets/related-more.js" defer></script>
+
     <noscript
       >আপনার ব্রাউজারে JavaScript বন্ধ আছে; কিছু টুল কাজ নাও করতে
       পারে।</noscript
     >
-    <script
-      src="../../assets/tracker.js"
-      defer
-      data-trk-site="tools-pack"
-    ></script>
-    <script src="../../assets/related-more.js" defer></script>
   </body>
 </html>

@@ -8,6 +8,7 @@
       name="description"
       content="দ্রুত, আধুনিক, প্রাইভেসি-ফার্স্ট অনলাইন টুলস: ক্যালকুলেটর, JSON ফরম্যাটার, ইউনিট কনভার্টার, ইমেজ রিসাইজার, কালার কনট্রাস্ট, স্টপওয়াচ, নোটস এবং আরও—সবই আপনার ব্রাউজারেই।"
     />
+    <meta name="robots" content="index,follow" />
 
     <!-- AdSense account (safe to include before approval) -->
     <meta name="google-adsense-account" content="ca-pub-XXXXXXXXXXXXXXXX" />
@@ -35,8 +36,8 @@
       href="https://tools-pack.netlify.app/"
     />
 
-    <!-- Styles (bn/ থেকে আপ-লেভেলে) -->
-    <link rel="stylesheet" href="../assets/style.css" />
+    <!-- Styles (root-relative so it works from any depth) -->
+    <link rel="stylesheet" href="/assets/style.css" />
 
     <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
@@ -258,6 +259,7 @@
             gap: 16px;
             align-items: center;
           "
+          aria-label="Primary"
         >
           <a
             class="muted"
@@ -275,8 +277,10 @@
       </div>
     </header>
 
-    <main class="wrap" role="main">
+    <main class="wrap" role="main" aria-label="মূল কন্টেন্ট">
       <section class="grid" aria-label="টুলস">
+        <!-- your cards unchanged -->
+        <!-- ... (cards list exactly as you had) ... -->
         <article class="card">
           <h2>শতকরা হিসাব</h2>
           <p class="muted">
@@ -408,11 +412,10 @@
     <script>
       document.getElementById("y").textContent = new Date().getFullYear();
     </script>
-    <script
-      src="../../assets/tracker.js"
-      defer
-      data-trk-site="tools-pack"
-    ></script>
+
+    <!-- Root-relative script path (fixes the inconsistent ../../) -->
+    <script src="/assets/tracker.js" defer data-trk-site="tools-pack"></script>
+
     <noscript
       >আপনার ব্রাউজারে JavaScript বন্ধ আছে; কিছু টুল কাজ নাও করতে
       পারে।</noscript

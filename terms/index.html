@@ -8,6 +8,8 @@
       name="description"
       content="Terms of Use for Tools Pack: acceptable use, disclaimer, intellectual property, changes, and contact."
     />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#1E1E2F" />
 
     <!-- Canonical + hreflang -->
     <link rel="canonical" href="https://tools-pack.netlify.app/terms/" />
@@ -27,10 +29,10 @@
       href="https://tools-pack.netlify.app/terms/"
     />
 
-    <!-- Styles -->
+    <!-- Styles (root-relative so paths don't break on nested routes) -->
     <link rel="stylesheet" href="/assets/style.css" />
 
-    <!-- (Optional) OG/Twitter -->
+    <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Tools Pack" />
     <meta property="og:title" content="Terms of Use — Tools Pack" />
@@ -43,17 +45,58 @@
       property="og:image"
       content="https://tools-pack.netlify.app/og/home.png"
     />
+    <meta
+      property="og:image:alt"
+      content="Tools Pack — fast, privacy-first utilities"
+    />
+    <meta property="og:locale" content="en_US" />
     <meta name="twitter:card" content="summary_large_image" />
 
     <style>
+      /* Page-specific tiny tweak */
       .prose {
         min-height: 100vh;
         display: flex;
-        justify-content: center;
-        align-items: flex-start;
         flex-direction: column;
+        gap: 0.75rem;
+      }
+      .toc a {
+        white-space: nowrap;
       }
     </style>
+
+    <!-- JSON-LD: WebPage -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Terms of Use",
+        "inLanguage": "en",
+        "url": "https://tools-pack.netlify.app/terms/"
+      }
+    </script>
+
+    <!-- JSON-LD: Breadcrumbs -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Tools Pack",
+            "item": "https://tools-pack.netlify.app/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Terms of Use",
+            "item": "https://tools-pack.netlify.app/terms/"
+          }
+        ]
+      }
+    </script>
   </head>
 
   <body class="wrap">
@@ -74,6 +117,7 @@
             gap: 16px;
             align-items: center;
           "
+          aria-label="Primary"
         >
           <a class="muted" href="/bn/" hreflang="bn" lang="bn">বাংলা</a>
           <a class="muted" href="/about/">About</a>
@@ -86,36 +130,58 @@
 
     <!-- Main -->
     <main role="main" class="prose">
-      <h1>Terms of Use</h1>
-      <p>By using Tools Pack, you agree to the terms below.</p>
+      <!-- Breadcrumbs -->
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a> › <span>Terms of Use</span>
+      </nav>
 
-      <h2>Disclaimer</h2>
-      <p>
-        All tools are provided <em>“as is”</em> without warranties of any kind.
-        For critical work, independently verify results.
+      <!-- TOC -->
+      <p class="toc">
+        <a href="#disclaimer">Disclaimer</a> ·
+        <a href="#acceptable-use">Acceptable Use</a> ·
+        <a href="#ip">Intellectual Property</a> ·
+        <a href="#changes">Changes</a> ·
+        <a href="#contact">Contact</a>
       </p>
 
-      <h2>Acceptable Use</h2>
+      <h1 style="margin-top: 0">Terms of Use</h1>
+      <p><strong>Last updated:</strong> <span id="last-updated"></span></p>
+
+      <p>By using Tools Pack, you agree to the terms below.</p>
+
+      <h2 id="disclaimer">Disclaimer</h2>
+      <p>
+        All tools are provided <em>“as is”</em> without warranties of any kind,
+        whether express or implied. For critical work, independently verify
+        results and consult a professional when appropriate.
+      </p>
+
+      <h2 id="acceptable-use">Acceptable Use</h2>
       <ul>
         <li>
           Do not use the site for illegal, abusive, or harmful activities.
         </li>
         <li>
           Do not send excessive automated requests or attempt to overload or
-          disrupt the service.
+          disrupt the service, nor attempt to reverse engineer or circumvent
+          technical protections.
         </li>
       </ul>
 
-      <h2>Intellectual Property</h2>
-      <p>All trademarks and brand names belong to their respective owners.</p>
-
-      <h2>Changes</h2>
+      <h2 id="ip">Intellectual Property</h2>
       <p>
-        We may update these terms at any time by publishing a new version on
-        this page.
+        All trademarks, logos, and brand names are the property of their
+        respective owners. Site content and UI are protected by applicable IP
+        laws.
       </p>
 
-      <h2>Contact</h2>
+      <h2 id="changes">Changes</h2>
+      <p>
+        We may update these terms at any time by publishing a new version on
+        this page. Changes are effective upon posting.
+      </p>
+
+      <h2 id="contact">Contact</h2>
       <p>
         Questions? Email <a href="mailto:you@example.com">you@example.com</a>.
       </p>
@@ -123,18 +189,24 @@
 
     <!-- Footer -->
     <footer class="wrap">
-      © <span id="y"></span> Tools Pack • Runs 100% locally. &nbsp;|&nbsp;
+      © <span id="y"></span> Tools Pack • Runs 100% locally &nbsp;|&nbsp;
       <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> ·
       <a href="/about/">About</a> · <a href="/contact/">Contact</a>
     </footer>
 
     <script>
       document.getElementById("y").textContent = new Date().getFullYear();
+      document.getElementById("last-updated").textContent = new Date()
+        .toISOString()
+        .slice(0, 10);
     </script>
+
+    <!-- Root-relative scripts so they work from any folder depth -->
+    <script src="/assets/tracker.js" defer data-trk-site="tools-pack"></script>
+    <script src="/assets/related-more.js" defer></script>
+
     <noscript
       >Your browser has JavaScript disabled; some tools may not work.</noscript
     >
-    <script src="./assets/tracker.js" defer data-trk-site="tools-pack"></script>
-    <script src="/assets/related-more.js" defer></script>
   </body>
 </html>

@@ -3,14 +3,20 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+
     <title>Base64 Encoder & Decoder — Unicode Safe | Tools Pack</title>
     <meta
       name="description"
-      content="Encode and decode Base64 safely with full Unicode/emoji support. Runs 100% in your browser."
+      content="Encode and decode Base64 safely with full Unicode and emoji support. Fast, private, and 100% in your browser—no uploads or tracking. Works offline after first load."
     />
-    <link rel="canonical" href="https://tools-pack.netlify.app/base64/" />
-    <link rel="stylesheet" href="../assets/style.css" />
+    <meta name="robots" content="index,follow" />
     <meta name="theme-color" content="#1E1E2F" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://tools-pack.netlify.app/base64/" />
+
+    <!-- CSS (root-relative so it never 404s from nested paths) -->
+    <link rel="stylesheet" href="/assets/style.css" />
 
     <!-- Hreflang alternates -->
     <link
@@ -26,7 +32,7 @@
     <link
       rel="alternate"
       hreflang="x-default"
-      href="https://tools-pack.netlify.app/base64/"
+      href="https://tools-pack.netlify.app/"
     />
 
     <!-- Open Graph / Twitter -->
@@ -54,7 +60,7 @@
         "url": "https://tools-pack.netlify.app/base64/",
         "applicationCategory": "Utility",
         "operatingSystem": "All",
-        "description": "Encode/decode Base64 with Unicode/emoji support, locally in your browser.",
+        "description": "Encode/decode Base64 with Unicode and emoji support, locally in your browser.",
         "inLanguage": "en"
       }
     </script>
@@ -81,7 +87,7 @@
       }
     </script>
 
-    <!-- JSON-LD: FAQ rich results -->
+    <!-- JSON-LD: FAQ rich results (no code snippets inside the JSON-LD text) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -92,7 +98,7 @@
             "name": "Is this Base64 tool Unicode-safe?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. It uses TextEncoder/TextDecoder to correctly handle Unicode and emoji, so characters beyond ASCII work fine."
+              "text": "Yes. It uses TextEncoder and TextDecoder to handle Unicode correctly, so characters beyond ASCII including emoji work as expected."
             }
           },
           {
@@ -100,7 +106,7 @@
             "name": "How do I make URL-safe Base64?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Replace + with - and / with _. Padding = signs may be removed depending on your use case. Example: base64.replace(/\\+/g,'-').replace(/\\//g,'_').replace(/=+$/,'')."
+              "text": "Use the URL-safe variant where the plus sign is replaced with a hyphen and the slash is replaced with an underscore. Padding may be omitted depending on your use case."
             }
           },
           {
@@ -108,23 +114,19 @@
             "name": "Does any data leave my browser?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No. All encoding/decoding is performed locally in your browser. Nothing is uploaded."
+              "text": "No. All encoding and decoding is performed locally in your browser and nothing is uploaded."
             }
           }
         ]
       }
     </script>
 
-    <!-- ========= Google AdSense loader =========
-         Replace client with your own publisher ID.
-         Keep data-adtest="on" while testing; remove when live. -->
+    <!-- AdSense loader (keep data-adtest while testing; remove when live) -->
     <script
       async
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234567890123456"
       crossorigin="anonymous"
     ></script>
-
-    <!-- Page-specific styles (ads + small layout tweaks) -->
   </head>
 
   <body>
@@ -135,7 +137,7 @@
         ></a>
         <div>
           <h1 style="margin: 0">Base64 Encode / Decode</h1>
-          <div class="sub">Unicode-safe</div>
+          <div class="sub">Unicode-safe • Private</div>
         </div>
         <div style="margin-left: auto">
           <a class="muted" href="/bn/base64/" hreflang="bn">বাংলা</a>
@@ -171,13 +173,14 @@
       </p>
 
       <!-- Tool -->
-      <article class="card" id="convert">
+      <article class="card" id="convert" aria-label="Base64 Tool">
         <h2>Convert text ⇄ Base64</h2>
 
         <textarea
           id="inText"
           class="textarea mono"
           placeholder="Text or Base64…"
+          rows="6"
         ></textarea>
 
         <div style="margin-top: 10px">
@@ -205,6 +208,7 @@
           class="textarea mono"
           readonly
           placeholder="Output…"
+          rows="6"
         ></textarea>
         <div class="muted" id="tip" aria-live="polite"></div>
       </article>
@@ -219,7 +223,7 @@
           </li>
           <li>
             Click <strong>Encode</strong> to get Base64, or
-            <strong>Decode</strong> to get text.<br />Shortcut: press
+            <strong>Decode</strong> to get text. Shortcut: press
             <kbd>Enter</kbd> to Encode, <kbd>Shift</kbd>+<kbd>Enter</kbd> to
             Decode.
           </li>
@@ -335,7 +339,7 @@
       // Footer year
       year.textContent = new Date().getFullYear();
 
-      // ===== Load AdSense slots lazily when visible =====
+      // ===== Load AdSense slots lazily when visible (low CLS) =====
       const initAds = () => {
         window.adsbygoogle = window.adsbygoogle || [];
         const slots = document.querySelectorAll(
@@ -354,19 +358,17 @@
 
         if ("IntersectionObserver" in window) {
           const io = new IntersectionObserver(
-            (entries) => {
+            (entries) =>
               entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                   push(entry.target);
                   io.unobserve(entry.target);
                 }
-              });
-            },
+              }),
             { rootMargin: "200px 0px" }
           );
           slots.forEach((el) => io.observe(el));
         } else {
-          // Fallback: push immediately
           slots.forEach(push);
         }
       };
@@ -375,22 +377,22 @@
       // ===== Helpers (Unicode-safe Base64) =====
       const b64enc = (str) => {
         const bytes = new TextEncoder().encode(str);
-        let binary = "";
-        bytes.forEach((b) => (binary += String.fromCharCode(b)));
-        return btoa(binary);
+        let bin = "";
+        bytes.forEach((b) => (bin += String.fromCharCode(b)));
+        return btoa(bin);
       };
 
       const b64dec = (b64) => {
-        const binary = atob(b64);
-        const bytes = new Uint8Array(binary.length);
-        for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+        const bin = atob(b64);
+        const bytes = new Uint8Array(bin.length);
+        for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
         return new TextDecoder().decode(bytes);
       };
 
-      // Normalize incoming Base64 (accepts URL-safe and missing padding)
+      // Accept URL-safe and missing padding
       const normalizeB64 = (s) => {
         let cleaned = (s || "")
-          .replace(/\s+/g, "") // remove whitespace/line breaks
+          .replace(/\s+/g, "")
           .replace(/-/g, "+")
           .replace(/_/g, "/");
         const pad = cleaned.length % 4;
@@ -398,9 +400,9 @@
         return cleaned;
       };
 
-      // ===== Events =====
+      // Events
       encBtn.onclick = () => {
-        outText.value = b64enc(inText.value);
+        outText.value = b64enc(inText.value || "");
         tip.textContent = "Encoded using Unicode-safe Base64.";
       };
 
@@ -415,14 +417,18 @@
         }
       };
 
-      cpyBtn.onclick = () => {
-        navigator.clipboard.writeText(outText.value || "");
-        tip.textContent = outText.value
-          ? "Output copied to clipboard."
-          : "Nothing to copy.";
+      cpyBtn.onclick = async () => {
+        try {
+          await navigator.clipboard.writeText(outText.value || "");
+          tip.textContent = outText.value
+            ? "Output copied to clipboard."
+            : "Nothing to copy.";
+        } catch {
+          tip.textContent = "Clipboard not available.";
+        }
       };
 
-      // Allow Enter to encode by default, Shift+Enter to decode
+      // Enter to encode; Shift+Enter to decode
       inText.addEventListener("keydown", (e) => {
         if (e.key === "Enter" && !e.shiftKey) {
           e.preventDefault();
@@ -433,11 +439,11 @@
         }
       });
     </script>
-    <script src="./assets/tracker.js" defer data-trk-site="tools-pack"></script>
+
+    <!-- Scripts (root-relative) -->
+    <script src="/assets/tracker.js" defer data-trk-site="tools-pack"></script>
     <script src="/assets/related-more.js" defer></script>
-    <noscript
-      >Your browser has JavaScript disabled; this tool needs JavaScript to
-      work.</noscript
-    >
+
+    <noscript>JavaScript is required for this tool to work.</noscript>
   </body>
 </html>

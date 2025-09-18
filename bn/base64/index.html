@@ -7,16 +7,13 @@
     <title>বেস৬৪ এনকোডার/ডিকোডার — ইউনিকোড সাপোর্টেড | Tools Pack</title>
     <meta
       name="description"
-      content="টেক্সটকে Base64 এ এনকোড/ডিকোড করুন—বাংলা/ইমোজি সহ সম্পূর্ণ ইউনিকোড সাপোর্ট। ১০০% ব্রাউজারেই রান হয়।"
+      content="টেক্সটকে Base64 এ এনকোড/ডিকোড করুন—বাংলা/ইমোজি সহ সম্পূর্ণ ইউনিকোড সাপোর্ট। ১০০% ব্রাউজারেই রান হয়; কোনো ডেটা সার্ভারে যায় না।"
     />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#1E1E2F" />
 
     <!-- Canonical & hreflang -->
     <link rel="canonical" href="https://tools-pack.netlify.app/bn/base64/" />
-    <link
-      rel="alternate"
-      hreflang="en"
-      href="https://tools-pack.netlify.app/base64/"
-    />
     <link
       rel="alternate"
       hreflang="bn"
@@ -24,13 +21,17 @@
     />
     <link
       rel="alternate"
+      hreflang="en"
+      href="https://tools-pack.netlify.app/base64/"
+    />
+    <link
+      rel="alternate"
       hreflang="x-default"
       href="https://tools-pack.netlify.app/"
     />
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="../../assets/style.css" />
-    <meta name="theme-color" content="#1E1E2F" />
+    <!-- Styles (root-relative so it works from any depth) -->
+    <link rel="stylesheet" href="/assets/style.css" />
 
     <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
@@ -38,7 +39,7 @@
     <meta property="og:title" content="বেস৬৪ এনকোডার/ডিকোডার — Tools Pack" />
     <meta
       property="og:description"
-      content="Base64 এনকোড/ডিকোড—ইউনিকোড/ইমোজি সাপোর্ট।"
+      content="Base64 এনকোড/ডিকোড—ইউনিকোড/ইমোজি সাপোর্ট। সবকিছু আপনার ব্রাউজারেই।"
     />
     <meta
       property="og:url"
@@ -52,6 +53,7 @@
       property="og:image:alt"
       content="Base64 Encoder/Decoder — Tools Pack"
     />
+    <meta property="og:locale" content="bn_BD" />
     <meta name="twitter:card" content="summary_large_image" />
 
     <!-- JSON-LD: WebApplication -->
@@ -96,7 +98,7 @@
       }
     </script>
 
-    <!-- JSON-LD: FAQPage (sync with on-page FAQ) -->
+    <!-- JSON-LD: FAQPage -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -107,7 +109,7 @@
             "name": "ইউনিকোড ও ইমোজি কি সাপোর্টেড?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "হ্যাঁ—TextEncoder/TextDecoder ব্যবহার করে ইউনিকোড-সেফভাবে Base64 এনকোড/ডিকোড করা হয়।"
+              "text": "হ্যাঁ—TextEncoder এবং TextDecoder ব্যবহারের ফলে সব ইউনিকোড অক্ষর ও ইমোজি সঠিকভাবে কাজ করে।"
             }
           },
           {
@@ -115,45 +117,27 @@
             "name": "URL-safe Base64 কী?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "URL-safe ফরম্যাটে +/ কে -_ দ্বারা প্রতিস্থাপন করা হয় এবং প্রয়োজনে = প্যাডিং বাদ থাকে।"
+              "text": "URL-safe ভ্যারিয়েন্টে প্লাস চিহ্নের জায়গায় ড্যাশ এবং স্ল্যাশের জায়গায় আন্ডারস্কোর ব্যবহার করা হয়। প্রয়োজনে প্যাডিং বাদ দেওয়া যেতে পারে।"
             }
           },
           {
             "@type": "Question",
-            "name": "ডেটা কি কোথাও পাঠানো হয়?",
+            "name": "ডেটা কি কোথাও পাঠানো হয়?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "না—সবকিছু আপনার ব্রাউজারেই রান হয়, কোনো ডেটা সার্ভারে পাঠানো হয় না।"
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "লাইন ব্রেক/হোয়াইটস্পেস কি সমস্যা করবে?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "সাধারণত না; ডিকোডের সময় অবৈধ ক্যারেক্টার থাকলে ত্রুটি দেখাবে।"
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "বড় টেক্সটে সীমাবদ্ধতা?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "ব্রাউজারের মেমোরির সীমা প্রযোজ্য। খুব বড় টেক্সটে পারফরম্যান্স কমতে পারে।"
+              "text": "না—সবকিছু আপনার ব্রাউজারেই প্রক্রিয়াকরণ হয়; কোনো ডেটা সার্ভারে আপলোড হয় না।"
             }
           }
         ]
       }
     </script>
 
-    <!-- Google AdSense (replace client with your ID; keep data-adtest while testing) -->
+    <!-- Google AdSense (replace client; keep data-adtest while testing) -->
     <script
       async
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-xxxxxxxxxxxxxxxx"
       crossorigin="anonymous"
     ></script>
-
-    <!-- Page-specific tweaks: compact ads + related chips wrap -->
   </head>
 
   <body>
@@ -172,7 +156,7 @@
       </div>
     </header>
 
-    <!-- Ad #1: হেডারের পরে (Top banner) -->
+    <!-- Ad #1 -->
     <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
       <span class="ad-label">Ad</span>
       <ins
@@ -187,20 +171,20 @@
     </div>
 
     <main class="wrap">
-      <!-- Breadcrumbs (Bangla) -->
+      <!-- Breadcrumbs -->
       <nav class="breadcrumbs" aria-label="breadcrumb">
         <a href="/bn/">হোম</a> › <a href="/bn/#text">টেক্সট টুলস</a> ›
         <span>বেস৬৪ এনকোডার/ডিকোডার</span>
       </nav>
 
-      <!-- TOC (Bangla) -->
+      <!-- TOC -->
       <p class="toc">
         <a href="#base64">বেস৬৪ টুল</a> ·
         <a href="#how-to-use">কীভাবে ব্যবহার করবেন</a> ·
         <a href="#faq">প্রশ্নোত্তর</a> · <a href="#related">সম্পর্কিত টুলস</a>
       </p>
 
-      <!-- Tool card -->
+      <!-- Tool -->
       <article class="card" id="base64" aria-label="Base64 Tool">
         <h2>বেস৬৪ টুল</h2>
 
@@ -213,7 +197,7 @@
         <textarea
           id="b64Input"
           class="field"
-          rows="5"
+          rows="6"
           placeholder="এখানে টেক্সট লিখুন…"
         ></textarea>
 
@@ -227,7 +211,7 @@
           </button>
         </div>
 
-        <!-- Ad #2: ফলাফলের আগে (in-article) -->
+        <!-- Ad #2 -->
         <div
           class="ad-wrap ad-article"
           aria-label="Advertisement"
@@ -254,9 +238,10 @@
         <textarea
           id="b64Output"
           class="field mono"
-          rows="5"
+          rows="6"
           readonly
         ></textarea>
+        <div class="muted" id="hint" aria-live="polite"></div>
       </article>
 
       <!-- How to use -->
@@ -276,13 +261,13 @@
         <h3>টিপস</h3>
         <ul>
           <li>
-            এই টুল <code>TextEncoder/TextDecoder</code> ব্যবহার করে—তাই
-            ইউনিকোড-সেফ।
+            এই টুল <code>TextEncoder</code>/<code>TextDecoder</code> ব্যবহার
+            করে—তাই ইউনিকোড-সেফ।
           </li>
           <li>
             URL-safe দরকার হলে আউটপুটে <code>+</code>→<code>-</code>,
-            <code>/</code>→<code>_</code> করে নিতে পারেন; প্যাডিং
-            <code>=</code> অপসারণও প্রচলিত।
+            <code>/</code>→<code>_</code> ব্যবহার করা যায়; প্রয়োজনে প্যাডিং
+            <code>=</code> বাদ দিতে পারেন।
           </li>
           <li>খুব বড় টেক্সটে ব্রাউজারের মেমোরি সীমাবদ্ধতা প্রযোজ্য।</li>
         </ul>
@@ -293,15 +278,13 @@
         <h2>প্রশ্নোত্তর</h2>
         <details>
           <summary>ইউনিকোড ও ইমোজি কি সাপোর্টেড?</summary>
-          <p>
-            হ্যাঁ। অভ্যন্তরে UTF-8 বাইটে রূপান্তর করে Base64 এনকোড/ডিকোড করা হয়।
-          </p>
+          <p>হ্যাঁ। UTF-8 বাইটে রূপান্তর করে Base64 এনকোড/ডিকোড করা হয়।</p>
         </details>
         <details>
           <summary>URL-safe Base64 কীভাবে পাব?</summary>
           <p>
             <code>+</code> → <code>-</code>, <code>/</code> → <code>_</code> এবং
-            প্রয়োজনে শেষে থাকা <code>=</code> সরিয়ে নিন।
+            প্রয়োজনে শেষে থাকা <code>=</code> সরিয়ে নিন।
           </p>
         </details>
         <details>
@@ -320,13 +303,13 @@
         <details>
           <summary>ফাইল এনকোড করা যাবে?</summary>
           <p>
-            এই টুল টেক্সটের জন্য। ফাইলের জন্য ব্রাউজারে File API ব্যবহার করে পড়া
-            ও Base64 করা যায়—ভবিষ্যৎ আপডেটে যুক্ত হতে পারে।
+            এই টুল টেক্সটের জন্য। ফাইলের Base64 প্রয়োজন হলে ব্রাউজারের File API
+            দিয়ে করা যায়—ভবিষ্যৎ আপডেটে যুক্ত হতে পারে।
           </p>
         </details>
       </article>
 
-      <!-- Related tools -->
+      <!-- Related -->
       <article class="card" id="related">
         <h2>সম্পর্কিত টুলস</h2>
         <p class="muted">টেক্সট/এনকোডিং সম্পর্কিত আরও টুলস:</p>
@@ -350,7 +333,7 @@
       // Footer year
       document.getElementById("y").textContent = new Date().getFullYear();
 
-      // ===== AdSense: lazy-init when visible (low CLS) =====
+      // ===== AdSense: lazy init for low CLS =====
       const initAds = () => {
         window.adsbygoogle = window.adsbygoogle || [];
         const slots = document.querySelectorAll(
@@ -362,9 +345,7 @@
           try {
             (adsbygoogle = window.adsbygoogle || []).push({});
             el.setAttribute("data-loaded", "1");
-          } catch (e) {
-            /* ignore */
-          }
+          } catch (e) {}
         };
 
         if ("IntersectionObserver" in window) {
@@ -386,9 +367,10 @@
       };
       window.addEventListener("load", initAds);
 
-      // ===== Base64 (Unicode-safe) =====
+      // ===== Base64 (Unicode-safe + URL-safe tolerant) =====
       const input = document.getElementById("b64Input");
       const output = document.getElementById("b64Output");
+      const hint = document.getElementById("hint");
       const enc = new TextEncoder();
       const dec = new TextDecoder();
 
@@ -404,38 +386,53 @@
         return u8;
       };
 
+      // Accept URL-safe chars and missing padding; strip data URL prefix
+      const normalizeB64 = (s) => {
+        let v = (s || "")
+          .replace(/^data:[^;]+;base64,/i, "")
+          .replace(/\s+/g, "")
+          .replace(/-/g, "+")
+          .replace(/_/g, "/");
+        const pad = v.length % 4;
+        if (pad) v += "=".repeat(4 - pad);
+        return v;
+      };
+
       document.getElementById("btnEncode").addEventListener("click", () => {
         try {
           const bytes = enc.encode(input.value || "");
           output.value = u8ToB64(bytes);
+          hint.textContent = "এনকোড সম্পন্ন হয়েছে।";
         } catch (e) {
           output.value = "⚠️ Encoding error: " + e.message;
+          hint.textContent = "";
         }
       });
 
       document.getElementById("btnDecode").addEventListener("click", () => {
         try {
-          // tolerate whitespace/newlines
-          const cleaned = (input.value || "").replace(/\s+/g, "");
+          const cleaned = normalizeB64(input.value);
           const bytes = b64ToU8(cleaned);
           output.value = dec.decode(bytes);
+          hint.textContent = "ডিকোড সম্পন্ন হয়েছে।";
         } catch (e) {
           output.value = "⚠️ Decoding error: " + e.message;
+          hint.textContent = "";
         }
       });
 
       document.getElementById("btnClear").addEventListener("click", () => {
         input.value = "";
         output.value = "";
+        hint.textContent = "";
         input.focus();
       });
     </script>
-    <script
-      src="../../assets/tracker.js"
-      defer
-      data-trk-site="tools-pack"
-    ></script>
-    <script src="../../assets/related-more.js" defer></script>
+
+    <!-- Root-relative scripts -->
+    <script src="/assets/tracker.js" defer data-trk-site="tools-pack"></script>
+    <script src="/assets/related-more.js" defer></script>
+
     <noscript
       >জাভাস্ক্রিপ্ট চালু করুন—এই টুলটি কাজ করতে জাভাস্ক্রিপ্ট
       প্রয়োজন।</noscript
