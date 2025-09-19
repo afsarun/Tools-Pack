@@ -248,71 +248,90 @@
 
       <!-- How to use -->
       <article class="card" id="how-to-use">
-        <h2>How to use</h2>
+        <h2>How to Use the UUID v4 Generator</h2>
         <ol>
-          <li>Click <strong>Generate</strong> to create a UUID v4.</li>
           <li>
-            Click <strong>Copy</strong> to place the value on your clipboard.
+            Click the <strong>Generate</strong> button to instantly create a new
+            UUID version 4.
           </li>
-          <li>Repeat Generate as many times as you need.</li>
+          <li>
+            Click <strong>Copy</strong> to save the UUID value directly to your
+            clipboard.
+          </li>
+          <li>
+            You can repeat the Generate action as many times as needed to
+            produce multiple unique UUIDs.
+          </li>
         </ol>
-        <h3>Notes</h3>
+
+        <h3>Important Notes</h3>
         <ul>
-          <li>Uses the browser’s <code>crypto.getRandomValues</code>.</li>
           <li>
-            Output is lowercase hex with hyphens (canonical format). You may
-            reformat for your use case if needed.
+            This tool uses your browser’s secure
+            <code>crypto.getRandomValues</code> API for randomness.
           </li>
           <li>
-            UUIDs are identifiers, not secrets—don’t use them as passwords or
-            tokens by themselves.
+            The generated UUIDs are shown in lowercase hexadecimal with hyphens,
+            which is the standard canonical format. You may reformat (remove
+            hyphens or switch to uppercase) if required.
+          </li>
+          <li>
+            UUIDs are meant to be unique identifiers. They are
+            <strong>not</strong> designed for use as passwords, security tokens,
+            or sensitive secrets.
           </li>
         </ul>
       </article>
 
       <!-- FAQ -->
       <article class="card faq" id="faq">
-        <h2>FAQ</h2>
+        <h2>UUID v4 Generator – Frequently Asked Questions (FAQ)</h2>
 
         <details>
-          <summary>Is this RFC 4122 compliant?</summary>
+          <summary>Is this UUID generator RFC 4122 compliant?</summary>
           <p>
-            Yes. The generator sets version <code>4</code> and variant
-            <code>10</code> bits as specified in RFC&nbsp;4122.
+            Yes. The UUIDs follow RFC&nbsp;4122 standards. This means version
+            <code>4</code> and variant <code>10</code> bits are set exactly as
+            required, ensuring compliance.
           </p>
         </details>
 
         <details>
-          <summary>Do you store generated UUIDs?</summary>
+          <summary>Do you store or log the generated UUIDs?</summary>
           <p>
-            No. Everything runs locally in your browser—nothing is uploaded.
+            No. Everything runs locally in your browser. No UUIDs are uploaded,
+            logged, or stored on any server.
           </p>
         </details>
 
         <details>
-          <summary>Are UUID v4 values unique?</summary>
+          <summary>Are UUID v4 values guaranteed to be unique?</summary>
           <p>
-            Uniqueness isn’t guaranteed, but with proper randomness the chance
-            of collision is astronomically low for practical purposes.
+            Absolute uniqueness cannot be guaranteed, but thanks to strong
+            randomness the probability of two UUID v4 values colliding is
+            astronomically low—safe enough for all real-world applications.
           </p>
         </details>
 
         <details>
-          <summary>Can I remove hyphens or use uppercase?</summary>
+          <summary>
+            Can I customize the format (remove hyphens or use uppercase)?
+          </summary>
           <p>
-            Yes—those are formatting choices. The canonical form is lowercase
-            hex with hyphens.
+            Yes. The default is lowercase with hyphens, but you may remove
+            hyphens, convert to uppercase, or adjust formatting to suit your
+            needs.
           </p>
         </details>
 
         <details>
-          <summary>How can I validate a UUID v4?</summary>
+          <summary>How do I validate a UUID v4 string?</summary>
           <p>
-            Use this regex (case-insensitive):
-            <code
-              >^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$</code
-            >.
+            A quick way is to use a regular expression (case-insensitive) such
+            as:
           </p>
+          <pre><code>^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$</code></pre>
+          <p>This ensures the value matches the official UUID v4 pattern.</p>
         </details>
       </article>
 

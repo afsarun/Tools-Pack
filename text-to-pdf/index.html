@@ -44,7 +44,7 @@
     <meta name="twitter:card" content="summary_large_image" />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="../assets/style.css" />
+    <link rel="stylesheet" href="/assets/style.css" />
 
     <!-- Performance + AdSense -->
     <link
@@ -146,96 +146,6 @@
 
     <!-- Page styles (plus a few extras for ads/FAQ/breadcrumb) -->
     <style>
-      :root {
-        --muted: #9aa0a6;
-        --danger: #ff6b6b;
-      }
-      body {
-        font-family: system-ui, sans-serif;
-        background: #1e1e2f;
-        color: #eee;
-      }
-      .textarea {
-        width: 100%;
-        height: 220px;
-        margin: 10px 0;
-      }
-      .row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-bottom: 10px;
-      }
-      .pill,
-      .field,
-      .select,
-      .btn {
-        font: inherit;
-      }
-      .btn {
-        padding: 0.6rem 1rem;
-        border: 1px solid #3a3a55;
-        background: #2a2a42;
-        cursor: pointer;
-        border-radius: 8px;
-      }
-      .btn-primary {
-        border-color: #5965f3;
-        background: #5965f3;
-        color: #fff;
-      }
-      .muted {
-        color: var(--muted);
-      }
-      .small {
-        font-size: 0.9rem;
-      }
-      footer {
-        text-align: center;
-        padding: 20px 0;
-        color: var(--muted);
-      }
-      /* New: ad + FAQ + breadcrumb styling */
-      .ad-container {
-        display: block;
-        min-height: 280px;
-        margin: 16px 0;
-      }
-      nav.breadcrumb {
-        font-size: 0.9rem;
-        color: var(--muted);
-        margin: 0.5rem 0 0;
-      }
-      nav.breadcrumb a {
-        color: inherit;
-        text-decoration: none;
-      }
-      nav.breadcrumbs {
-        font-size: 0.9rem;
-        color: var(--muted);
-        margin: 0.75rem 0 0.25rem;
-      }
-      nav.breadcrumbs a {
-        color: inherit;
-        text-decoration: none;
-      }
-      .faq details {
-        border: 1px solid #2a3142;
-        border-radius: 12px;
-        padding: 0.75rem 1rem;
-        margin: 0.75rem 0;
-      }
-      .faq summary {
-        cursor: pointer;
-        font-weight: 600;
-      }
-      .related ul {
-        display: grid;
-        gap: 0.5rem;
-        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-        padding-left: 1rem;
-      }
-
       /* Live preview: #txt font-size set from JS (pt→px) */
     </style>
   </head>
@@ -369,79 +279,97 @@
 
       <!-- How to use -->
       <article class="card" id="how-to-use">
-        <h2>How to use</h2>
+        <h2>How to Use the Text to PDF Converter</h2>
         <ol>
           <li>
-            Paste or type your text into the box (Unicode/Bangla supported).
+            Paste or type your text into the editor box (full Unicode supported,
+            including Bangla, emoji, and special characters).
           </li>
           <li>
-            Choose <strong>Page size</strong>, <strong>Orientation</strong>, and
-            <strong>Margins</strong>.
+            Select your preferred <strong>Page Size</strong>,
+            <strong>Orientation</strong>, and <strong>Margins</strong> for the
+            PDF.
           </li>
           <li>
-            Set <strong>Font size</strong> (pt) — applies to both editor preview
-            and the PDF output.
+            Adjust the <strong>Font Size</strong> (points). This will apply to
+            both the on-screen preview and the final PDF document.
           </li>
           <li>
             Optionally enable <strong>Header</strong> and/or
-            <strong>Footer</strong> (title on top, generated time at bottom).
+            <strong>Footer</strong>. The header shows the title at the top,
+            while the footer displays the generated time at the bottom of each
+            page.
           </li>
           <li>
-            Click <strong>Preview &amp; Print</strong> and choose
-            <strong>Save as PDF</strong> in the print dialog.
+            Click <strong>Preview &amp; Print</strong>, then choose
+            <strong>Save as PDF</strong> in your browser’s print dialog.
           </li>
         </ol>
-        <h3>Tips</h3>
+
+        <h3>Helpful Tips</h3>
         <ul>
           <li>
-            <strong>A4</strong> is common in BD/EU; <strong>Letter</strong> is
-            common in the US.
+            <strong>A4</strong> is the standard in Bangladesh and Europe, while
+            <strong>Letter</strong> is commonly used in the United States.
           </li>
           <li>
-            If the browser adds its own page numbers/URL, turn off “Headers and
-            footers” in print settings.
+            If your browser automatically adds extra page numbers or a URL,
+            disable “Headers and footers” in the print settings.
           </li>
-          <li>Everything runs locally in your browser; nothing is uploaded.</li>
-          <li>Works offline after first load.</li>
+          <li>
+            This PDF tool runs 100% locally in your browser. Your text is never
+            uploaded or stored on a server.
+          </li>
+          <li>
+            Once loaded, it also works offline without an internet connection.
+          </li>
         </ul>
       </article>
 
       <!-- FAQ -->
       <article class="card faq" id="faq">
-        <h2>FAQ</h2>
+        <h2>Text to PDF Converter – Frequently Asked Questions</h2>
+
         <details>
-          <summary>Does it support Bangla/Unicode/emoji?</summary>
+          <summary>Does it support Bangla, Unicode, and emoji?</summary>
           <p>
-            Yes. The converter is Unicode-safe and works with Bangla (বাংলা),
-            emoji, Arabic, and more.
+            Yes. The converter is fully Unicode-safe and works seamlessly with
+            Bangla (বাংলা), emoji, Arabic, and other multilingual text.
           </p>
         </details>
+
         <details>
-          <summary>Are my files or text uploaded?</summary>
+          <summary>Is my text or file uploaded to a server?</summary>
           <p>
-            No. Everything runs locally in your browser; nothing leaves your
-            device.
+            No. All processing happens in your browser. Nothing is uploaded,
+            stored, or shared online.
           </p>
         </details>
+
         <details>
-          <summary>How do I add a header or footer?</summary>
+          <summary>How can I add a header or footer?</summary>
           <p>
-            Toggle <em>Header</em> and/or <em>Footer</em> before printing. The
-            header shows the page title; the footer shows the generated time.
+            Use the <em>Header</em> and <em>Footer</em> options before printing.
+            The header will show your chosen title, and the footer automatically
+            displays the generation time.
           </p>
         </details>
+
         <details>
-          <summary>Can I add page numbers?</summary>
+          <summary>Can I include page numbers in the PDF?</summary>
           <p>
-            Built-in numbering isn’t included. Your browser can add its own
-            numbers if “Headers and footers” are enabled in print settings.
+            Built-in numbering is not included in this tool. However, most
+            browsers can insert page numbers if you enable “Headers and footers”
+            in the print dialog.
           </p>
         </details>
+
         <details>
-          <summary>Which page sizes are supported?</summary>
+          <summary>Which paper sizes are available?</summary>
           <p>
-            A4, Letter, and Legal are available in Portrait or Landscape.
-            Margins are adjustable in millimeters.
+            The tool supports A4, Letter, and Legal page sizes. You can use
+            Portrait or Landscape orientation, and adjust margins in millimeters
+            for precise control.
           </p>
         </details>
       </article>

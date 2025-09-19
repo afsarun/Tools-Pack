@@ -2,11 +2,20 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Quick Notes — Auto-Save in Browser | Tools Pack</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+
+    <title>
+      Quick Notes — Online Notepad with Auto-Save (No Sign-In) | Tools Pack
+    </title>
+
+    <!-- Primary SEO -->
     <meta
       name="description"
-      content="Write notes with local auto-save. Export/import as .txt."
+      content="Free online notepad with private, local auto-save. Write notes in your browser, export/import .txt, works offline, no account, no server. Bangla/Unicode supported."
     />
     <meta
       name="robots"
@@ -14,16 +23,16 @@
     />
 
     <!-- Canonical & hreflang -->
-    <link rel="canonical" href="https://tools-pack.netlify.app/notes/" />
+    <link rel="canonical" href="https://tools-pack.netlify.app/quick-notes/" />
     <link
       rel="alternate"
       hreflang="en"
-      href="https://tools-pack.netlify.app/notes/"
+      href="https://tools-pack.netlify.app/quick-notes/"
     />
     <link
       rel="alternate"
       hreflang="bn"
-      href="https://tools-pack.netlify.app/bn/notes/"
+      href="https://tools-pack.netlify.app/bn/quick-notes/"
     />
     <link
       rel="alternate"
@@ -32,21 +41,35 @@
     />
 
     <!-- Global Styles -->
-    <link rel="stylesheet" href="../assets/style.css" />
+    <link rel="stylesheet" href="/assets/style.css" />
     <meta name="theme-color" content="#1E1E2F" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Quick Notes — Tools Pack" />
+    <meta property="og:site_name" content="Tools Pack" />
+    <meta
+      property="og:title"
+      content="Quick Notes — Online Notepad with Auto-Save (No Sign-In)"
+    />
     <meta
       property="og:description"
-      content="Auto-save notes locally (no server)."
+      content="Write notes with local auto-save. Export/import .txt, works offline, no account, no server. Bangla/Unicode supported."
     />
-    <meta property="og:url" content="https://tools-pack.netlify.app/notes/" />
+    <meta
+      property="og:url"
+      content="https://tools-pack.netlify.app/quick-notes/"
+    />
     <meta
       property="og:image"
       content="https://tools-pack.netlify.app/og/notes.png"
     />
+    <meta
+      property="og:image:alt"
+      content="Quick Notes – online notepad with auto-save"
+    />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="bn_BD" />
+
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
 
@@ -63,10 +86,13 @@
         "@context": "https://schema.org",
         "@type": "WebApplication",
         "name": "Quick Notes",
-        "url": "https://tools-pack.netlify.app/notes/",
-        "applicationCategory": "Utility",
-        "operatingSystem": "All",
-        "description": "Local auto-save notes; export/import.",
+        "url": "https://tools-pack.netlify.app/quick-notes/",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Web",
+        "isAccessibleForFree": true,
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "featureList": ["Auto-save", "Offline", "Export .txt", "Import .txt"],
+        "description": "Free online notepad with private, local auto-save. Export or import .txt files. Works offline. Bangla/Unicode supported.",
         "inLanguage": "en"
       }
     </script>
@@ -93,13 +119,13 @@
             "@type": "ListItem",
             "position": 3,
             "name": "Quick Notes",
-            "item": "https://tools-pack.netlify.app/notes/"
+            "item": "https://tools-pack.netlify.app/quick-notes/"
           }
         ]
       }
     </script>
 
-    <!-- Structured data: HowTo -->
+    <!-- Structured data: HowTo (matches visible steps) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -181,52 +207,8 @@
         ]
       }
     </script>
-
-    <!-- Page-only CSS (keeps your global CSS untouched) -->
-    <style>
-      /* .breadcrumbs {
-        font-size: 14px;
-        margin: 12px 0;
-        color: var(--muted, #9aa0b4);
-      }
-      .breadcrumbs a {
-        color: inherit;
-        text-decoration: none;
-      }
-      .toc {
-        font-size: 12px;
-        color: var(--muted, #9aa0b4);
-        margin-bottom: 8px;
-      }
-      .toc a {
-        text-decoration: none;
-      }
-      .ad-wrap {
-        margin: 16px 0;
-      }
-      .faq details {
-        border: 1px solid #2b2b44;
-        border-radius: 8px;
-        padding: 10px 12px;
-        margin-bottom: 10px;
-      }
-      .faq summary {
-        cursor: pointer;
-        font-weight: 600;
-      }
-      .small {
-        font-size: 12px;
-      }
-      .lang-switch {
-        margin-left: auto;
-      }
-      .lang-switch a {
-        text-decoration: none;
-        font-size: 12px;
-        color: var(--muted, #9aa0b4);
-      } */
-    </style>
   </head>
+
   <body>
     <header class="sticky">
       <div
@@ -235,14 +217,17 @@
       >
         <a href="/"><div class="logo" aria-label="Tools Pack"></div></a>
         <div>
+          <!-- h1 as primary page heading -->
           <h1 style="margin: 0">Quick Notes</h1>
-          <div class="sub">Auto-save</div>
+          <div class="sub">Online notepad with local auto-save</div>
         </div>
         <div class="lang-switch">
+          <!-- fixed to match the bn canonical route -->
           <a href="/bn/quick-notes/" hreflang="bn">বাংলা</a>
         </div>
       </div>
     </header>
+
     <!-- Ad #1: top banner (constrained, no full-width expansion) -->
     <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
       <span class="ad-label">Ad</span>
@@ -256,7 +241,20 @@
         data-adtest="on"
       ></ins>
     </div>
+
     <main class="wrap">
+      <!-- Intro (keyword-rich, human-readable) -->
+      <section class="card" aria-labelledby="intro-title">
+        <h2 id="intro-title">Fast, Private, and Offline-Friendly Notes</h2>
+        <p>
+          Quick Notes is a simple
+          <strong>online notepad with local auto-save</strong>. Your writing
+          stays on this device — <em>no account, no server</em>. Export or
+          import <code>.txt</code> files anytime. Full Unicode support
+          (including Bangla).
+        </p>
+      </section>
+
       <!-- Breadcrumbs -->
       <nav class="breadcrumbs" aria-label="breadcrumb">
         <a href="/">Home</a> › <a href="/#text">Text Tools</a> ›
@@ -270,16 +268,20 @@
       </p>
 
       <!-- Tool -->
-      <article class="card" id="notes-tool">
+      <article class="card" id="notes-tool" aria-labelledby="notes-title">
+        <h2 id="notes-title" class="sr-only">Notes editor</h2>
         <textarea
           id="notes"
           class="textarea"
-          placeholder="Write anything… Saved to your browser."
+          placeholder="Write anything… Auto-saved to your browser."
           aria-label="Notes editor"
           aria-describedby="status"
         ></textarea>
-        <div>
-          <button class="btn" id="clear" type="button">Clear</button>
+
+        <div class="actions" role="group" aria-label="Note actions">
+          <button class="btn" id="clear" type="button" aria-controls="notes">
+            Clear
+          </button>
           <button class="btn" id="ex" type="button">Export .txt</button>
           <label class="btn" for="imp" style="cursor: pointer">Import</label>
           <input
@@ -289,6 +291,7 @@
             style="display: none"
           />
         </div>
+
         <div class="muted small" id="status" role="status" aria-live="polite">
           Saved.
         </div>
@@ -312,19 +315,19 @@
 
       <!-- How to use -->
       <article class="card" id="how-to-use">
-        <h2>How to use</h2>
+        <h2>How to Use Quick Notes</h2>
         <ol>
           <li>
-            Start typing in the box — it <strong>auto-saves</strong> after you
-            pause.
+            Start typing in the box — your text
+            <strong>auto-saves</strong> after you pause.
           </li>
           <li>
             Click <strong>Export .txt</strong> to download your notes as a text
             file.
           </li>
           <li>
-            Use <strong>Import</strong> to load a .txt file back into the
-            editor.
+            Use <strong>Import</strong> to load a <code>.txt</code> file back
+            into the editor.
           </li>
           <li>
             Click <strong>Clear</strong> to remove everything (you’ll be asked
@@ -333,18 +336,22 @@
         </ol>
         <h3>Tips</h3>
         <ul>
-          <li>Works offline once loaded.</li>
-          <li>Avoid storing sensitive info—localStorage is not encrypted.</li>
+          <li><strong>Works offline</strong> after the first load.</li>
           <li>
-            If your note is huge, consider splitting files (localStorage is
-            ~5&nbsp;MB per site).
+            <strong>Privacy:</strong> localStorage is not encrypted — avoid
+            highly sensitive data.
+          </li>
+          <li>
+            <strong>Size limit:</strong> localStorage is typically ~5&nbsp;MB
+            per site; split very large notes into multiple files.
           </li>
         </ul>
       </article>
 
       <!-- FAQ -->
       <article class="card faq" id="faq">
-        <h2>FAQ</h2>
+        <h2>Quick Notes – Frequently Asked Questions</h2>
+
         <details>
           <summary>Where are my notes stored?</summary>
           <p>
@@ -352,6 +359,7 @@
             uploaded.
           </p>
         </details>
+
         <details>
           <summary>Is there a size limit?</summary>
           <p>
@@ -359,6 +367,7 @@
             localStorage.
           </p>
         </details>
+
         <details>
           <summary>Can I sync across devices?</summary>
           <p>
@@ -366,12 +375,14 @@
             elsewhere.
           </p>
         </details>
+
         <details>
           <summary>Are notes encrypted?</summary>
           <p>
             No. Keep your device secure and avoid highly sensitive information.
           </p>
         </details>
+
         <details>
           <summary>Does it work offline?</summary>
           <p>Yes. After the first load, it works without internet.</p>
@@ -380,17 +391,17 @@
 
       <!-- Related tools -->
       <article class="card" id="related">
-        <h2>Related tools</h2>
-        <p class="muted">More text &amp; encoding utilities:</p>
+        <h2>Related Text Tools</h2>
+        <p class="muted">More writing &amp; encoding utilities:</p>
         <p>
-          <a class="btn" href="/text-to-pdf/">Text → PDF</a>
+          <a class="btn" href="/text-to-pdf/">Text → PDF Converter</a>
           <a class="btn" href="/json-formatter/">JSON Formatter</a>
           <a class="btn" href="/base64/">Base64 Encode/Decode</a>
           <a class="btn" href="/url-tools/">URL Tools</a>
         </p>
         <p class="small">
           Prefer বাংলা? Try the
-          <a href="/bn/notes/" hreflang="bn">বাংলা সংস্করণ</a>.
+          <a href="/bn/quick-notes/" hreflang="bn">বাংলা সংস্করণ</a>.
         </p>
       </article>
     </main>
@@ -400,47 +411,55 @@
       <a href="/terms/">Terms</a>
     </footer>
 
-    <noscript
-      ><div class="wrap">
+    <noscript>
+      <div class="wrap">
         <p>Please enable JavaScript to use Quick Notes.</p>
-      </div></noscript
-    >
+      </div>
+    </noscript>
 
     <script>
-      // year
-      y.textContent = new Date().getFullYear();
+      // Elements
+      const yearEl = document.getElementById("y");
+      const notesEl = document.getElementById("notes");
+      const statusEl = document.getElementById("status");
+      const importInput = document.getElementById("imp");
+      const clearBtn = document.getElementById("clear");
+      const exportBtn = document.getElementById("ex");
+
+      // Year
+      yearEl.textContent = new Date().getFullYear();
 
       // Storage key
       const KEY = "tools-pack:notes:v1";
 
       // Load
-      notes.value = localStorage.getItem(KEY) || "";
+      notesEl.value = localStorage.getItem(KEY) || "";
 
       let debounceTimer = null;
       function save() {
         try {
-          localStorage.setItem(KEY, notes.value);
-          status.textContent = "Saved " + new Date().toLocaleTimeString();
+          localStorage.setItem(KEY, notesEl.value);
+          statusEl.textContent = "Saved at " + new Date().toLocaleTimeString();
         } catch (e) {
-          status.textContent = "Save failed (storage full?).";
+          statusEl.textContent = "Save failed (storage full?).";
           console.error(e);
         }
       }
 
-      notes.addEventListener("input", () => {
+      notesEl.addEventListener("input", () => {
         clearTimeout(debounceTimer);
         debounceTimer = setTimeout(save, 400);
       });
 
-      clear.onclick = () => {
+      clearBtn.onclick = () => {
         if (confirm("Clear all notes?")) {
-          notes.value = "";
+          notesEl.value = "";
           save();
         }
       };
 
-      ex.onclick = () => {
-        const blob = new Blob([notes.value], { type: "text/plain" });
+      exportBtn.onclick = () => {
+        const blob = new Blob([notesEl.value], { type: "text/plain" });
         const url = URL.createObjectURL(blob);
         const a = document.createElement("a");
         a.href = url;
@@ -449,20 +468,22 @@
         URL.revokeObjectURL(url);
       };
 
-      imp.onchange = async () => {
-        const f = imp.files[0];
+      importInput.onchange = async () => {
+        const f = importInput.files[0];
         if (!f) return;
-        notes.value = await f.text();
+        notesEl.value = await f.text();
         save();
       };
 
-      // Initialize AdSense for all <ins class="adsbygoogle"> units (2 units on this page)
+      // Initialize AdSense for all <ins class="adsbygoogle"> units
       try {
         document.querySelectorAll(".adsbygoogle").forEach(() => {
           (window.adsbygoogle = window.adsbygoogle || []).push({});
         });
       } catch {}
     </script>
+
+    <!-- Keep your existing assets paths as-is -->
     <script src="./assets/tracker.js" defer data-trk-site="tools-pack"></script>
     <script src="/assets/related-more.js" defer></script>
   </body>
