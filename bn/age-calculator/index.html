@@ -227,69 +227,33 @@
 
     <!-- Page-specific tweaks: compact ads + related chips wrap -->
     <style>
-      /* Ads: compact, low CLS */
-      .ad-wrap {
-        margin: 6px 0 10px;
-      }
-      .ad-label {
-        display: inline-block;
-        font-size: 11px;
-        line-height: 1;
-        color: var(--muted, #888);
-        margin: 0 0 2px;
-      }
-      .adsbygoogle {
-        display: block;
-      }
-      .ad-top {
-        margin-inline: auto;
-      }
-      @media (min-width: 900px) {
-        .ad-top {
-          max-width: 728px;
-        }
-        .ad-top .adsbygoogle {
-          min-height: 60px;
-        }
-      }
-      @media (max-width: 899px) and (min-width: 600px) {
-        .ad-top {
-          max-width: 468px;
-        }
-        .ad-top .adsbygoogle {
-          min-height: 50px;
-        }
-      }
-      @media (max-width: 599px) {
-        .ad-top {
-          max-width: 320px;
-        }
-        .ad-top .adsbygoogle {
-          min-height: 50px;
-        }
-      }
-      .ad-top .adsbygoogle:empty {
-        display: none;
+      /* Date input simple style */
+      .field input[type="date"] {
+        width: 100%;
+        padding: 8px 12px;
+        font-size: 15px;
+        font-family: inherit;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        background-color: #fff;
+        color: #111;
+        box-sizing: border-box;
+        transition: border-color 0.2s, box-shadow 0.2s;
       }
 
-      /* Related chips on small screens */
-      #related p:nth-of-type(2) {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-top: 8px;
+      /* Placeholder/label muted color */
+      .field span.muted {
+        display: block;
+        margin-bottom: 4px;
+        font-size: 14px;
+        color: #6b7280;
       }
-      #related .btn {
-        display: inline-flex;
-        align-items: center;
-        max-width: 100%;
-      }
-      @media (max-width: 520px) {
-        #related .btn {
-          white-space: normal;
-          line-height: 1.2;
-          padding: 8px 10px;
-        }
+
+      /* Focus effect */
+      .field input[type="date"]:focus {
+        border-color: #ff00b8; /* আপনার প্রাইমারি রঙ */
+        box-shadow: 0 0 0 3px rgba(255, 0, 184, 0.2);
+        outline: none;
       }
     </style>
   </head>
