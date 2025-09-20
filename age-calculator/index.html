@@ -6,12 +6,12 @@
 
     <!-- ✅ Enriched title + description for main & long-tail intents -->
     <title>
-      Age Calculator Online — Calculate Exact Age in Years, Months & Days from
-      DOB | Tools Pack
+      Age Calculator Online — Calculate Age in Years, Months, Days & Total Days
+      | What Is My Age Today? How Many Days Until My Birthday? | Tools Pack
     </title>
     <meta
       name="description"
-      content="Free online Age Calculator. Calculate exact age in years, months, and days from your date of birth (DOB). Shows total days lived and next-birthday countdown. Works offline. Bengali (বাংলা) version available."
+      content="Free online Age Calculator. Calculate exact age in years, months, and days from your date of birth (DOB). Shows total days lived and next-birthday countdown. Find answers like “what is my age today?”, “how many days until my birthday?”, and “how old was I in 2018?”. Works offline. বাংলা সংস্করণও আছে।"
     />
 
     <link
@@ -44,7 +44,7 @@
     <meta property="og:title" content="Age Calculator Online — Tools Pack" />
     <meta
       property="og:description"
-      content="Instant age in years, months, days — plus next-birthday countdown. Free, simple & accurate."
+      content="Instant age in years, months, days — plus next-birthday countdown. Also answers “what is my age today?” and “how many days until my birthday?”. Free, simple & accurate."
     />
     <meta
       property="og:url"
@@ -58,7 +58,7 @@
     <meta property="og:locale" content="en_US" />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- JSON-LD: WebApplication (kept) -->
+    <!-- JSON-LD: WebApplication -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -73,7 +73,7 @@
       }
     </script>
 
-    <!-- JSON-LD: Breadcrumbs (kept) -->
+    <!-- JSON-LD: Breadcrumbs -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -95,7 +95,7 @@
       }
     </script>
 
-    <!-- ✅ JSON-LD: HowTo (for step-by-step section) -->
+    <!-- JSON-LD: HowTo -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -128,7 +128,7 @@
       }
     </script>
 
-    <!-- ✅ JSON-LD: FAQ (expanded with exam/months-days/privacy) -->
+    <!-- ✅ JSON-LD: FAQ with Low-Hanging-Fruit queries -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -136,10 +136,42 @@
         "mainEntity": [
           {
             "@type": "Question",
+            "name": "What is my age today?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Keep the 'As of' date as today and enter your DOB. The calculator instantly shows your exact age today in years, months and days."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How many days until my birthday?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The tool shows a live next-birthday countdown in days based on your DOB and today’s date."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How old was I in 2018 (or any past year)?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Change the 'As of' date to any past date like 2018-01-01 to see how old you were then."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How many days is 11 years?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Around 4,015 days on average, depending on leap years. The calculator also shows your exact total days lived."
+            }
+          },
+          {
+            "@type": "Question",
             "name": "How do I calculate my exact age?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Enter your date of birth and (optionally) an 'As of' date. The tool shows years, months, days, total days lived, and your next-birthday countdown."
+              "text": "Enter your date of birth and optionally an 'As of' date. You’ll get years, months, days, total days lived and the next-birthday countdown."
             }
           },
           {
@@ -147,7 +179,7 @@
             "name": "Can I calculate age in months and days only?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. The calculator provides a detailed breakdown in years, months and days. You can interpret or use the months+days portion as needed."
+              "text": "Yes. Use the months and days from the detailed breakdown shown in the result."
             }
           },
           {
@@ -163,7 +195,7 @@
             "name": "Can I use it for exam or admission forms?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. Many users calculate age in years, months and days for school admission and government or competitive exam forms."
+              "text": "Yes. Many users calculate age in years, months and days for school admission and competitive exam forms."
             }
           },
           {
@@ -193,7 +225,7 @@
       crossorigin="anonymous"
     ></script>
 
-    <!-- Page-specific styles (kept, minor UI tweaks) -->
+    <!-- Page-specific styles -->
     <style>
       .age-grid {
         display: grid;
@@ -282,6 +314,13 @@
       }
       #faq p {
         margin: 6px 0 12px;
+      }
+      .quick-answers {
+        margin-top: 12px;
+        font-size: 0.95rem;
+      }
+      .quick-answers li {
+        margin: 4px 0;
       }
       @media (max-width: 900px) {
         .age-grid {
@@ -373,7 +412,7 @@
         <a href="#related">Related tools</a>
       </p>
 
-      <!-- ✅ Intro with semantic/NLP terms -->
+      <!-- ✅ Intro with semantic/NLP + long-tail phrasing -->
       <section class="card" id="intro">
         <h2>What is an Age Calculator?</h2>
         <p>
@@ -382,9 +421,30 @@
           <strong>Date of Birth (DOB)</strong>. It also shows
           <strong>total days lived</strong>, your
           <strong>chronological age</strong>, and a
-          <strong>next birthday countdown</strong>. This calculator works fully
+          <strong>next-birthday countdown</strong>. Use it to answer common
+          questions like <em>what is my age today</em>,
+          <em>how many days until my birthday</em>, or
+          <em>how old was I in 2018</em>. This calculator works fully
           <strong>offline in your browser</strong>—no data leaves your device.
         </p>
+        <ul class="quick-answers">
+          <li>
+            <strong>What is my age today?</strong> Keep “As of” as today and
+            press <em>Calculate</em>.
+          </li>
+          <li>
+            <strong>How many days until my birthday?</strong> See the live
+            countdown under the result.
+          </li>
+          <li>
+            <strong>How old was I on a past date (e.g., 2018-01-01)?</strong>
+            Set that date in “As of”.
+          </li>
+          <li>
+            <strong>How many days is 11 years?</strong> Check “Total days lived”
+            (leap years included).
+          </li>
+        </ul>
         <p class="muted">
           Prefer <strong>বাংলা</strong>? Try the
           <a href="/bn/age-calculator/" hreflang="bn">বাংলা বয়স নির্ণায়ক</a>.
@@ -537,31 +597,64 @@
         </ul>
       </article>
 
-      <!-- FAQ -->
+      <!-- FAQ (visible; mirrors JSON-LD) -->
       <article class="card faq" id="faq">
         <h2>FAQ</h2>
 
         <details>
+          <summary>What is my age today?</summary>
+          <p>
+            Keep the “As of” date as today and enter your DOB. Press
+            <strong>Calculate</strong> to see your current age in years, months
+            and days.
+          </p>
+        </details>
+
+        <details>
+          <summary>How many days until my birthday?</summary>
+          <p>
+            The calculator shows a live countdown (in days) to your next
+            birthday below the main result.
+          </p>
+        </details>
+
+        <details>
+          <summary>How old was I in 2018 (or on any past date)?</summary>
+          <p>
+            Change the “As of” field to a past date like
+            <code>2018-01-01</code>. The tool will show your exact age on that
+            date.
+          </p>
+        </details>
+
+        <details>
+          <summary>How many days is 11 years?</summary>
+          <p>
+            About 4,015 days on average (leap years vary). The tool’s “Total
+            days lived” value gives your precise count.
+          </p>
+        </details>
+
+        <details>
           <summary>How do I calculate my exact age?</summary>
           <p>
-            Enter your date of birth and (optionally) an “As of” date. The tool
-            shows years, months, days, total days lived, and your next-birthday
-            countdown.
+            Enter your DOB and optionally an “As of” date. You’ll get years,
+            months, days, total days lived, and a next-birthday countdown.
           </p>
         </details>
 
         <details>
           <summary>Can I calculate age in months and days only?</summary>
           <p>
-            Yes. The result includes a precise years-months-days breakdown; you
-            can use the months/days portion where needed.
+            Yes. Use the months+days portion from the detailed breakdown in the
+            result.
           </p>
         </details>
 
         <details>
           <summary>Does it handle leap-day birthdays (Feb 29)?</summary>
           <p>
-            Yes. On non-leap years, Feb 29 birthdays are observed on Feb 28 for
+            Yes. In non-leap years, Feb 29 birthdays are observed on Feb 28 for
             next-birthday logic.
           </p>
         </details>
@@ -590,8 +683,7 @@
         <h2>Related tools</h2>
         <p class="muted">More date &amp; time utilities:</p>
         <p>
-          <a class="btn" href="/calculator/"> Calculator</a>
-
+          <a class="btn" href="/calculator/">Calculator</a>
           <a class="btn" href="/stopwatch-countdown/"
             >Stopwatch &amp; Countdown</a
           >
@@ -662,7 +754,7 @@
       };
       window.addEventListener("load", initAds);
 
-      // ===== Calculator logic (kept) =====
+      // ===== Calculator logic =====
       const todayStr = () => {
         const t = new Date();
         const y = t.getFullYear();
@@ -796,8 +888,7 @@
       };
     </script>
 
-    <!-- NOTE: if this file lives at /age-calculator/, tracker.js is likely one level up in /assets/ -->
-    <!-- If your original path worked for you, keep it. Otherwise, uncomment the ../ path below. -->
+    <!-- tracker path: keep whichever works in your project -->
     <!-- <script src="../assets/tracker.js" defer data-trk-site="tools-pack"></script> -->
     <script src="./assets/tracker.js" defer data-trk-site="tools-pack"></script>
 

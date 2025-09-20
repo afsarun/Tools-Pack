@@ -271,11 +271,13 @@ footer {
 
 p {
   line-height: 2;
+  font-size: 22px;
 }
 
 a {
   line-height: 2;
   display: inline-block;
+  font-size: 16px;
 }
 #how-to-use li {
   line-height: 2;
@@ -283,4 +285,13 @@ a {
 
 #use-cases li {
   line-height: 2;
+}
+
+input {
+  font-size: 2rem;
+}
+.textarea {
+  width: 100%;
+  min-height: 150px;
+  font-size: 2rem;
 }

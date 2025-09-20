@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>
+      Date Calculator — Days Until a Date, Days Ago, Add/Subtract Days, Years
+      Since | Tools Pack
+    </title>
+    <meta
+      name="description"
+      content="Free Date Calculator: find how long until a date, how long ago a date was, what is 20 days from today, 2015 days ago, days till Sept 17 or 6/11, and how many years since 2018. Fast, accurate, works offline."
+    />
+    <link
+      rel="canonical"
+      href="https://tools-pack.netlify.app/date-calculator/"
+    />
+    <meta name="theme-color" content="#1E1E2F" />
+    <link rel="stylesheet" href="../assets/style.css" />
+
+    <!-- Hreflang -->
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://tools-pack.netlify.app/date-calculator/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://tools-pack.netlify.app/date-calculator/"
+    />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tools Pack" />
+    <meta property="og:title" content="Date Calculator — Tools Pack" />
+    <meta
+      property="og:description"
+      content="Days until, days ago, add/subtract days, and years since — fast & accurate."
+    />
+    <meta
+      property="og:url"
+      content="https://tools-pack.netlify.app/date-calculator/"
+    />
+    <meta
+      property="og:image"
+      content="https://tools-pack.netlify.app/og/date-calculator.png"
+    />
+    <meta property="og:image:alt" content="Date Calculator — Tools Pack" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- JSON-LD: FAQ (targets your low-hanging queries) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How long until 8/13 (August 13)?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Choose 'Days Until a Date', pick August 13 of the desired year, and the calculator shows days remaining from today."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How long ago was 9/30 (September 30)?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use 'Days Since a Date' and select September 30 in the correct year to see how many days ago it was."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How many more days till October?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use 'Days Until a Date' and set the end date to October 1 (or any day in October) to get the remaining days."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "2015 days ago from today",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use 'Days Ago (N days)' and enter 2015. The tool returns the exact date that many days before today."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is 20 days from today?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use 'Add/Subtract Days', keep the base date as today, and add 20 days to get the resulting date."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How many days till Sept 17?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Choose 'Days Until a Date' and select September 17 to see the number of days left."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How many days till 6/11?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Choose 'Days Until a Date' and select June 11 to see the remaining days."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How many years since 2018?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use 'Years/Months/Days Since' and set the start to 2018-01-01 (or any 2018 date). The tool shows years, months, and days since then."
+            }
+          }
+        ]
+      }
+    </script>
+
+    <style>
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 12px;
+      }
+      .field {
+        display: block;
+      }
+      .grid .span-6 {
+        grid-column: span 6;
+      }
+      .grid .span-4 {
+        grid-column: span 4;
+      }
+      .grid .span-3 {
+        grid-column: span 3;
+      }
+      .grid .span-12 {
+        grid-column: 1 / -1;
+      }
+      .mono {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", monospace;
+      }
+      .pill-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 8px 0;
+      }
+      .pill {
+        border: 1px solid var(--border, #e3e3e3);
+        padding: 6px 10px;
+        border-radius: 999px;
+        cursor: pointer;
+        background: rgba(0, 0, 0, 0.03);
+      }
+      .pill:hover {
+        background: rgba(0, 0, 0, 0.06);
+      }
+      .muted {
+        opacity: 0.8;
+      }
+
+      @media (max-width: 720px) {
+        .grid .span-6,
+        .grid .span-4,
+        .grid .span-3 {
+          grid-column: 1 / -1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="sticky" role="banner">
+      <div class="wrap brand">
+        <a href="/" aria-label="Back to home"
+          ><div class="logo" aria-hidden="true"></div
+        ></a>
+        <div>
+          <h1 class="site-title" style="margin: 0">Date Calculator</h1>
+          <div class="sub">
+            Days Until • Days Ago • Add/Subtract • Years Since
+          </div>
+        </div>
+        <div style="margin-left: auto">
+          <a class="muted" href="/age-calculator/">Age Calculator</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap" role="main">
+      <nav class="breadcrumbs" aria-label="breadcrumb">
+        <a href="/">Home</a> › <span>Date Calculator</span>
+      </nav>
+
+      <section class="card" id="intro">
+        <h2>What can this Date Calculator do?</h2>
+        <p>
+          Quickly find <em>how long until 8/13</em>,
+          <em>how long ago was 9/30</em>,
+          <em>how many more days till October</em>, compute
+          <em>2015 days ago</em>, answer <em>what is 20 days from today</em>, or
+          check <em>days till Sept 17</em> / <em>days till 6/11</em>. You can
+          also see <em>how many years since 2018</em>. Works offline in your
+          browser — no data leaves your device.
+        </p>
+        <div class="pill-row">
+          <button class="pill" data-fill="until-aug13">Until Aug 13</button>
+          <button class="pill" data-fill="until-sep17">Until Sep 17</button>
+          <button class="pill" data-fill="until-jun11">Until Jun 11</button>
+          <button class="pill" data-fill="ago-2015">2015 days ago</button>
+          <button class="pill" data-fill="add-20">20 days from today</button>
+          <button class="pill" data-fill="since-2018">Since 2018-01-01</button>
+        </div>
+      </section>
+
+      <!-- Days Until -->
+      <section class="card" id="until">
+        <h2>Days Until a Date</h2>
+        <div class="grid">
+          <label class="field span-6">
+            <span class="muted">End date</span>
+            <input id="untilEnd" type="date" class="field" required />
+          </label>
+          <label class="field span-6">
+            <span class="muted">Start date (defaults to today)</span>
+            <input id="untilStart" type="date" class="field" />
+          </label>
+          <div class="span-12">
+            <button class="btn btn-primary" id="btnUntil" type="button">
+              Calculate
+            </button>
+            <button class="btn" id="btnUntilReset" type="button">Reset</button>
+          </div>
+          <div class="span-12">
+            <textarea
+              id="outUntil"
+              class="textarea mono"
+              readonly
+              placeholder="Result…"
+            ></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- Days Since (how long ago) -->
+      <section class="card" id="since-date">
+        <h2>Days Since a Date (How long ago?)</h2>
+        <div class="grid">
+          <label class="field span-6">
+            <span class="muted">Past date</span>
+            <input id="sincePast" type="date" class="field" required />
+          </label>
+          <label class="field span-6">
+            <span class="muted">As of (defaults to today)</span>
+            <input id="sinceAsOf" type="date" class="field" />
+          </label>
+          <div class="span-12">
+            <button class="btn btn-primary" id="btnSince" type="button">
+              Calculate
+            </button>
+            <button class="btn" id="btnSinceReset" type="button">Reset</button>
+          </div>
+          <div class="span-12">
+            <textarea
+              id="outSince"
+              class="textarea mono"
+              readonly
+              placeholder="Result…"
+            ></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- N days ago -->
+      <section class="card" id="ago">
+        <h2>Days Ago (N days)</h2>
+        <div class="grid">
+          <label class="field span-4">
+            <span class="muted">N (days)</span>
+            <input
+              id="agoN"
+              type="number"
+              min="0"
+              step="1"
+              class="field"
+              placeholder="e.g., 2015"
+            />
+          </label>
+          <label class="field span-4">
+            <span class="muted">As of (defaults to today)</span>
+            <input id="agoAsOf" type="date" class="field" />
+          </label>
+          <div class="span-12">
+            <button class="btn btn-primary" id="btnAgo" type="button">
+              Calculate
+            </button>
+            <button class="btn" id="btnAgoReset" type="button">Reset</button>
+          </div>
+          <div class="span-12">
+            <textarea
+              id="outAgo"
+              class="textarea mono"
+              readonly
+              placeholder="Result…"
+            ></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- Add/Subtract Days -->
+      <section class="card" id="add">
+        <h2>Add/Subtract Days</h2>
+        <div class="grid">
+          <label class="field span-4">
+            <span class="muted">Base date (defaults to today)</span>
+            <input id="addBase" type="date" class="field" />
+          </label>
+          <label class="field span-4">
+            <span class="muted">+ / − days (use negative to subtract)</span>
+            <input
+              id="addN"
+              type="number"
+              step="1"
+              class="field"
+              placeholder="e.g., 20 or -20"
+            />
+          </label>
+          <div class="span-12">
+            <button class="btn btn-primary" id="btnAdd" type="button">
+              Calculate
+            </button>
+            <button class="btn" id="btnAddReset" type="button">Reset</button>
+          </div>
+          <div class="span-12">
+            <textarea
+              id="outAdd"
+              class="textarea mono"
+              readonly
+              placeholder="Result…"
+            ></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- Years/Months/Days Since -->
+      <section class="card" id="since">
+        <h2>Years/Months/Days Since</h2>
+        <div class="grid">
+          <label class="field span-6">
+            <span class="muted">Start date (e.g., 2018-01-01)</span>
+            <input id="sinceStart" type="date" class="field" />
+          </label>
+          <label class="field span-6">
+            <span class="muted">As of (defaults to today)</span>
+            <input id="sinceEnd" type="date" class="field" />
+          </label>
+          <div class="span-12">
+            <button class="btn btn-primary" id="btnSinceYMD" type="button">
+              Calculate
+            </button>
+            <button class="btn" id="btnSinceYMDReset" type="button">
+              Reset
+            </button>
+          </div>
+          <div class="span-12">
+            <textarea
+              id="outSinceYMD"
+              class="textarea mono"
+              readonly
+              placeholder="Result…"
+            ></textarea>
+          </div>
+        </div>
+        <p class="muted">
+          Tip: For “how many years since 2018”, set <em>Start</em> to 2018-01-01
+          and leave <em>As of</em> blank.
+        </p>
+      </section>
+
+      <!-- Visible FAQ -->
+      <section class="card" id="faq">
+        <h2>FAQ</h2>
+        <details>
+          <summary>How long until 8/13?</summary>
+          <p>
+            Use <strong>Days Until a Date</strong> and set the end date to
+            August 13. If the date passed this year, the tool will show a
+            negative number (meaning it occurred that many days ago) — or pick
+            next year’s Aug 13.
+          </p>
+        </details>
+        <details>
+          <summary>How long ago was 9/30?</summary>
+          <p>
+            Open <strong>Days Since a Date</strong>, select September 30 (with a
+            year), and calculate to see how many days ago it was.
+          </p>
+        </details>
+        <details>
+          <summary>How many more days till October?</summary>
+          <p>
+            Choose October 1 (or a specific October date) in
+            <strong>Days Until a Date</strong>. You’ll get the remaining days
+            from today.
+          </p>
+        </details>
+        <details>
+          <summary>2015 days ago — what date was that?</summary>
+          <p>
+            Use <strong>Days Ago (N days)</strong> with N = 2015 to get the
+            exact date that many days before today.
+          </p>
+        </details>
+        <details>
+          <summary>What is 20 days from today?</summary>
+          <p>
+            Use <strong>Add/Subtract Days</strong> with +20 to get the resulting
+            date.
+          </p>
+        </details>
+        <details>
+          <summary>How many days till Sept 17 / 6/11?</summary>
+          <p>
+            Use <strong>Days Until a Date</strong> and select the target date
+            (Sep 17 or Jun 11). The calculator shows days remaining from today.
+          </p>
+        </details>
+        <details>
+          <summary>How many years since 2018?</summary>
+          <p>
+            Use <strong>Years/Months/Days Since</strong> and set the start to
+            2018-01-01 (or any 2018 date). You’ll see years, months and days
+            since then.
+          </p>
+        </details>
+      </section>
+
+      <section class="card" id="related">
+        <h2>Related tools</h2>
+        <p class="muted">More date &amp; time utilities:</p>
+        <p>
+          <a class="btn" href="/age-calculator/">Age Calculator</a>
+          <a class="btn" href="/stopwatch-countdown/"
+            >Stopwatch &amp; Countdown</a
+          >
+          <a class="btn" href="/unit-converter/">Unit Converter</a>
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="y"></span> Tools Pack • <a class="muted" href="/">Home</a> •
+      <a class="muted" href="/age-calculator/">Age Calculator</a>
+    </footer>
+
+    <script>
+      // ===== Utilities (UTC-safe) =====
+      const pad2 = (n) => String(n).padStart(2, "0");
+      const todayStr = () => {
+        const t = new Date();
+        return `${t.getFullYear()}-${pad2(t.getMonth() + 1)}-${pad2(
+          t.getDate()
+        )}`;
+      };
+      const parseYMD = (s) => {
+        const [y, m, d] = (s || "").split("-").map(Number);
+        if (!y || !m || !d) return null;
+        return { y, m, d };
+      };
+      const toUTC = (o) => new Date(Date.UTC(o.y, o.m - 1, o.d));
+      const fromDate = (d) => ({
+        y: d.getUTCFullYear(),
+        m: d.getUTCMonth() + 1,
+        d: d.getUTCDate(),
+      });
+      const fmt = (d) =>
+        `${d.getUTCFullYear()}-${pad2(d.getUTCMonth() + 1)}-${pad2(
+          d.getUTCDate()
+        )}`;
+
+      const daysBetweenUTC = (A, B) => {
+        // difference in whole days: B - A
+        const ms =
+          Date.UTC(B.getUTCFullYear(), B.getUTCMonth(), B.getUTCDate()) -
+          Date.UTC(A.getUTCFullYear(), A.getUTCMonth(), A.getUTCDate());
+        return Math.round(ms / 86400000);
+      };
+
+      const addDaysUTC = (base, n) => {
+        const ms = Date.UTC(
+          base.getUTCFullYear(),
+          base.getUTCMonth(),
+          base.getUTCDate()
+        );
+        return new Date(ms + n * 86400000);
+      };
+
+      const diffYMD = (start, end) => {
+        // start/end are {y,m,d} objects (calendar diff)
+        let y = end.y - start.y;
+        let m = end.m - start.m;
+        let d = end.d - start.d;
+
+        if (d < 0) {
+          // borrow days from previous month of end
+          const prevMonth = new Date(Date.UTC(end.y, end.m - 1, 0)); // last day of (end.m - 1)
+          d += prevMonth.getUTCDate();
+          m--;
+        }
+        if (m < 0) {
+          m += 12;
+          y--;
+        }
+        return { y, m, d };
+      };
+
+      // ===== Bind elements =====
+      const yEl = document.getElementById("y");
+      yEl.textContent = new Date().getFullYear();
+
+      const untilEnd = document.getElementById("untilEnd");
+      const untilStart = document.getElementById("untilStart");
+      const outUntil = document.getElementById("outUntil");
+
+      const sincePast = document.getElementById("sincePast");
+      const sinceAsOf = document.getElementById("sinceAsOf");
+      const outSince = document.getElementById("outSince");
+
+      const agoN = document.getElementById("agoN");
+      const agoAsOf = document.getElementById("agoAsOf");
+      const outAgo = document.getElementById("outAgo");
+
+      const addBase = document.getElementById("addBase");
+      const addN = document.getElementById("addN");
+      const outAdd = document.getElementById("outAdd");
+
+      const sinceStart = document.getElementById("sinceStart");
+      const sinceEnd = document.getElementById("sinceEnd");
+      const outSinceYMD = document.getElementById("outSinceYMD");
+
+      // defaults
+      const today = todayStr();
+      untilStart.value = today;
+      sinceAsOf.value = today;
+      agoAsOf.value = today;
+      addBase.value = today;
+      sinceEnd.value = today;
+
+      // ===== Pills (quick-fill) =====
+      document.querySelectorAll("[data-fill]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const v = btn.getAttribute("data-fill");
+          const now = new Date();
+          const year = now.getFullYear();
+
+          if (v === "until-aug13") {
+            untilEnd.value = `${year}-${pad2(8)}-${pad2(13)}`;
+            document.getElementById("btnUntil").click();
+          } else if (v === "until-sep17") {
+            untilEnd.value = `${year}-${pad2(9)}-${pad2(17)}`;
+            document.getElementById("btnUntil").click();
+          } else if (v === "until-jun11") {
+            untilEnd.value = `${year}-${pad2(6)}-${pad2(11)}`;
+            document.getElementById("btnUntil").click();
+          } else if (v === "ago-2015") {
+            agoN.value = 2015;
+            document.getElementById("btnAgo").click();
+          } else if (v === "add-20") {
+            addN.value = 20;
+            document.getElementById("btnAdd").click();
+          } else if (v === "since-2018") {
+            sinceStart.value = `2018-01-01`;
+            document.getElementById("btnSinceYMD").click();
+          }
+        });
+      });
+
+      // ===== Handlers =====
+      document.getElementById("btnUntil").onclick = () => {
+        const e = parseYMD(untilEnd.value);
+        if (!e) {
+          outUntil.value = "Select an end date.";
+          return;
+        }
+        const s = parseYMD(untilStart.value || todayStr());
+        const E = toUTC(e),
+          S = toUTC(s);
+        const diff = daysBetweenUTC(S, E);
+        const signWord =
+          diff >= 0 ? "day(s) until" : "day(s) ago (the date has passed)";
+        outUntil.value = `${Math.abs(diff)} ${signWord} ${fmt(E)}\nStart: ${fmt(
+          S
+        )} → End: ${fmt(E)}`;
+      };
+      document.getElementById("btnUntilReset").onclick = () => {
+        untilEnd.value = "";
+        untilStart.value = todayStr();
+        outUntil.value = "";
+      };
+
+      document.getElementById("btnSince").onclick = () => {
+        const p = parseYMD(sincePast.value);
+        if (!p) {
+          outSince.value = "Select the past date.";
+          return;
+        }
+        const a = parseYMD(sinceAsOf.value || todayStr());
+        const P = toUTC(p),
+          A = toUTC(a);
+        const diff = daysBetweenUTC(P, A);
+        if (diff < 0) {
+          outSince.value = `The selected date (${fmt(
+            P
+          )}) is in the future relative to ${fmt(A)}.`;
+        } else {
+          outSince.value = `${diff} day(s) since ${fmt(P)} (as of ${fmt(A)})`;
+        }
+      };
+      document.getElementById("btnSinceReset").onclick = () => {
+        sincePast.value = "";
+        sinceAsOf.value = todayStr();
+        outSince.value = "";
+      };
+
+      document.getElementById("btnAgo").onclick = () => {
+        const n = parseInt(agoN.value, 10);
+        if (!Number.isFinite(n) || n < 0) {
+          outAgo.value = "Enter N (non-negative integer).";
+          return;
+        }
+        const a = parseYMD(agoAsOf.value || todayStr());
+        const A = toUTC(a);
+        const target = addDaysUTC(A, -n);
+        outAgo.value = `${n} day(s) ago from ${fmt(A)} was ${fmt(target)}`;
+      };
+      document.getElementById("btnAgoReset").onclick = () => {
+        agoN.value = "";
+        agoAsOf.value = todayStr();
+        outAgo.value = "";
+      };
+
+      document.getElementById("btnAdd").onclick = () => {
+        const base = parseYMD(addBase.value || todayStr());
+        const N = Number(addN.value);
+        if (!Number.isFinite(N)) {
+          outAdd.value = "Enter a number of days (e.g., 20 or -20).";
+          return;
+        }
+        const B = toUTC(base);
+        const result = addDaysUTC(B, N);
+        const dir = N >= 0 ? "after" : "before";
+        outAdd.value = `${Math.abs(N)} day(s) ${dir} ${fmt(B)} is ${fmt(
+          result
+        )}`;
+      };
+      document.getElementById("btnAddReset").onclick = () => {
+        addBase.value = todayStr();
+        addN.value = "";
+        outAdd.value = "";
+      };
+
+      document.getElementById("btnSinceYMD").onclick = () => {
+        const s = parseYMD(sinceStart.value);
+        if (!s) {
+          outSinceYMD.value = "Select start date.";
+          return;
+        }
+        const e = parseYMD(sinceEnd.value || todayStr());
+        const S = toUTC(s),
+          E = toUTC(e);
+        if (E < S) {
+          outSinceYMD.value = `Error: End (${fmt(E)}) is before start (${fmt(
+            S
+          )}).`;
+          return;
+        }
+        const ymd = diffYMD(s, e);
+        const daysTotal = daysBetweenUTC(S, E);
+        outSinceYMD.value =
+          `${ymd.y} year(s), ${ymd.m} month(s), ${ymd.d} day(s)\n` +
+          `Total days: ${daysTotal.toLocaleString()}\nFrom ${fmt(S)} to ${fmt(
+            E
+          )}`;
+      };
+      document.getElementById("btnSinceYMDReset").onclick = () => {
+        sinceStart.value = "";
+        sinceEnd.value = todayStr();
+        outSinceYMD.value = "";
+      };
+    </script>
+
+    <!-- Optional tracker (adjust path as in your project) -->
+    <!-- <script src="../assets/tracker.js" defer data-trk-site="tools-pack"></script> -->
+    <script src="./assets/tracker.js" defer data-trk-site="tools-pack"></script>
+    <script src="/assets/related-more.js" defer></script>
+  </body>
+</html>

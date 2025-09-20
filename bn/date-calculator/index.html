@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="bn">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>
+      তারিখ ক্যালকুলেটর — কতদিন বাকি, কতদিন আগে, দিন যোগ/বিয়োগ, কত বছর হলো |
+      Tools Pack
+    </title>
+    <meta
+      name="description"
+      content="ফ্রি Date Calculator: আজ থেকে কতদিন পরে কোনো তারিখ (যেমন 8/13), কতদিন আগে ছিল (যেমন 9/30), আজ থেকে 2015 দিন আগে কবে, আজ থেকে 20 দিন পরে কবে, Sept 17 বা 6/11 পর্যন্ত কতদিন বাকি, 2018 থেকে কত বছর/মাস/দিন—সব এক জায়গায়। অফলাইনে কাজ করে।"
+    />
+    <link
+      rel="canonical"
+      href="https://tools-pack.netlify.app/bn/date-calculator/"
+    />
+    <meta name="theme-color" content="#1E1E2F" />
+    <link rel="stylesheet" href="/assets/style.css" />
+
+    <!-- Hreflang -->
+    <link
+      rel="alternate"
+      hreflang="bn"
+      href="https://tools-pack.netlify.app/bn/date-calculator/"
+    />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://tools-pack.netlify.app/date-calculator/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://tools-pack.netlify.app/date-calculator/"
+    />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tools Pack" />
+    <meta property="og:title" content="তারিখ ক্যালকুলেটর — Tools Pack" />
+    <meta
+      property="og:description"
+      content="Days until, days ago, add/subtract days, years since — বাংলা সংস্করণ।"
+    />
+    <meta
+      property="og:url"
+      content="https://tools-pack.netlify.app/bn/date-calculator/"
+    />
+    <meta
+      property="og:image"
+      content="https://tools-pack.netlify.app/og/date-calculator.png"
+    />
+    <meta property="og:image:alt" content="Date Calculator — Tools Pack" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- JSON-LD: FAQ (বাংলা কুয়েরি কভার) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "8/13 (আগস্ট ১৩) পর্যন্ত কতদিন বাকি?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "“কতদিন বাকি” মোডে গিয়ে শেষ তারিখে আগস্ট ১৩ সিলেক্ট করুন; আজ থেকে কতদিন বাকি দেখাবে।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "9/30 (সেপ্টেম্বর ৩০) কতদিন আগে ছিল?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "“কতদিন আগে ছিল” মোডে তারিখ হিসেবে সেপ্টেম্বর ৩০ (সালসহ) দিন; ক’দিন আগে ছিল দেখাবে।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "অক্টোবর পর্যন্ত আর কতদিন?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "“কতদিন বাকি” মোডে শেষ তারিখে অক্টোবর ১ (বা কাঙ্ক্ষিত তারিখ) দিন; বাকি দিন দেখাবে।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "আজ থেকে 2015 দিন আগে কবে ছিল?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "“N দিন আগে” মোডে 2015 লিখুন; আজ থেকে ওই সংখ্যক দিন আগের নির্দিষ্ট তারিখ দেখাবে।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "আজ থেকে 20 দিন পরে কোন তারিখ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "“দিন যোগ/বিয়োগ” মোডে +20 দিন দিন; রেজাল্টিং তারিখ দেখাবে।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Sept 17 / 6/11 পর্যন্ত কতদিন বাকি?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "“কতদিন বাকি” মোডে তারিখ হিসেবে Sep 17 বা Jun 11 দিন; আজ থেকে বাকি দিন দেখাবে।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "2018 থেকে কত বছর হলো?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "“কত বছর/মাস/দিন হলো” মোডে শুরু তারিখ 2018-01-01 দিন; আজ পর্যন্ত বছর/মাস/দিন দেখাবে।"
+            }
+          }
+        ]
+      }
+    </script>
+
+    <style>
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 12px;
+      }
+      .field {
+        display: block;
+      }
+      .grid .span-6 {
+        grid-column: span 6;
+      }
+      .grid .span-4 {
+        grid-column: span 4;
+      }
+      .grid .span-12 {
+        grid-column: 1 / -1;
+      }
+      .mono {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", monospace;
+      }
+      .pill-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 8px 0;
+      }
+      .pill {
+        border: 1px solid var(--border, #e3e3e3);
+        padding: 6px 10px;
+        border-radius: 999px;
+        cursor: pointer;
+        background: rgba(0, 0, 0, 0.03);
+      }
+      .pill:hover {
+        background: rgba(0, 0, 0, 0.06);
+      }
+      .muted {
+        opacity: 0.8;
+      }
+      .textarea {
+        width: 100%;
+        min-height: 110px;
+      }
+      @media (max-width: 720px) {
+        .grid .span-6,
+        .grid .span-4 {
+          grid-column: 1 / -1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="sticky" role="banner">
+      <div class="wrap brand">
+        <a href="/" aria-label="হোমে ফিরে যান"
+          ><div class="logo" aria-hidden="true"></div
+        ></a>
+        <div>
+          <h1 class="site-title" style="margin: 0">তারিখ ক্যালকুলেটর</h1>
+          <div class="sub">
+            কতদিন বাকি • কতদিন আগে • দিন যোগ/বিয়োগ • কত বছর হলো
+          </div>
+        </div>
+        <div style="margin-left: auto">
+          <a class="muted" href="/bn/age-calculator/" hreflang="bn"
+            >বয়স ক্যালকুলেটর</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap" role="main">
+      <nav class="breadcrumbs" aria-label="breadcrumb">
+        <a href="/">হোম</a> › <span>তারিখ ক্যালকুলেটর</span>
+      </nav>
+
+      <section class="card" id="intro">
+        <h2>এখানে কী কী করা যায়?</h2>
+        <p>
+          খুব দ্রুত জানতে পারবেন: <em>8/13 পর্যন্ত কতদিন বাকি</em>,
+          <em>9/30 কতদিন আগে ছিল</em>, <em>অক্টোবর পর্যন্ত আর কতদিন</em>,
+          <em>আজ থেকে 2015 দিন আগে কবে</em>,
+          <em>আজ থেকে 20 দিন পরে কোন তারিখ</em>,
+          <em>Sept 17 বা 6/11 পর্যন্ত কতদিন বাকি</em>, এবং
+          <em>2018 থেকে কত বছর/মাস/দিন হলো</em>। সবকিছু আপনার ব্রাউজারেই—ডাটা
+          বাইরে যায় না।
+        </p>
+        <div class="pill-row">
+          <button class="pill" data-fill="until-aug13">Aug 13 পর্যন্ত</button>
+          <button class="pill" data-fill="until-sep17">Sep 17 পর্যন্ত</button>
+          <button class="pill" data-fill="until-jun11">Jun 11 পর্যন্ত</button>
+          <button class="pill" data-fill="ago-2015">২০১৫ দিন আগে</button>
+          <button class="pill" data-fill="add-20">আজ থেকে ২০ দিন পরে</button>
+          <button class="pill" data-fill="since-2018">২০১৮ থেকে এখন</button>
+        </div>
+      </section>
+
+      <!-- Days Until -->
+      <section class="card" id="until">
+        <h2>কতদিন বাকি (Days Until)</h2>
+        <div class="grid">
+          <label class="field span-6">
+            <span class="muted">শেষ তারিখ</span>
+            <input id="untilEnd" type="date" class="field" required />
+          </label>
+          <label class="field span-6">
+            <span class="muted">শুরু তারিখ (ডিফল্ট আজ)</span>
+            <input id="untilStart" type="date" class="field" />
+          </label>
+          <div class="span-12">
+            <button class="btn btn-primary" id="btnUntil" type="button">
+              হিসাব করুন
+            </button>
+            <button class="btn" id="btnUntilReset" type="button">রিসেট</button>
+          </div>
+          <div class="span-12">
+            <textarea
+              id="outUntil"
+              class="textarea mono"
+              readonly
+              placeholder="রেজাল্ট…"
+            ></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- Days Since -->
+      <section class="card" id="since-date">
+        <h2>কতদিন আগে ছিল (Days Since)</h2>
+        <div class="grid">
+          <label class="field span-6">
+            <span class="muted">পাস্ট তারিখ</span>
+            <input id="sincePast" type="date" class="field" required />
+          </label>
+          <label class="field span-6">
+            <span class="muted">যাবতীয় তারিখ (ডিফল্ট আজ)</span>
+            <input id="sinceAsOf" type="date" class="field" />
+          </label>
+          <div class="span-12">
+            <button class="btn btn-primary" id="btnSince" type="button">
+              হিসাব করুন
+            </button>
+            <button class="btn" id="btnSinceReset" type="button">রিসেট</button>
+          </div>
+          <div class="span-12">
+            <textarea
+              id="outSince"
+              class="textarea mono"
+              readonly
+              placeholder="রেজাল্ট…"
+            ></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- N days ago -->
+      <section class="card" id="ago">
+        <h2>N দিন আগে</h2>
+        <div class="grid">
+          <label class="field span-4">
+            <span class="muted">N (দিন)</span>
+            <input
+              id="agoN"
+              type="number"
+              min="0"
+              step="1"
+              class="field"
+              placeholder="যেমন, 2015"
+            />
+          </label>
+          <label class="field span-4">
+            <span class="muted">যাবতীয় তারিখ (ডিফল্ট আজ)</span>
+            <input id="agoAsOf" type="date" class="field" />
+          </label>
+          <div class="span-12">
+            <button class="btn btn-primary" id="btnAgo" type="button">
+              হিসাব করুন
+            </button>
+            <button class="btn" id="btnAgoReset" type="button">রিসেট</button>
+          </div>
+          <div class="span-12">
+            <textarea
+              id="outAgo"
+              class="textarea mono"
+              readonly
+              placeholder="রেজাল্ট…"
+            ></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- Add/Subtract Days -->
+      <section class="card" id="add">
+        <h2>দিন যোগ/বিয়োগ</h2>
+        <div class="grid">
+          <label class="field span-4">
+            <span class="muted">বেস তারিখ (ডিফল্ট আজ)</span>
+            <input id="addBase" type="date" class="field" />
+          </label>
+          <label class="field span-4">
+            <span class="muted">+ / − দিন (বিয়োগের জন্য ঋণাত্মক)</span>
+            <input
+              id="addN"
+              type="number"
+              step="1"
+              class="field"
+              placeholder="যেমন, 20 বা -20"
+            />
+          </label>
+          <div class="span-12">
+            <button class="btn btn-primary" id="btnAdd" type="button">
+              হিসাব করুন
+            </button>
+            <button class="btn" id="btnAddReset" type="button">রিসেট</button>
+          </div>
+          <div class="span-12">
+            <textarea
+              id="outAdd"
+              class="textarea mono"
+              readonly
+              placeholder="রেজাল্ট…"
+            ></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- Years/Months/Days Since -->
+      <section class="card" id="since">
+        <h2>কত বছর/মাস/দিন হলো</h2>
+        <div class="grid">
+          <label class="field span-6">
+            <span class="muted">শুরু তারিখ (যেমন, 2018-01-01)</span>
+            <input id="sinceStart" type="date" class="field" />
+          </label>
+          <label class="field span-6">
+            <span class="muted">যাবতীয় তারিখ (ডিফল্ট আজ)</span>
+            <input id="sinceEnd" type="date" class="field" />
+          </label>
+          <div class="span-12">
+            <button class="btn btn-primary" id="btnSinceYMD" type="button">
+              হিসাব করুন
+            </button>
+            <button class="btn" id="btnSinceYMDReset" type="button">
+              রিসেট
+            </button>
+          </div>
+          <div class="span-12">
+            <textarea
+              id="outSinceYMD"
+              class="textarea mono"
+              readonly
+              placeholder="রেজাল্ট…"
+            ></textarea>
+          </div>
+        </div>
+        <p class="muted">
+          টিপস: “2018 থেকে কত বছর” জানতে <em>শুরু</em> হিসাবে 2018-01-01 দিন;
+          <em>যাবতীয়</em> ফাঁকা রাখলে আজ ধরা হবে।
+        </p>
+      </section>
+
+      <!-- Visible FAQ -->
+      <section class="card" id="faq">
+        <h2>প্রশ্নোত্তর (FAQ)</h2>
+        <details>
+          <summary>8/13 পর্যন্ত কতদিন বাকি?</summary>
+          <p>
+            <strong>কতদিন বাকি</strong> সেকশনে গিয়ে শেষ তারিখে আগস্ট ১৩ সিলেক্ট
+            করুন। যদি এ বছর তারিখটি পার হয়ে যায়, নেগেটিভ দেখাতে পারে—পরের বছরের
+            Aug 13 দিন।
+          </p>
+        </details>
+        <details>
+          <summary>9/30 কতদিন আগে ছিল?</summary>
+          <p>
+            <strong>কতদিন আগে ছিল</strong> সেকশনে সেপ্টেম্বর ৩০ (সালসহ) সিলেক্ট
+            করুন—ক’দিন আগে ছিল দেখাবে।
+          </p>
+        </details>
+        <details>
+          <summary>অক্টোবর পর্যন্ত আর কতদিন?</summary>
+          <p>
+            <strong>কতদিন বাকি</strong> সেকশনে অক্টোবর ১ (বা নির্দিষ্ট অক্টোবরের
+            তারিখ) সিলেক্ট করুন—বাকি দিন দেখাবে।
+          </p>
+        </details>
+        <details>
+          <summary>আজ থেকে 2015 দিন আগে কবে ছিল?</summary>
+          <p>
+            <strong>N দিন আগে</strong> সেকশনে N = 2015 দিন—ঠিক তারিখ দেখাবে।
+          </p>
+        </details>
+        <details>
+          <summary>আজ থেকে 20 দিন পরে কোন তারিখ?</summary>
+          <p>
+            <strong>দিন যোগ/বিয়োগ</strong> সেকশনে +20 দিন—রেজাল্টিং তারিখ পাবেন।
+          </p>
+        </details>
+        <details>
+          <summary>Sept 17 / 6/11 পর্যন্ত কতদিন বাকি?</summary>
+          <p>
+            <strong>কতদিন বাকি</strong> সেকশনে কাঙ্ক্ষিত তারিখ (Sep 17 বা Jun
+            11) সিলেক্ট করুন—আজ থেকে বাকি দিন দেখাবে।
+          </p>
+        </details>
+        <details>
+          <summary>2018 থেকে কত বছর হলো?</summary>
+          <p>
+            <strong>কত বছর/মাস/দিন হলো</strong> সেকশনে শুরু তারিখে 2018-01-01
+            দিন—আজ পর্যন্ত বছর/মাস/দিন দেখাবে।
+          </p>
+        </details>
+      </section>
+
+      <section class="card" id="related">
+        <h2>আরো টুলস</h2>
+        <p class="muted">তারিখ ও সময় সংক্রান্ত টুলস:</p>
+        <p>
+          <a class="btn" href="/bn/age-calculator/">বয়স ক্যালকুলেটর</a>
+          <a class="btn" href="/stopwatch-countdown/"
+            >স্টপওয়াচ &amp; কাউন্টডাউন</a
+          >
+          <a class="btn" href="/unit-converter/">ইউনিট কনভার্টার</a>
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="y"></span> Tools Pack • <a class="muted" href="/">হোম</a> •
+      <a class="muted" href="/bn/age-calculator/">বয়স ক্যালকুলেটর</a>
+    </footer>
+
+    <script>
+      // ===== Utilities (UTC-safe) =====
+      const pad2 = (n) => String(n).padStart(2, "0");
+      const todayStr = () => {
+        const t = new Date();
+        return `${t.getFullYear()}-${pad2(t.getMonth() + 1)}-${pad2(
+          t.getDate()
+        )}`;
+      };
+      const parseYMD = (s) => {
+        const [y, m, d] = (s || "").split("-").map(Number);
+        if (!y || !m || !d) return null;
+        return { y, m, d };
+      };
+      const toUTC = (o) => new Date(Date.UTC(o.y, o.m - 1, o.d));
+      const fmt = (d) =>
+        `${d.getUTCFullYear()}-${pad2(d.getUTCMonth() + 1)}-${pad2(
+          d.getUTCDate()
+        )}`;
+
+      const daysBetweenUTC = (A, B) => {
+        const ms =
+          Date.UTC(B.getUTCFullYear(), B.getUTCMonth(), B.getUTCDate()) -
+          Date.UTC(A.getUTCFullYear(), A.getUTCMonth(), A.getUTCDate());
+        return Math.round(ms / 86400000);
+      };
+      const addDaysUTC = (base, n) => {
+        const ms = Date.UTC(
+          base.getUTCFullYear(),
+          base.getUTCMonth(),
+          base.getUTCDate()
+        );
+        return new Date(ms + n * 86400000);
+      };
+      const diffYMD = (start, end) => {
+        let y = end.y - start.y;
+        let m = end.m - start.m;
+        let d = end.d - start.d;
+        if (d < 0) {
+          const prevMonth = new Date(Date.UTC(end.y, end.m - 1, 0));
+          d += prevMonth.getUTCDate();
+          m--;
+        }
+        if (m < 0) {
+          m += 12;
+          y--;
+        }
+        return { y, m, d };
+      };
+
+      // ===== Bind elements + defaults =====
+      const yEl = document.getElementById("y");
+      yEl.textContent = new Date().getFullYear();
+
+      const untilEnd = document.getElementById("untilEnd");
+      const untilStart = document.getElementById("untilStart");
+      const outUntil = document.getElementById("outUntil");
+
+      const sincePast = document.getElementById("sincePast");
+      theSinceAsOf = document.getElementById("sinceAsOf");
+      const outSince = document.getElementById("outSince");
+
+      const agoN = document.getElementById("agoN");
+      const agoAsOf = document.getElementById("agoAsOf");
+      const outAgo = document.getElementById("outAgo");
+
+      const addBase = document.getElementById("addBase");
+      const addN = document.getElementById("addN");
+      const outAdd = document.getElementById("outAdd");
+
+      const sinceStart = document.getElementById("sinceStart");
+      const sinceEnd = document.getElementById("sinceEnd");
+      const outSinceYMD = document.getElementById("outSinceYMD");
+
+      const today = todayStr();
+      untilStart.value = today;
+      theSinceAsOf.value = today;
+      agoAsOf.value = today;
+      addBase.value = today;
+      sinceEnd.value = today;
+
+      // ===== Quick-fill pills =====
+      document.querySelectorAll("[data-fill]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const v = btn.getAttribute("data-fill");
+          const now = new Date();
+          const year = now.getFullYear();
+
+          if (v === "until-aug13") {
+            untilEnd.value = `${year}-08-13`;
+            document.getElementById("btnUntil").click();
+          } else if (v === "until-sep17") {
+            untilEnd.value = `${year}-09-17`;
+            document.getElementById("btnUntil").click();
+          } else if (v === "until-jun11") {
+            untilEnd.value = `${year}-06-11`;
+            document.getElementById("btnUntil").click();
+          } else if (v === "ago-2015") {
+            agoN.value = 2015;
+            document.getElementById("btnAgo").click();
+          } else if (v === "add-20") {
+            addN.value = 20;
+            document.getElementById("btnAdd").click();
+          } else if (v === "since-2018") {
+            sinceStart.value = `2018-01-01`;
+            document.getElementById("btnSinceYMD").click();
+          }
+        });
+      });
+
+      // ===== Handlers =====
+      document.getElementById("btnUntil").onclick = () => {
+        const e = parseYMD(untilEnd.value);
+        if (!e) {
+          outUntil.value = "শেষ তারিখ সিলেক্ট করুন।";
+          return;
+        }
+        const s = parseYMD(untilStart.value || todayStr());
+        const E = toUTC(e),
+          S = toUTC(s);
+        const diff = daysBetweenUTC(S, E);
+        const msg =
+          diff >= 0
+            ? `${Math.abs(diff)} দিন বাকি ${fmt(E)} পর্যন্ত`
+            : `${Math.abs(diff)} দিন আগে ছিল ${fmt(E)} (তারিখ পার হয়ে গেছে)`;
+        outUntil.value = `${msg}\nশুরু: ${fmt(S)} → শেষ: ${fmt(E)}`;
+      };
+      document.getElementById("btnUntilReset").onclick = () => {
+        untilEnd.value = "";
+        untilStart.value = todayStr();
+        outUntil.value = "";
+      };
+
+      document.getElementById("btnSince").onclick = () => {
+        const p = parseYMD(sincePast.value);
+        if (!p) {
+          outSince.value = "পাস্ট তারিখ সিলেক্ট করুন।";
+          return;
+        }
+        const a = parseYMD(theSinceAsOf.value || todayStr());
+        const P = toUTC(p),
+          A = toUTC(a);
+        const diff = daysBetweenUTC(P, A);
+        outSince.value =
+          diff < 0
+            ? `সিলেক্ট করা তারিখ (${fmt(P)}) এখনো আসেনি (as of ${fmt(A)})।`
+            : `${diff} দিন হয়েছে ${fmt(P)} থেকে (as of ${fmt(A)})`;
+      };
+      document.getElementById("btnSinceReset").onclick = () => {
+        sincePast.value = "";
+        theSinceAsOf.value = todayStr();
+        outSince.value = "";
+      };
+
+      document.getElementById("btnAgo").onclick = () => {
+        const n = parseInt(agoN.value, 10);
+        if (!Number.isFinite(n) || n < 0) {
+          outAgo.value = "N (ধনাত্মক পূর্ণসংখ্যা) লিখুন।";
+          return;
+        }
+        const a = parseYMD(agoAsOf.value || todayStr());
+        const A = toUTC(a);
+        const target = addDaysUTC(A, -n);
+        outAgo.value = `${fmt(A)} থেকে ${n} দিন আগে হলো ${fmt(target)}`;
+      };
+      document.getElementById("btnAgoReset").onclick = () => {
+        agoN.value = "";
+        agoAsOf.value = todayStr();
+        outAgo.value = "";
+      };
+
+      document.getElementById("btnAdd").onclick = () => {
+        const base = parseYMD(addBase.value || todayStr());
+        const N = Number(addN.value);
+        if (!Number.isFinite(N)) {
+          outAdd.value = "দিনের সংখ্যা লিখুন (যেমন 20 বা -20)।";
+          return;
+        }
+        const B = toUTC(base);
+        const result = addDaysUTC(B, N);
+        const dir = N >= 0 ? "পরে" : "আগে";
+        outAdd.value = `${fmt(B)} থেকে ${Math.abs(N)} দিন ${dir} হলো ${fmt(
+          result
+        )}`;
+      };
+      document.getElementById("btnAddReset").onclick = () => {
+        addBase.value = todayStr();
+        addN.value = "";
+        outAdd.value = "";
+      };
+
+      document.getElementById("btnSinceYMD").onclick = () => {
+        const s = parseYMD(sinceStart.value);
+        if (!s) {
+          outSinceYMD.value = "শুরু তারিখ সিলেক্ট করুন।";
+          return;
+        }
+        const e = parseYMD(sinceEnd.value || todayStr());
+        const S = toUTC(s),
+          E = toUTC(e);
+        if (E < S) {
+          outSinceYMD.value = `এরর: শেষ (${fmt(E)}) শুরু (${fmt(S)})-র আগে।`;
+          return;
+        }
+        const ymd = diffYMD(s, e);
+        const daysTotal = daysBetweenUTC(S, E);
+        outSinceYMD.value =
+          `${ymd.y} বছর, ${ymd.m} মাস, ${ymd.d} দিন\n` +
+          `মোট দিন: ${daysTotal.toLocaleString()}\n${fmt(S)} থেকে ${fmt(
+            E
+          )} পর্যন্ত`;
+      };
+      document.getElementById("btnSinceYMDReset").onclick = () => {
+        sinceStart.value = "";
+        sinceEnd.value = todayStr();
+        outSinceYMD.value = "";
+      };
+    </script>
+
+    <!-- Optional tracker -->
+    <script src="/assets/tracker.js" defer data-trk-site="tools-pack"></script>
+    <script
+      src="/assets/related-more.js"
+      defer
+      data-trk-site="tools-pack"
+    ></script>
+  </body>
+</html>
