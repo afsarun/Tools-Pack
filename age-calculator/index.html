@@ -3,11 +3,17 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Online Age Calculator — Years, Months & Days | Tools Pack</title>
+
+    <!-- ✅ Enriched title + description for main & long-tail intents -->
+    <title>
+      Age Calculator Online — Calculate Exact Age in Years, Months & Days from
+      DOB | Tools Pack
+    </title>
     <meta
       name="description"
-      content="Instantly calculate age in years, months, and days with a next-birthday countdown. Works fully offline in your browser."
+      content="Free online Age Calculator. Calculate exact age in years, months, and days from your date of birth (DOB). Shows total days lived and next-birthday countdown. Works offline. Bengali (বাংলা) version available."
     />
+
     <link
       rel="canonical"
       href="https://tools-pack.netlify.app/age-calculator/"
@@ -35,10 +41,10 @@
     <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Tools Pack" />
-    <meta property="og:title" content="Online Age Calculator — Tools Pack" />
+    <meta property="og:title" content="Age Calculator Online — Tools Pack" />
     <meta
       property="og:description"
-      content="Instant age in years, months, days — plus next-birthday countdown."
+      content="Instant age in years, months, days — plus next-birthday countdown. Free, simple & accurate."
     />
     <meta
       property="og:url"
@@ -49,9 +55,10 @@
       content="https://tools-pack.netlify.app/og/age-calculator.png"
     />
     <meta property="og:image:alt" content="Age Calculator — Tools Pack" />
+    <meta property="og:locale" content="en_US" />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- JSON-LD: WebApplication -->
+    <!-- JSON-LD: WebApplication (kept) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -61,11 +68,12 @@
         "operatingSystem": "All",
         "url": "https://tools-pack.netlify.app/age-calculator/",
         "inLanguage": "en",
-        "description": "Instantly calculate age in years, months, and days with next-birthday countdown."
+        "description": "Instantly calculate age in years, months, and days with next-birthday countdown.",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
       }
     </script>
 
-    <!-- JSON-LD: Breadcrumbs -->
+    <!-- JSON-LD: Breadcrumbs (kept) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -87,7 +95,40 @@
       }
     </script>
 
-    <!-- JSON-LD: FAQ rich results (keep concise) -->
+    <!-- ✅ JSON-LD: HowTo (for step-by-step section) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "How to calculate age online",
+        "description": "Step-by-step guide to use the Age Calculator from your Date of Birth (DOB).",
+        "totalTime": "PT1M",
+        "step": [
+          {
+            "@type": "HowToStep",
+            "position": 1,
+            "text": "Enter your Date of Birth (DOB)."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 2,
+            "text": "Optionally change 'As of' date to calculate age on a specific day."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 3,
+            "text": "Click Calculate to see years, months, days and total days lived."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 4,
+            "text": "Review next-birthday countdown and copy the result if needed."
+          }
+        ]
+      }
+    </script>
+
+    <!-- ✅ JSON-LD: FAQ (expanded with exam/months-days/privacy) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -103,10 +144,26 @@
           },
           {
             "@type": "Question",
-            "name": "Does it handle leap day birthdays (Feb 29)?",
+            "name": "Can I calculate age in months and days only?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. On non-leap years, Feb 29 birthdays are observed on Feb 28 for next-birthday logic."
+              "text": "Yes. The calculator provides a detailed breakdown in years, months and days. You can interpret or use the months+days portion as needed."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does it handle leap-day birthdays (Feb 29)?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. In non-leap years, Feb 29 birthdays are observed on Feb 28 for next-birthday logic."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use it for exam or admission forms?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Many users calculate age in years, months and days for school admission and government or competitive exam forms."
             }
           },
           {
@@ -116,23 +173,28 @@
               "@type": "Answer",
               "text": "No. All calculations run locally in your browser; nothing is sent to a server."
             }
+          },
+          {
+            "@type": "Question",
+            "name": "Does it work offline?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. After the first load, the tool works without an internet connection."
+            }
           }
         ]
       }
     </script>
 
-    <!-- ========= Google AdSense loader =========
-         Replace client with your own publisher ID.
-         Keep data-adtest="on" while testing; remove when live. -->
+    <!-- ========= Google AdSense loader ========= -->
     <script
       async
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234567890123456"
       crossorigin="anonymous"
     ></script>
 
-    <!-- Inline styles for ad slots + page-specific UI -->
+    <!-- Page-specific styles (kept, minor UI tweaks) -->
     <style>
-      /* ===== Layout grid for the two inputs ===== */
       .age-grid {
         display: grid;
         grid-template-columns: repeat(12, 1fr);
@@ -141,8 +203,6 @@
       .age-grid > .field {
         grid-column: span 6;
       }
-
-      /* ===== Input with inline calendar icon ===== */
       .input-with-icon {
         position: relative;
         display: block;
@@ -162,7 +222,6 @@
         height: 28px;
         border: 0;
         padding: 0;
-        background: transparent;
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -180,8 +239,6 @@
       .input-with-icon:focus-within > input.field {
         border-color: var(--focus, #5b8def);
         box-shadow: 0 0 0 2px rgba(91, 141, 239, 0.25);
-        box-shadow: 0 0 0 2px
-          color-mix(in oklab, var(--focus, #5b8def) 25%, transparent);
       }
       .input-with-icon > .cal-btn svg {
         width: 20px;
@@ -192,16 +249,12 @@
         opacity: 0.4;
         pointer-events: none;
       }
-
-      /* Minor page tweaks */
       #out.textarea {
         min-height: 120px;
       }
       #next {
         margin-top: 8px;
       }
-
-      /* ===== Related tools section ===== */
       .related {
         margin-top: 20px;
       }
@@ -220,8 +273,6 @@
       .link-list a {
         text-decoration: none;
       }
-
-      /* ===== How-to & FAQ spacing ===== */
       #how-to-use ol {
         margin: 8px 0 12px 18px;
       }
@@ -232,8 +283,6 @@
       #faq p {
         margin: 6px 0 12px;
       }
-
-      /* ===== Responsive media queries ===== */
       @media (max-width: 900px) {
         .age-grid {
           gap: 10px;
@@ -271,15 +320,11 @@
           right: 4px;
         }
       }
-
-      /* Dark-mode hover */
       @media (prefers-color-scheme: dark) {
         .input-with-icon > .cal-btn:hover {
           background: rgba(255, 255, 255, 0.08);
         }
       }
-
-      /* ===== Ad slot label (if styled in global, this is no-op) ===== */
     </style>
   </head>
 
@@ -290,7 +335,8 @@
           ><div class="logo" aria-hidden="true"></div
         ></a>
         <div>
-          <h1 class="site-title" style="margin: 0">Age Calculator</h1>
+          <!-- ✅ H1 uses exact match phrase -->
+          <h1 class="site-title" style="margin: 0">Age Calculator Online</h1>
           <div class="sub">Years • Months • Days</div>
         </div>
         <div style="margin-left: auto">
@@ -299,7 +345,7 @@
       </div>
     </header>
 
-    <!-- Ad #1: top banner (constrained, no full-width expansion) -->
+    <!-- Ad #1 -->
     <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
       <span class="ad-label">Ad</span>
       <ins
@@ -322,10 +368,28 @@
 
       <!-- TOC -->
       <p class="toc">
-        <a href="#enter-dates">Enter dates</a> ·
+        <a href="#intro">Intro</a> · <a href="#enter-dates">Enter dates</a> ·
         <a href="#how-to-use">How to use</a> · <a href="#faq">FAQ</a> ·
         <a href="#related">Related tools</a>
       </p>
+
+      <!-- ✅ Intro with semantic/NLP terms -->
+      <section class="card" id="intro">
+        <h2>What is an Age Calculator?</h2>
+        <p>
+          An <strong>Age Calculator Online</strong> is a free tool to calculate
+          your exact age in <em>years, months, and days</em> from your
+          <strong>Date of Birth (DOB)</strong>. It also shows
+          <strong>total days lived</strong>, your
+          <strong>chronological age</strong>, and a
+          <strong>next birthday countdown</strong>. This calculator works fully
+          <strong>offline in your browser</strong>—no data leaves your device.
+        </p>
+        <p class="muted">
+          Prefer <strong>বাংলা</strong>? Try the
+          <a href="/bn/age-calculator/" hreflang="bn">বাংলা বয়স নির্ণায়ক</a>.
+        </p>
+      </section>
 
       <!-- Tool -->
       <article class="card" id="enter-dates">
@@ -411,7 +475,7 @@
           <button class="btn" id="copy" type="button">Copy</button>
         </div>
 
-        <!-- Ad #2: in-article (fluid), fits content width nicely -->
+        <!-- Ad #2 -->
         <div class="ad-wrap ad-article" aria-label="Advertisement">
           <span class="ad-label">Ad</span>
           <ins
@@ -439,8 +503,8 @@
         <h2>How to use</h2>
         <ol>
           <li>
-            Select your <strong>Date of birth</strong>. Use the calendar button
-            to open the native picker.
+            Select your <strong>Date of Birth (DOB)</strong>. Use the calendar
+            button to open the native picker.
           </li>
           <li>
             <strong>As of</strong> defaults to today—change it if you want age
@@ -459,15 +523,15 @@
         <h3>Tips</h3>
         <ul>
           <li>
-            Calendar buttons call the browser’s native date picker; if
-            unsupported, the field just focuses.
+            Calendar buttons use the browser’s native date picker; if
+            unsupported, the field simply focuses.
           </li>
           <li>
-            Leap-day birthdays (Feb&nbsp;29) are handled: in non-leap years, the
-            next birthday is observed on Feb&nbsp;28.
+            Leap-day birthdays (Feb 29) are handled: in non-leap years the next
+            birthday is observed on Feb 28.
           </li>
           <li>
-            “As of” can be future-dated to see how old you’ll be on that day.
+            “As of” can be a future date to see how old you’ll be on that day.
           </li>
           <li>Works offline once loaded; no data leaves your browser.</li>
         </ul>
@@ -487,25 +551,27 @@
         </details>
 
         <details>
-          <summary>Does it handle leap day birthdays (Feb 29)?</summary>
+          <summary>Can I calculate age in months and days only?</summary>
           <p>
-            Yes. On non-leap years, Feb&nbsp;29 birthdays are observed on
-            Feb&nbsp;28 for next-birthday logic.
+            Yes. The result includes a precise years-months-days breakdown; you
+            can use the months/days portion where needed.
           </p>
         </details>
 
         <details>
-          <summary>How is the next birthday calculated?</summary>
+          <summary>Does it handle leap-day birthdays (Feb 29)?</summary>
           <p>
-            The next birthday is the next calendar occurrence of your birth
-            month/day (with Feb&nbsp;29→Feb&nbsp;28 in non-leap years). The
-            counter shows how many days remain.
+            Yes. On non-leap years, Feb 29 birthdays are observed on Feb 28 for
+            next-birthday logic.
           </p>
         </details>
 
         <details>
-          <summary>Can I set a future “As of” date?</summary>
-          <p>Yes. Set any future date to see how old you’ll be on that day.</p>
+          <summary>Can I use this for exam or admission forms?</summary>
+          <p>
+            Yes, many users calculate age in years, months and days for school
+            admissions and government/competitive exams.
+          </p>
         </details>
 
         <details>
@@ -515,19 +581,20 @@
 
         <details>
           <summary>Does it work offline?</summary>
-          <p>Yes. After the first load, it works without internet.</p>
+          <p>Yes. After the first load, the tool works without internet.</p>
         </details>
       </article>
 
-      <!-- Related tools -->
+      <!-- Related tools (stronger topical links) -->
       <article class="card" id="related">
         <h2>Related tools</h2>
         <p class="muted">More date &amp; time utilities:</p>
         <p>
+          <a class="btn" href="/calculator/"> Calculator</a>
+
           <a class="btn" href="/stopwatch-countdown/"
             >Stopwatch &amp; Countdown</a
           >
-          <a class="btn" href="/calculator/">Calculator</a>
           <a class="btn" href="/unit-converter/">Unit Converter</a>
         </p>
         <p class="small">
@@ -543,10 +610,10 @@
     </footer>
 
     <script>
-      // Shorthand query helper
+      // Shorthand
       const $ = (s) => document.querySelector(s);
 
-      // ✅ Bind elements explicitly (no implicit global IDs)
+      // Bind elements
       const yEl = document.getElementById("y");
       const dob = document.getElementById("dob");
       const asof = document.getElementById("asof");
@@ -561,7 +628,7 @@
       // Footer year
       yEl.textContent = new Date().getFullYear();
 
-      // ===== Load AdSense slots lazily when visible =====
+      // Lazy-load AdSense when visible
       const initAds = () => {
         window.adsbygoogle = window.adsbygoogle || [];
         const slots = document.querySelectorAll(
@@ -573,9 +640,7 @@
           try {
             (adsbygoogle = window.adsbygoogle || []).push({});
             el.setAttribute("data-loaded", "1");
-          } catch (e) {
-            /* ignore */
-          }
+          } catch (e) {}
         };
 
         if ("IntersectionObserver" in window) {
@@ -592,13 +657,12 @@
           );
           slots.forEach((el) => io.observe(el));
         } else {
-          // Fallback: push immediately
           slots.forEach(push);
         }
       };
       window.addEventListener("load", initAds);
 
-      // ===== Calculator logic =====
+      // ===== Calculator logic (kept) =====
       const todayStr = () => {
         const t = new Date();
         const y = t.getFullYear();
@@ -615,12 +679,11 @@
       const isLeap = (y) => (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0;
 
       const diff = (b, a) => {
-        // b = birth {y,m,d}, a = as-of {y,m,d}
         let y = a.y - b.y,
           m = a.m - b.m,
           d = a.d - b.d;
         if (d < 0) {
-          d += new Date(a.y, a.m - 1, 0).getDate(); // days in previous month of A
+          d += new Date(a.y, a.m - 1, 0).getDate();
           m--;
         }
         if (m < 0) {
@@ -637,7 +700,6 @@
             86400000
         );
 
-      // Proper Feb 29 handling: on non-leap years, birthday observed Feb 28
       const bday = (dob, yr) => {
         const feb29 = dob.m === 2 && dob.d === 29;
         const leap = isLeap(yr);
@@ -651,7 +713,7 @@
       asof.value = today;
       dob.max = asof.max = today;
 
-      // Open the native picker when available
+      // Native picker open helper
       const openPicker = (inputEl) => {
         try {
           if (typeof inputEl.showPicker === "function") inputEl.showPicker();
@@ -663,17 +725,15 @@
 
       // Auto-open DOB picker on load
       window.addEventListener("load", () => openPicker(dob));
-
-      // Calendar buttons
       dobBtn.addEventListener("click", () => openPicker(dob));
       asofBtn.addEventListener("click", () => openPicker(asof));
 
-      // Allow Enter key to trigger calc
-      [dob, asof].forEach((el) => {
+      // Enter key triggers calc
+      [dob, asof].forEach((el) =>
         el.addEventListener("keydown", (e) => {
           if (e.key === "Enter") calc.click();
-        });
-      });
+        })
+      );
 
       // Calculate
       calc.onclick = () => {
@@ -706,8 +766,6 @@
         let nb = bday(B, A.y);
         if (daysBetween(Ad, nb) < 0) nb = bday(B, A.y + 1);
         const left = daysBetween(Ad, nb);
-
-        // Message for next birthday
         const turning = a.y + (left ? 1 : 0);
         const nbStr = nb.toDateString();
 
@@ -737,7 +795,12 @@
         navigator.clipboard.writeText(text);
       };
     </script>
+
+    <!-- NOTE: if this file lives at /age-calculator/, tracker.js is likely one level up in /assets/ -->
+    <!-- If your original path worked for you, keep it. Otherwise, uncomment the ../ path below. -->
+    <!-- <script src="../assets/tracker.js" defer data-trk-site="tools-pack"></script> -->
     <script src="./assets/tracker.js" defer data-trk-site="tools-pack"></script>
+
     <script src="/assets/related-more.js" defer></script>
     <noscript
       >Your browser has JavaScript disabled; this tool needs JavaScript to

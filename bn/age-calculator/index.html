@@ -3,10 +3,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>অনলাইন বয়স নির্ণায়ক — বছর, মাস ও দিন | Tools Pack</title>
+
+    <!-- ✅ SEO: Title + Description (intent-rich, non-stuffy) -->
+    <title>
+      অনলাইন বয়স নির্ণায়ক (Age Calculator Online) — বছর, মাস ও দিন | Tools Pack
+    </title>
     <meta
       name="description"
-      content="জন্মতারিখ দিয়ে সহজে বয়স বের করুন (বছর, মাস, দিন)। পরবর্তী জন্মদিনের দিন-গোনা সহ।"
+      content="জন্মতারিখ (DOB) দিয়ে বয়স বের করুন—বছর, মাস, দিন। Gregorian Calendar সাপোর্ট, দ্রুত ও সঠিক Exact Age Finder। সম্পূর্ণ ফ্রি, কোনো সাইন-আপ নয়।"
     />
 
     <!-- Canonical / hreflang -->
@@ -31,14 +35,20 @@
     />
 
     <!-- Styles -->
-    <link rel="stylesheet" href="../../assets/style.css" />
+    <link rel="stylesheet" href="/assets/style.css" />
     <meta name="theme-color" content="#1E1E2F" />
 
-    <!-- Open Graph / Twitter -->
+    <!-- Open Graph / Twitter (expanded) -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Tools Pack" />
-    <meta property="og:title" content="বয়স নির্ণায়ক — Tools Pack" />
-    <meta property="og:description" content="বছর/মাস/দিন + পরবর্তী জন্মদিন।" />
+    <meta
+      property="og:title"
+      content="বয়স নির্ণায়ক — বছর/মাস/দিন | Tools Pack"
+    />
+    <meta
+      property="og:description"
+      content="DOB থেকে Exact Age Finder—বছর, মাস, দিন + পরবর্তী জন্মদিন। দ্রুত, সঠিক, ফ্রি।"
+    />
     <meta
       property="og:url"
       content="https://tools-pack.netlify.app/bn/age-calculator/"
@@ -48,19 +58,44 @@
       content="https://tools-pack.netlify.app/og/age.png"
     />
     <meta property="og:image:alt" content="Age Calculator — Tools Pack" />
+    <meta property="og:locale" content="bn_BD" />
+    <meta property="og:locale:alternate" content="en_US" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="বয়স নির্ণায়ক — বছর/মাস/দিন | Tools Pack"
+    />
+    <meta
+      name="twitter:description"
+      content="DOB থেকে বয়স—Years, Months, Days। Gregorian Calendar, দ্রুত ও সঠিক, সম্পূর্ণ ফ্রি।"
+    />
+    <meta
+      name="twitter:image"
+      content="https://tools-pack.netlify.app/og/age.png"
+    />
+    <meta name="twitter:site" content="@toolspack" />
 
-    <!-- JSON-LD: WebApplication -->
+    <!-- JSON-LD: SoftwareApplication (Calculator-specific) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "বয়স নির্ণায়ক",
+        "@type": "SoftwareApplication",
+        "name": "বয়স নির্ণায়ক (Age Calculator Online)",
         "url": "https://tools-pack.netlify.app/bn/age-calculator/",
-        "applicationCategory": "Utility",
-        "operatingSystem": "All",
-        "description": "বয়স ও পরবর্তী জন্মদিন গণনা।",
-        "inLanguage": "bn"
+        "applicationCategory": "CalculatorApplication",
+        "operatingSystem": "Any",
+        "inLanguage": "bn",
+        "description": "জন্মতারিখ (DOB) থেকে বছর, মাস ও দিন হিসাব করে—Exact Age Finder। Gregorian Calendar সাপোর্ট, অফলাইন-ফ্রেন্ডলি, সম্পূর্ণ ফ্রি।",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Tools Pack",
+          "url": "https://tools-pack.netlify.app/"
+        }
       }
     </script>
 
@@ -92,7 +127,7 @@
       }
     </script>
 
-    <!-- JSON-LD: FAQPage (matches on-page FAQ) -->
+    <!-- JSON-LD: FAQPage (must match on-page FAQ below) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -100,10 +135,18 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "বয়স কীভাবে গণনা করা হয়?",
+            "name": "এই ক্যালকুলেটর কতটা সঠিক?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "জন্মতারিখ ও 'তারিখ পর্যন্ত' ইনপুটের ক্যালেন্ডার পার্থক্য থেকে বছর, মাস ও দিন বের করা হয়।"
+              "text": "এটি Gregorian Calendar অনুযায়ী দিন–মাস–বছর গণনা করে; লিপ-ইয়ারও ধরা হয়—তাই ফলাফল নির্ভুল।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "আমি কি বছর, মাস ও দিনে বয়স দেখতে পারবো?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "হ্যাঁ—Years, Months, Days—তিনভাবেই ফলাফল দেখায় এবং মোট দিনের হিসাবও দেয়।"
             }
           },
           {
@@ -119,7 +162,7 @@
             "name": "ডেটা কি কোথাও পাঠানো বা সংরক্ষণ করা হয়?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "না। সব হিসাব আপনার ব্রাউজারেই চলে—কিছুই সার্ভারে যায় না।"
+              "text": "না—সব হিসাব আপনার ব্রাউজারেই চলে; কোনো তথ্য সার্ভারে পাঠানো বা সংরক্ষণ করা হয় না।"
             }
           },
           {
@@ -127,7 +170,7 @@
             "name": "অফলাইনে কাজ করবে?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "হ্যাঁ—প্রথমবার লোডের পর অফলাইনে চলে।"
+              "text": "হ্যাঁ—পেজ একবার লোড হলে মৌলিক হিসাব অফলাইনে চলে।"
             }
           },
           {
@@ -137,6 +180,39 @@
               "@type": "Answer",
               "text": "হ্যাঁ—জন্মতারিখের সমান বা পরের যেকোনো তারিখ বেছে নিতে পারবেন।"
             }
+          }
+        ]
+      }
+    </script>
+
+    <!-- JSON-LD: HowTo (matches on-page steps) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "Age Calculator ব্যবহার পদ্ধতি",
+        "inLanguage": "bn",
+        "description": "DOB দিয়ে বছর, মাস, দিন হিসেবে বয়স বের করার ধাপসমূহ।",
+        "step": [
+          {
+            "@type": "HowToStep",
+            "name": "জন্মতারিখ নির্বাচন",
+            "text": "ইনপুটে আপনার Date of Birth (DOB) দিন।"
+          },
+          {
+            "@type": "HowToStep",
+            "name": "তারিখ পর্যন্ত",
+            "text": "আজকের তারিখ ডিফল্ট—প্রয়োজনে বদলাতে পারেন।"
+          },
+          {
+            "@type": "HowToStep",
+            "name": "গণনা",
+            "text": "‘গণনা’ বোতামে ক্লিক করুন।"
+          },
+          {
+            "@type": "HowToStep",
+            "name": "ফলাফল",
+            "text": "বছর, মাস, দিন ও মোট দিনের ফলাফল দেখুন; কপি/রিসেট করতে পারেন।"
           }
         ]
       }
@@ -257,9 +333,11 @@
 
       <!-- TOC (Bangla) -->
       <p class="toc">
-        <a href="#calc">বয়স নির্ণায়ক</a> ·
+        <a href="#calc">বয়স নির্ণায়ক</a> · <a href="#intro">পরিচিতি</a> ·
+        <a href="#use-cases">ব্যবহার ক্ষেত্র</a> ·
         <a href="#how-to-use">কীভাবে ব্যবহার করবেন</a> ·
-        <a href="#faq">প্রশ্নোত্তর</a> · <a href="#related">সম্পর্কিত টুলস</a>
+        <a href="#faq">প্রশ্নোত্তর</a> · <a href="#verdict">উপসংহার</a> ·
+        <a href="#related">সম্পর্কিত টুলস</a>
       </p>
 
       <!-- Calculator -->
@@ -281,7 +359,12 @@
         </div>
 
         <div style="margin-top: 10px">
-          <button class="btn btn-primary" id="calcBtn" type="button">
+          <button
+            class="btn btn-primary"
+            id="calcBtn"
+            type="button"
+            aria-label="বয়স গণনা করুন"
+          >
             গণনা
           </button>
           <button class="btn" id="resetBtn" type="button">রিসেট</button>
@@ -309,6 +392,48 @@
           placeholder="ফলাফল…"
         ></textarea>
         <div class="muted" id="next" aria-live="polite"></div>
+      </article>
+
+      <!-- Introduction (NEW) -->
+      <article class="card" id="intro">
+        <h2>Age Calculator কী ও কেন ব্যবহার করবেন?</h2>
+        <p>
+          এটি এমন একটি <strong>Online Utility</strong> যেখানে আপনার
+          <strong>Date of Birth (DOB)</strong> দিয়ে আজকের তারিখ ধরে
+          <strong>Exact Age Finder</strong> হিসেবে
+          <strong>বছর, মাস ও দিন</strong>—সব দেখায়।
+          <em>Birthday Calculator</em> বা
+          <em>Date of Birth Calculator</em> নামেও পরিচিত। আমাদের টুল
+          <strong>Simple & Accurate Tool</strong>—সম্পূর্ণ
+          <strong>Free Calculator</strong>, লগইন ছাড়াই।
+          <strong>Gregorian Calendar</strong> সাপোর্ট থাকায় লিপ-ইয়ারসহ তারিখ
+          গণনা নির্ভুল হয়।
+        </p>
+      </article>
+
+      <!-- Use Cases (NEW) -->
+      <article class="card" id="use-cases">
+        <h2>ব্যবহার ক্ষেত্র (Use Cases)</h2>
+        <ul>
+          <li>
+            <strong>Exam form filling:</strong> DOB থেকে যোগ্যতা-উপযোগী বয়স
+            দ্রুত বের করতে।
+          </li>
+          <li>
+            <strong>Insurance/Medical:</strong> বয়সভিত্তিক কভারেজ/পলিসি যাচাইয়ে
+            সঠিক বয়স দরকার হলে।
+          </li>
+          <li>
+            <strong>School admission:</strong> নির্দিষ্ট কাট-অফ অনুযায়ী ভর্তি
+            যোগ্যতা দেখতে।
+          </li>
+          <li>
+            <strong>Birthday events:</strong> জন্মদিন পরিকল্পনায়
+            <em>Months · Years · Days</em> হিসাবে বয়স জানার জন্য (কাউন্টডাউনের
+            জন্য
+            <a href="/bn/stopwatch-countdown/">স্টপওয়াচ/কাউন্টডাউন</a> দেখুন)।
+          </li>
+        </ul>
       </article>
 
       <!-- How to use (Bangla) -->
@@ -341,39 +466,75 @@
         </ul>
       </article>
 
-      <!-- FAQ (Bangla) -->
+      <!-- FAQ (UPDATED to match FAQPage schema) -->
       <article class="card faq" id="faq">
         <h2>প্রশ্নোত্তর</h2>
+
         <details>
-          <summary>বয়স কীভাবে বের করা হয়?</summary>
+          <summary>এই ক্যালকুলেটর কতটা সঠিক?</summary>
           <p>
-            জন্মতারিখ ও ‘তারিখ পর্যন্ত’ ইনপুটের মধ্যে ক্যালেন্ডার পার্থক্য হিসাব
-            করে বছর, মাস ও দিন বের করা হয়।
+            এটি Gregorian Calendar অনুযায়ী দিন–মাস–বছর গণনা করে; লিপ-ইয়ারও ধরা
+            হয়—তাই ফলাফল নির্ভুল।
           </p>
         </details>
+
         <details>
-          <summary>ডেটা কি সার্ভারে যায়?</summary>
+          <summary>আমি কি বছর, মাস ও দিনে বয়স দেখতে পারবো?</summary>
           <p>
-            না—সবকিছু আপনার ব্রাউজারেই প্রক্রিয়াকরণ হয়; কোনো ডেটা পাঠানো হয় না।
+            হ্যাঁ—Years, Months, Days—তিনভাবেই ফলাফল দেখায় এবং মোট দিনের হিসাবও
+            দেয়।
           </p>
         </details>
+
         <details>
-          <summary>২৯ ফেব্রুয়ারি জন্ম হলে কী হবে?</summary>
+          <summary>২৯ ফেব্রুয়ারির জন্মদিন হলে কীভাবে ধরা হয়?</summary>
           <p>
             যে বছর লিপ ইয়ার নয়, সে বছর পরবর্তী জন্মদিন ২৮ ফেব্রুয়ারি ধরা হয়।
           </p>
         </details>
+
+        <details>
+          <summary>ডেটা কি কোথাও পাঠানো বা সংরক্ষণ করা হয়?</summary>
+          <p>
+            না—সব হিসাব আপনার ব্রাউজারেই চলে; কোনো তথ্য সার্ভারে পাঠানো বা
+            সংরক্ষণ করা হয় না।
+          </p>
+        </details>
+
         <details>
           <summary>অফলাইনে কাজ করবে?</summary>
-          <p>হ্যাঁ, প্রথমবার লোডের পরে ইন্টারনেট ছাড়া চলবে।</p>
+          <p>হ্যাঁ—পেজ একবার লোড হলে মৌলিক হিসাব অফলাইনে চলে।</p>
         </details>
+
         <details>
-          <summary>ভবিষ্যৎ ‘তারিখ পর্যন্ত’ দেওয়া যাবে?</summary>
+          <summary>
+            'তারিখ পর্যন্ত' কি ভবিষ্যৎ/অতীত যেকোনো তারিখ দেওয়া যাবে?
+          </summary>
           <p>হ্যাঁ—জন্মতারিখের সমান বা পরের যেকোনো তারিখ বেছে নিতে পারবেন।</p>
         </details>
       </article>
 
-      <!-- Related tools -->
+      <!-- Verdict / CTA (NEW) -->
+      <article class="card" id="verdict">
+        <h2>উপসংহার: সিম্পল, একিউরেট, ফ্রি — এখনই বয়স দেখুন</h2>
+        <p>
+          আমাদের <strong>Age Calculator Online</strong> দ্রুত, সঠিক এবং সম্পূর্ণ
+          <strong>Free Calculator</strong>— কোনো সাইন-আপ লাগবে না।
+          বাংলা-ফ্রেন্ডলি UI, <strong>Exact Age Finder</strong> (Years · Months
+          · Days), এবং <strong>Gregorian Calendar</strong> সাপোর্ট—সবকিছু এক
+          জায়গায়।
+        </p>
+        <p>
+          <a
+            class="btn btn-primary"
+            href="#calc"
+            aria-label="বয়স নির্ণায়ক ব্যবহার করুন"
+            >এখনই ব্যবহার করুন</a
+          >
+        </p>
+      </article>
+
+      <!-- Related tools (expanded internal links) -->
       <article class="card" id="related">
         <h2>সম্পর্কিত টুলস</h2>
         <p class="muted">আরও গণিত ও সংখ্যা-বিষয়ক টুলস:</p>
@@ -381,6 +542,11 @@
           <a class="btn" href="/bn/calculator/">ক্যালকুলেটর</a>
           <a class="btn" href="/bn/percent-calculator/">শতকরা ক্যালকুলেটর</a>
           <a class="btn" href="/bn/unit-converter/">ইউনিট কনভার্টার</a>
+          <a class="btn" href="/bn/stopwatch-countdown/"
+            >স্টপওয়াচ ও কাউন্টডাউন</a
+          >
+          <a class="btn" href="/bn/quick-notes/">কুইক নোটস</a>
+          <a class="btn" href="/bn/text-to-pdf/">টেক্সট → PDF</a>
         </p>
         <p class="small">
           English preferred? See the
@@ -390,13 +556,24 @@
     </main>
 
     <footer>
-      © <span id="y"></span> Tools Pack • <a class="muted" href="/bn/">হোম</a> •
+      © <span id="y"></span> Tools Pack •
+      <span class="muted">Last updated: <time id="lu"></time></span> •
+      <a class="muted" href="/bn/">হোম</a> •
       <a class="muted" href="/age-calculator/" hreflang="en">English</a>
     </footer>
 
     <script>
-      // Footer year
-      document.getElementById("y").textContent = new Date().getFullYear();
+      // Footer year & last updated
+      const now = new Date();
+      document.getElementById("y").textContent = now.getFullYear();
+      const lm = new Date(document.lastModified);
+      const pad2 = (n) => String(n).padStart(2, "0");
+      document.getElementById("lu").textContent =
+        lm.getFullYear() +
+        "-" +
+        pad2(lm.getMonth() + 1) +
+        "-" +
+        pad2(lm.getDate());
 
       // ===== Lazy init AdSense when slots are visible =====
       const initAds = () => {
@@ -564,12 +741,11 @@
           out.value + (next.textContent ? `\n${next.textContent}` : "")
         );
     </script>
-    <script
-      src="../../assets/tracker.js"
-      defer
-      data-trk-site="tools-pack"
-    ></script>
-    <script src="../../assets/related-more.js" defer></script>
+
+    <!-- Tracking & extras -->
+    <script src="/assets/tracker.js" defer data-trk-site="tools-pack"></script>
+    <script src="/assets/related-more.js" defer></script>
+
     <noscript
       >জাভাস্ক্রিপ্ট চালু করুন—এই টুলটি কাজ করতে জাভাস্ক্রিপ্ট
       প্রয়োজন।</noscript
