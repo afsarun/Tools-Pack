@@ -268,3 +268,19 @@ footer {
     padding: 8px 10px; /* a bit more vertical room for two-line chips */
   }
 }
+
+p {
+  line-height: 2;
+}
+
+a {
+  line-height: 2;
+  display: inline-block;
+}
+#how-to-use li {
+  line-height: 2;
+}
+
+#use-cases li {
+  line-height: 2;
+}

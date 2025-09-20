@@ -3,10 +3,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>ফ্রি অনলাইন ক্যালকুলেটর — যোগ/বিয়োগ/গুণ/ভাগ | Tools Pack</title>
+
+    <!-- ✅ শক্তিশালী, কীওয়ার্ড-ফরওয়ার্ড টাইটেল -->
+    <title>
+      ফ্রি অনলাইন ক্যালকুলেটর — যোগ, বিয়োগ, গুণ, ভাগ ও শতাংশ | Tools Pack
+    </title>
+
+    <!-- ✅ সমৃদ্ধ মেটা ডেসক্রিপশন -->
     <meta
       name="description"
-      content="বেসিক অংক ও শতকরা হিসাব করুন—দ্রুত, হালকা, প্রাইভেসি-ফার্স্ট।"
+      content="বিনামূল্যে অনলাইন ক্যালকুলেটর: যোগ, বিয়োগ, গুণ, ভাগ ও শতাংশের দ্রুত হিসাব। হালকা, প্রাইভেসি-ফার্স্ট, প্রথম লোডের পর অফলাইনে চলে।"
     />
 
     <!-- Canonical / hreflang -->
@@ -36,8 +42,11 @@
     <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Tools Pack" />
-    <meta property="og:title" content="ক্যালকুলেটর — Tools Pack" />
-    <meta property="og:description" content="যোগ, বিয়োগ, গুণ, ভাগ ও %।" />
+    <meta property="og:title" content="ফ্রি অনলাইন ক্যালকুলেটর — Tools Pack" />
+    <meta
+      property="og:description"
+      content="যোগ, বিয়োগ, গুণ, ভাগ ও শতাংশ — দ্রুত ও সহজ।"
+    />
     <meta
       property="og:url"
       content="https://tools-pack.netlify.app/bn/calculator/"
@@ -46,20 +55,29 @@
       property="og:image"
       content="https://tools-pack.netlify.app/og/calculator.png"
     />
-    <meta property="og:image:alt" content="ক্যালকুলেটর — Tools Pack" />
+    <meta property="og:image:alt" content="অনলাইন ক্যালকুলেটর — Tools Pack" />
+    <meta property="og:locale" content="bn_BD" />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- JSON-LD: WebApplication -->
+    <!-- ✅ JSON-LD: WebApplication (offers + featureList) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebApplication",
         "name": "ক্যালকুলেটর",
         "url": "https://tools-pack.netlify.app/bn/calculator/",
-        "applicationCategory": "Utility",
-        "operatingSystem": "All",
-        "description": "বেসিক ক্যালকুলেটর — কোনো ট্র্যাকিং নেই।",
-        "inLanguage": "bn"
+        "applicationCategory": "Calculator",
+        "operatingSystem": "Web",
+        "inLanguage": "bn",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "featureList": [
+          "যোগ, বিয়োগ, গুণ, ভাগ",
+          "শতাংশের হিসাব (যেমন 12% * 200 = 24)",
+          "প্রথম লোডের পর অফলাইনে চলে",
+          "প্রাইভেসি-ফার্স্ট, 100% ক্লায়েন্ট-সাইড",
+          "কিবোর্ড শর্টকাট (Enter = হিসাব)"
+        ],
+        "description": "বিনামূল্যে অনলাইন ক্যালকুলেটর—দ্রুত অংক ও শতাংশের হিসাব। হালকা, প্রাইভেসি-ফার্স্ট।"
       }
     </script>
 
@@ -85,7 +103,7 @@
       }
     </script>
 
-    <!-- JSON-LD: FAQPage -->
+    <!-- ✅ JSON-LD: FAQPage (অন-পেজের সাথে হুবহু মিল) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -93,26 +111,26 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "এই ক্যালকুলেটর কি অফলাইনে চলে?",
+            "name": "অফলাইনে চালানো যাবে?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "হ্যাঁ। প্রথমবার লোড হওয়ার পর সম্পূর্ণ ব্রাউজারেই কাজ করে।"
+              "text": "হ্যাঁ। প্রথমবার লোডের পর সবকিছু আপনার ব্রাউজারেই চলে।"
             }
           },
           {
             "@type": "Question",
-            "name": "আমার ইনপুট কি ট্র্যাক করা হয়?",
+            "name": "ইনপুট কি ট্র্যাক করা হয়?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "না। কোনো ডেটা কোথাও পাঠানো হয় না—সবকিছু আপনার ব্রাউজারেই থাকে।"
+              "text": "না। কোনো ডেটা কোথাও পাঠানো হয় না—সবকিছু আপনার ডিভাইসেই থাকে।"
             }
           },
           {
             "@type": "Question",
-            "name": "% এখানে কীভাবে কাজ করে?",
+            "name": "% কিভাবে কাজ করে?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "সংখ্যার সাথে % থাকলে সেটি ভগ্নাংশ ধরা হয়—যেমন 12% = (12/100)। ফলে 12% * 200 = 24।"
+              "text": "সংখ্যার পরে % থাকলে সেটি ১-এর ভগ্নাংশ ধরা হয়। যেমন 12% = 12/100, তাই 12% * 200 = 24।"
             }
           },
           {
@@ -120,15 +138,31 @@
             "name": "কোন কোন অপারেশন সাপোর্টেড?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "+ − × ÷ (এছাড়া * ও /), দশমিক, এবং ব্র্যাকেট দিয়ে অর্ডার অফ অপারেশন।"
+              "text": "বেসিক অংক ও ব্র্যাকেট: + − × ÷ (অথবা * /), দশমিক, এবং %।"
             }
           },
           {
             "@type": "Question",
-            "name": "কখনো কখনো লম্বা দশমিক দেখায় কেন?",
+            "name": "কেন কখনও কখনও লম্বা দশমিক দেখায়?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "ব্রাউজারভিত্তিক ফ্লোটিং-পয়েন্ট ম্যাথের কারণে কিছু মানে ক্ষুদ্র রাউন্ডিং ত্রুটি দেখা যেতে পারে (যেমন 0.1+0.2)।"
+              "text": "ব্রাউজারের ফ্লোটিং-পয়েন্ট গাণিতিকের কারণে ক্ষুদ্র রাউন্ডিং ত্রুটি দেখা যেতে পারে (যেমন 0.30000000000000004)।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "মোবাইলে চলবে?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "হ্যাঁ। আধুনিক যেকোনো মোবাইল বা ডেস্কটপ ব্রাউজারে কাজ করে।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "বৈজ্ঞানিক ফাংশন আছে?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "না—এটি বেসিক ক্যালকুলেটর। অ্যাডভান্সড হিসাবের জন্য সায়েন্টিফিক ক্যালকুলেটর ব্যবহার করুন।"
             }
           }
         ]
@@ -142,7 +176,22 @@
       crossorigin="anonymous"
     ></script>
 
-    <!-- Page-specific tweaks (compact ads + related chips wrap) -->
+    <!-- ✅ Page-specific tweaks (CLS-safe ads + small layout) -->
+    <style>
+      figure.tool-shot {
+        margin: 12px 0 0;
+      }
+      figure.tool-shot img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+      }
+      figure.tool-shot figcaption {
+        font-size: 12px;
+        color: #6b7280;
+        margin-top: 6px;
+      }
+    </style>
   </head>
 
   <body>
@@ -152,8 +201,11 @@
           ><div class="logo" aria-hidden="true"></div
         ></a>
         <div>
-          <h1 style="margin: 0">ক্যালকুলেটর</h1>
-          <div class="sub">বেসিক অংক • %</div>
+          <!-- ✅ কীওয়ার্ড-সমৃদ্ধ H1 -->
+          <h1 style="margin: 0">
+            অনলাইন ক্যালকুলেটর — যোগ, বিয়োগ, গুণ, ভাগ ও শতাংশ
+          </h1>
+          <div class="sub">দ্রুত, ফ্রি, প্রাইভেসি-ফার্স্ট</div>
         </div>
         <div style="margin-left: auto">
           <a class="muted" href="/calculator/" hreflang="en">English</a>
@@ -182,11 +234,23 @@
         <span>ক্যালকুলেটর</span>
       </nav>
 
+      <!-- ✅ সংক্ষিপ্ত ইন্ট্রো (সেমান্টিকালি সমৃদ্ধ) -->
+      <section class="card">
+        <p>
+          এই <strong>ফ্রি অনলাইন ক্যালকুলেটর</strong> দিয়ে মুহূর্তেই
+          <em>যোগ, বিয়োগ, গুণ, ভাগ</em> ও <em>শতাংশ</em>ের হিসাব করুন। হালকা,
+          নির্ভুল, এবং <strong>প্রাইভেসি-ফার্স্ট</strong> — প্রথম লোডের পর
+          অফলাইনে চলে।
+        </p>
+      </section>
+
       <!-- TOC -->
       <p class="toc">
         <a href="#calc">ক্যালকুলেটর</a> ·
+        <a href="#use-cases">কোথায় কাজে লাগে</a> ·
         <a href="#how-to-use">কীভাবে ব্যবহার করবেন</a> ·
-        <a href="#faq">প্রশ্নোত্তর</a> · <a href="#related">সম্পর্কিত টুলস</a>
+        <a href="#faq">প্রশ্নোত্তর</a> ·
+        <a href="#related">সম্পর্কিত টুলস</a>
       </p>
 
       <!-- Calculator -->
@@ -196,7 +260,8 @@
         <textarea
           id="expr"
           class="textarea"
-          placeholder="যেমন: (12 + 7) / 3 * 2  অথবা  12% * 200"
+          placeholder="যেমন: (12 + 7) / 3 * 2   অথবা   12% * 200"
+          aria-label="এক্সপ্রেশন"
         ></textarea>
 
         <div style="margin-top: 10px">
@@ -212,7 +277,7 @@
           <span class="ad-label">Ad</span>
           <ins
             class="adsbygoogle"
-            style="display: inline-block; text-align: center"
+            style="display: block; text-align: center"
             data-ad-client="ca-pub-1234567890123456"
             data-ad-slot="2222222222"
             data-ad-format="fluid"
@@ -232,63 +297,122 @@
           অনুমোদিত: সংখ্যা, + − × ÷ (অথবা * ও /), <code>( )</code>, দশমিক এবং %।
           অর্ডার বজায় রাখতে ব্র্যাকেট ব্যবহার করুন।
         </p>
-        <div id="msg" class="muted" aria-live="polite"></div>
+        <div id="msg" class="muted" aria-live="polite" role="status"></div>
+      </article>
+
+      <!-- ✅ Use cases -->
+      <article class="card" id="use-cases">
+        <h2>কোথায় কাজে লাগে</h2>
+        <ul>
+          <li>
+            <strong>শপিং/ডিসকাউন্ট:</strong> সেলে শতাংশের হিসাব (যেমন
+            <code>25% * 799</code> → সেভিংস)।
+          </li>
+          <li>
+            <strong>বাজেট/বিল:</strong> ডিনার, ভাড়া বা ইউটিলিটি সমানভাবে ভাগ
+            (যেমন <code>(1250 + 980) / 3</code>)।
+          </li>
+          <li><strong>পড়াশোনা/হোমওয়ার্ক:</strong> সাবমিটের আগে অংক যাচাই।</li>
+          <li>
+            <strong>ফর্ম/অ্যাডমিন:</strong> শতাংশ ও মোট ঠিক আছে কিনা দ্রুত
+            মিলিয়ে নিন।
+          </li>
+        </ul>
       </article>
 
       <!-- How to use -->
       <article class="card" id="how-to-use">
         <h2>কীভাবে ব্যবহার করবেন</h2>
         <ol>
-          <li>বক্সে এক্সপ্রেশন লিখুন। উদাহরণ: <code>(12+7)/3*2</code>।</li>
           <li>
-            <strong>%</strong> কে শতাংশ ধরুন। যেমন <code>12% * 200</code> → 24
-            (ভিতরে <code>12/100</code>)।
+            বক্সে এক্সপ্রেশন লিখুন। উদাহরণ: <code>(12 + 7) / 3 * 2</code>।
+          </li>
+          <li>
+            <strong>%</strong> ব্যবহার করুন শতাংশের জন্য। যেমন
+            <code>12% * 200</code> → <strong>24</strong> (আসলে
+            <code>12/100</code>)।
           </li>
           <li>
             <strong>Enter</strong> চাপলে হিসাব হবে;
-            <strong>Shift+Enter</strong> নতুন লাইন।
+            <strong>Shift+Enter</strong> দিলে নতুন লাইন।
           </li>
           <li>
             <strong>ফল কপি</strong> দিয়ে রেজাল্ট কপি করুন;
             <strong>সাফ করুন</strong> দিয়ে রিসেট করুন।
           </li>
           <li>
-            × ও ÷ লিখলেও স্বয়ংক্রিয়ভাবে <code>*</code> ও <code>/</code> ধরা হবে।
+            <em>×</em> ও <em>÷</em> লিখলেও স্বয়ংক্রিয়ভাবে <code>*</code> ও
+            <code>/</code> ধরা হবে।
           </li>
         </ol>
         <h3>টিপস</h3>
         <ul>
-          <li>প্রথমবার লোডের পর অফলাইনেও চলে।</li>
           <li>
-            ফ্লোটিং-পয়েন্ট গণনার কারণে কিছু মানে ক্ষুদ্র রাউন্ডিং ত্রুটি দেখা
-            যেতে পারে।
+            <strong>অফলাইনে চলে</strong> — প্রথম লোডের পর ইন্টারনেট ছাড়াই কাজ
+            করে।
           </li>
-          <li>শুধু বেসিক অংক ও ব্র্যাকেট—ফাংশন (sin, sqrt ইত্যাদি) নেই।</li>
+          <li>
+            ফ্লোটিং-পয়েন্টের কারণে ক্ষুদ্র রাউন্ডিং ত্রুটি দেখা যেতে পারে (যেমন
+            <code>0.1 + 0.2</code>)।
+          </li>
+          <li>
+            এটি <strong>বেসিক ক্যালকুলেটর</strong> — উন্নত ফাংশন (যেমন
+            <code>sin</code>, <code>sqrt</code>) নেই।
+          </li>
         </ul>
       </article>
 
-      <!-- FAQ -->
+      <!-- FAQ (অন-পেজ টেক্সট = JSON-LD) -->
       <article class="card faq" id="faq">
         <h2>প্রশ্নোত্তর</h2>
+
         <details>
           <summary>অফলাইনে চালানো যাবে?</summary>
-          <p>হ্যাঁ, প্রথম লোডের পর পুরোটা ব্রাউজারেই চলে।</p>
+          <p>হ্যাঁ। প্রথমবার লোডের পর সবকিছু আপনার ব্রাউজারেই চলে।</p>
         </details>
+
         <details>
           <summary>ইনপুট কি ট্র্যাক করা হয়?</summary>
-          <p>না—কিছুই সার্ভারে পাঠানো হয় না।</p>
+          <p>না। কোনো ডেটা কোথাও পাঠানো হয় না—সবকিছু আপনার ডিভাইসেই থাকে।</p>
         </details>
+
         <details>
-          <summary>% কিভাবে গণনা হয়?</summary>
-          <p>সংখ্যা% = সংখ্যা/100। যেমন <code>12% * 200 = 24</code>।</p>
+          <summary>% কিভাবে কাজ করে?</summary>
+          <p>
+            সংখ্যার পরে <code>%</code> থাকলে সেটি ১-এর ভগ্নাংশ ধরা হয়। যেমন
+            <code>12%</code> = <code>12/100</code>, তাই
+            <code>12% * 200 = 24</code>।
+          </p>
         </details>
+
         <details>
-          <summary>কোন অপারেশনগুলো আছে?</summary>
-          <p>+ − × ÷ (বা * /), দশমিক, এবং ব্র্যাকেট।</p>
+          <summary>কোন কোন অপারেশন সাপোর্টেড?</summary>
+          <p>
+            বেসিক অংক ও ব্র্যাকেট: <code>+</code> <code>−</code> <code>×</code>
+            <code>÷</code> (অথবা <code>*</code> / <code>/</code>), দশমিক, এবং
+            <code>%</code>।
+          </p>
         </details>
+
         <details>
-          <summary>কেন লম্বা দশমিক দেখা যায়?</summary>
-          <p>ফ্লোটিং-পয়েন্ট গাণিতিকের ছোট রাউন্ডিং ত্রুটি—সাধারণ বিষয়।</p>
+          <summary>কেন কখনও কখনও লম্বা দশমিক দেখায়?</summary>
+          <p>
+            ব্রাউজারের ফ্লোটিং-পয়েন্ট গাণিতিকের কারণে ক্ষুদ্র রাউন্ডিং ত্রুটি
+            দেখা যেতে পারে (যেমন <code>0.30000000000000004</code>)।
+          </p>
+        </details>
+
+        <details>
+          <summary>মোবাইলে চলবে?</summary>
+          <p>হ্যাঁ। আধুনিক যেকোনো মোবাইল বা ডেস্কটপ ব্রাউজারে কাজ করে।</p>
+        </details>
+
+        <details>
+          <summary>বৈজ্ঞানিক ফাংশন আছে?</summary>
+          <p>
+            না—এটি বেসিক ক্যালকুলেটর। অ্যাডভান্সড হিসাবের জন্য সায়েন্টিফিক
+            ক্যালকুলেটর ব্যবহার করুন।
+          </p>
         </details>
       </article>
 
@@ -297,6 +421,7 @@
         <h2>সম্পর্কিত টুলস</h2>
         <p class="muted">আরও গণিত/সংখ্যা বিষয়ক টুলস:</p>
         <p>
+          <a class="btn" href="/bn/percent-calculator/">শতকরা ক্যালকুলেটর</a>
           <a class="btn" href="/bn/unit-converter/">ইউনিট কনভার্টার</a>
           <a class="btn" href="/bn/age-calculator/">বয়স ক্যালকুলেটর</a>
           <a class="btn" href="/bn/text-utilities/">টেক্সট টুলস</a>
@@ -362,6 +487,7 @@
       const cpyBtn = document.getElementById("cpyBtn");
 
       const normalize = (s) => s.replace(/[×]/g, "*").replace(/[÷]/g, "/");
+      // Convert "12%" => "(12/100)"
       const percentsToFrac = (s) => s.replace(/(\d+(?:\.\d+)?)%/g, "($1/100)");
       const allowed = (s) => /^[0-9+\-*/().% \t]+$/.test(s);
 
@@ -409,7 +535,7 @@
           });
         });
 
-      // Enter evaluates; Shift+Enter adds newline
+      // Enter = evaluate; Shift+Enter = newline
       expr.addEventListener("keydown", (e) => {
         if (e.key === "Enter" && !e.shiftKey) {
           e.preventDefault();
@@ -417,6 +543,7 @@
         }
       });
     </script>
+
     <script
       src="../../assets/tracker.js"
       defer

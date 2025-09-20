@@ -3,11 +3,18 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Online Calculator — Basic Arithmetic | Tools Pack</title>
+
+    <!-- ✅ Stronger, keyword-forward title -->
+    <title>
+      Free Online Calculator — Add, Subtract, Multiply, Divide & % | Tools Pack
+    </title>
+
+    <!-- ✅ Enriched meta description with use-cases + offline/privacy -->
     <meta
       name="description"
-      content="Free online calculator for basic arithmetic and percentages. Fast, lightweight, privacy-first."
+      content="Free online calculator for quick arithmetic and percentages: add, subtract, multiply, divide, and %. Works offline, privacy-first, no tracking."
     />
+
     <link rel="canonical" href="https://tools-pack.netlify.app/calculator/" />
     <link rel="stylesheet" href="../assets/style.css" />
     <meta name="theme-color" content="#1E1E2F" />
@@ -32,10 +39,10 @@
     <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Tools Pack" />
-    <meta property="og:title" content="Online Calculator — Tools Pack" />
+    <meta property="og:title" content="Free Online Calculator — Tools Pack" />
     <meta
       property="og:description"
-      content="Add, subtract, multiply, divide and % quickly in your browser."
+      content="Add, subtract, multiply, divide and % in your browser. Fast, free, privacy-first."
     />
     <meta
       property="og:url"
@@ -45,20 +52,32 @@
       property="og:image"
       content="https://tools-pack.netlify.app/og/calculator.png"
     />
-    <meta property="og:image:alt" content="Calculator — Tools Pack" />
+    <meta
+      property="og:image:alt"
+      content="Online Calculator interface — Tools Pack"
+    />
+    <meta property="og:locale" content="en_US" />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- JSON-LD: WebApplication -->
+    <!-- ✅ JSON-LD: WebApplication (upgraded with offers & features) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebApplication",
         "name": "Online Calculator",
         "url": "https://tools-pack.netlify.app/calculator/",
-        "applicationCategory": "Utility",
-        "operatingSystem": "All",
-        "description": "Free online calculator for basic arithmetic and percentages. No tracking.",
-        "inLanguage": "en"
+        "applicationCategory": "Calculator",
+        "operatingSystem": "Web",
+        "inLanguage": "en",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "featureList": [
+          "Addition, subtraction, multiplication, division",
+          "Percent calculation (e.g., 12% * 200 = 24)",
+          "Works offline after first load",
+          "No tracking, 100% client-side",
+          "Keyboard shortcuts (Enter to evaluate)"
+        ],
+        "description": "Free online calculator for quick arithmetic and percentages. Fast, lightweight, privacy-first."
       }
     </script>
 
@@ -84,7 +103,7 @@
       }
     </script>
 
-    <!-- JSON-LD: FAQPage (matches on-page FAQ) -->
+    <!-- ✅ JSON-LD: FAQPage (exactly matches on-page FAQ copy below) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -95,7 +114,7 @@
             "name": "Does this calculator work offline?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. After the first load it runs entirely in your browser."
+              "text": "Yes. After the first load, everything runs in your browser."
             }
           },
           {
@@ -103,7 +122,7 @@
             "name": "Are my calculations tracked?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No. Tools Pack is privacy-first and does not send your input anywhere."
+              "text": "No. We don’t send your input anywhere — it stays on your device."
             }
           },
           {
@@ -111,7 +130,7 @@
             "name": "How does % work here?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "A number followed by % is treated as a percent. For example 12% becomes (12/100). So 12% * 200 = 24."
+              "text": "A number followed by % is a percentage of 1. For example, 12% becomes 12/100, so 12% * 200 = 24."
             }
           },
           {
@@ -119,33 +138,62 @@
             "name": "Which operations are supported?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Basic arithmetic with parentheses: + − × ÷ (also * and /), decimals, and % as described above."
+              "text": "Basic arithmetic with parentheses: + − × ÷ (also * and /), decimals, and %."
             }
           },
           {
             "@type": "Question",
-            "name": "Why do I sometimes see long decimals (e.g., 0.30000000000000004)?",
+            "name": "Why do I sometimes see long decimals?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Like most calculators in the browser, this uses floating-point math which can show tiny rounding artifacts for some decimals."
+              "text": "That’s normal with floating-point math in browsers. You may see tiny rounding artifacts (e.g., 0.30000000000000004)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this mobile-friendly?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. It works in any modern mobile or desktop browser."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does it support scientific functions?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Not in this tool — it keeps things simple. For advanced math, use a scientific calculator."
             }
           }
         ]
       }
     </script>
 
-    <!-- ========= Google AdSense loader =========
-         Replace client with your own publisher ID.
-         Keep data-adtest="on" while testing; remove when live. -->
+    <!-- ========= Google AdSense loader ========= -->
     <script
       async
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234567890123456"
       crossorigin="anonymous"
     ></script>
 
-    <!-- Page-specific styles (ads + small layout tweaks) -->
+    <!-- Page-specific styles (ads + tiny tweaks) -->
     <style>
-      /* Ads: reserve space & constrain width for low CLS */
+      /* ✅ Reserve space for ads by viewport to reduce CLS */
+
+      /* Optional: small figure style if you keep the inline screenshot */
+      figure.tool-shot {
+        margin: 12px 0 0;
+      }
+      figure.tool-shot img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+      }
+      figure.tool-shot figcaption {
+        font-size: 12px;
+        color: #6b7280;
+        margin-top: 6px;
+      }
     </style>
   </head>
   <body>
@@ -155,8 +203,11 @@
           ><div class="logo" aria-hidden="true"></div
         ></a>
         <div>
-          <h1 style="margin: 0">Calculator</h1>
-          <div class="sub">Basic arithmetic • %</div>
+          <!-- ✅ Keyword-rich H1 -->
+          <h1 style="margin: 0">
+            Online Calculator — Add, Subtract, Multiply, Divide & %
+          </h1>
+          <div class="sub">Fast, free, privacy-first</div>
         </div>
         <div style="margin-left: auto">
           <a class="muted" href="/bn/calculator/" hreflang="bn">বাংলা</a>
@@ -179,16 +230,28 @@
     </div>
 
     <main class="wrap">
-      <!-- Breadcrumbs (updated for Calculator) -->
+      <!-- Breadcrumbs -->
       <nav class="breadcrumbs" aria-label="breadcrumb">
         <a href="/">Home</a> › <a href="/#math">Math Tools</a> ›
         <span>Calculator</span>
       </nav>
 
-      <!-- TOC (updated for Calculator) -->
+      <!-- ✅ Short intro paragraph (topic-focused, semantically rich) -->
+      <section class="card">
+        <p>
+          Use this <strong>free online calculator</strong> to do quick
+          arithmetic: <em>add, subtract, multiply, divide</em>, and handle
+          <em>percentages</em> right in your browser. It’s fast, accurate, and
+          <strong>privacy-first</strong>—works offline after the first load.
+        </p>
+        <!-- Optional illustrative screenshot (helps Image SEO) -->
+      </section>
+
+      <!-- TOC -->
       <p class="toc">
-        <a href="#calc">Calculator</a> · <a href="#how-to-use">How to use</a> ·
-        <a href="#faq">FAQ</a> · <a href="#related">Related tools</a>
+        <a href="#calc">Calculator</a> · <a href="#use-cases">Use cases</a> ·
+        <a href="#how-to-use">How to use</a> · <a href="#faq">FAQ</a> ·
+        <a href="#related">Related tools</a>
       </p>
 
       <!-- Calculator -->
@@ -197,7 +260,8 @@
         <textarea
           id="expr"
           class="textarea"
-          placeholder="e.g., (12 + 7) / 3 * 2  or  12% * 200"
+          placeholder="e.g., (12 + 7) / 3 * 2   or   12% * 200"
+          aria-label="Expression"
         ></textarea>
 
         <div style="margin-top: 10px">
@@ -233,86 +297,132 @@
           Allowed: digits, + − × ÷ * / ( ) . and % (as percent). Use parentheses
           for order of operations.
         </p>
-        <div id="msg" class="muted" aria-live="polite"></div>
+        <div id="msg" class="muted" aria-live="polite" role="status"></div>
       </article>
 
-      <!-- How to use (updated for Calculator) -->
-      <article class="card" id="how-to-use">
-        <h2>How to use</h2>
-        <ol>
-          <li>
-            Type an expression in the box. Example: <code>(12+7)/3*2</code>.
-          </li>
-          <li>
-            Use <strong>%</strong> as percent. Example: <code>12% * 200</code> →
-            24 (internally <code>12/100</code>).
-          </li>
-          <li>
-            Press <strong>Enter</strong> to evaluate. Use
-            <strong>Shift+Enter</strong> to insert a newline.
-          </li>
-          <li>
-            Click <strong>Copy result</strong> to copy the output; use
-            <strong>Clear</strong> to reset.
-          </li>
-          <li>
-            × and ÷ are supported— they are normalized to <code>*</code> and
-            <code>/</code>.
-          </li>
-        </ol>
-        <h3>Tips</h3>
+      <!-- ✅ Use cases (friendlier, action-focused) -->
+      <article class="card" id="use-cases">
+        <h2>Use cases</h2>
         <ul>
-          <li>Works offline after the first load.</li>
           <li>
-            For long decimals (e.g., 0.1+0.2), small rounding artifacts may
-            appear due to floating-point math.
+            <strong>Shopping & discounts:</strong> work out sale prices in
+            seconds (e.g., <code>25% * 79.99</code> → how much you save).
           </li>
           <li>
-            Only basic arithmetic and parentheses are supported—no functions
-            (sin, sqrt, etc.).
+            <strong>Budgeting & bills:</strong> split dinner, rent, or utilities
+            fairly (try <code>(125.60 + 89.40) / 3</code>).
+          </li>
+          <li>
+            <strong>School & homework:</strong> double-check arithmetic before
+            you submit.
+          </li>
+          <li>
+            <strong>Forms & admin:</strong> sanity-check totals and percentages
+            so mistakes don’t slip through.
           </li>
         </ul>
       </article>
 
-      <!-- FAQ (updated for Calculator) -->
+      <!-- ✅ How to use (short steps, example-first) -->
+      <article class="card" id="how-to-use">
+        <h2>How to use</h2>
+        <ol>
+          <li>Type your math. Example: <code>(12 + 7) / 3 * 2</code>.</li>
+          <li>
+            Use <strong>%</strong> for percentages. Example:
+            <code>12% * 200</code> → <strong>24</strong> (we treat
+            <code>12%</code> as <code>12/100</code>).
+          </li>
+          <li>
+            Press <strong>Enter</strong> to calculate. Use
+            <strong>Shift+Enter</strong> for a new line.
+          </li>
+          <li>
+            Click <strong>Copy result</strong> to copy the answer, or
+            <strong>Clear</strong> to start again.
+          </li>
+          <li>
+            You can type <em>×</em> and <em>÷</em> if you like — we read them as
+            <code>*</code> and <code>/</code>.
+          </li>
+        </ol>
+
+        <h3>Tips</h3>
+        <ul>
+          <li><strong>Works offline</strong> after the first load.</li>
+          <li>
+            Browsers use floating-point math, so you might see tiny rounding
+            quirks (e.g., <code>0.1 + 0.2</code>).
+          </li>
+          <li>
+            This is a <strong>basic calculator</strong> — no functions like
+            <code>sin</code>, <code>sqrt</code>, etc.
+          </li>
+        </ul>
+      </article>
+
+      <!-- ✅ FAQ (plain language; keep JSON-LD in sync) -->
       <article class="card faq" id="faq">
         <h2>FAQ</h2>
+
         <details>
-          <summary>Does this work offline?</summary>
-          <p>Yes. After the first load, it runs in your browser.</p>
+          <summary>Does this calculator work offline?</summary>
+          <p>Yes. After the first load, everything runs in your browser.</p>
         </details>
+
         <details>
-          <summary>Is my input tracked?</summary>
-          <p>No. Nothing is sent anywhere—everything stays in your browser.</p>
-        </details>
-        <details>
-          <summary>How does % work?</summary>
+          <summary>Are my calculations tracked?</summary>
           <p>
-            A number followed by % is treated as a fraction of 1. Example:
-            <code>12% * 200</code> is <code>(12/100) * 200 = 24</code>.
+            No. We don’t send your input anywhere — it stays on your device.
           </p>
         </details>
+
+        <details>
+          <summary>How does % work here?</summary>
+          <p>
+            A number followed by <code>%</code> is a percentage of 1. For
+            example, <code>12%</code> becomes <code>12/100</code>, so
+            <code>12% * 200 = 24</code>.
+          </p>
+        </details>
+
         <details>
           <summary>Which operations are supported?</summary>
           <p>
-            + − × ÷ (or * and /), decimals, and parentheses for order of
-            operations.
+            Basic arithmetic with parentheses:
+            <code>+</code> <code>−</code> <code>×</code> <code>÷</code> (also
+            <code>*</code> and <code>/</code>), decimals, and <code>%</code>.
           </p>
         </details>
+
         <details>
-          <summary>Why do I see long decimals sometimes?</summary>
+          <summary>Why do I sometimes see long decimals?</summary>
           <p>
-            This uses floating-point math (like most calculators in browsers),
-            which can show tiny rounding artifacts for some values.
+            That’s normal with floating-point math in browsers. You may see tiny
+            rounding artifacts (e.g., <code>0.30000000000000004</code>).
+          </p>
+        </details>
+
+        <details>
+          <summary>Is this mobile-friendly?</summary>
+          <p>Yes. It works in any modern mobile or desktop browser.</p>
+        </details>
+
+        <details>
+          <summary>Does it support scientific functions?</summary>
+          <p>
+            Not in this tool — it keeps things simple. For advanced math, use a
+            scientific calculator.
           </p>
         </details>
       </article>
 
-      <!-- Related tools (adjusted for this tool) -->
+      <!-- Related tools -->
       <article class="card" id="related">
         <h2>Related tools</h2>
         <p class="muted">More math &amp; number utilities:</p>
         <p>
+          <a class="btn" href="/percent-calculator/">Percent Calculator</a>
           <a class="btn" href="/unit-converter/">Unit Converter</a>
           <a class="btn" href="/age-calculator/">Age Calculator</a>
           <a class="btn" href="/text-utilities/">Text Utilities</a>
@@ -330,16 +440,8 @@
     </footer>
 
     <script>
-      // Year
+      // Footer year
       document.getElementById("y").textContent = new Date().getFullYear();
-
-      // Elements
-      const expr = document.getElementById("expr");
-      const out = document.getElementById("out");
-      const msg = document.getElementById("msg");
-      const evalBtn = document.getElementById("evalBtn");
-      const clrBtn = document.getElementById("clrBtn");
-      const cpyBtn = document.getElementById("cpyBtn");
 
       // ===== Lazy init AdSense when slots are visible =====
       const initAds = () => {
@@ -377,12 +479,17 @@
       };
       window.addEventListener("load", initAds);
 
-      // ===== Calculator helpers =====
-      const normalize = (s) => s.replace(/[×]/g, "*").replace(/[÷]/g, "/");
+      // ===== Calculator logic =====
+      const expr = document.getElementById("expr");
+      const out = document.getElementById("out");
+      const msg = document.getElementById("msg");
+      const evalBtn = document.getElementById("evalBtn");
+      const clrBtn = document.getElementById("clrBtn");
+      const cpyBtn = document.getElementById("cpyBtn");
 
+      const normalize = (s) => s.replace(/[×]/g, "*").replace(/[÷]/g, "/");
       // Convert naked percents like "12%" into "(12/100)"
       const percentsToFrac = (s) => s.replace(/(\d+(?:\.\d+)?)%/g, "($1/100)");
-
       const allowed = (s) => /^[0-9+\-*/().% \t]+$/.test(s);
 
       const evaluate = () => {
@@ -392,19 +499,15 @@
           msg.textContent = "";
           return;
         }
-
         s = normalize(s);
         s = percentsToFrac(s);
-
         if (!allowed(s)) {
           out.value = "";
           msg.textContent = "Error: invalid characters.";
           return;
         }
-
         try {
-          // Safe-ish eval: only after strict filtering above
-          const result = Function('"use strict";return(' + s + ")")();
+          const result = Function('"use strict";return(' + s + ")")(); // filtered input only
           out.value = String(result);
           msg.textContent = "Done.";
         } catch (e) {
@@ -413,7 +516,6 @@
         }
       };
 
-      // Events
       evalBtn.onclick = evaluate;
       clrBtn.onclick = () => {
         expr.value = "";
@@ -430,8 +532,6 @@
           msg.textContent = "Result copied.";
         });
       };
-
-      // Enter evaluates (Shift+Enter inserts newline)
       expr.addEventListener("keydown", (e) => {
         if (e.key === "Enter" && !e.shiftKey) {
           e.preventDefault();
@@ -439,6 +539,7 @@
         }
       });
     </script>
+
     <script
       src="../assets/tracker.js"
       defer
