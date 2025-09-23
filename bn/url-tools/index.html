@@ -307,30 +307,79 @@
           </li>
         </ol>
       </article>
+      <section class="faq-section card">
+        <h2 class="faq-title">প্রশ্নোত্তর</h2>
 
-      <!-- FAQ -->
-      <article class="card faq" id="faq">
-        <h2>প্রশ্নোত্তর</h2>
-        <details>
-          <summary>%20 বনাম +—কখন কোনটা?</summary>
-          <p>
-            স্ট্যান্ডার্ড URL এনকোডিংয়ে স্পেস সাধারণত %20।
-            x-www-form-urlencoded (ওয়েব-ফর্ম) ধরণে স্পেসকে <code>+</code> ধরা
-            হয়—এ জন্য টগল রয়েছে।
-          </p>
-        </details>
-        <details>
-          <summary>ইউনিকোড/ইমোজি সাপোর্ট আছে?</summary>
-          <p>হ্যাঁ—ইউনিকোড ও ইমোজি পুরোপুরি সাপোর্টেড।</p>
-        </details>
-        <details>
-          <summary>প্রাইভেসি?</summary>
-          <p>
-            সবকিছু লোকাল ব্রাউজারেই প্রক্রিয়াকরণ হয়; কোনো ডেটা সার্ভারে পাঠানো
-            হয় না।
-          </p>
-        </details>
-      </article>
+        <div class="faq-container">
+          <!-- URL Encoder/Decoder FAQs (Bangla) -->
+          <div class="faq-item">
+            <button class="faq-question">
+              %20 বনাম +—কখন কোনটা?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                স্ট্যান্ডার্ড URL এনকোডিংয়ে স্পেস সাধারণত %20।
+                x-www-form-urlencoded (ওয়েব-ফর্ম) ধরণে স্পেসকে
+                <code>+</code> ধরা হয়— এ জন্য টগল রয়েছে।
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              পুরো URL না কি শুধু প্যারাম ভ্যালু এনকোড করব?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                সাধারণত কেবল query parameter এর value এনকোড করা উচিত। পুরো URL
+                এনকোড করলে
+                <code>:</code>, <code>/</code>, <code>?</code>,
+                <code>&amp;</code> ইত্যাদি রিজার্ভড ক্যারেক্টারও কনভার্ট হয়ে
+                যেতে পারে।
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              ইউনিকোড/ইমোজি সাপোর্ট আছে?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>হ্যাঁ—ইউনিকোড টেক্সট ও ইমোজি পুরোপুরি সাপোর্টেড।</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              ডিকোড করার সময় “Invalid Character” এラー কেন আসে?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                ইনপুটে অবৈধ বা আংশিক এনকোডেড ক্যারেক্টার থাকলে এラー আসতে পারে।
+                যেমন <code>%</code> চিহ্নের পর সঠিক দুই অঙ্ক না থাকলে।
+                সেক্ষেত্রে ইনপুট পরিষ্কার করে আবার চেষ্টা করুন।
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              প্রাইভেসি?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                সবকিছু লোকাল ব্রাউজারেই প্রক্রিয়াকরণ হয়; কোনো ডেটা সার্ভারে
+                পাঠানো হয় না।
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <!-- Related -->
       <article class="card" id="related">
@@ -456,12 +505,9 @@
         }
       });
     </script>
-    <script
-      src="../../assets/tracker.js"
-      defer
-      data-trk-site="tools-pack"
-    ></script>
-    <script src="../../assets/related-more.js" defer></script>
+    <script src="/assets/tracker.js" defer data-trk-site="tools-pack"></script>
+    <script src="/assets/related-more.js" defer></script>
+    <script src="/assets/script.js" defer></script>
     <noscript
       >জাভাস্ক্রিপ্ট চালু করুন—এই টুলটি কাজ করতে জাভাস্ক্রিপ্ট
       প্রয়োজন।</noscript

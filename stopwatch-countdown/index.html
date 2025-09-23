@@ -320,54 +320,84 @@
       </article>
 
       <!-- FAQ (SEO-friendly, human readable) -->
-      <article class="card faq" id="faq">
-        <h2>Stopwatch & Timer – Frequently Asked Questions</h2>
+      <section class="faq-section card">
+        <h2 class="faq-title">
+          Stopwatch & Timer – Frequently Asked Questions
+        </h2>
 
-        <details>
-          <summary>How do I use the stopwatch?</summary>
-          <p>
-            Click Start to begin, Pause to pause, and Reset to clear the time.
-            You can also use the keyboard: Space toggles Start/Pause and R
-            resets.
-          </p>
-        </details>
+        <div class="faq-container">
+          <!-- Stopwatch & Timer FAQs -->
+          <div class="faq-item">
+            <button class="faq-question">
+              How do I use the stopwatch?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Click Start to begin, Pause to pause, and Reset to clear the
+                time. You can also use the keyboard: Space toggles Start/Pause
+                and R resets.
+              </p>
+            </div>
+          </div>
 
-        <details>
-          <summary>How do I set up a countdown timer?</summary>
-          <p>
-            Enter your desired minutes and seconds, then click Start Countdown
-            (or press Enter). A beep will sound when the timer reaches zero.
-          </p>
-        </details>
+          <div class="faq-item">
+            <button class="faq-question">
+              How do I set up a countdown timer?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Enter your desired minutes and seconds, then click Start
+                Countdown (or press Enter). A beep will sound when the timer
+                reaches zero.
+              </p>
+            </div>
+          </div>
 
-        <details>
-          <summary>
-            Will the timer stay accurate if I switch tabs or minimize the
-            browser?
-          </summary>
-          <p>
-            Yes. The stopwatch and countdown use precise system time to ensure
-            accuracy, even if the browser tab is throttled or inactive.
-          </p>
-        </details>
+          <div class="faq-item">
+            <button class="faq-question">
+              Will the timer stay accurate if I switch tabs or minimize the
+              browser?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Yes. The stopwatch and countdown use precise system time to
+                ensure accuracy, even if the browser tab is throttled or
+                inactive.
+              </p>
+            </div>
+          </div>
 
-        <details>
-          <summary>Why can’t I hear the beep sound?</summary>
-          <p>
-            Most browsers block audio until you interact with the page. Click
-            anywhere or press a button to enable sound. Also check your volume
-            and device’s Silent mode.
-          </p>
-        </details>
+          <div class="faq-item">
+            <button class="faq-question">
+              Why can’t I hear the beep sound?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Most browsers block audio until you interact with the page.
+                Click anywhere or press a button to enable sound. Also check
+                your volume and device’s Silent mode.
+              </p>
+            </div>
+          </div>
 
-        <details>
-          <summary>Does this tool save my timings or inputs?</summary>
-          <p>
-            No. Everything runs locally in your browser. Nothing is uploaded or
-            stored on a server.
-          </p>
-        </details>
-      </article>
+          <div class="faq-item">
+            <button class="faq-question">
+              Does this tool save my timings or inputs?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                No. Everything runs locally in your browser. Nothing is uploaded
+                or stored on a server.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <!-- Related tools (updated) -->
       <article class="card" id="related">
@@ -582,6 +612,7 @@
     <!-- Use absolute path so it works from nested routes like /stopwatch/ -->
     <script src="/assets/tracker.js" defer data-trk-site="tools-pack"></script>
     <script src="/assets/related-more.js" defer></script>
+    <script src="/assets/script.js" defer></script>
 
     <noscript>
       <div class="wrap card">

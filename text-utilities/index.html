@@ -305,64 +305,95 @@
         </ul>
       </article>
 
-      <!-- FAQ -->
-      <article class="card faq" id="faq">
-        <h2>FAQ</h2>
+      <section class="faq-section card">
+        <h2 class="faq-title">Frequently Asked Questions</h2>
 
-        <details>
-          <summary>Do you send my text to a server?</summary>
-          <p>
-            No. All actions (case change, space cleanup, copy, counting) happen
-            locally in your browser. Your text is not uploaded.
-          </p>
-        </details>
+        <div class="faq-container">
+          <!-- Text Tools Specific FAQs -->
+          <div class="faq-item">
+            <button class="faq-question">
+              Do you send my text to a server?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                No. All actions (case change, space cleanup, copy, counting)
+                happen locally in your browser. Your text is not uploaded.
+              </p>
+            </div>
+          </div>
 
-        <details>
-          <summary>How is the word count calculated?</summary>
-          <p>
-            Words are counted by splitting on whitespace using a simple regex
-            (<code>\S+</code>). Characters include everything you see, including
-            spaces and newlines.
-          </p>
-        </details>
+          <div class="faq-item">
+            <button class="faq-question">
+              How is the word count calculated?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Words are counted by splitting on whitespace using a simple
+                regex (<code>\S+</code>). Characters include everything you see,
+                including spaces and newlines.
+              </p>
+            </div>
+          </div>
 
-        <details>
-          <summary>
-            What’s the difference between “Collapse spaces” and “Remove ALL
-            spaces”?
-          </summary>
-          <p>
-            <strong>Collapse spaces</strong> replaces any run of whitespace
-            (<code>\s+</code>) with a single space and trims the ends.
-            <strong>Remove ALL spaces</strong> deletes all whitespace entirely
-            (spaces, tabs, newlines).
-          </p>
-        </details>
+          <div class="faq-item">
+            <button class="faq-question">
+              What’s the difference between “Collapse spaces” and “Remove ALL
+              spaces”?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                <strong>Collapse spaces</strong> replaces any run of whitespace
+                (<code>\s+</code>) with a single space and trims the ends.
+                <strong>Remove ALL spaces</strong> deletes all whitespace
+                entirely (spaces, tabs, newlines).
+              </p>
+            </div>
+          </div>
 
-        <details>
-          <summary>
-            Will punctuation, emojis, or non-Latin scripts change?
-          </summary>
-          <p>
-            No. Case conversion affects letters only. Punctuation and emojis are
-            preserved. Scripts without case (e.g., Bengali) are unaffected by
-            UPPER/lower conversion.
-          </p>
-        </details>
+          <div class="faq-item">
+            <button class="faq-question">
+              Will punctuation, emojis, or non-Latin scripts change?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                No. Case conversion affects letters only. Punctuation and emojis
+                are preserved. Scripts without case (e.g., Bengali) are
+                unaffected by UPPER/lower conversion.
+              </p>
+            </div>
+          </div>
 
-        <details>
-          <summary>Does it work offline?</summary>
-          <p>Yes. After the first load, the page continues to work offline.</p>
-        </details>
+          <div class="faq-item">
+            <button class="faq-question">
+              Does it work offline?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Yes. After the first load, the page continues to work offline.
+              </p>
+            </div>
+          </div>
 
-        <details>
-          <summary>Is there a size limit?</summary>
-          <p>
-            There is no hard limit, but very large pastes may feel slow on
-            low-memory devices. For extremely large texts, process in chunks.
-          </p>
-        </details>
-      </article>
+          <div class="faq-item">
+            <button class="faq-question">
+              Is there a size limit?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                There is no hard limit, but very large pastes may feel slow on
+                low-memory devices. For extremely large texts, process in
+                chunks.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <!-- Related tools -->
       <article class="card" id="related">
@@ -445,5 +476,6 @@
     </script>
     <script src="/assets/tracker.js" defer data-trk-site="tools-pack"></script>
     <script src="/assets/related-more.js" defer></script>
+    <script src="/assets/script.js" defer></script>
   </body>
 </html>

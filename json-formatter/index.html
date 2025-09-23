@@ -314,33 +314,59 @@
           <li>Works offline after first load.</li>
         </ul>
       </article>
+      <section class="faq-section card">
+        <h2 class="faq-title">JSON Formatter – Frequently Asked Questions</h2>
 
-      <!-- FAQ -->
-      <article class="card faq" id="faq">
-        <h2>FAQ</h2>
-        <details>
-          <summary>Is my JSON uploaded to a server?</summary>
-          <p>No. All processing happens locally in your browser.</p>
-        </details>
-        <details>
-          <summary>Does it support Unicode/Bangla?</summary>
-          <p>Yes. It is Unicode-safe.</p>
-        </details>
-        <details>
-          <summary>How do I pretty print and validate?</summary>
-          <p>
-            Paste JSON, click <em>Format</em> to pretty print; click
-            <em>Validate</em> to only check correctness.
-          </p>
-        </details>
-        <details>
-          <summary>How do I minify or find related tools?</summary>
-          <p>
-            Use the <em>Minify</em> button here. See
-            <a href="#related">Related tools</a> below for URL/Base64 utilities.
-          </p>
-        </details>
-      </article>
+        <div class="faq-container">
+          <!-- JSON Formatter FAQs -->
+          <div class="faq-item">
+            <button class="faq-question">
+              Is my JSON uploaded to a server?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>No. All processing happens locally in your browser.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Does it support Unicode/Bangla?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Yes. It is Unicode-safe.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              How do I pretty print and validate?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Paste JSON, click <em>Format</em> to pretty print; click
+                <em>Validate</em> to only check correctness.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              How do I minify or find related tools?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Use the <em>Minify</em> button here. See
+                <a href="#related">Related tools</a> below for URL/Base64
+                utilities.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <!-- Related tools -->
       <article class="card" id="related">
@@ -430,5 +456,6 @@
       data-trk-site="tools-pack"
     ></script>
     <script src="/assets/related-more.js" defer></script>
+    <script src="/assets/script.js" defer></script>
   </body>
 </html>

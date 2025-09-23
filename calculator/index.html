@@ -362,60 +362,100 @@
       </article>
 
       <!-- ✅ FAQ (plain language; keep JSON-LD in sync) -->
-      <article class="card faq" id="faq">
-        <h2>FAQ</h2>
+      <section class="faq-section card">
+        <h2 class="faq-title">Calculator – Frequently Asked Questions</h2>
 
-        <details>
-          <summary>Does this calculator work offline?</summary>
-          <p>Yes. After the first load, everything runs in your browser.</p>
-        </details>
+        <div class="faq-container">
+          <!-- Calculator FAQs -->
+          <div class="faq-item">
+            <button class="faq-question">
+              Does this calculator work offline?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Yes. After the first load, everything runs in your browser.</p>
+            </div>
+          </div>
 
-        <details>
-          <summary>Are my calculations tracked?</summary>
-          <p>
-            No. We don’t send your input anywhere — it stays on your device.
-          </p>
-        </details>
+          <div class="faq-item">
+            <button class="faq-question">
+              Are my calculations tracked?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                No. We don’t send your input anywhere — it stays on your device.
+              </p>
+            </div>
+          </div>
 
-        <details>
-          <summary>How does % work here?</summary>
-          <p>
-            A number followed by <code>%</code> is a percentage of 1. For
-            example, <code>12%</code> becomes <code>12/100</code>, so
-            <code>12% * 200 = 24</code>.
-          </p>
-        </details>
+          <div class="faq-item">
+            <button class="faq-question">
+              How does % work here?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                A number followed by <code>%</code> is a percentage of 1. For
+                example, <code>12%</code> becomes <code>12/100</code>, so
+                <code>12% * 200 = 24</code>.
+              </p>
+            </div>
+          </div>
 
-        <details>
-          <summary>Which operations are supported?</summary>
-          <p>
-            Basic arithmetic with parentheses:
-            <code>+</code> <code>−</code> <code>×</code> <code>÷</code> (also
-            <code>*</code> and <code>/</code>), decimals, and <code>%</code>.
-          </p>
-        </details>
+          <div class="faq-item">
+            <button class="faq-question">
+              Which operations are supported?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Basic arithmetic with parentheses:
+                <code>+</code> <code>−</code> <code>×</code>
+                <code>÷</code> (also <code>*</code> and <code>/</code>),
+                decimals, and <code>%</code>.
+              </p>
+            </div>
+          </div>
 
-        <details>
-          <summary>Why do I sometimes see long decimals?</summary>
-          <p>
-            That’s normal with floating-point math in browsers. You may see tiny
-            rounding artifacts (e.g., <code>0.30000000000000004</code>).
-          </p>
-        </details>
+          <div class="faq-item">
+            <button class="faq-question">
+              Why do I sometimes see long decimals?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                That’s normal with floating-point math in browsers. You may see
+                tiny rounding artifacts (e.g.,
+                <code>0.30000000000000004</code>).
+              </p>
+            </div>
+          </div>
 
-        <details>
-          <summary>Is this mobile-friendly?</summary>
-          <p>Yes. It works in any modern mobile or desktop browser.</p>
-        </details>
+          <div class="faq-item">
+            <button class="faq-question">
+              Is this mobile-friendly?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Yes. It works in any modern mobile or desktop browser.</p>
+            </div>
+          </div>
 
-        <details>
-          <summary>Does it support scientific functions?</summary>
-          <p>
-            Not in this tool — it keeps things simple. For advanced math, use a
-            scientific calculator.
-          </p>
-        </details>
-      </article>
+          <div class="faq-item">
+            <button class="faq-question">
+              Does it support scientific functions?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Not in this tool — it keeps things simple. For advanced math,
+                use a scientific calculator.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <!-- Related tools -->
       <article class="card" id="related">
@@ -546,6 +586,7 @@
       data-trk-site="tools-pack"
     ></script>
     <script src="/assets/related-more.js" defer></script>
+    <script src="/assets/script.js" defer></script>
     <noscript
       >Your browser has JavaScript disabled; this tool needs JavaScript to
       work.</noscript

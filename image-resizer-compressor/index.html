@@ -434,41 +434,73 @@
           <li>This tool runs locally—great for privacy and speed.</li>
         </ul>
       </article>
+      <section class="faq-section card">
+        <h2 class="faq-title">Image Compressor – Frequently Asked Questions</h2>
 
-      <!-- FAQ -->
-      <article class="card faq" id="faq">
-        <h2>FAQ</h2>
-        <details>
-          <summary>How do I reduce image file size?</summary>
-          <p>
-            Downscale width/height and use JPEG/WebP with a lower Quality
-            setting, then download.
-          </p>
-        </details>
-        <details>
-          <summary>What formats are supported?</summary>
-          <p>
-            Export as JPEG, PNG, or WebP. Quality applies only to JPEG/WebP.
-          </p>
-        </details>
-        <details>
-          <summary>Does this remove EXIF/metadata?</summary>
-          <p>Yes. Canvas export typically strips EXIF/metadata.</p>
-        </details>
-        <details>
-          <summary>Is my image uploaded anywhere?</summary>
-          <p>
-            No. Everything happens in your browser; nothing is sent to a server.
-          </p>
-        </details>
-        <details>
-          <summary>Why is the Quality slider disabled for PNG?</summary>
-          <p>
-            PNG is lossless, so there’s no quality/size trade-off exposed via
-            the slider.
-          </p>
-        </details>
-      </article>
+        <div class="faq-container">
+          <!-- Image Compressor FAQs -->
+          <div class="faq-item">
+            <button class="faq-question">
+              How do I reduce image file size?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Downscale width/height and use JPEG/WebP with a lower Quality
+                setting, then download.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              What formats are supported?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Export as JPEG, PNG, or WebP. Quality applies only to JPEG/WebP.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Does this remove EXIF/metadata?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Yes. Canvas export typically strips EXIF/metadata.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Is my image uploaded anywhere?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                No. Everything happens in your browser; nothing is sent to a
+                server.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Why is the Quality slider disabled for PNG?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                PNG is lossless, so there’s no quality/size trade-off exposed
+                via the slider.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <!-- Related tools -->
       <article class="card" id="related">
@@ -705,6 +737,7 @@
     </script>
     <script src="/assets/tracker.js" defer data-trk-site="tools-pack"></script>
     <script src="/assets/related-more.js" defer></script>
+    <script src="/assets/script.js" defer></script>
     <noscript
       >Your browser has JavaScript disabled; this tool needs JavaScript to
       work.</noscript

@@ -298,37 +298,72 @@
         </ul>
       </article>
 
-      <!-- FAQ -->
-      <article class="card faq" id="faq">
-        <h2>FAQ</h2>
-        <details>
-          <summary>What are AA vs AAA requirements?</summary>
-          <p>
-            AA: ≥4.5:1 for normal text, ≥3:1 for large text. AAA: ≥7:1 for
-            normal text, ≥4.5:1 for large text.
-          </p>
-        </details>
-        <details>
-          <summary>What counts as “large” text?</summary>
-          <p>At least 18pt (≈24px) normal weight, or 14pt (≈18.67px) bold.</p>
-        </details>
-        <details>
-          <summary>Can I enter RGB or HSL?</summary>
-          <p>
-            This tool accepts hex (<code>#RRGGBB</code> or <code>#RGB</code>)
-            for accuracy and simplicity.
-          </p>
-        </details>
-        <details>
-          <summary>Does it work offline?</summary>
-          <p>Yes—after the first load, it works without internet.</p>
-        </details>
-        <details>
-          <summary>Is my data sent anywhere?</summary>
-          <p>No. Everything runs locally in your browser.</p>
-        </details>
-      </article>
+      <section class="faq-section card">
+        <h2 class="faq-title">
+          Color Contrast Checker – Frequently Asked Questions
+        </h2>
 
+        <div class="faq-container">
+          <!-- Color Contrast Checker FAQs -->
+          <div class="faq-item">
+            <button class="faq-question">
+              What are AA vs AAA requirements?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                AA: ≥4.5:1 for normal text, ≥3:1 for large text. AAA: ≥7:1 for
+                normal text, ≥4.5:1 for large text.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              What counts as “large” text?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                At least 18pt (≈24px) normal weight, or 14pt (≈18.67px) bold.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Can I enter RGB or HSL?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                This tool accepts hex (<code>#RRGGBB</code> or
+                <code>#RGB</code>) for accuracy and simplicity.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Does it work offline?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Yes—after the first load, it works without internet.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Is my data sent anywhere?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>No. Everything runs locally in your browser.</p>
+            </div>
+          </div>
+        </div>
+      </section>
       <!-- Related tools -->
       <article class="card related" id="related">
         <h2>Related tools</h2>
@@ -480,6 +515,7 @@
     </script>
     <script src="/assets/tracker.js" defer data-trk-site="tools-pack"></script>
     <script src="/assets/related-more.js" defer></script>
+    <script src="/assets/script.js" defer></script>
     <noscript
       >Your browser has JavaScript disabled; this tool needs JavaScript to
       work.</noscript

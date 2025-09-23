@@ -541,32 +541,58 @@
         </ol>
       </article>
 
-      <!-- FAQ -->
-      <article class="card faq" id="faq">
-        <h2>প্রশ্নোত্তর</h2>
-        <details>
-          <summary>এই টুল কি অফলাইনে চলে?</summary>
-          <p>হ্যাঁ, প্রথম লোডের পর পুরোটা ব্রাউজারেই চলে।</p>
-        </details>
-        <details>
-          <summary>ইনপুট কি সার্ভারে যায়?</summary>
-          <p>না—সবকিছু আপনার ব্রাউজারেই থাকে; কোনো ট্র্যাকিং নেই।</p>
-        </details>
-        <details>
-          <summary>দশমিক/ঋণাত্মক মান চলবে?</summary>
-          <p>
-            হ্যাঁ—সব ইনপুটে দশমিক সমর্থিত (<code>step="any"</code>) এবং
-            প্রয়োজনে ঋণাত্মকও ব্যবহারযোগ্য।
-          </p>
-        </details>
-        <details>
-          <summary>শতকরা পরিবর্তন কীভাবে হিসাব হয়?</summary>
-          <p>
-            সূত্র: <code>((নতুন − পুরোনো) ÷ পুরোনো) × 100</code>। পুরোনো মান
-            শূন্য হলে ভাগ করা যায় না।
-          </p>
-        </details>
-      </article>
+      <section class="faq-section card">
+        <h2 class="faq-title">প্রশ্নোত্তর</h2>
+
+        <div class="faq-container">
+          <!-- Percentage Calculator FAQs (Bangla) -->
+          <div class="faq-item">
+            <button class="faq-question">
+              এই টুল কি অফলাইনে চলে?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>হ্যাঁ, প্রথম লোডের পর পুরোটা ব্রাউজারেই চলে।</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              ইনপুট কি সার্ভারে যায়?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>না—সবকিছু আপনার ব্রাউজারেই থাকে; কোনো ট্র্যাকিং নেই।</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              দশমিক/ঋণাত্মক মান চলবে?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                হ্যাঁ—সব ইনপুটে দশমিক সমর্থিত (<code>step="any"</code>) এবং
+                প্রয়োজনে ঋণাত্মকও ব্যবহারযোগ্য।
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              শতকরা পরিবর্তন কীভাবে হিসাব হয়?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                সূত্র: <code>((নতুন − পুরোনো) ÷ পুরোনো) × 100</code>। পুরোনো মান
+                শূন্য হলে ভাগ করা যায় না।
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <!-- Related tools -->
       <article class="card" id="related">
@@ -750,5 +776,6 @@
     </script>
     <script src="/assets/tracker.js" defer data-trk-site="tools-pack"></script>
     <script src="/assets/related-more.js" defer></script>
+    <script src="/assets/script.js" defer></script>
   </body>
 </html>

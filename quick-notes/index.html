@@ -348,47 +348,74 @@
         </ul>
       </article>
 
-      <!-- FAQ -->
-      <article class="card faq" id="faq">
-        <h2>Quick Notes – Frequently Asked Questions</h2>
+      <section class="faq-section card">
+        <h2 class="faq-title">Quick Notes – Frequently Asked Questions</h2>
 
-        <details>
-          <summary>Where are my notes stored?</summary>
-          <p>
-            On this device only, inside your browser’s localStorage. Nothing is
-            uploaded.
-          </p>
-        </details>
+        <div class="faq-container">
+          <!-- Quick Notes FAQs -->
+          <div class="faq-item">
+            <button class="faq-question">
+              Where are my notes stored?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                On this device only, inside your browser’s localStorage. Nothing
+                is uploaded.
+              </p>
+            </div>
+          </div>
 
-        <details>
-          <summary>Is there a size limit?</summary>
-          <p>
-            Yes. Browsers typically allow around 5&nbsp;MB per site for
-            localStorage.
-          </p>
-        </details>
+          <div class="faq-item">
+            <button class="faq-question">
+              Is there a size limit?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Yes. Browsers typically allow around 5&nbsp;MB per site for
+                localStorage.
+              </p>
+            </div>
+          </div>
 
-        <details>
-          <summary>Can I sync across devices?</summary>
-          <p>
-            Not automatically. Use Export to save a .txt and Import it
-            elsewhere.
-          </p>
-        </details>
+          <div class="faq-item">
+            <button class="faq-question">
+              Can I sync across devices?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Not automatically. Use Export to save a .txt and Import it
+                elsewhere.
+              </p>
+            </div>
+          </div>
 
-        <details>
-          <summary>Are notes encrypted?</summary>
-          <p>
-            No. Keep your device secure and avoid highly sensitive information.
-          </p>
-        </details>
+          <div class="faq-item">
+            <button class="faq-question">
+              Are notes encrypted?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                No. Keep your device secure and avoid highly sensitive
+                information.
+              </p>
+            </div>
+          </div>
 
-        <details>
-          <summary>Does it work offline?</summary>
-          <p>Yes. After the first load, it works without internet.</p>
-        </details>
-      </article>
-
+          <div class="faq-item">
+            <button class="faq-question">
+              Does it work offline?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Yes. After the first load, it works without internet.</p>
+            </div>
+          </div>
+        </div>
+      </section>
       <!-- Related tools -->
       <article class="card" id="related">
         <h2>Related Text Tools</h2>
@@ -486,5 +513,6 @@
     <!-- Keep your existing assets paths as-is -->
     <script src="./assets/tracker.js" defer data-trk-site="tools-pack"></script>
     <script src="/assets/related-more.js" defer></script>
+    <script src="/assets/script.js" defer></script>
   </body>
 </html>

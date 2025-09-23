@@ -571,46 +571,80 @@
         </ul>
       </article>
 
-      <!-- FAQ -->
-      <article class="card faq" id="faq">
-        <h2>FAQ</h2>
-        <details>
-          <summary>What calculations does this tool support?</summary>
-          <p>
-            It supports A% of B, what percent A is of B, percent change between
-            two values, and value after a percentage increase or decrease.
-          </p>
-        </details>
-        <details>
-          <summary>Do I need to type the % sign?</summary>
-          <p>
-            No. Enter plain numbers only; the calculator treats A as a
-            percentage automatically.
-          </p>
-        </details>
-        <details>
-          <summary>How is percent change calculated?</summary>
-          <p>
-            Percent change = <code>((New − Old) ÷ Old) × 100</code>. Positive
-            means increase; negative means decrease.
-          </p>
-        </details>
-        <details>
-          <summary>Can I use decimals and negative values?</summary>
-          <p>
-            Yes. Decimals are supported across all fields, and negative values
-            are allowed where meaningful (e.g., a negative change).
-          </p>
-        </details>
-        <details>
-          <summary>What if the denominator is 0?</summary>
-          <p>
-            Division by 0 is undefined. The tool will show an error when a
-            calculation requires dividing by 0.
-          </p>
-        </details>
-      </article>
+      <section class="faq-section card">
+        <h2 class="faq-title">
+          Percentage Calculator – Frequently Asked Questions
+        </h2>
 
+        <div class="faq-container">
+          <!-- Percentage Calculator FAQs -->
+          <div class="faq-item">
+            <button class="faq-question">
+              What calculations does this tool support?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                It supports A% of B, what percent A is of B, percent change
+                between two values, and value after a percentage increase or
+                decrease.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Do I need to type the % sign?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                No. Enter plain numbers only; the calculator treats A as a
+                percentage automatically.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              How is percent change calculated?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Percent change = <code>((New − Old) ÷ Old) × 100</code>.
+                Positive means increase; negative means decrease.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Can I use decimals and negative values?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Yes. Decimals are supported across all fields, and negative
+                values are allowed where meaningful (e.g., a negative change).
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              What if the denominator is 0?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Division by 0 is undefined. The tool will show an error when a
+                calculation requires dividing by 0.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
       <!-- Related tools -->
       <article class="card" id="related">
         <h2>Related tools</h2>
@@ -796,5 +830,6 @@
     </script>
     <script src="./assets/tracker.js" defer data-trk-site="tools-pack"></script>
     <script src="/assets/related-more.js" defer></script>
+    <script src="/assets/script.js" defer></script>
   </body>
 </html>

@@ -437,33 +437,60 @@
         </ol>
       </article>
 
-      <article class="card faq" id="faq">
-        <h2>প্রশ্নোত্তর</h2>
-        <details>
-          <summary>অফলাইনে চলবে?</summary>
-          <p>হ্যাঁ—প্রথম লোডের পর সবকিছু ব্রাউজারেই সম্পন্ন হয়।</p>
-        </details>
-        <details>
-          <summary>ফন্ট কী ব্যবহার হবে?</summary>
-          <p>
-            সিস্টেম/ব্রাউজারের ডিফল্ট ফন্ট—বাংলা, ইমোজি ইত্যাদি ইউনিকোড টেক্সট
-            সাপোর্ট করে।
-          </p>
-        </details>
-        <details>
-          <summary>পেজ নম্বর/হেডার-ফুটার?</summary>
-          <p>
-            টুলের হেডার/ফুটার অপশন অন করলে টাইটেল ও তৈরি হওয়ার সময় দেখাবে। পেজ
-            নম্বর দরকার হলে প্রিন্ট ডায়ালগের
-            <em>Headers &amp; Footers</em> অপশন ব্যবহার করতে পারেন (ব্রাউজারভেদে
-            ভিন্ন হতে পারে)।
-          </p>
-        </details>
-        <details>
-          <summary>প্রাইভেসি?</summary>
-          <p>কোনো ডেটা সার্ভারে পাঠানো হয় না—সব কাজ লোকালেই।</p>
-        </details>
-      </article>
+      <section class="faq-section card">
+        <h2 class="faq-title">প্রশ্নোত্তর</h2>
+
+        <div class="faq-container">
+          <!-- Text to PDF Converter FAQs (Bangla) -->
+          <div class="faq-item">
+            <button class="faq-question">
+              অফলাইনে চলবে?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>হ্যাঁ—প্রথম লোডের পর সবকিছু ব্রাউজারেই সম্পন্ন হয়।</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              ফন্ট কী ব্যবহার হবে?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                সিস্টেম/ব্রাউজারের ডিফল্ট ফন্ট—বাংলা, ইমোজি ইত্যাদি ইউনিকোড
+                টেক্সট সাপোর্ট করে।
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              পেজ নম্বর/হেডার-ফুটার?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                টুলের হেডার/ফুটার অপশন অন করলে টাইটেল ও তৈরি হওয়ার সময় দেখাবে।
+                পেজ নম্বর দরকার হলে প্রিন্ট ডায়ালগের
+                <em>Headers &amp; Footers</em> অপশন ব্যবহার করতে পারেন
+                (ব্রাউজারভেদে ভিন্ন হতে পারে)।
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              প্রাইভেসি?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>কোনো ডেটা সার্ভারে পাঠানো হয় না—সব কাজ লোকালেই।</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <article class="card" id="related">
         <h2>সম্পর্কিত টুলস</h2>
@@ -675,12 +702,9 @@ ${footer}`;
         });
       })();
     </script>
-    <script
-      src="../../assets/tracker.js"
-      defer
-      data-trk-site="tools-pack"
-    ></script>
-    <script src="../../assets/related-more.js" defer></script>
+    <script src="/assets/tracker.js" defer data-trk-site="tools-pack"></script>
+    <script src="/assets/related-more.js" defer></script>
+    <script src="/assets/script.js" defer></script>
     <noscript
       >জাভাস্ক্রিপ্ট চালু করুন—এই টুলটি কাজ করতে জাভাস্ক্রিপ্ট
       প্রয়োজন।</noscript

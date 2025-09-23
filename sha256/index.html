@@ -294,52 +294,79 @@
         </ul>
       </article>
 
-      <!-- FAQ -->
-      <article class="card faq" id="faq">
-        <h2>FAQ</h2>
+      <section class="faq-section card">
+        <h2 class="faq-title">SHA-256 – Frequently Asked Questions</h2>
 
-        <details>
-          <summary>How do I use this SHA-256 tool?</summary>
-          <p>
-            Enter text or pick a file, then click <strong>Compute</strong> (or
-            press <kbd>Ctrl/Cmd</kbd>+<kbd>Enter</kbd>). The hex digest will be
-            shown in the output box.
-          </p>
-        </details>
+        <div class="faq-container">
+          <!-- SHA-256 FAQs -->
+          <div class="faq-item">
+            <button class="faq-question">
+              How do I use this SHA-256 tool?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Enter text or pick a file, then click
+                <strong>Compute</strong> (or press
+                <kbd>Ctrl/Cmd</kbd>+<kbd>Enter</kbd>). The hex digest will be
+                shown in the output box.
+              </p>
+            </div>
+          </div>
 
-        <details>
-          <summary>Does my text or file get uploaded?</summary>
-          <p>
-            No. All hashing is performed locally in your browser using the
-            WebCrypto API. Nothing leaves your device.
-          </p>
-        </details>
+          <div class="faq-item">
+            <button class="faq-question">
+              Does my text or file get uploaded?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                No. All hashing is performed locally in your browser using the
+                WebCrypto API. Nothing leaves your device.
+              </p>
+            </div>
+          </div>
 
-        <details>
-          <summary>Can I hash large files?</summary>
-          <p>
-            Yes—subject to available memory in your browser. For multi-GB files,
-            use a desktop tool that supports streaming.
-          </p>
-        </details>
+          <div class="faq-item">
+            <button class="faq-question">
+              Can I hash large files?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Yes—subject to available memory in your browser. For multi-GB
+                files, use a desktop tool that supports streaming.
+              </p>
+            </div>
+          </div>
 
-        <details>
-          <summary>Is SHA-256 reversible?</summary>
-          <p>
-            No. SHA-256 is a cryptographic hash function. It’s designed to be
-            one-way and collision-resistant.
-          </p>
-        </details>
+          <div class="faq-item">
+            <button class="faq-question">
+              Is SHA-256 reversible?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                No. SHA-256 is a cryptographic hash function. It’s designed to
+                be one-way and collision-resistant.
+              </p>
+            </div>
+          </div>
 
-        <details>
-          <summary>What is SHA-256 used for?</summary>
-          <p>
-            Common uses include verifying file integrity, creating content
-            fingerprints, and storing checksums.
-          </p>
-        </details>
-      </article>
-
+          <div class="faq-item">
+            <button class="faq-question">
+              What is SHA-256 used for?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Common uses include verifying file integrity, creating content
+                fingerprints, and storing checksums.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
       <!-- Related tools -->
       <article class="card" id="related">
         <h2>Related tools</h2>
@@ -458,5 +485,6 @@
     </script>
     <script src="./assets/tracker.js" defer data-trk-site="tools-pack"></script>
     <script src="/assets/related-more.js" defer></script>
+    <script src="/assets/script.js" defer></script>
   </body>
 </html>

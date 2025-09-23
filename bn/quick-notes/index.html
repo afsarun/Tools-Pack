@@ -254,34 +254,61 @@
         </ol>
       </article>
 
-      <!-- FAQ -->
-      <article class="card faq" id="faq">
-        <h2>প্রশ্নোত্তর</h2>
-        <details>
-          <summary>অফলাইনে চালানো যাবে?</summary>
-          <p>হ্যাঁ, প্রথম লোডের পর পুরোটা ব্রাউজারেই চলে।</p>
-        </details>
-        <details>
-          <summary>ডেটা কোথায় সেভ থাকে?</summary>
-          <p>
-            আপনার ব্রাউজারের <code>localStorage</code>-এ। ক্যাশ/ডেটা ক্লিয়ার
-            করলে মুছে যেতে পারে।
-          </p>
-        </details>
-        <details>
-          <summary>বড় নোট লিখলে সমস্যা হবে?</summary>
-          <p>
-            ব্রাউজারের স্টোরেজ সীমা পর্যন্ত কাজ করবে (সাধারণত কয়েক MB)। খুব বড়
-            হলে পারফরম্যান্স কমতে পারে।
-          </p>
-        </details>
-        <details>
-          <summary>ফাইল ফরম্যাট কী?</summary>
-          <p>
-            UTF-8 <strong>.txt</strong>। অন্য ফরম্যাটে কনভার্ট করে নিতে পারেন।
-          </p>
-        </details>
-      </article>
+      <section class="faq-section card">
+        <h2 class="faq-title">প্রশ্নোত্তর</h2>
+
+        <div class="faq-container">
+          <!-- Quick Notes FAQs (Bangla) -->
+          <div class="faq-item">
+            <button class="faq-question">
+              অফলাইনে চালানো যাবে?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>হ্যাঁ, প্রথম লোডের পর পুরোটা ব্রাউজারেই চলে।</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              ডেটা কোথায় সেভ থাকে?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                আপনার ব্রাউজারের <code>localStorage</code>-এ। ক্যাশ/ডেটা
+                ক্লিয়ার করলে মুছে যেতে পারে।
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              বড় নোট লিখলে সমস্যা হবে?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                ব্রাউজারের স্টোরেজ সীমা পর্যন্ত কাজ করবে (সাধারণত কয়েক MB)। খুব
+                বড় হলে পারফরম্যান্স কমতে পারে।
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              ফাইল ফরম্যাট কী?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                UTF-8 <strong>.txt</strong>। অন্য ফরম্যাটে কনভার্ট করে নিতে
+                পারেন।
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <!-- Related tools -->
       <article class="card" id="related">
@@ -446,12 +473,9 @@
         }
       });
     </script>
-    <script
-      src="../../assets/tracker.js"
-      defer
-      data-trk-site="tools-pack"
-    ></script>
-    <script src="../../assets/related-more.js" defer></script>
+    <script src="/assets/tracker.js" defer data-trk-site="tools-pack"></script>
+    <script src="/assets/related-more.js" defer></script>
+    <script src="/assets/script.js" defer></script>
     <noscript
       >জাভাস্ক্রিপ্ট চালু করুন—এই টুলটি কাজ করতে জাভাস্ক্রিপ্ট
       প্রয়োজন।</noscript

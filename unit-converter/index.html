@@ -341,36 +341,56 @@
         </ul>
       </article>
 
-      <!-- FAQ -->
-      <article class="card faq" id="faq">
-        <h2>FAQ</h2>
-        <details>
-          <summary>How do I use the Unit Converter?</summary>
-          <p>
-            Enter a value, pick the From and To units, and the result updates
-            instantly. Works for length, weight, and temperature.
-          </p>
-        </details>
-        <details>
-          <summary>Does this tool send data to a server?</summary>
-          <p>No. All conversions are computed locally in your browser.</p>
-        </details>
-        <details>
-          <summary>Why are there decimals in results?</summary>
-          <p>
-            Some unit ratios are non-terminating (e.g., miles to kilometers). We
-            round to a reasonable number of decimals while keeping accuracy.
-          </p>
-        </details>
-        <details>
-          <summary>Are these conversions exact?</summary>
-          <p>
-            SI-based conversions are exact by definition (e.g., 1&nbsp;km =
-            1000&nbsp;m). Others like miles↔kilometers use standard precise
-            constants.
-          </p>
-        </details>
-      </article>
+      <section class="faq-section card">
+        <h2 class="faq-title">Frequently Asked Questions</h2>
+
+        <div class="faq-container">
+          <!-- URL Tools Specific FAQs -->
+          <div class="faq-item">
+            <button class="faq-question">
+              What's the difference between encodeURI and encodeURIComponent?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                <code>encodeURIComponent</code> is for individual components
+                (like query values or path segments) and escapes more
+                characters. <code>encodeURI</code> is for full URLs and leaves
+                reserved characters like <code>:</code> <code>/</code>
+                <code>?</code> <code>&amp;</code> <code>=</code> intact.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Can I paste a full URL and still use Encode?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Yes, but if you only need to encode a parameter value, encode
+                just the value, not the whole URL—otherwise reserved URL
+                characters may be over-encoded.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Why does plus (+) decode to space?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                In <code>application/x-www-form-urlencoded</code> form data,
+                <code>+</code> represents a space. This tool converts
+                <code>+</code> to spaces before decoding to be helpful.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <!-- Related tools -->
       <article class="card" id="related">
@@ -497,5 +517,6 @@
     </script>
     <script src="./assets/tracker.js" defer data-trk-site="tools-pack"></script>
     <script src="/assets/related-more.js" defer></script>
+    <script src="/assets/script.js" defer></script>
   </body>
 </html>

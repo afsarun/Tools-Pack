@@ -327,52 +327,82 @@
       </article>
 
       <!-- FAQ -->
-      <article class="card faq" id="faq">
-        <h2>Text to PDF Converter – Frequently Asked Questions</h2>
+      <section class="faq-section card">
+        <h2 class="faq-title">
+          Text to PDF Converter – Frequently Asked Questions
+        </h2>
 
-        <details>
-          <summary>Does it support Bangla, Unicode, and emoji?</summary>
-          <p>
-            Yes. The converter is fully Unicode-safe and works seamlessly with
-            Bangla (বাংলা), emoji, Arabic, and other multilingual text.
-          </p>
-        </details>
+        <div class="faq-container">
+          <!-- Text to PDF FAQs -->
+          <div class="faq-item">
+            <button class="faq-question">
+              Does it support Bangla, Unicode, and emoji?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Yes. The converter is fully Unicode-safe and works seamlessly
+                with Bangla (বাংলা), emoji, Arabic, and other multilingual text.
+              </p>
+            </div>
+          </div>
 
-        <details>
-          <summary>Is my text or file uploaded to a server?</summary>
-          <p>
-            No. All processing happens in your browser. Nothing is uploaded,
-            stored, or shared online.
-          </p>
-        </details>
+          <div class="faq-item">
+            <button class="faq-question">
+              Is my text or file uploaded to a server?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                No. All processing happens in your browser. Nothing is uploaded,
+                stored, or shared online.
+              </p>
+            </div>
+          </div>
 
-        <details>
-          <summary>How can I add a header or footer?</summary>
-          <p>
-            Use the <em>Header</em> and <em>Footer</em> options before printing.
-            The header will show your chosen title, and the footer automatically
-            displays the generation time.
-          </p>
-        </details>
+          <div class="faq-item">
+            <button class="faq-question">
+              How can I add a header or footer?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Use the <em>Header</em> and <em>Footer</em> options before
+                printing. The header will show your chosen title, and the footer
+                automatically displays the generation time.
+              </p>
+            </div>
+          </div>
 
-        <details>
-          <summary>Can I include page numbers in the PDF?</summary>
-          <p>
-            Built-in numbering is not included in this tool. However, most
-            browsers can insert page numbers if you enable “Headers and footers”
-            in the print dialog.
-          </p>
-        </details>
+          <div class="faq-item">
+            <button class="faq-question">
+              Can I include page numbers in the PDF?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Built-in numbering is not included in this tool. However, most
+                browsers can insert page numbers if you enable “Headers and
+                footers” in the print dialog.
+              </p>
+            </div>
+          </div>
 
-        <details>
-          <summary>Which paper sizes are available?</summary>
-          <p>
-            The tool supports A4, Letter, and Legal page sizes. You can use
-            Portrait or Landscape orientation, and adjust margins in millimeters
-            for precise control.
-          </p>
-        </details>
-      </article>
+          <div class="faq-item">
+            <button class="faq-question">
+              Which paper sizes are available?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                The tool supports A4, Letter, and Legal page sizes. You can use
+                Portrait or Landscape orientation, and adjust margins in
+                millimeters for precise control.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <!-- Related tools -->
       <article class="card" id="related">
@@ -537,5 +567,6 @@ ${footer}`;
     </script>
     <script src="./assets/tracker.js" defer data-trk-site="tools-pack"></script>
     <script src="/assets/related-more.js" defer></script>
+    <script src="/assets/script.js" defer></script>
   </body>
 </html>

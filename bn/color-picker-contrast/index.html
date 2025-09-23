@@ -266,27 +266,52 @@
           <li>এই টুলটি অফলাইনে চলতে পারে; কোনো ডেটা সার্ভারে যায় না।</li>
         </ol>
       </article>
+      <section class="faq-section card">
+        <h2 class="faq-title">প্রশ্নোত্তর/faq</h2>
 
-      <!-- FAQ -->
-      <article class="card faq" id="faq">
-        <h2>প্রশ্নোত্তর</h2>
-        <details>
-          <summary>অফলাইনে চালানো যাবে?</summary>
-          <p>হ্যাঁ, প্রথম লোডের পর পুরোটা ব্রাউজারেই চলে।</p>
-        </details>
-        <details>
-          <summary>AA/AAA থ্রেশহোল্ড কত?</summary>
-          <p>AA (Normal) ≥ 4.5:1, AA (Large) ≥ 3:1, AAA (Normal) ≥ 7:1।</p>
-        </details>
-        <details>
-          <summary>#RGB (৩-সংখ্যা) সাপোর্টেড?</summary>
-          <p>হ্যাঁ—#abc → #aabbcc করে কনট্রাস্ট ক্যালকুলেট করা হয়।</p>
-        </details>
-        <details>
-          <summary>আলফা/স্বচ্ছতা ধরা হয়?</summary>
-          <p>না—এই সংস্করণে solid হেক্স (RGB) ব্যবহার করা হয়েছে।</p>
-        </details>
-      </article>
+        <div class="faq-container">
+          <!-- Color Contrast Checker FAQs (Bangla) -->
+          <div class="faq-item">
+            <button class="faq-question">
+              অফলাইনে চালানো যাবে?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>হ্যাঁ, প্রথম লোডের পর পুরোটা ব্রাউজারেই চলে।</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              AA/AAA থ্রেশহোল্ড কত?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>AA (Normal) ≥ 4.5:1, AA (Large) ≥ 3:1, AAA (Normal) ≥ 7:1।</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              #RGB (৩-সংখ্যা) সাপোর্টেড?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>হ্যাঁ—#abc → #aabbcc করে কনট্রাস্ট ক্যালকুলেট করা হয়।</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              আলফা/স্বচ্ছতা ধরা হয়?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>না—এই সংস্করণে solid হেক্স (RGB) ব্যবহার করা হয়েছে।</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <!-- Related tools -->
       <article class="card" id="related">
@@ -441,6 +466,7 @@
     </script>
     <script src="/assets/tracker.js" defer data-trk-site="tools-pack"></script>
     <script src="/assets/related-more.js" defer></script>
+    <script src="/assets/script.js" defer></script>
     <noscript
       >জাভাস্ক্রিপ্ট চালু করুন—এই টুলটি কাজ করতে জাভাস্ক্রিপ্ট
       প্রয়োজন।</noscript

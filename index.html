@@ -3,10 +3,17 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Tools Pack — Online Utilities</title>
+
+    <!-- Optimized Title Tag -->
+    <title>
+      Tools Pack - Free Online Utilities: Calculator, JSON Formatter, Unit
+      Converter
+    </title>
+
+    <!-- Enhanced Meta Description -->
     <meta
       name="description"
-      content="Fast, modern, privacy-first online tools: Calculator, JSON Formatter, Unit Converter, Image Resizer, Color Contrast, Stopwatch, Notes and more. 100% runs in your browser."
+      content="Free online tools that run 100% in your browser. Calculator, JSON Formatter, Unit Converter, Image Resizer, Color Contrast, Stopwatch, Notes. No data leaves your computer - privacy first."
     />
 
     <!-- AdSense account meta (safe to include before approval) -->
@@ -35,16 +42,22 @@
       href="https://tools-pack.netlify.app/"
     />
 
+    <!-- Sitemap Reference -->
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+
     <!-- Styles -->
     <link rel="stylesheet" href="assets/style.css" />
 
-    <!-- Open Graph / Twitter -->
+    <!-- Enhanced Open Graph / Twitter -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Tools Pack" />
-    <meta property="og:title" content="Tools Pack — Online Utilities" />
+    <meta
+      property="og:title"
+      content="Tools Pack - Free Online Utilities & Web Tools"
+    />
     <meta
       property="og:description"
-      content="Calculator, JSON Formatter, Unit Converter and more — all client-side."
+      content="100% free online tools that run in your browser. Calculator, JSON Formatter, Unit Converter, Image Tools & more. Privacy first."
     />
     <meta property="og:url" content="https://tools-pack.netlify.app/" />
     <meta
@@ -56,6 +69,11 @@
       content="Tools Pack — fast, privacy-first utilities"
     />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Tools Pack - Free Online Utilities" />
+    <meta
+      name="twitter:description"
+      content="Collection of free web tools that work entirely in your browser. No data uploads, completely private."
+    />
 
     <!-- JSON-LD: WebSite (Sitelinks Search Box) -->
     <script type="application/ld+json">
@@ -236,9 +254,146 @@
         ]
       }
     </script>
+
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Are these tools completely free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, all tools are 100% free with no registration required."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is my data safe when using these tools?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "All tools run locally in your browser - no data is sent to our servers."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need to create an account?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No, all tools work immediately without any registration."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What browsers are supported?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "All modern browsers including Chrome, Firefox, Safari, and Edge."
+            }
+          }
+        ]
+      }
+    </script>
+
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://tools-pack.netlify.app/"
+          }
+        ]
+      }
+    </script>
+
+    <style>
+      /* Additional styles for SEO improvements */
+      .skip-link {
+        position: absolute;
+        top: -40px;
+        left: 0;
+        background: #000;
+        color: white;
+        padding: 8px;
+        z-index: 100;
+        text-decoration: none;
+      }
+      .skip-link:focus {
+        top: 0;
+      }
+      .category-nav {
+        text-align: center;
+        margin: 20px 0;
+        padding: 15px;
+        background: #1e1e2f;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+      }
+      .category-nav a {
+        margin: 0 10px;
+        font-weight: bold;
+        color: #efeff5;
+      }
+      .intro {
+        text-align: center;
+        margin: 30px 0;
+        padding: 20px;
+        background: #1e1e2f;
+        border-radius: 8px;
+        font-size: 1.1em;
+        line-height: 1.6;
+      }
+      .search-box {
+        margin: 20px 0;
+        text-align: center;
+      }
+      .search-box input {
+        padding: 10px 15px;
+        width: 300px;
+        max-width: 90%;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 16px;
+        background-color: #1e1e2f;
+      }
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+      .tool-card {
+        transition: transform 0.2s;
+      }
+      .tool-card:hover {
+        transform: translateY(-5px);
+      }
+      footer p {
+        margin: 5px 0;
+      }
+      footer nav {
+        margin-top: 10px;
+      }
+    </style>
   </head>
 
   <body>
+    <!-- Skip link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <header class="sticky" role="banner">
       <div class="wrap brand">
         <div class="logo" aria-hidden="true"></div>
@@ -271,13 +426,45 @@
       </div>
     </header>
 
-    <main class="wrap" role="main">
+    <main class="wrap" role="main" id="main-content">
+      <!-- Hidden H1 for main content -->
+      <h1 class="sr-only">Tools Pack - Free Online Utilities</h1>
+
+      <!-- Introductory content -->
+      <section class="intro">
+        <p>
+          Tools Pack offers a collection of
+          <strong>free online utilities</strong> that work entirely in your
+          browser. All tools are <strong>privacy-first</strong> - your data
+          never leaves your computer. No registration required, completely
+          <strong>ad-free experience</strong>.
+        </p>
+      </section>
+
+      <!-- Category navigation -->
+      <div class="category-nav">
+        <a href="#calculators">Calculators</a> •
+        <a href="#text-tools">Text Tools</a> •
+        <a href="#developers">Developer Tools</a> •
+        <a href="#productivity">Productivity</a>
+      </div>
+
+      <!-- Search functionality -->
+      <div class="search-box">
+        <input
+          type="text"
+          id="toolSearch"
+          placeholder="Search tools..."
+          aria-label="Search tools"
+        />
+      </div>
+
       <section class="grid" aria-label="Tools">
-        <article class="card">
+        <article class="card tool-card" data-category="calculators">
           <h2>Percent Calculator</h2>
           <p class="muted">
-            A% of B, what percent is A of B, percent change, and after %
-            increase/decrease.
+            Calculate percentages, percentage increase/decrease, and what
+            percent one number is of another. Free online percentage calculator.
           </p>
           <p>
             <a class="btn btn-primary" href="/percent-calculator/"
@@ -286,35 +473,49 @@
           </p>
         </article>
 
-        <article class="card">
+        <article class="card tool-card" data-category="calculators">
           <h2>Age Calculator</h2>
-          <p class="muted">Find your exact age in years, months, and days.</p>
+          <p class="muted">
+            Find your exact age in years, months, and days. Accurate age
+            calculator that works entirely in your browser.
+          </p>
           <p>
             <a class="btn btn-primary" href="/age-calculator/"
               >Open Age Calculator</a
             >
           </p>
         </article>
-        <article class="card">
+
+        <article class="card tool-card" data-category="calculators">
           <h2>Date Calculator</h2>
-          <p class="muted">Find your exact date in years, months, and days.</p>
+          <p class="muted">
+            Calculate the difference between dates or add/subtract days from a
+            date. Free date calculator tool.
+          </p>
           <p>
             <a class="btn btn-primary" href="/date-calculator/"
               >Open Date Calculator</a
             >
           </p>
         </article>
-        <article class="card">
+
+        <article class="card tool-card" data-category="calculators">
           <h2>Calculator</h2>
-          <p class="muted">Add, subtract, multiply, divide and %.</p>
+          <p class="muted">
+            Add, subtract, multiply, divide and calculate percentages.
+            Full-featured online calculator.
+          </p>
           <p>
             <a class="btn btn-primary" href="/calculator/">Open Calculator</a>
           </p>
         </article>
 
-        <article class="card">
+        <article class="card tool-card" data-category="calculators">
           <h2>Unit Converter</h2>
-          <p class="muted">Length, weight, temperature.</p>
+          <p class="muted">
+            Convert length, weight, temperature, and other units. Free online
+            unit conversion tool.
+          </p>
           <p>
             <a class="btn btn-primary" href="/unit-converter/"
               >Open Unit Converter</a
@@ -322,17 +523,23 @@
           </p>
         </article>
 
-        <article class="card">
+        <article class="card tool-card" data-category="text-tools">
           <h2>Text → PDF</h2>
-          <p class="muted">Convert plain text to PDF instantly.</p>
+          <p class="muted">
+            Convert plain text to PDF instantly. Free text to PDF converter that
+            works in your browser.
+          </p>
           <p>
             <a class="btn btn-primary" href="/text-to-pdf/">Open Text → PDF</a>
           </p>
         </article>
 
-        <article class="card">
+        <article class="card tool-card" data-category="text-tools">
           <h2>Text Utilities</h2>
-          <p class="muted">Upper/lowercase, word count, remove spaces.</p>
+          <p class="muted">
+            Convert text to uppercase/lowercase, count words and characters,
+            remove extra spaces. Free text tools.
+          </p>
           <p>
             <a class="btn btn-primary" href="/text-utilities/"
               >Open Text Utilities</a
@@ -340,47 +547,65 @@
           </p>
         </article>
 
-        <article class="card">
+        <article class="card tool-card" data-category="developers">
           <h2>Base64 Tools</h2>
-          <p class="muted">Encode or decode Base64 safely online.</p>
+          <p class="muted">
+            Encode or decode Base64 safely online. Free Base64 encoder and
+            decoder for developers.
+          </p>
           <p>
             <a class="btn btn-primary" href="/base64/">Open Base64 Tools</a>
           </p>
         </article>
 
-        <article class="card">
+        <article class="card tool-card" data-category="developers">
           <h2>URL Tools</h2>
-          <p class="muted">Encode or decode URLs safely.</p>
+          <p class="muted">
+            Encode or decode URLs safely. Free URL encoder and decoder for web
+            developers.
+          </p>
           <p>
             <a class="btn btn-primary" href="/url-tools/">Open URL Tools</a>
           </p>
         </article>
 
-        <article class="card">
+        <article class="card tool-card" data-category="developers">
           <h2>Password &amp; UUID Generator</h2>
-          <p class="muted">Generate secure passwords and UUID v4.</p>
+          <p class="muted">
+            Generate secure passwords and UUID v4. Free password generator for
+            security and development.
+          </p>
           <p>
             <a class="btn btn-primary" href="/password-uuid/">Open Generator</a>
           </p>
         </article>
 
-        <article class="card">
+        <article class="card tool-card" data-category="developers">
           <h2>UUID v4</h2>
-          <p class="muted">Generate RFC 4122 version-4 UUIDs.</p>
+          <p class="muted">
+            Generate RFC 4122 version-4 UUIDs. Free UUID generator for
+            developers and applications.
+          </p>
           <p><a class="btn btn-primary" href="/uuid-v4/">Open UUID v4</a></p>
         </article>
 
-        <article class="card">
+        <article class="card tool-card" data-category="developers">
           <h2>SHA-256 Hash</h2>
-          <p class="muted">Hash any text or string using SHA-256.</p>
+          <p class="muted">
+            Hash any text or string using SHA-256. Free SHA-256 hash generator
+            for security and development.
+          </p>
           <p>
             <a class="btn btn-primary" href="/sha256/">Open SHA-256 Tool</a>
           </p>
         </article>
 
-        <article class="card">
+        <article class="card tool-card" data-category="productivity">
           <h2>Image Resizer &amp; Compressor</h2>
-          <p class="muted">Resize and compress images (JPG/PNG/WebP).</p>
+          <p class="muted">
+            Resize and compress images (JPG/PNG/WebP). Free online image
+            optimization tool.
+          </p>
           <p>
             <a class="btn btn-primary" href="/image-resizer-compressor/"
               >Open Image Resizer</a
@@ -388,9 +613,12 @@
           </p>
         </article>
 
-        <article class="card">
+        <article class="card tool-card" data-category="productivity">
           <h2>Color Picker &amp; Contrast</h2>
-          <p class="muted">Check WCAG contrast between colors.</p>
+          <p class="muted">
+            Check WCAG contrast between colors. Free color picker and
+            accessibility contrast checker.
+          </p>
           <p>
             <a class="btn btn-primary" href="/color-picker-contrast/"
               >Open Contrast Checker</a
@@ -398,9 +626,12 @@
           </p>
         </article>
 
-        <article class="card">
+        <article class="card tool-card" data-category="productivity">
           <h2>Stopwatch &amp; Countdown</h2>
-          <p class="muted">Track time with stopwatch or countdown.</p>
+          <p class="muted">
+            Track time with stopwatch or countdown. Free online timer tools for
+            productivity.
+          </p>
           <p>
             <a class="btn btn-primary" href="/stopwatch-countdown/"
               >Open Stopwatch</a
@@ -408,15 +639,21 @@
           </p>
         </article>
 
-        <article class="card">
+        <article class="card tool-card" data-category="productivity">
           <h2>Quick Notes</h2>
-          <p class="muted">Save notes in your browser (localStorage).</p>
+          <p class="muted">
+            Save notes in your browser (localStorage). Free online notepad for
+            quick notes.
+          </p>
           <p><a class="btn btn-primary" href="/quick-notes/">Open Notes</a></p>
         </article>
 
-        <article class="card">
+        <article class="card tool-card" data-category="developers">
           <h2>JSON Formatter</h2>
-          <p class="muted">Format, minify, and validate JSON. Unicode-safe.</p>
+          <p class="muted">
+            Format, minify, and validate JSON. Free JSON formatter and validator
+            for developers.
+          </p>
           <p>
             <a class="btn btn-primary" href="/json-formatter/"
               >Open JSON Formatter</a
@@ -424,20 +661,188 @@
           </p>
         </article>
       </section>
+
+      <section class="faq-section">
+        <h2 class="faq-title">Frequently Asked Questions</h2>
+
+        <div class="faq-container">
+          <div class="faq-item">
+            <div class="faq-question">
+              Are these tools completely free?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Yes, all tools are 100% free with no registration required. We
+                believe in providing accessible utilities for everyone without
+                any hidden costs.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              Is my data safe when using these tools?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              <p>
+                All tools run locally in your browser - no data is sent to our
+                servers. Your privacy is our top priority, and we've designed
+                our tools to work entirely client-side.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              Do I need to create an account?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              <p>
+                No, all tools work immediately without any registration. Just
+                visit the tool you need and start using it right away.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              What browsers are supported?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              <p>
+                All modern browsers including Chrome, Firefox, Safari, and Edge
+                are supported. Some tools may require JavaScript to be enabled.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              Can I use these tools on mobile devices?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Yes, all tools are fully responsive and work on mobile devices.
+                The interface adapts to different screen sizes for optimal
+                usability.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              How often are new tools added?
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              <p>
+                We regularly add new tools based on user feedback and emerging
+                needs. If you have a suggestion for a tool, please contact us!
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="wrap">
-      © <span id="y"></span> Tools Pack • Runs 100% locally. &nbsp;|&nbsp;
-      <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> ·
-      <a href="/about/">About</a> · <a href="/contact/">Contact</a>
+      <p>
+        © <span id="y"></span> Tools Pack • Free Online Utilities & Web Tools
+      </p>
+      <p>
+        100% client-side tools: Calculator, Unit Converter, JSON Formatter,
+        Image Compressor, Text Utilities
+      </p>
+      <nav>
+        <a href="/privacy/">Privacy Policy</a> ·
+        <a href="/terms/">Terms of Service</a> ·
+        <a href="/about/">About Us</a> · <a href="/contact/">Contact</a> ·
+        <a href="/sitemap.xml">Sitemap</a>
+      </nav>
     </footer>
 
     <script>
       document.getElementById("y").textContent = new Date().getFullYear();
+
+      // Search functionality
+      document
+        .getElementById("toolSearch")
+        .addEventListener("input", function (e) {
+          const searchTerm = e.target.value.toLowerCase();
+          const tools = document.querySelectorAll(".tool-card");
+
+          tools.forEach((tool) => {
+            const title = tool.querySelector("h2").textContent.toLowerCase();
+            const description = tool
+              .querySelector("p")
+              .textContent.toLowerCase();
+
+            if (
+              title.includes(searchTerm) ||
+              description.includes(searchTerm)
+            ) {
+              tool.style.display = "block";
+            } else {
+              tool.style.display = "none";
+            }
+          });
+        });
+
+      // Category filtering
+      document.querySelectorAll(".category-nav a").forEach((link) => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          const category = this.getAttribute("href").substring(1);
+          const tools = document.querySelectorAll(".tool-card");
+
+          tools.forEach((tool) => {
+            if (
+              category === "all" ||
+              tool.getAttribute("data-category") === category
+            ) {
+              tool.style.display = "block";
+            } else {
+              tool.style.display = "none";
+            }
+          });
+
+          // Reset search
+          document.getElementById("toolSearch").value = "";
+        });
+      });
+
+      // document.addEventListener("DOMContentLoaded", function () {
+      //   const faqItems = document.querySelectorAll(".faq-item");
+
+      //   faqItems.forEach((item) => {
+      //     const question = item.querySelector(".faq-question");
+
+      //     question.addEventListener("click", () => {
+      //       // Close all other FAQ items
+      //       faqItems.forEach((otherItem) => {
+      //         if (otherItem !== item) {
+      //           otherItem.classList.remove("active");
+      //         }
+      //       });
+
+      //       // Toggle current item
+      //       item.classList.toggle("active");
+      //     });
+      //   });
+
+      //   // Optional: Open first FAQ by default
+      //   // faqItems[0].classList.add('active');
+      // });
     </script>
     <noscript
       >Your browser has JavaScript disabled; some tools require it.</noscript
     >
     <script src="./assets/tracker.js" defer data-trk-site="tools-pack"></script>
+    <script src="assets/script.js" defer data-trk-site="tools-pack"></script>
   </body>
 </html>

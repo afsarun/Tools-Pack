@@ -307,48 +307,71 @@
       </article>
 
       <!-- FAQ -->
-      <article class="card faq" id="faq">
-        <h2>FAQ</h2>
+      <!-- Combined FAQ Section -->
+      <section class="faq-section card">
+        <h2 class="faq-title">Frequently Asked Questions</h2>
 
-        <details>
-          <summary>
-            What’s the difference between encodeURI and encodeURIComponent?
-          </summary>
-          <p>
-            <code>encodeURIComponent</code> is for individual components (like
-            query values or path segments) and escapes more characters.
-            <code>encodeURI</code> is for full URLs and leaves reserved
-            characters like <code>:</code> <code>/</code> <code>?</code>
-            <code>&amp;</code> <code>=</code> intact.
-          </p>
-        </details>
+        <div class="faq-container">
+          <!-- URL Tools Specific FAQs -->
+          <div class="faq-item">
+            <button class="faq-question">
+              What's the difference between encodeURI and encodeURIComponent?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                <code>encodeURIComponent</code> is for individual components
+                (like query values or path segments) and escapes more
+                characters. <code>encodeURI</code> is for full URLs and leaves
+                reserved characters like <code>:</code> <code>/</code>
+                <code>?</code> <code>&amp;</code> <code>=</code> intact.
+              </p>
+            </div>
+          </div>
 
-        <details>
-          <summary>Can I paste a full URL and still use Encode?</summary>
-          <p>
-            Yes, but if you only need to encode a parameter value, encode just
-            the value, not the whole URL—otherwise reserved URL characters may
-            be over-encoded.
-          </p>
-        </details>
+          <div class="faq-item">
+            <button class="faq-question">
+              Can I paste a full URL and still use Encode?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Yes, but if you only need to encode a parameter value, encode
+                just the value, not the whole URL—otherwise reserved URL
+                characters may be over-encoded.
+              </p>
+            </div>
+          </div>
 
-        <details>
-          <summary>Why does plus (+) decode to space?</summary>
-          <p>
-            In <code>application/x-www-form-urlencoded</code> form data,
-            <code>+</code> represents a space. This tool converts
-            <code>+</code> to spaces before decoding to be helpful.
-          </p>
-        </details>
+          <div class="faq-item">
+            <button class="faq-question">
+              Why does plus (+) decode to space?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                In <code>application/x-www-form-urlencoded</code> form data,
+                <code>+</code> represents a space. This tool converts
+                <code>+</code> to spaces before decoding to be helpful.
+              </p>
+            </div>
+          </div>
 
-        <details>
-          <summary>Where can I format JSON or Base64 encode text?</summary>
-          <p>
-            Use the <a href="/json-formatter/">JSON Formatter</a> or
-            <a href="/base64/">Base64</a> tools. See Related tools for links.
-          </p>
-        </details>
-      </article>
+          <div class="faq-item">
+            <button class="faq-question">
+              Where can I format JSON or Base64 encode text?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Use the <a href="/json-formatter/">JSON Formatter</a> or
+                <a href="/base64/">Base64</a> tools. See Related tools for
+                links.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <!-- Related tools -->
       <article class="card" id="related">
@@ -440,5 +463,6 @@
     </script>
     <script src="./assets/tracker.js" defer data-trk-site="tools-pack"></script>
     <script src="/assets/related-more.js" defer></script>
+    <script src="/assets/script.js" defer></script>
   </body>
 </html>

@@ -351,50 +351,81 @@
       </article>
 
       <!-- FAQ (visible content now matches the JSON-LD above) -->
-      <article class="card faq" id="faq">
-        <h2>FAQ</h2>
+      <section class="faq-section card">
+        <h2 class="faq-title">
+          Password Generator – Frequently Asked Questions
+        </h2>
 
-        <details>
-          <summary>Are passwords stored or sent to a server?</summary>
-          <p>
-            No. Everything runs in your browser only. We do not send or store
-            your passwords on any server.
-          </p>
-        </details>
+        <div class="faq-container">
+          <!-- Password Generator FAQs -->
+          <div class="faq-item">
+            <button class="faq-question">
+              Are passwords stored or sent to a server?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                No. Everything runs in your browser only. We do not send or
+                store your passwords on any server.
+              </p>
+            </div>
+          </div>
 
-        <details>
-          <summary>Is this generator crypto-secure?</summary>
-          <p>
-            Yes. It uses the Web Crypto API
-            (<code>window.crypto.getRandomValues</code>) for high-quality
-            randomness.
-          </p>
-        </details>
+          <div class="faq-item">
+            <button class="faq-question">
+              Is this generator crypto-secure?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Yes. It uses the Web Crypto API
+                (<code>window.crypto.getRandomValues</code>) for high-quality
+                randomness.
+              </p>
+            </div>
+          </div>
 
-        <details>
-          <summary>What length should I use?</summary>
-          <p>
-            We recommend 16+ characters, and 20+ for sensitive accounts. Longer
-            is stronger.
-          </p>
-        </details>
+          <div class="faq-item">
+            <button class="faq-question">
+              What length should I use?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                We recommend 16+ characters, and 20+ for sensitive accounts.
+                Longer is stronger.
+              </p>
+            </div>
+          </div>
 
-        <details>
-          <summary>Why include symbols?</summary>
-          <p>
-            Symbols increase the character set size and entropy, making
-            passwords harder to guess. Some sites may restrict certain
-            symbols—toggle them off if needed.
-          </p>
-        </details>
+          <div class="faq-item">
+            <button class="faq-question">
+              Why include symbols?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Symbols increase the character set size and entropy, making
+                passwords harder to guess. Some sites may restrict certain
+                symbols—toggle them off if needed.
+              </p>
+            </div>
+          </div>
 
-        <details>
-          <summary>Does it work offline?</summary>
-          <p>
-            Yes. Once loaded, the generator continues to work without internet.
-          </p>
-        </details>
-      </article>
+          <div class="faq-item">
+            <button class="faq-question">
+              Does it work offline?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Yes. Once loaded, the generator continues to work without
+                internet.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <!-- Related tools (updated to security/ID utilities) -->
       <article class="card" id="related">
@@ -503,5 +534,6 @@
     </script>
     <script src="./assets/tracker.js" defer data-trk-site="tools-pack"></script>
     <script src="/assets/related-more.js" defer></script>
+    <script src="/assets/script.js" defer></script>
   </body>
 </html>

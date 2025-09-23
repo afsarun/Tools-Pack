@@ -254,56 +254,91 @@
         </ul>
       </article>
 
-      <!-- FAQ -->
-      <article class="card faq" id="faq">
-        <h2>FAQ</h2>
+      <section class="faq-section card">
+        <h2 class="faq-title">
+          Base64 Encoder/Decoder – Frequently Asked Questions
+        </h2>
 
-        <details>
-          <summary>Is this Unicode-safe?</summary>
-          <p>
-            Yes. We encode bytes via <code>TextEncoder</code> and decode via
-            <code>TextDecoder</code>, so emoji and non-ASCII scripts round-trip
-            correctly.
-          </p>
-        </details>
+        <div class="faq-container">
+          <!-- Base64 FAQs -->
+          <div class="faq-item">
+            <button class="faq-question">
+              Is this Unicode-safe?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Yes. We encode bytes via <code>TextEncoder</code> and decode via
+                <code>TextDecoder</code>, so emoji and non-ASCII scripts
+                round-trip correctly.
+              </p>
+            </div>
+          </div>
 
-        <details>
-          <summary>How do I make URL-safe Base64?</summary>
-          <p>
-            Replace <code>+</code> with <code>-</code> and <code>/</code> with
-            <code>_</code>. You may remove trailing <code>=</code>. This tool’s
-            decoder accepts URL-safe input automatically.
-          </p>
-        </details>
+          <div class="faq-item">
+            <button class="faq-question">
+              How do I make URL-safe Base64?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Replace <code>+</code> with <code>-</code> and
+                <code>/</code> with <code>_</code>. You may remove trailing
+                <code>=</code>. This tool’s decoder accepts URL-safe input
+                automatically.
+              </p>
+            </div>
+          </div>
 
-        <details>
-          <summary>Why do I get “InvalidCharacterError” when decoding?</summary>
-          <p>
-            Usually due to stray characters or bad padding. Remove whitespace
-            and ensure the length is a multiple of 4 (add <code>=</code> as
-            needed). This tool normalizes most of that for you.
-          </p>
-        </details>
+          <div class="faq-item">
+            <button class="faq-question">
+              Why do I get “InvalidCharacterError” when decoding?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Usually due to stray characters or bad padding. Remove
+                whitespace and ensure the length is a multiple of 4 (add
+                <code>=</code> as needed). This tool normalizes most of that for
+                you.
+              </p>
+            </div>
+          </div>
 
-        <details>
-          <summary>Can I decode Data URLs?</summary>
-          <p>
-            Yes—remove the <code>data:*;base64,</code> prefix first, then paste
-            only the Base64 part.
-          </p>
-        </details>
+          <div class="faq-item">
+            <button class="faq-question">
+              Can I decode Data URLs?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Yes—remove the <code>data:*;base64,</code> prefix first, then
+                paste only the Base64 part.
+              </p>
+            </div>
+          </div>
 
-        <details>
-          <summary>Does any of my data leave my browser?</summary>
-          <p>No. All encoding/decoding happens locally.</p>
-        </details>
+          <div class="faq-item">
+            <button class="faq-question">
+              Does any of my data leave my browser?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>No. All encoding/decoding happens locally.</p>
+            </div>
+          </div>
 
-        <details>
-          <summary>Does it work offline?</summary>
-          <p>Yes. After the first load, the page works without internet.</p>
-        </details>
-      </article>
-
+          <div class="faq-item">
+            <button class="faq-question">
+              Does it work offline?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Yes. After the first load, the page works without internet.</p>
+            </div>
+          </div>
+        </div>
+      </section>
       <!-- Related tools -->
       <article class="card" id="related">
         <h2>Related tools</h2>
@@ -443,6 +478,7 @@
     <!-- Scripts (root-relative) -->
     <script src="/assets/tracker.js" defer data-trk-site="tools-pack"></script>
     <script src="/assets/related-more.js" defer></script>
+    <script src="/assets/script.js" defer></script>
 
     <noscript>JavaScript is required for this tool to work.</noscript>
   </body>
