@@ -431,7 +431,8 @@ input {
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 16px;
-  background-color: #1e1e2f;
+  background-color: #383846;
+  color: #fff;
 }
 .sr-only {
   position: absolute;
