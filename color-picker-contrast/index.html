@@ -130,21 +130,62 @@
               "@type": "Answer",
               "text": "No. Contrast is computed for solid colors only (#RRGGBB or #RGB). For semi-transparent overlays, compute the flattened color against the background first."
             }
+          },
+          {
+            "@type": "Question",
+            "name": "What about users with color blindness?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Good contrast ratios help, but also ensure information isn't conveyed by color alone. Use patterns, labels, or icons as additional indicators."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How often should I check contrast ratios?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Check during design, development, and whenever making color changes. Also test final designs in different lighting conditions."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are there exceptions to these ratios?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes: logos, incidental text, and inactive UI elements have no contrast requirements. Text over images may use different techniques."
+            }
           }
         ]
       }
     </script>
 
-    <!-- ========= Google AdSense loader =========
-         Replace client with your publisher ID.
-         Keep data-adtest="on" while testing; remove when live. -->
-    <script
-      async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234567890123456"
-      crossorigin="anonymous"
-    ></script>
+    <!-- JSON-LD: Article -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Color Picker & Contrast Checker - WCAG 2.1 Compliance Tool",
+        "description": "Free online tool to check color contrast ratios for web accessibility compliance",
+        "author": {
+          "@type": "Organization",
+          "name": "Tools Pack"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Tools Pack",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://tools-pack.netlify.app/assets/logo.png"
+          }
+        },
+        "datePublished": "2024-01-01",
+        "dateModified": "2024-01-01"
+      }
+    </script>
 
-    <!-- Page-specific styles (ads + layout) -->
+    <style>
+      /* Reset and base styles */
+    </style>
   </head>
 
   <body>
@@ -165,21 +206,7 @@
       </div>
     </header>
 
-    <!-- Ad #1: top banner (constrained) -->
-    <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
-      <span class="ad-label">Ad</span>
-      <ins
-        class="adsbygoogle"
-        style="display: inline-block"
-        data-ad-client="ca-pub-1234567890123456"
-        data-ad-slot="1111111111"
-        data-ad-format="auto"
-        data-full-width-responsive="false"
-        data-adtest="on"
-      ></ins>
-    </div>
-
-    <main class="wrap">
+    <div class="wrap">
       <!-- Breadcrumbs -->
       <nav class="breadcrumbs" aria-label="breadcrumb">
         <a href="/">Home</a> › <a href="/#design">Design Tools</a> ›
@@ -188,8 +215,22 @@
 
       <!-- TOC -->
       <p class="toc">
-        <a href="#cc-tool">Tool</a> · <a href="#how-to-use">How to use</a> ·
-        <a href="#faq">FAQ</a> · <a href="#related">Related tools</a>
+        <a href="#cc-tool">Tool</a> · <a href="#wcag-details">WCAG Levels</a> ·
+        <a href="#how-to-use">How to use</a> ·
+        <a href="#applications">Applications</a> ·
+        <a href="#color-tips">Tips</a> · <a href="#technical">Technical</a> ·
+        <a href="#faq">FAQ</a> ·
+        <a href="#related">Related</a>
+      </p>
+
+      <!-- Introduction -->
+      <p class="intro">
+        Ensure your color combinations meet
+        <strong>WCAG 2.1 accessibility standards</strong>. This tool helps
+        designers, developers, and content creators test color contrast ratios
+        for normal text (AA: 4.5:1, AAA: 7:1) and large text (AA: 3:1, AAA:
+        4.5:1). All processing happens locally in your browser—your colors never
+        leave your device.
       </p>
 
       <!-- Tool -->
@@ -236,20 +277,6 @@
           </label>
         </div>
 
-        <!-- Ad #2: in-article (fluid) -->
-        <div class="ad-wrap ad-article" aria-label="Advertisement">
-          <span class="ad-label">Ad</span>
-          <ins
-            class="adsbygoogle"
-            style="display: block; text-align: center"
-            data-ad-client="ca-pub-1234567890123456"
-            data-ad-slot="2222222222"
-            data-ad-format="fluid"
-            data-ad-layout="in-article"
-            data-adtest="on"
-          ></ins>
-        </div>
-
         <div class="cc-grid">
           <div id="sA" class="field cc-col">
             <div class="muted small">Normal text</div>
@@ -264,6 +291,43 @@
         </div>
 
         <div id="result" class="status" aria-live="polite"></div>
+      </article>
+
+      <!-- WCAG Compliance Details -->
+      <article class="card" id="wcag-details">
+        <h2>WCAG 2.1 Compliance Levels</h2>
+
+        <div class="compliance-grid">
+          <div class="compliance-level">
+            <h3>Level AA (Minimum)</h3>
+            <ul>
+              <li><strong>Normal text:</strong> ≥4.5:1 contrast ratio</li>
+              <li><strong>Large text (18pt+):</strong> ≥3:1 contrast ratio</li>
+              <li><strong>UI components:</strong> ≥3:1 contrast ratio</li>
+            </ul>
+            <p class="small muted">
+              Required for most accessibility regulations
+            </p>
+          </div>
+
+          <div class="compliance-level">
+            <h3>Level AAA (Enhanced)</h3>
+            <ul>
+              <li><strong>Normal text:</strong> ≥7:1 contrast ratio</li>
+              <li>
+                <strong>Large text (18pt+):</strong> ≥4.5:1 contrast ratio
+              </li>
+            </ul>
+            <p class="small muted">Recommended for highest accessibility</p>
+          </div>
+        </div>
+
+        <h3>What counts as "large text"?</h3>
+        <ul>
+          <li>18 points regular weight (approximately 24px)</li>
+          <li>14 points bold weight (approximately 18.67px)</li>
+          <li>Icons and graphical objects require 3:1 contrast</li>
+        </ul>
       </article>
 
       <!-- How to use -->
@@ -282,7 +346,7 @@
           </li>
           <li>
             Preview how the pair looks on <em>Normal</em> and
-            <em>Large</em> text. “Large” means ≥18pt normal or ≥14pt bold.
+            <em>Large</em> text. "Large" means ≥18pt normal or ≥14pt bold.
           </li>
           <li>Click <strong>Copy</strong> to copy the hex for either color.</li>
           <li>All calculations run locally—nothing leaves your browser.</li>
@@ -301,6 +365,100 @@
         </ul>
       </article>
 
+      <!-- Real-World Applications -->
+      <article class="card" id="applications">
+        <h2>Where to Apply Contrast Ratios</h2>
+
+        <div class="applications-grid">
+          <div class="use-case">
+            <h4>📝 Body Text</h4>
+            <p>Main content reading experience</p>
+            <span class="badge">AA: 4.5:1</span>
+          </div>
+
+          <div class="use-case">
+            <h4>🎯 Headings & Titles</h4>
+            <p>Section headers and page titles</p>
+            <span class="badge">AA: 3:1</span>
+          </div>
+
+          <div class="use-case">
+            <h4>🔘 Buttons & Forms</h4>
+            <p>Interactive elements and inputs</p>
+            <span class="badge">AA: 3:1</span>
+          </div>
+
+          <div class="use-case">
+            <h4>📊 Data Visualization</h4>
+            <p>Charts, graphs, and data points</p>
+            <span class="badge">AA: 3:1</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Color Accessibility Tips -->
+      <article class="card" id="color-tips">
+        <h2>Color Accessibility Best Practices</h2>
+
+        <div class="tip">
+          <h3>🎨 Don't Rely on Color Alone</h3>
+          <p>
+            Use additional indicators like patterns, text labels, or icons to
+            convey meaning beyond color differences.
+          </p>
+        </div>
+
+        <div class="tip">
+          <h3>👁️ Test with Color Blindness Simulators</h3>
+          <p>
+            Check how your colors appear to users with various types of color
+            vision deficiency.
+          </p>
+        </div>
+
+        <div class="tip">
+          <h3>📱 Consider Different Lighting Conditions</h3>
+          <p>
+            Test your colors in bright sunlight, dim lighting, and various
+            screen brightness levels.
+          </p>
+        </div>
+
+        <div class="tip">
+          <h3>🔄 Provide Alternative Contrast Options</h3>
+          <p>
+            Offer high contrast modes or allow users to customize color schemes.
+          </p>
+        </div>
+      </article>
+
+      <!-- Technical Implementation -->
+      <article class="card" id="technical">
+        <h2>Technical Implementation</h2>
+
+        <h3>CSS Custom Properties Example</h3>
+        <pre><code class="language-css">:root {
+  --primary-text: #1a1a1a;
+  --primary-bg: #ffffff;
+  --contrast-ratio: 16.42; /* Meets AAA */
+}
+
+/* Always provide fallbacks */
+body {
+  color: var(--primary-text, #000000);
+  background-color: var(--primary-bg, #ffffff);
+}</code></pre>
+
+        <h3>JavaScript Contrast Calculation</h3>
+        <p>This tool uses the WCAG 2.1 relative luminance formula:</p>
+        <pre><code class="language-javascript">function getContrastRatio(hex1, hex2) {
+  const l1 = getRelativeLuminance(hex1);
+  const l2 = getRelativeLuminance(hex2);
+  return (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
+}</code></pre>
+      </article>
+
+      <!-- FAQ Section -->
       <section class="faq-section card">
         <h2 class="faq-title">
           Color Contrast Checker – Frequently Asked Questions
@@ -323,7 +481,7 @@
 
           <div class="faq-item">
             <button class="faq-question">
-              What counts as “large” text?
+              What counts as "large" text?
               <span class="faq-icon">+</span>
             </button>
             <div class="faq-answer">
@@ -365,8 +523,51 @@
               <p>No. Everything runs locally in your browser.</p>
             </div>
           </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              What about users with color blindness?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Good contrast ratios help, but also ensure information isn't
+                conveyed by color alone. Use patterns, labels, or icons as
+                additional indicators.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              How often should I check contrast ratios?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Check during design, development, and whenever making color
+                changes. Also test final designs in different lighting
+                conditions.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Are there exceptions to these ratios?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Yes: logos, incidental text, and inactive UI elements have no
+                contrast requirements. Text over images may use different
+                techniques.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
+
       <!-- Related tools -->
       <article class="card related" id="related">
         <h2>Related tools</h2>
@@ -382,7 +583,7 @@
           <a href="/bn/color-picker-contrast/" hreflang="bn">বাংলা সংস্করণ</a>.
         </p>
       </article>
-    </main>
+    </div>
 
     <footer>
       © <span id="y"></span> Tools Pack • <a class="muted" href="/">Home</a> •
@@ -405,41 +606,13 @@
       // Footer year
       yEl.textContent = new Date().getFullYear();
 
-      // ===== Lazy init AdSense when slots are visible =====
-      const initAds = () => {
-        window.adsbygoogle = window.adsbygoogle || [];
-        const slots = document.querySelectorAll(
-          "ins.adsbygoogle:not([data-loaded])"
-        );
-        if (!slots.length) return;
-
-        const push = (el) => {
-          try {
-            (adsbygoogle = window.adsbygoogle || []).push({});
-            el.setAttribute("data-loaded", "1");
-          } catch (e) {
-            /* ignore */
-          }
-        };
-
-        if ("IntersectionObserver" in window) {
-          const io = new IntersectionObserver(
-            (entries) => {
-              entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                  push(entry.target);
-                  io.unobserve(entry.target);
-                }
-              });
-            },
-            { rootMargin: "200px 0px" }
-          );
-          slots.forEach((el) => io.observe(el));
-        } else {
-          slots.forEach(push);
-        }
-      };
-      window.addEventListener("load", initAds);
+      // FAQ functionality
+      document.querySelectorAll(".faq-question").forEach((button) => {
+        button.addEventListener("click", () => {
+          const faqItem = button.parentNode;
+          faqItem.classList.toggle("active");
+        });
+      });
 
       // ===== Contrast math (WCAG relative luminance) =====
       const norm = (h) => {
@@ -510,15 +683,28 @@
       });
 
       // Copy buttons
-      copyFg.onclick = () => navigator.clipboard.writeText(fgHex.value);
-      copyBg.onclick = () => navigator.clipboard.writeText(bgHex.value);
+      copyFg.onclick = () => {
+        navigator.clipboard.writeText(fgHex.value);
+        copyFg.textContent = "Copied!";
+        setTimeout(() => {
+          copyFg.textContent = "Copy";
+        }, 1500);
+      };
+      copyBg.onclick = () => {
+        navigator.clipboard.writeText(bgHex.value);
+        copyBg.textContent = "Copied!";
+        setTimeout(() => {
+          copyBg.textContent = "Copy";
+        }, 1500);
+      };
 
       // Init
       apply();
     </script>
+
     <script src="/assets/tracker.js" defer data-trk-site="tools-pack"></script>
     <script src="/assets/related-more.js" defer></script>
-    <script src="/assets/script.js" defer></script>
+    <!-- <script src="/assets/script.js" defer></script> -->
     <noscript
       >Your browser has JavaScript disabled; this tool needs JavaScript to
       work.</noscript
