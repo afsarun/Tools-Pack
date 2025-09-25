@@ -4,26 +4,36 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
 
+    <!-- Title + Description -->
     <title>
-      Date Calculator — Days Until a Date, Days Ago, Add/Subtract Days, Years
-      Since | Tools Pack
+      Date Calculator — Days Until, Days Ago, Add/Subtract Days, Years Since |
+      Tools Pack
     </title>
     <meta
       name="description"
-      content="Free Date Calculator: find how long until a date, how long ago a date was, what is 20 days from today, 2015 days ago, days till Sept 17 or 6/11, and how many years since 2018. Fast, accurate, works offline."
+      content="Free Date Calculator: find days until a date, days ago, add or subtract days from today, and years since a given date. Examples: 20 days from today, 2015 days ago, days till Sept 17, how many years since 2018. Fast, accurate, offline."
     />
+
+    <!-- Canonical -->
     <link
       rel="canonical"
       href="https://tools-pack.netlify.app/date-calculator/"
     />
-    <meta name="theme-color" content="#1E1E2F" />
+
+    <!-- Styles + Theme -->
     <link rel="stylesheet" href="/assets/style.css" />
+    <meta name="theme-color" content="#1E1E2F" />
 
     <!-- Hreflang -->
     <link
       rel="alternate"
       hreflang="en"
       href="https://tools-pack.netlify.app/date-calculator/"
+    />
+    <link
+      rel="alternate"
+      hreflang="bn"
+      href="https://tools-pack.netlify.app/bn/date-calculator/"
     />
     <link
       rel="alternate"
@@ -37,34 +47,55 @@
     <meta property="og:title" content="Date Calculator — Tools Pack" />
     <meta
       property="og:description"
-      content="Days until, days ago, add/subtract days, and years since — fast & accurate."
+      content="Days until, days ago, add/subtract days, and years since — fast & private."
     />
     <meta
       property="og:url"
       content="https://tools-pack.netlify.app/date-calculator/"
     />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="bn_BD" />
+
+    <!-- Prefer webp for OG (1200×630) -->
     <meta
       property="og:image"
-      content="https://tools-pack.netlify.app/og/date-calculator-en.webp"
+      content="https://tools-pack.netlify.app/assets/og/date-calculator-en.webp"
     />
+    <meta
+      property="og:image:secure_url"
+      content="https://tools-pack.netlify.app/assets/og/date-calculator-en.webp"
+    />
+    <meta property="og:image:type" content="image/webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Date Calculator — Tools Pack" />
+
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Date Calculator — Tools Pack" />
+    <meta
+      name="twitter:description"
+      content="Find days until/ago, add or subtract days, and years since — all in your browser."
+    />
+    <meta
+      name="twitter:image"
+      content="https://tools-pack.netlify.app/assets/og/date-calculator-en.webp"
+    />
 
-    <!-- JSON-LD: FAQ (targets your low-hanging queries) -->
-
+    <!-- JSON-LD: WebApplication -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "@id": "https://tools-pack.netlify.app/date-calculator/#app",
+        "@id": "https://tools-pack.netlify.app/date-calculator/",
         "name": "Date Calculator",
-        "description": "Calculate date differences, add or subtract days, and find durations between two dates—fully in your browser.",
         "url": "https://tools-pack.netlify.app/date-calculator/",
-        "applicationCategory": "UtilitiesApplication",
-        "operatingSystem": "Web",
+        "image": "https://tools-pack.netlify.app/assets/og/date-calculator-en.webp",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All",
         "inLanguage": "en",
         "isAccessibleForFree": true,
-        "publisher": { "@type": "Organization", "name": "Tools Pack" }
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "description": "Calculate date differences, add or subtract days, and find durations between two dates — fully in your browser."
       }
     </script>
 

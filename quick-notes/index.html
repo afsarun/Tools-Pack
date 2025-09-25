@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-locale="en">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -21,6 +21,7 @@
       name="robots"
       content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
     />
+    <meta name="theme-color" content="#1E1E2F" />
 
     <!-- Canonical & hreflang -->
     <link rel="canonical" href="https://tools-pack.netlify.app/quick-notes/" />
@@ -37,14 +38,13 @@
     <link
       rel="alternate"
       hreflang="x-default"
-      href="https://tools-pack.netlify.app/"
+      href="https://tools-pack.netlify.app/quick-notes/"
     />
 
     <!-- Global Styles -->
     <link rel="stylesheet" href="/assets/style.css" />
-    <meta name="theme-color" content="#1E1E2F" />
 
-    <!-- Open Graph -->
+    <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Tools Pack" />
     <meta
@@ -59,19 +59,40 @@
       property="og:url"
       content="https://tools-pack.netlify.app/quick-notes/"
     />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="bn_BD" />
+
+    <!-- ✅ Prefer webp for OG (1200×630) -->
     <meta
       property="og:image"
       content="https://tools-pack.netlify.app/assets/og/quick-notes-en.webp"
     />
     <meta
+      property="og:image:secure_url"
+      content="https://tools-pack.netlify.app/assets/og/quick-notes-en.webp"
+    />
+    <meta property="og:image:type" content="image/webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
       property="og:image:alt"
       content="Quick Notes – online notepad with auto-save"
     />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:locale:alternate" content="bn_BD" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Quick Notes — Online Notepad with Auto-Save (No Sign-In)"
+    />
+    <meta
+      name="twitter:description"
+      content="Private, local auto-save. Export/import .txt. Works offline. No account."
+    />
+    <meta
+      name="twitter:image"
+      content="https://tools-pack.netlify.app/assets/og/quick-notes-en.webp"
+    />
 
     <!-- AdSense loader -->
     <script
@@ -80,20 +101,27 @@
       crossorigin="anonymous"
     ></script>
 
+    <!-- JSON-LD: WebApplication (upgraded) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "@id": "https://tools-pack.netlify.app/quick-notes/",
+        "@id": "https://tools-pack.netlify.app/quick-notes/#app",
         "name": "Quick Notes",
-        "description": "Free online notepad with private, local auto-save. Export or import .txt files. Works offline. Bangla/Unicode supported.",
         "url": "https://tools-pack.netlify.app/quick-notes/",
-        "applicationCategory": "UtilitiesApplication",
-        "operatingSystem": "Web",
+        "image": "https://tools-pack.netlify.app/assets/og/quick-notes-en.webp",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All",
         "inLanguage": "en",
         "isAccessibleForFree": true,
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "description": "Free online notepad with private, local auto-save. Export or import .txt files. Works offline. Bangla/Unicode supported.",
         "featureList": ["Auto-save", "Offline", "Export .txt", "Import .txt"],
-        "publisher": { "@type": "Organization", "name": "Tools Pack" }
+        "publisher": {
+          "@type": "Organization",
+          "name": "Tools Pack",
+          "url": "https://tools-pack.netlify.app/"
+        }
       }
     </script>
 

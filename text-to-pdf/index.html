@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-locale="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+
     <title>Text → PDF Converter — Unicode Safe | Tools Pack</title>
     <meta
       name="description"
-      content="Convert text to PDF using your browser's print to PDF. Choose page size, margins, header/footer."
+      content="Convert text to PDF in your browser. Choose page size, margins, header/footer, and orientation. Unicode-safe; no uploads."
     />
+    <meta name="theme-color" content="#1E1E2F" />
 
     <!-- Canonical & Hreflang -->
     <link rel="canonical" href="https://tools-pack.netlify.app/text-to-pdf/" />
@@ -24,27 +26,51 @@
     <link
       rel="alternate"
       hreflang="x-default"
-      href="https://tools-pack.netlify.app/"
+      href="https://tools-pack.netlify.app/text-to-pdf/"
     />
 
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/style.css" />
+
     <!-- Open Graph / Twitter -->
-    <meta name="theme-color" content="#1E1E2F" />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tools Pack" />
     <meta property="og:title" content="Text → PDF — Tools Pack" />
-    <meta property="og:description" content="Unicode-safe text to PDF." />
+    <meta
+      property="og:description"
+      content="Unicode-safe text to PDF in your browser — fast, private, no uploads."
+    />
     <meta
       property="og:url"
       content="https://tools-pack.netlify.app/text-to-pdf/"
     />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="bn_BD" />
+
+    <!-- ✅ Prefer webp for OG (1200×630) -->
     <meta
       property="og:image"
       content="https://tools-pack.netlify.app/assets/og/text-pdf-en.webp"
     />
-    <meta property="og:site_name" content="Tools Pack" />
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      property="og:image:secure_url"
+      content="https://tools-pack.netlify.app/assets/og/text-pdf-en.webp"
+    />
+    <meta property="og:image:type" content="image/webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Text → PDF Converter — Tools Pack" />
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="/assets/style.css" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Text → PDF — Tools Pack" />
+    <meta
+      name="twitter:description"
+      content="Convert text to PDF with page size, margins, headers/footers — all offline in your browser."
+    />
+    <meta
+      name="twitter:image"
+      content="https://tools-pack.netlify.app/assets/og/text-pdf-en.webp"
+    />
 
     <!-- Performance + AdSense -->
     <link
@@ -53,26 +79,27 @@
       crossorigin
     />
     <link rel="dns-prefetch" href="//pagead2.googlesyndication.com" />
-    <!-- Auto ads: replace client with your publisher id -->
     <script
       async
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
       crossorigin="anonymous"
     ></script>
 
+    <!-- JSON-LD: WebApplication (upgraded) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "@id": "https://tools-pack.netlify.app/text-to-pdf/",
+        "@id": "https://tools-pack.netlify.app/text-to-pdf/#app",
         "name": "Text to PDF",
-        "description": "Convert text to PDF with page size, margins, and orientation options—fully in your browser.",
         "url": "https://tools-pack.netlify.app/text-to-pdf/",
-        "applicationCategory": "UtilitiesApplication",
-        "operatingSystem": "Web",
+        "image": "https://tools-pack.netlify.app/assets/og/text-pdf-en.webp",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All",
         "inLanguage": "en",
         "isAccessibleForFree": true,
-        "publisher": { "@type": "Organization", "name": "Tools Pack" }
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "description": "Convert text to PDF with page size, margins, headers/footers, and orientation options — fully in your browser (Unicode-safe)."
       }
     </script>
 

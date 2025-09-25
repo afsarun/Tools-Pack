@@ -3,11 +3,15 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+
     <title>Unit Converter — Length, Weight & Temperature | Tools Pack</title>
     <meta
       name="description"
       content="Convert between metric and imperial units: m↔km, kg↔lb, °C↔°F and more. Fast, accurate, and privacy-friendly."
     />
+    <meta name="theme-color" content="#1E1E2F" />
+
+    <!-- Canonical & hreflang -->
     <link
       rel="canonical"
       href="https://tools-pack.netlify.app/unit-converter/"
@@ -25,58 +29,79 @@
     <link
       rel="alternate"
       hreflang="x-default"
-      href="https://tools-pack.netlify.app/"
+      href="https://tools-pack.netlify.app/unit-converter/"
     />
 
-    <!-- Open Graph -->
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/style.css" />
+
+    <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tools Pack" />
     <meta property="og:title" content="Unit Converter — Tools Pack" />
     <meta
       property="og:description"
-      content="Length, weight and temperature conversions."
+      content="Length, weight and temperature conversions — fast & private."
     />
     <meta
       property="og:url"
       content="https://tools-pack.netlify.app/unit-converter/"
     />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="bn_BD" />
+
+    <!-- ✅ Prefer webp for OG (1200×630) -->
     <meta
       property="og:image"
       content="https://tools-pack.netlify.app/assets/og/unit-converter-en.webp"
     />
-    <meta property="og:site_name" content="Tools Pack" />
-    <meta property="og:locale" content="en_US" />
+    <meta
+      property="og:image:secure_url"
+      content="https://tools-pack.netlify.app/assets/og/unit-converter-en.webp"
+    />
+    <meta property="og:image:type" content="image/webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Unit Converter — length, weight & temperature"
+    />
 
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-
-    <!-- Theme/CSS -->
-    <meta name="theme-color" content="#1E1E2F" />
-    <link rel="stylesheet" href="/assets/style.css" />
+    <meta name="twitter:title" content="Unit Converter — Tools Pack" />
+    <meta
+      name="twitter:description"
+      content="Convert units like m↔km, kg↔lb, °C↔°F — all in your browser."
+    />
+    <meta
+      name="twitter:image"
+      content="https://tools-pack.netlify.app/assets/og/unit-converter-en.webp"
+    />
 
     <!-- AdSense (replace with your client id) -->
-    <!-- IMPORTANT: Your site must be approved in AdSense and follow policies. -->
     <script
       async
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
       crossorigin="anonymous"
     ></script>
 
+    <!-- JSON-LD: WebApplication (upgraded) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "@id": "https://tools-pack.netlify.app/unit-converter/",
+        "@id": "https://tools-pack.netlify.app/unit-converter/#app",
         "name": "Unit Converter",
-        "description": "Convert length, weight, temperature and more—instantly in your browser.",
         "url": "https://tools-pack.netlify.app/unit-converter/",
-        "applicationCategory": "UtilitiesApplication",
-        "operatingSystem": "Web",
+        "image": "https://tools-pack.netlify.app/assets/og/unit-converter-en.webp",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All",
         "inLanguage": "en",
         "isAccessibleForFree": true,
-        "publisher": { "@type": "Organization", "name": "Tools Pack" }
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "description": "Convert length, weight, temperature, area, volume, and more — instantly in your browser."
       }
     </script>
-
     <!-- FAQ schema (mirrors the FAQ section below) -->
     <script type="application/ld+json">
       {

@@ -1,17 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-locale="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+
     <title>Text Utilities — Case Converter & Word Counter | Tools Pack</title>
     <meta
       name="description"
-      content="Upper/lowercase, collapse/remove spaces, and live word/character count."
+      content="Upper/lowercase, title/sentence case, collapse/remove spaces, and live word/character count — all in your browser, privacy-first."
     />
     <meta
       name="robots"
       content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
     />
+    <meta name="theme-color" content="#1E1E2F" />
 
     <!-- Canonical & hreflang -->
     <link
@@ -31,52 +33,77 @@
     <link
       rel="alternate"
       hreflang="x-default"
-      href="https://tools-pack.netlify.app/"
+      href="https://tools-pack.netlify.app/text-utilities/"
     />
 
     <!-- Styles -->
     <link rel="stylesheet" href="/assets/style.css" />
-    <meta name="theme-color" content="#1E1E2F" />
 
-    <!-- Open Graph -->
+    <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tools Pack" />
     <meta property="og:title" content="Text Utilities — Tools Pack" />
     <meta
       property="og:description"
-      content="Clean text, convert case, count words/characters."
+      content="Clean text, convert case, count words/characters — fast and private."
     />
     <meta
       property="og:url"
       content="https://tools-pack.netlify.app/text-utilities/"
     />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="bn_BD" />
+
+    <!-- ✅ Prefer webp for OG (1200×630) -->
     <meta
       property="og:image"
       content="https://tools-pack.netlify.app/assets/og/text-utilities-en.webp"
     />
+    <meta
+      property="og:image:secure_url"
+      content="https://tools-pack.netlify.app/assets/og/text-utilities-en.webp"
+    />
+    <meta property="og:image:type" content="image/webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Text Utilities — case converter & word counter"
+    />
 
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Text Utilities — Tools Pack" />
+    <meta
+      name="twitter:description"
+      content="Convert case and count words/characters — works entirely in your browser."
+    />
+    <meta
+      name="twitter:image"
+      content="https://tools-pack.netlify.app/assets/og/text-utilities-en.webp"
+    />
 
-    <!-- AdSense: Auto Ads -->
+    <!-- AdSense -->
     <script
       async
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
       crossorigin="anonymous"
     ></script>
 
+    <!-- JSON-LD: WebApplication (upgraded) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "@id": "https://tools-pack.netlify.app/text-utilities/",
+        "@id": "https://tools-pack.netlify.app/text-utilities/#app",
         "name": "Text Utilities",
-        "description": "Case conversion and word/character count—runs fully in your browser.",
         "url": "https://tools-pack.netlify.app/text-utilities/",
-        "applicationCategory": "UtilitiesApplication",
-        "operatingSystem": "Web",
+        "image": "https://tools-pack.netlify.app/assets/og/text-utilities-en.webp",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All",
         "inLanguage": "en",
         "isAccessibleForFree": true,
-        "publisher": { "@type": "Organization", "name": "Tools Pack" }
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "description": "Case conversion (upper/lower/title/sentence), whitespace cleanup, remove duplicates, and live word/character count — all client-side."
       }
     </script>
 

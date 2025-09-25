@@ -3,15 +3,20 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Image Resizer & Compressor — JPG/PNG/WebP | Tools Pack</title>
+
+    <title>Image Resizer &amp; Compressor — JPG/webp/WebP | Tools Pack</title>
     <meta
       name="description"
-      content="Resize and compress images in your browser; export as JPEG, PNG, or WebP. Keep aspect ratio, choose quality, and download instantly."
+      content="Resize and compress images in your browser; export as JPEG, webp, or WebP. Keep aspect ratio, choose quality, and download instantly."
     />
+
+    <!-- Canonical -->
     <link
       rel="canonical"
       href="https://tools-pack.netlify.app/image-resizer-compressor/"
     />
+
+    <!-- Styles + Theme -->
     <link rel="stylesheet" href="/assets/style.css" />
     <meta name="theme-color" content="#1E1E2F" />
 
@@ -38,36 +43,70 @@
     <meta property="og:title" content="Image Resizer — Tools Pack" />
     <meta
       property="og:description"
-      content="Resize/compress images and download as JPG, PNG or WebP — fast and private."
+      content="Resize/compress images and download as JPG, webp or WebP — fast and private."
     />
     <meta
       property="og:url"
       content="https://tools-pack.netlify.app/image-resizer-compressor/"
     />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="bn_BD" />
+
+    <!-- ✅ Prefer webp for OG (1200×630) -->
     <meta
       property="og:image"
       content="https://tools-pack.netlify.app/assets/og/image-resizer-compressor-en.webp"
     />
     <meta
-      property="og:image:alt"
-      content="Image Resizer & Compressor — Tools Pack"
+      property="og:image:secure_url"
+      content="https://tools-pack.netlify.app/assets/og/image-resizer-compressor-en.webp"
     />
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:image:type" content="image/webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Image Resizer &amp; Compressor — Tools Pack"
+    />
 
-    <!-- JSON-LD: WebApplication -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Image Resizer — Tools Pack" />
+    <meta
+      name="twitter:description"
+      content="Resize/compress images and export as JPG, webp or WebP — all in your browser."
+    />
+    <meta
+      name="twitter:image"
+      content="https://tools-pack.netlify.app/assets/og/image-resizer-compressor-en.webp"
+    />
+
+    <!-- JSON-LD: WebApplication (upgraded) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "@id": "https://tools-pack.netlify.app/image-resizer-compressor/",
+        "@id": "https://tools-pack.netlify.app/image-resizer-compressor/#app",
         "name": "Image Resizer & Compressor",
-        "description": "Resize and compress images in the browser; export as JPEG, PNG, or WebP.",
         "url": "https://tools-pack.netlify.app/image-resizer-compressor/",
-        "applicationCategory": "MultimediaApplication",
-        "operatingSystem": "Web",
+        "image": "https://tools-pack.netlify.app/assets/og/image-resizer-compressor-en.webp",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All",
         "inLanguage": "en",
         "isAccessibleForFree": true,
-        "publisher": { "@type": "Organization", "name": "Tools Pack" }
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "description": "Resize and compress images in the browser; export as JPEG, webp, or WebP.",
+        "featureList": [
+          "Resize by width/height with aspect-ratio lock",
+          "Quality slider + preview",
+          "Export formats: JPG, webp, WebP",
+          "Batch: single or multiple images",
+          "Local processing — nothing leaves your device"
+        ],
+        "publisher": {
+          "@type": "Organization",
+          "name": "Tools Pack",
+          "url": "https://tools-pack.netlify.app/"
+        }
       }
     </script>
 
@@ -118,7 +157,7 @@
             "name": "What formats are supported?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "You can export JPEG, PNG, or WebP. JPEG/WebP allow a Quality slider; PNG is lossless and ignores quality."
+              "text": "You can export JPEG, webp, or WebP. JPEG/WebP allow a Quality slider; webp is lossless and ignores quality."
             }
           },
           {
@@ -139,10 +178,10 @@
           },
           {
             "@type": "Question",
-            "name": "Why is the Quality slider disabled for PNG?",
+            "name": "Why is the Quality slider disabled for webp?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "PNG is lossless. Quality applies only to JPEG/WebP. Choose JPEG/WebP when you want smaller files."
+              "text": "webp is lossless. Quality applies only to JPEG/WebP. Choose JPEG/WebP when you want smaller files."
             }
           }
         ]
@@ -256,7 +295,7 @@
         ></a>
         <div>
           <h1 style="margin: 0">Image Resizer & Compressor</h1>
-          <div class="sub">Canvas • JPEG/PNG/WebP</div>
+          <div class="sub">Canvas • JPEG/webp/WebP</div>
         </div>
         <div style="margin-left: auto">
           <a class="muted" href="/bn/image-resizer-compressor/" hreflang="bn"
@@ -354,7 +393,7 @@
             <div class="row">
               <select id="fmt" class="select" aria-label="Output format">
                 <option value="image/jpeg">JPEG</option>
-                <option value="image/png">PNG</option>
+                <option value="image/webp">webp</option>
                 <option value="image/webp">WebP</option>
               </select>
 
@@ -420,7 +459,7 @@
               <li>
                 <strong>Compress</strong> JPEG/WebP with adjustable quality
               </li>
-              <li><strong>Convert</strong> between PNG • JPEG • WebP</li>
+              <li><strong>Convert</strong> between webp • JPEG • WebP</li>
               <li><strong>Auto-rotate</strong> based on EXIF orientation</li>
               <li><strong>Batch</strong> multiple images (drag &amp; drop)</li>
             </ul>
@@ -432,7 +471,7 @@
           <div class="image-section">
             <h3>Inputs</h3>
             <ul>
-              <li><strong>Files:</strong> PNG, JPEG, WebP (static)</li>
+              <li><strong>Files:</strong> webp, JPEG, WebP (static)</li>
               <li>
                 <strong>Target size:</strong> max width/height or exact size
               </li>
@@ -441,7 +480,7 @@
                 encoders)
               </li>
               <li>
-                <strong>Format:</strong> PNG (lossless, alpha) • JPEG (lossy) •
+                <strong>Format:</strong> webp (lossless, alpha) • JPEG (lossy) •
                 WebP (lossy/lossless)
               </li>
             </ul>
@@ -451,7 +490,7 @@
             <h3>Output characteristics</h3>
             <ul>
               <li>
-                <strong>Transparency:</strong> Keep alpha with PNG/WebP; JPEG
+                <strong>Transparency:</strong> Keep alpha with webp/WebP; JPEG
                 fills transparent areas with a background color
               </li>
               <li><strong>Color space:</strong> sRGB canvas output</li>
@@ -482,10 +521,10 @@
           <li>Drag &amp; drop images or use <strong>Select Files</strong>.</li>
           <li>
             Choose <strong>target size</strong> (e.g., 1600 px max width) and
-            <strong>format</strong> (WebP/JPEG/PNG).
+            <strong>format</strong> (WebP/JPEG/webp).
           </li>
           <li>
-            Set <strong>quality</strong> (e.g., 80 for JPEG/WebP). PNG ignores
+            Set <strong>quality</strong> (e.g., 80 for JPEG/WebP). webp ignores
             quality for lossless output.
           </li>
           <li>
@@ -504,7 +543,7 @@
             <strong>WebP</strong> often yields the smallest files with good
             quality.
           </li>
-          <li>For crisp UI assets, keep PNG or use <em>lossless WebP</em>.</li>
+          <li>For crisp UI assets, keep webp or use <em>lossless WebP</em>.</li>
           <li>
             JPEG/WebP quality ~<strong>70–85</strong> is a good balance for
             photos.
@@ -536,7 +575,7 @@
           <div class="use-case">
             <h4>📱 App Assets</h4>
             <p>Icons, screenshots, previews</p>
-            <span class="badge">PNG / lossless</span>
+            <span class="badge">webp / lossless</span>
           </div>
 
           <div class="use-case">
@@ -554,7 +593,7 @@
         <div class="tip">
           <h3>🖼 Choose the right format</h3>
           <p>
-            Photos → JPEG/WebP. Graphics with flat colors/transparency → PNG or
+            Photos → JPEG/WebP. Graphics with flat colors/transparency → webp or
             lossless WebP.
           </p>
         </div>
@@ -625,7 +664,7 @@
   }
 }</code></pre>
 
-        <h3>Resize &amp; encode (PNG/JPEG/WebP)</h3>
+        <h3>Resize &amp; encode (webp/JPEG/WebP)</h3>
         <pre><code class="language-javascript">async function resizeAndEncode(bitmap, {
   maxWidth = 1600, maxHeight = 1600, mode = 'contain',
   format = 'image/webp', quality = 0.8, background = '#ffffff'
@@ -634,7 +673,7 @@
   const { w, h, sx, sy, sw: cw, sh: ch } =
     targetRect(sw, sh, maxWidth, maxHeight, mode);
 
-  // Pick canvas type: alpha for PNG/WebP, opaque for JPEG
+  // Pick canvas type: alpha for webp/WebP, opaque for JPEG
   const needsAlpha = format !== 'image/jpeg';
   const canvas = document.createElement('canvas');
   canvas.width = w; canvas.height = h;
@@ -669,7 +708,7 @@
         <pre><code class="language-javascript">async function processFile(file, opts) {
   const bmp = await loadBitmap(file);
   const blob = await resizeAndEncode(bmp, opts);
-  const ext = ({'image/jpeg':'jpg','image/png':'png','image/webp':'webp'})[opts.format] || 'bin';
+  const ext = ({'image/jpeg':'jpg','image/webp':'webp','image/webp':'webp'})[opts.format] || 'bin';
   downloadBlob(blob, (file.name.replace(/\.[^.]+$/,'') + '.' + ext));
 }
 
@@ -703,7 +742,8 @@
             </button>
             <div class="faq-answer">
               <p>
-                Export as JPEG, PNG, or WebP. Quality applies only to JPEG/WebP.
+                Export as JPEG, webp, or WebP. Quality applies only to
+                JPEG/WebP.
               </p>
             </div>
           </div>
@@ -733,12 +773,12 @@
 
           <div class="faq-item">
             <button class="faq-question">
-              Why is the Quality slider disabled for PNG?
+              Why is the Quality slider disabled for webp?
               <span class="faq-icon">+</span>
             </button>
             <div class="faq-answer">
               <p>
-                PNG is lossless, so there’s no quality/size trade-off exposed
+                webp is lossless, so there’s no quality/size trade-off exposed
                 via the slider.
               </p>
             </div>
@@ -927,7 +967,7 @@
           const len = byteString.length;
           const bytes = new Uint8Array(len);
           for (let i = 0; i < len; i++) bytes[i] = byteString.charCodeAt(i);
-          callback(new Blob([bytes], { type: type || "image/png" }));
+          callback(new Blob([bytes], { type: type || "image/webp" }));
         };
       }
 
@@ -962,7 +1002,7 @@
             }
             const url = URL.createObjectURL(blob);
             const a = document.createElement("a");
-            const ext = (mime.split("/")[1] || "png").replace("jpeg", "jpg");
+            const ext = (mime.split("/")[1] || "webp").replace("jpeg", "jpg");
             a.href = url;
             a.download = `image_${W}x${H}.${ext}`;
             document.body.appendChild(a);

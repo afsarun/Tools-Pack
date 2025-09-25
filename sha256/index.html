@@ -3,14 +3,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+
     <title>SHA-256 Hash Generator — WebCrypto | Tools Pack</title>
     <meta
       name="description"
-      content="Create SHA-256 hashes from text or files securely in your browser. No upload, privacy-friendly."
+      content="Create SHA-256 hashes from text or files securely in your browser using WebCrypto. No upload, privacy-friendly."
     />
-    <link rel="canonical" href="https://tools-pack.netlify.app/sha256/" />
+    <meta name="theme-color" content="#1E1E2F" />
 
-    <!-- Hreflang for i18n -->
+    <!-- Canonical & hreflang -->
+    <link rel="canonical" href="https://tools-pack.netlify.app/sha256/" />
     <link
       rel="alternate"
       hreflang="en"
@@ -24,50 +26,96 @@
     <link
       rel="alternate"
       hreflang="x-default"
-      href="https://tools-pack.netlify.app/"
+      href="https://tools-pack.netlify.app/sha256/"
     />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/style.css" />
 
     <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tools Pack" />
     <meta property="og:title" content="SHA-256 Hash — Tools Pack" />
     <meta
       property="og:description"
       content="Hash text or files using WebCrypto. Everything runs in your browser."
     />
     <meta property="og:url" content="https://tools-pack.netlify.app/sha256/" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="bn_BD" />
+
+    <!-- ✅ Prefer webp for OG (1200×630) -->
     <meta
       property="og:image"
       content="https://tools-pack.netlify.app/assets/og/sha-256-hash-en.webp"
     />
-    <meta property="og:site_name" content="Tools Pack" />
-    <meta property="og:locale" content="en_US" />
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      property="og:image:secure_url"
+      content="https://tools-pack.netlify.app/assets/og/sha-256-hash-en.webp"
+    />
+    <meta property="og:image:type" content="image/webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="SHA-256 Hash Generator — Tools Pack"
+    />
 
-    <!-- Theme color + CSS -->
-    <meta name="theme-color" content="#1E1E2F" />
-    <link rel="stylesheet" href="/assets/style.css" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="SHA-256 Hash — Tools Pack" />
+    <meta
+      name="twitter:description"
+      content="Compute SHA-256 for text/files locally with WebCrypto — private and fast."
+    />
+    <meta
+      name="twitter:image"
+      content="https://tools-pack.netlify.app/assets/og/sha-256-hash-en.webp"
+    />
 
     <!-- AdSense (replace with your client id) -->
-    <!-- IMPORTANT: Your site must be approved in AdSense. -->
     <script
       async
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
       crossorigin="anonymous"
     ></script>
 
+    <!-- JSON-LD: WebApplication (upgraded) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "@id": "https://tools-pack.netlify.app/sha256/",
+        "@id": "https://tools-pack.netlify.app/sha256/#app",
         "name": "SHA-256 Hash Generator",
-        "description": "Compute SHA-256 hashes of text/files in the browser.",
         "url": "https://tools-pack.netlify.app/sha256/",
+        "image": "https://tools-pack.netlify.app/assets/og/sha-256-hash-en.webp",
         "applicationCategory": "SecurityApplication",
-        "operatingSystem": "Web",
+        "operatingSystem": "All",
         "inLanguage": "en",
         "isAccessibleForFree": true,
-        "publisher": { "@type": "Organization", "name": "Tools Pack" }
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "description": "Compute SHA-256 hashes of text or files locally in your browser via WebCrypto. No uploads, privacy-friendly."
+      }
+    </script>
+
+    <!-- JSON-LD: Breadcrumbs -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Tools Pack",
+            "item": "https://tools-pack.netlify.app/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "SHA-256 Hash Generator",
+            "item": "https://tools-pack.netlify.app/sha256/"
+          }
+        ]
       }
     </script>
 

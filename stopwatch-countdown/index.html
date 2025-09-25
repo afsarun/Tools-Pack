@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-locale="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-    <title>Online Stopwatch & Countdown Timer | Tools Pack</title>
+    <title>Online Stopwatch &amp; Countdown Timer | Tools Pack</title>
     <meta
       name="description"
-      content="Precise stopwatch and countdown with pause/reset and alarm beep."
+      content="Precise stopwatch and countdown with start/pause/reset and alarm beep. Runs locally in your browser."
     />
+    <meta name="theme-color" content="#1E1E2F" />
+
+    <!-- Canonical & hreflang -->
     <link
       rel="canonical"
       href="https://tools-pack.netlify.app/stopwatch-countdown/"
     />
-
-    <!-- Hreflang -->
     <link
       rel="alternate"
       hreflang="en"
@@ -28,29 +29,60 @@
     <link
       rel="alternate"
       hreflang="x-default"
-      href="https://tools-pack.netlify.app/"
+      href="https://tools-pack.netlify.app/stopwatch-countdown/"
     />
 
     <!-- Styles -->
     <link rel="stylesheet" href="/assets/style.css" />
-    <meta name="theme-color" content="#1E1E2F" />
 
     <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Stopwatch & Countdown — Tools Pack" />
+    <meta property="og:site_name" content="Tools Pack" />
+    <meta
+      property="og:title"
+      content="Stopwatch &amp; Countdown — Tools Pack"
+    />
     <meta
       property="og:description"
-      content="Start, pause, reset; set countdown."
+      content="Start, pause, reset; set countdown with alarm. Fast, private, in-browser."
     />
     <meta
       property="og:url"
       content="https://tools-pack.netlify.app/stopwatch-countdown/"
     />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="bn_BD" />
+
+    <!-- ✅ Prefer webp for OG (1200×630) -->
     <meta
       property="og:image"
       content="https://tools-pack.netlify.app/assets/og/stopwatch-countdown-en.webp"
     />
+    <meta
+      property="og:image:secure_url"
+      content="https://tools-pack.netlify.app/assets/og/stopwatch-countdown-en.webp"
+    />
+    <meta property="og:image:type" content="image/webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Online Stopwatch &amp; Countdown — Tools Pack"
+    />
+
     <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Stopwatch &amp; Countdown — Tools Pack"
+    />
+    <meta
+      name="twitter:description"
+      content="Accurate stopwatch and countdown with alarm — all in your browser."
+    />
+    <meta
+      name="twitter:image"
+      content="https://tools-pack.netlify.app/assets/og/stopwatch-countdown-en.webp"
+    />
 
     <!-- AdSense: use ONE consistent client id across all ad units -->
     <script
@@ -59,20 +91,21 @@
       crossorigin="anonymous"
     ></script>
 
-    <!-- Structured data: WebApplication -->
+    <!-- JSON-LD: WebApplication (upgraded) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebApplication",
         "@id": "https://tools-pack.netlify.app/stopwatch-countdown/",
         "name": "Stopwatch & Countdown",
-        "description": "Accurate stopwatch and countdown—runs locally in your browser.",
         "url": "https://tools-pack.netlify.app/stopwatch-countdown/",
-        "applicationCategory": "UtilitiesApplication",
-        "operatingSystem": "Web",
+        "image": "https://tools-pack.netlify.app/assets/og/stopwatch-countdown-en.webp",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All",
         "inLanguage": "en",
         "isAccessibleForFree": true,
-        "publisher": { "@type": "Organization", "name": "Tools Pack" }
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "description": "Accurate stopwatch and countdown that run locally in your browser. Start, pause, reset, and alarm beep at zero."
       }
     </script>
 

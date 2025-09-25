@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-locale="en">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-    <title>URL Encoder & Decoder Online | Tools Pack</title>
+    <title>URL Encoder &amp; Decoder Online | Tools Pack</title>
     <meta
       name="description"
-      content="Encode or decode URLs and URI components instantly. Safe for query parameters and path segments."
+      content="Encode or decode full URLs and URI components instantly. Safe for query parameters and path segments. Works locally in your browser."
     />
     <meta
       name="robots"
@@ -40,23 +40,47 @@
     <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Tools Pack" />
-    <meta property="og:locale" content="en_US" />
     <meta property="og:title" content="URL Encoder/Decoder — Tools Pack" />
     <meta
       property="og:description"
-      content="Encode/decode URL or URI components."
+      content="Encode/decode URL or URI components — fast & private."
     />
     <meta
       property="og:url"
       content="https://tools-pack.netlify.app/url-tools/"
     />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="bn_BD" />
+
+    <!-- ✅ Prefer webp for OG (1200×630) -->
     <meta
       property="og:image"
       content="https://tools-pack.netlify.app/assets/og/url-tools-en.webp"
     />
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      property="og:image:secure_url"
+      content="https://tools-pack.netlify.app/assets/og/url-tools-en.webp"
+    />
+    <meta property="og:image:type" content="image/webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="URL Encoder &amp; Decoder — Tools Pack"
+    />
 
-    <!-- AdSense (replace ca-pub-XXXX...) -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="URL Encoder/Decoder — Tools Pack" />
+    <meta
+      name="twitter:description"
+      content="Encode/decode URLs or URI components in your browser — no uploads."
+    />
+    <meta
+      name="twitter:image"
+      content="https://tools-pack.netlify.app/assets/og/url-tools-en.webp"
+    />
+
+    <!-- AdSense -->
     <link
       rel="preconnect"
       href="https://pagead2.googlesyndication.com"
@@ -68,19 +92,21 @@
       crossorigin="anonymous"
     ></script>
 
+    <!-- JSON-LD: WebApplication (upgraded) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "@id": "https://tools-pack.netlify.app/url-tools/",
+        "@id": "https://tools-pack.netlify.app/url-tools/#app",
         "name": "URL Encoder/Decoder",
-        "description": "Encode/decode URLs or URI components—fully in your browser.",
         "url": "https://tools-pack.netlify.app/url-tools/",
-        "applicationCategory": "UtilitiesApplication",
-        "operatingSystem": "Web",
+        "image": "https://tools-pack.netlify.app/assets/og/url-tools-en.webp",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All",
         "inLanguage": "en",
         "isAccessibleForFree": true,
-        "publisher": { "@type": "Organization", "name": "Tools Pack" }
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "description": "Encode/decode full URLs and URI components (query params, path segments) locally in your browser."
       }
     </script>
 

@@ -3,13 +3,15 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Percentage Calculator — A% of B, Percent Change | Tools Pack</title>
     <meta
       name="description"
       content="Fast, accurate percentage calculator: A% of B, what percent is A of B, percent change, and value after increase/decrease. No tracking."
     />
+    <meta name="theme-color" content="#1E1E2F" />
 
-    <!-- SEO -->
+    <!-- Canonical & hreflang -->
     <link
       rel="canonical"
       href="https://tools-pack.netlify.app/percent-calculator/"
@@ -27,11 +29,15 @@
     <link
       rel="alternate"
       hreflang="x-default"
-      href="https://tools-pack.netlify.app/"
+      href="https://tools-pack.netlify.app/percent-calculator/"
     />
 
-    <meta name="theme-color" content="#1E1E2F" />
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/style.css" />
+
+    <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tools Pack" />
     <meta property="og:title" content="Percentage Calculator — Tools Pack" />
     <meta
       property="og:description"
@@ -41,27 +47,52 @@
       property="og:url"
       content="https://tools-pack.netlify.app/percent-calculator/"
     />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="bn_BD" />
+
+    <!-- ✅ Prefer webp for OG (1200×630) -->
     <meta
       property="og:image"
-      content="https://tools-pack.netlify.app/percent-calculator/assets/og/percent-calculator-en.webp
-"
+      content="https://tools-pack.netlify.app/assets/og/percent-calculator-en.webp"
     />
-    <!-- Site styles (one level up from /percent-calculator/) -->
-    <link rel="stylesheet" href="/assets/style.css" />
+    <meta
+      property="og:image:secure_url"
+      content="https://tools-pack.netlify.app/assets/og/percent-calculator-en.webp"
+    />
+    <meta property="og:image:type" content="image/webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Percentage Calculator — A% of B, Percent Change"
+    />
 
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Percentage Calculator — Tools Pack" />
+    <meta
+      name="twitter:description"
+      content="A% of B, what percent is A of B, percent change, and value after increase/decrease."
+    />
+    <meta
+      name="twitter:image"
+      content="https://tools-pack.netlify.app/assets/og/percent-calculator-en.webp"
+    />
+
+    <!-- JSON-LD: WebApplication -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "@id": "https://tools-pack.netlify.app/percent-calculator/",
+        "@id": "https://tools-pack.netlify.app/percent-calculator/p",
         "name": "Percentage Calculator",
-        "description": "A% of B, what percent is A of B, percent change, and value after increase/decrease.",
         "url": "https://tools-pack.netlify.app/percent-calculator/",
-        "applicationCategory": "UtilitiesApplication",
-        "operatingSystem": "Web",
+        "image": "https://tools-pack.netlify.app/assets/og/percent-calculator-en.webp",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All",
         "inLanguage": "en",
         "isAccessibleForFree": true,
-        "publisher": { "@type": "Organization", "name": "Tools Pack" }
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "description": "Calculate A% of B, find what percent A is of B, percent change, and value after increase/decrease — all in your browser."
       }
     </script>
 

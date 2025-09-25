@@ -3,15 +3,23 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Color Picker & Contrast Checker — WCAG 2.1 | Tools Pack</title>
+
+    <!-- ✅ Strong, scannable title/description -->
+    <title>
+      Color Picker &amp; Contrast Checker — WCAG 2.1 AA/AAA | Tools Pack
+    </title>
     <meta
       name="description"
-      content="Pick colors and check WCAG 2.1 contrast ratios (AA/AAA) for accessible design. Runs 100% in your browser."
+      content="Pick colors and check WCAG 2.1 contrast ratios (AA/AAA) for accessible design. Runs 100% in your browser — fast and privacy-first."
     />
+
+    <!-- Canonical -->
     <link
       rel="canonical"
       href="https://tools-pack.netlify.app/color-picker-contrast/"
     />
+
+    <!-- Styles -->
     <link rel="stylesheet" href="/assets/style.css" />
     <meta name="theme-color" content="#1E1E2F" />
 
@@ -35,39 +43,78 @@
     <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Tools Pack" />
-    <meta property="og:title" content="Color Picker & Contrast — Tools Pack" />
+    <meta
+      property="og:title"
+      content="Color Picker &amp; Contrast — Tools Pack"
+    />
     <meta
       property="og:description"
-      content="Contrast ratios for WCAG AA/AAA. Fast, privacy-first."
+      content="Contrast ratios for WCAG AA/AAA. Fast, private, in-browser."
     />
     <meta
       property="og:url"
       content="https://tools-pack.netlify.app/color-picker-contrast/"
     />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="bn_BD" />
+
+    <!-- ✅ Prefer webp for OG (1200×630) -->
     <meta
       property="og:image"
       content="https://tools-pack.netlify.app/assets/og/color-picker-contrast-en.webp"
     />
     <meta
+      property="og:image:secure_url"
+      content="https://tools-pack.netlify.app/assets/og/color-picker-contrast-en.webp"
+    />
+    <meta property="og:image:type" content="image/webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
       property="og:image:alt"
       content="Color Contrast Checker — Tools Pack"
     />
-    <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- JSON-LD: WebApplication -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Color Picker &amp; Contrast — Tools Pack"
+    />
+    <meta
+      name="twitter:description"
+      content="Check WCAG 2.1 AA/AAA contrast ratios right in your browser."
+    />
+    <meta
+      name="twitter:image"
+      content="https://tools-pack.netlify.app/assets/og/color-picker-contrast-en.webp"
+    />
+
+    <!-- JSON-LD: WebApplication (upgraded) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebApplication",
         "@id": "https://tools-pack.netlify.app/color-picker-contrast/",
         "name": "Color Picker & Contrast",
-        "description": "Check WCAG contrast ratios for normal and large text, fully in-browser.",
+        "description": "Check WCAG 2.1 contrast ratios for normal and large text, fully in-browser.",
         "url": "https://tools-pack.netlify.app/color-picker-contrast/",
-        "applicationCategory": "UtilitiesApplication",
-        "operatingSystem": "Web",
+        "image": "https://tools-pack.netlify.app/assets/og/color-picker-contrast-en.webp",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All",
         "inLanguage": "en",
         "isAccessibleForFree": true,
-        "publisher": { "@type": "Organization", "name": "Tools Pack" }
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Tools Pack",
+          "url": "https://tools-pack.netlify.app/"
+        },
+        "featureList": [
+          "WCAG 2.1 AA/AAA contrast checks",
+          "Normal and large text thresholds",
+          "Hex input with #RGB expansion",
+          "Local processing (no data leaves your device)"
+        ]
       }
     </script>
 
@@ -175,7 +222,7 @@
           "name": "Tools Pack",
           "logo": {
             "@type": "ImageObject",
-            "url": "https://tools-pack.netlify.app/assets/logo.png"
+            "url": "https://tools-pack.netlify.app/assets/logo.webp"
           }
         },
         "datePublished": "2024-01-01",
