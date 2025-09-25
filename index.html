@@ -8,7 +8,10 @@
       Tools Pack - Free Online Utilities: Calculator, JSON Formatter, Unit
       Converter
     </title>
-
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <meta
       name="description"
       content="Free online tools that run 100% in your browser. Calculator, JSON Formatter, Unit Converter, Image Resizer, Color Contrast, Stopwatch, Notes. No data leaves your computer - privacy first."
@@ -422,205 +425,484 @@
       </div>
 
       <section class="grid" aria-label="Tools">
-        <article class="card tool-card" data-category="calculators">
-          <h2>Percent Calculator</h2>
-          <p class="muted">
-            Calculate percentages, percentage increase/decrease, and what
-            percent one number is of another. Free online percentage calculator.
-          </p>
-          <p>
-            <a class="btn btn-primary" href="/percent-calculator/"
-              >Open Percent Calculator</a
-            >
-          </p>
+        <!-- Age Calculator -->
+        <article
+          class="carda tool-card"
+          data-category="calculators"
+          role="article"
+        >
+          <div class="tool-icon" aria-hidden="true">
+            <i class="fas fa-user-clock" aria-hidden="true"></i>
+          </div>
+          <div class="tool-content">
+            <h3 class="tool-title">Age Calculator</h3>
+            <p class="muted">
+              Find your exact age in years, months, and days. Accurate age
+              calculator that works entirely in your browser.
+            </p>
+            <p class="actions">
+              <a
+                class="btn btn-primary"
+                href="/age-calculator/"
+                aria-label="Open Age Calculator"
+              >
+                Open Age Calculator
+              </a>
+              <a class="tool-link" href="/age-calculator/">
+                Learn more <i class="fas fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </p>
+          </div>
         </article>
 
-        <article class="card tool-card" data-category="calculators">
-          <h2>Age Calculator</h2>
-          <p class="muted">
-            Find your exact age in years, months, and days. Accurate age
-            calculator that works entirely in your browser.
-          </p>
-          <p>
-            <a class="btn btn-primary" href="/age-calculator/"
-              >Open Age Calculator</a
-            >
-          </p>
+        <!-- Date Calculator -->
+        <article
+          class="carda tool-card"
+          data-category="calculators"
+          role="article"
+        >
+          <div class="tool-icon" aria-hidden="true">
+            <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+          </div>
+          <div class="tool-content">
+            <h3 class="tool-title">Date Calculator</h3>
+            <p class="muted">
+              Calculate the difference between dates or add/subtract days from a
+              date. Free date calculator tool.
+            </p>
+            <p class="actions">
+              <a
+                class="btn btn-primary"
+                href="/date-calculator/"
+                aria-label="Open Date Calculator"
+              >
+                Open Date Calculator
+              </a>
+              <a class="tool-link" href="/date-calculator/">
+                Learn more <i class="fas fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </p>
+          </div>
         </article>
 
-        <article class="card tool-card" data-category="calculators">
-          <h2>Date Calculator</h2>
-          <p class="muted">
-            Calculate the difference between dates or add/subtract days from a
-            date. Free date calculator tool.
-          </p>
-          <p>
-            <a class="btn btn-primary" href="/date-calculator/"
-              >Open Date Calculator</a
-            >
-          </p>
+        <!-- Calculator -->
+        <article
+          class="carda tool-card"
+          data-category="calculators"
+          role="article"
+        >
+          <div class="tool-icon" aria-hidden="true">
+            <i class="fas fa-calculator" aria-hidden="true"></i>
+          </div>
+          <div class="tool-content">
+            <h3 class="tool-title">Calculator</h3>
+            <p class="muted">
+              Add, subtract, multiply, divide and calculate percentages.
+              Full-featured online calculator.
+            </p>
+            <p class="actions">
+              <a
+                class="btn btn-primary"
+                href="/calculator/"
+                aria-label="Open Calculator"
+              >
+                Open Calculator
+              </a>
+              <a class="tool-link" href="/calculator/">
+                Learn more <i class="fas fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </p>
+          </div>
         </article>
 
-        <article class="card tool-card" data-category="calculators">
-          <h2>Calculator</h2>
-          <p class="muted">
-            Add, subtract, multiply, divide and calculate percentages.
-            Full-featured online calculator.
-          </p>
-          <p>
-            <a class="btn btn-primary" href="/calculator/">Open Calculator</a>
-          </p>
+        <!-- Unit Converter -->
+        <article
+          class="carda tool-card"
+          data-category="calculators"
+          role="article"
+        >
+          <div class="tool-icon" aria-hidden="true">
+            <i class="fas fa-ruler-combined" aria-hidden="true"></i>
+          </div>
+          <div class="tool-content">
+            <h3 class="tool-title">Unit Converter</h3>
+            <p class="muted">
+              Convert length, weight, temperature, and other units. Free online
+              unit conversion tool.
+            </p>
+            <p class="actions">
+              <a
+                class="btn btn-primary"
+                href="/unit-converter/"
+                aria-label="Open Unit Converter"
+              >
+                Open Unit Converter
+              </a>
+              <a class="tool-link" href="/unit-converter/">
+                Learn more <i class="fas fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </p>
+          </div>
         </article>
 
-        <article class="card tool-card" data-category="calculators">
-          <h2>Unit Converter</h2>
-          <p class="muted">
-            Convert length, weight, temperature, and other units. Free online
-            unit conversion tool.
-          </p>
-          <p>
-            <a class="btn btn-primary" href="/unit-converter/"
-              >Open Unit Converter</a
-            >
-          </p>
+        <!-- Text → PDF -->
+        <article
+          class="carda tool-card"
+          data-category="text-tools"
+          role="article"
+        >
+          <div class="tool-icon" aria-hidden="true">
+            <i class="fas fa-file-pdf" aria-hidden="true"></i>
+          </div>
+          <div class="tool-content">
+            <h3 class="tool-title">Text → PDF</h3>
+            <p class="muted">
+              Convert plain text to PDF instantly. Free text to PDF converter
+              that works in your browser.
+            </p>
+            <p class="actions">
+              <a
+                class="btn btn-primary"
+                href="/text-to-pdf/"
+                aria-label="Open Text to PDF"
+              >
+                Open Text → PDF
+              </a>
+              <a class="tool-link" href="/text-to-pdf/">
+                Learn more <i class="fas fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </p>
+          </div>
         </article>
 
-        <article class="card tool-card" data-category="text-tools">
-          <h2>Text → PDF</h2>
-          <p class="muted">
-            Convert plain text to PDF instantly. Free text to PDF converter that
-            works in your browser.
-          </p>
-          <p>
-            <a class="btn btn-primary" href="/text-to-pdf/">Open Text → PDF</a>
-          </p>
+        <!-- Text Utilities -->
+        <article
+          class="carda tool-card"
+          data-category="text-tools"
+          role="article"
+        >
+          <div class="tool-icon" aria-hidden="true">
+            <i class="fas fa-i-cursor" aria-hidden="true"></i>
+          </div>
+          <div class="tool-content">
+            <h3 class="tool-title">Text Utilities</h3>
+            <p class="muted">
+              Convert text to uppercase/lowercase, count words and characters,
+              remove extra spaces. Free text tools.
+            </p>
+            <p class="actions">
+              <a
+                class="btn btn-primary"
+                href="/text-utilities/"
+                aria-label="Open Text Utilities"
+              >
+                Open Text Utilities
+              </a>
+              <a class="tool-link" href="/text-utilities/">
+                Learn more <i class="fas fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </p>
+          </div>
         </article>
 
-        <article class="card tool-card" data-category="text-tools">
-          <h2>Text Utilities</h2>
-          <p class="muted">
-            Convert text to uppercase/lowercase, count words and characters,
-            remove extra spaces. Free text tools.
-          </p>
-          <p>
-            <a class="btn btn-primary" href="/text-utilities/"
-              >Open Text Utilities</a
-            >
-          </p>
+        <!-- Base64 Tools -->
+        <article
+          class="carda tool-card"
+          data-category="developers"
+          role="article"
+        >
+          <div class="tool-icon" aria-hidden="true">
+            <i class="fas fa-code" aria-hidden="true"></i>
+          </div>
+          <div class="tool-content">
+            <h3 class="tool-title">Base64 Tools</h3>
+            <p class="muted">
+              Encode or decode Base64 safely online. Free Base64 encoder and
+              decoder for developers.
+            </p>
+            <p class="actions">
+              <a
+                class="btn btn-primary"
+                href="/base64/"
+                aria-label="Open Base64 Tools"
+              >
+                Open Base64 Tools
+              </a>
+              <a class="tool-link" href="/base64/">
+                Learn more <i class="fas fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </p>
+          </div>
         </article>
 
-        <article class="card tool-card" data-category="developers">
-          <h2>Base64 Tools</h2>
-          <p class="muted">
-            Encode or decode Base64 safely online. Free Base64 encoder and
-            decoder for developers.
-          </p>
-          <p>
-            <a class="btn btn-primary" href="/base64/">Open Base64 Tools</a>
-          </p>
+        <!-- URL Tools -->
+        <article
+          class="carda tool-card"
+          data-category="developers"
+          role="article"
+        >
+          <div class="tool-icon" aria-hidden="true">
+            <i class="fas fa-link" aria-hidden="true"></i>
+          </div>
+          <div class="tool-content">
+            <h3 class="tool-title">URL Tools</h3>
+            <p class="muted">
+              Encode or decode URLs safely. Free URL encoder and decoder for web
+              developers.
+            </p>
+            <p class="actions">
+              <a
+                class="btn btn-primary"
+                href="/url-tools/"
+                aria-label="Open URL Tools"
+              >
+                Open URL Tools
+              </a>
+              <a class="tool-link" href="/url-tools/">
+                Learn more <i class="fas fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </p>
+          </div>
         </article>
 
-        <article class="card tool-card" data-category="developers">
-          <h2>URL Tools</h2>
-          <p class="muted">
-            Encode or decode URLs safely. Free URL encoder and decoder for web
-            developers.
-          </p>
-          <p>
-            <a class="btn btn-primary" href="/url-tools/">Open URL Tools</a>
-          </p>
+        <!-- Password & UUID Generator -->
+        <article
+          class="carda tool-card"
+          data-category="developers"
+          role="article"
+        >
+          <div class="tool-icon" aria-hidden="true">
+            <i class="fas fa-key" aria-hidden="true"></i>
+          </div>
+          <div class="tool-content">
+            <h3 class="tool-title">Password Generator</h3>
+            <p class="muted">
+              Generate secure passwords and UUID v4. Free password generator for
+              security and development.
+            </p>
+            <p class="actions">
+              <a
+                class="btn btn-primary"
+                href="/password-uuid/"
+                aria-label="Open Password and UUID Generator"
+              >
+                Open Generator
+              </a>
+              <a class="tool-link" href="/password-uuid/">
+                Learn more <i class="fas fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </p>
+          </div>
         </article>
 
-        <article class="card tool-card" data-category="developers">
-          <h2>Password &amp; UUID Generator</h2>
-          <p class="muted">
-            Generate secure passwords and UUID v4. Free password generator for
-            security and development.
-          </p>
-          <p>
-            <a class="btn btn-primary" href="/password-uuid/">Open Generator</a>
-          </p>
+        <!-- UUID v4 -->
+        <article
+          class="carda tool-card"
+          data-category="developers"
+          role="article"
+        >
+          <div class="tool-icon" aria-hidden="true">
+            <i class="fas fa-qrcode" aria-hidden="true"></i>
+          </div>
+          <div class="tool-content">
+            <h3 class="tool-title">UUID v4</h3>
+            <p class="muted">
+              Generate RFC 4122 version-4 UUIDs. Free UUID generator for
+              developers and applications.
+            </p>
+            <p class="actions">
+              <a
+                class="btn btn-primary"
+                href="/uuid-v4/"
+                aria-label="Open UUID v4"
+              >
+                Open UUID v4
+              </a>
+              <a class="tool-link" href="/uuid-v4/">
+                Learn more <i class="fas fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </p>
+          </div>
         </article>
 
-        <article class="card tool-card" data-category="developers">
-          <h2>UUID v4</h2>
-          <p class="muted">
-            Generate RFC 4122 version-4 UUIDs. Free UUID generator for
-            developers and applications.
-          </p>
-          <p><a class="btn btn-primary" href="/uuid-v4/">Open UUID v4</a></p>
+        <!-- SHA-256 Hash -->
+        <article
+          class="carda tool-card"
+          data-category="developers"
+          role="article"
+        >
+          <div class="tool-icon" aria-hidden="true">
+            <i class="fas fa-shield-alt" aria-hidden="true"></i>
+          </div>
+          <div class="tool-content">
+            <h3 class="tool-title">SHA-256 Hash</h3>
+            <p class="muted">
+              Hash any text or string using SHA-256. Free SHA-256 hash generator
+              for security and development.
+            </p>
+            <p class="actions">
+              <a
+                class="btn btn-primary"
+                href="/sha256/"
+                aria-label="Open SHA-256 Tool"
+              >
+                Open SHA-256 Tool
+              </a>
+              <a class="tool-link" href="/sha256/">
+                Learn more <i class="fas fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </p>
+          </div>
         </article>
 
-        <article class="card tool-card" data-category="developers">
-          <h2>SHA-256 Hash</h2>
-          <p class="muted">
-            Hash any text or string using SHA-256. Free SHA-256 hash generator
-            for security and development.
-          </p>
-          <p>
-            <a class="btn btn-primary" href="/sha256/">Open SHA-256 Tool</a>
-          </p>
+        <!-- Image Resizer & Compressor -->
+        <article
+          class="carda tool-card"
+          data-category="productivity"
+          role="article"
+        >
+          <div class="tool-icon" aria-hidden="true">
+            <i class="fas fa-image" aria-hidden="true"></i>
+          </div>
+          <div class="tool-content">
+            <h3 class="tool-title">Image Resizer &amp; Compressor</h3>
+            <p class="muted">
+              Resize and compress images (JPG/PNG/WebP). Free online image
+              optimization tool.
+            </p>
+            <p class="actions">
+              <a
+                class="btn btn-primary"
+                href="/image-resizer-compressor/"
+                aria-label="Open Image Resizer and Compressor"
+              >
+                Open Image Resizer
+              </a>
+              <a class="tool-link" href="/image-resizer-compressor/">
+                Learn more <i class="fas fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </p>
+          </div>
         </article>
 
-        <article class="card tool-card" data-category="productivity">
-          <h2>Image Resizer &amp; Compressor</h2>
-          <p class="muted">
-            Resize and compress images (JPG/PNG/WebP). Free online image
-            optimization tool.
-          </p>
-          <p>
-            <a class="btn btn-primary" href="/image-resizer-compressor/"
-              >Open Image Resizer</a
-            >
-          </p>
+        <!-- Color Picker & Contrast -->
+        <article
+          class="carda tool-card"
+          data-category="productivity"
+          role="article"
+        >
+          <div class="tool-icon" aria-hidden="true">
+            <i class="fas fa-eye-dropper" aria-hidden="true"></i>
+          </div>
+          <div class="tool-content">
+            <h3 class="tool-title">Color Picker &amp; Contrast</h3>
+            <p class="muted">
+              Check WCAG contrast between colors. Free color picker and
+              accessibility contrast checker.
+            </p>
+            <p class="actions">
+              <a
+                class="btn btn-primary"
+                href="/color-picker-contrast/"
+                aria-label="Open Color Picker and Contrast Checker"
+              >
+                Open Contrast Checker
+              </a>
+              <a class="tool-link" href="/color-picker-contrast/">
+                Learn more <i class="fas fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </p>
+          </div>
         </article>
 
-        <article class="card tool-card" data-category="productivity">
-          <h2>Color Picker &amp; Contrast</h2>
-          <p class="muted">
-            Check WCAG contrast between colors. Free color picker and
-            accessibility contrast checker.
-          </p>
-          <p>
-            <a class="btn btn-primary" href="/color-picker-contrast/"
-              >Open Contrast Checker</a
-            >
-          </p>
+        <!-- Stopwatch & Countdown -->
+        <article
+          class="carda tool-card"
+          data-category="productivity"
+          role="article"
+        >
+          <div class="tool-icon" aria-hidden="true">
+            <i class="fas fa-stopwatch" aria-hidden="true"></i>
+          </div>
+          <div class="tool-content">
+            <h3 class="tool-title">Stopwatch &amp; Countdown</h3>
+            <p class="muted">
+              Track time with stopwatch or countdown. Free online timer tools
+              for productivity.
+            </p>
+            <p class="actions">
+              <a
+                class="btn btn-primary"
+                href="/stopwatch-countdown/"
+                aria-label="Open Stopwatch and Countdown"
+              >
+                Open Stopwatch
+              </a>
+              <a class="tool-link" href="/stopwatch-countdown/">
+                Learn more <i class="fas fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </p>
+          </div>
         </article>
 
-        <article class="card tool-card" data-category="productivity">
-          <h2>Stopwatch &amp; Countdown</h2>
-          <p class="muted">
-            Track time with stopwatch or countdown. Free online timer tools for
-            productivity.
-          </p>
-          <p>
-            <a class="btn btn-primary" href="/stopwatch-countdown/"
-              >Open Stopwatch</a
-            >
-          </p>
+        <!-- Quick Notes -->
+        <article
+          class="carda tool-card"
+          data-category="productivity"
+          role="article"
+        >
+          <div class="tool-icon" aria-hidden="true">
+            <i class="fas fa-sticky-note" aria-hidden="true"></i>
+          </div>
+          <div class="tool-content">
+            <h3 class="tool-title">Quick Notes</h3>
+            <p class="muted">
+              Save notes in your browser (localStorage). Free online notepad for
+              quick notes.
+            </p>
+            <p class="actions">
+              <a
+                class="btn btn-primary"
+                href="/quick-notes/"
+                aria-label="Open Quick Notes"
+              >
+                Open Notes
+              </a>
+              <a class="tool-link" href="/quick-notes/">
+                Learn more <i class="fas fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </p>
+          </div>
         </article>
 
-        <article class="card tool-card" data-category="productivity">
-          <h2>Quick Notes</h2>
-          <p class="muted">
-            Save notes in your browser (localStorage). Free online notepad for
-            quick notes.
-          </p>
-          <p><a class="btn btn-primary" href="/quick-notes/">Open Notes</a></p>
-        </article>
-
-        <article class="card tool-card" data-category="developers">
-          <h2>JSON Formatter</h2>
-          <p class="muted">
-            Format, minify, and validate JSON. Free JSON formatter and validator
-            for developers.
-          </p>
-          <p>
-            <a class="btn btn-primary" href="/json-formatter/"
-              >Open JSON Formatter</a
-            >
-          </p>
+        <!-- JSON Formatter -->
+        <article
+          class="carda tool-card"
+          data-category="developers"
+          role="article"
+        >
+          <div class="tool-icon" aria-hidden="true">
+            <i class="fas fa-file-code" aria-hidden="true"></i>
+          </div>
+          <div class="tool-content">
+            <h3 class="tool-title">JSON Formatter</h3>
+            <p class="muted">
+              Format, minify, and validate JSON. Free JSON formatter and
+              validator for developers.
+            </p>
+            <p class="actions">
+              <a
+                class="btn btn-primary"
+                href="/json-formatter/"
+                aria-label="Open JSON Formatter"
+              >
+                Open JSON Formatter
+              </a>
+              <a class="tool-link" href="/json-formatter/">
+                Learn more <i class="fas fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </p>
+          </div>
         </article>
       </section>
 
