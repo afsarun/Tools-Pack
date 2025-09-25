@@ -406,39 +406,278 @@
         <canvas id="c" style="display: none"></canvas>
       </article>
 
+      <!-- Image Resizer & Compressor: Details & Rules -->
+      <article class="card" id="image-details">
+        <h2>Image Resizing & Compression Basics</h2>
+
+        <div class="image-grid">
+          <div class="image-section">
+            <h3>What this tool can do</h3>
+            <ul>
+              <li>
+                <strong>Resize</strong> by width/height (keeps aspect ratio)
+              </li>
+              <li>
+                <strong>Compress</strong> JPEG/WebP with adjustable quality
+              </li>
+              <li><strong>Convert</strong> between PNG • JPEG • WebP</li>
+              <li><strong>Auto-rotate</strong> based on EXIF orientation</li>
+              <li><strong>Batch</strong> multiple images (drag &amp; drop)</li>
+            </ul>
+            <p class="small muted">
+              All processing is local—no uploads. Great for privacy and speed.
+            </p>
+          </div>
+
+          <div class="image-section">
+            <h3>Inputs</h3>
+            <ul>
+              <li><strong>Files:</strong> PNG, JPEG, WebP (static)</li>
+              <li>
+                <strong>Target size:</strong> max width/height or exact size
+              </li>
+              <li>
+                <strong>Quality:</strong> 1–100 (mapped to 0.01–1.0 for
+                encoders)
+              </li>
+              <li>
+                <strong>Format:</strong> PNG (lossless, alpha) • JPEG (lossy) •
+                WebP (lossy/lossless)
+              </li>
+            </ul>
+          </div>
+
+          <div class="image-section">
+            <h3>Output characteristics</h3>
+            <ul>
+              <li>
+                <strong>Transparency:</strong> Keep alpha with PNG/WebP; JPEG
+                fills transparent areas with a background color
+              </li>
+              <li><strong>Color space:</strong> sRGB canvas output</li>
+              <li>
+                <strong>Orientation:</strong> EXIF respected (auto-rotate) where
+                supported
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Contain vs. Cover</h3>
+        <ul>
+          <li>
+            <strong>Contain:</strong> fit inside the box, no cropping (default)
+          </li>
+          <li>
+            <strong>Cover:</strong> fill the box entirely; crops overflow (good
+            for thumbnails)
+          </li>
+        </ul>
+      </article>
+
       <!-- How to use -->
-      <article class="card" id="how-to-use">
+      <article class="card" id="how-to-use-image">
         <h2>How to use</h2>
         <ol>
+          <li>Drag &amp; drop images or use <strong>Select Files</strong>.</li>
           <li>
-            Click <strong>Upload</strong> and choose an image (JPG/PNG/WebP).
+            Choose <strong>target size</strong> (e.g., 1600 px max width) and
+            <strong>format</strong> (WebP/JPEG/PNG).
           </li>
           <li>
-            Enter new <strong>W/H</strong>. Keep <em>Keep aspect</em> on for
-            proportional resize.
+            Set <strong>quality</strong> (e.g., 80 for JPEG/WebP). PNG ignores
+            quality for lossless output.
           </li>
           <li>
-            Select <strong>Format</strong> (JPEG/PNG/WebP). For smaller files,
-            prefer <strong>JPEG/WebP</strong>.
+            Pick <strong>contain</strong> for safe fit or
+            <strong>cover</strong> to crop-fill thumbnails.
           </li>
           <li>
-            If JPEG/WebP, adjust <strong>Quality</strong> (lower = smaller
-            file).
-          </li>
-          <li>
-            Click <strong>Resize &amp; Download</strong> to save the result.
+            Click <strong>Convert</strong>, then <strong>Download</strong> your
+            optimized image(s).
           </li>
         </ol>
+
         <h3>Tips</h3>
         <ul>
           <li>
-            <strong>PNG ignores Quality.</strong> Use JPEG/WebP to compress
-            more.
+            <strong>WebP</strong> often yields the smallest files with good
+            quality.
           </li>
-          <li>Large downsizing gives the biggest size reduction.</li>
-          <li>This tool runs locally—great for privacy and speed.</li>
+          <li>For crisp UI assets, keep PNG or use <em>lossless WebP</em>.</li>
+          <li>
+            JPEG/WebP quality ~<strong>70–85</strong> is a good balance for
+            photos.
+          </li>
+          <li>
+            Match export size to your layout and device pixel ratio (e.g., 2×
+            for retina).
+          </li>
         </ul>
       </article>
+
+      <!-- Real-World Applications -->
+      <article class="card" id="image-applications">
+        <h2>Where to Use Resizing & Compression</h2>
+
+        <div class="applications-grid">
+          <div class="use-case">
+            <h4>📰 Blog &amp; CMS</h4>
+            <p>Hero images, responsive sizes, fast load</p>
+            <span class="badge">WebP + 1600w</span>
+          </div>
+
+          <div class="use-case">
+            <h4>🛍 E-commerce</h4>
+            <p>Product thumbnails &amp; gallery</p>
+            <span class="badge">cover 800×800</span>
+          </div>
+
+          <div class="use-case">
+            <h4>📱 App Assets</h4>
+            <p>Icons, screenshots, previews</p>
+            <span class="badge">PNG / lossless</span>
+          </div>
+
+          <div class="use-case">
+            <h4>📧 Email</h4>
+            <p>Keep under tight size limits</p>
+            <span class="badge">JPEG q=70</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Best Practices -->
+      <article class="card" id="image-tips">
+        <h2>Image Optimization Best Practices</h2>
+
+        <div class="tip">
+          <h3>🖼 Choose the right format</h3>
+          <p>
+            Photos → JPEG/WebP. Graphics with flat colors/transparency → PNG or
+            lossless WebP.
+          </p>
+        </div>
+
+        <div class="tip">
+          <h3>📐 Resize before compressing</h3>
+          <p>
+            Shrinking dimensions first saves far more bytes than quality alone.
+          </p>
+        </div>
+
+        <div class="tip">
+          <h3>🧭 Respect orientation</h3>
+          <p>Use EXIF-aware decoding to avoid sideways images from phones.</p>
+        </div>
+
+        <div class="tip">
+          <h3>🔍 Check sharpness</h3>
+          <p>
+            If results look soft, try exact pixel sizes and avoid multiple
+            re-encodes.
+          </p>
+        </div>
+      </article>
+
+      <!-- Technical Implementation -->
+      <article class="card" id="image-technical">
+        <h2>Technical Implementation</h2>
+
+        <h3>Load &amp; auto-rotate with EXIF</h3>
+        <pre><code class="language-javascript">async function loadBitmap(file) {
+  // imageOrientation: 'from-image' respects EXIF when supported
+  try {
+    return await createImageBitmap(file, { imageOrientation: 'from-image' });
+  } catch {
+    // Fallback: decode via HTMLImageElement
+    const url = URL.createObjectURL(file);
+    const img = await new Promise((res, rej) =&gt; {
+      const el = new Image();
+      el.onload = () =&gt; res(el);
+      el.onerror = rej;
+      el.src = url;
+    });
+    URL.revokeObjectURL(url);
+    // Note: fallback won't auto-rotate; use an EXIF lib if you need that here
+    return img;
+  }
+}</code></pre>
+
+        <h3>Compute target size (contain/cover)</h3>
+        <pre><code class="language-javascript">function targetRect(srcW, srcH, maxW, maxH, mode = 'contain') {
+  if (!maxW &amp;&amp; !maxH) return { w: srcW, h: srcH, sx:0, sy:0, sw:srcW, sh:srcH };
+  const ar = srcW / srcH;
+  let w = maxW || Math.round((maxH || srcH) * ar);
+  let h = maxH || Math.round(w / ar);
+
+  if (mode === 'contain') {
+    const scale = Math.min((maxW||w)/srcW, (maxH||h)/srcH);
+    w = Math.round(srcW * scale); h = Math.round(srcH * scale);
+    return { w, h, sx:0, sy:0, sw:srcW, sh:srcH };
+  } else { // cover: fill box, crop center
+    const scale = Math.max((maxW||w)/srcW, (maxH||h)/srcH);
+    const sw = Math.round((maxW||w) / scale);
+    const sh = Math.round((maxH||h) / scale);
+    const sx = Math.floor((srcW - sw) / 2);
+    const sy = Math.floor((srcH - sh) / 2);
+    return { w: maxW||w, h: maxH||h, sx, sy, sw, sh };
+  }
+}</code></pre>
+
+        <h3>Resize &amp; encode (PNG/JPEG/WebP)</h3>
+        <pre><code class="language-javascript">async function resizeAndEncode(bitmap, {
+  maxWidth = 1600, maxHeight = 1600, mode = 'contain',
+  format = 'image/webp', quality = 0.8, background = '#ffffff'
+} = {}) {
+  const { width: sw, height: sh } = bitmap;
+  const { w, h, sx, sy, sw: cw, sh: ch } =
+    targetRect(sw, sh, maxWidth, maxHeight, mode);
+
+  // Pick canvas type: alpha for PNG/WebP, opaque for JPEG
+  const needsAlpha = format !== 'image/jpeg';
+  const canvas = document.createElement('canvas');
+  canvas.width = w; canvas.height = h;
+  const ctx = canvas.getContext('2d', { alpha: needsAlpha, desynchronized: true });
+
+  if (!needsAlpha) {
+    // Fill background for JPEG (since it has no alpha)
+    ctx.fillStyle = background; ctx.fillRect(0, 0, w, h);
+  }
+
+  // High-quality scaling (modern browsers)
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = 'high';
+
+  // Draw cropped source into target
+  ctx.drawImage(bitmap, sx, sy, cw, ch, 0, 0, w, h);
+
+  // Encode
+  const blob = await new Promise(res =&gt; canvas.toBlob(res, format, quality));
+  return blob; // Blob you can download or preview
+}</code></pre>
+
+        <h3>Download helper</h3>
+        <pre><code class="language-javascript">function downloadBlob(blob, filename) {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = filename; a.click();
+  URL.revokeObjectURL(url);
+}</code></pre>
+
+        <h3>Example: wire it up</h3>
+        <pre><code class="language-javascript">async function processFile(file, opts) {
+  const bmp = await loadBitmap(file);
+  const blob = await resizeAndEncode(bmp, opts);
+  const ext = ({'image/jpeg':'jpg','image/png':'png','image/webp':'webp'})[opts.format] || 'bin';
+  downloadBlob(blob, (file.name.replace(/\.[^.]+$/,'') + '.' + ext));
+}
+
+// Usage:
+// processFile(input.files[0], { maxWidth: 1600, format: 'image/webp', quality: 0.8 });
+</code></pre>
+      </article>
+
       <section class="faq-section card">
         <h2 class="faq-title">Image Compressor – Frequently Asked Questions</h2>
 

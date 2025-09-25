@@ -402,7 +402,211 @@
           and leave <em>As of</em> blank.
         </p>
       </section>
+      <article class="card" id="date-details">
+        <h2>Date Calculation Basics</h2>
 
+        <div class="date-grid">
+          <div class="date-section">
+            <h3>What this tool can do</h3>
+            <ul>
+              <li><strong>Add/Subtract days</strong> from a given date</li>
+              <li>
+                <strong>Find difference</strong> between two dates (days or
+                Y/M/D)
+              </li>
+              <li><strong>Jump to</strong> next/previous weekday</li>
+              <li>
+                <strong>Business days</strong> between dates (skip weekends;
+                optional holidays)
+              </li>
+            </ul>
+            <p class="small muted">
+              Uses the civil calendar with real month lengths and leap years.
+            </p>
+          </div>
+
+          <div class="date-section">
+            <h3>Inputs</h3>
+            <ul>
+              <li>
+                <strong>Start date:</strong> e.g., <code>YYYY-MM-DD</code>
+              </li>
+              <li>
+                <strong>Days to add/subtract:</strong> integer (negative to
+                subtract)
+              </li>
+              <li><strong>End date:</strong> for difference mode</li>
+              <li><strong>Time zone:</strong> your local time is used</li>
+            </ul>
+          </div>
+
+          <div class="date-section">
+            <h3>Edge cases</h3>
+            <ul>
+              <li>Leap years (Feb&nbsp;29) handled correctly</li>
+              <li>End-of-month transitions (e.g., Jan&nbsp;31 → Feb)</li>
+              <li>No data leaves your browser (local-only)</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Difference “in Y/M/D” vs “total days”</h3>
+        <ul>
+          <li>
+            <strong>Total days</strong>: exact day count between two dates
+          </li>
+          <li>
+            <strong>Y/M/D</strong>: calendar-accurate years → months → days, not
+            just days ÷ 365
+          </li>
+        </ul>
+      </article>
+      <!-- How to use -->
+      <article class="card" id="how-to-use-date">
+        <h2>How to use</h2>
+        <ol>
+          <li>Choose a <strong>mode</strong>: Add/Subtract or Difference.</li>
+          <li>
+            For <em>Add/Subtract</em>: enter a <strong>Start date</strong> and a
+            <strong>number of days</strong> (negative to subtract), then press
+            <strong>Calculate</strong>.
+          </li>
+          <li>
+            For <em>Difference</em>: enter <strong>Start</strong> and
+            <strong>End</strong> dates to see <em>total days</em> and
+            <em>Y/M/D</em>.
+          </li>
+          <li>
+            (Optional) Enable <strong>Business days</strong> to skip weekends
+            and supply holidays.
+          </li>
+        </ol>
+
+        <h3>Tips</h3>
+        <ul>
+          <li>
+            Prefer ISO format (<code>YYYY-MM-DD</code>) to avoid locale
+            confusion.
+          </li>
+          <li>
+            Business days mode excludes Sat/Sun; you can add holiday dates to
+            exclude them too.
+          </li>
+          <li>Time-of-day is ignored; calculations use local midnight.</li>
+        </ul>
+      </article>
+
+      <!-- Real-World Applications -->
+      <article class="card" id="date-applications">
+        <h2>Where to Use Date Calculations</h2>
+
+        <div class="applications-grid">
+          <div class="use-case">
+            <h4>🗓 Scheduling</h4>
+            <p>Deadlines, reminders, project offsets</p>
+            <span class="badge">+ / − days</span>
+          </div>
+
+          <div class="use-case">
+            <h4>🏢 Workdays</h4>
+            <p>Lead time, SLAs, ticket aging</p>
+            <span class="badge">business days</span>
+          </div>
+
+          <div class="use-case">
+            <h4>📈 Reporting</h4>
+            <p>Durations between milestones</p>
+            <span class="badge">total days</span>
+          </div>
+
+          <div class="use-case">
+            <h4>⚖️ Compliance</h4>
+            <p>Filing windows, eligibility periods</p>
+            <span class="badge">Y/M/D diff</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Date Tips -->
+      <article class="card" id="date-tips">
+        <h2>Date Calculation Best Practices</h2>
+
+        <div class="tip">
+          <h3>📅 Validate inputs</h3>
+          <p>
+            Reject impossible dates (e.g., <code>2025-02-30</code>) for accurate
+            results.
+          </p>
+        </div>
+
+        <div class="tip">
+          <h3>🧮 Choose the right metric</h3>
+          <p>
+            Use <em>total days</em> for raw durations; use <em>Y/M/D</em> for
+            calendar-friendly periods.
+          </p>
+        </div>
+
+        <div class="tip">
+          <h3>🏖 Exclude holidays in business mode</h3>
+          <p>
+            Provide an array of holiday dates to skip them along with weekends.
+          </p>
+        </div>
+      </article>
+
+      <!-- Technical Implementation -->
+      <article class="card" id="date-technical">
+        <h2>Technical Implementation</h2>
+
+        <h3>Add/Subtract days</h3>
+        <pre><code class="language-javascript">function addDays(iso, days) {
+  const [y, m, d] = iso.split('-').map(Number);
+  const dt = new Date(y, m - 1, d);
+  dt.setDate(dt.getDate() + Number(days || 0));
+  return dt.toISOString().slice(0, 10);
+}</code></pre>
+
+        <h3>Total days between two dates</h3>
+        <pre><code class="language-javascript">function diffDays(fromISO, toISO) {
+  const a = new Date(fromISO + 'T00:00:00');
+  const b = new Date(toISO + 'T00:00:00');
+  const MS = 24 * 60 * 60 * 1000;
+  return Math.round((b - a) / MS);
+}</code></pre>
+
+        <h3>Calendar-accurate Y/M/D difference</h3>
+        <pre><code class="language-javascript">function diffYMD(fromISO, toISO) {
+  const [fy, fm, fd] = fromISO.split('-').map(Number);
+  const [ty, tm, td] = toISO.split('-').map(Number);
+
+  let y = ty - fy, m = tm - fm, d = td - fd;
+
+  if (d &lt; 0) {
+    const prevMonth = new Date(ty, tm - 1, 0); // last day of previous month
+    d += prevMonth.getDate();
+    m -= 1;
+  }
+  if (m &lt; 0) { m += 12; y -= 1; }
+  return { years: y, months: m, days: d };
+}</code></pre>
+
+        <h3>Business days between (skip weekends, optional holidays)</h3>
+        <pre><code class="language-javascript">function businessDaysBetween(fromISO, toISO, holidays = []) {
+  const holi = new Set(holidays);
+  let cur = new Date(fromISO + 'T00:00:00');
+  const end = new Date(toISO + 'T00:00:00');
+  let count = 0;
+
+  while (cur &lt;= end) {
+    const iso = cur.toISOString().slice(0,10);
+    const day = cur.getDay(); // 0 Sun ... 6 Sat
+    if (day !== 0 &amp;&amp; day !== 6 &amp;&amp; !holi.has(iso)) count++;
+    cur.setDate(cur.getDate() + 1);
+  }
+  return count;
+}</code></pre>
+      </article>
       <section class="faq-section card">
         <h2 class="faq-title">Days Calculator – Frequently Asked Questions</h2>
 

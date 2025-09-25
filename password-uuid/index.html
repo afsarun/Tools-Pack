@@ -326,30 +326,302 @@
         </p>
       </article>
 
-      <!-- How to use (updated for Password Generator) -->
-      <article class="card" id="how-to-use">
-        <h2>How to use</h2>
-        <ol>
-          <li>Choose a <strong>Length</strong> with the slider (16–128).</li>
-          <li>
-            Toggle the character sets you want: <strong>a–z</strong>,
-            <strong>A–Z</strong>, <strong>0–9</strong>, and
-            <strong>symbols</strong>.
-          </li>
-          <li>
-            Click <strong>Generate</strong> to create a new random password.
-          </li>
-          <li>Click <strong>Copy</strong> to copy it to your clipboard.</li>
-          <li>Regenerate as needed until you’re satisfied.</li>
-        </ol>
-        <h3>Security tips</h3>
+      <!-- Password & UUID Generator: Details & Rules -->
+      <article class="card" id="password-uuid-details">
+        <h2>Password & UUID Basics</h2>
+
+        <div class="pw-grid">
+          <div class="pw-section">
+            <h3>What this tool can do</h3>
+            <ul>
+              <li>
+                <strong>Generate passwords</strong> with custom length &
+                character sets
+              </li>
+              <li>
+                <strong>Create passphrases</strong> (multi-word,
+                separator-based)
+              </li>
+              <li>
+                <strong>Generate UUID v4</strong> (RFC&nbsp;4122 compliant)
+              </li>
+              <li>
+                <strong>Format options</strong> (uppercase, exclude ambiguous,
+                etc.)
+              </li>
+            </ul>
+            <p class="small muted">
+              All generation happens locally using the browser’s cryptographic
+              PRNG.
+            </p>
+          </div>
+
+          <div class="pw-section">
+            <h3>Password options</h3>
+            <ul>
+              <li><strong>Length:</strong> 8–128 (recommended ≥ 12)</li>
+              <li><strong>Character sets:</strong> a–z, A–Z, 0–9, symbols</li>
+              <li>
+                <strong>Exclude ambiguous:</strong> l, I, 1, O, 0, { }, [ ], (
+                ), /, \, etc.
+              </li>
+              <li>
+                <strong>Guarantee inclusion:</strong> ensure each selected set
+                appears at least once
+              </li>
+            </ul>
+          </div>
+
+          <div class="pw-section">
+            <h3>UUID v4 specifics</h3>
+            <ul>
+              <li>
+                Random version set to <code>4</code>; variant bits
+                <code>10</code>
+              </li>
+              <li>
+                Canonical format: <code>8-4-4-4-12</code> hex digits (lowercase)
+              </li>
+              <li>
+                Example: <code>f47ac10b-58cc-4372-a567-0e02b2c3d479</code>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Strength & Entropy</h3>
         <ul>
-          <li>Prefer 20+ characters for important accounts.</li>
-          <li>Use a password manager to store passwords securely.</li>
           <li>
-            If a site blocks certain symbols, disable symbols and regenerate.
+            <strong>Entropy (bits)</strong> ≈
+            <code>length × log2(characterSetSize)</code>
+          </li>
+          <li>
+            Example: 16 chars from 62-symbol set → ~<code
+              >16 × log2(62) ≈ 95.3 bits</code
+            >
+          </li>
+          <li>
+            Prefer longer passwords or multi-word passphrases for usability and
+            strength
           </li>
         </ul>
+      </article>
+
+      <!-- How to use -->
+      <article class="card" id="how-to-use-password-uuid">
+        <h2>How to use</h2>
+        <ol>
+          <li>
+            Choose <strong>Password</strong> or <strong>UUID v4</strong> mode.
+          </li>
+          <li>
+            For passwords: pick <strong>length</strong>, select
+            <strong>character sets</strong>, and (optional) exclude ambiguous
+            characters.
+          </li>
+          <li>
+            Click <strong>Generate</strong>. Copy the result or generate again
+            for a new one.
+          </li>
+          <li>
+            For passphrases: set <strong>word count</strong> and a
+            <strong>separator</strong> (e.g., <code>-</code> or <code>·</code>).
+          </li>
+        </ol>
+
+        <h3>Tips</h3>
+        <ul>
+          <li>
+            Use a <strong>password manager</strong> to store generated passwords
+            securely.
+          </li>
+          <li>
+            Enable <strong>guarantee inclusion</strong> to avoid missing a
+            selected character class.
+          </li>
+          <li>
+            UUIDs are identifiers, <em>not</em> secrets—do not use UUIDs as
+            passwords.
+          </li>
+        </ul>
+      </article>
+
+      <!-- Real-World Applications -->
+      <article class="card" id="password-uuid-applications">
+        <h2>Where to Use Generated Values</h2>
+
+        <div class="applications-grid">
+          <div class="use-case">
+            <h4>🔐 Accounts</h4>
+            <p>Unique passwords per site/app</p>
+            <span class="badge">manager-friendly</span>
+          </div>
+
+          <div class="use-case">
+            <h4>🗂 API Keys</h4>
+            <p>Random tokens and secrets</p>
+            <span class="badge">high entropy</span>
+          </div>
+
+          <div class="use-case">
+            <h4>🧩 Identifiers</h4>
+            <p>UUIDs for database records/messages</p>
+            <span class="badge">RFC 4122</span>
+          </div>
+
+          <div class="use-case">
+            <h4>👥 Temporary Links</h4>
+            <p>Non-guessable slugs</p>
+            <span class="badge">random IDs</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Best Practices -->
+      <article class="card" id="password-uuid-tips">
+        <h2>Password & UUID Best Practices</h2>
+
+        <div class="tip">
+          <h3>🔑 Prefer length over symbols</h3>
+          <p>
+            Longer passwords (14–20+) are usually stronger and easier to manage
+            than short, complex ones.
+          </p>
+        </div>
+
+        <div class="tip">
+          <h3>🧠 Passphrases for memorability</h3>
+          <p>
+            4–6 random words with a separator (e.g.,
+            <code>drift-lamp-cobalt-river</code>) give high entropy with better
+            recall.
+          </p>
+        </div>
+
+        <div class="tip">
+          <h3>♻️ Don’t reuse passwords</h3>
+          <p>
+            Use unique passwords per service; a password manager makes this
+            simple.
+          </p>
+        </div>
+
+        <div class="tip">
+          <h3>🚫 UUIDs aren’t secrets</h3>
+          <p>
+            They’re great as identifiers but provide no access control on their
+            own.
+          </p>
+        </div>
+      </article>
+
+      <!-- Technical Implementation -->
+      <article class="card" id="password-uuid-technical">
+        <h2>Technical Implementation</h2>
+
+        <h3>Crypto-secure random integers (no modulo bias)</h3>
+        <pre><code class="language-javascript">function cryptoRandomInt(max) {
+  // returns integer in [0, max) using rejection sampling
+  if (max &lt;= 0 || max &gt; 2**32) throw new Error("invalid max");
+  const buf = new Uint32Array(1);
+  const limit = Math.floor(2**32 / max) * max;
+  while (true) {
+    crypto.getRandomValues(buf);
+    const x = buf[0];
+    if (x &lt; limit) return x % max;
+  }
+}</code></pre>
+
+        <h3>Password generator with guaranteed inclusion</h3>
+        <pre><code class="language-javascript">const SETS = {
+  lower: "abcdefghijklmnopqrstuvwxyz",
+  upper: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+  digit: "0123456789",
+  symbol: "!@#$%^&*()-_=+[]{};:,./?~"
+};
+const AMBIGUOUS = /[Il1O0{}\[\]()\/\\]/g;
+
+function generatePassword({
+  length = 16,
+  use = { lower:true, upper:true, digit:true, symbol:false },
+  excludeAmbiguous = false,
+  ensureEachSet = true
+} = {}) {
+  // Build master alphabet
+  let sets = [];
+  if (use.lower) sets.push(SETS.lower);
+  if (use.upper) sets.push(SETS.upper);
+  if (use.digit) sets.push(SETS.digit);
+  if (use.symbol) sets.push(SETS.symbol);
+  let alphabet = sets.join("");
+  if (excludeAmbiguous) {
+    alphabet = alphabet.replace(AMBIGUOUS, "");
+    sets = sets.map(s =&gt; s.replace(AMBIGUOUS, ""));
+  }
+  if (alphabet.length &lt; 2) throw new Error("alphabet too small");
+
+  // Seed with one from each selected set (if requested)
+  let chars = [];
+  if (ensureEachSet) {
+    sets.forEach(s =&gt; {
+      if (!s) return;
+      chars.push(s[cryptoRandomInt(s.length)]);
+    });
+  }
+
+  // Fill the rest
+  while (chars.length &lt; length) {
+    chars.push(alphabet[cryptoRandomInt(alphabet.length)]);
+  }
+
+  // Shuffle (Fisher–Yates)
+  for (let i = chars.length - 1; i &gt; 0; i--) {
+    const j = cryptoRandomInt(i + 1);
+    [chars[i], chars[j]] = [chars[j], chars[i]];
+  }
+  return chars.slice(0, length).join("");
+}</code></pre>
+
+        <h3>Entropy estimate (bits)</h3>
+        <pre><code class="language-javascript">function entropyBits(length, alphabetSize) {
+  return length * Math.log2(alphabetSize);
+}
+// Example: entropyBits(16, 62) ~ 95.3</code></pre>
+
+        <h3>UUID v4 generator (RFC 4122)</h3>
+        <pre><code class="language-javascript">function uuidv4() {
+  const b = new Uint8Array(16);
+  crypto.getRandomValues(b);
+  // Set version (4) and variant (10)
+  b[6] = (b[6] &amp; 0x0f) | 0x40;
+  b[8] = (b[8] &amp; 0x3f) | 0x80;
+  const hex = [...b].map(x =&gt; x.toString(16).padStart(2, "0"));
+  return [
+    hex.slice(0, 4).join(""),
+    hex.slice(4, 6).join(""),
+    hex.slice(6, 8).join(""),
+    hex.slice(8,10).join(""),
+    hex.slice(10).join("")
+  ].join("-");
+}</code></pre>
+
+        <h3>UUID v4 validation (regex)</h3>
+        <pre><code class="language-javascript">const UUID_V4_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+function isUuidV4(s){ return UUID_V4_RE.test(s); }</code></pre>
+
+        <h3>Copy helper (safe fallback)</h3>
+        <pre><code class="language-javascript">async function copyText(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch {
+    const ta = document.createElement("textarea");
+    ta.value = text; document.body.appendChild(ta);
+    ta.select(); document.execCommand("copy");
+    document.body.removeChild(ta);
+    return true;
+  }
+}</code></pre>
       </article>
 
       <!-- FAQ (visible content now matches the JSON-LD above) -->

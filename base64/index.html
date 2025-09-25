@@ -219,45 +219,258 @@
         <div class="muted" id="tip" aria-live="polite"></div>
       </article>
 
+      <!-- Base64 Tools: Details & Rules -->
+      <article class="card" id="base64-details">
+        <h2>Base64 Basics</h2>
+
+        <div class="base64-grid">
+          <div class="base64-section">
+            <h3>What this tool can do</h3>
+            <ul>
+              <li><strong>Encode</strong> text or files to Base64</li>
+              <li><strong>Decode</strong> Base64 back to text or files</li>
+              <li><strong>URL-safe Base64</strong> (Base64URL) conversion</li>
+              <li><strong>Data URLs</strong> for images and other assets</li>
+            </ul>
+            <p class="small muted">
+              All processing happens locally in your browser; nothing is
+              uploaded.
+            </p>
+          </div>
+
+          <div class="base64-section">
+            <h3>Inputs</h3>
+            <ul>
+              <li>
+                <strong>Text:</strong> UTF-8 safe (emoji and non-Latin
+                supported)
+              </li>
+              <li>
+                <strong>Files:</strong> drag &amp; drop or file picker (images,
+                PDFs, etc.)
+              </li>
+              <li>
+                <strong>Options:</strong> URL-safe variant, strip/add padding,
+                line wrap
+              </li>
+            </ul>
+          </div>
+
+          <div class="base64-section">
+            <h3>Standards & variants</h3>
+            <ul>
+              <li>
+                <strong>Standard Base64:</strong> alphabet A–Z a–z 0–9
+                <code>+</code> <code>/</code>, padding <code>=</code>
+              </li>
+              <li>
+                <strong>Base64URL:</strong> replace <code>+</code> →
+                <code>-</code>, <code>/</code> → <code>_</code>; padding often
+                omitted
+              </li>
+              <li>
+                <strong>MIME wrap:</strong> optional line breaks every 76 chars;
+                whitespace is ignored by decoders
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>What counts as “valid Base64”?</h3>
+        <ul>
+          <li>Characters from the selected alphabet (standard or URL-safe)</li>
+          <li>
+            Optional <code>=</code> padding (0–2 chars) to a length divisible by
+            4
+          </li>
+          <li>
+            Whitespace/newlines are allowed and ignored by robust decoders
+          </li>
+        </ul>
+      </article>
+
       <!-- How to use -->
-      <article class="card" id="how-to-use">
+      <article class="card" id="how-to-use-base64">
         <h2>How to use</h2>
         <ol>
           <li>
-            Paste <strong>text</strong> to encode or a
-            <strong>Base64 string</strong> to decode into the top box.
+            Paste text or drop a file to <strong>Encode</strong> to Base64 (or
+            select <strong>Decode</strong> for the reverse).
           </li>
           <li>
-            Click <strong>Encode</strong> to get Base64, or
-            <strong>Decode</strong> to get text. Shortcut: press
-            <kbd>Enter</kbd> to Encode, <kbd>Shift</kbd>+<kbd>Enter</kbd> to
-            Decode.
+            Toggle <strong>URL-safe</strong>, <strong>Padding</strong>, or
+            <strong>Line wrap</strong> options as needed.
           </li>
-          <li>Use <strong>Copy output</strong> to copy the result.</li>
+          <li>
+            Copy the result, or for files use <strong>Download</strong> to save
+            the decoded blob.
+          </li>
+          <li>
+            For images, select <strong>Data URL</strong> to prepend
+            <code>data:&lt;mime&gt;;base64,</code> automatically.
+          </li>
         </ol>
 
         <h3>Tips</h3>
         <ul>
           <li>
-            Unicode/emoji-safe: uses
-            <code>TextEncoder</code>/<code>TextDecoder</code>, so non-ASCII
-            works correctly.
+            If your Base64 lacks padding, enable “auto-pad” or add
+            <code>=</code> to reach length % 4 == 0.
           </li>
           <li>
-            URL-safe variant: replace <code>+</code> → <code>-</code> and
-            <code>/</code> → <code>_</code>; padding <code>=</code> may be
-            trimmed.
+            “URL-safe” mode is required for JWTs, signed URLs, and some APIs.
           </li>
           <li>
-            Decoder accepts whitespace, URL-safe characters, and auto-adds
-            missing padding.
+            Large files use memory; your browser limits practical size (hundreds
+            of MB may be slow).
           </li>
-          <li>
-            For Data URLs, strip the prefix like
-            <code>data:...;base64,</code> before decoding.
-          </li>
-          <li>Works offline once loaded; no data leaves your browser.</li>
         </ul>
+      </article>
+
+      <!-- Real-World Applications -->
+      <article class="card" id="base64-applications">
+        <h2>Where to Use Base64</h2>
+
+        <div class="applications-grid">
+          <div class="use-case">
+            <h4>🖼 Images &amp; Icons</h4>
+            <p>Embed small assets as Data URLs</p>
+            <span class="badge">data:*;base64</span>
+          </div>
+
+          <div class="use-case">
+            <h4>🔐 Tokens</h4>
+            <p>JWT parts use Base64URL (no padding)</p>
+            <span class="badge">Base64URL</span>
+          </div>
+
+          <div class="use-case">
+            <h4>📦 Transport</h4>
+            <p>Encode binary in JSON or text protocols</p>
+            <span class="badge">binary → text</span>
+          </div>
+
+          <div class="use-case">
+            <h4>🧪 Debugging</h4>
+            <p>Inspect or fix malformed Base64 strings</p>
+            <span class="badge">validate</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Base64 Tips -->
+      <article class="card" id="base64-tips">
+        <h2>Base64 Best Practices</h2>
+
+        <div class="tip">
+          <h3>🔤 Use UTF-8 for text</h3>
+          <p>
+            Always encode/decode strings via <code>TextEncoder</code>/<code
+              >TextDecoder</code
+            >
+            (avoids atob/btoa Unicode issues).
+          </p>
+        </div>
+
+        <div class="tip">
+          <h3>🔁 Strip or add padding as required</h3>
+          <p>
+            APIs differ: standard Base64 expects <code>=</code>, while Base64URL
+            often removes it.
+          </p>
+        </div>
+
+        <div class="tip">
+          <h3>🧹 Ignore whitespace</h3>
+          <p>
+            Robust decoders should remove spaces/newlines before processing.
+          </p>
+        </div>
+
+        <div class="tip">
+          <h3>📏 Prefer small embeds</h3>
+          <p>
+            Data URLs bloat HTML/CSS if large—inline only tiny assets (e.g.,
+            &lt;10–20&nbsp;KB).
+          </p>
+        </div>
+      </article>
+
+      <!-- Technical Implementation -->
+      <article class="card" id="base64-technical">
+        <h2>Technical Implementation</h2>
+
+        <h3>Text ⇄ Base64 (UTF-8 safe)</h3>
+        <pre><code class="language-javascript">const enc = new TextEncoder();
+const dec = new TextDecoder();
+
+/** Encode a JS string to Base64 (standard alphabet, with =) */
+function textToBase64(str) {
+  const bytes = enc.encode(str);
+  let bin = "";
+  bytes.forEach(b =&gt; bin += String.fromCharCode(b));
+  return btoa(bin); // standard Base64 with padding
+}
+
+/** Decode Base64 to JS string (tolerates whitespace) */
+function base64ToText(b64) {
+  b64 = b64.replace(/\s+/g, "");
+  const bin = atob(b64);
+  const bytes = Uint8Array.from(bin, c =&gt; c.charCodeAt(0));
+  return dec.decode(bytes);
+}</code></pre>
+
+        <h3>Standard Base64 ⇄ Base64URL</h3>
+        <pre><code class="language-javascript">function toBase64Url(b64, trimPadding = true) {
+  let out = b64.replace(/\+/g, "-").replace(/\//g, "_");
+  return trimPadding ? out.replace(/=+$/, "") : out;
+}
+
+function fromBase64Url(b64url) {
+  let out = b64url.replace(/-/g, "+").replace(/_/g, "/");
+  // add padding if missing
+  const pad = out.length % 4;
+  if (pad) out += "=".repeat(4 - pad);
+  return out;
+}</code></pre>
+
+        <h3>File → Base64 (Data URL)</h3>
+        <pre><code class="language-javascript">function fileToDataUrl(file) {
+  return new Promise((resolve, reject) =&gt; {
+    const fr = new FileReader();
+    fr.onload = () =&gt; resolve(fr.result); // "data:&lt;mime&gt;;base64,...."
+    fr.onerror = reject;
+    fr.readAsDataURL(file);
+  });
+}</code></pre>
+
+        <h3>Base64 (or Data URL) → Blob / Download</h3>
+        <pre><code class="language-javascript">function base64ToBlob(b64, mime = "application/octet-stream") {
+  // tolerate "data:&lt;mime&gt;;base64,..." input
+  const parts = b64.split(",");
+  const pure = parts.length &gt; 1 ? parts[1] : b64;
+  const bin = atob(pure.replace(/\s+/g, ""));
+  const bytes = Uint8Array.from(bin, c =&gt; c.charCodeAt(0));
+  return new Blob([bytes], { type: mime });
+}
+
+function downloadBlob(blob, filename = "file.bin") {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url; a.download = filename; a.click();
+  URL.revokeObjectURL(url);
+}</code></pre>
+
+        <h3>Validate &amp; Normalize Base64</h3>
+        <pre><code class="language-javascript">function normalizeBase64(input, urlSafe = false) {
+  let s = input.trim().replace(/\s+/g, "");
+  if (urlSafe) s = s.replace(/-/g, "+").replace(/_/g, "/");
+  const pad = s.length % 4;
+  if (pad) s += "=".repeat(4 - pad);
+  // Basic validation: only alphabet + "="
+  if (!/^[A-Za-z0-9+/]+=*$/.test(s)) throw new Error("Invalid Base64");
+  return s;
+}</code></pre>
       </article>
 
       <section class="faq-section card">

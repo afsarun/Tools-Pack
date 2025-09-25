@@ -310,37 +310,283 @@
         ></ins>
       </div>
 
+      <!-- Unit Converter: Details & Rules -->
+      <article class="card" id="unit-details">
+        <h2>Unit Converter Basics</h2>
+
+        <div class="uc-grid">
+          <div class="uc-section">
+            <h3>What this tool can do</h3>
+            <ul>
+              <li><strong>Convert</strong> values across many categories</li>
+              <li>
+                <strong>Auto-detect</strong> units and suggest compatible
+                targets
+              </li>
+              <li><strong>Prefix-aware</strong> (k, M, G, m, μ, n…)</li>
+              <li>
+                <strong>Compound units</strong> like <code>m/s → km/h</code>
+              </li>
+            </ul>
+            <p class="small muted">
+              All calculations run locally in your browser; nothing is uploaded.
+            </p>
+          </div>
+
+          <div class="uc-section">
+            <h3>Categories</h3>
+            <ul>
+              <li><strong>Length</strong>: m, km, cm, mm, in, ft, yd, mi</li>
+              <li><strong>Mass</strong>: kg, g, mg, lb, oz, tonne</li>
+              <li><strong>Time</strong>: s, min, h, day, week</li>
+              <li><strong>Area</strong>: m², km², ft², in², acre, hectare</li>
+              <li>
+                <strong>Volume</strong>: m³, L, mL, ft³, in³, gal (US), qt
+              </li>
+              <li><strong>Speed</strong>: m/s, km/h, mph, kn</li>
+              <li><strong>Temperature</strong>: °C, °F, K</li>
+              <li><strong>Pressure</strong>: Pa, kPa, bar, atm, psi, mmHg</li>
+              <li><strong>Energy</strong>: J, kJ, Wh, kWh, cal, kcal, BTU</li>
+              <li><strong>Power</strong>: W, kW, MW, hp</li>
+              <li><strong>Frequency</strong>: Hz, kHz, MHz, GHz</li>
+              <li><strong>Data</strong>: bit/byte, kB, MB, MiB, GB, GiB</li>
+              <li><strong>Fuel economy</strong>: L/100km, mpg (US/Imp)</li>
+              <li><strong>Angle</strong>: deg, rad, grad</li>
+            </ul>
+          </div>
+
+          <div class="uc-section">
+            <h3>Output & precision</h3>
+            <ul>
+              <li>
+                <strong>Rounding:</strong> fixed decimals or significant figures
+              </li>
+              <li>
+                <strong>Scientific notation</strong> for very small/large
+                results
+              </li>
+              <li>
+                <strong>Exact ratios</strong> where possible (e.g., in → ft)
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Linear vs. Affine conversions</h3>
+        <ul>
+          <li>
+            <strong>Linear</strong> (scale only):
+            <code>y = x × factor</code> (e.g., m → ft)
+          </li>
+          <li>
+            <strong>Affine</strong> (offset + scale):
+            <code>y = (x + offset) × factor</code> (e.g., °C ↔ K, °F)
+          </li>
+        </ul>
+      </article>
+
       <!-- How to use -->
-      <article class="card" id="how-to-use">
+      <article class="card" id="how-to-use-unit">
         <h2>How to use</h2>
         <ol>
-          <li>Enter a number in the input field.</li>
           <li>
-            Select the <strong>From</strong> and <strong>To</strong> units.
+            Enter a <strong>value</strong> and choose <strong>From</strong> and
+            <strong>To</strong> units.
           </li>
           <li>
-            The result updates <strong>instantly</strong> as you type or change
-            units.
+            For compound units, use <code>·</code> or <code>*</code> and
+            <code>/</code> (e.g., <code>m/s</code>, <code>km·h^-1</code>).
           </li>
           <li>
-            Use the keyboard to move faster:
-            <kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd> between fields.
+            Pick <strong>decimals</strong> or
+            <strong>significant figures</strong> for rounding.
           </li>
           <li>
-            To reverse a conversion, just swap the dropdowns (e.g., km→m to
-            m→km).
+            Read the <strong>result</strong> instantly; copy to clipboard if
+            needed.
           </li>
         </ol>
+
         <h3>Tips</h3>
         <ul>
-          <li>No data leaves your browser. Everything runs locally.</li>
           <li>
-            Some conversions produce long decimals; we show a rounded result
-            while preserving accuracy.
+            Use <strong>SI prefixes</strong>: <code>mm</code>, <code>μm</code>,
+            <code>km</code>, <code>MG</code>…
           </li>
-          <li>Negative temperatures are supported (e.g., −10&nbsp;°C).</li>
-          <li>Works offline after the first load.</li>
+          <li>
+            Binary data units: <code>MiB</code> (2<sup>20</sup>) vs
+            <code>MB</code> (10<sup>6</sup>).
+          </li>
+          <li>
+            Temperatures require <strong>affine</strong> formulas (see below).
+          </li>
         </ul>
+      </article>
+
+      <!-- Real-World Applications -->
+      <article class="card" id="unit-applications">
+        <h2>Where to Use the Unit Converter</h2>
+
+        <div class="applications-grid">
+          <div class="use-case">
+            <h4>🔧 Engineering</h4>
+            <p>Metric ↔ Imperial, pressure/energy/power</p>
+            <span class="badge">SI core</span>
+          </div>
+          <div class="use-case">
+            <h4>📦 Logistics</h4>
+            <p>Volumes, weights, pallet dimensions</p>
+            <span class="badge">m³ / ft³</span>
+          </div>
+          <div class="use-case">
+            <h4>🌡 Science</h4>
+            <p>Temperature, pressure, frequency</p>
+            <span class="badge">affine & linear</span>
+          </div>
+          <div class="use-case">
+            <h4>🖥 Data</h4>
+            <p>Bytes vs bits, MB vs MiB</p>
+            <span class="badge">binary vs decimal</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Best Practices -->
+      <article class="card" id="unit-tips">
+        <h2>Unit Conversion Best Practices</h2>
+
+        <div class="tip">
+          <h3>🧮 Keep significant figures</h3>
+          <p>
+            Round to the precision implied by your input (e.g., 3 sig figs).
+          </p>
+        </div>
+
+        <div class="tip">
+          <h3>🌡 Use correct temperature math</h3>
+          <p>Convert °C/°F via K internally to avoid mistakes.</p>
+        </div>
+
+        <div class="tip">
+          <h3>📏 Distinguish SI prefixes</h3>
+          <p>
+            <code>m</code> (milli) vs <code>M</code> (mega) changes values by
+            10<sup>9</sup>.
+          </p>
+        </div>
+
+        <div class="tip">
+          <h3>🧪 Validate compound units</h3>
+          <p>
+            Only combine compatible dimensions (e.g., speed = length / time).
+          </p>
+        </div>
+      </article>
+
+      <!-- Technical Implementation -->
+      <article class="card" id="unit-technical">
+        <h2>Technical Implementation</h2>
+
+        <h3>Registry (relative to SI base)</h3>
+        <pre><code class="language-javascript">const REG = {
+  // Linear units: factor relative to SI base unit of the dimension
+  length: {
+    m: 1, km: 1e3, cm: 1e-2, mm: 1e-3, μm: 1e-6,
+    in: 0.0254, ft: 0.3048, yd: 0.9144, mi: 1609.344
+  },
+  mass:   { kg: 1, g: 1e-3, mg: 1e-6, lb: 0.45359237, oz: 0.028349523125, t: 1000 },
+  time:   { s: 1, min: 60, h: 3600, day: 86400, week: 604800 },
+  area:   { "m^2": 1, "km^2": 1e6, "cm^2": 1e-4, "ft^2": 0.09290304, acre: 4046.8564224, ha: 1e4 },
+  volume: { "m^3": 1, L: 1e-3, mL: 1e-6, "ft^3": 0.028316846592, "in^3": 1.6387064e-5, galUS: 0.003785411784 },
+  speed:  { "m/s": 1, "km/h": 1000/3600, mph: 1609.344/3600, kn: 1852/3600 },
+  pressure: { Pa:1, kPa:1e3, bar:1e5, atm:101325, psi:6894.757293168, mmHg:133.3223684211 },
+  energy: { J:1, kJ:1e3, Wh:3600, kWh:3.6e6, cal:4.184, kcal:4184, BTU:1055.05585262 },
+  power:  { W:1, kW:1e3, MW:1e6, hp:745.6998715822702 },
+  freq:   { Hz:1, kHz:1e3, MHz:1e6, GHz:1e9 },
+  dataDec:{ bit:1, byte:8, kB:8e3, MB:8e6, GB:8e9, TB:8e12 },
+  dataBin:{ Kib:1024, KiB:8192, MiB:8*2**20, GiB:8*2**30 }, // example
+};
+
+// Affine (temperature) is handled separately
+const TEMP = {
+  C: { toK: x =&gt; x + 273.15, fromK: k =&gt; k - 273.15 },
+  F: { toK: x =&gt; (x - 32) * 5/9 + 273.15, fromK: k =&gt; (k - 273.15) * 9/5 + 32 },
+  K: { toK: x =&gt; x, fromK: k =&gt; k }
+};</code></pre>
+
+        <h3>Linear conversion helper</h3>
+        <pre><code class="language-javascript">function convertLinear(value, from, to, table) {
+  if (!(from in table) || !(to in table)) throw new Error("Unknown unit");
+  return value * (table[from] / table[to]);
+}</code></pre>
+
+        <h3>Temperature conversion</h3>
+        <pre><code class="language-javascript">function convertTemp(value, from, to) {
+  if (!(from in TEMP) || !(to in TEMP)) throw new Error("Unknown temperature unit");
+  const K = TEMP[from].toK(value);
+  return TEMP[to].fromK(K);
+}</code></pre>
+
+        <h3>Compound units (length/time, etc.)</h3>
+        <pre><code class="language-javascript">function parseCompound(u) {
+  // Supports forms like "km/h", "m·s^-1", "ft^2", "N·m" (if defined)
+  // Return array of { unit, power } for numerator (+) and denominator (-)
+  const parts = u.split("/"); // crude split: numerator / denominator
+  const parseSide = (s, sign) =&gt; s.split(/[·*]/).map(tok =&gt; {
+    const m = tok.match(/^([A-Za-zμ]+)(\^(-?\d+))?$/);
+    if (!m) throw new Error("Bad unit token: " + tok);
+    const power = (m[3] ? parseInt(m[3],10) : 1) * sign;
+    return { unit: m[1], power };
+  });
+  const list = [];
+  if (parts[0]) list.push(...parseSide(parts[0], +1));
+  if (parts[1]) list.push(...parseSide(parts[1], -1));
+  return list;
+}
+
+function convertCompound(value, fromStr, toStr, tables) {
+  // Reduce to factor relative to SI base by multiplying each unit factor^power
+  const factor = (expr) =&gt; parseCompound(expr).reduce((acc, {unit, power}) =&gt; {
+    // Find unit in any table
+    let f = null;
+    for (const t of Object.values(tables)) {
+      if (unit in t) { f = t[unit]; break; }
+    }
+    if (f == null) throw new Error("Unknown unit: " + unit);
+    return acc * Math.pow(f, power);
+  }, 1);
+  return value * (factor(fromStr) / factor(toStr));
+}</code></pre>
+
+        <h3>Rounding (decimals or significant figures)</h3>
+        <pre><code class="language-javascript">function roundDecimals(x, d=3){
+  const p = Math.pow(10, d);
+  return Math.round((x + Number.EPSILON) * p) / p;
+}
+function roundSig(x, s=4){
+  if (x === 0) return 0;
+  const e = Math.floor(Math.log10(Math.abs(x)));
+  const f = Math.pow(10, e - s + 1);
+  return Math.round(x / f) * f;
+}</code></pre>
+
+        <h3>Examples</h3>
+        <pre><code class="language-javascript">// 10 meters to feet:
+convertLinear(10, "m", "ft", REG.length); // ≈ 32.8084
+
+// 65 mph to km/h:
+convertLinear(65, "mph", "km/h", REG.speed); // ≈ 104.607
+
+// 25 °C to °F:
+convertTemp(25, "C", "F"); // 77
+
+// 12 m/s to km/h via compound parser:
+convertCompound(12, "m/s", "km/h", { ...REG.length, ...REG.time, ...REG.speed }); // 43.2
+
+// 5 MB (decimal) to MiB (binary):
+const bits = convertLinear(5, "MB", "bit", REG.dataDec);
+const mib  = bits / REG.dataBin.MiB; // ≈ 4.768 MiB
+</code></pre>
       </article>
 
       <section class="faq-section card">

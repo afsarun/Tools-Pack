@@ -275,53 +275,423 @@
         </div>
       </article>
 
+      <!-- Text → PDF: Details & Rules -->
+      <article class="card" id="text-pdf-details">
+        <h2>Text to PDF Basics</h2>
+
+        <div class="tp-grid">
+          <div class="tp-section">
+            <h3>What this tool can do</h3>
+            <ul>
+              <li><strong>Convert plain text</strong> to a paginated PDF</li>
+              <li>
+                <strong>Page setup</strong>: A4/Letter, portrait/landscape,
+                margins
+              </li>
+              <li>
+                <strong>Typography</strong>: font family/size/line-height,
+                left/center/right align
+              </li>
+              <li>
+                <strong>Headers/Footers</strong>: optional title, page numbers
+              </li>
+              <li>
+                <strong>Unicode</strong> support (e.g., Bangla, emoji) with
+                embedded fonts
+              </li>
+            </ul>
+            <p class="small muted">
+              Everything runs locally in your browser—your text never leaves
+              your device.
+            </p>
+          </div>
+
+          <div class="tp-section">
+            <h3>Inputs</h3>
+            <ul>
+              <li>
+                <strong>Text:</strong> paste or type; preserves line breaks
+              </li>
+              <li><strong>Page:</strong> A4 or Letter; portrait/landscape</li>
+              <li>
+                <strong>Layout:</strong> margins (e.g., 36–72 pt), font
+                size/line-height
+              </li>
+              <li>
+                <strong>Extras:</strong> title header, page numbers, filename
+              </li>
+            </ul>
+          </div>
+
+          <div class="tp-section">
+            <h3>Output characteristics</h3>
+            <ul>
+              <li>
+                <strong>PDF 1.x</strong> file with embedded fonts (when
+                provided)
+              </li>
+              <li>
+                <strong>Hard wraps</strong> at word boundaries; automatic
+                pagination
+              </li>
+              <li>
+                <strong>Consistent metrics</strong> via monospaced or measured
+                proportional fonts
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Unicode & fonts</h3>
+        <ul>
+          <li>
+            To render non-Latin text (e.g., <em>বাংলা</em>), embed a Unicode TTF
+            like Noto Sans.
+          </li>
+          <li>
+            Without an embedded font, some libraries fall back to limited
+            built-ins (may miss glyphs).
+          </li>
+          <li>Embed once; reuse for all pages to keep file size reasonable.</li>
+        </ul>
+      </article>
+
       <!-- How to use -->
-      <article class="card" id="how-to-use">
-        <h2>How to Use the Text to PDF Converter</h2>
+      <article class="card" id="how-to-use-text-pdf">
+        <h2>How to use</h2>
         <ol>
+          <li>Paste your <strong>text</strong> into the editor.</li>
           <li>
-            Paste or type your text into the editor box (full Unicode supported,
-            including Bangla, emoji, and special characters).
+            Choose <strong>page size</strong>, <strong>margins</strong>, and
+            <strong>font</strong> options.
           </li>
           <li>
-            Select your preferred <strong>Page Size</strong>,
-            <strong>Orientation</strong>, and <strong>Margins</strong> for the
-            PDF.
+            (Optional) Add a <strong>title</strong> and enable
+            <strong>page numbers</strong>.
           </li>
           <li>
-            Adjust the <strong>Font Size</strong> (points). This will apply to
-            both the on-screen preview and the final PDF document.
-          </li>
-          <li>
-            Optionally enable <strong>Header</strong> and/or
-            <strong>Footer</strong>. The header shows the title at the top,
-            while the footer displays the generated time at the bottom of each
-            page.
-          </li>
-          <li>
-            Click <strong>Preview &amp; Print</strong>, then choose
-            <strong>Save as PDF</strong> in your browser’s print dialog.
+            Click <strong>Generate PDF</strong>, then <strong>Download</strong>.
           </li>
         </ol>
 
-        <h3>Helpful Tips</h3>
+        <h3>Tips</h3>
         <ul>
           <li>
-            <strong>A4</strong> is the standard in Bangladesh and Europe, while
-            <strong>Letter</strong> is commonly used in the United States.
+            Use a <strong>monospace</strong> font for code or logs to keep
+            alignment.
           </li>
           <li>
-            If your browser automatically adds extra page numbers or a URL,
-            disable “Headers and footers” in the print settings.
+            For long documents, set <strong>line-height</strong> to ~1.4 for
+            readability.
           </li>
           <li>
-            This PDF tool runs 100% locally in your browser. Your text is never
-            uploaded or stored on a server.
-          </li>
-          <li>
-            Once loaded, it also works offline without an internet connection.
+            If characters appear as boxes,
+            <strong>embed a Unicode TTF</strong> (e.g., Noto Sans).
           </li>
         </ul>
+      </article>
+
+      <!-- Real-World Applications -->
+      <article class="card" id="text-pdf-applications">
+        <h2>Where to Use Text → PDF</h2>
+
+        <div class="applications-grid">
+          <div class="use-case">
+            <h4>🧾 Receipts & Logs</h4>
+            <p>Archive console logs or chat transcripts</p>
+            <span class="badge">monospace</span>
+          </div>
+
+          <div class="use-case">
+            <h4>📄 Notes & Drafts</h4>
+            <p>Share printable notes with fixed layout</p>
+            <span class="badge">A4/Letter</span>
+          </div>
+
+          <div class="use-case">
+            <h4>🌐 Multilingual</h4>
+            <p>Export Bangla/Unicode text reliably</p>
+            <span class="badge">embed TTF</span>
+          </div>
+
+          <div class="use-case">
+            <h4>📚 Handouts</h4>
+            <p>Clean, paginated printable docs</p>
+            <span class="badge">headers/footers</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Best Practices -->
+      <article class="card" id="text-pdf-tips">
+        <h2>Text → PDF Best Practices</h2>
+
+        <div class="tip">
+          <h3>🧭 Choose sensible margins</h3>
+          <p>36–54 pt (0.5–0.75") margins balance density and readability.</p>
+        </div>
+
+        <div class="tip">
+          <h3>🔤 Embed one good Unicode font</h3>
+          <p>
+            Use Noto Sans or Noto Serif; avoid embedding many fonts to keep size
+            small.
+          </p>
+        </div>
+
+        <div class="tip">
+          <h3>🔢 Page numbers help</h3>
+          <p>Add “Page X of Y” in the footer for long documents.</p>
+        </div>
+
+        <div class="tip">
+          <h3>💾 Filename hygiene</h3>
+          <p>
+            Use <code>kebab-case</code> or <code>snake_case</code> without
+            spaces for portability.
+          </p>
+        </div>
+      </article>
+
+      <!-- Technical Implementation -->
+      <article class="card" id="text-pdf-technical">
+        <h2>Technical Implementation</h2>
+
+        <!-- Option A: jsPDF (simple, popular) -->
+        <h3>Option A — jsPDF (CDN)</h3>
+        <pre><code class="language-html">&lt;script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"&gt;&lt;/script&gt;</code></pre>
+        <pre><code class="language-javascript">async function textToPdf_jsPDF({
+  text,
+  title = "",
+  filename = "document.pdf",
+  unit = "pt",
+  format = "a4",           // "a4" | "letter" | [w,h]
+  orientation = "portrait",
+  margins = { top: 54, right: 54, bottom: 54, left: 54 },
+  fontSize = 12,
+  lineHeight = 1.4,
+  align = "left",          // "left" | "center" | "right"
+  embedFont = null,        // { name, normalTTFBase64 } optional
+  pageNumbers = true
+} = {}) {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ unit, format, orientation });
+
+  // Embed Unicode font (optional)
+  if (embedFont?.normalTTFBase64) {
+    const vfsName = `${embedFont.name}-normal.ttf`;
+    doc.addFileToVFS(vfsName, embedFont.normalTTFBase64);
+    doc.addFont(vfsName, embedFont.name, "normal");
+    doc.setFont(embedFont.name, "normal");
+  }
+
+  const pageW = doc.internal.pageSize.getWidth();
+  const pageH = doc.internal.pageSize.getHeight();
+  const contentW = pageW - margins.left - margins.right;
+  const startX = margins.left;
+  let cursorY = margins.top;
+
+  doc.setFontSize(fontSize);
+
+  // Header (title)
+  if (title) {
+    const titleLines = doc.splitTextToSize(title, contentW);
+    doc.text(titleLines, startX, cursorY);
+    cursorY += fontSize * lineHeight * titleLines.length + 8;
+  }
+
+  // Split text into wrapped lines
+  const lines = doc.splitTextToSize(text.replace(/\r\n/g, "\n"), contentW);
+  const lineStep = fontSize * lineHeight;
+
+  const footer = (page, pages) => {
+    if (!pageNumbers) return;
+    const label = `Page ${page} of ${pages}`;
+    doc.setFontSize(10);
+    const y = pageH - margins.bottom / 2;
+    const x = pageW / 2;
+    doc.text(label, x, y, { align: "center" });
+    doc.setFontSize(fontSize);
+  };
+
+  // Render lines with pagination
+  let page = 1;
+  const drawLine = (txt, y) => {
+    const opts = align === "left" ? {} : { align, maxWidth: contentW };
+    const x = align === "center" ? pageW / 2 : (align === "right" ? pageW - margins.right : startX);
+    doc.text(txt, x, y, opts);
+  };
+
+  const maxY = () => pageH - margins.bottom;
+  for (let i = 0; i < lines.length; i++) {
+    if (cursorY + lineStep > maxY()) {
+      footer(page, undefined); // total pages unknown until end; optional skip
+      doc.addPage();
+      page++;
+      cursorY = margins.top;
+    }
+    drawLine(lines[i], cursorY);
+    cursorY += lineStep;
+  }
+
+  // Back-fill total pages (simple approach: add footer only on last page)
+  footer(page, page);
+
+  doc.save(filename);
+}</code></pre>
+
+        <p class="small muted">
+          Note: To fully number “Page X of Y”, render after measuring pages or
+          use a two-pass strategy (render → count → add footers).
+        </p>
+
+        <!-- Option B: pdf-lib (fine control, font embedding) -->
+        <h3>Option B — pdf-lib (font embedding, fine control)</h3>
+        <pre><code class="language-html">&lt;script src="https://cdn.jsdelivr.net/npm/pdf-lib/dist/pdf-lib.min.js"&gt;&lt;/script&gt;</code></pre>
+        <pre><code class="language-javascript">async function textToPdf_pdfLib({
+  text,
+  title = "",
+  filename = "document.pdf",
+  pageSize = "A4",         // "A4" | "Letter"
+  orientation = "portrait",
+  margins = { top: 54, right: 54, bottom: 54, left: 54 },
+  fontSize = 12,
+  lineHeight = 1.4,
+  align = "left",
+  fontBytes,               // Uint8Array (e.g., NotoSans-Regular.ttf)
+  pageNumbers = true
+} = {}) {
+  const { PDFDocument, StandardFonts } = PDFLib;
+  const doc = await PDFDocument.create();
+
+  // Size
+  const sizes = {
+    A4: [595.28, 841.89],
+    Letter: [612, 792]
+  };
+  let [w, h] = sizes[pageSize] || sizes.A4;
+  if (orientation === "landscape") [w, h] = [h, w];
+
+  // Font
+  const font = fontBytes
+    ? await doc.embedFont(fontBytes, { subset: true })
+    : await doc.embedFont(StandardFonts.Helvetica);
+
+  const lineStep = fontSize * lineHeight;
+
+  // Word wrap using font width
+  function wrap(text, maxWidth) {
+    const out = [];
+    const paragraphs = text.replace(/\r\n/g, "\n").split("\n");
+    for (const p of paragraphs) {
+      let line = "";
+      for (const word of p.split(/\s+/)) {
+        const test = line ? line + " " + word : word;
+        const width = font.widthOfTextAtSize(test, fontSize);
+        if (width <= maxWidth) {
+          line = test;
+        } else {
+          if (line) out.push(line);
+          // very long token fallback
+          if (font.widthOfTextAtSize(word, fontSize) > maxWidth) {
+            // hard-break the word
+            let chunk = "";
+            for (const ch of word) {
+              const test2 = chunk + ch;
+              if (font.widthOfTextAtSize(test2, fontSize) > maxWidth) {
+                out.push(chunk);
+                chunk = ch;
+              } else {
+                chunk = test2;
+              }
+            }
+            line = chunk;
+          } else {
+            line = word;
+          }
+        }
+      }
+      out.push(line);
+    }
+    return out;
+  }
+
+  const page = doc.addPage([w, h]);
+  const contentW = w - margins.left - margins.right;
+  let y = h - margins.top;
+
+  // Title
+  if (title) {
+    const titleLines = wrap(title, contentW);
+    for (const tl of titleLines) {
+      const tw = font.widthOfTextAtSize(tl, fontSize);
+      const x =
+        align === "center" ? (w - tw) / 2 :
+        align === "right"  ? w - margins.right - tw :
+                             margins.left;
+      page.drawText(tl, { x, y, size: fontSize, font });
+      y -= lineStep;
+    }
+    y -= 8;
+  }
+
+  // Body
+  const lines = wrap(text, contentW);
+
+  let current = page;
+  let pageIndex = 1;
+  const pages = [current];
+
+  for (const ln of lines) {
+    if (y - lineStep < margins.bottom) {
+      current = doc.addPage([w, h]);
+      pages.push(current);
+      y = h - margins.top;
+      pageIndex++;
+    }
+    const tw = font.widthOfTextAtSize(ln, fontSize);
+    const x =
+      align === "center" ? (w - tw) / 2 :
+      align === "right"  ? w - margins.right - tw :
+                           margins.left;
+    current.drawText(ln, { x, y, size: fontSize, font });
+    y -= lineStep;
+  }
+
+  // Footers
+  if (pageNumbers) {
+    const total = pages.length;
+    for (let i = 0; i < total; i++) {
+      const p = pages[i];
+      const label = `Page ${i + 1} of ${total}`;
+      const tw = font.widthOfTextAtSize(label, 10);
+      p.drawText(label, {
+        size: 10,
+        font,
+        x: (w - tw) / 2,
+        y: margins.bottom / 2
+      });
+    }
+  }
+
+  const bytes = await doc.save();
+  const blob = new Blob([bytes], { type: "application/pdf" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url; a.download = filename; a.click();
+  URL.revokeObjectURL(url);
+}</code></pre>
+
+        <h3>Embedding a Unicode font (example)</h3>
+        <pre><code class="language-javascript">// Load a TTF (e.g., NotoSans-Regular.ttf) and pass bytes to pdf-lib
+async function fetchFont(url) {
+  const res = await fetch(url);
+  return new Uint8Array(await res.arrayBuffer());
+}
+
+// Usage:
+// const fontBytes = await fetchFont("/assets/fonts/NotoSans-Regular.ttf");
+// await textToPdf_pdfLib({ text, fontBytes, filename: "notes.pdf" });</code></pre>
       </article>
 
       <!-- FAQ -->

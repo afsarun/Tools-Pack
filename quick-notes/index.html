@@ -312,40 +312,247 @@
           ></ins>
         </div>
       </article>
+      <!-- Quick Notes: Details & Rules -->
+      <article class="card" id="quick-notes-details">
+        <h2>Quick Notes Basics</h2>
 
-      <!-- How to use -->
-      <article class="card" id="how-to-use">
-        <h2>How to Use Quick Notes</h2>
-        <ol>
-          <li>
-            Start typing in the box — your text
-            <strong>auto-saves</strong> after you pause.
-          </li>
-          <li>
-            Click <strong>Export .txt</strong> to download your notes as a text
-            file.
-          </li>
-          <li>
-            Use <strong>Import</strong> to load a <code>.txt</code> file back
-            into the editor.
-          </li>
-          <li>
-            Click <strong>Clear</strong> to remove everything (you’ll be asked
-            to confirm).
-          </li>
-        </ol>
-        <h3>Tips</h3>
+        <div class="qn-grid">
+          <div class="qn-section">
+            <h3>What this tool can do</h3>
+            <ul>
+              <li>
+                <strong>Fast note taking</strong> in your browser (no account)
+              </li>
+              <li>
+                <strong>Auto-save</strong> notes to localStorage as you type
+              </li>
+              <li>
+                <strong>Multiple notes</strong> with titles &amp; timestamps
+              </li>
+              <li><strong>Search &amp; pin</strong> important notes</li>
+              <li><strong>Export/Import</strong> notes as JSON or text</li>
+            </ul>
+            <p class="small muted">
+              Everything is stored locally on your device—nothing is uploaded.
+            </p>
+          </div>
+
+          <div class="qn-section">
+            <h3>Storage & privacy</h3>
+            <ul>
+              <li>
+                <strong>Location:</strong> Browser <code>localStorage</code>
+              </li>
+              <li>
+                <strong>Scope:</strong> Per browser &amp; device (no sync)
+              </li>
+              <li>
+                <strong>Limits:</strong> Typically ~5–10&nbsp;MB per origin
+              </li>
+            </ul>
+          </div>
+
+          <div class="qn-section">
+            <h3>Note features</h3>
+            <ul>
+              <li>Markdown-friendly text area (plain text stored)</li>
+              <li>Pin/star notes to keep them on top</li>
+              <li>Word/character count (optional)</li>
+              <li>Trash/restore (soft delete) option</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>What counts as “local-only”?</h3>
         <ul>
-          <li><strong>Works offline</strong> after the first load.</li>
           <li>
-            <strong>Privacy:</strong> localStorage is not encrypted — avoid
-            highly sensitive data.
+            Notes never leave your browser unless you <em>export</em> them
           </li>
+          <li>Clearing site data or using private windows may remove notes</li>
           <li>
-            <strong>Size limit:</strong> localStorage is typically ~5&nbsp;MB
-            per site; split very large notes into multiple files.
+            Switching browsers/devices won’t carry notes over automatically
           </li>
         </ul>
+      </article>
+
+      <!-- How to use -->
+      <article class="card" id="how-to-use-quick-notes">
+        <h2>How to use</h2>
+        <ol>
+          <li>
+            Click <strong>New</strong> and give your note a
+            <strong>title</strong>.
+          </li>
+          <li>
+            Start typing in the editor—your note
+            <strong>auto-saves</strong> every few keystrokes.
+          </li>
+          <li>Use <strong>Search</strong> to filter by title or content.</li>
+          <li>
+            Click <strong>Pin</strong> to keep a note at the top; use
+            <strong>Trash</strong> to archive (reversible).
+          </li>
+          <li>
+            Use <strong>Export</strong> to download your notes;
+            <strong>Import</strong> to load them back.
+          </li>
+        </ol>
+
+        <h3>Tips</h3>
+        <ul>
+          <li>
+            For long-term backup, export regularly (JSON). Keep a copy in your
+            cloud drive.
+          </li>
+          <li>Pinned notes are ideal for TODOs or daily logs.</li>
+          <li>
+            Use headings (e.g., <code># Title</code>) and lists for readability;
+            the app stores plain text, so it’s future-proof.
+          </li>
+        </ul>
+      </article>
+
+      <!-- Real-World Applications -->
+      <article class="card" id="quick-notes-applications">
+        <h2>Where to Use Quick Notes</h2>
+
+        <div class="applications-grid">
+          <div class="use-case">
+            <h4>📝 Scratchpad</h4>
+            <p>Ideas, snippets, meeting bullets</p>
+            <span class="badge">auto-save</span>
+          </div>
+
+          <div class="use-case">
+            <h4>✅ Tasks</h4>
+            <p>Short TODO lists and reminders</p>
+            <span class="badge">pin to top</span>
+          </div>
+
+          <div class="use-case">
+            <h4>📚 Study</h4>
+            <p>Glossary, formulas, links</p>
+            <span class="badge">search</span>
+          </div>
+
+          <div class="use-case">
+            <h4>💡 Content</h4>
+            <p>Draft posts, outlines, captions</p>
+            <span class="badge">export</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Best Practices -->
+      <article class="card" id="quick-notes-tips">
+        <h2>Quick Notes Best Practices</h2>
+
+        <div class="tip">
+          <h3>💾 Back up regularly</h3>
+          <p>
+            Export to JSON weekly if the notes matter—localStorage can be
+            cleared by browser resets.
+          </p>
+        </div>
+
+        <div class="tip">
+          <h3>🔍 Name notes well</h3>
+          <p>Short, descriptive titles make search far more useful.</p>
+        </div>
+
+        <div class="tip">
+          <h3>🛡️ Privacy-aware</h3>
+          <p>
+            Use device-level encryption or profiles if your device is shared.
+          </p>
+        </div>
+      </article>
+
+      <!-- Technical Implementation -->
+      <article class="card" id="quick-notes-technical">
+        <h2>Technical Implementation</h2>
+
+        <h3>Data model</h3>
+        <pre><code class="language-javascript">const NOTE_KEY = "quick-notes:v1";
+type Note = {
+  id: string,         // uuid
+  title: string,
+  body: string,
+  pinned: boolean,
+  deleted: boolean,   // soft delete
+  createdAt: number,  // epoch ms
+  updatedAt: number   // epoch ms
+};</code></pre>
+
+        <h3>Load &amp; save</h3>
+        <pre><code class="language-javascript">function loadNotes() {
+  try {
+    return JSON.parse(localStorage.getItem(NOTE_KEY)) || [];
+  } catch {
+    return [];
+  }
+}
+
+function saveNotes(notes) {
+  localStorage.setItem(NOTE_KEY, JSON.stringify(notes));
+}</code></pre>
+
+        <h3>Create/update (auto-save)</h3>
+        <pre><code class="language-javascript">function upsertNote(notes, partial) {
+  const now = Date.now();
+  let list = [...notes];
+  const i = list.findIndex(n =&gt; n.id === partial.id);
+  if (i &gt;= 0) {
+    list[i] = { ...list[i], ...partial, updatedAt: now };
+  } else {
+    list.push({
+      id: crypto.randomUUID(),
+      title: partial.title || "Untitled",
+      body: partial.body || "",
+      pinned: false,
+      deleted: false,
+      createdAt: now,
+      updatedAt: now
+    });
+  }
+  saveNotes(list);
+  return list;
+}</code></pre>
+
+        <h3>Search &amp; sort</h3>
+        <pre><code class="language-javascript">function filterNotes(notes, q = "") {
+  const s = q.trim().toLowerCase();
+  const kept = notes.filter(n =&gt; !n.deleted &amp;&amp; 
+    (n.title.toLowerCase().includes(s) || n.body.toLowerCase().includes(s)));
+  return kept.sort((a, b) =&gt; (b.pinned - a.pinned) || (b.updatedAt - a.updatedAt));
+}</code></pre>
+
+        <h3>Export / Import</h3>
+        <pre><code class="language-javascript">function exportNotes(notes) {
+  const blob = new Blob([JSON.stringify(notes, null, 2)], { type: "application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "quick-notes.json";
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+async function importNotes(file) {
+  const text = await file.text();
+  const notes = JSON.parse(text);
+  if (!Array.isArray(notes)) throw new Error("Invalid notes file");
+  saveNotes(notes);
+  return notes;
+}</code></pre>
+
+        <h3>Soft delete &amp; restore</h3>
+        <pre><code class="language-javascript">function trashNote(notes, id, deleted = true) {
+  return upsertNote(notes, { id, deleted });
+}
+
+function pinNote(notes, id, pinned = true) {
+  return upsertNote(notes, { id, pinned });
+}</code></pre>
       </article>
 
       <section class="faq-section card">

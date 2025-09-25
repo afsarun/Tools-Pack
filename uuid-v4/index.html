@@ -247,42 +247,235 @@
           ></ins>
         </div>
       </article>
+      <!-- UUID v4: Details & Rules -->
+      <article class="card" id="uuid-details">
+        <h2>UUID v4 Basics</h2>
+
+        <div class="uuid-grid">
+          <div class="uuid-section">
+            <h3>What this tool can do</h3>
+            <ul>
+              <li>
+                <strong>Generate</strong> RFC&nbsp;4122-compliant UUID version 4
+              </li>
+              <li>
+                <strong>Copy</strong> in canonical form
+                (<code>8-4-4-4-12</code>) or compact (no hyphens)
+              </li>
+              <li><strong>Format</strong> options: lowercase/UPPERCASE</li>
+              <li>
+                <strong>Batch</strong> creation (e.g., 100 or 1,000 UUIDs)
+              </li>
+            </ul>
+            <p class="small muted">
+              All UUIDs are generated locally using the browser’s cryptographic
+              PRNG.
+            </p>
+          </div>
+
+          <div class="uuid-section">
+            <h3>RFC 4122 specifics</h3>
+            <ul>
+              <li>
+                <strong>Version:</strong> 4 (random) → the high nibble of byte 6
+                is <code>0100</code>
+              </li>
+              <li>
+                <strong>Variant:</strong> RFC 4122 → the two high bits of byte 8
+                are <code>10</code>
+              </li>
+              <li>
+                <strong>Layout:</strong>
+                <code>xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx</code> where
+                <code>y</code> is <code>8–b</code>
+              </li>
+            </ul>
+          </div>
+
+          <div class="uuid-section">
+            <h3>When to use</h3>
+            <ul>
+              <li>Database keys, request IDs, idempotency keys</li>
+              <li>Client-side identifiers that don’t reveal sequence/time</li>
+              <li>Cross-system correlation without central coordination</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Uniqueness</h3>
+        <ul>
+          <li>
+            UUID v4 has 122 random bits (after version/variant) → astronomically
+            low collision probability for practical use.
+          </li>
+          <li>Still treat UUIDs as <em>identifiers</em>, not secrets.</li>
+        </ul>
+      </article>
 
       <!-- How to use -->
-      <article class="card" id="how-to-use">
-        <h2>How to Use the UUID v4 Generator</h2>
+      <article class="card" id="how-to-use-uuid">
+        <h2>How to use</h2>
         <ol>
+          <li>Click <strong>Generate</strong> to create a UUID v4.</li>
           <li>
-            Click the <strong>Generate</strong> button to instantly create a new
-            UUID version 4.
+            Use <strong>Copy</strong> to copy in canonical, hyphenless, or
+            UPPERCASE form.
           </li>
           <li>
-            Click <strong>Copy</strong> to save the UUID value directly to your
-            clipboard.
-          </li>
-          <li>
-            You can repeat the Generate action as many times as needed to
-            produce multiple unique UUIDs.
+            Enable <strong>Batch</strong> to generate many UUIDs at once and
+            <strong>Download</strong> as a file.
           </li>
         </ol>
 
-        <h3>Important Notes</h3>
+        <h3>Tips</h3>
         <ul>
           <li>
-            This tool uses your browser’s secure
-            <code>crypto.getRandomValues</code> API for randomness.
+            Prefer <strong>lowercase</strong> for consistency in logs and URLs.
           </li>
           <li>
-            The generated UUIDs are shown in lowercase hexadecimal with hyphens,
-            which is the standard canonical format. You may reformat (remove
-            hyphens or switch to uppercase) if required.
+            Use <strong>hyphenless</strong> for compact storage or slug-like IDs
+            (still validate as UUID format if required).
           </li>
           <li>
-            UUIDs are meant to be unique identifiers. They are
-            <strong>not</strong> designed for use as passwords, security tokens,
-            or sensitive secrets.
+            Never expose UUIDs as authentication secrets—pair with access
+            control.
           </li>
         </ul>
+      </article>
+
+      <!-- Real-World Applications -->
+      <article class="card" id="uuid-applications">
+        <h2>Where to Use UUID v4</h2>
+
+        <div class="applications-grid">
+          <div class="use-case">
+            <h4>🗄 Database Keys</h4>
+            <p>Primary keys without coordination</p>
+            <span class="badge">random IDs</span>
+          </div>
+          <div class="use-case">
+            <h4>📑 Request Tracing</h4>
+            <p>Correlation IDs across services</p>
+            <span class="badge">observability</span>
+          </div>
+          <div class="use-case">
+            <h4>↩️ Idempotency</h4>
+            <p>De-duplicate retries safely</p>
+            <span class="badge">safe retries</span>
+          </div>
+          <div class="use-case">
+            <h4>📦 Files & Objects</h4>
+            <p>Stable object names in storage</p>
+            <span class="badge">content refs</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Best Practices -->
+      <article class="card" id="uuid-tips">
+        <h2>UUID v4 Best Practices</h2>
+
+        <div class="tip">
+          <h3>🔐 Not a secret</h3>
+          <p>
+            UUIDs are guess-resistant but not confidential—don’t use them as
+            tokens.
+          </p>
+        </div>
+
+        <div class="tip">
+          <h3>📏 Keep a consistent format</h3>
+          <p>
+            Pick lowercase with hyphens for readability, or hyphenless for
+            compact storage—and stick to it.
+          </p>
+        </div>
+
+        <div class="tip">
+          <h3>⚙️ Indexing considerations</h3>
+          <p>
+            Random keys can fragment B-trees; consider <em>UUIDv7</em> for
+            time-ordered needs, or store as 16-byte binary.
+          </p>
+        </div>
+      </article>
+
+      <!-- Technical Implementation -->
+      <article class="card" id="uuid-technical">
+        <h2>Technical Implementation</h2>
+
+        <h3>Generate UUID v4 with Web Crypto</h3>
+        <pre><code class="language-javascript">function uuidv4() {
+  const b = new Uint8Array(16);
+  crypto.getRandomValues(b);
+  // Set version (4) in high nibble of byte 6
+  b[6] = (b[6] &amp; 0x0f) | 0x40;
+  // Set variant (10) in high bits of byte 8
+  b[8] = (b[8] &amp; 0x3f) | 0x80;
+
+  const hex = [...b].map(x =&gt; x.toString(16).padStart(2, "0"));
+  return [
+    hex.slice(0, 4).join(""),
+    hex.slice(4, 6).join(""),
+    hex.slice(6, 8).join(""),
+    hex.slice(8, 10).join(""),
+    hex.slice(10).join("")
+  ].join("-");
+}</code></pre>
+
+        <h3>Variants & formatting helpers</h3>
+        <pre><code class="language-javascript">const UUID_V4_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+
+function isUuidV4(s) { return UUID_V4_RE.test(s); }
+function toHyphenless(uuid) { return uuid.replace(/-/g, ""); }
+function toUpper(uuid) { return uuid.toUpperCase(); }</code></pre>
+
+        <h3>Batch generation & download</h3>
+        <pre><code class="language-javascript">function generateMany(n = 100, opts = { hyphenless:false, upper:false }) {
+  const out = [];
+  for (let i = 0; i &lt; n; i++) {
+    let id = uuidv4();
+    if (opts.hyphenless) id = toHyphenless(id);
+    if (opts.upper) id = toUpper(id);
+    out.push(id);
+  }
+  return out.join("\n");
+}
+
+function downloadText(text, name = "uuids.txt") {
+  const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+  const a = Object.assign(document.createElement("a"), {
+    href: URL.createObjectURL(blob),
+    download: name
+  });
+  a.click(); URL.revokeObjectURL(a.href);
+}</code></pre>
+
+        <h3>Store as 16-byte binary (optional)</h3>
+        <pre><code class="language-javascript">function uuidToBytes(uuid) {
+  if (!isUuidV4(uuid)) throw new Error("Invalid UUID v4");
+  const hex = uuid.replace(/-/g, "");
+  const bytes = new Uint8Array(16);
+  for (let i = 0; i &lt; 16; i++) {
+    bytes[i] = parseInt(hex.slice(i*2, i*2 + 2), 16);
+  }
+  return bytes;
+}
+
+function bytesToUuid(bytes) {
+  if (!(bytes instanceof Uint8Array) || bytes.length !== 16) throw new Error("Need 16 bytes");
+  const hex = [...bytes].map(b =&gt; b.toString(16).padStart(2, "0"));
+  return [
+    hex.slice(0, 4).join(""),
+    hex.slice(4, 6).join(""),
+    hex.slice(6, 8).join(""),
+    hex.slice(8, 10).join(""),
+    hex.slice(10).join("")
+  ].join("-");
+}</code></pre>
+
+        <h3>Security note</h3>
+        <pre><code class="language-text">Use crypto.getRandomValues for entropy. Avoid Math.random() or time-based hacks.</code></pre>
       </article>
 
       <!-- Combined FAQ Section -->

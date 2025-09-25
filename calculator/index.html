@@ -9,7 +9,7 @@
       Free Online Calculator — Add, Subtract, Multiply, Divide & % | Tools Pack
     </title>
 
-    <!-- ✅ Enriched meta description with use-cases + offline/privacy -->
+    <!-- ✅ Enriched meta description -->
     <meta
       name="description"
       content="Free online calculator for quick arithmetic and percentages: add, subtract, multiply, divide, and %. Works offline, privacy-first, no tracking."
@@ -48,18 +48,38 @@
       property="og:url"
       content="https://tools-pack.netlify.app/calculator/"
     />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="bn_BD" />
+
+    <!-- ✅ Use PNG + dimensions (avoid WebP for OG) -->
     <meta
       property="og:image"
-      content="https://tools-pack.netlify.app/assets/og/calculator-en.WebP"
+      content="https://tools-pack.netlify.app/assets/og/calculator-en.png"
     />
+    <meta
+      property="og:image:secure_url"
+      content="https://tools-pack.netlify.app/assets/og/calculator-en.png"
+    />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta
       property="og:image:alt"
       content="Online Calculator interface — Tools Pack"
     />
-    <meta property="og:locale" content="en_US" />
-    <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- ✅ JSON-LD: WebApplication (upgraded with offers & features) -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Free Online Calculator — Tools Pack" />
+    <meta
+      name="twitter:description"
+      content="Add, subtract, multiply, divide and % — works offline, privacy-first."
+    />
+    <meta
+      name="twitter:image"
+      content="https://tools-pack.netlify.app/assets/og/calculator-en.png"
+    />
+
+    <!-- ✅ JSON-LD: WebApplication -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -69,15 +89,19 @@
         "applicationCategory": "Calculator",
         "operatingSystem": "Web",
         "inLanguage": "en",
+        "image": "https://tools-pack.netlify.app/assets/og/calculator-en.png",
+        "isAccessibleForFree": true,
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-        "featureList": [
-          "Addition, subtraction, multiplication, division",
-          "Percent calculation (e.g., 12% * 200 = 24)",
-          "Works offline after first load",
-          "No tracking, 100% client-side",
-          "Keyboard shortcuts (Enter to evaluate)"
-        ],
         "description": "Free online calculator for quick arithmetic and percentages. Fast, lightweight, privacy-first."
+        /* Optional (kept if you like; not critical for Google):
+      ,"featureList": [
+        "Addition, subtraction, multiplication, division",
+        "Percent calculation (e.g., 12% of 200 = 24)",
+        "Works offline after first load",
+        "No tracking, 100% client-side",
+        "Keyboard shortcuts (Enter to evaluate)"
+      ]
+      */
       }
     </script>
 
@@ -236,17 +260,13 @@
         <span>Calculator</span>
       </nav>
 
-      <!-- ✅ Short intro paragraph (topic-focused, semantically rich) -->
-      <section class="card">
-        <p>
-          Use this <strong>free online calculator</strong> to do quick
-          arithmetic: <em>add, subtract, multiply, divide</em>, and handle
-          <em>percentages</em> right in your browser. It’s fast, accurate, and
-          <strong>privacy-first</strong>—works offline after the first load.
-        </p>
-        <!-- Optional illustrative screenshot (helps Image SEO) -->
-      </section>
-
+      <p class="intro">
+        Use this <strong>free online calculator</strong> Do fast, accurate math
+        with our <strong>Calculator</strong>. It supports the core
+        operations—addition, subtraction, multiplication, division—plus
+        percentages, parentheses, memory keys, and keyboard input. Everything
+        runs locally in your browser for instant, private results.
+      </p>
       <!-- TOC -->
       <p class="toc">
         <a href="#calc">Calculator</a> · <a href="#use-cases">Use cases</a> ·
@@ -299,68 +319,209 @@
         </p>
         <div id="msg" class="muted" aria-live="polite" role="status"></div>
       </article>
+      <article class="card" id="calc-details">
+        <h2>What this Calculator Supports</h2>
 
-      <!-- ✅ Use cases (friendlier, action-focused) -->
-      <article class="card" id="use-cases">
-        <h2>Use cases</h2>
+        <div class="calc-features-grid">
+          <div class="calc-group">
+            <h3>Core Math</h3>
+            <ul>
+              <li>
+                <strong>Addition (+)</strong> &amp;
+                <strong>Subtraction (−)</strong>
+              </li>
+              <li>
+                <strong>Multiplication (×)</strong> &amp;
+                <strong>Division (÷)</strong> (with divide-by-zero guard)
+              </li>
+              <li>
+                <strong>Percent (%)</strong>: <em>12 + 5%</em> ⇒
+                <code>12 + (12×0.05) = 12.6</code>
+              </li>
+              <li>
+                <strong>Parentheses</strong>: order of operations
+                <em>(PEMDAS)</em>
+              </li>
+              <li><strong>Decimals</strong> and negative numbers</li>
+            </ul>
+            <p class="small muted">
+              Follows standard operator precedence: parentheses → × ÷ → + −.
+            </p>
+          </div>
+
+          <div class="calc-group">
+            <h3>Memory Keys</h3>
+            <ul>
+              <li><strong>MC</strong>: clear memory</li>
+              <li><strong>MR</strong>: recall memory</li>
+              <li>
+                <strong>M+</strong>/<strong>M−</strong>: add/subtract displayed
+                value to memory
+              </li>
+            </ul>
+            <p class="small muted">
+              Memory persists until cleared or page refresh.
+            </p>
+          </div>
+
+          <div class="calc-group">
+            <h3>Precision</h3>
+            <ul>
+              <li>
+                Smart rounding to reduce floating-point artifacts (<code
+                  >0.1 + 0.2 ≈ 0.3</code
+                >)
+              </li>
+              <li>Configurable max digits and decimal places</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Error Handling</h3>
         <ul>
           <li>
-            <strong>Shopping & discounts:</strong> work out sale prices in
-            seconds (e.g., <code>25% * 79.99</code> → how much you save).
+            <strong>Division by zero</strong> → shows <code>Error</code> and
+            keeps last valid value
           </li>
           <li>
-            <strong>Budgeting & bills:</strong> split dinner, rent, or utilities
-            fairly (try <code>(125.60 + 89.40) / 3</code>).
+            <strong>Unbalanced parentheses</strong> → prompts to review
+            expression
           </li>
           <li>
-            <strong>School & homework:</strong> double-check arithmetic before
-            you submit.
-          </li>
-          <li>
-            <strong>Forms & admin:</strong> sanity-check totals and percentages
-            so mistakes don’t slip through.
+            <strong>Invalid input</strong> (e.g., two operators in a row) →
+            ignored or corrected safely
           </li>
         </ul>
       </article>
 
-      <!-- ✅ How to use (short steps, example-first) -->
       <article class="card" id="how-to-use">
-        <h2>How to use</h2>
+        <h2>How to Use</h2>
         <ol>
-          <li>Type your math. Example: <code>(12 + 7) / 3 * 2</code>.</li>
+          <li>Enter numbers via on-screen buttons or your keyboard.</li>
           <li>
-            Use <strong>%</strong> for percentages. Example:
-            <code>12% * 200</code> → <strong>24</strong> (we treat
-            <code>12%</code> as <code>12/100</code>).
+            Select an operation (<strong>+, −, ×, ÷, %</strong>) or wrap parts
+            in <strong>( )</strong>.
           </li>
+          <li>Press <strong>=</strong> or hit <kbd>Enter</kbd> to evaluate.</li>
           <li>
-            Press <strong>Enter</strong> to calculate. Use
-            <strong>Shift+Enter</strong> for a new line.
-          </li>
-          <li>
-            Click <strong>Copy result</strong> to copy the answer, or
-            <strong>Clear</strong> to start again.
-          </li>
-          <li>
-            You can type <em>×</em> and <em>÷</em> if you like — we read them as
-            <code>*</code> and <code>/</code>.
+            Use <strong>C</strong>/<strong>AC</strong> to clear;
+            <strong>DEL</strong> to backspace one character.
           </li>
         </ol>
 
-        <h3>Tips</h3>
+        <h3>Keyboard Shortcuts</h3>
         <ul>
-          <li><strong>Works offline</strong> after the first load.</li>
+          <li><kbd>0–9</kbd> digits, <kbd>.</kbd> decimal point</li>
           <li>
-            Browsers use floating-point math, so you might see tiny rounding
-            quirks (e.g., <code>0.1 + 0.2</code>).
+            <kbd>+</kbd> <kbd>-</kbd> <kbd>*</kbd> (×) <kbd>/</kbd> (÷),
+            <kbd>%</kbd> percent
+          </li>
+          <li><kbd>(</kbd> <kbd>)</kbd> parentheses</li>
+          <li>
+            <kbd>Enter</kbd> = evaluate, <kbd>Backspace</kbd> = delete,
+            <kbd>Esc</kbd> = clear
           </li>
           <li>
-            This is a <strong>basic calculator</strong> — no functions like
-            <code>sin</code>, <code>sqrt</code>, etc.
+            <kbd>M</kbd><kbd>R</kbd> MR, <kbd>M</kbd><kbd>C</kbd> MC,
+            <kbd>M</kbd><kbd>+</kbd> M+, <kbd>M</kbd><kbd>-</kbd> M− (if
+            supported)
           </li>
         </ul>
       </article>
+      <!-- Real-World Applications -->
+      <article class="card" id="applications">
+        <h2>Where This Helps</h2>
+        <div class="applications-grid">
+          <div class="use-case">
+            <h4>🛒 Discounts & Tax</h4>
+            <p>Apply % off/on, add sales tax, tip calculations</p>
+            <span class="badge">% &amp; totals</span>
+          </div>
+          <div class="use-case">
+            <h4>📈 Budgets & Reports</h4>
+            <p>Margins, averages, quick checks</p>
+            <span class="badge">× ÷ + −</span>
+          </div>
+          <div class="use-case">
+            <h4>📚 Homework</h4>
+            <p>Order of operations with parentheses</p>
+            <span class="badge">( ) first</span>
+          </div>
+          <div class="use-case">
+            <h4>⚙️ Everyday Math</h4>
+            <p>Splitting bills, unit prices, ratios</p>
+            <span class="badge">fast &amp; local</span>
+          </div>
+        </div>
+      </article>
 
+      <!-- Tips & Accuracy -->
+      <article class="card" id="calc-tips">
+        <h2>Tips for Accurate Results</h2>
+        <div class="tip">
+          <h3>🧮 Use parentheses to control order</h3>
+          <p>
+            e.g., <code>(100 + 20) × 0.15</code> vs
+            <code>100 + 20 × 0.15</code>.
+          </p>
+        </div>
+        <div class="tip">
+          <h3>🔢 Limit displayed decimals</h3>
+          <p>Round to 2–4 decimals for currency or reporting clarity.</p>
+        </div>
+        <div class="tip">
+          <h3>➗ Check percent intent</h3>
+          <p>
+            <code>50 + 10%</code> means add 10% of 50;
+            <code>50 × 10%</code> means 10% of 50.
+          </p>
+        </div>
+        <div class="tip">
+          <h3>⌨️ Prefer keyboard for speed</h3>
+          <p>
+            Use <kbd>Enter</kbd>, <kbd>Backspace</kbd>, and operator keys for
+            faster input.
+          </p>
+        </div>
+      </article>
+
+      <!-- Technical Implementation -->
+      <article class="card" id="technical">
+        <h2>Technical Implementation</h2>
+
+        <h3>Safe Evaluate (order of operations)</h3>
+        <pre><code class="language-javascript">function evalExpression(expr) {
+  // Normalize input: replace unicode × ÷ with * /
+  expr = expr.replace(/×/g, '*').replace(/÷/g, '/');
+
+  // Basic guardrails: allow digits, ops, dot, percent, parentheses, spaces
+  if (!/^[0-9+\-*/().% \t]+$/.test(expr)) return 'Error';
+
+  // Percent handling: turn "A + B%" into "A + (A*B/100)"
+  expr = expr.replace(/(\d+(?:\.\d+)?)\s*([+\-])\s*(\d+(?:\.\d+)?)%/g,
+    (_, a, op, b) => `${a}${op}(${a}*${b}/100)`);
+
+  // Standalone percent "N%" -> "N/100"
+  expr = expr.replace(/(\d+(?:\.\d+)?)%/g, '($1/100)');
+
+  try {
+    const val = Function(`"use strict"; return (${expr})`)();
+    // Handle divide-by-zero and invalid results
+    if (!isFinite(val)) return 'Error';
+    // Smart rounding to 12 significant digits
+    return parseFloat(Number(val).toPrecision(12));
+  } catch {
+    return 'Error';
+  }
+}</code></pre>
+
+        <h3>Memory Register</h3>
+        <pre><code class="language-javascript">const memory = { value: 0, has: false };
+function mc(){ memory.value = 0; memory.has = false; }
+function mr(){ return memory.has ? memory.value : 0; }
+function mPlus(x){ memory.value += Number(x)||0; memory.has = true; }
+function mMinus(x){ memory.value -= Number(x)||0; memory.has = true; }</code></pre>
+      </article>
       <!-- ✅ FAQ (plain language; keep JSON-LD in sync) -->
       <section class="faq-section card">
         <h2 class="faq-title">Calculator – Frequently Asked Questions</h2>

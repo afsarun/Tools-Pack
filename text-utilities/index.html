@@ -270,41 +270,287 @@
         ></ins>
       </div>
 
+      <!-- Text Utilities: Details & Rules -->
+      <article class="card" id="text-utilities-details">
+        <h2>Text Utilities Basics</h2>
+
+        <div class="tu-grid">
+          <div class="tu-section">
+            <h3>What this tool can do</h3>
+            <ul>
+              <li>
+                <strong>Change case</strong>: UPPER • lower • Title Case •
+                Sentence case
+              </li>
+              <li>
+                <strong>Clean text</strong>: trim, collapse spaces, remove extra
+                blank lines
+              </li>
+              <li>
+                <strong>Lines</strong>: sort (A→Z/Z→A), unique, dedupe,
+                prefix/suffix, numbering
+              </li>
+              <li>
+                <strong>Counts</strong>: characters, words, lines
+                (Unicode-aware)
+              </li>
+              <li>
+                <strong>Transform</strong>: slugify, remove diacritics, reverse
+                text, smart quotes ←→ straight
+              </li>
+              <li><strong>Find &amp; replace</strong>: plain or regex</li>
+              <li><strong>Copy/Download</strong> results (local-only)</li>
+            </ul>
+            <p class="small muted">
+              Runs entirely in your browser. No uploads or tracking.
+            </p>
+          </div>
+
+          <div class="tu-section">
+            <h3>Inputs</h3>
+            <ul>
+              <li>
+                <strong>Paste</strong> or <strong>type</strong> text (preserves
+                newlines)
+              </li>
+              <li>
+                <strong>Options</strong>: case mode, whitespace rules,
+                sort/unique, regex flags
+              </li>
+              <li><strong>Output</strong>: live preview + copy/download</li>
+            </ul>
+          </div>
+
+          <div class="tu-section">
+            <h3>Unicode</h3>
+            <ul>
+              <li>Works with emoji and non-Latin scripts</li>
+              <li>
+                Counts use <code>Intl.Segmenter</code> when available for better
+                word/grapheme accuracy
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Common recipes</h3>
+        <ul>
+          <li>
+            <strong>Blog titles</strong>: Title Case + keep minor words
+            lowercase (of, the, a…)
+          </li>
+          <li><strong>CSV lists</strong>: one item per line → unique → sort</li>
+          <li><strong>URLs</strong>: slugify + lowercase + hyphens</li>
+        </ul>
+      </article>
+
       <!-- How to use -->
-      <article class="card" id="how-to-use">
+      <article class="card" id="how-to-use-text-utilities">
         <h2>How to use</h2>
         <ol>
-          <li>Paste or type your text into the box.</li>
+          <li>Paste text into the <strong>Input</strong> area.</li>
           <li>
-            Use <strong>UPPERCASE</strong> or <strong>lowercase</strong> to
-            change letter case.
+            Select a <strong>utility</strong> (e.g., Title Case, Slugify,
+            Sort/Unique).
           </li>
           <li>
-            Use <strong>Collapse spaces</strong> to turn any extra whitespace
-            into single spaces and trim the ends.
+            Adjust <strong>options</strong> (e.g., ignore case while deduping,
+            regex flags for replace).
           </li>
           <li>
-            Use <strong>Remove ALL spaces</strong> to delete every whitespace
-            character (spaces, tabs, newlines).
-          </li>
-          <li>
-            Click <strong>Copy</strong> to copy the result. The
-            <strong>Words/Characters</strong> counter updates live.
+            See the result in <strong>Output</strong>; click
+            <strong>Copy</strong> or <strong>Download</strong>.
           </li>
         </ol>
+
         <h3>Tips</h3>
         <ul>
-          <li>Everything runs locally—your text is never uploaded.</li>
-          <li>Works offline after the first load.</li>
           <li>
-            <em>Note:</em> “Collapse spaces” will also convert line breaks to a
-            single space. If you need line breaks, avoid this action.
+            Enable “<strong>Collapse whitespace</strong>” to normalize spaces
+            and blank lines.
           </li>
           <li>
-            Made a mistake? Use your browser’s undo
-            (<kbd>Ctrl/⌘</kbd>+<kbd>Z</kbd>).
+            Use <strong>Regex replace</strong> for patterns (e.g.,
+            <code>\\s+</code> → single space).
+          </li>
+          <li>
+            For languages with diacritics, apply
+            <strong>Remove diacritics</strong> before <strong>Slugify</strong>.
           </li>
         </ul>
+      </article>
+
+      <!-- Real-World Applications -->
+      <article class="card" id="text-utilities-applications">
+        <h2>Where to Use Text Utilities</h2>
+
+        <div class="applications-grid">
+          <div class="use-case">
+            <h4>✍️ Copywriting</h4>
+            <p>Headlines, sentence-case paragraphs</p>
+            <span class="badge">title/sentence</span>
+          </div>
+
+          <div class="use-case">
+            <h4>🗂 Data cleanup</h4>
+            <p>Lists to unique/sorted sets</p>
+            <span class="badge">sort + unique</span>
+          </div>
+
+          <div class="use-case">
+            <h4>🌐 SEO</h4>
+            <p>Generate clean slugs</p>
+            <span class="badge">slugify</span>
+          </div>
+
+          <div class="use-case">
+            <h4>🧪 QA</h4>
+            <p>Normalize whitespace &amp; quotes</p>
+            <span class="badge">normalize</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Best Practices -->
+      <article class="card" id="text-utilities-tips">
+        <h2>Text Utilities Best Practices</h2>
+
+        <div class="tip">
+          <h3>🔤 Respect proper nouns</h3>
+          <p>
+            Title Case shouldn’t upcase small words unless they start/end the
+            title.
+          </p>
+        </div>
+
+        <div class="tip">
+          <h3>🧹 Normalize before compare</h3>
+          <p>
+            Trim + collapse spaces + case-fold before deduping to avoid
+            near-duplicates.
+          </p>
+        </div>
+
+        <div class="tip">
+          <h3>🌍 Unicode-safe transforms</h3>
+          <p>
+            Use normalization and grapheme-aware operations for emoji and
+            accents.
+          </p>
+        </div>
+      </article>
+
+      <!-- Technical Implementation -->
+      <article class="card" id="text-utilities-technical">
+        <h2>Technical Implementation</h2>
+
+        <h3>Case transforms</h3>
+        <pre><code class="language-javascript">function toUpper(s){ return s.toUpperCase(); }
+function toLower(s){ return s.toLowerCase(); }
+
+const MINOR = new Set(["a","an","and","as","at","but","by","for","in","nor","of","on","or","per","the","to","vs","via"]);
+function toTitleCase(s){
+  return s.split(/(\s+|-|:)/).map((tok, i, arr) =&gt; {
+    if (/^\s+$/.test(tok) || tok === "-" || tok === ":") return tok;
+    const lower = tok.toLowerCase();
+    const isEdge = (i === 0 || i === arr.length - 1);
+    if (!isEdge &amp;&amp; MINOR.has(lower)) return lower;
+    return lower.replace(/^[\p{Letter}\p{Number}]/u, ch =&gt; ch.toUpperCase());
+  }).join("");
+}
+function toSentenceCase(s){
+  return s.replace(/(^|[.!?]\s+)(\p{Letter})/gu, (m, p1, p2) =&gt; p1 + p2.toUpperCase());
+}</code></pre>
+
+        <h3>Whitespace normalization</h3>
+        <pre><code class="language-javascript">function trimLines(s){ return s.replace(/[ \t]+$/gm, "").replace(/^\s+|\s+$/g, ""); }
+function collapseSpaces(s){ return s.replace(/\s+/g, " ").trim(); }
+function collapseBlankLines(s){ return s.replace(/\n{3,}/g, "\n\n"); }</code></pre>
+
+        <h3>Lines: sort &amp; unique</h3>
+        <pre><code class="language-javascript">function lines(s){ return s.replace(/\r\n/g,"\n").split("\n"); }
+function joinLines(a){ return a.join("\n"); }
+
+function sortLinesAsc(s){ return joinLines(lines(s).sort((a,b)=&gt;a.localeCompare(b))); }
+function sortLinesDesc(s){ return joinLines(lines(s).sort((a,b)=&gt;b.localeCompare(a))); }
+
+function uniqueLines(s, { caseInsensitive=false, trim=true } = {}){
+  const seen = new Set();
+  const out = [];
+  for (let ln of lines(s)) {
+    const key = (caseInsensitive ? ln.toLowerCase() : ln).trim();
+    const k = trim ? key : (caseInsensitive ? ln.toLowerCase() : ln);
+    if (!seen.has(k)) { seen.add(k); out.push(ln); }
+  }
+  return joinLines(out);
+}</code></pre>
+
+        <h3>Slugify &amp; diacritics</h3>
+        <pre><code class="language-javascript">function stripDiacritics(s){
+  return s.normalize("NFKD").replace(/[\u0300-\u036f]/g, "");
+}
+function slugify(s){
+  return stripDiacritics(s)
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 120);
+}</code></pre>
+
+        <h3>Smart quotes ←→ straight quotes</h3>
+        <pre><code class="language-javascript">function toStraightQuotes(s){
+  return s
+    .replace(/[“”]/g, '"')
+    .replace(/[‘’]/g, "'")
+    .replace(/—/g, "--");
+}
+function toSmartQuotes(s){
+  return s
+    .replace(/\b"/g, "“").replace(/"\b/g, "”")
+    .replace(/\b'/g, "‘").replace(/'\b/g, "’")
+    .replace(/--/g, "—");
+}</code></pre>
+
+        <h3>Find &amp; replace (plain or regex)</h3>
+        <pre><code class="language-javascript">function replaceAllSafe(s, search, repl, { regex=false, flags="g" } = {}){
+  if (regex) {
+    const rx = new RegExp(search, flags.includes("g") ? flags : flags + "g");
+    return s.replace(rx, repl);
+  }
+  const esc = search.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return s.replace(new RegExp(esc, "g"), repl);
+}</code></pre>
+
+        <h3>Accurate counts (Unicode-aware)</h3>
+        <pre><code class="language-javascript">function countStats(s){
+  const linesCount = s ? s.replace(/\r\n/g, "\n").split("\n").length : 0;
+  const words = (typeof Intl !== "undefined" &amp;&amp; Intl.Segmenter)
+    ? [...new Intl.Segmenter(undefined, { granularity: "word" }).segment(s)]
+        .filter(seg =&gt; seg.isWordLike).length
+    : (s.trim().match(/\S+/g) || []).length;
+  const chars = [...s].length; // code points (not bytes)
+  return { lines: linesCount, words, characters: chars };
+}</code></pre>
+
+        <h3>Reverse text (code-point safe)</h3>
+        <pre><code class="language-javascript">function reverseText(s){ return [...s].reverse().join(""); }</code></pre>
+
+        <h3>Copy/Download helpers</h3>
+        <pre><code class="language-javascript">async function copyText(text){
+  try { await navigator.clipboard.writeText(text); return true; }
+  catch {
+    const ta = document.createElement("textarea");
+    ta.value = text; document.body.appendChild(ta);
+    ta.select(); document.execCommand("copy"); ta.remove();
+    return true;
+  }
+}
+function downloadText(text, name="text.txt"){
+  const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = Object.assign(document.createElement("a"), { href: url, download: name });
+  a.click(); URL.revokeObjectURL(url);
+}</code></pre>
       </article>
 
       <section class="faq-section card">

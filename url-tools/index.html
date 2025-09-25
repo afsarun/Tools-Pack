@@ -272,40 +272,322 @@
         <div class="muted" id="status" aria-live="polite"></div>
       </article>
 
+      <!-- URL Tools: Details & Rules -->
+      <article class="card" id="url-details">
+        <h2>URL Utilities Basics</h2>
+
+        <div class="url-grid">
+          <div class="url-section">
+            <h3>What this tool can do</h3>
+            <ul>
+              <li>
+                <strong>Encode / Decode</strong> full URLs or individual
+                components
+              </li>
+              <li>
+                <strong>Parse</strong> URLs into protocol, host, path, query,
+                hash
+              </li>
+              <li>
+                <strong>Edit query params</strong>: add, update, remove (UTM
+                builder/stripper)
+              </li>
+              <li>
+                <strong>Normalize</strong> URLs: lowercase host, remove default
+                ports, trim dots/slashes
+              </li>
+              <li>
+                <strong>Compare</strong> origins (same-origin / same-site)
+              </li>
+            </ul>
+            <p class="small muted">
+              Everything runs locally in your browser—no data leaves your
+              device.
+            </p>
+          </div>
+
+          <div class="url-section">
+            <h3>RFC 3986 quick notes</h3>
+            <ul>
+              <li>
+                <strong>Unreserved:</strong>
+                <code>A–Z a–z 0–9 - . _ ~</code> (never percent-encoded)
+              </li>
+              <li>
+                <strong>Reserved:</strong>
+                <code>! * ' ( ) ; : @ &amp; = + $ , / ? # [ ]</code>
+                (context-dependent)
+              </li>
+              <li>
+                <strong>Spaces:</strong> in URLs → <code>%20</code>; in
+                <em>form encoding</em>
+                (<code>application/x-www-form-urlencoded</code>) →
+                <code>+</code>
+              </li>
+            </ul>
+          </div>
+
+          <div class="url-section">
+            <h3>Encode APIs</h3>
+            <ul>
+              <li>
+                <code>encodeURI()</code> → for the whole URL (does
+                <em>not</em> escape <code>:/#?&amp;</code>)
+              </li>
+              <li>
+                <code>encodeURIComponent()</code> → for parts (query values,
+                path segments)
+              </li>
+              <li>
+                Decoding uses <code>decodeURI()</code> /
+                <code>decodeURIComponent()</code>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>IDN & Punycode</h3>
+        <ul>
+          <li>
+            Unicode domains (e.g., <code>https://bücher.example</code>) are
+            converted to punycode internally.
+          </li>
+          <li>
+            Use the <code>URL</code> constructor to normalize; it serializes to
+            ASCII when needed.
+          </li>
+        </ul>
+      </article>
+
       <!-- How to use -->
-      <article class="card" id="how-to-use">
+      <article class="card" id="how-to-use-url">
         <h2>How to use</h2>
         <ol>
           <li>
-            Paste a full URL, a query value, or any text into <em>Input</em>.
+            Paste a <strong>URL</strong> or <strong>component string</strong>.
           </li>
           <li>
-            Click <strong>Encode</strong> to percent-encode (safe for query
-            values & path segments), or <strong>Decode</strong> to reverse it.
+            Choose <strong>Encode</strong> / <strong>Decode</strong> or switch
+            to <strong>Query Editor</strong>.
           </li>
-          <li>Use <strong>Copy Output</strong> to copy the result.</li>
           <li>
-            Shortcuts: <kbd>Ctrl/⌘+Enter</kbd> = Encode,
-            <kbd>Shift+Enter</kbd> = Decode.
+            Add / edit / remove query parameters (e.g., UTM tags) and copy the
+            updated URL.
+          </li>
+          <li>
+            Use <strong>Normalize</strong> to tidy hosts, protocols, trailing
+            slashes, default ports.
           </li>
         </ol>
+
         <h3>Tips</h3>
         <ul>
           <li>
-            For <strong>full URLs</strong>, use <code>encodeURI</code>-style
-            behavior (this tool’s Encode uses
-            <code>encodeURIComponent</code> for components; see FAQ).
+            Encode <em>components</em> (path segments, query values) with
+            <code>encodeURIComponent</code>.
           </li>
           <li>
-            On Decode, <code>+</code> is treated as space for legacy
-            <code>application/x-www-form-urlencoded</code> data.
+            Avoid double-encoding. Decode once, mutate, then re-encode
+            <em>only</em> components you changed.
           </li>
           <li>
-            If you see a “Decode error”, your text may contain an invalid
-            percent sequence (e.g. a dangling <code>%</code>).
+            For forms, <code>URLSearchParams</code> handles <code>+</code> vs
+            <code>%20</code> details for you.
           </li>
-          <li>Unicode and emoji are fully supported.</li>
         </ul>
+      </article>
+
+      <!-- Real-World Applications -->
+      <article class="card" id="url-applications">
+        <h2>Where to Use URL Tools</h2>
+
+        <div class="applications-grid">
+          <div class="use-case">
+            <h4>🔗 Shareable Links</h4>
+            <p>Clean tracking params, add campaign tags</p>
+            <span class="badge">UTM builder</span>
+          </div>
+          <div class="use-case">
+            <h4>🧪 QA & Debug</h4>
+            <p>Inspect parse results, compare origins</p>
+            <span class="badge">URL parts</span>
+          </div>
+          <div class="use-case">
+            <h4>🌐 i18n</h4>
+            <p>Safely encode non-ASCII paths</p>
+            <span class="badge">UTF-8</span>
+          </div>
+          <div class="use-case">
+            <h4>🧰 API Requests</h4>
+            <p>Build query strings correctly</p>
+            <span class="badge">URLSearchParams</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Best Practices -->
+      <article class="card" id="url-tips">
+        <h2>URL Best Practices</h2>
+
+        <div class="tip">
+          <h3>🧩 Encode the right layer</h3>
+          <p>
+            Use <code>encodeURI</code> for the whole URL and
+            <code>encodeURIComponent</code> for parts.
+          </p>
+        </div>
+
+        <div class="tip">
+          <h3>🧹 Normalize before compare</h3>
+          <p>
+            Lowercase host, drop default ports
+            (<code>:80</code>/<code>:443</code>), remove trailing slashes.
+          </p>
+        </div>
+
+        <div class="tip">
+          <h3>🚫 Strip trackers</h3>
+          <p>
+            Remove <code>utm_*</code>, <code>fbclid</code>,
+            <code>gclid</code> unless needed.
+          </p>
+        </div>
+
+        <div class="tip">
+          <h3>🔐 Beware secrets in URLs</h3>
+          <p>
+            Never place credentials or tokens in query strings; use headers or
+            POST bodies.
+          </p>
+        </div>
+      </article>
+
+      <!-- Technical Implementation -->
+      <article class="card" id="url-technical">
+        <h2>Technical Implementation</h2>
+
+        <h3>Safe component encoding</h3>
+        <pre><code class="language-javascript">function encodeComponentSafe(s) {
+  return encodeURIComponent(String(s))
+    // keep commonly safe characters if desired (optional):
+    .replace(/[!'()*]/g, c =&gt; "%" + c.charCodeAt(0).toString(16).toUpperCase());
+}
+function decodeComponentSafe(s) {
+  try { return decodeURIComponent(s); }
+  catch { return s; } // fallback if malformed
+}</code></pre>
+
+        <h3>Parse a URL into parts</h3>
+        <pre><code class="language-javascript">function parseUrl(input) {
+  const u = new URL(input);
+  return {
+    href: u.href,
+    protocol: u.protocol, // "https:"
+    username: u.username,
+    password: u.password,
+    host: u.host,         // "example.com:443"
+    hostname: u.hostname, // "example.com"
+    port: u.port,         // "443"
+    origin: u.origin,     // "https://example.com"
+    pathname: u.pathname, // "/a/b"
+    search: u.search,     // "?q=1"
+    hash: u.hash          // "#top"
+  };
+}</code></pre>
+
+        <h3>Build & mutate query params</h3>
+        <pre><code class="language-javascript">function setParams(url, obj = {}) {
+  const u = new URL(url);
+  const p = u.searchParams;
+  Object.entries(obj).forEach(([k, v]) =&gt; {
+    if (v === null || v === undefined) p.delete(k);
+    else p.set(k, String(v));
+  });
+  u.search = p.toString(); // serializes with proper encoding
+  return u.toString();
+}
+
+function getParams(url) {
+  const p = new URL(url).searchParams;
+  const out = {};
+  p.forEach((v, k) =&gt; { out[k] = v; });
+  return out;
+}</code></pre>
+
+        <h3>UTM builder & stripper</h3>
+        <pre><code class="language-javascript">function addUTM(url, { source, medium, campaign, term, content } = {}) {
+  const u = new URL(url);
+  if (source)  u.searchParams.set("utm_source", source);
+  if (medium)  u.searchParams.set("utm_medium", medium);
+  if (campaign)u.searchParams.set("utm_campaign", campaign);
+  if (term)    u.searchParams.set("utm_term", term);
+  if (content) u.searchParams.set("utm_content", content);
+  return u.toString();
+}
+function stripTracking(url) {
+  const u = new URL(url);
+  const junk = [
+    /^utm_/i, /^fbclid$/i, /^gclid$/i, /^dclid$/i,
+    /^mc_(cid|eid)$/i, /^igshid$/i, /^vero_id$/i
+  ];
+  [...u.searchParams.keys()].forEach(k =&gt; {
+    if (junk.some(rx =&gt; rx.test(k))) u.searchParams.delete(k);
+  });
+  return u.toString();
+}</code></pre>
+
+        <h3>Normalize URL (host, ports, slashes)</h3>
+        <pre><code class="language-javascript">function normalizeUrl(url) {
+  const u = new URL(url);
+  u.hostname = u.hostname.toLowerCase();
+  // drop default ports
+  if ((u.protocol === "http:" &amp;&amp; u.port === "80") ||
+      (u.protocol === "https:" &amp;&amp; u.port === "443")) {
+    u.port = "";
+  }
+  // collapse multiple slashes in path (except after protocol)
+  u.pathname = u.pathname.replace(/\/{2,}/g, "/");
+  // remove trailing slash for non-root
+  if (u.pathname.length &gt; 1 &amp;&amp; u.pathname.endsWith("/")) {
+    u.pathname = u.pathname.slice(0, -1);
+  }
+  return u.toString();
+}</code></pre>
+
+        <h3>Same-origin / same-site checks</h3>
+        <pre><code class="language-javascript">function sameOrigin(a, b) {
+  const A = new URL(a), B = new URL(b);
+  return A.origin === B.origin;
+}
+function sameSite(a, b) {
+  const A = new URL(a), B = new URL(b);
+  const etld1 = A.hostname.split(".").slice(-2).join(".");
+  const etld2 = B.hostname.split(".").slice(-2).join(".");
+  return etld1 === etld2 && A.protocol === B.protocol;
+}</code></pre>
+
+        <h3>Form-style encode/decode (space ↔ +)</h3>
+        <pre><code class="language-javascript">function formEncode(params) {
+  const usp = new URLSearchParams(params);
+  return usp.toString(); // uses '+' for spaces
+}
+function formDecode(qs) {
+  const p = new URLSearchParams(qs.startsWith("?") ? qs.slice(1) : qs);
+  const out = {};
+  for (const [k, v] of p.entries()) out[k] = v;
+  return out;
+}</code></pre>
+
+        <h3>Path segment helpers</h3>
+        <pre><code class="language-javascript">function joinPath(...segs) {
+  return segs
+    .map(s =&gt; String(s).replace(/^\/+|\/+$/g, ""))
+    .filter(Boolean)
+    .join("/")
+    .replace(/^/, "/");
+}
+// Example: new URL(joinPath("api", "v1", "users"), "https://example.com").toString();
+</code></pre>
       </article>
 
       <!-- FAQ -->
