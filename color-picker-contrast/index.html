@@ -484,25 +484,6 @@
         <h2>Technical Implementation</h2>
 
         <h3>CSS Custom Properties Example</h3>
-        <pre><code class="language-css">:root {
-  --primary-text: #1a1a1a;
-  --primary-bg: #ffffff;
-  --contrast-ratio: 16.42; /* Meets AAA */
-}
-
-/* Always provide fallbacks */
-body {
-  color: var(--primary-text, #000000);
-  background-color: var(--primary-bg, #ffffff);
-}</code></pre>
-
-        <h3>JavaScript Contrast Calculation</h3>
-        <p>This tool uses the WCAG 2.1 relative luminance formula:</p>
-        <pre><code class="language-javascript">function getContrastRatio(hex1, hex2) {
-  const l1 = getRelativeLuminance(hex1);
-  const l2 = getRelativeLuminance(hex2);
-  return (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
-}</code></pre>
       </article>
 
       <!-- FAQ Section -->

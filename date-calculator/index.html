@@ -591,52 +591,6 @@
         <h2>Technical Implementation</h2>
 
         <h3>Add/Subtract days</h3>
-        <pre><code class="language-javascript">function addDays(iso, days) {
-  const [y, m, d] = iso.split('-').map(Number);
-  const dt = new Date(y, m - 1, d);
-  dt.setDate(dt.getDate() + Number(days || 0));
-  return dt.toISOString().slice(0, 10);
-}</code></pre>
-
-        <h3>Total days between two dates</h3>
-        <pre><code class="language-javascript">function diffDays(fromISO, toISO) {
-  const a = new Date(fromISO + 'T00:00:00');
-  const b = new Date(toISO + 'T00:00:00');
-  const MS = 24 * 60 * 60 * 1000;
-  return Math.round((b - a) / MS);
-}</code></pre>
-
-        <h3>Calendar-accurate Y/M/D difference</h3>
-        <pre><code class="language-javascript">function diffYMD(fromISO, toISO) {
-  const [fy, fm, fd] = fromISO.split('-').map(Number);
-  const [ty, tm, td] = toISO.split('-').map(Number);
-
-  let y = ty - fy, m = tm - fm, d = td - fd;
-
-  if (d &lt; 0) {
-    const prevMonth = new Date(ty, tm - 1, 0); // last day of previous month
-    d += prevMonth.getDate();
-    m -= 1;
-  }
-  if (m &lt; 0) { m += 12; y -= 1; }
-  return { years: y, months: m, days: d };
-}</code></pre>
-
-        <h3>Business days between (skip weekends, optional holidays)</h3>
-        <pre><code class="language-javascript">function businessDaysBetween(fromISO, toISO, holidays = []) {
-  const holi = new Set(holidays);
-  let cur = new Date(fromISO + 'T00:00:00');
-  const end = new Date(toISO + 'T00:00:00');
-  let count = 0;
-
-  while (cur &lt;= end) {
-    const iso = cur.toISOString().slice(0,10);
-    const day = cur.getDay(); // 0 Sun ... 6 Sat
-    if (day !== 0 &amp;&amp; day !== 6 &amp;&amp; !holi.has(iso)) count++;
-    cur.setDate(cur.getDate() + 1);
-  }
-  return count;
-}</code></pre>
       </article>
       <section class="faq-section card">
         <h2 class="faq-title">Days Calculator – Frequently Asked Questions</h2>

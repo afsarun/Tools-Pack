@@ -490,37 +490,6 @@
         <h2>Technical Implementation</h2>
 
         <h3>Safe Evaluate (order of operations)</h3>
-        <pre><code class="language-javascript">function evalExpression(expr) {
-  // Normalize input: replace unicode × ÷ with * /
-  expr = expr.replace(/×/g, '*').replace(/÷/g, '/');
-
-  // Basic guardrails: allow digits, ops, dot, percent, parentheses, spaces
-  if (!/^[0-9+\-*/().% \t]+$/.test(expr)) return 'Error';
-
-  // Percent handling: turn "A + B%" into "A + (A*B/100)"
-  expr = expr.replace(/(\d+(?:\.\d+)?)\s*([+\-])\s*(\d+(?:\.\d+)?)%/g,
-    (_, a, op, b) => `${a}${op}(${a}*${b}/100)`);
-
-  // Standalone percent "N%" -> "N/100"
-  expr = expr.replace(/(\d+(?:\.\d+)?)%/g, '($1/100)');
-
-  try {
-    const val = Function(`"use strict"; return (${expr})`)();
-    // Handle divide-by-zero and invalid results
-    if (!isFinite(val)) return 'Error';
-    // Smart rounding to 12 significant digits
-    return parseFloat(Number(val).toPrecision(12));
-  } catch {
-    return 'Error';
-  }
-}</code></pre>
-
-        <h3>Memory Register</h3>
-        <pre><code class="language-javascript">const memory = { value: 0, has: false };
-function mc(){ memory.value = 0; memory.has = false; }
-function mr(){ return memory.has ? memory.value : 0; }
-function mPlus(x){ memory.value += Number(x)||0; memory.has = true; }
-function mMinus(x){ memory.value -= Number(x)||0; memory.has = true; }</code></pre>
       </article>
       <!-- ✅ FAQ (plain language; keep JSON-LD in sync) -->
       <section class="faq-section card">

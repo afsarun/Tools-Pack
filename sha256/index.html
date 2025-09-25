@@ -7,7 +7,7 @@
     <title>SHA-256 Hash Generator — WebCrypto | Tools Pack</title>
     <meta
       name="description"
-      content="Create SHA-256 hashes from text or files securely in your browser using WebCrypto. No upload, privacy-friendly."
+      content="Use this SHA-256 hash generator to compute hashes for text or files locally with the WebCrypto API. Private, fast, and no uploads."
     />
     <meta name="theme-color" content="#1E1E2F" />
 
@@ -35,7 +35,7 @@
     <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Tools Pack" />
-    <meta property="og:title" content="SHA-256 Hash — Tools Pack" />
+    <meta property="og:title" content="SHA-256 Hash Generator — Tools Pack" />
     <meta
       property="og:description"
       content="Hash text or files using WebCrypto. Everything runs in your browser."
@@ -44,7 +44,7 @@
     <meta property="og:locale" content="en_US" />
     <meta property="og:locale:alternate" content="bn_BD" />
 
-    <!-- ✅ Prefer webp for OG (1200×630) -->
+    <!-- ✅ Prefer WEBP for OG (1200×630) -->
     <meta
       property="og:image"
       content="https://tools-pack.netlify.app/assets/og/sha-256-hash-en.webp"
@@ -62,7 +62,7 @@
     />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="SHA-256 Hash — Tools Pack" />
+    <meta name="twitter:title" content="SHA-256 Hash Generator — Tools Pack" />
     <meta
       name="twitter:description"
       content="Compute SHA-256 for text/files locally with WebCrypto — private and fast."
@@ -79,7 +79,7 @@
       crossorigin="anonymous"
     ></script>
 
-    <!-- JSON-LD: WebApplication (upgraded) -->
+    <!-- JSON-LD: WebApplication -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -119,7 +119,7 @@
       }
     </script>
 
-    <!-- FAQ schema (matches the FAQ section below) -->
+    <!-- JSON-LD: FAQ (sync with visible FAQ) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -127,10 +127,10 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "How do I use this SHA-256 tool?",
+            "name": "How do I use this SHA-256 hash generator?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Type or paste your text into the box—or choose a file—then click Compute (or press Ctrl/Cmd+Enter). The SHA-256 hex digest appears instantly below. All hashing happens locally in your browser."
+              "text": "Type or paste your text—or choose a file—then click Compute (or press Ctrl/Cmd+Enter). The SHA-256 hex digest appears instantly below. All hashing happens locally in your browser."
             }
           },
           {
@@ -174,15 +174,19 @@
       <div class="wrap brand">
         <a href="/"><div class="logo" aria-label="Tools Pack"></div></a>
         <div>
-          <h1 style="margin: 0">Hash Generator</h1>
-          <div class="sub">SHA-256 • WebCrypto</div>
+          <!-- 🔁 UPDATED H1 for SEO alignment -->
+          <h1 style="margin: 0">
+            SHA-256 Hash Generator (Text &amp; File, WebCrypto)
+          </h1>
+          <div class="sub">Compute SHA-256 locally — private &amp; fast</div>
         </div>
         <div style="margin-left: auto">
           <a class="muted" href="/bn/sha256/" hreflang="bn">বাংলা</a>
         </div>
       </div>
     </header>
-    <!-- Ad #1: top banner (constrained, no full-width expansion) -->
+
+    <!-- Ad #1: top banner (constrained) -->
     <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
       <span class="ad-label">Ad</span>
       <ins
@@ -195,17 +199,30 @@
         data-adtest="on"
       ></ins>
     </div>
+
     <main class="wrap" id="main">
       <!-- Breadcrumbs -->
       <nav class="breadcrumbs" aria-label="breadcrumb">
         <a href="/">Home</a> › <a href="/#text">Text Tools</a> ›
-        <span>SHA-256 Hash</span>
+        <span>SHA-256 Hash Generator</span>
       </nav>
+
+      <section class="card" id="intro">
+        <h1 style="margin: 0">SHA-256 Hash Generator (WebCrypto)</h1>
+        <p>
+          Compute a <strong>SHA-256 hash</strong> for text or a
+          <strong>whole file</strong> directly in your browser. Use the
+          <strong>file picker</strong> or just <strong>drop a file</strong> to
+          get a <strong>hex digest</strong> instantly. This tool implements a
+          <em>secure hash</em> (<em>cryptographic hash function</em>) to help
+          <strong>verify file integrity</strong> for downloads and releases.
+        </p>
+      </section>
 
       <!-- TOC -->
       <p class="toc">
         <a href="#hash-tool">Hash tool</a> ·
-        <a href="#how-to-use">How to use</a> · <a href="#faq">FAQ</a> ·
+        <a href="#how-to-use-sha256">How to use</a> · <a href="#faq">FAQ</a> ·
         <a href="#related">Related tools</a>
       </p>
 
@@ -286,6 +303,7 @@
             Copy
           </button>
         </div>
+
         <div class="ad-wrap ad-article" aria-label="Advertisement">
           <span class="ad-label">Ad</span>
           <ins
@@ -298,15 +316,14 @@
             data-adtest="on"
           ></ins>
         </div>
+
         <p class="muted" style="margin-top: 0.5rem">
           Privacy: hashing happens <strong>locally</strong> with WebCrypto;
           nothing is uploaded.
         </p>
       </article>
 
-      <!-- In-article Ad (AdSense in-article format works fine inside content) -->
-
-      <!-- SHA-256 Hash: Details & Rules -->
+      <!-- SHA-256 Basics -->
       <article class="card" id="sha256-details">
         <h2>SHA-256 Basics</h2>
 
@@ -371,7 +388,7 @@
 
       <!-- How to use -->
       <article class="card" id="how-to-use-sha256">
-        <h2>How to use</h2>
+        <h2>How to use the SHA-256 hash generator</h2>
         <ol>
           <li>Choose <strong>Text</strong> or <strong>File</strong> mode.</li>
           <li>
@@ -379,7 +396,8 @@
             <strong>Base64</strong>.
           </li>
           <li>
-            Click <strong>Hash</strong> to compute the SHA-256 digest locally.
+            Click <strong>Compute</strong> to calculate the SHA-256 digest
+            locally.
           </li>
           <li>
             (Optional) Enter an <strong>Expected hash</strong> to auto-verify.
@@ -387,6 +405,24 @@
           <li>
             (Optional) For <strong>HMAC-SHA-256</strong>, provide a secret key
             and compute.
+          </li>
+        </ol>
+        <ol>
+          <li>
+            Enter text or <strong>pick a file</strong> (you can also
+            <strong>drop a file</strong> onto the box).
+          </li>
+          <li>
+            Click <strong>Compute</strong>; the
+            <strong>hex digest</strong> appears below.
+          </li>
+          <li>
+            Works with common <em>types of files</em>; very large
+            <em>file size</em> depends on available memory.
+          </li>
+          <li>
+            To verify, compare the result with a publisher’s checksum to confirm
+            integrity.
           </li>
         </ol>
 
@@ -407,6 +443,18 @@
           </li>
         </ul>
       </article>
+      <section class="card" id="integrity-note">
+        <h2>Integrity check &amp; security notes</h2>
+        <p class="muted">
+          SHA-256 outputs <strong>256 bits</strong> (not <em>512 bits</em>) and
+          is designed for <em>collision resistance</em>. For
+          <em>security applications</em> such as
+          <strong>digital signatures</strong> or request signing, use
+          <code>HMAC-SHA-256</code>. Never store passwords with plain
+          SHA-256—use Argon2/bcrypt/PBKDF2 with
+          <strong>salt &amp; proper parameters</strong>.
+        </p>
+      </section>
 
       <!-- Real-World Applications -->
       <article class="card" id="sha256-applications">
@@ -473,105 +521,35 @@
         </div>
       </article>
 
-      <!-- Technical Implementation -->
-      <article class="card" id="sha256-technical">
-        <h2>Technical Implementation</h2>
-
-        <h3>Text → SHA-256 (hex/Base64)</h3>
-        <pre><code class="language-javascript">const enc = new TextEncoder();
-
-async function sha256Text(text, out = "hex") {
-  const bytes = enc.encode(text);
-  const digest = await crypto.subtle.digest("SHA-256", bytes);
-  const buf = new Uint8Array(digest);
-  return out === "base64" ? toBase64(buf) : toHex(buf);
-}
-
-function toHex(bytes) {
-  return [...bytes].map(b =&gt; b.toString(16).padStart(2, "0")).join("");
-}
-
-function toBase64(bytes) {
-  let bin = "";
-  bytes.forEach(b =&gt; bin += String.fromCharCode(b));
-  return btoa(bin);
-}</code></pre>
-
-        <h3>File → SHA-256</h3>
-        <pre><code class="language-javascript">async function sha256File(file, out = "hex") {
-  const buf = await file.arrayBuffer(); // reads whole file into memory
-  const digest = await crypto.subtle.digest("SHA-256", buf);
-  const bytes = new Uint8Array(digest);
-  return out === "base64" ? toBase64(bytes) : toHex(bytes);
-}
-// Note: For very large files, consider a streaming/incremental WASM hash library.</code></pre>
-
-        <h3>Verify against expected</h3>
-        <pre><code class="language-javascript">async function verifyTextSHA256(text, expectedHexOrB64) {
-  const expected = expectedHexOrB64.trim().toLowerCase();
-  const actualHex = (await sha256Text(text, "hex")).toLowerCase();
-  if (expected.includes("=") || /[+/]/.test(expected)) {
-    // Treat as base64
-    const actualB64 = await sha256Text(text, "base64");
-    return actualB64 === expectedHexOrB64;
-  }
-  return actualHex === expected;
-}</code></pre>
-
-        <h3>HMAC-SHA-256 (sign/verify)</h3>
-        <pre><code class="language-javascript">async function hmacKeyFromText(secret) {
-  return crypto.subtle.importKey(
-    "raw", enc.encode(secret),
-    { name: "HMAC", hash: "SHA-256" },
-    false, ["sign", "verify"]
-  );
-}
-
-async function hmacSha256(message, secret, out = "hex") {
-  const key = await hmacKeyFromText(secret);
-  const sig = await crypto.subtle.sign("HMAC", key, enc.encode(message));
-  const bytes = new Uint8Array(sig);
-  return out === "base64" ? toBase64(bytes) : toHex(bytes);
-}
-
-async function verifyHmacSha256(message, secret, signatureHex) {
-  const key = await hmacKeyFromText(secret);
-  const sigBytes = hexToBytes(signatureHex);
-  return crypto.subtle.verify("HMAC", key, sigBytes, enc.encode(message));
-}
-
-function hexToBytes(hex) {
-  if (hex.length % 2) throw new Error("Invalid hex");
-  const out = new Uint8Array(hex.length / 2);
-  for (let i = 0; i &lt; out.length; i++) {
-    out[i] = parseInt(hex.substr(i*2, 2), 16);
-  }
-  return out;
-}</code></pre>
-
-        <h3>Copy helper</h3>
-        <pre><code class="language-javascript">async function copyText(text) {
-  try {
-    await navigator.clipboard.writeText(text);
-    return true;
-  } catch {
-    const ta = document.createElement("textarea");
-    ta.value = text; document.body.appendChild(ta);
-    ta.select(); document.execCommand("copy");
-    ta.remove();
-    return true;
-  }
-}</code></pre>
+      <!-- Technical note (lean, SEO-safe) -->
+      <article class="card" id="technical">
+        <h2>Technical note</h2>
+        <p>
+          This tool uses the WebCrypto API (<code
+            >crypto.subtle.digest("SHA-256", data)</code
+          >) to hash UTF-8 text or a file’s <code>ArrayBuffer</code>. Everything
+          runs locally in your browser—no uploads. For multi-GB streaming, use a
+          desktop tool.
+        </p>
+        <!-- Optional: link the full source externally so it doesn't add on-page word count -->
+        <p class="small">
+          View full source:
+          <a href="https://github.com/yourrepo/sha256-tool" rel="nofollow"
+            >GitHub</a
+          >
+          <!-- or -->
+          <!-- <a href="https://gist.github.com/yourname/xxxxxxxx" rel="nofollow">Gist</a> -->
+        </p>
       </article>
 
-      <section class="faq-section card">
+      <!-- FAQ -->
+      <section class="faq-section card" id="faq">
         <h2 class="faq-title">SHA-256 – Frequently Asked Questions</h2>
 
         <div class="faq-container">
-          <!-- SHA-256 FAQs -->
           <div class="faq-item">
             <button class="faq-question">
-              How do I use this SHA-256 tool?
+              How do I use this SHA-256 hash generator?
               <span class="faq-icon">+</span>
             </button>
             <div class="faq-answer">
@@ -580,6 +558,34 @@ function hexToBytes(hex) {
                 <strong>Compute</strong> (or press
                 <kbd>Ctrl/Cmd</kbd>+<kbd>Enter</kbd>). The hex digest will be
                 shown in the output box.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              What is a hash function?<span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                A hash function maps input data to a fixed-length value. SHA-256
+                is a <em>cryptographic hash function</em> used to create a
+                <strong>secure hash</strong> (checksum) for integrity checks.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              What does collision resistance mean?<span class="faq-icon"
+                >+</span
+              >
+            </button>
+            <div class="faq-answer">
+              <p>
+                It’s hard to find two different inputs with the same digest.
+                SHA-256 is designed for strong
+                <em>collision resistance</em> for integrity and signing
+                workflows.
               </p>
             </div>
           </div>
@@ -637,6 +643,7 @@ function hexToBytes(hex) {
           </div>
         </div>
       </section>
+
       <!-- Related tools -->
       <article class="card" id="related">
         <h2>Related tools</h2>
@@ -753,6 +760,8 @@ function hexToBytes(hex) {
         }
       });
     </script>
+
+    <!-- Site scripts -->
     <script src="/assets/tracker.js" defer data-trk-site="tools-pack"></script>
     <script src="/assets/related-more.js" defer></script>
     <script src="/assets/script.js" defer></script>

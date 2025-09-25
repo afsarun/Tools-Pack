@@ -568,57 +568,6 @@
         <h2>Technical Implementation</h2>
 
         <h3>Calendar-accurate Y/M/D difference</h3>
-        <pre><code class="language-javascript">function diffYMD(fromISO, toISO = new Date().toISOString().slice(0,10)) {
-  const [fy, fm, fd] = fromISO.split('-').map(Number);
-  const [ty, tm, td] = toISO.split('-').map(Number);
-
-  let y = ty - fy;
-  let m = tm - fm;
-  let d = td - fd;
-
-  // Borrow days from previous month if needed
-  if (d &lt; 0) {
-    const prevMonth = new Date(ty, tm - 1, 0); // day 0 = last day of prior month
-    d += prevMonth.getDate();
-    m -= 1;
-  }
-  // Borrow months from previous year if needed
-  if (m &lt; 0) {
-    m += 12;
-    y -= 1;
-  }
-  return { years: y, months: m, days: d };
-}</code></pre>
-
-        <h3>Total days between two dates</h3>
-        <pre><code class="language-javascript">function daysBetween(fromISO, toISO = new Date().toISOString().slice(0,10)) {
-  const a = new Date(fromISO + 'T00:00:00');
-  const b = new Date(toISO + 'T00:00:00');
-  const MS_PER_DAY = 24 * 60 * 60 * 1000;
-  return Math.round((b - a) / MS_PER_DAY);
-}</code></pre>
-
-        <h3>Next birthday (months, days remaining)</h3>
-        <pre><code class="language-javascript">function nextBirthday(dobISO, fromISO = new Date().toISOString().slice(0,10)) {
-  const [fy, fm, fd] = dobISO.split('-').map(Number);
-  const [ty, tm, td] = fromISO.split('-').map(Number);
-
-  // Determine target birthday year
-  let targetYear = ty;
-  const hasPassed = (tm &gt; fm) || (tm === fm &amp;&amp; td &gt;= fd);
-  if (hasPassed) targetYear = ty + 1;
-
-  // Handle Feb 29 birthdays: use Feb 29 in leap years, otherwise Feb 28
-  const isLeapDOB = (fm === 2 &amp;&amp; fd === 29);
-  const lastDayFeb = new Date(targetYear, 2, 0).getDate(); // 28 or 29
-  const targetDate = isLeapDOB
-    ? new Date(targetYear, 1, Math.min(29, lastDayFeb))
-    : new Date(targetYear, fm - 1, fd);
-
-  const from = new Date(ty, tm - 1, td);
-  const ymd = diffYMD(from.toISOString().slice(0,10), targetDate.toISOString().slice(0,10));
-  return { months: ymd.years * 12 + ymd.months, days: ymd.days };
-}</code></pre>
       </article>
       <section class="faq-section card">
         <h2 class="faq-title">Age Calculator – Frequently Asked Questions</h2>
