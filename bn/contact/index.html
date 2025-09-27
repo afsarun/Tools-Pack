@@ -184,84 +184,85 @@
         </nav>
       </div>
     </header>
+    <div class="container">
+      <main role="main" class="prose">
+        <h1>যোগাযোগ</h1>
+        <p>প্রশ্ন, বাগ রিপোর্ট বা ফিচার রিকোয়েস্ট পাঠাতে ইমেইল করুন:</p>
 
-    <main role="main" class="prose">
-      <h1>যোগাযোগ</h1>
-      <p>প্রশ্ন, বাগ রিপোর্ট বা ফিচার রিকোয়েস্ট পাঠাতে ইমেইল করুন:</p>
+        <p>
+          <strong>ইমেইল:</strong>
+          <a href="mailto:you@example.com">you@example.com</a>
+          <!-- আপনার ইমেইল দিন -->
+        </p>
 
-      <p>
-        <strong>ইমেইল:</strong>
-        <a href="mailto:you@example.com">you@example.com</a>
-        <!-- আপনার ইমেইল দিন -->
-      </p>
+        <h2>ফিডব্যাক ফর্ম (ইমেইল ওপেন হবে)</h2>
+        <form
+          class="contact-form"
+          action="mailto:you@example.com?subject=Tools%20Pack%20Feedback"
+          method="post"
+          enctype="text/plain"
+        >
+          <div class="fields">
+            <div class="field">
+              <label for="name"
+                >আপনার নাম <span class="req" aria-hidden="true">*</span></label
+              >
+              <input
+                id="name"
+                name="name"
+                type="text"
+                required
+                autocomplete="name"
+              />
+            </div>
 
-      <h2>ফিডব্যাক ফর্ম (ইমেইল ওপেন হবে)</h2>
-      <form
-        class="contact-form"
-        action="mailto:you@example.com?subject=Tools%20Pack%20Feedback"
-        method="post"
-        enctype="text/plain"
-      >
-        <div class="fields">
-          <div class="field">
-            <label for="name"
-              >আপনার নাম <span class="req" aria-hidden="true">*</span></label
-            >
-            <input
-              id="name"
-              name="name"
-              type="text"
-              required
-              autocomplete="name"
-            />
+            <div class="field">
+              <label for="email">ইমেইল (ঐচ্ছিক)</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                inputmode="email"
+                autocomplete="email"
+                placeholder="name@example.com"
+              />
+            </div>
+
+            <div class="field full">
+              <label for="message"
+                >বার্তা <span class="req" aria-hidden="true">*</span></label
+              >
+              <textarea
+                id="message"
+                name="message"
+                rows="6"
+                required
+                placeholder="আপনার মতামত লিখুন..."
+              ></textarea>
+            </div>
+
+            <div class="actions">
+              <button type="submit" class="btn btn-primary">পাঠান</button>
+              <small class="hint"
+                >ফর্ম সাবমিট করলে আপনার ডিফল্ট ইমেইল অ্যাপ খুলবে।</small
+              >
+            </div>
           </div>
+        </form>
 
-          <div class="field">
-            <label for="email">ইমেইল (ঐচ্ছিক)</label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              inputmode="email"
-              autocomplete="email"
-              placeholder="name@example.com"
-            />
-          </div>
+        <p class="muted" style="margin-top: 12px">
+          দ্রষ্টব্য: উপরের ফর্মটি আপনার ডিফল্ট ইমেইল অ্যাপ খুলবে।
+        </p>
+      </main>
 
-          <div class="field full">
-            <label for="message"
-              >বার্তা <span class="req" aria-hidden="true">*</span></label
-            >
-            <textarea
-              id="message"
-              name="message"
-              rows="6"
-              required
-              placeholder="আপনার মতামত লিখুন..."
-            ></textarea>
-          </div>
-
-          <div class="actions">
-            <button type="submit" class="btn btn-primary">পাঠান</button>
-            <small class="hint"
-              >ফর্ম সাবমিট করলে আপনার ডিফল্ট ইমেইল অ্যাপ খুলবে।</small
-            >
-          </div>
-        </div>
-      </form>
-
-      <p class="muted" style="margin-top: 12px">
-        দ্রষ্টব্য: উপরের ফর্মটি আপনার ডিফল্ট ইমেইল অ্যাপ খুলবে।
-      </p>
-    </main>
-
-    <footer class="wrap">
-      © <span id="y"></span> Tools Pack • ১০০% ব্রাউজারেই রান হয় &nbsp;|&nbsp;
-      <a href="/bn/privacy/">গোপনীয়তা নীতি</a> ·
-      <a href="/bn/terms/">শর্তাবলি</a> ·
-      <a href="/bn/about/">আমাদের সম্পর্কে</a> ·
-      <a href="/bn/contact/">যোগাযোগ</a>
-    </footer>
+      <footer class="wrap">
+        © <span id="y"></span> Tools Pack • ১০০% ব্রাউজারেই রান হয় &nbsp;|&nbsp;
+        <a href="/bn/privacy/">গোপনীয়তা নীতি</a> ·
+        <a href="/bn/terms/">শর্তাবলি</a> ·
+        <a href="/bn/about/">আমাদের সম্পর্কে</a> ·
+        <a href="/bn/contact/">যোগাযোগ</a>
+      </footer>
+    </div>
     <script src="/assets/tracker.js" defer data-trk-site="tools-pack"></script>
     <script src="/assets/related-more.js" defer></script>
     <script>

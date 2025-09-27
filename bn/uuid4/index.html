@@ -184,224 +184,232 @@
         data-adtest="on"
       ></ins>
     </div>
-    <main class="wrap">
-      <!-- Breadcrumbs -->
-      <nav class="breadcrumbs" aria-label="breadcrumb">
-        <a href="/bn/">হোম</a> › <a href="/bn/#dev">ডেভ টুলস</a> ›
-        <span>UUID v4</span>
-      </nav>
+    <div class="container">
+      x
+      <main class="wrap">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs" aria-label="breadcrumb">
+          <a href="/bn/">হোম</a> › <a href="/bn/#dev">ডেভ টুলস</a> ›
+          <span>UUID v4</span>
+        </nav>
 
-      <!-- TOC -->
-      <p class="toc">
-        <a href="#gen">জেনারেটর</a> · <a href="#how">কীভাবে ব্যবহার করবেন</a> ·
-        <a href="#faq">প্রশ্নোত্তর</a> ·
-        <a href="#related">সম্পর্কিত</a>
-      </p>
-
-      <!-- Generator -->
-      <article class="card" id="gen">
-        <h2>UUID v4 তৈরি করুন</h2>
-
-        <div class="row">
-          <label class="pill"
-            >পরিমাণ
-            <input
-              id="count"
-              type="number"
-              class="field"
-              value="5"
-              min="1"
-              max="200"
-              inputmode="numeric"
-              style="width: 90px"
-            />
-          </label>
-
-          <label class="pill"
-            ><input type="checkbox" id="keepDash" checked /> ড্যাশ রাখুন</label
-          >
-          <label class="pill"
-            ><input type="checkbox" id="upper" /> বড় হাতা (A–F)</label
-          >
-          <label class="pill"
-            ><input type="checkbox" id="brace" /> {ব্রেস}</label
-          >
-          <label class="pill"
-            ><input type="checkbox" id="urn" /> urn:uuid: প্রিফিক্স</label
-          >
-
-          <label class="pill"
-            >সেপারেটর
-            <select id="sep" class="select">
-              <option value="nl" selected>নতুন লাইন</option>
-              <option value="comma">কমা (,)</option>
-              <option value="space">স্পেস</option>
-            </select>
-          </label>
-        </div>
-
-        <div class="row" style="margin-top: 6px">
-          <button class="btn btn-primary" id="gen" type="button">
-            জেনারেট
-          </button>
-          <button class="btn" id="copy" type="button">কপি</button>
-          <button class="btn" id="download" type="button">⬇ TXT ডাউনলোড</button>
-          <button class="btn" id="clear" type="button">🗑 ক্লিয়ার</button>
-          <span id="status" class="muted small" aria-live="polite">—</span>
-        </div>
-
-        <textarea
-          id="out"
-          class="textarea mono field"
-          rows="8"
-          readonly
-          placeholder="Generated UUIDs…"
-        ></textarea>
-
-        <p class="muted small stat">
-          <span id="lines">লাইন: 0</span> •
-          <span id="bytes">বাইট (UTF-8): 0</span>
+        <!-- TOC -->
+        <p class="toc">
+          <a href="#gen">জেনারেটর</a> ·
+          <a href="#how">কীভাবে ব্যবহার করবেন</a> ·
+          <a href="#faq">প্রশ্নোত্তর</a> ·
+          <a href="#related">সম্পর্কিত</a>
         </p>
-        <!-- Ad #2: In-article -->
-        <div
-          class="ad-wrap ad-article"
-          aria-label="Advertisement"
-          style="margin-top: 10px"
-        >
-          <span class="ad-label">Ad</span>
-          <ins
-            class="adsbygoogle"
-            style="display: inline-block; text-align: center"
-            data-ad-client="ca-pub-1234567890123456"
-            data-ad-slot="2222222222"
-            data-ad-format="fluid"
-            data-ad-layout="in-article"
-            data-adtest="on"
-          ></ins>
-        </div>
-        <p class="small muted">
-          শর্টকাট: <kbd>Ctrl/⌘ + Enter</kbd> জেনারেট • <kbd>Ctrl/⌘ + C</kbd> কপি
-        </p>
-      </article>
 
-      <!-- How to use -->
-      <article class="card" id="how">
-        <h2>কীভাবে ব্যবহার করবেন</h2>
-        <ol>
-          <li>
-            পরিমাণ বেছে নিন (১–২০০) এবং প্রয়োজনে ড্যাশ/কেস/ব্রেস/URN ফরম্যাট সেট
-            করুন।
-          </li>
-          <li><strong>জেনারেট</strong> চাপুন — সাথে সাথে UUID তৈরি হবে।</li>
-          <li>
-            <strong>কপি</strong> বা <strong>TXT ডাউনলোড</strong> দিয়ে আউটপুট
-            সংরক্ষণ করুন।
-          </li>
-        </ol>
-      </article>
+        <!-- Generator -->
+        <article class="card" id="gen">
+          <h2>UUID v4 তৈরি করুন</h2>
 
-      <section class="faq-section card">
-        <h2 class="faq-title">প্রশ্নোত্তর</h2>
+          <div class="row">
+            <label class="pill"
+              >পরিমাণ
+              <input
+                id="count"
+                type="number"
+                class="field"
+                value="5"
+                min="1"
+                max="200"
+                inputmode="numeric"
+                style="width: 90px"
+              />
+            </label>
 
-        <div class="faq-container">
-          <!-- UUID Generator FAQs (Bangla) -->
-          <div class="faq-item">
-            <button class="faq-question">
-              UUID v4 ফরম্যাট কী?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                <code>xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx</code> — এখানে
-                <code>4</code> হলো ভার্সন, <code>y</code> হলো ভেরিয়েন্ট
-                (8/9/A/B)।
-              </p>
-            </div>
+            <label class="pill"
+              ><input type="checkbox" id="keepDash" checked /> ড্যাশ
+              রাখুন</label
+            >
+            <label class="pill"
+              ><input type="checkbox" id="upper" /> বড় হাতা (A–F)</label
+            >
+            <label class="pill"
+              ><input type="checkbox" id="brace" /> {ব্রেস}</label
+            >
+            <label class="pill"
+              ><input type="checkbox" id="urn" /> urn:uuid: প্রিফিক্স</label
+            >
+
+            <label class="pill"
+              >সেপারেটর
+              <select id="sep" class="select">
+                <option value="nl" selected>নতুন লাইন</option>
+                <option value="comma">কমা (,)</option>
+                <option value="space">স্পেস</option>
+              </select>
+            </label>
           </div>
 
-          <div class="faq-item">
-            <button class="faq-question">
-              বাল্ক জেনারেশনে ডুপ্লিকেট পড়তে পারে?
-              <span class="faq-icon">+</span>
+          <div class="row" style="margin-top: 6px">
+            <button class="btn btn-primary" id="gen" type="button">
+              জেনারেট
             </button>
-            <div class="faq-answer">
-              <p>
-                সম্ভাবনা অত্যন্ত কম (১.৭e38 সম্ভাব্য মান); তবু ক্রিটিক্যাল
-                সিস্টেমে ইউনিকনেস আলাদা করে যাচাই করুন।
-              </p>
-            </div>
+            <button class="btn" id="copy" type="button">কপি</button>
+            <button class="btn" id="download" type="button">
+              ⬇ TXT ডাউনলোড
+            </button>
+            <button class="btn" id="clear" type="button">🗑 ক্লিয়ার</button>
+            <span id="status" class="muted small" aria-live="polite">—</span>
           </div>
 
-          <div class="faq-item">
-            <button class="faq-question">
-              র‍্যান্ডমনেসের উৎস কী?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                <code>crypto.randomUUID()</code> বা
-                <code>crypto.getRandomValues()</code> — উভয়ই Web Crypto API।
-              </p>
+          <textarea
+            id="out"
+            class="textarea mono field"
+            rows="8"
+            readonly
+            placeholder="Generated UUIDs…"
+          ></textarea>
+
+          <p class="muted small stat">
+            <span id="lines">লাইন: 0</span> •
+            <span id="bytes">বাইট (UTF-8): 0</span>
+          </p>
+          <!-- Ad #2: In-article -->
+          <div
+            class="ad-wrap ad-article"
+            aria-label="Advertisement"
+            style="margin-top: 10px"
+          >
+            <span class="ad-label">Ad</span>
+            <ins
+              class="adsbygoogle"
+              style="display: inline-block; text-align: center"
+              data-ad-client="ca-pub-1234567890123456"
+              data-ad-slot="2222222222"
+              data-ad-format="fluid"
+              data-ad-layout="in-article"
+              data-adtest="on"
+            ></ins>
+          </div>
+          <p class="small muted">
+            শর্টকাট: <kbd>Ctrl/⌘ + Enter</kbd> জেনারেট •
+            <kbd>Ctrl/⌘ + C</kbd> কপি
+          </p>
+        </article>
+
+        <!-- How to use -->
+        <article class="card" id="how">
+          <h2>কীভাবে ব্যবহার করবেন</h2>
+          <ol>
+            <li>
+              পরিমাণ বেছে নিন (১–২০০) এবং প্রয়োজনে ড্যাশ/কেস/ব্রেস/URN ফরম্যাট
+              সেট করুন।
+            </li>
+            <li><strong>জেনারেট</strong> চাপুন — সাথে সাথে UUID তৈরি হবে।</li>
+            <li>
+              <strong>কপি</strong> বা <strong>TXT ডাউনলোড</strong> দিয়ে আউটপুট
+              সংরক্ষণ করুন।
+            </li>
+          </ol>
+        </article>
+
+        <section class="faq-section card">
+          <h2 class="faq-title">প্রশ্নোত্তর</h2>
+
+          <div class="faq-container">
+            <!-- UUID Generator FAQs (Bangla) -->
+            <div class="faq-item">
+              <button class="faq-question">
+                UUID v4 ফরম্যাট কী?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  <code>xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx</code> — এখানে
+                  <code>4</code> হলো ভার্সন, <code>y</code> হলো ভেরিয়েন্ট
+                  (8/9/A/B)।
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                বাল্ক জেনারেশনে ডুপ্লিকেট পড়তে পারে?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  সম্ভাবনা অত্যন্ত কম (১.৭e38 সম্ভাব্য মান); তবু ক্রিটিক্যাল
+                  সিস্টেমে ইউনিকনেস আলাদা করে যাচাই করুন।
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                র‍্যান্ডমনেসের উৎস কী?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  <code>crypto.randomUUID()</code> বা
+                  <code>crypto.getRandomValues()</code> — উভয়ই Web Crypto API।
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                UUID কি সিকুয়েন্সিয়াল?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  না। UUID v4 সম্পূর্ণ র‍্যান্ডম। যদি সিকুয়েন্সিয়াল বা
+                  টাইম-ভিত্তিক UUID দরকার হয়, UUID v1 বা ULID ব্যবহার করতে হবে।
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                ডাটাবেসে প্রাইমারি কী হিসেবে ব্যবহার করা যাবে?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  হ্যাঁ, অনেক সিস্টেমে UUID প্রাইমারি কী হিসেবে ব্যবহৃত হয়। তবে
+                  ইনডেক্স সাইজ বড় হয়, তাই পারফরম্যান্স-সেন্সিটিভ সিস্টেমে
+                  সচেতন থাকতে হবে।
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                প্রাইভেসি?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  সব জেনারেশন লোকাল ব্রাউজারেই — কোনো ডেটা সার্ভারে পাঠানো হয়
+                  না।
+                </p>
+              </div>
             </div>
           </div>
+        </section>
 
-          <div class="faq-item">
-            <button class="faq-question">
-              UUID কি সিকুয়েন্সিয়াল?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                না। UUID v4 সম্পূর্ণ র‍্যান্ডম। যদি সিকুয়েন্সিয়াল বা
-                টাইম-ভিত্তিক UUID দরকার হয়, UUID v1 বা ULID ব্যবহার করতে হবে।
-              </p>
-            </div>
-          </div>
+        <!-- Related -->
+        <article class="card" id="related">
+          <h2>সম্পর্কিত</h2>
+          <p class="muted">আরও সিকিউরিটি/ডেভ টুলস:</p>
+          <p>
+            <a class="btn" href="/bn/password-uuid/">পাসওয়ার্ড জেনারেটর</a>
+            <a class="btn" href="/bn/sha256/">SHA-256 হ্যাশ</a>
+            <a class="btn" href="/bn/json-formatter/">JSON ফরম্যাটার</a>
+          </p>
+        </article>
+      </main>
 
-          <div class="faq-item">
-            <button class="faq-question">
-              ডাটাবেসে প্রাইমারি কী হিসেবে ব্যবহার করা যাবে?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                হ্যাঁ, অনেক সিস্টেমে UUID প্রাইমারি কী হিসেবে ব্যবহৃত হয়। তবে
-                ইনডেক্স সাইজ বড় হয়, তাই পারফরম্যান্স-সেন্সিটিভ সিস্টেমে সচেতন
-                থাকতে হবে।
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              প্রাইভেসি?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                সব জেনারেশন লোকাল ব্রাউজারেই — কোনো ডেটা সার্ভারে পাঠানো হয় না।
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Related -->
-      <article class="card" id="related">
-        <h2>সম্পর্কিত</h2>
-        <p class="muted">আরও সিকিউরিটি/ডেভ টুলস:</p>
-        <p>
-          <a class="btn" href="/bn/password-uuid/">পাসওয়ার্ড জেনারেটর</a>
-          <a class="btn" href="/bn/sha256/">SHA-256 হ্যাশ</a>
-          <a class="btn" href="/bn/json-formatter/">JSON ফরম্যাটার</a>
-        </p>
-      </article>
-    </main>
-
-    <footer>
-      © <span id="y"></span> Tools Pack • <a class="muted" href="/bn/">হোম</a>
-    </footer>
-
+      <footer>
+        © <span id="y"></span> Tools Pack • <a class="muted" href="/bn/">হোম</a>
+      </footer>
+    </div>
     <script>
       "use strict";
       // Year

@@ -221,6 +221,46 @@
           },
           {
             "@type": "Question",
+            "name": "How old will I be in 2030 (or any future year)?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Enter your date of birth (DOB) and set the 'As of' field to a future date such as 2030-01-01. The calculator will instantly show your exact age on that day."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I calculate my age in weeks, hours, or minutes?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Along with years, months, and days, the calculator also provides total days lived. From there, it automatically converts your age into weeks, hours, and even minutes."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is there an age difference calculator?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. By entering two different dates, you can find the exact difference between them in years, months, and days—useful for comparing siblings, spouses, or historical events."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this also a birthday calculator?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The tool works as a birthday calculator too—it shows your birth date, the weekday you were born on, and a live countdown to your next birthday."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is chronological age?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Chronological age is the time you have lived since birth, measured in years, months, and days. This calculator shows your chronological age, not biological or medical age."
+            }
+          },
+          {
+            "@type": "Question",
             "name": "Does any of my data leave my browser?",
             "acceptedAnswer": {
               "@type": "Answer",
@@ -279,25 +319,15 @@
         data-adtest="on"
       ></ins>
     </div>
-
-    <main class="wrap" role="main">
+    <div class="container">
       <!-- Breadcrumbs -->
       <nav class="breadcrumbs" aria-label="breadcrumb">
         <a href="/">Home</a> › <a href="/#time">Time Tools</a> ›
         <span>Age Calculator</span>
       </nav>
-
-      <!-- TOC -->
-      <p class="toc">
-        <a href="#intro">Intro</a> · <a href="#enter-dates">Enter dates</a> ·
-        <a href="#how-to-use">How to use</a> · <a href="#faq">FAQ</a> ·
-        <a href="#related">Related tools</a>
-      </p>
-
-      <!-- ✅ Intro with semantic/NLP + long-tail phrasing -->
-      <section class="card" id="intro">
-        <h2>What is an Age Calculator?</h2>
-        <p>
+      <header class="header">
+        <h1 class="">What is an Age Calculator?</h1>
+        <p class="subtitle">
           An <strong>Age Calculator Online</strong> is a free tool to calculate
           your exact age in <em>years, months, and days</em> from your
           <strong>Date of Birth (DOB)</strong>. It also shows
@@ -309,421 +339,530 @@
           <em>how old was I in 2018</em>. This calculator works fully
           <strong>offline in your browser</strong>—no data leaves your device.
         </p>
-      </section>
+        <span class="badge">RFC 3986 Compliant</span>
+      </header>
+      <!-- TOC -->
+      <p class="toc" aria-label="Table of Contents">
+        <a href="#enter-dates">Enter dates</a> ·
+        <a href="#where">Where to use </a> ·
+        <a href="#best-practices">Best Practices</a> ·
+        <a href="#details">Details</a> · <a href="#faq">FAQ</a> ·
+        <a href="#related">Related tools</a>
+      </p>
+      <main class="wrap" role="main">
+        <!-- Tool -->
+        <article class="card tool-card" id="enter-dates">
+          <h2>Enter dates</h2>
 
-      <!-- Tool -->
-      <article class="card" id="enter-dates">
-        <h2>Enter dates</h2>
-
-        <div class="age-grid">
-          <!-- DOB -->
-          <label class="field">
-            <span class="muted">Date of birth</span>
-            <div class="input-with-icon">
-              <input
-                id="dob"
-                class="field"
-                type="date"
-                placeholder="YYYY-MM-DD"
-                inputmode="numeric"
-                autocomplete="bday"
-                required
-              />
-              <button
-                class="cal-btn"
-                id="dobBtn"
-                type="button"
-                aria-label="Open calendar for date of birth"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
+          <div class="age-grid">
+            <!-- DOB -->
+            <label class="form-label">
+              <span class="muted">Date of birth</span>
+              <div class="input-with-icon">
+                <input
+                  id="dob"
+                  class="form-input"
+                  type="date"
+                  placeholder="YYYY-MM-DD"
+                  inputmode="numeric"
+                  autocomplete="bday"
+                  required
+                />
+                <button
+                  class="cal-btn"
+                  id="dobBtn"
+                  type="button"
+                  aria-label="Open calendar for date of birth"
                 >
-                  <rect x="3" y="4" width="18" height="18" rx="2"></rect>
-                  <path d="M16 2v4M8 2v4M3 10h18"></path>
-                </svg>
-              </button>
-            </div>
-          </label>
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+                    <path d="M16 2v4M8 2v4M3 10h18"></path>
+                  </svg>
+                </button>
+              </div>
+            </label>
 
-          <!-- As of -->
-          <label class="field">
-            <span class="muted">As of</span>
-            <div class="input-with-icon">
-              <input
-                id="asof"
-                class="field"
-                type="date"
-                placeholder="YYYY-MM-DD"
-                inputmode="numeric"
-                autocomplete="off"
-                required
-              />
-              <button
-                class="cal-btn"
-                id="asofBtn"
-                type="button"
-                aria-label="Open calendar for 'As of' date"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
+            <!-- As of -->
+            <label class="form-label">
+              <span class="muted">As of</span>
+              <div class="input-with-icon">
+                <input
+                  id="asof"
+                  class="form-input"
+                  type="date"
+                  placeholder="YYYY-MM-DD"
+                  inputmode="numeric"
+                  autocomplete="off"
+                  required
+                />
+                <button
+                  class="cal-btn"
+                  id="asofBtn"
+                  type="button"
+                  aria-label="Open calendar for 'As of' date"
                 >
-                  <rect x="3" y="4" width="18" height="18" rx="2"></rect>
-                  <path d="M16 2v4M8 2v4M3 10h18"></path>
-                </svg>
-              </button>
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+                    <path d="M16 2v4M8 2v4M3 10h18"></path>
+                  </svg>
+                </button>
+              </div>
+            </label>
+          </div>
+
+          <div style="margin-top: 10px">
+            <button class="btn btn-primary" id="calc" type="button">
+              Calculate
+            </button>
+            <button class="btn" id="reset" type="button">Reset</button>
+            <button class="btn" id="copy" type="button">Copy</button>
+          </div>
+
+          <!-- Ad #2 -->
+          <div class="ad-wrap ad-article" aria-label="Advertisement">
+            <span class="ad-label">Ad</span>
+            <ins
+              class="adsbygoogle"
+              style="display: inline-block; text-align: center; height: 80px"
+              data-ad-client="ca-pub-1234567890123456"
+              data-ad-slot="2222222222"
+              data-ad-format="fluid"
+              data-ad-layout="in-article"
+              data-adtest="on"
+            ></ins>
+          </div>
+
+          <textarea
+            id="out"
+            class="form-textarea mono"
+            readonly
+            placeholder="Result…"
+          ></textarea>
+          <div class="muted" id="next" aria-live="polite"></div>
+        </article>
+
+        <!-- Examples -->
+        <div class="card" id="where">
+          <h2>Where to Use Age Calculations</h2>
+          <div class="examples">
+            <div class="example">
+              <div class="example-title">🧾 Legal &amp; Forms</div>
+              <div class="example-content">
+                Eligibility checks (voting, exams, benefits)
+              </div>
+              <span class="badge">exact age</span>
             </div>
-          </label>
-        </div>
 
-        <div style="margin-top: 10px">
-          <button class="btn btn-primary" id="calc" type="button">
-            Calculate
-          </button>
-          <button class="btn" id="reset" type="button">Reset</button>
-          <button class="btn" id="copy" type="button">Copy</button>
-        </div>
+            <div class="example">
+              <div class="example-title">🎉 Events</div>
+              <div class="example-content">
+                Countdown to next birthday or anniversary
+              </div>
+              <span class="badge">next birthday</span>
+            </div>
 
-        <!-- Ad #2 -->
-        <div class="ad-wrap ad-article" aria-label="Advertisement">
-          <span class="ad-label">Ad</span>
-          <ins
-            class="adsbygoogle"
-            style="display: block; text-align: center; height: 80px"
-            data-ad-client="ca-pub-1234567890123456"
-            data-ad-slot="2222222222"
-            data-ad-format="fluid"
-            data-ad-layout="in-article"
-            data-adtest="on"
-          ></ins>
-        </div>
+            <div class="example">
+              <div class="example-title">🏥 Health</div>
+              <div class="example-content">
+                Age in months/days for dosage or charts
+              </div>
+              <span class="badge">months &amp; days</span>
+            </div>
 
-        <textarea
-          id="out"
-          class="textarea mono"
-          readonly
-          placeholder="Result…"
-        ></textarea>
-        <div class="muted" id="next" aria-live="polite"></div>
-      </article>
-
-      <article class="card" id="age-details">
-        <h2>Age Calculation Basics</h2>
-
-        <div class="age-grid">
-          <div class="age-section">
-            <h3>What this tool returns</h3>
-            <ul>
-              <li><strong>Exact age:</strong> years, months, days</li>
-              <li><strong>Total days:</strong> difference between two dates</li>
-              <li>
-                <strong>Next birthday:</strong> months &amp; days remaining
-              </li>
-              <li><strong>Weekday of birth</strong></li>
-            </ul>
-            <p class="small muted">
-              Follows civil calendar rules (real month lengths &amp; leap
-              years).
-            </p>
-          </div>
-
-          <div class="age-section">
-            <h3>Inputs</h3>
-            <ul>
-              <li>
-                <strong>Date of birth (DOB):</strong> e.g.,
-                <code>YYYY-MM-DD</code>
-              </li>
-              <li>
-                <strong>Compare to:</strong> defaults to today; choose any date
-              </li>
-              <li><strong>Time zone:</strong> your local time is used</li>
-            </ul>
-          </div>
-
-          <div class="age-section">
-            <h3>Edge cases</h3>
-            <ul>
-              <li>Leap-day births (Feb&nbsp;29) handled consistently</li>
-              <li>End-of-month rollovers (e.g., Jan&nbsp;31 → Feb) handled</li>
-              <li>No data leaves your browser (local-only)</li>
-            </ul>
+            <div class="example">
+              <div class="example-title">📚 Education</div>
+              <div class="example-content">School cutoff comparisons</div>
+              <span class="badge">compare to date</span>
+            </div>
           </div>
         </div>
 
-        <h3>What counts as “exact age”?</h3>
-        <ul>
-          <li>
-            Calendar-accurate difference (years → months → days) rather than
-            total days ÷ 365
-          </li>
-          <li>Accounts for varying month lengths and leap years</li>
-          <li>Comparison uses local midnight unless a time is specified</li>
-        </ul>
-      </article>
+        <!-- Best Practices -->
+        <div class="card" id="best-practices">
+          <h2>Age Calculation Best Practices</h2>
+          <div class="examples">
+            <div class="example">
+              <div class="example-title">📅 Use ISO Dates</div>
+              <div class="example-content">
+                Enter dates as <code>YYYY-MM-DD</code> to avoid confusion across
+                locales.
+              </div>
+            </div>
 
-      <!-- How to use -->
-      <article class="card" id="how-to-use-age">
-        <h2>How to use</h2>
-        <ol>
-          <li>
-            Enter your <strong>Date of Birth</strong> (e.g.,
-            <code>1998-11-10</code>).
-          </li>
-          <li>
-            (Optional) Pick a <strong>Compare To</strong> date; otherwise today
-            is used.
-          </li>
-          <li>
-            Click <strong>Calculate</strong> to see age in
-            <em>years • months • days</em> plus totals.
-          </li>
-          <li>Use <strong>Clear</strong> to reset inputs.</li>
-        </ol>
+            <div class="example">
+              <div class="example-title">🕛 Calendar vs. Clock</div>
+              <div class="example-content">
+                This tool computes calendar age; time-of-day isn’t required.
+              </div>
+            </div>
 
-        <h3>Tips</h3>
-        <ul>
-          <li>
-            Prefer ISO format (<code>YYYY-MM-DD</code>) to avoid locale
-            confusion.
-          </li>
-          <li>
-            You don’t need birth time—this is calendar age, not time-of-day
-            precision.
-          </li>
-          <li>
-            Use <strong>Compare To</strong> for future eligibility dates (exams,
-            benefits, etc.).
-          </li>
-        </ul>
-      </article>
-
-      <!-- Real-World Applications -->
-      <article class="card" id="age-applications">
-        <h2>Where to Use Age Calculations</h2>
-
-        <div class="applications-grid">
-          <div class="use-case">
-            <h4>🧾 Legal &amp; Forms</h4>
-            <p>Eligibility checks (voting, exams, benefits)</p>
-            <span class="badge">exact age</span>
-          </div>
-
-          <div class="use-case">
-            <h4>🎉 Events</h4>
-            <p>Countdown to next birthday or anniversary</p>
-            <span class="badge">next birthday</span>
-          </div>
-
-          <div class="use-case">
-            <h4>🏥 Health</h4>
-            <p>Age in months/days for dosage or charts</p>
-            <span class="badge">months &amp; days</span>
-          </div>
-
-          <div class="use-case">
-            <h4>📚 Education</h4>
-            <p>School cutoff comparisons</p>
-            <span class="badge">compare to date</span>
+            <div class="example">
+              <div class="example-title">🔁 Compare to Any Date</div>
+              <div class="example-content">
+                Great for future eligibility or backdated legal checks.
+              </div>
+            </div>
           </div>
         </div>
-      </article>
 
-      <!-- Age Tips -->
-      <article class="card" id="age-tips">
-        <h2>Age Calculation Best Practices</h2>
+        <!-- Technical Implementation -->
+        <div class="card" id="technical">
+          <h2>Technical Implementation</h2>
+          <div class="examples">
+            <div class="example">
+              <div class="example-title">📐 Calendar-accurate</div>
+              <div class="example-content">
+                Year/Month/Day difference computed using actual calendars.
+              </div>
+            </div>
+          </div>
+        </div>
 
-        <div class="tip">
-          <h3>📅 Use ISO Dates</h3>
+        <!-- Information Grid -->
+        <div class="info-grid" id="info-grid">
+          <!-- Basics -->
+          <div class="card">
+            <div class="info-section">
+              <h3>🛠️ What this tool returns</h3>
+              <ul>
+                <li><strong>Exact age:</strong> years, months, days</li>
+                <li>
+                  <strong>Total days:</strong> difference between two dates
+                </li>
+                <li>
+                  <strong>Next birthday:</strong> months &amp; days remaining
+                </li>
+                <li><strong>Weekday of birth</strong></li>
+                <li>
+                  Follows civil calendar rules (real month lengths &amp; leap
+                  years)
+                </li>
+              </ul>
+            </div>
+            <div class="info-section">
+              <h3>📋 Inputs</h3>
+              <ul>
+                <li><strong>Date of Birth (DOB):</strong> e.g., YYYY-MM-DD</li>
+                <li>
+                  <strong>Compare to:</strong> defaults to today; choose any
+                  date
+                </li>
+                <li><strong>Time zone:</strong> your local time is used</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Edge Cases -->
+          <div class="card">
+            <div class="info-section">
+              <h3>⚖️ Edge cases</h3>
+              <ul>
+                <li>Leap-day births (Feb 29) handled consistently</li>
+                <li>End-of-month rollovers (e.g., Jan 31 → Feb) handled</li>
+                <li>No data leaves your browser (local-only)</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Exact Age Definition -->
+          <div class="card">
+            <div class="info-section">
+              <h3>🎯 What counts as “exact age”?</h3>
+              <ul>
+                <li>Calendar-accurate difference (years → months → days)</li>
+                <li>Accounts for varying month lengths and leap years</li>
+                <li>
+                  Comparison uses local midnight unless a time is specified
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- How to Use -->
+          <div class="card">
+            <div class="info-section">
+              <h3>🧩 How to use</h3>
+              <ul>
+                <li>Enter your Date of Birth (e.g., 1998-11-10)</li>
+                <li>
+                  (Optional) Pick a Compare To date; otherwise today is used
+                </li>
+                <li>
+                  Click <strong>Calculate</strong> to see age in years • months
+                  • days plus totals
+                </li>
+                <li>Use <strong>Clear</strong> to reset inputs</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Tips -->
+          <div class="card">
+            <div class="info-section">
+              <h3>💡 Tips</h3>
+              <ul>
+                <li>
+                  Prefer ISO format (<code>YYYY-MM-DD</code>) to avoid locale
+                  confusion
+                </li>
+                <li>
+                  You don’t need birth time — this is calendar age, not
+                  time-of-day precision
+                </li>
+                <li>
+                  Use Compare To for future eligibility dates (exams, benefits,
+                  etc.)
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <section class="faq-section card" id="faq">
+          <h2 class="faq-title">Age Calculator – Frequently Asked Questions</h2>
+
+          <div class="faq-container">
+            <!-- Age Calculator FAQs -->
+            <div class="faq-item">
+              <button class="faq-question">
+                What is my age today?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Keep the “As of” date as today and enter your DOB. Press
+                  <strong>Calculate</strong> to see your current age in years,
+                  months and days.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                How many days until my birthday?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  The calculator shows a live countdown (in days) to your next
+                  birthday below the main result.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                How old was I in 2018 (or on any past date)?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Change the “As of” field to a past date like
+                  <code>2018-01-01</code>. The tool will show your exact age on
+                  that date.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                How many days is 11 years?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  About 4,015 days on average (leap years vary). The tool’s
+                  “Total days lived” value gives your precise count.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                How do I calculate my exact age?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Enter your DOB and optionally an “As of” date. You’ll get
+                  years, months, days, total days lived, and a next-birthday
+                  countdown.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Can I calculate age in months and days only?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Yes. Use the months+days portion from the detailed breakdown
+                  in the result.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Does it handle leap-day birthdays (Feb 29)?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Yes. In non-leap years, Feb 29 birthdays are observed on Feb
+                  28 for next-birthday logic.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Can I use this for exam or admission forms?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Yes, many users calculate age in years, months and days for
+                  school admissions and government/competitive exams.
+                </p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question">
+                How old will I be in 2030 (or any future year)?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Enter your date of birth (DOB) and set the “As of” field to a
+                  future date like
+                  <code>2030-01-01</code>. The calculator shows your exact age
+                  on that day.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Can I calculate my age in weeks, hours, or minutes?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Yes. Along with years, months, and days, the tool also gives
+                  total days lived, which is converted into weeks, hours, and
+                  even minutes.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Is there an age difference calculator?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Yes. By entering two different dates, you can find the exact
+                  difference in years, months, and days—useful for siblings,
+                  spouses, or comparing events.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Is this also a birthday calculator?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Yes. The calculator doubles as a birthday calculator—it shows
+                  your birth date, weekday of birth, and a live countdown to
+                  your next birthday.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                What is chronological age?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Chronological age is the total time lived since your birth,
+                  expressed in years, months, and days. This tool calculates
+                  chronological age—not biological age.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Does any of my data leave my browser?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>No. All calculations run locally; nothing is uploaded.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Does it work offline?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Yes. After the first load, the tool works without internet.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Related tools (stronger topical links) -->
+        <article class="card" id="related">
+          <h2>Related tools</h2>
+          <p class="muted">More date &amp; time utilities:</p>
           <p>
-            Enter dates as <code>YYYY-MM-DD</code> to avoid confusion across
-            locales.
+            <a class="btn" href="/calculator/">Calculator</a>
+            <a class="btn" href="/stopwatch-countdown/"
+              >Stopwatch &amp; Countdown</a
+            >
+            <a class="btn" href="/unit-converter/">Unit Converter</a>
           </p>
-        </div>
+          <p class="small">
+            Prefer বাংলা? Try the
+            <a href="/bn/age-calculator/" hreflang="bn">বাংলা সংস্করণ</a>.
+          </p>
+        </article>
+      </main>
 
-        <div class="tip">
-          <h3>🕛 Calendar vs. Clock</h3>
-          <p>This tool computes calendar age; time-of-day isn’t required.</p>
-        </div>
-
-        <div class="tip">
-          <h3>🔁 Compare to Any Date</h3>
-          <p>Great for future eligibility or backdated legal checks.</p>
-        </div>
-      </article>
-
-      <!-- Technical Implementation -->
-      <article class="card" id="age-technical">
-        <h2>Technical Implementation</h2>
-
-        <h3>Calendar-accurate Y/M/D difference</h3>
-      </article>
-      <section class="faq-section card">
-        <h2 class="faq-title">Age Calculator – Frequently Asked Questions</h2>
-
-        <div class="faq-container">
-          <!-- Age Calculator FAQs -->
-          <div class="faq-item">
-            <button class="faq-question">
-              What is my age today?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Keep the “As of” date as today and enter your DOB. Press
-                <strong>Calculate</strong> to see your current age in years,
-                months and days.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              How many days until my birthday?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                The calculator shows a live countdown (in days) to your next
-                birthday below the main result.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              How old was I in 2018 (or on any past date)?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Change the “As of” field to a past date like
-                <code>2018-01-01</code>. The tool will show your exact age on
-                that date.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              How many days is 11 years?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                About 4,015 days on average (leap years vary). The tool’s “Total
-                days lived” value gives your precise count.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              How do I calculate my exact age?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Enter your DOB and optionally an “As of” date. You’ll get years,
-                months, days, total days lived, and a next-birthday countdown.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              Can I calculate age in months and days only?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Yes. Use the months+days portion from the detailed breakdown in
-                the result.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              Does it handle leap-day birthdays (Feb 29)?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Yes. In non-leap years, Feb 29 birthdays are observed on Feb 28
-                for next-birthday logic.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              Can I use this for exam or admission forms?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Yes, many users calculate age in years, months and days for
-                school admissions and government/competitive exams.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              Does any of my data leave my browser?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>No. All calculations run locally; nothing is uploaded.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              Does it work offline?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>Yes. After the first load, the tool works without internet.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Related tools (stronger topical links) -->
-      <article class="card" id="related">
-        <h2>Related tools</h2>
-        <p class="muted">More date &amp; time utilities:</p>
-        <p>
-          <a class="btn" href="/calculator/">Calculator</a>
-          <a class="btn" href="/stopwatch-countdown/"
-            >Stopwatch &amp; Countdown</a
-          >
-          <a class="btn" href="/unit-converter/">Unit Converter</a>
-        </p>
-        <p class="small">
-          Prefer বাংলা? Try the
-          <a href="/bn/age-calculator/" hreflang="bn">বাংলা সংস্করণ</a>.
-        </p>
-      </article>
-    </main>
-
-    <footer>
-      © <span id="y"></span> Tools Pack • <a class="muted" href="/">Home</a> •
-      <a class="muted" href="/bn/age-calculator/" hreflang="bn">বাংলা</a>
-    </footer>
+      <footer>
+        © <span id="y"></span> Tools Pack • <a class="muted" href="/">Home</a> •
+        <a class="muted" href="/bn/age-calculator/" hreflang="bn">বাংলা</a>
+      </footer>
+    </div>
 
     <script>
       // Shorthand

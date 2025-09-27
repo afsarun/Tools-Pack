@@ -178,225 +178,226 @@
         data-adtest="on"
       ></ins>
     </div>
+    <div class="container">
+      <main class="wrap">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs" aria-label="breadcrumb">
+          <a href="/bn/">হোম</a> › <a href="/bn/#media">মিডিয়া টুলস</a> ›
+          <span>ইমেজ রিসাইজার/কমপ্রেসর</span>
+        </nav>
 
-    <main class="wrap">
-      <!-- Breadcrumbs -->
-      <nav class="breadcrumbs" aria-label="breadcrumb">
-        <a href="/bn/">হোম</a> › <a href="/bn/#media">মিডিয়া টুলস</a> ›
-        <span>ইমেজ রিসাইজার/কমপ্রেসর</span>
-      </nav>
+        <!-- TOC -->
+        <p class="toc">
+          <a href="#tool">রিসাইজার</a> ·
+          <a href="#how-to-use">কীভাবে ব্যবহার করবেন</a> ·
+          <a href="#faq">প্রশ্নোত্তর</a> ·
+          <a href="#related">সম্পর্কিত টুলস</a>
+        </p>
 
-      <!-- TOC -->
-      <p class="toc">
-        <a href="#tool">রিসাইজার</a> ·
-        <a href="#how-to-use">কীভাবে ব্যবহার করবেন</a> ·
-        <a href="#faq">প্রশ্নোত্তর</a> ·
-        <a href="#related">সম্পর্কিত টুলস</a>
-      </p>
+        <!-- Tool -->
+        <article class="card" id="tool">
+          <h2>ছবি রিসাইজ ও কমপ্রেস করুন</h2>
 
-      <!-- Tool -->
-      <article class="card" id="tool">
-        <h2>ছবি রিসাইজ ও কমপ্রেস করুন</h2>
-
-        <div class="row">
-          <input id="file" class="field" type="file" accept="image/*" />
-        </div>
-
-        <div class="tool-grid">
-          <!-- Preview -->
-          <div class="field center preview">
-            <img
-              id="img"
-              alt="Preview"
-              style="
-                max-width: 100%;
-                max-height: 220px;
-                display: none;
-                border-radius: 10px;
-              "
-            />
-            <span id="empty" class="muted">একটি ছবি আপলোড করুন…</span>
+          <div class="row">
+            <input id="file" class="field" type="file" accept="image/*" />
           </div>
 
-          <!-- Controls -->
-          <div class="field controls">
-            <div class="row">
-              <label class="pill"
-                >প্রস্থ (W)
-                <input
-                  id="w"
-                  type="number"
-                  class="field"
-                  min="1"
-                  inputmode="numeric"
-                />
-              </label>
-              <label class="pill"
-                >উচ্চতা (H)
-                <input
-                  id="h"
-                  type="number"
-                  class="field"
-                  min="1"
-                  inputmode="numeric"
-                />
-              </label>
+          <div class="tool-grid">
+            <!-- Preview -->
+            <div class="field center preview">
+              <img
+                id="img"
+                alt="Preview"
+                style="
+                  max-width: 100%;
+                  max-height: 220px;
+                  display: none;
+                  border-radius: 10px;
+                "
+              />
+              <span id="empty" class="muted">একটি ছবি আপলোড করুন…</span>
             </div>
 
-            <label class="pill">
-              <input id="lock" type="checkbox" checked />
-              অ্যাসপেক্ট অনুপাত বজায় রাখুন
-            </label>
+            <!-- Controls -->
+            <div class="field controls">
+              <div class="row">
+                <label class="pill"
+                  >প্রস্থ (W)
+                  <input
+                    id="w"
+                    type="number"
+                    class="field"
+                    min="1"
+                    inputmode="numeric"
+                  />
+                </label>
+                <label class="pill"
+                  >উচ্চতা (H)
+                  <input
+                    id="h"
+                    type="number"
+                    class="field"
+                    min="1"
+                    inputmode="numeric"
+                  />
+                </label>
+              </div>
 
-            <div class="row">
-              <select id="fmt" class="select" aria-label="ফরম্যাট বাছাই">
-                <option value="image/jpeg">JPEG</option>
-                <option value="image/png">PNG</option>
-                <option value="image/webp">WebP</option>
-              </select>
-
-              <label
-                id="qwrap"
-                class="field"
-                style="display: flex; align-items: center; gap: 10px"
-              >
-                <span class="muted">গুণমান</span>
-                <input
-                  id="q"
-                  type="range"
-                  min="0.1"
-                  max="1"
-                  step="0.05"
-                  value="0.8"
-                />
-                <span class="pill mono" id="qv">0.80</span>
+              <label class="pill">
+                <input id="lock" type="checkbox" checked />
+                অ্যাসপেক্ট অনুপাত বজায় রাখুন
               </label>
-            </div>
 
-            <div class="row">
-              <button id="auto" class="btn" type="button">অটো সাইজ</button>
-              <button id="run" class="btn btn-primary" type="button">
-                রিসাইজ ও ডাউনলোড
+              <div class="row">
+                <select id="fmt" class="select" aria-label="ফরম্যাট বাছাই">
+                  <option value="image/jpeg">JPEG</option>
+                  <option value="image/png">PNG</option>
+                  <option value="image/webp">WebP</option>
+                </select>
+
+                <label
+                  id="qwrap"
+                  class="field"
+                  style="display: flex; align-items: center; gap: 10px"
+                >
+                  <span class="muted">গুণমান</span>
+                  <input
+                    id="q"
+                    type="range"
+                    min="0.1"
+                    max="1"
+                    step="0.05"
+                    value="0.8"
+                  />
+                  <span class="pill mono" id="qv">0.80</span>
+                </label>
+              </div>
+
+              <div class="row">
+                <button id="auto" class="btn" type="button">অটো সাইজ</button>
+                <button id="run" class="btn btn-primary" type="button">
+                  রিসাইজ ও ডাউনলোড
+                </button>
+              </div>
+
+              <div id="info" class="muted small" aria-live="polite"></div>
+            </div>
+          </div>
+
+          <!-- Ad #2: In-article -->
+          <div class="ad-wrap ad-article" aria-label="Advertisement">
+            <span class="ad-label">Ad</span>
+            <ins
+              class="adsbygoogle"
+              style="display: inline-block; text-align: center"
+              data-ad-client="ca-pub-1234567890123456"
+              data-ad-slot="2222222222"
+              data-ad-format="fluid"
+              data-ad-layout="in-article"
+              data-adtest="on"
+            ></ins>
+          </div>
+
+          <canvas id="c" style="display: none"></canvas>
+        </article>
+
+        <!-- How to use -->
+        <article class="card" id="how-to-use">
+          <h2>কীভাবে ব্যবহার করবেন</h2>
+          <ol>
+            <li>উপরে থেকে একটি ছবি নির্বাচন করুন—প্রিভিউ দেখাবে।</li>
+            <li>
+              প্রস্থ/উচ্চতা দিন; <strong>অ্যাসপেক্ট লক</strong> অন থাকলে অন্যটি
+              অটো-সেট হবে।
+            </li>
+            <li>
+              ফরম্যাট বাছাই করুন; JPEG/WebP হলে <strong>গুণমান</strong> স্লাইডার
+              কাজ করবে।
+            </li>
+            <li>
+              <strong>রিসাইজ ও ডাউনলোড</strong> চাপলে রিসাইজড ফাইল ডাউনলোড হবে।
+            </li>
+            <li>
+              <strong>অটো সাইজ</strong> চাপলে মূল ডাইমেনশন ও ডিফল্ট কোয়ালিটি
+              ফিরে পাবেন।
+            </li>
+          </ol>
+        </article>
+
+        <section class="faq-section card">
+          <h2 class="faq-title">প্রশ্নোত্তর</h2>
+
+          <div class="faq-container">
+            <!-- Image Compressor FAQs (Bangla) -->
+            <div class="faq-item">
+              <button class="faq-question">
+                অফলাইনে চালানো যাবে?
+                <span class="faq-icon">+</span>
               </button>
+              <div class="faq-answer">
+                <p>হ্যাঁ, প্রথম লোডের পর পুরোটা ব্রাউজারেই চলে।</p>
+              </div>
             </div>
 
-            <div id="info" class="muted small" aria-live="polite"></div>
-          </div>
-        </div>
+            <div class="faq-item">
+              <button class="faq-question">
+                ছবি কোথাও আপলোড হয়?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>না—সব প্রসেসিং আপনার ব্রাউজারের ক্যানভাসে হয়।</p>
+              </div>
+            </div>
 
-        <!-- Ad #2: In-article -->
-        <div class="ad-wrap ad-article" aria-label="Advertisement">
-          <span class="ad-label">Ad</span>
-          <ins
-            class="adsbygoogle"
-            style="display: inline-block; text-align: center"
-            data-ad-client="ca-pub-1234567890123456"
-            data-ad-slot="2222222222"
-            data-ad-format="fluid"
-            data-ad-layout="in-article"
-            data-adtest="on"
-          ></ins>
-        </div>
+            <div class="faq-item">
+              <button class="faq-question">
+                কোন ফরম্যাটে এক্সপোর্ট?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>JPEG, PNG ও WebP—JPEG/WebP এ গুণমান নির্ধারণ করা যায়।</p>
+              </div>
+            </div>
 
-        <canvas id="c" style="display: none"></canvas>
-      </article>
-
-      <!-- How to use -->
-      <article class="card" id="how-to-use">
-        <h2>কীভাবে ব্যবহার করবেন</h2>
-        <ol>
-          <li>উপরে থেকে একটি ছবি নির্বাচন করুন—প্রিভিউ দেখাবে।</li>
-          <li>
-            প্রস্থ/উচ্চতা দিন; <strong>অ্যাসপেক্ট লক</strong> অন থাকলে অন্যটি
-            অটো-সেট হবে।
-          </li>
-          <li>
-            ফরম্যাট বাছাই করুন; JPEG/WebP হলে <strong>গুণমান</strong> স্লাইডার
-            কাজ করবে।
-          </li>
-          <li>
-            <strong>রিসাইজ ও ডাউনলোড</strong> চাপলে রিসাইজড ফাইল ডাউনলোড হবে।
-          </li>
-          <li>
-            <strong>অটো সাইজ</strong> চাপলে মূল ডাইমেনশন ও ডিফল্ট কোয়ালিটি ফিরে
-            পাবেন।
-          </li>
-        </ol>
-      </article>
-
-      <section class="faq-section card">
-        <h2 class="faq-title">প্রশ্নোত্তর</h2>
-
-        <div class="faq-container">
-          <!-- Image Compressor FAQs (Bangla) -->
-          <div class="faq-item">
-            <button class="faq-question">
-              অফলাইনে চালানো যাবে?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>হ্যাঁ, প্রথম লোডের পর পুরোটা ব্রাউজারেই চলে।</p>
+            <div class="faq-item">
+              <button class="faq-question">
+                গুণমান স্লাইডার সব ফরম্যাটে কাজ করে?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  JPEG ও WebP-তে কাজ করে; PNG লসলেস, তাই কোয়ালিটি স্লাইডার
+                  নিষ্ক্রিয় থাকে।
+                </p>
+              </div>
             </div>
           </div>
+        </section>
 
-          <div class="faq-item">
-            <button class="faq-question">
-              ছবি কোথাও আপলোড হয়?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>না—সব প্রসেসিং আপনার ব্রাউজারের ক্যানভাসে হয়।</p>
-            </div>
-          </div>
+        <!-- Related tools -->
+        <article class="card" id="related">
+          <h2>সম্পর্কিত টুলস</h2>
+          <p class="muted">ডিজাইন/মিডিয়া টুলস:</p>
+          <p>
+            <a class="btn" href="/bn/color-picker-contrast/"
+              >কালার পিকার ও কনট্রাস্ট</a
+            >
+            <a class="btn" href="/bn/text-to-pdf/">টেক্সট → PDF</a>
+            <a class="btn" href="/bn/json-formatter/">JSON ফরম্যাটার</a>
+          </p>
+          <p class="small">
+            English preferred? See the
+            <a href="/image-resizer/" hreflang="en">English version</a>.
+          </p>
+        </article>
+      </main>
 
-          <div class="faq-item">
-            <button class="faq-question">
-              কোন ফরম্যাটে এক্সপোর্ট?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>JPEG, PNG ও WebP—JPEG/WebP এ গুণমান নির্ধারণ করা যায়।</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              গুণমান স্লাইডার সব ফরম্যাটে কাজ করে?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                JPEG ও WebP-তে কাজ করে; PNG লসলেস, তাই কোয়ালিটি স্লাইডার
-                নিষ্ক্রিয় থাকে।
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Related tools -->
-      <article class="card" id="related">
-        <h2>সম্পর্কিত টুলস</h2>
-        <p class="muted">ডিজাইন/মিডিয়া টুলস:</p>
-        <p>
-          <a class="btn" href="/bn/color-picker-contrast/"
-            >কালার পিকার ও কনট্রাস্ট</a
-          >
-          <a class="btn" href="/bn/text-to-pdf/">টেক্সট → PDF</a>
-          <a class="btn" href="/bn/json-formatter/">JSON ফরম্যাটার</a>
-        </p>
-        <p class="small">
-          English preferred? See the
-          <a href="/image-resizer/" hreflang="en">English version</a>.
-        </p>
-      </article>
-    </main>
-
-    <footer>
-      © <span id="y"></span> Tools Pack • <a class="muted" href="/bn/">হোম</a> •
-      <a class="muted" href="/image-resizer/" hreflang="en">English</a>
-    </footer>
-
+      <footer>
+        © <span id="y"></span> Tools Pack •
+        <a class="muted" href="/bn/">হোম</a> •
+        <a class="muted" href="/image-resizer/" hreflang="en">English</a>
+      </footer>
+    </div>
     <script>
       // Year
       document.getElementById("y").textContent = new Date().getFullYear();

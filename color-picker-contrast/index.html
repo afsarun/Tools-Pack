@@ -252,371 +252,406 @@
         </div>
       </div>
     </header>
-
-    <div class="wrap">
+    <div class="container">
       <!-- Breadcrumbs -->
       <nav class="breadcrumbs" aria-label="breadcrumb">
         <a href="/">Home</a> › <a href="/#design">Design Tools</a> ›
         <span>Color Picker &amp; Contrast</span>
       </nav>
-
-      <!-- TOC -->
-      <p class="toc">
-        <a href="#cc-tool">Tool</a> · <a href="#wcag-details">WCAG Levels</a> ·
-        <a href="#how-to-use">How to use</a> ·
-        <a href="#applications">Applications</a> ·
-        <a href="#color-tips">Tips</a> · <a href="#technical">Technical</a> ·
-        <a href="#faq">FAQ</a> ·
-        <a href="#related">Related</a>
-      </p>
-
-      <!-- Introduction -->
-      <p class="intro">
-        Ensure your color combinations meet
-        <strong>WCAG 2.1 accessibility standards</strong>. This tool helps
-        designers, developers, and content creators test color contrast ratios
-        for normal text (AA: 4.5:1, AAA: 7:1) and large text (AA: 3:1, AAA:
-        4.5:1). All processing happens locally in your browser—your colors never
-        leave your device.
-      </p>
-
-      <!-- Tool -->
-      <article class="card" id="cc-tool">
-        <h2>Pick colors &amp; check contrast</h2>
-
-        <div class="row">
-          <label
-            class="field"
-            style="display: flex; align-items: center; gap: 10px"
-          >
-            <input
-              id="fg"
-              type="color"
-              value="#FFFFFF"
-              aria-label="Text color"
-            />
-            <input
-              id="fgHex"
-              class="field mono"
-              value="#FFFFFF"
-              aria-label="Text color hex"
-            />
-            <button class="btn" id="copyFg" type="button">Copy</button>
-          </label>
-
-          <label
-            class="field"
-            style="display: flex; align-items: center; gap: 10px"
-          >
-            <input
-              id="bg"
-              type="color"
-              value="#000000"
-              aria-label="Background color"
-            />
-            <input
-              id="bgHex"
-              class="field mono"
-              value="#000000"
-              aria-label="Background color hex"
-            />
-            <button class="btn" id="copyBg" type="button">Copy</button>
-          </label>
-        </div>
-
-        <div class="cc-grid">
-          <div id="sA" class="field cc-col">
-            <div class="muted small">Normal text</div>
-            <div>Almost before we knew it, we had left the ground.</div>
-          </div>
-          <div id="sB" class="field cc-col">
-            <div class="muted small">Large text</div>
-            <div style="font-size: 20px; font-weight: 700">
-              Sphinx of black quartz, judge my vow.
-            </div>
-          </div>
-        </div>
-
-        <div id="result" class="status" aria-live="polite"></div>
-      </article>
-
-      <!-- WCAG Compliance Details -->
-      <article class="card" id="wcag-details">
-        <h2>WCAG 2.1 Compliance Levels</h2>
-
-        <div class="compliance-grid">
-          <div class="compliance-level">
-            <h3>Level AA (Minimum)</h3>
-            <ul>
-              <li><strong>Normal text:</strong> ≥4.5:1 contrast ratio</li>
-              <li><strong>Large text (18pt+):</strong> ≥3:1 contrast ratio</li>
-              <li><strong>UI components:</strong> ≥3:1 contrast ratio</li>
-            </ul>
-            <p class="small muted">
-              Required for most accessibility regulations
-            </p>
-          </div>
-
-          <div class="compliance-level">
-            <h3>Level AAA (Enhanced)</h3>
-            <ul>
-              <li><strong>Normal text:</strong> ≥7:1 contrast ratio</li>
-              <li>
-                <strong>Large text (18pt+):</strong> ≥4.5:1 contrast ratio
-              </li>
-            </ul>
-            <p class="small muted">Recommended for highest accessibility</p>
-          </div>
-        </div>
-
-        <h3>What counts as "large text"?</h3>
-        <ul>
-          <li>18 points regular weight (approximately 24px)</li>
-          <li>14 points bold weight (approximately 18.67px)</li>
-          <li>Icons and graphical objects require 3:1 contrast</li>
-        </ul>
-      </article>
-
-      <!-- How to use -->
-      <article class="card" id="how-to-use">
-        <h2>How to use</h2>
-        <ol>
-          <li>
-            Pick a <strong>Text</strong> and <strong>Background</strong> color
-            using the color inputs or paste a hex value (e.g.,
-            <code>#1a73e8</code> or <code>#abc</code>).
-          </li>
-          <li>
-            The tool instantly shows the <strong>contrast ratio</strong> and
-            pass/fail badges for <strong>AA (normal/large)</strong> and
-            <strong>AAA (normal)</strong>.
-          </li>
-          <li>
-            Preview how the pair looks on <em>Normal</em> and
-            <em>Large</em> text. "Large" means ≥18pt normal or ≥14pt bold.
-          </li>
-          <li>Click <strong>Copy</strong> to copy the hex for either color.</li>
-          <li>All calculations run locally—nothing leaves your browser.</li>
-        </ol>
-        <h3>Tips</h3>
-        <ul>
-          <li>
-            Only solid colors are supported. For semi-transparent overlays,
-            first compute the flattened color against the background.
-          </li>
-          <li><code>#RGB</code> is auto-expanded to <code>#RRGGBB</code>.</li>
-          <li>
-            For non-text UI (icons, borders), WCAG suggests ≥3:1 against the
-            adjacent color.
-          </li>
-        </ul>
-      </article>
-
-      <!-- Real-World Applications -->
-      <article class="card" id="applications">
-        <h2>Where to Apply Contrast Ratios</h2>
-
-        <div class="applications-grid">
-          <div class="use-case">
-            <h4>📝 Body Text</h4>
-            <p>Main content reading experience</p>
-            <span class="badge">AA: 4.5:1</span>
-          </div>
-
-          <div class="use-case">
-            <h4>🎯 Headings & Titles</h4>
-            <p>Section headers and page titles</p>
-            <span class="badge">AA: 3:1</span>
-          </div>
-
-          <div class="use-case">
-            <h4>🔘 Buttons & Forms</h4>
-            <p>Interactive elements and inputs</p>
-            <span class="badge">AA: 3:1</span>
-          </div>
-
-          <div class="use-case">
-            <h4>📊 Data Visualization</h4>
-            <p>Charts, graphs, and data points</p>
-            <span class="badge">AA: 3:1</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Color Accessibility Tips -->
-      <article class="card" id="color-tips">
-        <h2>Color Accessibility Best Practices</h2>
-
-        <div class="tip">
-          <h3>🎨 Don't Rely on Color Alone</h3>
-          <p>
-            Use additional indicators like patterns, text labels, or icons to
-            convey meaning beyond color differences.
-          </p>
-        </div>
-
-        <div class="tip">
-          <h3>👁️ Test with Color Blindness Simulators</h3>
-          <p>
-            Check how your colors appear to users with various types of color
-            vision deficiency.
-          </p>
-        </div>
-
-        <div class="tip">
-          <h3>📱 Consider Different Lighting Conditions</h3>
-          <p>
-            Test your colors in bright sunlight, dim lighting, and various
-            screen brightness levels.
-          </p>
-        </div>
-
-        <div class="tip">
-          <h3>🔄 Provide Alternative Contrast Options</h3>
-          <p>
-            Offer high contrast modes or allow users to customize color schemes.
-          </p>
-        </div>
-      </article>
-
-      <!-- Technical Implementation -->
-      <article class="card" id="technical">
-        <h2>Technical Implementation</h2>
-
-        <h3>CSS Custom Properties Example</h3>
-      </article>
-
-      <!-- FAQ Section -->
-      <section class="faq-section card">
-        <h2 class="faq-title">
-          Color Contrast Checker – Frequently Asked Questions
-        </h2>
-
-        <div class="faq-container">
-          <!-- Color Contrast Checker FAQs -->
-          <div class="faq-item">
-            <button class="faq-question">
-              What are AA vs AAA requirements?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                AA: ≥4.5:1 for normal text, ≥3:1 for large text. AAA: ≥7:1 for
-                normal text, ≥4.5:1 for large text.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              What counts as "large" text?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                At least 18pt (≈24px) normal weight, or 14pt (≈18.67px) bold.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              Can I enter RGB or HSL?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                This tool accepts hex (<code>#RRGGBB</code> or
-                <code>#RGB</code>) for accuracy and simplicity.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              Does it work offline?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>Yes—after the first load, it works without internet.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              Is my data sent anywhere?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>No. Everything runs locally in your browser.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              What about users with color blindness?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Good contrast ratios help, but also ensure information isn't
-                conveyed by color alone. Use patterns, labels, or icons as
-                additional indicators.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              How often should I check contrast ratios?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Check during design, development, and whenever making color
-                changes. Also test final designs in different lighting
-                conditions.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              Are there exceptions to these ratios?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Yes: logos, incidental text, and inactive UI elements have no
-                contrast requirements. Text over images may use different
-                techniques.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Related tools -->
-      <article class="card related" id="related">
-        <h2>Related tools</h2>
-        <p class="muted">More design &amp; text utilities:</p>
-        <p>
-          <a class="btn" href="/text-utilities/">Text Utilities</a>
-          <a class="btn" href="/image-resizer-compressor/">Image Resizer</a>
-          <a class="btn" href="/json-formatter/">JSON Formatter</a>
-          <a class="btn" href="/url-tools/">URL Tools</a>
+      <header class="header">
+        <h1 class="">Fast, Private, and Offline-<br />Friendly Notes</h1>
+        <p class="subtitle">
+          Ensure your color combinations meet
+          <strong>WCAG 2.1 accessibility standards</strong>. This tool helps
+          designers, developers, and content creators test color contrast ratios
+          for normal text (AA: 4.5:1, AAA: 7:1) and large text (AA: 3:1, AAA:
+          4.5:1). All processing happens locally in your browser—your colors
+          never leave your device.
         </p>
-        <p class="small">
-          Prefer বাংলা? Try the
-          <a href="/bn/color-picker-contrast/" hreflang="bn">বাংলা সংস্করণ</a>.
-        </p>
-      </article>
+        <span class="badge">RFC 3986 Compliant</span>
+      </header>
+
+      <p class="toc" aria-label="Table of Contents">
+        <a href="#cc-tool">Pick colors</a> ·
+        <a href="#where">Where to use </a> ·
+        <a href="#best-practices">Best Practices</a> ·
+        <a href="#details">Details</a> · <a href="#faq">FAQ</a> ·
+        <a href="#related">Related tools</a>
+      </p>
+      <div class="wrap">
+        <article class="card" id="cc-tool">
+          <h2>Pick colors &amp; check contrast</h2>
+
+          <div class="row">
+            <label
+              class="field form-label"
+              style="display: flex; align-items: center; gap: 10px"
+            >
+              <input
+                id="fg"
+                type="color"
+                value="#FFFFFF"
+                aria-label="Text color"
+              />
+              <input
+                id="fgHex"
+                class="field mono form-input"
+                value="#FFFFFF"
+                aria-label="Text color hex"
+              />
+              <button class="btn" id="copyFg" type="button">Copy</button>
+            </label>
+
+            <label
+              class="field"
+              style="display: flex; align-items: center; gap: 10px"
+            >
+              <input
+                id="bg"
+                type="color"
+                value="#000000"
+                aria-label="Background color"
+              />
+              <input
+                id="bgHex"
+                class="field mono form-input"
+                value="#000000"
+                aria-label="Background color hex"
+              />
+              <button class="btn" id="copyBg" type="button">Copy</button>
+            </label>
+          </div>
+
+          <div class="cc-grid">
+            <div id="sA" class="field cc-col">
+              <div class="muted small">Normal text</div>
+              <div>Almost before we knew it, we had left the ground.</div>
+            </div>
+            <div id="sB" class="field cc-col">
+              <div class="muted small">Large text</div>
+              <div style="font-size: 20px; font-weight: 700">
+                Sphinx of black quartz, judge my vow.
+              </div>
+            </div>
+          </div>
+
+          <div id="result" class="status" aria-live="polite"></div>
+        </article>
+
+        <!-- Examples -->
+        <div class="card" id="where">
+          <h2>Where to Apply Contrast Ratios</h2>
+          <div class="examples">
+            <div class="example">
+              <div class="example-title">📝 Body Text</div>
+              <div class="example-content">Main content reading experience</div>
+              <span class="badge">AA: 4.5:1</span>
+            </div>
+
+            <div class="example">
+              <div class="example-title">🎯 Headings & Titles</div>
+              <div class="example-content">Section headers and page titles</div>
+              <span class="badge">AA: 3:1</span>
+            </div>
+
+            <div class="example">
+              <div class="example-title">🔘 Buttons & Forms</div>
+              <div class="example-content">Interactive elements and inputs</div>
+              <span class="badge">AA: 3:1</span>
+            </div>
+
+            <div class="example">
+              <div class="example-title">📊 Data Visualization</div>
+              <div class="example-content">Charts, graphs, and data points</div>
+              <span class="badge">AA: 3:1</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tips -->
+        <div class="card" id="best-practices">
+          <h2>Color Accessibility Best Practices</h2>
+          <div class="examples">
+            <div class="example">
+              <div class="example-title">🎨 Don't Rely on Color Alone</div>
+              <div class="example-content">
+                Use additional indicators like patterns, text labels, or icons
+                to convey meaning beyond color differences.
+              </div>
+            </div>
+
+            <div class="example">
+              <div class="example-title">
+                👁️ Test with Color Blindness Simulators
+              </div>
+              <div class="example-content">
+                Check how your colors appear to users with various types of
+                color vision deficiency.
+              </div>
+            </div>
+
+            <div class="example">
+              <div class="example-title">
+                📱 Consider Different Lighting Conditions
+              </div>
+              <div class="example-content">
+                Test your colors in bright sunlight, dim lighting, and various
+                screen brightness levels.
+              </div>
+            </div>
+
+            <div class="example">
+              <div class="example-title">
+                🔄 Provide Alternative Contrast Options
+              </div>
+              <div class="example-content">
+                Offer high contrast modes or allow users to customize color
+                schemes.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Technical -->
+        <div class="card">
+          <h2>Technical Implementation</h2>
+          <div class="example">
+            <div class="example-title">💻 CSS Custom Properties Example</div>
+            <div class="example-content">
+              Use CSS variables to define text and background colors, making it
+              easy to adjust contrast globally or in high-contrast modes.
+            </div>
+          </div>
+        </div>
+        <!-- Information Grid -->
+        <div class="info-grid" id="details">
+          <!-- WCAG Compliance -->
+          <div class="card">
+            <div class="info-section">
+              <h3>WCAG 2.1 Compliance Levels</h3>
+              <h4>Level AA (Minimum)</h4>
+              <ul>
+                <li><strong>Normal text:</strong> ≥4.5:1 contrast ratio</li>
+                <li>
+                  <strong>Large text (18pt+):</strong> ≥3:1 contrast ratio
+                </li>
+                <li><strong>UI components:</strong> ≥3:1 contrast ratio</li>
+              </ul>
+              <p class="small muted">
+                Required for most accessibility regulations.
+              </p>
+
+              <h4>Level AAA (Enhanced)</h4>
+              <ul>
+                <li><strong>Normal text:</strong> ≥7:1 contrast ratio</li>
+                <li>
+                  <strong>Large text (18pt+):</strong> ≥4.5:1 contrast ratio
+                </li>
+              </ul>
+              <p class="small muted">Recommended for highest accessibility.</p>
+            </div>
+          </div>
+
+          <!-- Large Text Definition -->
+          <div class="card">
+            <div class="info-section">
+              <h3>What counts as "large text"?</h3>
+              <ul>
+                <li>18 points regular weight (≈ 24px)</li>
+                <li>14 points bold weight (≈ 18.67px)</li>
+                <li>Icons and graphical objects require 3:1 contrast</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- How to Use -->
+          <div class="card">
+            <div class="info-section">
+              <h3>How to Use</h3>
+              <ol>
+                <li>
+                  Pick a <strong>Text</strong> and
+                  <strong>Background</strong> color using the color inputs or
+                  paste a hex value (e.g., <code>#1a73e8</code> or
+                  <code>#abc</code>).
+                </li>
+                <li>
+                  The tool instantly shows the
+                  <strong>contrast ratio</strong> and pass/fail badges for
+                  <strong>AA (normal/large)</strong> and
+                  <strong>AAA (normal)</strong>.
+                </li>
+                <li>
+                  Preview how the pair looks on <em>Normal</em> and
+                  <em>Large</em> text. "Large" means ≥18pt normal or ≥14pt bold.
+                </li>
+                <li>
+                  Click <strong>Copy</strong> to copy the hex for either color.
+                </li>
+                <li>
+                  All calculations run locally—nothing leaves your browser.
+                </li>
+              </ol>
+            </div>
+          </div>
+
+          <!-- Tips -->
+          <div class="card">
+            <div class="info-section">
+              <h3>Tips</h3>
+              <ul>
+                <li>
+                  Only solid colors are supported. For semi-transparent
+                  overlays, first compute the flattened color against the
+                  background.
+                </li>
+                <li>
+                  <code>#RGB</code> is auto-expanded to <code>#RRGGBB</code>.
+                </li>
+                <li>
+                  For non-text UI (icons, borders), WCAG suggests ≥3:1 against
+                  the adjacent color.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <section class="faq-section card" id="faq">
+          <h2 class="faq-title">
+            Color Contrast Checker – Frequently Asked Questions
+          </h2>
+
+          <div class="faq-container">
+            <!-- Color Contrast Checker FAQs -->
+            <div class="faq-item">
+              <button class="faq-question">
+                What are AA vs AAA requirements?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  AA: ≥4.5:1 for normal text, ≥3:1 for large text. AAA: ≥7:1 for
+                  normal text, ≥4.5:1 for large text.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                What counts as "large" text?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  At least 18pt (≈24px) normal weight, or 14pt (≈18.67px) bold.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Can I enter RGB or HSL?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  This tool accepts hex (<code>#RRGGBB</code> or
+                  <code>#RGB</code>) for accuracy and simplicity.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Does it work offline?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>Yes—after the first load, it works without internet.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Is my data sent anywhere?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>No. Everything runs locally in your browser.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                What about users with color blindness?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Good contrast ratios help, but also ensure information isn't
+                  conveyed by color alone. Use patterns, labels, or icons as
+                  additional indicators.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                How often should I check contrast ratios?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Check during design, development, and whenever making color
+                  changes. Also test final designs in different lighting
+                  conditions.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Are there exceptions to these ratios?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Yes: logos, incidental text, and inactive UI elements have no
+                  contrast requirements. Text over images may use different
+                  techniques.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Related tools -->
+        <article class="card related" id="related">
+          <h2>Related tools</h2>
+          <p class="muted">More design &amp; text utilities:</p>
+          <p>
+            <a class="btn" href="/text-utilities/">Text Utilities</a>
+            <a class="btn" href="/image-resizer-compressor/">Image Resizer</a>
+            <a class="btn" href="/json-formatter/">JSON Formatter</a>
+            <a class="btn" href="/url-tools/">URL Tools</a>
+          </p>
+          <p class="small">
+            Prefer বাংলা? Try the
+            <a href="/bn/color-picker-contrast/" hreflang="bn">বাংলা সংস্করণ</a
+            >.
+          </p>
+        </article>
+      </div>
+
+      <footer>
+        © <span id="y"></span> Tools Pack • <a class="muted" href="/">Home</a> •
+        <a class="muted" href="/bn/color-picker-contrast/" hreflang="bn"
+          >বাংলা</a
+        >
+      </footer>
     </div>
-
-    <footer>
-      © <span id="y"></span> Tools Pack • <a class="muted" href="/">Home</a> •
-      <a class="muted" href="/bn/color-picker-contrast/" hreflang="bn">বাংলা</a>
-    </footer>
 
     <script>
       // Elements (explicit bindings)

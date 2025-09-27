@@ -206,385 +206,405 @@
         data-adtest="on"
       ></ins>
     </div>
-
-    <main class="wrap">
+    <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="/">Home</a> › <a href="/text-to-pdf/">Text → PDF </a> › Text →
         PDF
       </nav>
+      <header class="header">
+        <h1>URL Encoder &amp; Decoder</h1>
+        <p class="subtitle">
+          Encode &amp; decode URI components safely. RFC 3986 compliant, works
+          locally in your browser with no data uploads.
+        </p>
+        <span class="badge">RFC 3986 Compliant</span>
+      </header>
 
-      <!-- TOC -->
-      <p class="toc">
-        <a href="#pdf-tool">Editor</a> · <a href="#how-to-use">How to use</a> ·
-        <a href="#faq">FAQ</a> · <a href="#related">Related tools</a>
+      <p class="toc" aria-label="Table of Contents">
+        <a href="#pdf-tool">Editor</a> · <a href="#where">Where to use </a> ·
+        <a href="#best-practices">Best Practices</a> ·
+        <a href="#details">Details</a> · <a href="#faq">FAQ</a> ·
+        <a href="#related">Related tools</a>
       </p>
+      <main class="wrap">
+        <!-- Tool -->
+        <article class="card tool-card" id="pdf-tool">
+          <div class="form-group">
+            <select id="page" class="form-select" aria-label="Page size">
+              <option value="A4">A4</option>
+              <option value="Letter">Letter</option>
+              <option value="Legal">Legal</option>
+            </select>
 
-      <!-- Tool -->
-      <article class="card" id="pdf-tool">
-        <div class="row">
-          <select id="page" class="select" aria-label="Page size">
-            <option value="A4">A4</option>
-            <option value="Letter">Letter</option>
-            <option value="Legal">Legal</option>
-          </select>
+            <select id="orient" class="form-select" aria-label="Orientation">
+              <option value="portrait">Portrait</option>
+              <option value="landscape">Landscape</option>
+            </select>
 
-          <select id="orient" class="select" aria-label="Orientation">
-            <option value="portrait">Portrait</option>
-            <option value="landscape">Landscape</option>
-          </select>
+            <label
+              class="form-label"
+              style="display: flex; align-items: center; gap: 30px"
+            >
+              <span class="muted">Margins</span>
+              <input
+                id="margin"
+                type="number"
+                class="form-input"
+                value="15"
+                min="5"
+                max="40"
+              />
+              <span class="pill mono">mm</span>
+            </label>
 
-          <label
-            class="field"
-            style="display: flex; align-items: center; gap: 10px"
-          >
-            <span class="muted">Margins</span>
-            <input
-              id="margin"
-              type="number"
-              class="field"
-              value="15"
-              min="5"
-              max="40"
-            />
-            <span class="pill mono">mm</span>
-          </label>
+            <!-- NEW: font size (pt) -->
+            <label
+              class="form-label"
+              style="display: flex; align-items: center; gap: 30px"
+            >
+              <span class="muted">Font size</span>
+              <input
+                id="fsize"
+                type="number"
+                class="form-input"
+                value="12"
+                min="8"
+                max="48"
+              />
+              <span class="pill mono">pt</span>
+            </label>
 
-          <!-- NEW: font size (pt) -->
-          <label
-            class="field"
-            style="display: flex; align-items: center; gap: 30px"
-          >
-            <span class="muted">Font size</span>
-            <input
-              id="fsize"
-              type="number"
-              class="field"
-              value="12"
-              min="8"
-              max="48"
-            />
-            <span class="pill mono">pt</span>
-          </label>
-
-          <label class="pill"
-            ><input id="hdr" type="checkbox" checked /> Header</label
-          >
-          <label class="pill"><input id="ftr" type="checkbox" /> Footer</label>
-        </div>
-
-        <textarea
-          id="txt"
-          class="textarea"
-          placeholder="Type or paste your text… Supports Bangla/Unicode/emoji ✅"
-        ></textarea>
-
-        <div class="ad-wrap ad-article" aria-label="Advertisement">
-          <span class="ad-label">Ad</span>
-          <ins
-            class="adsbygoogle"
-            style="display: block; text-align: center"
-            data-ad-client="ca-pub-1234567890123456"
-            data-ad-slot="2222222222"
-            data-ad-format="fluid"
-            data-ad-layout="in-article"
-            data-adtest="on"
-          ></ins>
-        </div>
-        <div class="row">
-          <button class="btn btn-primary" id="print">
-            Preview &amp; Print
-          </button>
-          <button class="btn" id="sample">Sample</button>
-        </div>
-
-        <div id="status" class="muted small" aria-live="polite">
-          Use “Save as PDF” in the print dialog.
-        </div>
-      </article>
-
-      <!-- Text → PDF: Details & Rules -->
-      <article class="card" id="text-pdf-details">
-        <h2>Text to PDF Basics</h2>
-
-        <div class="tp-grid">
-          <div class="tp-section">
-            <h3>What this tool can do</h3>
-            <ul>
-              <li><strong>Convert plain text</strong> to a paginated PDF</li>
-              <li>
-                <strong>Page setup</strong>: A4/Letter, portrait/landscape,
-                margins
-              </li>
-              <li>
-                <strong>Typography</strong>: font family/size/line-height,
-                left/center/right align
-              </li>
-              <li>
-                <strong>Headers/Footers</strong>: optional title, page numbers
-              </li>
-              <li>
-                <strong>Unicode</strong> support (e.g., Bangla, emoji) with
-                embedded fonts
-              </li>
-            </ul>
-            <p class="small muted">
-              Everything runs locally in your browser—your text never leaves
-              your device.
-            </p>
+            <label class="form-label"
+              ><input id="hdr" type="checkbox" class="" checked /> Header</label
+            >
+            <label class="form-label"
+              ><input id="ftr" type="checkbox" /> Footer</label
+            >
           </div>
 
-          <div class="tp-section">
-            <h3>Inputs</h3>
-            <ul>
-              <li>
-                <strong>Text:</strong> paste or type; preserves line breaks
-              </li>
-              <li><strong>Page:</strong> A4 or Letter; portrait/landscape</li>
-              <li>
-                <strong>Layout:</strong> margins (e.g., 36–72 pt), font
-                size/line-height
-              </li>
-              <li>
-                <strong>Extras:</strong> title header, page numbers, filename
-              </li>
-            </ul>
+          <textarea
+            id="txt"
+            class="form-textarea"
+            placeholder="Type or paste your text… Supports Bangla/Unicode/emoji ✅"
+          ></textarea>
+
+          <div class="ad-wrap ad-article" aria-label="Advertisement">
+            <span class="ad-label">Ad</span>
+            <ins
+              class="adsbygoogle"
+              style="display: block; text-align: center"
+              data-ad-client="ca-pub-1234567890123456"
+              data-ad-slot="2222222222"
+              data-ad-format="fluid"
+              data-ad-layout="in-article"
+              data-adtest="on"
+            ></ins>
+          </div>
+          <div class="row">
+            <button class="btn btn-primary" id="print">
+              Preview &amp; Print
+            </button>
+            <button class="btn" id="sample">Sample</button>
           </div>
 
-          <div class="tp-section">
-            <h3>Output characteristics</h3>
-            <ul>
-              <li>
-                <strong>PDF 1.x</strong> file with embedded fonts (when
-                provided)
-              </li>
-              <li>
-                <strong>Hard wraps</strong> at word boundaries; automatic
-                pagination
-              </li>
-              <li>
-                <strong>Consistent metrics</strong> via monospaced or measured
-                proportional fonts
-              </li>
-            </ul>
+          <div id="status" class="muted small" aria-live="polite">
+            Use “Save as PDF” in the print dialog.
+          </div>
+        </article>
+        <!-- Examples -->
+        <div class="card" id="where">
+          <h2>Common Use Cases &amp; Examples</h2>
+          <div class="examples">
+            <!-- Applications -->
+            <div class="example">
+              <div class="example-title">🧾 Receipts &amp; Logs</div>
+              <div class="example-content">
+                Archive console logs or chat transcripts
+              </div>
+              <span class="badge">monospace</span>
+            </div>
+
+            <div class="example">
+              <div class="example-title">📄 Notes &amp; Drafts</div>
+              <div class="example-content">
+                Share printable notes with fixed layout
+              </div>
+              <span class="badge">A4/Letter</span>
+            </div>
+
+            <div class="example">
+              <div class="example-title">🌐 Multilingual</div>
+              <div class="example-content">
+                Export Bangla/Unicode text reliably
+              </div>
+              <span class="badge">embed TTF</span>
+            </div>
+
+            <div class="example">
+              <div class="example-title">📚 Handouts</div>
+              <div class="example-content">Clean, paginated printable docs</div>
+              <span class="badge">headers/footers</span>
+            </div>
+
+            <!-- Best Practices -->
+            <div class="example" id="best-practices">
+              <div class="example-title">🧭 Choose sensible margins</div>
+              <div class="example-content">
+                36–54 pt (0.5–0.75") margins balance density and readability.
+              </div>
+            </div>
+
+            <div class="example">
+              <div class="example-title">🔤 Embed one good Unicode font</div>
+              <div class="example-content">
+                Use Noto Sans or Noto Serif; avoid embedding many fonts to keep
+                size small.
+              </div>
+            </div>
+
+            <div class="example">
+              <div class="example-title">🔢 Page numbers help</div>
+              <div class="example-content">
+                Add “Page X of Y” in the footer for long documents.
+              </div>
+            </div>
+
+            <div class="example">
+              <div class="example-title">💾 Filename hygiene</div>
+              <div class="example-content">
+                Use kebab-case or snake_case without spaces for portability.
+              </div>
+            </div>
+
+            <!-- Technical -->
+            <div class="example">
+              <div class="example-title">🧩 Technical Implementation</div>
+              <div class="example-content">
+                Option A — jsPDF (CDN) for quick client-side PDF export
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="info-grid" id="details">
+          <!-- Basics & Features -->
+          <div class="card">
+            <div class="info-section">
+              <h3>📝 Text → PDF Basics</h3>
+              <ul>
+                <li><strong>Convert plain text</strong> to a paginated PDF</li>
+                <li>
+                  <strong>Page setup:</strong> A4/Letter, portrait/landscape,
+                  margins
+                </li>
+                <li>
+                  <strong>Typography:</strong> font family/size/line-height,
+                  align left/center/right
+                </li>
+                <li>
+                  <strong>Headers/Footers:</strong> optional title, page numbers
+                </li>
+
+                <li>
+                  Runs entirely in your browser — your text never leaves your
+                  device.
+                </li>
+              </ul>
+            </div>
+            <div class="info-section">
+              <h3>🌐 Unicode & Fonts</h3>
+              <ul>
+                <li>
+                  Embed a Unicode TTF (e.g., <em>Noto Sans</em>) for Bangla and
+                  emoji
+                </li>
+                <li>Fallback fonts may miss glyphs if not embedded</li>
+                <li>Embed once; reuse across pages to keep PDF size small</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Inputs -->
+          <div class="card">
+            <div class="info-section">
+              <h3>⌨️ Inputs</h3>
+              <ul>
+                <li>
+                  <strong>Text:</strong> paste or type; line breaks preserved
+                </li>
+                <li><strong>Page:</strong> A4 or Letter; portrait/landscape</li>
+                <li>
+                  <strong>Layout:</strong> margins (e.g., 36–72 pt), font
+                  size/line-height
+                </li>
+                <li>
+                  <strong>Extras:</strong> title header, page numbers, filename
+                </li>
+              </ul>
+            </div>
+            <div class="info-section">
+              <h3>📤 Output Characteristics</h3>
+              <ul>
+                <li>
+                  <strong>PDF 1.x</strong> file with embedded fonts (when
+                  provided)
+                </li>
+                <li>
+                  <strong>Hard wraps</strong> at word boundaries; automatic
+                  pagination
+                </li>
+                <li>
+                  <strong>Consistent metrics</strong> via monospaced or
+                  proportional fonts
+                </li>
+                <li>
+                  <strong>Unicode support:</strong> Bangla, emoji, non-Latin
+                  with embedded fonts
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- How to Use -->
+          <div class="card">
+            <div class="info-section">
+              <h3>⚙️ How to Use</h3>
+              <ol>
+                <li>Paste your <strong>text</strong> into the editor</li>
+                <li>
+                  Choose <strong>page size</strong>, <strong>margins</strong>,
+                  and <strong>font</strong>
+                </li>
+                <li>
+                  (Optional) Add a <strong>title</strong> and enable
+                  <strong>page numbers</strong>
+                </li>
+                <li>
+                  Click <strong>Generate PDF</strong>, then
+                  <strong>Download</strong>
+                </li>
+              </ol>
+            </div>
+          </div>
+
+          <!-- Tips -->
+          <div class="card">
+            <div class="info-section">
+              <h3>💡 Tips</h3>
+              <ul>
+                <li>
+                  Use a <strong>monospace font</strong> for code or logs to keep
+                  alignment
+                </li>
+                <li>
+                  For long docs, set <strong>line-height</strong> around 1.4 for
+                  readability
+                </li>
+                <li>
+                  If characters appear as boxes,
+                  <strong>embed a Unicode TTF</strong> (e.g., Noto Sans)
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 
-        <h3>Unicode & fonts</h3>
-        <ul>
-          <li>
-            To render non-Latin text (e.g., <em>বাংলা</em>), embed a Unicode TTF
-            like Noto Sans.
-          </li>
-          <li>
-            Without an embedded font, some libraries fall back to limited
-            built-ins (may miss glyphs).
-          </li>
-          <li>Embed once; reuse for all pages to keep file size reasonable.</li>
-        </ul>
-      </article>
+        <!-- FAQ -->
+        <section class="faq-section card" id="faq">
+          <h2 class="faq-title">
+            Text to PDF Converter – Frequently Asked Questions
+          </h2>
 
-      <!-- How to use -->
-      <article class="card" id="how-to-use-text-pdf">
-        <h2>How to use</h2>
-        <ol>
-          <li>Paste your <strong>text</strong> into the editor.</li>
-          <li>
-            Choose <strong>page size</strong>, <strong>margins</strong>, and
-            <strong>font</strong> options.
-          </li>
-          <li>
-            (Optional) Add a <strong>title</strong> and enable
-            <strong>page numbers</strong>.
-          </li>
-          <li>
-            Click <strong>Generate PDF</strong>, then <strong>Download</strong>.
-          </li>
-        </ol>
+          <div class="faq-container">
+            <!-- Text to PDF FAQs -->
+            <div class="faq-item">
+              <button class="faq-question">
+                Does it support Bangla, Unicode, and emoji?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Yes. The converter is fully Unicode-safe and works seamlessly
+                  with Bangla (বাংলা), emoji, Arabic, and other multilingual
+                  text.
+                </p>
+              </div>
+            </div>
 
-        <h3>Tips</h3>
-        <ul>
-          <li>
-            Use a <strong>monospace</strong> font for code or logs to keep
-            alignment.
-          </li>
-          <li>
-            For long documents, set <strong>line-height</strong> to ~1.4 for
-            readability.
-          </li>
-          <li>
-            If characters appear as boxes,
-            <strong>embed a Unicode TTF</strong> (e.g., Noto Sans).
-          </li>
-        </ul>
-      </article>
+            <div class="faq-item">
+              <button class="faq-question">
+                Is my text or file uploaded to a server?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  No. All processing happens in your browser. Nothing is
+                  uploaded, stored, or shared online.
+                </p>
+              </div>
+            </div>
 
-      <!-- Real-World Applications -->
-      <article class="card" id="text-pdf-applications">
-        <h2>Where to Use Text → PDF</h2>
+            <div class="faq-item">
+              <button class="faq-question">
+                How can I add a header or footer?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Use the <em>Header</em> and <em>Footer</em> options before
+                  printing. The header will show your chosen title, and the
+                  footer automatically displays the generation time.
+                </p>
+              </div>
+            </div>
 
-        <div class="applications-grid">
-          <div class="use-case">
-            <h4>🧾 Receipts & Logs</h4>
-            <p>Archive console logs or chat transcripts</p>
-            <span class="badge">monospace</span>
+            <div class="faq-item">
+              <button class="faq-question">
+                Can I include page numbers in the PDF?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Built-in numbering is not included in this tool. However, most
+                  browsers can insert page numbers if you enable “Headers and
+                  footers” in the print dialog.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Which paper sizes are available?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  The tool supports A4, Letter, and Legal page sizes. You can
+                  use Portrait or Landscape orientation, and adjust margins in
+                  millimeters for precise control.
+                </p>
+              </div>
+            </div>
           </div>
+        </section>
 
-          <div class="use-case">
-            <h4>📄 Notes & Drafts</h4>
-            <p>Share printable notes with fixed layout</p>
-            <span class="badge">A4/Letter</span>
-          </div>
-
-          <div class="use-case">
-            <h4>🌐 Multilingual</h4>
-            <p>Export Bangla/Unicode text reliably</p>
-            <span class="badge">embed TTF</span>
-          </div>
-
-          <div class="use-case">
-            <h4>📚 Handouts</h4>
-            <p>Clean, paginated printable docs</p>
-            <span class="badge">headers/footers</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Best Practices -->
-      <article class="card" id="text-pdf-tips">
-        <h2>Text → PDF Best Practices</h2>
-
-        <div class="tip">
-          <h3>🧭 Choose sensible margins</h3>
-          <p>36–54 pt (0.5–0.75") margins balance density and readability.</p>
-        </div>
-
-        <div class="tip">
-          <h3>🔤 Embed one good Unicode font</h3>
+        <!-- Related tools -->
+        <article class="card" id="related">
+          <h2>Related tools</h2>
+          <p class="muted">More text &amp; encoding utilities:</p>
           <p>
-            Use Noto Sans or Noto Serif; avoid embedding many fonts to keep size
-            small.
+            <a class="btn" href="/text-to-pdf/">Text → PDF</a>
+            <a class="btn" href="/json-formatter/">JSON Formatter</a>
+            <a class="btn" href="/base64/">Base64 Encode/Decode</a>
+            <a class="btn" href="/url-tools/">URL Tools</a>
+            <a class="btn" href="/quick-notes/">Quick Notes</a>
           </p>
-        </div>
-
-        <div class="tip">
-          <h3>🔢 Page numbers help</h3>
-          <p>Add “Page X of Y” in the footer for long documents.</p>
-        </div>
-
-        <div class="tip">
-          <h3>💾 Filename hygiene</h3>
-          <p>
-            Use <code>kebab-case</code> or <code>snake_case</code> without
-            spaces for portability.
+          <p class="small">
+            Prefer বাংলা? Try the
+            <a href="/bn/text-to-pdf/" hreflang="bn">বাংলা সংস্করণ</a>.
           </p>
-        </div>
-      </article>
-
-      <!-- Technical Implementation -->
-      <article class="card" id="text-pdf-technical">
-        <h2>Technical Implementation</h2>
-
-        <!-- Option A: jsPDF (simple, popular) -->
-        <h3>Option A — jsPDF (CDN)</h3>
-      </article>
-
-      <!-- FAQ -->
-      <section class="faq-section card">
-        <h2 class="faq-title">
-          Text to PDF Converter – Frequently Asked Questions
-        </h2>
-
-        <div class="faq-container">
-          <!-- Text to PDF FAQs -->
-          <div class="faq-item">
-            <button class="faq-question">
-              Does it support Bangla, Unicode, and emoji?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Yes. The converter is fully Unicode-safe and works seamlessly
-                with Bangla (বাংলা), emoji, Arabic, and other multilingual text.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              Is my text or file uploaded to a server?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                No. All processing happens in your browser. Nothing is uploaded,
-                stored, or shared online.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              How can I add a header or footer?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Use the <em>Header</em> and <em>Footer</em> options before
-                printing. The header will show your chosen title, and the footer
-                automatically displays the generation time.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              Can I include page numbers in the PDF?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Built-in numbering is not included in this tool. However, most
-                browsers can insert page numbers if you enable “Headers and
-                footers” in the print dialog.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              Which paper sizes are available?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                The tool supports A4, Letter, and Legal page sizes. You can use
-                Portrait or Landscape orientation, and adjust margins in
-                millimeters for precise control.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Related tools -->
-      <article class="card" id="related">
-        <h2>Related tools</h2>
-        <p class="muted">More text &amp; encoding utilities:</p>
-        <p>
-          <a class="btn" href="/text-to-pdf/">Text → PDF</a>
-          <a class="btn" href="/json-formatter/">JSON Formatter</a>
-          <a class="btn" href="/base64/">Base64 Encode/Decode</a>
-          <a class="btn" href="/url-tools/">URL Tools</a>
-          <a class="btn" href="/quick-notes/">Quick Notes</a>
-        </p>
-        <p class="small">
-          Prefer বাংলা? Try the
-          <a href="/bn/text-to-pdf/" hreflang="bn">বাংলা সংস্করণ</a>.
-        </p>
-      </article>
-    </main>
-
-    <footer>© <span id="y"></span> Tools Pack</footer>
+        </article>
+      </main>
+    </div>
 
     <script>
       (function () {

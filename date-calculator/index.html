@@ -243,15 +243,13 @@
         </div>
       </div>
     </header>
-
-    <main class="wrap" role="main">
+    <div class="container">
       <nav class="breadcrumbs" aria-label="breadcrumb">
         <a href="/">Home</a> › <span>Date Calculator</span>
       </nav>
-
-      <section class="card" id="intro">
-        <h2>What can this Date Calculator do?</h2>
-        <p>
+      <header class="header">
+        <h1 class="">What can this Date Calculator do?</h1>
+        <p class="subtitle">
           Quickly find <em>how long until 8/13</em>,
           <em>how long ago was 9/30</em>,
           <em>how many more days till October</em>, compute
@@ -260,6 +258,7 @@
           also see <em>how many years since 2018</em>. Works offline in your
           browser — no data leaves your device.
         </p>
+        <span class="badge">RFC 3986 Compliant</span>
         <div class="pill-row">
           <button class="pill" data-fill="until-aug13">Until Aug 13</button>
           <button class="pill" data-fill="until-sep17">Until Sep 17</button>
@@ -268,450 +267,505 @@
           <button class="pill" data-fill="add-20">20 days from today</button>
           <button class="pill" data-fill="since-2018">Since 2018-01-01</button>
         </div>
-      </section>
+      </header>
 
-      <!-- Days Until -->
-      <section class="card" id="until">
-        <h2>Days Until a Date</h2>
-        <div class="grid">
-          <label class="field span-6">
-            <span class="muted">End date</span>
-            <input id="untilEnd" type="date" class="field" required />
-          </label>
-          <label class="field span-6">
-            <span class="muted">Start date (defaults to today)</span>
-            <input id="untilStart" type="date" class="field" />
-          </label>
-          <div class="span-12">
-            <button class="btn btn-primary" id="btnUntil" type="button">
-              Calculate
-            </button>
-            <button class="btn" id="btnUntilReset" type="button">Reset</button>
-          </div>
-          <div class="span-12">
-            <textarea
-              id="outUntil"
-              class="textarea mono"
-              readonly
-              placeholder="Result…"
-            ></textarea>
-          </div>
-        </div>
-      </section>
+      <p class="toc" aria-label="Table of Contents">
+        <a href="#until">Until</a> · <a href="#since-date">Since date</a> ·
+        <a href="#ago">Ago date</a> · <a href="#add">Add date</a> ·<a
+          href="#where"
+          >Where to use
+        </a>
+        · <a href="#best-practices">Best Practices</a> ·
+        <a href="#details">Details</a> · <a href="#faq">FAQ</a> ·
+        <a href="#related">Related tools</a>
+      </p>
 
-      <!-- Days Since (how long ago) -->
-      <section class="card" id="since-date">
-        <h2>Days Since a Date (How long ago?)</h2>
-        <div class="grid">
-          <label class="field span-6">
-            <span class="muted">Past date</span>
-            <input id="sincePast" type="date" class="field" required />
-          </label>
-          <label class="field span-6">
-            <span class="muted">As of (defaults to today)</span>
-            <input id="sinceAsOf" type="date" class="field" />
-          </label>
-          <div class="span-12">
-            <button class="btn btn-primary" id="btnSince" type="button">
-              Calculate
-            </button>
-            <button class="btn" id="btnSinceReset" type="button">Reset</button>
+      <main class="wrap" role="main">
+        <!-- Days Until -->
+        <section class="card" id="until">
+          <h2>Days Until a Date</h2>
+          <div class="grid">
+            <label class="field span-6">
+              <span class="muted">End date</span>
+              <input id="untilEnd" type="date" class="field" required />
+            </label>
+            <label class="field span-6">
+              <span class="muted">Start date (defaults to today)</span>
+              <input id="untilStart" type="date" class="field" />
+            </label>
+            <div class="span-12">
+              <button class="btn btn-primary" id="btnUntil" type="button">
+                Calculate
+              </button>
+              <button class="btn" id="btnUntilReset" type="button">
+                Reset
+              </button>
+            </div>
+            <div class="span-12">
+              <textarea
+                id="outUntil"
+                class="textarea mono"
+                readonly
+                placeholder="Result…"
+              ></textarea>
+            </div>
           </div>
-          <div class="span-12">
-            <textarea
-              id="outSince"
-              class="textarea mono"
-              readonly
-              placeholder="Result…"
-            ></textarea>
+        </section>
+
+        <!-- Days Since (how long ago) -->
+        <section class="card" id="since-date">
+          <h2>Days Since a Date (How long ago?)</h2>
+          <div class="grid">
+            <label class="field span-6">
+              <span class="muted">Past date</span>
+              <input id="sincePast" type="date" class="field" required />
+            </label>
+            <label class="field span-6">
+              <span class="muted">As of (defaults to today)</span>
+              <input id="sinceAsOf" type="date" class="field" />
+            </label>
+            <div class="span-12">
+              <button class="btn btn-primary" id="btnSince" type="button">
+                Calculate
+              </button>
+              <button class="btn" id="btnSinceReset" type="button">
+                Reset
+              </button>
+            </div>
+            <div class="span-12">
+              <textarea
+                id="outSince"
+                class="textarea mono"
+                readonly
+                placeholder="Result…"
+              ></textarea>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- N days ago -->
-      <section class="card" id="ago">
-        <h2>Days Ago (N days)</h2>
-        <div class="grid">
-          <label class="field span-4">
-            <span class="muted">N (days)</span>
-            <input
-              id="agoN"
-              type="number"
-              min="0"
-              step="1"
-              class="field"
-              placeholder="e.g., 2015"
-            />
-          </label>
-          <label class="field span-4">
-            <span class="muted">As of (defaults to today)</span>
-            <input id="agoAsOf" type="date" class="field" />
-          </label>
-          <div class="span-12">
-            <button class="btn btn-primary" id="btnAgo" type="button">
-              Calculate
-            </button>
-            <button class="btn" id="btnAgoReset" type="button">Reset</button>
+        <!-- N days ago -->
+        <section class="card" id="ago">
+          <h2>Days Ago (N days)</h2>
+          <div class="grid">
+            <label class="field span-4">
+              <span class="muted">N (days)</span>
+              <input
+                id="agoN"
+                type="number"
+                min="0"
+                step="1"
+                class="field"
+                placeholder="e.g., 2015"
+              />
+            </label>
+            <label class="field span-4">
+              <span class="muted">As of (defaults to today)</span>
+              <input id="agoAsOf" type="date" class="field" />
+            </label>
+            <div class="span-12">
+              <button class="btn btn-primary" id="btnAgo" type="button">
+                Calculate
+              </button>
+              <button class="btn" id="btnAgoReset" type="button">Reset</button>
+            </div>
+            <div class="span-12">
+              <textarea
+                id="outAgo"
+                class="textarea mono"
+                readonly
+                placeholder="Result…"
+              ></textarea>
+            </div>
           </div>
-          <div class="span-12">
-            <textarea
-              id="outAgo"
-              class="textarea mono"
-              readonly
-              placeholder="Result…"
-            ></textarea>
+        </section>
+
+        <!-- Add/Subtract Days -->
+        <section class="card" id="add">
+          <h2>Add/Subtract Days</h2>
+          <div class="grid">
+            <label class="field span-4">
+              <span class="muted">Base date (defaults to today)</span>
+              <input id="addBase" type="date" class="field" />
+            </label>
+            <label class="field span-4">
+              <span class="muted">+ / − days (use negative to subtract)</span>
+              <input
+                id="addN"
+                type="number"
+                step="1"
+                class="field"
+                placeholder="e.g., 20 or -20"
+              />
+            </label>
+            <div class="span-12">
+              <button class="btn btn-primary" id="btnAdd" type="button">
+                Calculate
+              </button>
+              <button class="btn" id="btnAddReset" type="button">Reset</button>
+            </div>
+            <div class="span-12">
+              <textarea
+                id="outAdd"
+                class="textarea mono"
+                readonly
+                placeholder="Result…"
+              ></textarea>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- Add/Subtract Days -->
-      <section class="card" id="add">
-        <h2>Add/Subtract Days</h2>
-        <div class="grid">
-          <label class="field span-4">
-            <span class="muted">Base date (defaults to today)</span>
-            <input id="addBase" type="date" class="field" />
-          </label>
-          <label class="field span-4">
-            <span class="muted">+ / − days (use negative to subtract)</span>
-            <input
-              id="addN"
-              type="number"
-              step="1"
-              class="field"
-              placeholder="e.g., 20 or -20"
-            />
-          </label>
-          <div class="span-12">
-            <button class="btn btn-primary" id="btnAdd" type="button">
-              Calculate
-            </button>
-            <button class="btn" id="btnAddReset" type="button">Reset</button>
+        <!-- Years/Months/Days Since -->
+        <section class="card" id="since">
+          <h2>Years/Months/Days Since</h2>
+          <div class="grid">
+            <label class="field span-6">
+              <span class="muted">Start date (e.g., 2018-01-01)</span>
+              <input id="sinceStart" type="date" class="field" />
+            </label>
+            <label class="field span-6">
+              <span class="muted">As of (defaults to today)</span>
+              <input id="sinceEnd" type="date" class="field" />
+            </label>
+            <div class="span-12">
+              <button class="btn btn-primary" id="btnSinceYMD" type="button">
+                Calculate
+              </button>
+              <button class="btn" id="btnSinceYMDReset" type="button">
+                Reset
+              </button>
+            </div>
+            <div class="span-12">
+              <textarea
+                id="outSinceYMD"
+                class="textarea mono"
+                readonly
+                placeholder="Result…"
+              ></textarea>
+            </div>
           </div>
-          <div class="span-12">
-            <textarea
-              id="outAdd"
-              class="textarea mono"
-              readonly
-              placeholder="Result…"
-            ></textarea>
-          </div>
-        </div>
-      </section>
-
-      <!-- Years/Months/Days Since -->
-      <section class="card" id="since">
-        <h2>Years/Months/Days Since</h2>
-        <div class="grid">
-          <label class="field span-6">
-            <span class="muted">Start date (e.g., 2018-01-01)</span>
-            <input id="sinceStart" type="date" class="field" />
-          </label>
-          <label class="field span-6">
-            <span class="muted">As of (defaults to today)</span>
-            <input id="sinceEnd" type="date" class="field" />
-          </label>
-          <div class="span-12">
-            <button class="btn btn-primary" id="btnSinceYMD" type="button">
-              Calculate
-            </button>
-            <button class="btn" id="btnSinceYMDReset" type="button">
-              Reset
-            </button>
-          </div>
-          <div class="span-12">
-            <textarea
-              id="outSinceYMD"
-              class="textarea mono"
-              readonly
-              placeholder="Result…"
-            ></textarea>
-          </div>
-        </div>
-        <p class="muted">
-          Tip: For “how many years since 2018”, set <em>Start</em> to 2018-01-01
-          and leave <em>As of</em> blank.
-        </p>
-      </section>
-      <article class="card" id="date-details">
-        <h2>Date Calculation Basics</h2>
-
-        <div class="date-grid">
-          <div class="date-section">
-            <h3>What this tool can do</h3>
-            <ul>
-              <li><strong>Add/Subtract days</strong> from a given date</li>
-              <li>
-                <strong>Find difference</strong> between two dates (days or
-                Y/M/D)
-              </li>
-              <li><strong>Jump to</strong> next/previous weekday</li>
-              <li>
-                <strong>Business days</strong> between dates (skip weekends;
-                optional holidays)
-              </li>
-            </ul>
-            <p class="small muted">
-              Uses the civil calendar with real month lengths and leap years.
-            </p>
-          </div>
-
-          <div class="date-section">
-            <h3>Inputs</h3>
-            <ul>
-              <li>
-                <strong>Start date:</strong> e.g., <code>YYYY-MM-DD</code>
-              </li>
-              <li>
-                <strong>Days to add/subtract:</strong> integer (negative to
-                subtract)
-              </li>
-              <li><strong>End date:</strong> for difference mode</li>
-              <li><strong>Time zone:</strong> your local time is used</li>
-            </ul>
-          </div>
-
-          <div class="date-section">
-            <h3>Edge cases</h3>
-            <ul>
-              <li>Leap years (Feb&nbsp;29) handled correctly</li>
-              <li>End-of-month transitions (e.g., Jan&nbsp;31 → Feb)</li>
-              <li>No data leaves your browser (local-only)</li>
-            </ul>
-          </div>
-        </div>
-
-        <h3>Difference “in Y/M/D” vs “total days”</h3>
-        <ul>
-          <li>
-            <strong>Total days</strong>: exact day count between two dates
-          </li>
-          <li>
-            <strong>Y/M/D</strong>: calendar-accurate years → months → days, not
-            just days ÷ 365
-          </li>
-        </ul>
-      </article>
-      <!-- How to use -->
-      <article class="card" id="how-to-use-date">
-        <h2>How to use</h2>
-        <ol>
-          <li>Choose a <strong>mode</strong>: Add/Subtract or Difference.</li>
-          <li>
-            For <em>Add/Subtract</em>: enter a <strong>Start date</strong> and a
-            <strong>number of days</strong> (negative to subtract), then press
-            <strong>Calculate</strong>.
-          </li>
-          <li>
-            For <em>Difference</em>: enter <strong>Start</strong> and
-            <strong>End</strong> dates to see <em>total days</em> and
-            <em>Y/M/D</em>.
-          </li>
-          <li>
-            (Optional) Enable <strong>Business days</strong> to skip weekends
-            and supply holidays.
-          </li>
-        </ol>
-
-        <h3>Tips</h3>
-        <ul>
-          <li>
-            Prefer ISO format (<code>YYYY-MM-DD</code>) to avoid locale
-            confusion.
-          </li>
-          <li>
-            Business days mode excludes Sat/Sun; you can add holiday dates to
-            exclude them too.
-          </li>
-          <li>Time-of-day is ignored; calculations use local midnight.</li>
-        </ul>
-      </article>
-
-      <!-- Real-World Applications -->
-      <article class="card" id="date-applications">
-        <h2>Where to Use Date Calculations</h2>
-
-        <div class="applications-grid">
-          <div class="use-case">
-            <h4>🗓 Scheduling</h4>
-            <p>Deadlines, reminders, project offsets</p>
-            <span class="badge">+ / − days</span>
-          </div>
-
-          <div class="use-case">
-            <h4>🏢 Workdays</h4>
-            <p>Lead time, SLAs, ticket aging</p>
-            <span class="badge">business days</span>
-          </div>
-
-          <div class="use-case">
-            <h4>📈 Reporting</h4>
-            <p>Durations between milestones</p>
-            <span class="badge">total days</span>
-          </div>
-
-          <div class="use-case">
-            <h4>⚖️ Compliance</h4>
-            <p>Filing windows, eligibility periods</p>
-            <span class="badge">Y/M/D diff</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Date Tips -->
-      <article class="card" id="date-tips">
-        <h2>Date Calculation Best Practices</h2>
-
-        <div class="tip">
-          <h3>📅 Validate inputs</h3>
-          <p>
-            Reject impossible dates (e.g., <code>2025-02-30</code>) for accurate
-            results.
+          <p class="muted">
+            Tip: For “how many years since 2018”, set <em>Start</em> to
+            2018-01-01 and leave <em>As of</em> blank.
           </p>
+        </section>
+        <!-- Examples -->
+        <div class="card" id="where">
+          <h2>Where to Use Date Calculations</h2>
+          <div class="examples">
+            <div class="example">
+              <div class="example-title">🗓 Scheduling</div>
+              <div class="example-content">
+                Deadlines, reminders, project offsets
+              </div>
+              <span class="badge">+ / − days</span>
+            </div>
+
+            <div class="example">
+              <div class="example-title">🏢 Workdays</div>
+              <div class="example-content">Lead time, SLAs, ticket aging</div>
+              <span class="badge">business days</span>
+            </div>
+
+            <div class="example">
+              <div class="example-title">📈 Reporting</div>
+              <div class="example-content">Durations between milestones</div>
+              <span class="badge">total days</span>
+            </div>
+
+            <div class="example">
+              <div class="example-title">⚖️ Compliance</div>
+              <div class="example-content">
+                Filing windows, eligibility periods
+              </div>
+              <span class="badge">Y/M/D diff</span>
+            </div>
+          </div>
         </div>
 
-        <div class="tip">
-          <h3>🧮 Choose the right metric</h3>
+        <!-- Best Practices -->
+        <div class="card" id="best-practices">
+          <h2>Date Calculation Best Practices</h2>
+          <div class="examples">
+            <div class="example">
+              <div class="example-title">📅 Validate inputs</div>
+              <div class="example-content">
+                Reject impossible dates (e.g., 2025-02-30) for accurate results.
+              </div>
+            </div>
+
+            <div class="example">
+              <div class="example-title">🧮 Choose the right metric</div>
+              <div class="example-content">
+                Use <strong>total days</strong> for raw durations; use
+                <strong>Y/M/D</strong> for calendar-friendly periods.
+              </div>
+            </div>
+
+            <div class="example">
+              <div class="example-title">
+                🏖 Exclude holidays in business mode
+              </div>
+              <div class="example-content">
+                Provide an array of holiday dates to skip them along with
+                weekends.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Technical Implementation -->
+        <div class="card">
+          <h2>Technical Implementation</h2>
+          <div class="examples">
+            <div class="example">
+              <div class="example-title">⚙️ Add/Subtract days</div>
+              <div class="example-content">
+                Core engine shifts dates by ±N days, with optional business-day
+                mode. Business-day mode skips weekends and holidays from a
+                provided list.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Information Grid -->
+        <div class="info-grid" id="details">
+          <!-- Basics -->
+          <div class="card">
+            <div class="info-section">
+              <h3>🛠️ What this tool can do</h3>
+              <ul>
+                <li><strong>Add/Subtract days</strong> from a given date</li>
+                <li>
+                  <strong>Find difference</strong> between two dates (days or
+                  Y/M/D)
+                </li>
+                <li><strong>Jump to</strong> next/previous weekday</li>
+                <li>
+                  <strong>Business days</strong> between dates (skip weekends;
+                  optional holidays)
+                </li>
+              </ul>
+              <p class="small muted">
+                Uses the civil calendar with real month lengths and leap years.
+              </p>
+            </div>
+
+            <div class="info-section">
+              <h3>📋 Inputs</h3>
+              <ul>
+                <li>
+                  <strong>Start date:</strong> e.g., <code>YYYY-MM-DD</code>
+                </li>
+                <li>
+                  <strong>Days to add/subtract:</strong> integer (negative to
+                  subtract)
+                </li>
+                <li><strong>End date:</strong> for difference mode</li>
+                <li><strong>Time zone:</strong> your local time is used</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Edge Cases -->
+          <div class="card">
+            <div class="info-section">
+              <h3>⚖️ Edge cases</h3>
+              <ul>
+                <li>Leap years (Feb 29) handled correctly</li>
+                <li>End-of-month transitions (e.g., Jan 31 → Feb)</li>
+                <li>No data leaves your browser (local-only)</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Difference Mode -->
+          <div class="card">
+            <div class="info-section">
+              <h3>🎯 Difference “in Y/M/D” vs “total days”</h3>
+              <ul>
+                <li>
+                  <strong>Total days:</strong> exact day count between two dates
+                </li>
+                <li>
+                  <strong>Y/M/D:</strong> calendar-accurate years → months →
+                  days, not just days ÷ 365
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- How to Use -->
+          <div class="card">
+            <div class="info-section">
+              <h3>🧩 How to use</h3>
+              <ul>
+                <li>
+                  Choose a <strong>mode</strong>: Add/Subtract or Difference.
+                </li>
+                <li>
+                  For <em>Add/Subtract</em>: enter a
+                  <strong>Start date</strong> and a
+                  <strong>number of days</strong> (negative to subtract), then
+                  press <strong>Calculate</strong>.
+                </li>
+                <li>
+                  For <em>Difference</em>: enter <strong>Start</strong> and
+                  <strong>End</strong> dates to see <em>total days</em> and
+                  <em>Y/M/D</em>.
+                </li>
+                <li>
+                  (Optional) Enable <strong>Business days</strong> to skip
+                  weekends and supply holidays.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Tips -->
+          <div class="card">
+            <div class="info-section">
+              <h3>💡 Tips</h3>
+              <ul>
+                <li>
+                  Prefer ISO format (<code>YYYY-MM-DD</code>) to avoid locale
+                  confusion.
+                </li>
+                <li>
+                  Business days mode excludes Sat/Sun; you can add holiday dates
+                  to exclude them too.
+                </li>
+                <li>
+                  Time-of-day is ignored; calculations use local midnight.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <section class="faq-section card" id="faq">
+          <h2 class="faq-title">
+            Days Calculator – Frequently Asked Questions
+          </h2>
+
+          <div class="faq-container">
+            <!-- Days Calculator FAQs -->
+            <div class="faq-item">
+              <button class="faq-question">
+                How long until 8/13?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Use <strong>Days Until a Date</strong> and set the end date to
+                  August 13. If the date passed this year, the tool will show a
+                  negative number (meaning it occurred that many days ago) — or
+                  pick next year’s Aug 13.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                How long ago was 9/30?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Open <strong>Days Since a Date</strong>, select September 30
+                  (with a year), and calculate to see how many days ago it was.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                How many more days till October?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Choose October 1 (or a specific October date) in
+                  <strong>Days Until a Date</strong>. You’ll get the remaining
+                  days from today.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                2015 days ago — what date was that?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Use <strong>Days Ago (N days)</strong> with N = 2015 to get
+                  the exact date that many days before today.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                What is 20 days from today?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Use <strong>Add/Subtract Days</strong> with +20 to get the
+                  resulting date.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                How many days till Sept 17 / 6/11?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Use <strong>Days Until a Date</strong> and select the target
+                  date (Sep 17 or Jun 11). The calculator shows days remaining
+                  from today.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                How many years since 2018?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Use <strong>Years/Months/Days Since</strong> and set the start
+                  to 2018-01-01 (or any 2018 date). You’ll see years, months and
+                  days since then.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card" id="related">
+          <h2>Related tools</h2>
+          <p class="muted">More date &amp; time utilities:</p>
           <p>
-            Use <em>total days</em> for raw durations; use <em>Y/M/D</em> for
-            calendar-friendly periods.
+            <a class="btn" href="/age-calculator/">Age Calculator</a>
+            <a class="btn" href="/stopwatch-countdown/"
+              >Stopwatch &amp; Countdown</a
+            >
+            <a class="btn" href="/unit-converter/">Unit Converter</a>
           </p>
-        </div>
+        </section>
+      </main>
 
-        <div class="tip">
-          <h3>🏖 Exclude holidays in business mode</h3>
-          <p>
-            Provide an array of holiday dates to skip them along with weekends.
-          </p>
-        </div>
-      </article>
-
-      <!-- Technical Implementation -->
-      <article class="card" id="date-technical">
-        <h2>Technical Implementation</h2>
-
-        <h3>Add/Subtract days</h3>
-      </article>
-      <section class="faq-section card">
-        <h2 class="faq-title">Days Calculator – Frequently Asked Questions</h2>
-
-        <div class="faq-container">
-          <!-- Days Calculator FAQs -->
-          <div class="faq-item">
-            <button class="faq-question">
-              How long until 8/13?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Use <strong>Days Until a Date</strong> and set the end date to
-                August 13. If the date passed this year, the tool will show a
-                negative number (meaning it occurred that many days ago) — or
-                pick next year’s Aug 13.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              How long ago was 9/30?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Open <strong>Days Since a Date</strong>, select September 30
-                (with a year), and calculate to see how many days ago it was.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              How many more days till October?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Choose October 1 (or a specific October date) in
-                <strong>Days Until a Date</strong>. You’ll get the remaining
-                days from today.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              2015 days ago — what date was that?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Use <strong>Days Ago (N days)</strong> with N = 2015 to get the
-                exact date that many days before today.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              What is 20 days from today?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Use <strong>Add/Subtract Days</strong> with +20 to get the
-                resulting date.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              How many days till Sept 17 / 6/11?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Use <strong>Days Until a Date</strong> and select the target
-                date (Sep 17 or Jun 11). The calculator shows days remaining
-                from today.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              How many years since 2018?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Use <strong>Years/Months/Days Since</strong> and set the start
-                to 2018-01-01 (or any 2018 date). You’ll see years, months and
-                days since then.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="card" id="related">
-        <h2>Related tools</h2>
-        <p class="muted">More date &amp; time utilities:</p>
-        <p>
-          <a class="btn" href="/age-calculator/">Age Calculator</a>
-          <a class="btn" href="/stopwatch-countdown/"
-            >Stopwatch &amp; Countdown</a
-          >
-          <a class="btn" href="/unit-converter/">Unit Converter</a>
-        </p>
-      </section>
-    </main>
-
-    <footer>
-      © <span id="y"></span> Tools Pack • <a class="muted" href="/">Home</a> •
-      <a class="muted" href="/age-calculator/">Age Calculator</a>
-    </footer>
+      <footer>
+        © <span id="y"></span> Tools Pack • <a class="muted" href="/">Home</a> •
+        <a class="muted" href="/age-calculator/">Age Calculator</a>
+      </footer>
+    </div>
 
     <script>
       // ===== Utilities (UTC-safe) =====

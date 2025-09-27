@@ -186,30 +186,28 @@
       </div>
     </header>
 
-    <!-- Ad #1: top banner (constrained) -->
-    <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
-      <span class="ad-label">Ad</span>
-      <ins
-        class="adsbygoogle"
-        style="display: inline-block"
-        data-ad-client="ca-pub-1234567890123456"
-        data-ad-slot="1111111111"
-        data-ad-format="auto"
-        data-full-width-responsive="false"
-        data-adtest="on"
-      ></ins>
-    </div>
-
-    <main class="wrap" id="main">
-      <!-- Breadcrumbs -->
+    <div class="container">
+      <!-- Ad #1: top banner (constrained) -->
+      <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
+        <span class="ad-label">Ad</span>
+        <ins
+          class="adsbygoogle"
+          style="display: inline-block"
+          data-ad-client="ca-pub-1234567890123456"
+          data-ad-slot="1111111111"
+          data-ad-format="auto"
+          data-full-width-responsive="false"
+          data-adtest="on"
+        ></ins>
+      </div>
       <nav class="breadcrumbs" aria-label="breadcrumb">
         <a href="/">Home</a> › <a href="/#text">Text Tools</a> ›
         <span>SHA-256 Hash Generator</span>
       </nav>
 
-      <section class="card" id="intro">
+      <header class="header">
         <h1 style="margin: 0">SHA-256 Hash Generator (WebCrypto)</h1>
-        <p>
+        <p class="subtitle">
           Compute a <strong>SHA-256 hash</strong> for text or a
           <strong>whole file</strong> directly in your browser. Use the
           <strong>file picker</strong> or just <strong>drop a file</strong> to
@@ -217,466 +215,468 @@
           <em>secure hash</em> (<em>cryptographic hash function</em>) to help
           <strong>verify file integrity</strong> for downloads and releases.
         </p>
-      </section>
+        <span class="badge">RFC 3986 Compliant</span>
+      </header>
 
-      <!-- TOC -->
-      <p class="toc">
+      <!-- TOC (updated anchors & labels) -->
+
+      <p class="toc" aria-label="Table of Contents">
         <a href="#hash-tool">Hash tool</a> ·
-        <a href="#how-to-use-sha256">How to use</a> · <a href="#faq">FAQ</a> ·
+        <a href="#where">Where to use </a> ·
+        <a href="#best-practices">Best Practices</a> ·
+        <a href="#details">Details</a> · <a href="#faq">FAQ</a> ·
         <a href="#related">Related tools</a>
       </p>
+      <main class="wrap" id="main">
+        <!-- Breadcrumbs -->
 
-      <!-- Ad: top responsive banner -->
-      <section class="card" aria-label="Advertisement">
-        <ins
-          class="adsbygoogle"
-          style="display: block"
-          data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-          data-ad-slot="0000000000"
-          data-ad-format="auto"
-          data-full-width-responsive="true"
-        ></ins>
-        <script>
-          (window.adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-      </section>
-
-      <!-- MAIN TOOL -->
-      <article class="card" id="hash-tool">
-        <label
-          for="txt"
-          class="muted"
-          style="display: block; margin-bottom: 0.5rem"
-          >Text to hash</label
-        >
-        <textarea
-          id="txt"
-          class="textarea mono"
-          placeholder="Type or paste text here…"
-        ></textarea>
-
-        <div
-          style="
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-            margin-top: 0.75rem;
-            flex-wrap: wrap;
-          "
-        >
-          <label for="file" class="muted" style="min-width: 9rem"
-            >…or choose a file:</label
-          >
-          <input id="file" class="field" type="file" />
-          <button
-            class="btn btn-primary"
-            id="run"
-            type="button"
-            aria-label="Compute SHA-256"
-          >
-            Compute
-          </button>
-          <button class="btn" id="clear" type="button" aria-label="Clear">
-            Clear
-          </button>
-        </div>
-
-        <div
-          style="
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-            margin-top: 0.75rem;
-            flex-wrap: wrap;
-          "
-        >
-          <input
-            id="out"
-            class="field mono"
-            readonly
-            placeholder="SHA-256 hex digest"
-            aria-label="SHA-256 output"
-            aria-live="polite"
-            style="flex: 1"
-          />
-          <button class="btn" id="copy" type="button" aria-label="Copy hash">
-            Copy
-          </button>
-        </div>
-
-        <div class="ad-wrap ad-article" aria-label="Advertisement">
+        <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
           <span class="ad-label">Ad</span>
           <ins
             class="adsbygoogle"
-            style="display: block; text-align: center"
-            data-ad-client="ca-pub-1234567890123456"
-            data-ad-slot="2222222222"
-            data-ad-format="fluid"
-            data-ad-layout="in-article"
-            data-adtest="on"
+            style="display: inline-block"
+            data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+            data-ad-slot="1111111111"
+            data-ad-format="auto"
+            data-full-width-responsive="false"
           ></ins>
         </div>
 
-        <p class="muted" style="margin-top: 0.5rem">
-          Privacy: hashing happens <strong>locally</strong> with WebCrypto;
-          nothing is uploaded.
-        </p>
-      </article>
-
-      <!-- SHA-256 Basics -->
-      <article class="card" id="sha256-details">
-        <h2>SHA-256 Basics</h2>
-
-        <div class="sha-grid">
-          <div class="sha-section">
-            <h3>What this tool can do</h3>
-            <ul>
-              <li><strong>Hash text</strong> to SHA-256 (hex or Base64)</li>
-              <li><strong>Hash files</strong> in the browser (ArrayBuffer)</li>
-              <li>
-                <strong>Verify</strong> by comparing computed vs. expected
-                digest
-              </li>
-              <li><strong>HMAC-SHA-256</strong> (hash with a secret key)</li>
-            </ul>
-            <p class="small muted">
-              All hashing happens locally using the Web Crypto API—nothing is
-              uploaded.
-            </p>
-          </div>
-
-          <div class="sha-section">
-            <h3>Inputs</h3>
-            <ul>
-              <li>
-                <strong>Text:</strong> UTF-8 encoded (emoji &amp; non-Latin
-                supported)
-              </li>
-              <li>
-                <strong>Files:</strong> drag &amp; drop or file picker (size
-                limited by memory)
-              </li>
-              <li><strong>Output:</strong> hex (default) or Base64</li>
-            </ul>
-          </div>
-
-          <div class="sha-section">
-            <h3>About SHA-256</h3>
-            <ul>
-              <li>Secure hash from the SHA-2 family (256-bit output)</li>
-              <li>Designed for <em>integrity</em> (not encryption)</li>
-              <li>
-                <strong>Do not</strong> use plain SHA-256 for password
-                storage—use Argon2/bcrypt/PBKDF2 instead
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <h3>Hash vs. HMAC</h3>
-        <ul>
-          <li>
-            <strong>Hash:</strong> digest of data only (public, anyone can
-            recompute)
-          </li>
-          <li>
-            <strong>HMAC:</strong> digest using a
-            <em>secret key</em> (authenticates source &amp; integrity)
-          </li>
-        </ul>
-      </article>
-
-      <!-- How to use -->
-      <article class="card" id="how-to-use-sha256">
-        <h2>How to use the SHA-256 hash generator</h2>
-        <ol>
-          <li>Choose <strong>Text</strong> or <strong>File</strong> mode.</li>
-          <li>
-            Enter text or drop a file; select output as <strong>Hex</strong> or
-            <strong>Base64</strong>.
-          </li>
-          <li>
-            Click <strong>Compute</strong> to calculate the SHA-256 digest
-            locally.
-          </li>
-          <li>
-            (Optional) Enter an <strong>Expected hash</strong> to auto-verify.
-          </li>
-          <li>
-            (Optional) For <strong>HMAC-SHA-256</strong>, provide a secret key
-            and compute.
-          </li>
-        </ol>
-        <ol>
-          <li>
-            Enter text or <strong>pick a file</strong> (you can also
-            <strong>drop a file</strong> onto the box).
-          </li>
-          <li>
-            Click <strong>Compute</strong>; the
-            <strong>hex digest</strong> appears below.
-          </li>
-          <li>
-            Works with common <em>types of files</em>; very large
-            <em>file size</em> depends on available memory.
-          </li>
-          <li>
-            To verify, compare the result with a publisher’s checksum to confirm
-            integrity.
-          </li>
-        </ol>
-
-        <h3>Tips</h3>
-        <ul>
-          <li>
-            Whitespace &amp; newlines matter—hashes change if the text changes
-            even slightly.
-          </li>
-          <li>
-            Large files may need time/memory; keep the tab focused for best
-            performance.
-          </li>
-          <li>
-            To compare from terminals, use
-            <code>shasum -a 256 file</code> (macOS) or
-            <code>sha256sum file</code> (Linux).
-          </li>
-        </ul>
-      </article>
-      <section class="card" id="integrity-note">
-        <h2>Integrity check &amp; security notes</h2>
-        <p class="muted">
-          SHA-256 outputs <strong>256 bits</strong> (not <em>512 bits</em>) and
-          is designed for <em>collision resistance</em>. For
-          <em>security applications</em> such as
-          <strong>digital signatures</strong> or request signing, use
-          <code>HMAC-SHA-256</code>. Never store passwords with plain
-          SHA-256—use Argon2/bcrypt/PBKDF2 with
-          <strong>salt &amp; proper parameters</strong>.
-        </p>
-      </section>
-
-      <!-- Real-World Applications -->
-      <article class="card" id="sha256-applications">
-        <h2>Where to Use SHA-256</h2>
-
-        <div class="applications-grid">
-          <div class="use-case">
-            <h4>📥 Downloads</h4>
-            <p>Verify file integrity using publisher-provided checksums</p>
-            <span class="badge">integrity</span>
-          </div>
-
-          <div class="use-case">
-            <h4>📦 Releases</h4>
-            <p>Publish hashes for binaries/assets to detect tampering</p>
-            <span class="badge">checksums</span>
-          </div>
-
-          <div class="use-case">
-            <h4>🔐 API Signatures</h4>
-            <p>Use HMAC-SHA-256 to sign requests</p>
-            <span class="badge">HMAC</span>
-          </div>
-
-          <div class="use-case">
-            <h4>🧪 Data Pipelines</h4>
-            <p>Deduplicate or fingerprint blobs/records</p>
-            <span class="badge">fingerprint</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Best Practices -->
-      <article class="card" id="sha256-tips">
-        <h2>SHA-256 Best Practices</h2>
-
-        <div class="tip">
-          <h3>🧂 Don’t hash passwords directly</h3>
-          <p>
-            Use <strong>Argon2</strong>, <strong>bcrypt</strong>, or
-            <strong>PBKDF2</strong> with salt &amp; proper parameters.
-          </p>
-        </div>
-
-        <div class="tip">
-          <h3>🔐 Prefer HMAC for authenticity</h3>
-          <p>
-            Plain hashes don’t prove who produced the data—HMAC with a secret
-            key does.
-          </p>
-        </div>
-
-        <div class="tip">
-          <h3>📏 Encode consistently</h3>
-          <p>
-            Always hash the same byte representation (UTF-8). Mixed encodings
-            lead to mismatches.
-          </p>
-        </div>
-
-        <div class="tip">
-          <h3>🧮 Show both hex &amp; Base64</h3>
-          <p>Hex is common in CLIs; Base64 is compact for UIs/APIs.</p>
-        </div>
-      </article>
-
-      <!-- Technical note (lean, SEO-safe) -->
-      <article class="card" id="technical">
-        <h2>Technical note</h2>
-        <p>
-          This tool uses the WebCrypto API (<code
-            >crypto.subtle.digest("SHA-256", data)</code
-          >) to hash UTF-8 text or a file’s <code>ArrayBuffer</code>. Everything
-          runs locally in your browser—no uploads. For multi-GB streaming, use a
-          desktop tool.
-        </p>
-        <!-- Optional: link the full source externally so it doesn't add on-page word count -->
-        <p class="small">
-          View full source:
-          <a href="https://github.com/yourrepo/sha256-tool" rel="nofollow"
-            >GitHub</a
+        <!-- MAIN TOOL -->
+        <article class="card tool-card" id="hash-tool">
+          <label
+            for="txt"
+            class="form-label"
+            style="display: block; margin-bottom: 0.5rem"
+            >Text to hash</label
           >
-          <!-- or -->
-          <!-- <a href="https://gist.github.com/yourname/xxxxxxxx" rel="nofollow">Gist</a> -->
-        </p>
-      </article>
+          <textarea
+            id="txt"
+            class="form-textarea"
+            placeholder="Type or paste text here…"
+          ></textarea>
 
-      <!-- FAQ -->
-      <section class="faq-section card" id="faq">
-        <h2 class="faq-title">SHA-256 – Frequently Asked Questions</h2>
-
-        <div class="faq-container">
-          <div class="faq-item">
-            <button class="faq-question">
-              How do I use this SHA-256 hash generator?
-              <span class="faq-icon">+</span>
+          <div
+            style="
+              display: flex;
+              gap: 0.5rem;
+              align-items: center;
+              margin-top: 0.75rem;
+              flex-wrap: wrap;
+            "
+          >
+            <label for="file" class="form-label" style="min-width: 9rem"
+              >…or choose a file:</label
+            >
+            <input id="file" class="form-label" type="file" />
+            <button
+              class="btn btn-primary"
+              id="run"
+              type="button"
+              aria-label="Compute SHA-256"
+            >
+              Compute
             </button>
-            <div class="faq-answer">
-              <p>
-                Enter text or pick a file, then click
-                <strong>Compute</strong> (or press
-                <kbd>Ctrl/Cmd</kbd>+<kbd>Enter</kbd>). The hex digest will be
-                shown in the output box.
-              </p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question">
-              What is a hash function?<span class="faq-icon">+</span>
+            <button class="btn" id="clear" type="button" aria-label="Clear">
+              Clear
             </button>
-            <div class="faq-answer">
-              <p>
-                A hash function maps input data to a fixed-length value. SHA-256
-                is a <em>cryptographic hash function</em> used to create a
-                <strong>secure hash</strong> (checksum) for integrity checks.
-              </p>
-            </div>
           </div>
 
-          <div class="faq-item">
-            <button class="faq-question">
-              What does collision resistance mean?<span class="faq-icon"
-                >+</span
-              >
+          <div
+            style="
+              display: flex;
+              gap: 0.5rem;
+              align-items: center;
+              margin-top: 0.75rem;
+              flex-wrap: wrap;
+            "
+          >
+            <input
+              id="out"
+              class="form-input mono"
+              readonly
+              placeholder="SHA-256 hex digest"
+              aria-label="SHA-256 output"
+              aria-live="polite"
+              style="flex: 1"
+            />
+            <button class="btn" id="copy" type="button" aria-label="Copy hash">
+              Copy
             </button>
-            <div class="faq-answer">
-              <p>
-                It’s hard to find two different inputs with the same digest.
-                SHA-256 is designed for strong
-                <em>collision resistance</em> for integrity and signing
-                workflows.
-              </p>
+          </div>
+
+          <div class="ad-wrap ad-article" aria-label="Advertisement">
+            <span class="ad-label">Ad</span>
+            <ins
+              class="adsbygoogle"
+              style="display: block; text-align: center"
+              data-ad-client="ca-pub-1234567890123456"
+              data-ad-slot="2222222222"
+              data-ad-format="fluid"
+              data-ad-layout="in-article"
+              data-adtest="on"
+            ></ins>
+          </div>
+
+          <p class="muted" style="margin-top: 0.5rem">
+            Privacy: hashing happens <strong>locally</strong> with WebCrypto;
+            nothing is uploaded.
+          </p>
+        </article>
+
+        <div class="card" id="where">
+          <h2>Common Use Cases &amp; Examples</h2>
+          <div class="examples">
+            <!-- Applications -->
+            <div class="example">
+              <div class="example-title">📥 Downloads</div>
+              <div class="example-content">
+                Verify file integrity using publisher-provided checksums
+              </div>
+              <span class="badge">integrity</span>
+            </div>
+
+            <div class="example">
+              <div class="example-title">📦 Releases</div>
+              <div class="example-content">
+                Publish hashes for binaries/assets to detect tampering
+              </div>
+              <span class="badge">checksums</span>
+            </div>
+
+            <div class="example">
+              <div class="example-title">🔐 API Signatures</div>
+              <div class="example-content">
+                Use HMAC-SHA-256 to sign requests
+              </div>
+              <span class="badge">HMAC</span>
+            </div>
+
+            <div class="example">
+              <div class="example-title">🧪 Data Pipelines</div>
+              <div class="example-content">
+                Deduplicate or fingerprint blobs/records
+              </div>
+              <span class="badge">fingerprint</span>
+            </div>
+
+            <!-- Best Practices -->
+            <div class="example" id="best-practices">
+              <div class="example-title">🧂 Don’t hash passwords directly</div>
+              <div class="example-content">
+                Use <strong>Argon2</strong>, <strong>bcrypt</strong>, or
+                <strong>PBKDF2</strong> with salt &amp; proper parameters.
+              </div>
+            </div>
+
+            <div class="example">
+              <div class="example-title">🔐 Prefer HMAC for authenticity</div>
+              <div class="example-content">
+                Plain hashes don’t prove who produced the data — HMAC with a
+                secret key does.
+              </div>
+            </div>
+
+            <div class="example">
+              <div class="example-title">📏 Encode consistently</div>
+              <div class="example-content">
+                Always hash the same byte representation (UTF-8). Mixed
+                encodings lead to mismatches.
+              </div>
+            </div>
+
+            <div class="example">
+              <div class="example-title">🧮 Show both hex &amp; Base64</div>
+              <div class="example-content">
+                Hex is common in CLIs; Base64 is compact for UIs/APIs.
+              </div>
+            </div>
+
+            <!-- Technical -->
+            <div class="example">
+              <div class="example-title">🧩 Technical Implementation</div>
+              <div class="example-content">
+                Uses WebCrypto API:
+                <code>crypto.subtle.digest("SHA-256", data)</code>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="info-grid" id="details">
+          <!-- Basics & Features -->
+          <div class="card">
+            <div class="info-section">
+              <h3>🔐 SHA-256 Basics</h3>
+              <ul>
+                <li><strong>Hash text</strong> to SHA-256 (hex or Base64)</li>
+                <li>
+                  <strong>Hash files</strong> in the browser (ArrayBuffer)
+                </li>
+                <li>
+                  <strong>Verify</strong> by comparing computed vs. expected
+                  digest
+                </li>
+                <li><strong>HMAC-SHA-256</strong> (hash with a secret key)</li>
+              </ul>
+              <li class="small muted">
+                All hashing happens locally using the Web Crypto API — nothing
+                is uploaded.
+              </li>
+            </div>
+
+            <div class="info-section">
+              <h3>🧾 Hash vs. HMAC</h3>
+              <ul>
+                <li>
+                  <strong>Hash:</strong> digest of data only (public, anyone can
+                  recompute)
+                </li>
+                <li>
+                  <strong>HMAC:</strong> digest using a secret key(authenticates
+                  source &amp; integrity)
+                </li>
+              </ul>
             </div>
           </div>
 
-          <div class="faq-item">
-            <button class="faq-question">
-              Does my text or file get uploaded?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                No. All hashing is performed locally in your browser using the
-                WebCrypto API. Nothing leaves your device.
-              </p>
+          <!-- Inputs & About -->
+          <div class="card">
+            <div class="info-section">
+              <h3>📥 Inputs</h3>
+              <ul>
+                <li>
+                  <strong>Text:</strong> UTF-8 encoded (emoji &amp; non-Latin
+                  supported)
+                </li>
+                <li>
+                  <strong>Files:</strong> drag &amp; drop or file picker (size
+                  limited by memory)
+                </li>
+                <li><strong>Output:</strong> hex (default) or Base64</li>
+              </ul>
+            </div>
+
+            <div class="info-section">
+              <h3>ℹ️ About SHA-256</h3>
+              <ul>
+                <li>Secure hash from the SHA-2 family (256-bit output)</li>
+                <li>Designed for <em>integrity</em> (not encryption)</li>
+                <li>
+                  <strong>Do not</strong> use plain SHA-256 for password storage
+                  — use Argon2/bcrypt/PBKDF2 instead
+                </li>
+              </ul>
             </div>
           </div>
 
-          <div class="faq-item">
-            <button class="faq-question">
-              Can I hash large files?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Yes—subject to available memory in your browser. For multi-GB
-                files, use a desktop tool that supports streaming.
-              </p>
+          <!-- How to Use -->
+          <div class="card">
+            <div class="info-section">
+              <h3>⚙️ How to use the SHA-256 hash generator</h3>
+              <ol>
+                <li>Choose Text or File mode.</li>
+                <li>
+                  Enter text or drop a file; select output as Hex or Base64.
+                </li>
+                <li>Click Compute to calculate the SHA-256 digest locally.</li>
+                <li>(Optional) Enter an Expected hash to auto-verify.</li>
+                <li>
+                  (Optional) For HMAC-SHA-256, provide a secret key and compute.
+                </li>
+              </ol>
+            </div>
+
+            <div class="info-section">
+              <h3>🧭 Alternative steps</h3>
+              <ol>
+                <li>
+                  Enter text or pick a file (you can also drop a file onto the
+                  box).
+                </li>
+                <li>Click Compute; the hex digest appears below.</li>
+                <li>
+                  Works with common types of files; very large file size depends
+                  on available memory.
+                </li>
+                <li>
+                  To verify, compare the result with a publisher’s checksum to
+                  confirm integrity.
+                </li>
+              </ol>
             </div>
           </div>
 
-          <div class="faq-item">
-            <button class="faq-question">
-              Is SHA-256 reversible?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                No. SHA-256 is a cryptographic hash function. It’s designed to
-                be one-way and collision-resistant.
-              </p>
+          <!-- Tips & Integrity Notes -->
+          <div class="card">
+            <div class="info-section">
+              <h3>💡 Tips</h3>
+              <ul>
+                <li>
+                  Whitespace &amp; newlines matter — hashes change if the text
+                  changes even slightly.
+                </li>
+                <li>
+                  Large files may need time/memory; keep the tab focused for
+                  best performance.
+                </li>
+                <li>
+                  CLI compare: <code>shasum -a 256 file</code> (macOS) or
+                  <code>sha256sum file</code> (Linux).
+                </li>
+              </ul>
             </div>
-          </div>
 
-          <div class="faq-item">
-            <button class="faq-question">
-              What is SHA-256 used for?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Common uses include verifying file integrity, creating content
-                fingerprints, and storing checksums.
+            <div class="info-section">
+              <h3>✅ Integrity &amp; security notes</h3>
+              <p class="muted">
+                SHA-256 outputs <strong>256 bits</strong> (not
+                <em>512 bits</em>) and is designed for
+                <em>collision resistance</em>. For security applications such as
+                <strong>digital signatures</strong> or request signing, use
+                <code>HMAC-SHA-256</code>. Never store passwords with plain
+                SHA-256 — use Argon2/bcrypt/PBKDF2 with
+                <strong>salt &amp; proper parameters</strong>.
               </p>
             </div>
           </div>
         </div>
-      </section>
 
-      <!-- Related tools -->
-      <article class="card" id="related">
-        <h2>Related tools</h2>
-        <p class="muted">More text &amp; encoding utilities:</p>
-        <p>
-          <a class="btn" href="/text-to-pdf/">Text → PDF</a>
-          <a class="btn" href="/json-formatter/">JSON Formatter</a>
-          <a class="btn" href="/base64/">Base64 Encode/Decode</a>
-          <a class="btn" href="/url-tools/">URL Tools</a>
-        </p>
-        <p class="small">
-          Prefer বাংলা? Try the
-          <a href="/bn/sha256/" hreflang="bn">বাংলা সংস্করণ</a>.
-        </p>
-      </article>
+        <!-- FAQ -->
+        <section class="faq-section card" id="faq">
+          <h2 class="faq-title">SHA-256 – Frequently Asked Questions</h2>
 
-      <!-- Bottom Ad -->
-      <section class="card" aria-label="Advertisement">
-        <ins
-          class="adsbygoogle"
-          style="display: block"
-          data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-          data-ad-slot="0000000000"
-          data-ad-format="auto"
-          data-full-width-responsive="true"
-        ></ins>
-        <script>
-          (window.adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-      </section>
-    </main>
+          <div class="faq-container">
+            <div class="faq-item">
+              <button class="faq-question">
+                How do I use this SHA-256 hash generator?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Enter text or pick a file, then click
+                  <strong>Compute</strong> (or press
+                  <kbd>Ctrl/Cmd</kbd>+<kbd>Enter</kbd>). The hex digest will be
+                  shown in the output box.
+                </p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question">
+                What is a hash function?<span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  A hash function maps input data to a fixed-length value.
+                  SHA-256 is a <em>cryptographic hash function</em> used to
+                  create a <strong>secure hash</strong> (checksum) for integrity
+                  checks.
+                </p>
+              </div>
+            </div>
 
-    <footer>© <span id="y"></span> Tools Pack</footer>
+            <div class="faq-item">
+              <button class="faq-question">
+                What does collision resistance mean?<span class="faq-icon"
+                  >+</span
+                >
+              </button>
+              <div class="faq-answer">
+                <p>
+                  It’s hard to find two different inputs with the same digest.
+                  SHA-256 is designed for strong
+                  <em>collision resistance</em> for integrity and signing
+                  workflows.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Does my text or file get uploaded?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  No. All hashing is performed locally in your browser using the
+                  WebCrypto API. Nothing leaves your device.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Can I hash large files?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Yes—subject to available memory in your browser. For multi-GB
+                  files, use a desktop tool that supports streaming.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Is SHA-256 reversible?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  No. SHA-256 is a cryptographic hash function. It’s designed to
+                  be one-way and collision-resistant.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                What is SHA-256 used for?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Common uses include verifying file integrity, creating content
+                  fingerprints, and storing checksums.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Related tools -->
+        <article class="card" id="related">
+          <h2>Related tools</h2>
+          <p class="muted">More text &amp; encoding utilities:</p>
+          <p>
+            <a class="btn" href="/text-to-pdf/">Text → PDF</a>
+            <a class="btn" href="/json-formatter/">JSON Formatter</a>
+            <a class="btn" href="/base64/">Base64 Encode/Decode</a>
+            <a class="btn" href="/url-tools/">URL Tools</a>
+          </p>
+          <p class="small">
+            Prefer বাংলা? Try the
+            <a href="/bn/sha256/" hreflang="bn">বাংলা সংস্করণ</a>.
+          </p>
+        </article>
+
+        <!-- Bottom Ad -->
+        <section class="card" aria-label="Advertisement">
+          <ins
+            class="adsbygoogle"
+            style="display: block"
+            data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+            data-ad-slot="0000000000"
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+          ></ins>
+          <script>
+            (window.adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </section>
+      </main>
+      <footer>© <span id="y"></span> Tools Pack</footer>
+    </div>
 
     <noscript>
       <div class="wrap card" role="status">

@@ -219,373 +219,397 @@
         data-adtest="on"
       ></ins>
     </div>
-    <main class="wrap">
-      <!-- Breadcrumbs -->
+
+    <div class="container">
       <nav class="breadcrumbs" aria-label="breadcrumb">
         <a href="/">Home</a> › <a href="/#text">Text Tools</a> ›
         <span>Text Utilities</span>
       </nav>
-
+      <header class="header">
+        <h1>URL Encoder &amp; Decoder</h1>
+        <p class="subtitle">
+          Encode &amp; decode URI components safely. RFC 3986 compliant, works
+          locally in your browser with no data uploads.
+        </p>
+        <span class="badge">RFC 3986 Compliant</span>
+      </header>
       <!-- Quick TOC -->
-      <p class="toc">
-        <a href="#tool">Tool</a> · <a href="#how-to-use">How to use</a> ·
-        <a href="#faq">FAQ</a> ·
+
+      <p class="toc" aria-label="Table of Contents">
+        <a href="#tool">Tool</a> · <a href="#where">Where to use </a> ·
+        <a href="#best-practices">Best Practices</a> ·
+        <a href="#details">Details</a> · <a href="#faq">FAQ</a> ·
         <a href="#related">Related tools</a>
       </p>
+      <main class="wrap">
+        <!-- Breadcrumbs -->
 
-      <!-- Tool -->
-      <article class="card" id="tool">
-        <textarea
-          id="t"
-          class="textarea"
-          placeholder="Paste text…"
-          aria-label="Text input"
-        ></textarea>
-        <div>
-          <button class="btn" id="up" type="button">UPPERCASE</button>
-          <button class="btn" id="low" type="button">lowercase</button>
-          <button class="btn" id="collapse" type="button">
-            Collapse spaces
-          </button>
-          <button class="btn" id="remove" type="button">
-            Remove ALL spaces
-          </button>
-          <button class="btn" id="copy" type="button">Copy</button>
-        </div>
+        <!-- Tool -->
+        <article class="card tool-card" id="tool">
+          <div class="form-group">
+            <textarea
+              id="t"
+              class="form-textarea"
+              placeholder="Paste text…"
+              aria-label="Text input"
+            ></textarea>
+            <div>
+              <button class="btn" id="up" type="button">UPPERCASE</button>
+              <button class="btn" id="low" type="button">lowercase</button>
+              <button class="btn" id="collapse" type="button">
+                Collapse spaces
+              </button>
+              <button class="btn" id="remove" type="button">
+                Remove ALL spaces
+              </button>
+              <button class="btn btn-success" id="copyBtn" type="button">
+                Copy
+              </button>
+            </div>
+          </div>
+          <div class="ad-wrap ad-article" aria-label="Advertisement">
+            <span class="ad-label">Ad</span>
+            <ins
+              class="adsbygoogle"
+              style="display: inline-block; text-align: center"
+              data-ad-client="ca-pub-1234567890123456"
+              data-ad-slot="2222222222"
+              data-ad-format="fluid"
+              data-ad-layout="in-article"
+              data-adtest="on"
+            ></ins>
+          </div>
+          <div class="muted" id="stats" aria-live="polite">
+            Words: 0 • Characters: 0
+          </div>
+          <p class="small muted" style="margin-top: 6px">
+            All processing happens locally in your browser (no upload).
+          </p>
+        </article>
 
-        <div class="ad-wrap ad-article" aria-label="Advertisement">
-          <span class="ad-label">Ad</span>
+        <!-- In-article Ad (Responsive Fluid) -->
+        <div class="ad-spacer">
           <ins
             class="adsbygoogle"
             style="display: block; text-align: center"
-            data-ad-client="ca-pub-1234567890123456"
-            data-ad-slot="2222222222"
-            data-ad-format="fluid"
             data-ad-layout="in-article"
-            data-adtest="on"
+            data-ad-format="fluid"
+            data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+            data-ad-slot="1234567890"
           ></ins>
         </div>
-        <div class="muted" id="stats" aria-live="polite">
-          Words: 0 • Characters: 0
+
+        <!-- Display Ad (Auto/Responsive) -->
+        <div class="ad-spacer">
+          <ins
+            class="adsbygoogle"
+            style="display: block"
+            data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+            data-ad-slot="1234567891"
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+          ></ins>
         </div>
-        <p class="small muted" style="margin-top: 6px">
-          All processing happens locally in your browser (no upload).
-        </p>
-      </article>
 
-      <!-- In-article Ad (Responsive Fluid) -->
-      <div class="ad-spacer">
-        <ins
-          class="adsbygoogle"
-          style="display: block; text-align: center"
-          data-ad-layout="in-article"
-          data-ad-format="fluid"
-          data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-          data-ad-slot="1234567890"
-        ></ins>
-      </div>
+        <!-- Examples -->
+        <div class="card" id="where">
+          <h2>Common Use Cases &amp; Examples</h2>
+          <div class="examples">
+            <!-- Applications -->
+            <div class="example">
+              <div class="example-title">✍️ Copywriting</div>
+              <div class="example-content">
+                Headlines, sentence-case paragraphs
+              </div>
+              <span class="badge">title/sentence</span>
+            </div>
 
-      <!-- Display Ad (Auto/Responsive) -->
-      <div class="ad-spacer">
-        <ins
-          class="adsbygoogle"
-          style="display: block"
-          data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-          data-ad-slot="1234567891"
-          data-ad-format="auto"
-          data-full-width-responsive="true"
-        ></ins>
-      </div>
+            <div class="example">
+              <div class="example-title">🗂 Data cleanup</div>
+              <div class="example-content">Lists to unique/sorted sets</div>
+              <span class="badge">sort + unique</span>
+            </div>
 
-      <!-- Text Utilities: Details & Rules -->
-      <article class="card" id="text-utilities-details">
-        <h2>Text Utilities Basics</h2>
+            <div class="example">
+              <div class="example-title">🌐 SEO</div>
+              <div class="example-content">Generate clean slugs for URLs</div>
+              <span class="badge">slugify</span>
+            </div>
 
-        <div class="tu-grid">
-          <div class="tu-section">
-            <h3>What this tool can do</h3>
-            <ul>
-              <li>
-                <strong>Change case</strong>: UPPER • lower • Title Case •
-                Sentence case
-              </li>
-              <li>
-                <strong>Clean text</strong>: trim, collapse spaces, remove extra
-                blank lines
-              </li>
-              <li>
-                <strong>Lines</strong>: sort (A→Z/Z→A), unique, dedupe,
-                prefix/suffix, numbering
-              </li>
-              <li>
-                <strong>Counts</strong>: characters, words, lines
-                (Unicode-aware)
-              </li>
-              <li>
-                <strong>Transform</strong>: slugify, remove diacritics, reverse
-                text, smart quotes ←→ straight
-              </li>
-              <li><strong>Find &amp; replace</strong>: plain or regex</li>
-              <li><strong>Copy/Download</strong> results (local-only)</li>
-            </ul>
-            <p class="small muted">
-              Runs entirely in your browser. No uploads or tracking.
-            </p>
-          </div>
+            <div class="example" id="best-practices">
+              <div class="example-title">🧪 QA</div>
+              <div class="example-content">
+                Normalize whitespace &amp; quotes
+              </div>
+              <span class="badge">normalize</span>
+            </div>
 
-          <div class="tu-section">
-            <h3>Inputs</h3>
-            <ul>
-              <li>
-                <strong>Paste</strong> or <strong>type</strong> text (preserves
-                newlines)
-              </li>
-              <li>
-                <strong>Options</strong>: case mode, whitespace rules,
-                sort/unique, regex flags
-              </li>
-              <li><strong>Output</strong>: live preview + copy/download</li>
-            </ul>
-          </div>
+            <!-- Best Practices -->
+            <div class="example">
+              <div class="example-title">🔤 Respect proper nouns</div>
+              <div class="example-content">
+                Title Case shouldn’t upcase small words unless they start/end
+                the title.
+              </div>
+            </div>
 
-          <div class="tu-section">
-            <h3>Unicode</h3>
-            <ul>
-              <li>Works with emoji and non-Latin scripts</li>
-              <li>
-                Counts use <code>Intl.Segmenter</code> when available for better
-                word/grapheme accuracy
-              </li>
-            </ul>
+            <div class="example">
+              <div class="example-title">🧹 Normalize before compare</div>
+              <div class="example-content">
+                Trim + collapse spaces + case-fold before deduping to avoid
+                near-duplicates.
+              </div>
+            </div>
+
+            <div class="example">
+              <div class="example-title">🌍 Unicode-safe transforms</div>
+              <div class="example-content">
+                Use normalization and grapheme-aware operations for emoji and
+                accents.
+              </div>
+            </div>
+
+            <!-- Technical -->
+            <div class="example">
+              <div class="example-title">🧩 Technical Implementation</div>
+              <div class="example-content">
+                Case transforms, regex replace, Unicode handling
+              </div>
+            </div>
           </div>
         </div>
 
-        <h3>Common recipes</h3>
-        <ul>
-          <li>
-            <strong>Blog titles</strong>: Title Case + keep minor words
-            lowercase (of, the, a…)
-          </li>
-          <li><strong>CSV lists</strong>: one item per line → unique → sort</li>
-          <li><strong>URLs</strong>: slugify + lowercase + hyphens</li>
-        </ul>
-      </article>
-
-      <!-- How to use -->
-      <article class="card" id="how-to-use-text-utilities">
-        <h2>How to use</h2>
-        <ol>
-          <li>Paste text into the <strong>Input</strong> area.</li>
-          <li>
-            Select a <strong>utility</strong> (e.g., Title Case, Slugify,
-            Sort/Unique).
-          </li>
-          <li>
-            Adjust <strong>options</strong> (e.g., ignore case while deduping,
-            regex flags for replace).
-          </li>
-          <li>
-            See the result in <strong>Output</strong>; click
-            <strong>Copy</strong> or <strong>Download</strong>.
-          </li>
-        </ol>
-
-        <h3>Tips</h3>
-        <ul>
-          <li>
-            Enable “<strong>Collapse whitespace</strong>” to normalize spaces
-            and blank lines.
-          </li>
-          <li>
-            Use <strong>Regex replace</strong> for patterns (e.g.,
-            <code>\\s+</code> → single space).
-          </li>
-          <li>
-            For languages with diacritics, apply
-            <strong>Remove diacritics</strong> before <strong>Slugify</strong>.
-          </li>
-        </ul>
-      </article>
-
-      <!-- Real-World Applications -->
-      <article class="card" id="text-utilities-applications">
-        <h2>Where to Use Text Utilities</h2>
-
-        <div class="applications-grid">
-          <div class="use-case">
-            <h4>✍️ Copywriting</h4>
-            <p>Headlines, sentence-case paragraphs</p>
-            <span class="badge">title/sentence</span>
+        <div class="info-grid" id="details">
+          <!-- Basics & Features -->
+          <div class="card">
+            <div class="info-section">
+              <h3>📝 Text Utilities Basics</h3>
+              <ul>
+                <li>
+                  <strong>Change case:</strong> UPPER • lower • Title Case •
+                  Sentence case
+                </li>
+                <li>
+                  <strong>Clean text:</strong> trim, collapse spaces, remove
+                  extra blank lines
+                </li>
+                <li>
+                  <strong>Lines:</strong> sort (A→Z/Z→A), unique, dedupe,
+                  prefix/suffix, numbering
+                </li>
+                <li>
+                  <strong>Counts:</strong> characters, words, lines
+                  (Unicode-aware)
+                </li>
+                <li>
+                  <strong>Transform:</strong> slugify, remove diacritics,
+                  reverse text, smart quotes ←→ straight
+                </li>
+                <li><strong>Find &amp; replace:</strong> plain or regex</li>
+                <li>
+                  <strong>Copy/Download:</strong> results stay local in your
+                  browser
+                </li>
+                <li>Runs entirely in your browser — no uploads or tracking.</li>
+              </ul>
+            </div>
           </div>
 
-          <div class="use-case">
-            <h4>🗂 Data cleanup</h4>
-            <p>Lists to unique/sorted sets</p>
-            <span class="badge">sort + unique</span>
+          <!-- Inputs -->
+          <div class="card">
+            <div class="info-section">
+              <h3>⌨️ Inputs</h3>
+              <ul>
+                <li>
+                  <strong>Paste</strong> or <strong>type</strong> text (newlines
+                  preserved)
+                </li>
+                <li>
+                  <strong>Options:</strong> case mode, whitespace rules,
+                  sort/unique, regex flags
+                </li>
+                <li>
+                  <strong>Output:</strong> live preview with copy &amp; download
+                </li>
+              </ul>
+            </div>
+            <div class="info-section">
+              <h3>🌐 Unicode Support</h3>
+              <ul>
+                <li>Works with emoji and non-Latin scripts</li>
+                <li>
+                  Counts use Intl.Segmenter for better accuracy (when available)
+                </li>
+              </ul>
+            </div>
+            <div class="info-section">
+              <h3>📖 Common Recipes</h3>
+              <ul>
+                <li>
+                  <strong>Blog title</strong> Title Case + keep minor words
+                  lowercase (of, the, a…)
+                </li>
+                <li>
+                  <strong>CSV lists:</strong> one item per line → unique → sort
+                </li>
+                <li><strong>URLs:</strong> slugify + lowercase + hyphens</li>
+              </ul>
+            </div>
           </div>
 
-          <div class="use-case">
-            <h4>🌐 SEO</h4>
-            <p>Generate clean slugs</p>
-            <span class="badge">slugify</span>
+          <!-- Unicode -->
+          <div class="card">
+            <div class="info-section">
+              <h3>⚙️ How to Use</h3>
+              <ol>
+                <li>Paste text into the <strong>Input</strong> area.</li>
+                <li>
+                  Select a <strong>utility</strong> (e.g., Title Case, Slugify,
+                  Sort/Unique).
+                </li>
+                <li>
+                  Adjust <strong>options</strong> (ignore case, regex flags,
+                  etc.).
+                </li>
+                <li>Check <strong>Output</strong> and click</li>
+                <li><strong>Copy</strong> or <strong>Download</strong>.</li>
+              </ol>
+            </div>
           </div>
-
-          <div class="use-case">
-            <h4>🧪 QA</h4>
-            <p>Normalize whitespace &amp; quotes</p>
-            <span class="badge">normalize</span>
+          <div class="card">
+            <div class="info-section">
+              <h3>💡 Tips</h3>
+              <ul>
+                <li>
+                  Enable “Collapse whitespace” to normalize spaces & blank
+                  lines.
+                </li>
+                <li>
+                  Use <strong>Regex replace</strong> for patterns (e.g., \\s+ →
+                  single space).
+                </li>
+                <li>
+                  For languages with diacritics, run
+                  <strong>Remove diacritics</strong> before
+                </li>
+                <li><strong>Slugify</strong>.</li>
+              </ul>
+            </div>
           </div>
+          <!-- Recipes -->
         </div>
-      </article>
 
-      <!-- Best Practices -->
-      <article class="card" id="text-utilities-tips">
-        <h2>Text Utilities Best Practices</h2>
+        <section class="faq-section card" id="faq">
+          <h2 class="faq-title">Frequently Asked Questions</h2>
 
-        <div class="tip">
-          <h3>🔤 Respect proper nouns</h3>
+          <div class="faq-container">
+            <!-- Text Tools Specific FAQs -->
+            <div class="faq-item">
+              <button class="faq-question">
+                Do you send my text to a server?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  No. All actions (case change, space cleanup, copy, counting)
+                  happen locally in your browser. Your text is not uploaded.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                How is the word count calculated?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Words are counted by splitting on whitespace using a simple
+                  regex (<code>\S+</code>). Characters include everything you
+                  see, including spaces and newlines.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                What’s the difference between “Collapse spaces” and “Remove ALL
+                spaces”?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  <strong>Collapse spaces</strong> replaces any run of
+                  whitespace (<code>\s+</code>) with a single space and trims
+                  the ends. <strong>Remove ALL spaces</strong> deletes all
+                  whitespace entirely (spaces, tabs, newlines).
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Will punctuation, emojis, or non-Latin scripts change?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  No. Case conversion affects letters only. Punctuation and
+                  emojis are preserved. Scripts without case (e.g., Bengali) are
+                  unaffected by UPPER/lower conversion.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Does it work offline?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Yes. After the first load, the page continues to work offline.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Is there a size limit?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  There is no hard limit, but very large pastes may feel slow on
+                  low-memory devices. For extremely large texts, process in
+                  chunks.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Related tools -->
+        <article class="card" id="related">
+          <h2>Related tools</h2>
+          <p class="muted">More text &amp; encoding utilities:</p>
           <p>
-            Title Case shouldn’t upcase small words unless they start/end the
-            title.
+            <a class="btn" href="/text-to-pdf/">Text → PDF</a>
+            <a class="btn" href="/json-formatter/">JSON Formatter</a>
+            <a class="btn" href="/base64/">Base64 Encode/Decode</a>
+            <a class="btn" href="/url-tools/">URL Tools</a>
           </p>
-        </div>
-
-        <div class="tip">
-          <h3>🧹 Normalize before compare</h3>
-          <p>
-            Trim + collapse spaces + case-fold before deduping to avoid
-            near-duplicates.
+          <p class="small">
+            Prefer বাংলা? Try the
+            <a href="/bn/text-utilities/" hreflang="bn">বাংলা সংস্করণ</a>.
           </p>
-        </div>
-
-        <div class="tip">
-          <h3>🌍 Unicode-safe transforms</h3>
-          <p>
-            Use normalization and grapheme-aware operations for emoji and
-            accents.
-          </p>
-        </div>
-      </article>
-
-      <!-- Technical Implementation -->
-      <article class="card" id="text-utilities-technical">
-        <h2>Technical Implementation</h2>
-
-        <h3>Case transforms</h3>
-      </article>
-
-      <section class="faq-section card">
-        <h2 class="faq-title">Frequently Asked Questions</h2>
-
-        <div class="faq-container">
-          <!-- Text Tools Specific FAQs -->
-          <div class="faq-item">
-            <button class="faq-question">
-              Do you send my text to a server?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                No. All actions (case change, space cleanup, copy, counting)
-                happen locally in your browser. Your text is not uploaded.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              How is the word count calculated?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Words are counted by splitting on whitespace using a simple
-                regex (<code>\S+</code>). Characters include everything you see,
-                including spaces and newlines.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              What’s the difference between “Collapse spaces” and “Remove ALL
-              spaces”?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                <strong>Collapse spaces</strong> replaces any run of whitespace
-                (<code>\s+</code>) with a single space and trims the ends.
-                <strong>Remove ALL spaces</strong> deletes all whitespace
-                entirely (spaces, tabs, newlines).
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              Will punctuation, emojis, or non-Latin scripts change?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                No. Case conversion affects letters only. Punctuation and emojis
-                are preserved. Scripts without case (e.g., Bengali) are
-                unaffected by UPPER/lower conversion.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              Does it work offline?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Yes. After the first load, the page continues to work offline.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              Is there a size limit?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                There is no hard limit, but very large pastes may feel slow on
-                low-memory devices. For extremely large texts, process in
-                chunks.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Related tools -->
-      <article class="card" id="related">
-        <h2>Related tools</h2>
-        <p class="muted">More text &amp; encoding utilities:</p>
-        <p>
-          <a class="btn" href="/text-to-pdf/">Text → PDF</a>
-          <a class="btn" href="/json-formatter/">JSON Formatter</a>
-          <a class="btn" href="/base64/">Base64 Encode/Decode</a>
-          <a class="btn" href="/url-tools/">URL Tools</a>
-        </p>
-        <p class="small">
-          Prefer বাংলা? Try the
-          <a href="/bn/text-utilities/" hreflang="bn">বাংলা সংস্করণ</a>.
-        </p>
-      </article>
-    </main>
-
+        </article>
+      </main>
+    </div>
     <footer>
       © <span id="y"></span> Tools Pack · <a href="/privacy/">Privacy</a> ·
       <a href="/terms/">Terms</a>
     </footer>
-
     <!-- Toast -->
     <div class="toast" id="toast" role="status" aria-live="polite">
       Copied ✅

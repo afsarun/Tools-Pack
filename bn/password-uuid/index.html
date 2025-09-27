@@ -178,185 +178,186 @@
         data-adtest="on"
       ></ins>
     </div>
+    <div class="container">
+      <main class="wrap">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs" aria-label="breadcrumb">
+          <a href="/bn/">হোম</a> › <a href="/bn/#security">সিকিউরিটি টুলস</a> ›
+          <span>পাসওয়ার্ড জেনারেটর</span>
+        </nav>
 
-    <main class="wrap">
-      <!-- Breadcrumbs -->
-      <nav class="breadcrumbs" aria-label="breadcrumb">
-        <a href="/bn/">হোম</a> › <a href="/bn/#security">সিকিউরিটি টুলস</a> ›
-        <span>পাসওয়ার্ড জেনারেটর</span>
-      </nav>
-
-      <!-- TOC -->
-      <p class="toc">
-        <a href="#gen">জেনারেটর</a> ·
-        <a href="#how-to-use">কীভাবে ব্যবহার করবেন</a> ·
-        <a href="#faq">প্রশ্নোত্তর</a> ·
-        <a href="#related">সম্পর্কিত টুলস</a>
-      </p>
-
-      <!-- Tool -->
-      <article class="card" id="gen">
-        <h2>পাসওয়ার্ড তৈরি করুন</h2>
-
-        <div class="row">
-          <label class="field">
-            <span class="muted">দৈর্ঘ্য</span>
-            <input
-              id="len"
-              type="number"
-              class="field"
-              value="12"
-              min="6"
-              max="64"
-            />
-          </label>
-
-          <label class="pill"
-            ><input type="checkbox" id="lower" checked /> a–z</label
-          >
-          <label class="pill"
-            ><input type="checkbox" id="upper" checked /> A–Z</label
-          >
-          <label class="pill"
-            ><input type="checkbox" id="num" checked /> 0–9</label
-          >
-          <label class="pill"><input type="checkbox" id="sym" /> !@#</label>
-          <label class="pill"
-            ><input type="checkbox" id="noAmb" /> অস্পষ্ট অক্ষর বাদ
-            (O,0,l,1,I,|)</label
-          >
-        </div>
-
-        <textarea
-          id="out"
-          class="textarea mono"
-          rows="2"
-          readonly
-          placeholder="Generated password…"
-          aria-label="জেনারেটেড পাসওয়ার্ড"
-        ></textarea>
-
-        <div style="margin-top: 10px">
-          <button class="btn btn-primary" id="generate" type="button">
-            জেনারেট
-          </button>
-          <button class="btn" id="copy" type="button">কপি</button>
-        </div>
-
-        <!-- Ad #2: In-article -->
-        <div class="ad-wrap ad-article" aria-label="Advertisement">
-          <span class="ad-label">Ad</span>
-          <ins
-            class="adsbygoogle"
-            style="display: inline-block; text-align: center"
-            data-ad-client="ca-pub-1234567890123456"
-            data-ad-slot="2222222222"
-            data-ad-format="fluid"
-            data-ad-layout="in-article"
-            data-adtest="on"
-          ></ins>
-        </div>
-
-        <div id="status" class="muted small" aria-live="polite"></div>
-      </article>
-
-      <!-- How to use -->
-      <article class="card" id="how-to-use">
-        <h2>কীভাবে ব্যবহার করবেন</h2>
-        <ol>
-          <li>
-            দৈর্ঘ্য বাছাই করুন, তারপর প্রয়োজনীয় ক্যারেক্টার সেট (a–z, A–Z, 0–9,
-            সিম্বল) সিলেক্ট করুন।
-          </li>
-          <li>
-            <strong>অস্পষ্ট অক্ষর বাদ</strong> দিলে O/0/l/1/I/| বাদ
-            যাবে—পঠনযোগ্যতা বাড়ে।
-          </li>
-          <li>
-            <strong>জেনারেট</strong> চাপলে নতুন পাসওয়ার্ড পাবেন;
-            <strong>কপি</strong> বোতামে ক্লিপবোর্ডে যাবে।
-          </li>
-          <li>
-            এনট্রপি (bits) যত বেশি, তত শক্তিশালী—দৈর্ঘ্য ও ক্যারেক্টার সেট
-            বাড়ালে এনট্রপি বাড়ে।
-          </li>
-        </ol>
-      </article>
-      <section class="faq-section card">
-        <h2 class="faq-title">প্রশ্নোত্তর</h2>
-
-        <div class="faq-container">
-          <!-- Password Generator FAQs (Bangla) -->
-          <div class="faq-item">
-            <button class="faq-question">
-              এই টুল কি অফলাইনে চলে?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>হ্যাঁ, প্রথম লোডের পর পুরোটা ব্রাউজারেই চলে।</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              পাসওয়ার্ড কি সার্ভারে যায়?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>না—সব জেনারেশন/কপি লোকালেই হয়।</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              এনট্রপি মানে কী?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                এটা অনুমানযোগ্যতার উল্টো—উচ্চ বিট মানে অনুমান করা কঠিন। রাফ
-                ফর্মুলা:
-                <code>length × log2(poolSize)</code>।
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              কি-বোর্ডে শর্টকাট আছে?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                <kbd>Ctrl/⌘ + Enter</kbd> দিলে দ্রুত জেনারেট হবে;
-                <kbd>Ctrl/⌘ + C</kbd> কপির জন্য স্ট্যান্ডার্ড।
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Related tools -->
-      <article class="card" id="related">
-        <h2>সম্পর্কিত টুলস</h2>
-        <p class="muted">আরও সিকিউরিটি/ডেভ টুলস:</p>
-        <p>
-          <a class="btn" href="/bn/sha256/">SHA-256 হ্যাশ</a>
-          <a class="btn" href="/bn/json-formatter/">JSON ফরম্যাটার</a>
-          <a class="btn" href="/bn/url-tools/">URL এনকোডার/ডিকোডার</a>
+        <!-- TOC -->
+        <p class="toc">
+          <a href="#gen">জেনারেটর</a> ·
+          <a href="#how-to-use">কীভাবে ব্যবহার করবেন</a> ·
+          <a href="#faq">প্রশ্নোত্তর</a> ·
+          <a href="#related">সম্পর্কিত টুলস</a>
         </p>
-        <p class="small">
-          English preferred? See the
-          <a href="/password-uuid/" hreflang="en">English version</a>.
-        </p>
-      </article>
-    </main>
 
-    <footer>
-      © <span id="y"></span> Tools Pack • <a class="muted" href="/bn/">হোম</a> •
-      <a class="muted" href="/password-uuid/" hreflang="en">English</a>
-    </footer>
+        <!-- Tool -->
+        <article class="card" id="gen">
+          <h2>পাসওয়ার্ড তৈরি করুন</h2>
 
+          <div class="row">
+            <label class="field">
+              <span class="muted">দৈর্ঘ্য</span>
+              <input
+                id="len"
+                type="number"
+                class="field"
+                value="12"
+                min="6"
+                max="64"
+              />
+            </label>
+
+            <label class="pill"
+              ><input type="checkbox" id="lower" checked /> a–z</label
+            >
+            <label class="pill"
+              ><input type="checkbox" id="upper" checked /> A–Z</label
+            >
+            <label class="pill"
+              ><input type="checkbox" id="num" checked /> 0–9</label
+            >
+            <label class="pill"><input type="checkbox" id="sym" /> !@#</label>
+            <label class="pill"
+              ><input type="checkbox" id="noAmb" /> অস্পষ্ট অক্ষর বাদ
+              (O,0,l,1,I,|)</label
+            >
+          </div>
+
+          <textarea
+            id="out"
+            class="textarea mono"
+            rows="2"
+            readonly
+            placeholder="Generated password…"
+            aria-label="জেনারেটেড পাসওয়ার্ড"
+          ></textarea>
+
+          <div style="margin-top: 10px">
+            <button class="btn btn-primary" id="generate" type="button">
+              জেনারেট
+            </button>
+            <button class="btn" id="copy" type="button">কপি</button>
+          </div>
+
+          <!-- Ad #2: In-article -->
+          <div class="ad-wrap ad-article" aria-label="Advertisement">
+            <span class="ad-label">Ad</span>
+            <ins
+              class="adsbygoogle"
+              style="display: inline-block; text-align: center"
+              data-ad-client="ca-pub-1234567890123456"
+              data-ad-slot="2222222222"
+              data-ad-format="fluid"
+              data-ad-layout="in-article"
+              data-adtest="on"
+            ></ins>
+          </div>
+
+          <div id="status" class="muted small" aria-live="polite"></div>
+        </article>
+
+        <!-- How to use -->
+        <article class="card" id="how-to-use">
+          <h2>কীভাবে ব্যবহার করবেন</h2>
+          <ol>
+            <li>
+              দৈর্ঘ্য বাছাই করুন, তারপর প্রয়োজনীয় ক্যারেক্টার সেট (a–z, A–Z,
+              0–9, সিম্বল) সিলেক্ট করুন।
+            </li>
+            <li>
+              <strong>অস্পষ্ট অক্ষর বাদ</strong> দিলে O/0/l/1/I/| বাদ
+              যাবে—পঠনযোগ্যতা বাড়ে।
+            </li>
+            <li>
+              <strong>জেনারেট</strong> চাপলে নতুন পাসওয়ার্ড পাবেন;
+              <strong>কপি</strong> বোতামে ক্লিপবোর্ডে যাবে।
+            </li>
+            <li>
+              এনট্রপি (bits) যত বেশি, তত শক্তিশালী—দৈর্ঘ্য ও ক্যারেক্টার সেট
+              বাড়ালে এনট্রপি বাড়ে।
+            </li>
+          </ol>
+        </article>
+        <section class="faq-section card">
+          <h2 class="faq-title">প্রশ্নোত্তর</h2>
+
+          <div class="faq-container">
+            <!-- Password Generator FAQs (Bangla) -->
+            <div class="faq-item">
+              <button class="faq-question">
+                এই টুল কি অফলাইনে চলে?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>হ্যাঁ, প্রথম লোডের পর পুরোটা ব্রাউজারেই চলে।</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                পাসওয়ার্ড কি সার্ভারে যায়?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>না—সব জেনারেশন/কপি লোকালেই হয়।</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                এনট্রপি মানে কী?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  এটা অনুমানযোগ্যতার উল্টো—উচ্চ বিট মানে অনুমান করা কঠিন। রাফ
+                  ফর্মুলা:
+                  <code>length × log2(poolSize)</code>।
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                কি-বোর্ডে শর্টকাট আছে?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  <kbd>Ctrl/⌘ + Enter</kbd> দিলে দ্রুত জেনারেট হবে;
+                  <kbd>Ctrl/⌘ + C</kbd> কপির জন্য স্ট্যান্ডার্ড।
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Related tools -->
+        <article class="card" id="related">
+          <h2>সম্পর্কিত টুলস</h2>
+          <p class="muted">আরও সিকিউরিটি/ডেভ টুলস:</p>
+          <p>
+            <a class="btn" href="/bn/sha256/">SHA-256 হ্যাশ</a>
+            <a class="btn" href="/bn/json-formatter/">JSON ফরম্যাটার</a>
+            <a class="btn" href="/bn/url-tools/">URL এনকোডার/ডিকোডার</a>
+          </p>
+          <p class="small">
+            English preferred? See the
+            <a href="/password-uuid/" hreflang="en">English version</a>.
+          </p>
+        </article>
+      </main>
+
+      <footer>
+        © <span id="y"></span> Tools Pack •
+        <a class="muted" href="/bn/">হোম</a> •
+        <a class="muted" href="/password-uuid/" hreflang="en">English</a>
+      </footer>
+    </div>
     <script>
       // Year
       document.getElementById("y").textContent = new Date().getFullYear();

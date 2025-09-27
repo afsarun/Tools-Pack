@@ -318,408 +318,460 @@
         data-adtest="on"
       ></ins>
     </div>
-
-    <main class="wrap">
+    <div class="container">
       <!-- Breadcrumbs -->
       <nav class="breadcrumbs" aria-label="breadcrumb">
         <a href="/">Home</a> › <a href="/#image">Image Tools</a> ›
         <span>Image Resizer & Compressor</span>
       </nav>
-
+      <header class="header">
+        <h1 class="">Fast, Private, and Offline-<br />Friendly Notes</h1>
+        <p class="subtitle">
+          Quick Notes is a simple
+          <strong>online notepad with local auto-save</strong>. Your writing
+          stays on this device — <em>no account, no server</em>. Export or
+          import <code>.txt</code> files anytime. Full Unicode support
+          (including Bangla).
+        </p>
+        <span class="badge">RFC 3986 Compliant</span>
+      </header>
       <!-- TOC -->
-      <p class="toc">
-        <a href="#uploader">Upload</a> · <a href="#controls">Controls</a> ·
-        <a href="#how-to-use">How to use</a> · <a href="#faq">FAQ</a> ·
+      <!-- TOC -->
+      <p class="toc" aria-label="Table of Contents">
+        <a href="#upload">Upload image</a> ·
+        <a href="#where">Where to use </a> ·
+        <a href="#best-practices">Best Practices</a> ·
+        <a href="#details">Details</a> · <a href="#faq">FAQ</a> ·
         <a href="#related">Related tools</a>
       </p>
+      <main class="wrap">
+        <article class="card" id="upload">
+          <h2>Resize & compress images</h2>
 
-      <article class="card">
-        <h2>Resize & compress images</h2>
-
-        <!-- Upload -->
-        <h3 id="uploader" class="muted">Upload</h3>
-        <div class="row">
-          <input
-            id="file"
-            class="field"
-            type="file"
-            accept="image/*"
-            aria-label="Choose image file"
-          />
-        </div>
-
-        <div class="ir-grid">
-          <!-- Preview -->
-          <div class="field center ir-col-6 preview-box">
-            <img id="img" alt="Preview" />
-            <span id="empty" class="muted">Upload an image…</span>
+          <!-- Upload -->
+          <h3 id="uploader" class="muted">Upload</h3>
+          <div class="row">
+            <input
+              id="file"
+              class="field"
+              type="file"
+              accept="image/*"
+              aria-label="Choose image file"
+            />
           </div>
 
-          <!-- Controls -->
-          <section
-            class="field ir-col-6"
-            id="controls"
-            style="display: flex; flex-direction: column; gap: 8px"
-          >
-            <div class="row">
-              <label class="pill">
-                W
-                <input
-                  id="w"
-                  type="number"
-                  class="field"
-                  min="1"
-                  inputmode="numeric"
-                  aria-label="Width (pixels)"
-                />
-              </label>
-              <label class="pill">
-                H
-                <input
-                  id="h"
-                  type="number"
-                  class="field"
-                  min="1"
-                  inputmode="numeric"
-                  aria-label="Height (pixels)"
-                />
-              </label>
+          <div class="ir-grid">
+            <!-- Preview -->
+            <div class="field center ir-col-6 preview-box">
+              <img id="img" alt="Preview" />
+              <span id="empty" class="muted">Upload an image…</span>
             </div>
 
-            <label class="pill"
-              ><input id="lock" type="checkbox" checked /> Keep aspect</label
+            <!-- Controls -->
+            <section
+              class="field ir-col-6"
+              id="controls"
+              style="display: flex; flex-direction: column; gap: 8px"
             >
+              <div class="row">
+                <label class="pill">
+                  W
+                  <input
+                    id="w"
+                    type="number"
+                    class="field"
+                    min="1"
+                    inputmode="numeric"
+                    aria-label="Width (pixels)"
+                  />
+                </label>
+                <label class="pill">
+                  H
+                  <input
+                    id="h"
+                    type="number"
+                    class="field"
+                    min="1"
+                    inputmode="numeric"
+                    aria-label="Height (pixels)"
+                  />
+                </label>
+              </div>
 
-            <div class="row">
-              <select id="fmt" class="select" aria-label="Output format">
-                <option value="image/jpeg">JPEG</option>
-                <option value="image/webp">webp</option>
-                <option value="image/webp">WebP</option>
-              </select>
-
-              <label
-                id="qwrap"
-                class="field"
-                style="display: flex; align-items: center; gap: 10px"
+              <label class="pill"
+                ><input id="lock" type="checkbox" checked /> Keep aspect</label
               >
-                <span class="muted">Quality</span>
-                <input
-                  id="q"
-                  type="range"
-                  min="0.1"
-                  max="1"
-                  step="0.05"
-                  value="0.8"
-                  aria-label="Quality slider"
-                />
-                <span class="pill mono" id="qv">0.80</span>
-              </label>
+
+              <div class="row">
+                <select id="fmt" class="select" aria-label="Output format">
+                  <option value="image/jpeg">JPEG</option>
+                  <option value="image/webp">webp</option>
+                  <option value="image/webp">WebP</option>
+                </select>
+
+                <label
+                  id="qwrap"
+                  class="field"
+                  style="display: flex; align-items: center; gap: 10px"
+                >
+                  <span class="muted">Quality</span>
+                  <input
+                    id="q"
+                    type="range"
+                    min="0.1"
+                    max="1"
+                    step="0.05"
+                    value="0.8"
+                    aria-label="Quality slider"
+                  />
+                  <span class="pill mono" id="qv">0.80</span>
+                </label>
+              </div>
+
+              <div class="row">
+                <button id="auto" class="btn" type="button">Auto size</button>
+                <button id="run" class="btn btn-primary" type="button">
+                  Resize & Download
+                </button>
+              </div>
+
+              <div id="info" class="muted small" aria-live="polite"></div>
+            </section>
+          </div>
+
+          <!-- Ad #2: in-article (fluid) -->
+          <div class="ad-wrap ad-article" aria-label="Advertisement">
+            <span class="ad-label">Ad</span>
+            <ins
+              class="adsbygoogle"
+              style="display: block; text-align: center"
+              data-ad-client="ca-pub-1234567890123456"
+              data-ad-slot="2222222222"
+              data-ad-format="fluid"
+              data-ad-layout="in-article"
+              data-adtest="on"
+            ></ins>
+          </div>
+
+          <!-- Hidden canvas for processing -->
+          <canvas id="c" style="display: none"></canvas>
+        </article>
+        <!-- Examples -->
+        <div class="card" id="where">
+          <h2>Where to Use Resizing & Compression</h2>
+          <div class="examples">
+            <div class="example">
+              <div class="example-title">📰 Blog & CMS</div>
+              <div class="example-content">
+                Hero images, responsive sizes, fast load
+              </div>
+              <span class="badge">WebP + 1600w</span>
             </div>
 
-            <div class="row">
-              <button id="auto" class="btn" type="button">Auto size</button>
-              <button id="run" class="btn btn-primary" type="button">
-                Resize & Download
+            <div class="example">
+              <div class="example-title">🛍 E-commerce</div>
+              <div class="example-content">
+                Product thumbnails &amp; gallery
+              </div>
+              <span class="badge">cover 800×800</span>
+            </div>
+
+            <div class="example">
+              <div class="example-title">📱 App Assets</div>
+              <div class="example-content">Icons, screenshots, previews</div>
+              <span class="badge">webp / lossless</span>
+            </div>
+
+            <div class="example">
+              <div class="example-title">📧 Email</div>
+              <div class="example-content">Keep under tight size limits</div>
+              <span class="badge">JPEG q=70</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Best Practices -->
+        <div class="card" id="best-practices">
+          <h2>Image Optimization Best Practices</h2>
+          <div class="examples">
+            <div class="example">
+              <div class="example-title">🖼 Choose the right format</div>
+              <div class="example-content">
+                Photos → JPEG/WebP. Graphics with flat colors/transparency →
+                webp or lossless WebP.
+              </div>
+            </div>
+
+            <div class="example">
+              <div class="example-title">📐 Resize before compressing</div>
+              <div class="example-content">
+                Shrinking dimensions first saves far more bytes than quality
+                alone.
+              </div>
+            </div>
+
+            <div class="example">
+              <div class="example-title">🧭 Respect orientation</div>
+              <div class="example-content">
+                Use EXIF-aware decoding to avoid sideways images from phones.
+              </div>
+            </div>
+
+            <div class="example">
+              <div class="example-title">🔍 Check sharpness</div>
+              <div class="example-content">
+                If results look soft, try exact pixel sizes and avoid multiple
+                re-encodes.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Technical Implementation -->
+        <div class="card">
+          <h2>Technical Implementation</h2>
+          <div class="examples">
+            <div class="example">
+              <div class="example-title">
+                ⚙️ Load &amp; auto-rotate with EXIF
+              </div>
+              <div class="example-content">
+                Ensure images respect original orientation metadata when
+                processing.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Information Grid -->
+        <div class="info-grid" id="details">
+          <!-- Basics -->
+          <div class="card">
+            <div class="info-section">
+              <h3>🛠️ What this tool can do</h3>
+              <ul>
+                <li>
+                  <strong>Resize</strong> by width/height (keeps aspect ratio)
+                </li>
+                <li>
+                  <strong>Compress</strong> JPEG/WebP with adjustable quality
+                </li>
+                <li><strong>Convert</strong> between webp • JPEG • WebP</li>
+                <li><strong>Auto-rotate</strong> based on EXIF orientation</li>
+                <li>
+                  <strong>Batch</strong> multiple images (drag &amp; drop)
+                </li>
+              </ul>
+              <p class="small muted">
+                All processing is local—no uploads. Great for privacy and speed.
+              </p>
+            </div>
+
+            <div class="info-section">
+              <h3>📋 Inputs</h3>
+              <ul>
+                <li><strong>Files:</strong> webp, JPEG, WebP (static)</li>
+                <li>
+                  <strong>Target size:</strong> max width/height or exact size
+                </li>
+                <li>
+                  <strong>Quality:</strong> 1–100 (mapped to 0.01–1.0 for
+                  encoders)
+                </li>
+                <li>
+                  <strong>Format:</strong> webp (lossless, alpha) • JPEG (lossy)
+                  • WebP (lossy/lossless)
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Output characteristics -->
+          <div class="card">
+            <div class="info-section">
+              <h3>⚙️ Output characteristics</h3>
+              <ul>
+                <li>
+                  <strong>Transparency:</strong> Keep alpha with webp/WebP; JPEG
+                  fills transparent areas with a background color
+                </li>
+                <li><strong>Color space:</strong> sRGB canvas output</li>
+                <li>
+                  <strong>Orientation:</strong> EXIF respected (auto-rotate)
+                  where supported
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Contain vs Cover -->
+          <div class="card">
+            <div class="info-section">
+              <h3>🎯 Contain vs. Cover</h3>
+              <ul>
+                <li>
+                  <strong>Contain:</strong> fit inside the box, no cropping
+                  (default)
+                </li>
+                <li>
+                  <strong>Cover:</strong> fill the box entirely; crops overflow
+                  (good for thumbnails)
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- How to Use -->
+          <div class="card">
+            <div class="info-section">
+              <h3>🧩 How to use</h3>
+              <ul>
+                <li>
+                  Drag &amp; drop images or use <strong>Select Files</strong>.
+                </li>
+                <li>
+                  Choose <strong>target size</strong> (e.g., 1600 px max width)
+                  and <strong>format</strong> (WebP/JPEG/webp).
+                </li>
+                <li>
+                  Set <strong>quality</strong> (e.g., 80 for JPEG/WebP).
+                  <em>webp ignores quality for lossless output.</em>
+                </li>
+                <li>
+                  Pick <strong>contain</strong> for safe fit or
+                  <strong>cover</strong> to crop-fill thumbnails.
+                </li>
+                <li>
+                  Click <strong>Convert</strong>, then
+                  <strong>Download</strong> your optimized image(s).
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Tips -->
+          <div class="card">
+            <div class="info-section">
+              <h3>💡 Tips</h3>
+              <ul>
+                <li>
+                  <strong>WebP</strong> often yields the smallest files with
+                  good quality.
+                </li>
+                <li>
+                  For crisp UI assets, keep webp or use <em>lossless WebP</em>.
+                </li>
+                <li>
+                  JPEG/WebP quality ~<strong>70–85</strong> is a good balance
+                  for photos.
+                </li>
+                <li>
+                  Match export size to your layout and device pixel ratio (e.g.,
+                  2× for retina).
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <section class="faq-section card" id="faq">
+          <h2 class="faq-title">
+            Image Compressor – Frequently Asked Questions
+          </h2>
+
+          <div class="faq-container">
+            <!-- Image Compressor FAQs -->
+            <div class="faq-item">
+              <button class="faq-question">
+                How do I reduce image file size?
+                <span class="faq-icon">+</span>
               </button>
+              <div class="faq-answer">
+                <p>
+                  Downscale width/height and use JPEG/WebP with a lower Quality
+                  setting, then download.
+                </p>
+              </div>
             </div>
 
-            <div id="info" class="muted small" aria-live="polite"></div>
-          </section>
-        </div>
+            <div class="faq-item">
+              <button class="faq-question">
+                What formats are supported?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Export as JPEG, webp, or WebP. Quality applies only to
+                  JPEG/WebP.
+                </p>
+              </div>
+            </div>
 
-        <!-- Ad #2: in-article (fluid) -->
-        <div class="ad-wrap ad-article" aria-label="Advertisement">
-          <span class="ad-label">Ad</span>
-          <ins
-            class="adsbygoogle"
-            style="display: block; text-align: center"
-            data-ad-client="ca-pub-1234567890123456"
-            data-ad-slot="2222222222"
-            data-ad-format="fluid"
-            data-ad-layout="in-article"
-            data-adtest="on"
-          ></ins>
-        </div>
+            <div class="faq-item">
+              <button class="faq-question">
+                Does this remove EXIF/metadata?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>Yes. Canvas export typically strips EXIF/metadata.</p>
+              </div>
+            </div>
 
-        <!-- Hidden canvas for processing -->
-        <canvas id="c" style="display: none"></canvas>
-      </article>
+            <div class="faq-item">
+              <button class="faq-question">
+                Is my image uploaded anywhere?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  No. Everything happens in your browser; nothing is sent to a
+                  server.
+                </p>
+              </div>
+            </div>
 
-      <!-- Image Resizer & Compressor: Details & Rules -->
-      <article class="card" id="image-details">
-        <h2>Image Resizing & Compression Basics</h2>
-
-        <div class="image-grid">
-          <div class="image-section">
-            <h3>What this tool can do</h3>
-            <ul>
-              <li>
-                <strong>Resize</strong> by width/height (keeps aspect ratio)
-              </li>
-              <li>
-                <strong>Compress</strong> JPEG/WebP with adjustable quality
-              </li>
-              <li><strong>Convert</strong> between webp • JPEG • WebP</li>
-              <li><strong>Auto-rotate</strong> based on EXIF orientation</li>
-              <li><strong>Batch</strong> multiple images (drag &amp; drop)</li>
-            </ul>
-            <p class="small muted">
-              All processing is local—no uploads. Great for privacy and speed.
-            </p>
+            <div class="faq-item">
+              <button class="faq-question">
+                Why is the Quality slider disabled for webp?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  webp is lossless, so there’s no quality/size trade-off exposed
+                  via the slider.
+                </p>
+              </div>
+            </div>
           </div>
+        </section>
 
-          <div class="image-section">
-            <h3>Inputs</h3>
-            <ul>
-              <li><strong>Files:</strong> webp, JPEG, WebP (static)</li>
-              <li>
-                <strong>Target size:</strong> max width/height or exact size
-              </li>
-              <li>
-                <strong>Quality:</strong> 1–100 (mapped to 0.01–1.0 for
-                encoders)
-              </li>
-              <li>
-                <strong>Format:</strong> webp (lossless, alpha) • JPEG (lossy) •
-                WebP (lossy/lossless)
-              </li>
-            </ul>
-          </div>
-
-          <div class="image-section">
-            <h3>Output characteristics</h3>
-            <ul>
-              <li>
-                <strong>Transparency:</strong> Keep alpha with webp/WebP; JPEG
-                fills transparent areas with a background color
-              </li>
-              <li><strong>Color space:</strong> sRGB canvas output</li>
-              <li>
-                <strong>Orientation:</strong> EXIF respected (auto-rotate) where
-                supported
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <h3>Contain vs. Cover</h3>
-        <ul>
-          <li>
-            <strong>Contain:</strong> fit inside the box, no cropping (default)
-          </li>
-          <li>
-            <strong>Cover:</strong> fill the box entirely; crops overflow (good
-            for thumbnails)
-          </li>
-        </ul>
-      </article>
-
-      <!-- How to use -->
-      <article class="card" id="how-to-use-image">
-        <h2>How to use</h2>
-        <ol>
-          <li>Drag &amp; drop images or use <strong>Select Files</strong>.</li>
-          <li>
-            Choose <strong>target size</strong> (e.g., 1600 px max width) and
-            <strong>format</strong> (WebP/JPEG/webp).
-          </li>
-          <li>
-            Set <strong>quality</strong> (e.g., 80 for JPEG/WebP). webp ignores
-            quality for lossless output.
-          </li>
-          <li>
-            Pick <strong>contain</strong> for safe fit or
-            <strong>cover</strong> to crop-fill thumbnails.
-          </li>
-          <li>
-            Click <strong>Convert</strong>, then <strong>Download</strong> your
-            optimized image(s).
-          </li>
-        </ol>
-
-        <h3>Tips</h3>
-        <ul>
-          <li>
-            <strong>WebP</strong> often yields the smallest files with good
-            quality.
-          </li>
-          <li>For crisp UI assets, keep webp or use <em>lossless WebP</em>.</li>
-          <li>
-            JPEG/WebP quality ~<strong>70–85</strong> is a good balance for
-            photos.
-          </li>
-          <li>
-            Match export size to your layout and device pixel ratio (e.g., 2×
-            for retina).
-          </li>
-        </ul>
-      </article>
-
-      <!-- Real-World Applications -->
-      <article class="card" id="image-applications">
-        <h2>Where to Use Resizing & Compression</h2>
-
-        <div class="applications-grid">
-          <div class="use-case">
-            <h4>📰 Blog &amp; CMS</h4>
-            <p>Hero images, responsive sizes, fast load</p>
-            <span class="badge">WebP + 1600w</span>
-          </div>
-
-          <div class="use-case">
-            <h4>🛍 E-commerce</h4>
-            <p>Product thumbnails &amp; gallery</p>
-            <span class="badge">cover 800×800</span>
-          </div>
-
-          <div class="use-case">
-            <h4>📱 App Assets</h4>
-            <p>Icons, screenshots, previews</p>
-            <span class="badge">webp / lossless</span>
-          </div>
-
-          <div class="use-case">
-            <h4>📧 Email</h4>
-            <p>Keep under tight size limits</p>
-            <span class="badge">JPEG q=70</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Best Practices -->
-      <article class="card" id="image-tips">
-        <h2>Image Optimization Best Practices</h2>
-
-        <div class="tip">
-          <h3>🖼 Choose the right format</h3>
+        <!-- Related tools -->
+        <article class="card" id="related">
+          <h2>Related tools</h2>
+          <p class="muted">More image &amp; color utilities:</p>
           <p>
-            Photos → JPEG/WebP. Graphics with flat colors/transparency → webp or
-            lossless WebP.
+            <a class="btn" href="/color-picker-contrast/"
+              >Color Picker &amp; Contrast</a
+            >
+            <a class="btn" href="/text-to-pdf/">Text → PDF</a>
+            <a class="btn" href="/base64/">Base64 Encode/Decode</a>
           </p>
-        </div>
-
-        <div class="tip">
-          <h3>📐 Resize before compressing</h3>
-          <p>
-            Shrinking dimensions first saves far more bytes than quality alone.
+          <p class="small">
+            Prefer বাংলা? Try the
+            <a href="/bn/image-resizer-compressor/" hreflang="bn"
+              >বাংলা সংস্করণ</a
+            >.
           </p>
-        </div>
+        </article>
+      </main>
 
-        <div class="tip">
-          <h3>🧭 Respect orientation</h3>
-          <p>Use EXIF-aware decoding to avoid sideways images from phones.</p>
-        </div>
-
-        <div class="tip">
-          <h3>🔍 Check sharpness</h3>
-          <p>
-            If results look soft, try exact pixel sizes and avoid multiple
-            re-encodes.
-          </p>
-        </div>
-      </article>
-
-      <!-- Technical Implementation -->
-      <article class="card" id="image-technical">
-        <h2>Technical Implementation</h2>
-
-        <h3>Load &amp; auto-rotate with EXIF</h3>
-      </article>
-
-      <section class="faq-section card">
-        <h2 class="faq-title">Image Compressor – Frequently Asked Questions</h2>
-
-        <div class="faq-container">
-          <!-- Image Compressor FAQs -->
-          <div class="faq-item">
-            <button class="faq-question">
-              How do I reduce image file size?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Downscale width/height and use JPEG/WebP with a lower Quality
-                setting, then download.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              What formats are supported?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Export as JPEG, webp, or WebP. Quality applies only to
-                JPEG/WebP.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              Does this remove EXIF/metadata?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>Yes. Canvas export typically strips EXIF/metadata.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              Is my image uploaded anywhere?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                No. Everything happens in your browser; nothing is sent to a
-                server.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              Why is the Quality slider disabled for webp?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                webp is lossless, so there’s no quality/size trade-off exposed
-                via the slider.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Related tools -->
-      <article class="card" id="related">
-        <h2>Related tools</h2>
-        <p class="muted">More image &amp; color utilities:</p>
-        <p>
-          <a class="btn" href="/color-picker-contrast/"
-            >Color Picker &amp; Contrast</a
-          >
-          <a class="btn" href="/text-to-pdf/">Text → PDF</a>
-          <a class="btn" href="/base64/">Base64 Encode/Decode</a>
-        </p>
-        <p class="small">
-          Prefer বাংলা? Try the
-          <a href="/bn/image-resizer-compressor/" hreflang="bn">বাংলা সংস্করণ</a
-          >.
-        </p>
-      </article>
-    </main>
-
-    <footer>
-      © <span id="y"></span> Tools Pack • <a class="muted" href="/">Home</a> •
-      <a class="muted" href="/bn/image-resizer-compressor/" hreflang="bn"
-        >বাংলা</a
-      >
-    </footer>
+      <footer>
+        © <span id="y"></span> Tools Pack • <a class="muted" href="/">Home</a> •
+        <a class="muted" href="/bn/image-resizer-compressor/" hreflang="bn"
+          >বাংলা</a
+        >
+      </footer>
+    </div>
 
     <script>
       const $ = (id) => document.getElementById(id);

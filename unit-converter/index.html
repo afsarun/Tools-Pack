@@ -196,411 +196,415 @@
         </div>
       </div>
     </header>
-    <!-- Ad #1: top banner (constrained, no full-width expansion) -->
-    <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
-      <span class="ad-label">Ad</span>
-      <ins
-        class="adsbygoogle"
-        style="display: inline-block"
-        data-ad-client="ca-pub-1234567890123456"
-        data-ad-slot="1111111111"
-        data-ad-format="auto"
-        data-full-width-responsive="false"
-        data-adtest="on"
-      ></ins>
-    </div>
-    <main class="wrap" id="main">
-      <!-- Breadcrumbs -->
+
+    <div class="container">
       <nav class="breadcrumbs" aria-label="breadcrumb">
         <a href="/">Home</a> › <a href="/#convert">Converters</a> ›
         <span>Unit Converter</span>
       </nav>
+      <header class="header">
+        <h1>URL Encoder &amp; Decoder</h1>
+        <p class="subtitle">
+          Encode &amp; decode URI components safely. RFC 3986 compliant, works
+          locally in your browser with no data uploads.
+        </p>
+        <span class="badge">RFC 3986 Compliant</span>
+      </header>
 
-      <!-- TOC -->
-      <p class="toc">
+      <p class="toc" aria-label="Table of Contents">
         <a href="#converter">Convert units</a> ·
-        <a href="#how-to-use">How to use</a> · <a href="#faq">FAQ</a> ·
+        <a href="#where">Where to use </a> ·
+        <a href="#best-practices">Best Practices</a> ·
+        <a href="#details">Details</a> · <a href="#faq">FAQ</a> ·
         <a href="#related">Related tools</a>
       </p>
-
-      <!-- Converter -->
-      <section class="card converter" id="converter">
-        <h2>Convert Units</h2>
-
-        <div class="unit-block">
-          <label for="lengthInput">Length</label>
-          <div class="row">
-            <input
-              type="number"
-              id="lengthInput"
-              class="field"
-              placeholder="Enter value"
-              inputmode="decimal"
-            />
-            <select id="lengthFrom" class="field">
-              <option value="m">Meters (m)</option>
-              <option value="km">Kilometers (km)</option>
-              <option value="mi">Miles (mi)</option>
-              <option value="ft">Feet (ft)</option>
-            </select>
-            <select id="lengthTo" class="field">
-              <option value="km">Kilometers (km)</option>
-              <option value="m">Meters (m)</option>
-              <option value="mi">Miles (mi)</option>
-              <option value="ft">Feet (ft)</option>
-            </select>
-          </div>
-          <p
-            id="lengthResult"
-            class="result mono"
-            role="status"
-            aria-live="polite"
-          ></p>
-        </div>
-
-        <div class="unit-block">
-          <label for="weightInput">Weight</label>
-          <div class="row">
-            <input
-              type="number"
-              id="weightInput"
-              class="field"
-              placeholder="Enter value"
-              inputmode="decimal"
-            />
-            <select id="weightFrom" class="field">
-              <option value="kg">Kilograms (kg)</option>
-              <option value="g">Grams (g)</option>
-              <option value="lb">Pounds (lb)</option>
-            </select>
-            <select id="weightTo" class="field">
-              <option value="lb">Pounds (lb)</option>
-              <option value="kg">Kilograms (kg)</option>
-              <option value="g">Grams (g)</option>
-            </select>
-          </div>
-          <p
-            id="weightResult"
-            class="result mono"
-            role="status"
-            aria-live="polite"
-          ></p>
-        </div>
-
-        <div class="unit-block">
-          <label for="tempInput">Temperature</label>
-          <div class="row">
-            <input
-              type="number"
-              id="tempInput"
-              class="field"
-              placeholder="Enter value"
-              inputmode="decimal"
-            />
-            <select id="tempFrom" class="field">
-              <option value="C">Celsius (°C)</option>
-              <option value="F">Fahrenheit (°F)</option>
-              <option value="K">Kelvin (K)</option>
-            </select>
-            <select id="tempTo" class="field">
-              <option value="F">Fahrenheit (°F)</option>
-              <option value="C">Celsius (°C)</option>
-              <option value="K">Kelvin (K)</option>
-            </select>
-          </div>
-          <p
-            id="tempResult"
-            class="result mono"
-            role="status"
-            aria-live="polite"
-          ></p>
-        </div>
-
-        <p class="muted" style="margin-top: 0.75rem">
-          Tip: Use the keyboard. Type a value and press <kbd>Tab</kbd> to jump,
-          or <kbd>Shift</kbd>+<kbd>Tab</kbd> to go back.
-        </p>
-      </section>
-
-      <div class="ad-wrap ad-article" aria-label="Advertisement">
+      <!-- Ad #1: top banner (constrained, no full-width expansion) -->
+      <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
         <span class="ad-label">Ad</span>
         <ins
           class="adsbygoogle"
-          style="display: block; text-align: center"
+          style="display: inline-block"
           data-ad-client="ca-pub-1234567890123456"
-          data-ad-slot="2222222222"
-          data-ad-format="fluid"
-          data-ad-layout="in-article"
+          data-ad-slot="1111111111"
+          data-ad-format="auto"
+          data-full-width-responsive="false"
           data-adtest="on"
         ></ins>
       </div>
+      <main class="wrap" id="main">
+        <!-- Breadcrumbs -->
 
-      <!-- Unit Converter: Details & Rules -->
-      <article class="card" id="unit-details">
-        <h2>Unit Converter Basics</h2>
+        <!-- Converter -->
+        <section class="card tool-card" id="converter">
+          <h2>Convert Units</h2>
 
-        <div class="uc-grid">
-          <div class="uc-section">
-            <h3>What this tool can do</h3>
-            <ul>
-              <li><strong>Convert</strong> values across many categories</li>
-              <li>
-                <strong>Auto-detect</strong> units and suggest compatible
-                targets
-              </li>
-              <li><strong>Prefix-aware</strong> (k, M, G, m, μ, n…)</li>
-              <li>
-                <strong>Compound units</strong> like <code>m/s → km/h</code>
-              </li>
-            </ul>
-            <p class="small muted">
-              All calculations run locally in your browser; nothing is uploaded.
-            </p>
+          <div class="unit-block form-group">
+            <label for="lengthInput" class="form-label">Length</label>
+            <div class="row">
+              <input
+                type="number"
+                id="lengthInput"
+                class="form-input"
+                placeholder="Enter value"
+                inputmode="decimal"
+              />
+              <select id="lengthFrom" class="form-select">
+                <option value="m">Meters (m)</option>
+                <option value="km">Kilometers (km)</option>
+                <option value="mi">Miles (mi)</option>
+                <option value="ft">Feet (ft)</option>
+              </select>
+              <select id="lengthTo" class="form-select">
+                <option value="km">Kilometers (km)</option>
+                <option value="m">Meters (m)</option>
+                <option value="mi">Miles (mi)</option>
+                <option value="ft">Feet (ft)</option>
+              </select>
+            </div>
+            <p
+              id="lengthResult"
+              class="result mono"
+              role="status"
+              aria-live="polite"
+            ></p>
           </div>
 
-          <div class="uc-section">
-            <h3>Categories</h3>
-            <ul>
-              <li><strong>Length</strong>: m, km, cm, mm, in, ft, yd, mi</li>
-              <li><strong>Mass</strong>: kg, g, mg, lb, oz, tonne</li>
-              <li><strong>Time</strong>: s, min, h, day, week</li>
-              <li><strong>Area</strong>: m², km², ft², in², acre, hectare</li>
-              <li>
-                <strong>Volume</strong>: m³, L, mL, ft³, in³, gal (US), qt
-              </li>
-              <li><strong>Speed</strong>: m/s, km/h, mph, kn</li>
-              <li><strong>Temperature</strong>: °C, °F, K</li>
-              <li><strong>Pressure</strong>: Pa, kPa, bar, atm, psi, mmHg</li>
-              <li><strong>Energy</strong>: J, kJ, Wh, kWh, cal, kcal, BTU</li>
-              <li><strong>Power</strong>: W, kW, MW, hp</li>
-              <li><strong>Frequency</strong>: Hz, kHz, MHz, GHz</li>
-              <li><strong>Data</strong>: bit/byte, kB, MB, MiB, GB, GiB</li>
-              <li><strong>Fuel economy</strong>: L/100km, mpg (US/Imp)</li>
-              <li><strong>Angle</strong>: deg, rad, grad</li>
-            </ul>
+          <div class="unit-block">
+            <label for="weightInput" class="form-label">Weight</label>
+            <div class="row">
+              <input
+                type="number"
+                id="weightInput"
+                class="form-input"
+                placeholder="Enter value"
+                inputmode="decimal"
+              />
+              <select id="weightFrom" class="form-select">
+                <option value="kg">Kilograms (kg)</option>
+                <option value="g">Grams (g)</option>
+                <option value="lb">Pounds (lb)</option>
+              </select>
+              <select id="weightTo" class="form-select">
+                <option value="lb">Pounds (lb)</option>
+                <option value="kg">Kilograms (kg)</option>
+                <option value="g">Grams (g)</option>
+              </select>
+            </div>
+            <p
+              id="weightResult"
+              class="result mono"
+              role="status"
+              aria-live="polite"
+            ></p>
           </div>
 
-          <div class="uc-section">
-            <h3>Output & precision</h3>
-            <ul>
-              <li>
-                <strong>Rounding:</strong> fixed decimals or significant figures
-              </li>
-              <li>
-                <strong>Scientific notation</strong> for very small/large
-                results
-              </li>
-              <li>
-                <strong>Exact ratios</strong> where possible (e.g., in → ft)
-              </li>
-            </ul>
+          <div class="unit-block">
+            <label for="tempInput" class="form-label">Temperature</label>
+            <div class="row">
+              <input
+                type="number"
+                id="tempInput"
+                class="form-input"
+                placeholder="Enter value"
+                inputmode="decimal"
+              />
+              <select id="tempFrom" class="form-select">
+                <option value="C">Celsius (°C)</option>
+                <option value="F">Fahrenheit (°F)</option>
+                <option value="K">Kelvin (K)</option>
+              </select>
+              <select id="tempTo" class="form-select">
+                <option value="F">Fahrenheit (°F)</option>
+                <option value="C">Celsius (°C)</option>
+                <option value="K">Kelvin (K)</option>
+              </select>
+            </div>
+            <p
+              id="tempResult"
+              class="result mono"
+              role="status"
+              aria-live="polite"
+            ></p>
           </div>
-        </div>
 
-        <h3>Linear vs. Affine conversions</h3>
-        <ul>
-          <li>
-            <strong>Linear</strong> (scale only):
-            <code>y = x × factor</code> (e.g., m → ft)
-          </li>
-          <li>
-            <strong>Affine</strong> (offset + scale):
-            <code>y = (x + offset) × factor</code> (e.g., °C ↔ K, °F)
-          </li>
-        </ul>
-      </article>
-
-      <!-- How to use -->
-      <article class="card" id="how-to-use-unit">
-        <h2>How to use</h2>
-        <ol>
-          <li>
-            Enter a <strong>value</strong> and choose <strong>From</strong> and
-            <strong>To</strong> units.
-          </li>
-          <li>
-            For compound units, use <code>·</code> or <code>*</code> and
-            <code>/</code> (e.g., <code>m/s</code>, <code>km·h^-1</code>).
-          </li>
-          <li>
-            Pick <strong>decimals</strong> or
-            <strong>significant figures</strong> for rounding.
-          </li>
-          <li>
-            Read the <strong>result</strong> instantly; copy to clipboard if
-            needed.
-          </li>
-        </ol>
-
-        <h3>Tips</h3>
-        <ul>
-          <li>
-            Use <strong>SI prefixes</strong>: <code>mm</code>, <code>μm</code>,
-            <code>km</code>, <code>MG</code>…
-          </li>
-          <li>
-            Binary data units: <code>MiB</code> (2<sup>20</sup>) vs
-            <code>MB</code> (10<sup>6</sup>).
-          </li>
-          <li>
-            Temperatures require <strong>affine</strong> formulas (see below).
-          </li>
-        </ul>
-      </article>
-
-      <!-- Real-World Applications -->
-      <article class="card" id="unit-applications">
-        <h2>Where to Use the Unit Converter</h2>
-
-        <div class="applications-grid">
-          <div class="use-case">
-            <h4>🔧 Engineering</h4>
-            <p>Metric ↔ Imperial, pressure/energy/power</p>
-            <span class="badge">SI core</span>
-          </div>
-          <div class="use-case">
-            <h4>📦 Logistics</h4>
-            <p>Volumes, weights, pallet dimensions</p>
-            <span class="badge">m³ / ft³</span>
-          </div>
-          <div class="use-case">
-            <h4>🌡 Science</h4>
-            <p>Temperature, pressure, frequency</p>
-            <span class="badge">affine & linear</span>
-          </div>
-          <div class="use-case">
-            <h4>🖥 Data</h4>
-            <p>Bytes vs bits, MB vs MiB</p>
-            <span class="badge">binary vs decimal</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Best Practices -->
-      <article class="card" id="unit-tips">
-        <h2>Unit Conversion Best Practices</h2>
-
-        <div class="tip">
-          <h3>🧮 Keep significant figures</h3>
-          <p>
-            Round to the precision implied by your input (e.g., 3 sig figs).
+          <p class="muted" style="margin-top: 0.75rem">
+            Tip: Use the keyboard. Type a value and press <kbd>Tab</kbd> to
+            jump, or <kbd>Shift</kbd>+<kbd>Tab</kbd> to go back.
           </p>
+        </section>
+
+        <div class="ad-wrap ad-article" aria-label="Advertisement">
+          <span class="ad-label">Ad</span>
+          <ins
+            class="adsbygoogle"
+            style="display: block; text-align: center"
+            data-ad-client="ca-pub-1234567890123456"
+            data-ad-slot="2222222222"
+            data-ad-format="fluid"
+            data-ad-layout="in-article"
+            data-adtest="on"
+          ></ins>
         </div>
 
-        <div class="tip">
-          <h3>🌡 Use correct temperature math</h3>
-          <p>Convert °C/°F via K internally to avoid mistakes.</p>
-        </div>
-
-        <div class="tip">
-          <h3>📏 Distinguish SI prefixes</h3>
-          <p>
-            <code>m</code> (milli) vs <code>M</code> (mega) changes values by
-            10<sup>9</sup>.
-          </p>
-        </div>
-
-        <div class="tip">
-          <h3>🧪 Validate compound units</h3>
-          <p>
-            Only combine compatible dimensions (e.g., speed = length / time).
-          </p>
-        </div>
-      </article>
-
-      <!-- Technical Implementation -->
-      <article class="card" id="unit-technical">
-        <h2>Technical Implementation</h2>
-
-        <h3>Registry (relative to SI base)</h3>
-      </article>
-
-      <section class="faq-section card">
-        <h2 class="faq-title">Frequently Asked Questions</h2>
-
-        <div class="faq-container">
-          <!-- URL Tools Specific FAQs -->
-          <div class="faq-item">
-            <button class="faq-question">
-              What's the difference between encodeURI and encodeURIComponent?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                <code>encodeURIComponent</code> is for individual components
-                (like query values or path segments) and escapes more
-                characters. <code>encodeURI</code> is for full URLs and leaves
-                reserved characters like <code>:</code> <code>/</code>
-                <code>?</code> <code>&amp;</code> <code>=</code> intact.
-              </p>
+        <!-- Information Grid -->
+        <div class="info-grid" id="details">
+          <!-- Features -->
+          <div class="card">
+            <div class="info-section">
+              <h3>🛠️ Features</h3>
+              <ul>
+                <li><strong>Convert</strong> values across many categories</li>
+                <li>
+                  <strong>Auto-detect</strong> units and suggest compatible
+                  targets
+                </li>
+                <li><strong>Prefix-aware</strong> (k, M, G, m, μ, n…)</li>
+                <li>
+                  <strong>Compound units</strong> like <code>m/s → km/h</code>
+                </li>
+                <li>
+                  <strong>Linear &amp; affine</strong> conversions supported
+                </li>
+                <li>
+                  <strong>Exact ratios</strong> where possible (e.g., in → ft)
+                </li>
+                <li>
+                  <strong>All local</strong> — runs in your browser; nothing
+                  uploaded
+                </li>
+              </ul>
+            </div>
+            <div class="info-section">
+              <h3>📋 Use Cases</h3>
+              <ul>
+                <li>
+                  🔧 <strong>Engineering:</strong> Metric ↔ Imperial,
+                  pressure/energy/power SI core
+                </li>
+                <li>
+                  📦 <strong>Logistics:</strong> volumes, weights, pallet
+                  dimensions >m³ / ft³
+                </li>
+                <li>
+                  🌡 <strong>Science:</strong> temperature, pressure, frequency
+                  >affine &amp; linear
+                </li>
+                <li>
+                  🖥 <strong>Data:</strong> bytes vs bits, MB vs MiB >binary vs
+                  decimal
+                </li>
+              </ul>
             </div>
           </div>
 
-          <div class="faq-item">
-            <button class="faq-question">
-              Can I paste a full URL and still use Encode?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Yes, but if you only need to encode a parameter value, encode
-                just the value, not the whole URL—otherwise reserved URL
-                characters may be over-encoded.
-              </p>
+          <!-- Categories -->
+          <div class="card">
+            <div class="info-section">
+              <h3>📚 Categories</h3>
+              <ul>
+                <li><strong>Length:</strong> m, km, cm, mm, in, ft, yd, mi</li>
+                <li><strong>Mass:</strong> kg, g, mg, lb, oz, tonne</li>
+                <li><strong>Time:</strong> s, min, h, day, week</li>
+                <li><strong>Area:</strong> m², km², ft², in², acre, hectare</li>
+                <li>
+                  <strong>Volume:</strong> m³, L, mL, ft³, in³, gal (US), qt
+                </li>
+                <li><strong>Speed:</strong> m/s, km/h, mph, kn</li>
+                <li><strong>Temperature:</strong> °C, °F, K</li>
+                <li><strong>Pressure:</strong> Pa, kPa, bar, atm, psi, mmHg</li>
+                <li><strong>Energy:</strong> J, kJ, Wh, kWh, cal, kcal, BTU</li>
+                <li><strong>Power:</strong> W, kW, MW, hp</li>
+                <li><strong>Frequency:</strong> Hz, kHz, MHz, GHz</li>
+                <li><strong>Data:</strong> bit/byte, kB, MB, MiB, GB, GiB</li>
+                <li><strong>Fuel economy:</strong> L/100km, mpg (US/Imp)</li>
+                <li><strong>Angle:</strong> deg, rad, grad</li>
+              </ul>
             </div>
           </div>
 
-          <div class="faq-item">
-            <button class="faq-question">
-              Why does plus (+) decode to space?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                In <code>application/x-www-form-urlencoded</code> form data,
-                <code>+</code> represents a space. This tool converts
-                <code>+</code> to spaces before decoding to be helpful.
+          <!-- Output & Precision -->
+          <div class="card">
+            <div class="info-section">
+              <h3>🎯 Output &amp; Precision</h3>
+              <ul>
+                <li>
+                  <strong>Rounding modes:</strong> fixed decimals or significant
+                  figures
+                </li>
+                <li>
+                  <strong>Scientific notation</strong> for very small/large
+                  results
+                </li>
+                <li>
+                  <strong>Exact ratios</strong> shown when clean (e.g., 12 in →
+                  1 ft)
+                </li>
+                <li><strong>Linear:</strong> y = x × factor</li>
+                <li>
+                  <strong>Affine:</strong> y = (x + offset) × factor (°C ↔ K,
+                  °F)
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Technical Implementation -->
+          <div class="card">
+            <div class="info-section">
+              <h3>🧩 Technical Implementation</h3>
+              <ul>
+                <li><strong>Registry</strong> of units relative to SI base</li>
+                <li>
+                  <strong>Composable factors</strong> for prefixes &amp;
+                  compound units
+                </li>
+                <li>
+                  <strong>Safeguards</strong> for affine conversions (°C/°F/ K)
+                </li>
+                <li>
+                  <strong>Deterministic rounding</strong> &amp; formatting
+                  helpers
+                </li>
+              </ul>
+              <p class="small muted">
+                Tip: keep factors in a single source of truth and normalize
+                input units before conversion.
               </p>
             </div>
           </div>
         </div>
-      </section>
 
-      <!-- Related tools -->
-      <article class="card" id="related">
-        <h2>Related tools</h2>
-        <p class="muted">More calculators &amp; converters:</p>
-        <p>
-          <a class="btn" href="/calculator/">Calculator</a>
-          <a class="btn" href="/percent-calculator/">Percent Calculator</a>
-          <a class="btn" href="/age-calculator/">Age Calculator</a>
-          <a class="btn" href="/stopwatch-countdown/"
-            >Stopwatch &amp; Countdown</a
-          >
-        </p>
-        <p class="small">
-          Prefer বাংলা? Try the
-          <a href="/bn/unit-converter/" hreflang="bn">বাংলা সংস্করণ</a>.
-        </p>
-      </article>
+        <!-- Examples -->
+        <div class="card" id="where">
+          <h2>Common Use Cases &amp; Examples</h2>
+          <div class="examples">
+            <div class="example">
+              <div class="example-title">Use SI prefixes</div>
+              <div class="example-content">mm, μm, km, MG…</div>
+            </div>
+            <div class="example">
+              <div class="example-title">Binary data units</div>
+              <div class="example-content">MiB (2²⁰) vs MB (10⁶)</div>
+            </div>
+            <div class="example">
+              <div class="example-title">Temperature conversions</div>
+              <div class="example-content">
+                Require affine formulas (via K internally).
+              </div>
+            </div>
+            <div class="example" id="best-practices">
+              <div class="example-title">🧮 Keep significant figures</div>
+              <div class="example-content">
+                Round to the precision implied by your input (e.g., 3 sig figs).
+              </div>
+            </div>
+            <div class="example">
+              <div class="example-title">🌡 Use correct temperature math</div>
+              <div class="example-content">
+                Convert °C/°F via K internally to avoid mistakes.
+              </div>
+            </div>
+            <div class="example">
+              <div class="example-title">📏 Distinguish SI prefixes</div>
+              <div class="example-content">
+                m (milli) vs M (mega) changes values by 10⁹.
+              </div>
+            </div>
+            <div class="example">
+              <div class="example-title">🧪 Validate compound units</div>
+              <div class="example-content">
+                Only combine compatible dimensions (e.g., speed = length /
+                time).
+              </div>
+            </div>
+          </div>
+        </div>
 
-      <!-- Bottom Ad -->
-      <section class="card" aria-label="Advertisement">
-        <ins
-          class="adsbygoogle"
-          style="display: block"
-          data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-          data-ad-slot="0000000000"
-          data-ad-format="auto"
-          data-full-width-responsive="true"
-        ></ins>
-        <script>
-          (window.adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-      </section>
-    </main>
+        <section class="faq-section card" id="faq">
+          <h2 class="faq-title">Frequently Asked Questions</h2>
 
-    <footer>© <span id="y"></span> Tools Pack</footer>
+          <div class="faq-container">
+            <!-- URL Tools Specific FAQs -->
+            <div class="faq-item">
+              <button class="faq-question">
+                What's the difference between encodeURI and encodeURIComponent?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  <code>encodeURIComponent</code> is for individual components
+                  (like query values or path segments) and escapes more
+                  characters. <code>encodeURI</code> is for full URLs and leaves
+                  reserved characters like <code>:</code> <code>/</code>
+                  <code>?</code> <code>&amp;</code> <code>=</code> intact.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Can I paste a full URL and still use Encode?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Yes, but if you only need to encode a parameter value, encode
+                  just the value, not the whole URL—otherwise reserved URL
+                  characters may be over-encoded.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Why does plus (+) decode to space?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  In <code>application/x-www-form-urlencoded</code> form data,
+                  <code>+</code> represents a space. This tool converts
+                  <code>+</code> to spaces before decoding to be helpful.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Related tools -->
+        <article class="card" id="related">
+          <h2>Related tools</h2>
+          <p class="muted">More calculators &amp; converters:</p>
+          <p>
+            <a class="btn" href="/calculator/">Calculator</a>
+            <a class="btn" href="/percent-calculator/">Percent Calculator</a>
+            <a class="btn" href="/age-calculator/">Age Calculator</a>
+            <a class="btn" href="/stopwatch-countdown/"
+              >Stopwatch &amp; Countdown</a
+            >
+          </p>
+          <p class="small">
+            Prefer বাংলা? Try the
+            <a href="/bn/unit-converter/" hreflang="bn">বাংলা সংস্করণ</a>.
+          </p>
+        </article>
+
+        <!-- Bottom Ad -->
+        <section class="card" aria-label="Advertisement">
+          <ins
+            class="adsbygoogle"
+            style="display: block"
+            data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+            data-ad-slot="0000000000"
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+          ></ins>
+          <script>
+            (window.adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </section>
+      </main>
+    </div>
 
     <noscript>
       <div class="wrap card" role="status">

@@ -210,393 +210,410 @@
         data-full-width-responsive="false"
       ></ins>
     </div>
-
-    <main class="wrap">
-      <!-- Breadcrumbs (updated for this tool) -->
+    <div class="container">
       <nav class="breadcrumbs" aria-label="breadcrumb">
         <a href="/">Home</a> › <a href="/#time">Time Tools</a> ›
         <span aria-current="page">Stopwatch &amp; Countdown</span>
       </nav>
+      <header class="header">
+        <h1>URL Encoder &amp; Decoder</h1>
+        <p class="subtitle">
+          Encode &amp; decode URI components safely. RFC 3986 compliant, works
+          locally in your browser with no data uploads.
+        </p>
+        <span class="badge">RFC 3986 Compliant</span>
+      </header>
 
       <!-- TOC (updated anchors & labels) -->
-      <p class="toc">
+
+      <p class="toc" aria-label="Table of Contents">
         <a href="#tool-time">Stopwatch &amp; Countdown</a> ·
-        <a href="#how-to-use">How to use</a> · <a href="#faq">FAQ</a> ·
+        <a href="#where">Where to use </a> ·
+        <a href="#best-practices">Best Practices</a> ·
+        <a href="#details">Details</a> · <a href="#faq">FAQ</a> ·
         <a href="#related">Related tools</a>
       </p>
+      <main class="wrap">
+        <!-- Breadcrumbs (updated for this tool) -->
 
-      <!-- Tool -->
-      <article class="card" id="tool-time">
-        <div
-          id="swDisp"
-          class="field center"
-          style="font-size: 28px; font-weight: 700"
-          aria-live="polite"
-        >
-          00:00.000
+        <!-- Tool -->
+        <article class="card" id="tool-time">
+          <div
+            id="swDisp"
+            class="field center"
+            style="font-size: 28px; font-weight: 700"
+            aria-live="polite"
+          >
+            00:00.000
+          </div>
+
+          <div class="row" style="gap: 0.5rem; justify-content: center">
+            <button class="btn btn-primary" id="swStart" type="button">
+              Start
+            </button>
+            <button class="btn" id="swPause" type="button">Pause</button>
+            <button class="btn" id="swReset" type="button">Reset</button>
+          </div>
+
+          <div class="ad-wrap ad-article" aria-label="Advertisement">
+            <span class="ad-label">Ad</span>
+            <ins
+              class="adsbygoogle"
+              style="display: inline-block; text-align: center"
+              data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+              data-ad-slot="2222222222"
+              data-ad-format="fluid"
+              data-ad-layout="in-article"
+            ></ins>
+          </div>
+
+          <hr style="border: none; border-top: var(--border)" />
+
+          <form
+            class="row"
+            onsubmit="return false"
+            aria-label="Countdown inputs"
+          >
+            <label
+              class="form-label"
+              style="display: flex; flex-direction: column"
+            >
+              <span class="muted" style="font-size: 0.9rem">Minutes</span>
+              <input
+                id="m"
+                type="number"
+                min="0"
+                value="0"
+                placeholder="Minutes"
+                inputmode="numeric"
+                autocomplete="off"
+                class="form-input"
+              />
+            </label>
+            <label
+              class="form-label"
+              style="display: flex; flex-direction: column"
+            >
+              <span class="muted" style="font-size: 0.9rem">Seconds</span>
+              <input
+                id="s"
+                type="number"
+                min="0"
+                max="59"
+                value="30"
+                placeholder="Seconds"
+                inputmode="numeric"
+                autocomplete="off"
+                class="form-input"
+              />
+            </label>
+          </form>
+
+          <div class="row" style="gap: 0.5rem; justify-content: center">
+            <button class="btn" id="cdStart" type="button">
+              Start Countdown
+            </button>
+            <button class="btn" id="cdStop" type="button">Stop</button>
+          </div>
+
+          <div id="cdDisp" class="field center" aria-live="polite">00:30</div>
+        </article>
+        <div class="card" id="where">
+          <h2>Common Use Cases &amp; Examples</h2>
+          <div class="examples">
+            <!-- Applications -->
+            <div class="example">
+              <div class="example-title">🏃 Training</div>
+              <div class="example-content">Intervals, splits, rest timers</div>
+              <span class="badge">laps</span>
+            </div>
+
+            <div class="example">
+              <div class="example-title">🍳 Cooking</div>
+              <div class="example-content">Multiple countdowns for recipes</div>
+              <span class="badge">alerts</span>
+            </div>
+
+            <div class="example">
+              <div class="example-title">⏳ Pomodoro</div>
+              <div class="example-content">25/5 focus cycles</div>
+              <span class="badge">auto-repeat</span>
+            </div>
+
+            <div class="example" id="best-practices">
+              <div class="example-title">🧪 Experiments</div>
+              <div class="example-content">Accurate timing &amp; logging</div>
+              <span class="badge">monotonic</span>
+            </div>
+
+            <!-- Best Practices -->
+            <div class="example">
+              <div class="example-title">⏱ Prefer monotonic time</div>
+              <div class="example-content">
+                Compute elapsed time from <code>performance.now()</code> deltas,
+                not <code>Date.now()</code>.
+              </div>
+            </div>
+
+            <div class="example">
+              <div class="example-title">🧭 Avoid interval drift</div>
+              <div class="example-content">
+                Use <code>requestAnimationFrame</code> (or a tight setInterval)
+                but derive display from accumulated elapsed.
+              </div>
+            </div>
+
+            <div class="example">
+              <div class="example-title">🔔 Graceful alerts</div>
+              <div class="example-content">
+                Fallback to vibration if audio blocked; show a banner via the
+                Notifications API when permitted.
+              </div>
+            </div>
+
+            <div class="example">
+              <div class="example-title">🔒 Battery &amp; privacy</div>
+              <div class="example-content">
+                No telemetry. Alerts only after explicit user
+                interaction/permission.
+              </div>
+            </div>
+
+            <!-- Technical -->
+            <div class="example">
+              <div class="example-title">🧩 Technical Implementation</div>
+              <div class="example-content">Time formatting</div>
+            </div>
+          </div>
         </div>
 
-        <div class="row" style="gap: 0.5rem; justify-content: center">
-          <button class="btn btn-primary" id="swStart" type="button">
-            Start
-          </button>
-          <button class="btn" id="swPause" type="button">Pause</button>
-          <button class="btn" id="swReset" type="button">Reset</button>
+        <div class="info-grid" id="details">
+          <!-- Basics & Features -->
+          <div class="card">
+            <div class="info-section">
+              <h3>⏱ Stopwatch &amp; Countdown Basics</h3>
+              <ul>
+                <li>
+                  <strong>Stopwatch:</strong> start • pause • resume • reset •
+                  laps
+                </li>
+                <li>
+                  <strong>Countdown:</strong> set duration • start • pause •
+                  resume • reset
+                </li>
+                <li>
+                  <strong>Alarms:</strong> optional sound, vibration, and
+                  desktop notifications
+                </li>
+                <li>
+                  <strong>Precision:</strong> high-resolution timing with
+                  <code>performance.now()</code>
+                </li>
+                <li>
+                  Runs entirely in your browser — no data leaves your device.
+                </li>
+              </ul>
+            </div>
+            <div class="info-section">
+              <h3>📊 Modes</h3>
+              <ul>
+                <li><strong>Stopwatch:</strong> counts up from 00:00:00.000</li>
+                <li>
+                  <strong>Countdown:</strong> counts down from a target (e.g.,
+                  25:00) to 00:00
+                </li>
+                <li>
+                  <strong>Auto-lap:</strong> optional lap every N
+                  seconds/minutes
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Display & Accuracy -->
+          <div class="card">
+            <div class="info-section">
+              <h3>🖥 Display &amp; Formatting</h3>
+              <ul>
+                <li>
+                  Formats: <code>hh:mm:ss.mmm</code> or <code>mm:ss</code> for
+                  short timers
+                </li>
+                <li>Leading zeros for readability</li>
+                <li>Lap table with split and delta times</li>
+              </ul>
+            </div>
+            <div class="info-section">
+              <h3>🎯 Accuracy &amp; Drift</h3>
+              <ul>
+                <li>
+                  Uses monotonic clock (<code>performance.now()</code>) to avoid
+                  system clock changes
+                </li>
+                <li>
+                  Renders with <code>requestAnimationFrame</code> but computes
+                  time from deltas (no setInterval drift)
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- How to Use -->
+          <div class="card">
+            <div class="info-section">
+              <h3>⚙️ How to Use</h3>
+              <ol>
+                <li>Select Stopwatch or Countdown mode.</li>
+                <li>
+                  For Stopwatch: press Start, use Lap, Pause/Resume, then Reset.
+                </li>
+                <li>
+                  For Countdown: set time, press Start. Optionally enable Sound,
+                  Vibrate, or Notify.
+                </li>
+                <li>
+                  Keep the tab open — background tabs still track time
+                  accurately.
+                </li>
+              </ol>
+            </div>
+            <div class="info-section">
+              <h3>⌨️ Keyboard Shortcuts</h3>
+              <ul>
+                <li>Space Start/Pause • L Lap • R Reset</li>
+                <li>Countdown: ↑/↓ adjust field • Enter Start/Pause</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Tips -->
+          <div class="card">
+            <div class="info-section">
+              <h3>💡 Tips</h3>
+              <ul>
+                <li>
+                  Enable “Keep screen awake” on mobile (if supported) for
+                  workouts.
+                </li>
+                <li>
+                  Allow notifications to get alerts when the countdown ends in
+                  background.
+                </li>
+                <li>Export laps as CSV if you need logs.</li>
+              </ul>
+            </div>
+          </div>
         </div>
 
-        <div class="ad-wrap ad-article" aria-label="Advertisement">
-          <span class="ad-label">Ad</span>
+        <!-- FAQ (SEO-friendly, human readable) -->
+        <section class="faq-section card" id="faq">
+          <h2 class="faq-title">
+            Stopwatch & Timer – Frequently Asked Questions
+          </h2>
+
+          <div class="faq-container">
+            <!-- Stopwatch & Timer FAQs -->
+            <div class="faq-item">
+              <button class="faq-question">
+                How do I use the stopwatch?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Click Start to begin, Pause to pause, and Reset to clear the
+                  time. You can also use the keyboard: Space toggles Start/Pause
+                  and R resets.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                How do I set up a countdown timer?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Enter your desired minutes and seconds, then click Start
+                  Countdown (or press Enter). A beep will sound when the timer
+                  reaches zero.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Will the timer stay accurate if I switch tabs or minimize the
+                browser?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Yes. The stopwatch and countdown use precise system time to
+                  ensure accuracy, even if the browser tab is throttled or
+                  inactive.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Why can’t I hear the beep sound?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Most browsers block audio until you interact with the page.
+                  Click anywhere or press a button to enable sound. Also check
+                  your volume and device’s Silent mode.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Does this tool save my timings or inputs?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  No. Everything runs locally in your browser. Nothing is
+                  uploaded or stored on a server.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Related tools (updated) -->
+        <article class="card" id="related">
+          <h2>Related tools</h2>
+          <p class="muted">More time &amp; productivity utilities:</p>
+          <p>
+            <a class="btn" href="/age-calculator/">Age Calculator</a>
+            <a class="btn" href="/calculator/">Calculator</a>
+            <a class="btn" href="/quick-notes/">Quick Notes</a>
+            <a class="btn" href="/text-to-pdf/">Text → PDF</a>
+          </p>
+          <p class="small">
+            Prefer বাংলা? Try the
+            <a href="/bn/stopwatch-countdown/" hreflang="bn">বাংলা সংস্করণ</a>.
+          </p>
+        </article>
+
+        <!-- Bottom responsive ad -->
+        <aside aria-label="advertisement" class="card" style="padding: 0">
           <ins
             class="adsbygoogle"
-            style="display: block; text-align: center"
+            style="display: block"
             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-            data-ad-slot="2222222222"
-            data-ad-format="fluid"
-            data-ad-layout="in-article"
+            data-ad-slot="3333333333"
+            data-ad-format="auto"
+            data-full-width-responsive="true"
           ></ins>
-        </div>
-
-        <hr style="border: none; border-top: var(--border)" />
-
-        <form class="row" onsubmit="return false" aria-label="Countdown inputs">
-          <label class="field" style="display: flex; flex-direction: column">
-            <span class="muted" style="font-size: 0.9rem">Minutes</span>
-            <input
-              id="m"
-              type="number"
-              min="0"
-              value="0"
-              placeholder="Minutes"
-              inputmode="numeric"
-              autocomplete="off"
-            />
-          </label>
-          <label class="field" style="display: flex; flex-direction: column">
-            <span class="muted" style="font-size: 0.9rem">Seconds</span>
-            <input
-              id="s"
-              type="number"
-              min="0"
-              max="59"
-              value="30"
-              placeholder="Seconds"
-              inputmode="numeric"
-              autocomplete="off"
-            />
-          </label>
-        </form>
-
-        <div class="row" style="gap: 0.5rem; justify-content: center">
-          <button class="btn" id="cdStart" type="button">
-            Start Countdown
-          </button>
-          <button class="btn" id="cdStop" type="button">Stop</button>
-        </div>
-
-        <div id="cdDisp" class="field center" aria-live="polite">00:30</div>
-      </article>
-
-      <!-- Stopwatch & Countdown: Details & Rules -->
-      <article class="card" id="stopwatch-details">
-        <h2>Stopwatch & Countdown Basics</h2>
-
-        <div class="sw-grid">
-          <div class="sw-section">
-            <h3>What this tool can do</h3>
-            <ul>
-              <li>
-                <strong>Stopwatch</strong>: start • pause • resume • reset •
-                laps
-              </li>
-              <li>
-                <strong>Countdown</strong>: set duration • start • pause •
-                resume • reset
-              </li>
-              <li>
-                <strong>Alarms</strong>: optional sound, vibration, and desktop
-                notifications
-              </li>
-              <li>
-                <strong>Precision</strong>: high-resolution timing with
-                <code>performance.now()</code>
-              </li>
-            </ul>
-            <p class="small muted">
-              Runs entirely in your browser. No data leaves your device.
-            </p>
-          </div>
-
-          <div class="sw-section">
-            <h3>Modes</h3>
-            <ul>
-              <li><strong>Stopwatch</strong>: counts up from 00:00:00.000</li>
-              <li>
-                <strong>Countdown</strong>: counts down from a target (e.g.,
-                25:00) to 00:00
-              </li>
-              <li>
-                <strong>Auto-lap</strong> (optional): emit a lap every N
-                seconds/minutes
-              </li>
-            </ul>
-          </div>
-
-          <div class="sw-section">
-            <h3>Display & formatting</h3>
-            <ul>
-              <li>
-                Format: <code>hh:mm:ss.mmm</code> or <code>mm:ss</code> for
-                short timers
-              </li>
-              <li>Leading zeros for readability</li>
-              <li>Lap table with split and delta times</li>
-            </ul>
-          </div>
-        </div>
-
-        <h3>Accuracy & drift</h3>
-        <ul>
-          <li>
-            Uses a monotonic clock (<code>performance.now()</code>) to avoid
-            system clock changes
-          </li>
-          <li>
-            Renders with <code>requestAnimationFrame</code> but computes time
-            from deltas (no setInterval drift)
-          </li>
-        </ul>
-      </article>
-
-      <!-- How to use -->
-      <article class="card" id="how-to-use-stopwatch">
-        <h2>How to use</h2>
-        <ol>
-          <li>
-            Select <strong>Stopwatch</strong> or
-            <strong>Countdown</strong> mode.
-          </li>
-          <li>
-            For <em>Stopwatch</em>: press <strong>Start</strong>, use
-            <strong>Lap</strong> anytime,
-            <strong>Pause</strong>/<strong>Resume</strong>, then
-            <strong>Reset</strong>.
-          </li>
-          <li>
-            For <em>Countdown</em>: set hours/minutes/seconds, press
-            <strong>Start</strong>. Optionally enable <strong>Sound</strong> /
-            <strong>Vibrate</strong> / <strong>Notify</strong>.
-          </li>
-          <li>Keep the tab open; background tabs still keep accurate time.</li>
-        </ol>
-
-        <h3>Keyboard Shortcuts</h3>
-        <ul>
-          <li>
-            <kbd>Space</kbd> Start/Pause • <kbd>L</kbd> Lap • <kbd>R</kbd> Reset
-          </li>
-          <li>
-            Countdown: <kbd>↑/↓</kbd> adjust focused field •
-            <kbd>Enter</kbd> Start/Pause
-          </li>
-        </ul>
-
-        <h3>Tips</h3>
-        <ul>
-          <li>
-            Enable “Keep screen awake” on mobile (if supported) for workouts.
-          </li>
-          <li>
-            Allow notifications to get alerts when the countdown ends in
-            background.
-          </li>
-          <li>Export laps as CSV (optional button) if you need logs.</li>
-        </ul>
-      </article>
-
-      <!-- Real-World Applications -->
-      <article class="card" id="stopwatch-applications">
-        <h2>Where to Use Stopwatch & Countdown</h2>
-
-        <div class="applications-grid">
-          <div class="use-case">
-            <h4>🏃 Training</h4>
-            <p>Intervals, splits, rest timers</p>
-            <span class="badge">laps</span>
-          </div>
-
-          <div class="use-case">
-            <h4>🍳 Cooking</h4>
-            <p>Multiple countdowns for recipes</p>
-            <span class="badge">alerts</span>
-          </div>
-
-          <div class="use-case">
-            <h4>⏳ Pomodoro</h4>
-            <p>25/5 focus cycles</p>
-            <span class="badge">auto-repeat</span>
-          </div>
-
-          <div class="use-case">
-            <h4>🧪 Experiments</h4>
-            <p>Accurate timing & logging</p>
-            <span class="badge">monotonic</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Best Practices -->
-      <article class="card" id="stopwatch-tips">
-        <h2>Timing Best Practices</h2>
-
-        <div class="tip">
-          <h3>⏱ Prefer monotonic time</h3>
-          <p>
-            Compute elapsed time from <code>performance.now()</code> deltas, not
-            Date.now().
-          </p>
-        </div>
-
-        <div class="tip">
-          <h3>🧭 Avoid interval drift</h3>
-          <p>
-            Use <code>requestAnimationFrame</code> (or a tight setInterval) but
-            derive display from accumulated elapsed.
-          </p>
-        </div>
-
-        <div class="tip">
-          <h3>🔔 Graceful alerts</h3>
-          <p>
-            Fallback to vibration if audio blocked; show a banner via the
-            Notifications API when permitted.
-          </p>
-        </div>
-
-        <div class="tip">
-          <h3>🔒 Battery & privacy</h3>
-          <p>
-            No telemetry. Alerts only after explicit user
-            interaction/permission.
-          </p>
-        </div>
-      </article>
-
-      <!-- Technical Implementation -->
-      <article class="card" id="stopwatch-technical">
-        <h2>Technical Implementation</h2>
-
-        <h3>Time formatting</h3>
-      </article>
-
-      <!-- FAQ (SEO-friendly, human readable) -->
-      <section class="faq-section card">
-        <h2 class="faq-title">
-          Stopwatch & Timer – Frequently Asked Questions
-        </h2>
-
-        <div class="faq-container">
-          <!-- Stopwatch & Timer FAQs -->
-          <div class="faq-item">
-            <button class="faq-question">
-              How do I use the stopwatch?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Click Start to begin, Pause to pause, and Reset to clear the
-                time. You can also use the keyboard: Space toggles Start/Pause
-                and R resets.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              How do I set up a countdown timer?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Enter your desired minutes and seconds, then click Start
-                Countdown (or press Enter). A beep will sound when the timer
-                reaches zero.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              Will the timer stay accurate if I switch tabs or minimize the
-              browser?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Yes. The stopwatch and countdown use precise system time to
-                ensure accuracy, even if the browser tab is throttled or
-                inactive.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              Why can’t I hear the beep sound?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Most browsers block audio until you interact with the page.
-                Click anywhere or press a button to enable sound. Also check
-                your volume and device’s Silent mode.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              Does this tool save my timings or inputs?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                No. Everything runs locally in your browser. Nothing is uploaded
-                or stored on a server.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Related tools (updated) -->
-      <article class="card" id="related">
-        <h2>Related tools</h2>
-        <p class="muted">More time &amp; productivity utilities:</p>
-        <p>
-          <a class="btn" href="/age-calculator/">Age Calculator</a>
-          <a class="btn" href="/calculator/">Calculator</a>
-          <a class="btn" href="/quick-notes/">Quick Notes</a>
-          <a class="btn" href="/text-to-pdf/">Text → PDF</a>
-        </p>
-        <p class="small">
-          Prefer বাংলা? Try the
-          <a href="/bn/stopwatch-countdown/" hreflang="bn">বাংলা সংস্করণ</a>.
-        </p>
-      </article>
-
-      <!-- Bottom responsive ad -->
-      <aside aria-label="advertisement" class="card" style="padding: 0">
-        <ins
-          class="adsbygoogle"
-          style="display: block"
-          data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-          data-ad-slot="3333333333"
-          data-ad-format="auto"
-          data-full-width-responsive="true"
-        ></ins>
-      </aside>
-    </main>
-
+        </aside>
+      </main>
+    </div>
     <footer>© <span id="y"></span> Tools Pack</footer>
 
     <script>

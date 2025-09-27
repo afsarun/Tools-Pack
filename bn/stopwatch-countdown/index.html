@@ -160,232 +160,234 @@
         data-adtest="on"
       ></ins>
     </div>
+    <div class="container">
+      <main class="wrap">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs" aria-label="breadcrumb">
+          <a href="/bn/">হোম</a> › <a href="/bn/#time">সময় টুলস</a> ›
+          <span>স্টপওয়াচ ও কাউন্টডাউন</span>
+        </nav>
 
-    <main class="wrap">
-      <!-- Breadcrumbs -->
-      <nav class="breadcrumbs" aria-label="breadcrumb">
-        <a href="/bn/">হোম</a> › <a href="/bn/#time">সময় টুলস</a> ›
-        <span>স্টপওয়াচ ও কাউন্টডাউন</span>
-      </nav>
-
-      <!-- TOC -->
-      <p class="toc">
-        <a href="#sw">স্টপওয়াচ</a> · <a href="#cd">কাউন্টডাউন</a> ·
-        <a href="#how">ব্যবহার</a> · <a href="#faq">প্রশ্নোত্তর</a> ·
-        <a href="#related">সম্পর্কিত</a>
-      </p>
-
-      <!-- Stopwatch -->
-      <article class="card" id="sw">
-        <h2>স্টপওয়াচ</h2>
-        <div class="display mono" id="swDisplay" aria-live="polite">
-          00:00:00.000
-        </div>
-        <div class="row actions">
-          <button id="swStart" class="btn btn-primary" type="button">
-            স্টার্ট
-          </button>
-          <button id="swPause" class="btn btn-ghost" type="button">পজ</button>
-          <button id="swLap" class="btn btn-ghost" type="button">ল্যাপ</button>
-          <button id="swReset" class="btn btn-ghost" type="button">
-            রিসেট
-          </button>
-          <button id="swExport" class="btn btn-ghost" type="button">
-            CSV এক্সপোর্ট
-          </button>
-          <span class="muted small"
-            >শর্টকাট: <span class="kbd">Space</span> স্টার্ট/পজ,
-            <span class="kbd">L</span> ল্যাপ,
-            <span class="kbd">R</span> রিসেট</span
-          >
-        </div>
-        <div class="muted small" id="swStatus">—</div>
-        <div style="overflow: auto; margin-top: 10px">
-          <table id="swTable" aria-label="Lap table">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>ল্যাপ</th>
-                <th>মোট</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
-        </div>
-      </article>
-
-      <!-- Countdown -->
-      <article class="card" id="cd">
-        <h2>কাউন্টডাউন</h2>
-        <div class="row" role="group" aria-label="সময় দিন">
-          <label class="pill"
-            >ঘন্টা
-            <input
-              id="cdH"
-              class="field"
-              type="number"
-              min="0"
-              value="0"
-              style="width: 80px"
-          /></label>
-          <label class="pill"
-            >মিনিট
-            <input
-              id="cdM"
-              class="field"
-              type="number"
-              min="0"
-              max="59"
-              value="1"
-              style="width: 80px"
-          /></label>
-          <label class="pill"
-            >সেকেন্ড
-            <input
-              id="cdS"
-              class="field"
-              type="number"
-              min="0"
-              max="59"
-              value="0"
-              style="width: 80px"
-          /></label>
-          <div class="row">
-            <button class="btn btn-ghost" data-preset="60" type="button">
-              +1m
-            </button>
-            <button class="btn btn-ghost" data-preset="300" type="button">
-              +5m
-            </button>
-            <button class="btn btn-ghost" data-preset="600" type="button">
-              +10m
-            </button>
-          </div>
-        </div>
-
-        <div class="display mono" id="cdDisplay" aria-live="polite">
-          00:01:00
-        </div>
-        <div class="row actions">
-          <button id="cdStart" class="btn btn-primary" type="button">
-            স্টার্ট
-          </button>
-          <button id="cdPause" class="btn btn-ghost" type="button">পজ</button>
-          <button id="cdReset" class="btn btn-ghost" type="button">
-            রিসেট
-          </button>
-          <label class="pill"
-            ><input type="checkbox" id="cdLoop" /> শেষ হলে পুনরায় শুরু</label
-          >
-          <span class="muted small"
-            >শর্টকাট: <span class="kbd">Enter</span> স্টার্ট/পজ,
-            <span class="kbd">Esc</span> রিসেট</span
-          >
-        </div>
-        <div class="muted small" id="cdStatus">—</div>
-
-        <!-- Ad #2: In-article -->
-        <div
-          class="ad-wrap ad-article"
-          aria-label="Advertisement"
-          style="margin-top: 10px"
-        >
-          <span class="ad-label">Ad</span>
-          <ins
-            class="adsbygoogle"
-            style="display: inline-block; text-align: center"
-            data-ad-client="ca-pub-1234567890123456"
-            data-ad-slot="2222222222"
-            data-ad-format="fluid"
-            data-ad-layout="in-article"
-            data-adtest="on"
-          ></ins>
-        </div>
-      </article>
-
-      <!-- How to use -->
-      <article class="card" id="how">
-        <h2>কীভাবে ব্যবহার করবেন</h2>
-        <ol>
-          <li>
-            <strong>স্টপওয়াচ:</strong> স্টার্ট → ল্যাপ নিন → পজ/রিসেট করুন।
-            ল্যাপ তালিকা CSV হিসেবে এক্সপোর্ট করা যায়।
-          </li>
-          <li>
-            <strong>কাউন্টডাউন:</strong> H:M:S সেট করুন বা প্রিসেট বাটন চাপুন;
-            শেষ হলে বীপ/নোটিফিকেশন দেখাবে।
-          </li>
-          <li>সবকিছু লোকাল; কোনো ডেটা সার্ভারে পাঠানো হয় না।</li>
-        </ol>
-      </article>
-
-      <section class="faq-section card">
-        <h2 class="faq-title">প্রশ্নোত্তর</h2>
-
-        <div class="faq-container">
-          <!-- Stopwatch/Timer FAQs (Bangla) -->
-          <div class="faq-item">
-            <button class="faq-question">
-              টাইমিং কি ড্রিফট-প্রুফ?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                হ্যাঁ। প্রদর্শিত সময় সরাসরি
-                <code>performance.now()</code> ভিত্তিক; ইন্টারভাল বিলম্ব হলেও
-                হিসাব সঠিক থাকে।
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              অ্যালার্ম শুনতে পারছি না?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                প্রথমবার সাইট খুলে সাউন্ড প্লে করার অনুমতি দিন; মিউট অফ আছে কিনা
-                দেখুন। নোটিফিকেশন চাইলে ব্রাউজারের পারমিশন দিন।
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              ব্রাউজার মিনিমাইজ করলে?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                টাইমার চলতেই থাকে; দৃশ্যমান না থাকলেও টার্গেট সময় ধরে ফলাফল ঠিক
-                থাকবে।
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Related -->
-      <article class="card" id="related">
-        <h2>সম্পর্কিত টুলস</h2>
-        <p class="muted">আরও সময়/উপযোগী টুলস:</p>
-        <p>
-          <a class="btn" href="/bn/age-calculator/">বয়স ক্যালকুলেটর</a>
-          <a class="btn" href="/bn/unit-converter/">ইউনিট কনভার্টার</a>
-          <a class="btn" href="/bn/percent-calculator/">শতকরা ক্যালকুলেটর</a>
+        <!-- TOC -->
+        <p class="toc">
+          <a href="#sw">স্টপওয়াচ</a> · <a href="#cd">কাউন্টডাউন</a> ·
+          <a href="#how">ব্যবহার</a> · <a href="#faq">প্রশ্নোত্তর</a> ·
+          <a href="#related">সম্পর্কিত</a>
         </p>
-        <p class="small">
-          English preferred? See the
-          <a href="/stopwatch-countdown/" hreflang="en">English version</a>.
-        </p>
-      </article>
-    </main>
 
-    <footer>
-      © <span id="y"></span> Tools Pack • <a class="muted" href="/bn/">হোম</a>
-    </footer>
+        <!-- Stopwatch -->
+        <article class="card" id="sw">
+          <h2>স্টপওয়াচ</h2>
+          <div class="display mono" id="swDisplay" aria-live="polite">
+            00:00:00.000
+          </div>
+          <div class="row actions">
+            <button id="swStart" class="btn btn-primary" type="button">
+              স্টার্ট
+            </button>
+            <button id="swPause" class="btn btn-ghost" type="button">পজ</button>
+            <button id="swLap" class="btn btn-ghost" type="button">
+              ল্যাপ
+            </button>
+            <button id="swReset" class="btn btn-ghost" type="button">
+              রিসেট
+            </button>
+            <button id="swExport" class="btn btn-ghost" type="button">
+              CSV এক্সপোর্ট
+            </button>
+            <span class="muted small"
+              >শর্টকাট: <span class="kbd">Space</span> স্টার্ট/পজ,
+              <span class="kbd">L</span> ল্যাপ,
+              <span class="kbd">R</span> রিসেট</span
+            >
+          </div>
+          <div class="muted small" id="swStatus">—</div>
+          <div style="overflow: auto; margin-top: 10px">
+            <table id="swTable" aria-label="Lap table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>ল্যাপ</th>
+                  <th>মোট</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </article>
 
+        <!-- Countdown -->
+        <article class="card" id="cd">
+          <h2>কাউন্টডাউন</h2>
+          <div class="row" role="group" aria-label="সময় দিন">
+            <label class="pill"
+              >ঘন্টা
+              <input
+                id="cdH"
+                class="field"
+                type="number"
+                min="0"
+                value="0"
+                style="width: 80px"
+            /></label>
+            <label class="pill"
+              >মিনিট
+              <input
+                id="cdM"
+                class="field"
+                type="number"
+                min="0"
+                max="59"
+                value="1"
+                style="width: 80px"
+            /></label>
+            <label class="pill"
+              >সেকেন্ড
+              <input
+                id="cdS"
+                class="field"
+                type="number"
+                min="0"
+                max="59"
+                value="0"
+                style="width: 80px"
+            /></label>
+            <div class="row">
+              <button class="btn btn-ghost" data-preset="60" type="button">
+                +1m
+              </button>
+              <button class="btn btn-ghost" data-preset="300" type="button">
+                +5m
+              </button>
+              <button class="btn btn-ghost" data-preset="600" type="button">
+                +10m
+              </button>
+            </div>
+          </div>
+
+          <div class="display mono" id="cdDisplay" aria-live="polite">
+            00:01:00
+          </div>
+          <div class="row actions">
+            <button id="cdStart" class="btn btn-primary" type="button">
+              স্টার্ট
+            </button>
+            <button id="cdPause" class="btn btn-ghost" type="button">পজ</button>
+            <button id="cdReset" class="btn btn-ghost" type="button">
+              রিসেট
+            </button>
+            <label class="pill"
+              ><input type="checkbox" id="cdLoop" /> শেষ হলে পুনরায় শুরু</label
+            >
+            <span class="muted small"
+              >শর্টকাট: <span class="kbd">Enter</span> স্টার্ট/পজ,
+              <span class="kbd">Esc</span> রিসেট</span
+            >
+          </div>
+          <div class="muted small" id="cdStatus">—</div>
+
+          <!-- Ad #2: In-article -->
+          <div
+            class="ad-wrap ad-article"
+            aria-label="Advertisement"
+            style="margin-top: 10px"
+          >
+            <span class="ad-label">Ad</span>
+            <ins
+              class="adsbygoogle"
+              style="display: inline-block; text-align: center"
+              data-ad-client="ca-pub-1234567890123456"
+              data-ad-slot="2222222222"
+              data-ad-format="fluid"
+              data-ad-layout="in-article"
+              data-adtest="on"
+            ></ins>
+          </div>
+        </article>
+
+        <!-- How to use -->
+        <article class="card" id="how">
+          <h2>কীভাবে ব্যবহার করবেন</h2>
+          <ol>
+            <li>
+              <strong>স্টপওয়াচ:</strong> স্টার্ট → ল্যাপ নিন → পজ/রিসেট করুন।
+              ল্যাপ তালিকা CSV হিসেবে এক্সপোর্ট করা যায়।
+            </li>
+            <li>
+              <strong>কাউন্টডাউন:</strong> H:M:S সেট করুন বা প্রিসেট বাটন চাপুন;
+              শেষ হলে বীপ/নোটিফিকেশন দেখাবে।
+            </li>
+            <li>সবকিছু লোকাল; কোনো ডেটা সার্ভারে পাঠানো হয় না।</li>
+          </ol>
+        </article>
+
+        <section class="faq-section card">
+          <h2 class="faq-title">প্রশ্নোত্তর</h2>
+
+          <div class="faq-container">
+            <!-- Stopwatch/Timer FAQs (Bangla) -->
+            <div class="faq-item">
+              <button class="faq-question">
+                টাইমিং কি ড্রিফট-প্রুফ?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  হ্যাঁ। প্রদর্শিত সময় সরাসরি
+                  <code>performance.now()</code> ভিত্তিক; ইন্টারভাল বিলম্ব হলেও
+                  হিসাব সঠিক থাকে।
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                অ্যালার্ম শুনতে পারছি না?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  প্রথমবার সাইট খুলে সাউন্ড প্লে করার অনুমতি দিন; মিউট অফ আছে
+                  কিনা দেখুন। নোটিফিকেশন চাইলে ব্রাউজারের পারমিশন দিন।
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                ব্রাউজার মিনিমাইজ করলে?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  টাইমার চলতেই থাকে; দৃশ্যমান না থাকলেও টার্গেট সময় ধরে ফলাফল
+                  ঠিক থাকবে।
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Related -->
+        <article class="card" id="related">
+          <h2>সম্পর্কিত টুলস</h2>
+          <p class="muted">আরও সময়/উপযোগী টুলস:</p>
+          <p>
+            <a class="btn" href="/bn/age-calculator/">বয়স ক্যালকুলেটর</a>
+            <a class="btn" href="/bn/unit-converter/">ইউনিট কনভার্টার</a>
+            <a class="btn" href="/bn/percent-calculator/">শতকরা ক্যালকুলেটর</a>
+          </p>
+          <p class="small">
+            English preferred? See the
+            <a href="/stopwatch-countdown/" hreflang="en">English version</a>.
+          </p>
+        </article>
+      </main>
+
+      <footer>
+        © <span id="y"></span> Tools Pack • <a class="muted" href="/bn/">হোম</a>
+      </footer>
+    </div>
     <script>
       // Footer year
       document.getElementById("y").textContent = new Date().getFullYear();

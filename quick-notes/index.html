@@ -270,328 +270,345 @@
       ></ins>
     </div>
 
-    <main class="wrap">
-      <!-- Intro (keyword-rich, human-readable) -->
-      <section class="card" aria-labelledby="intro-title">
-        <h2 id="intro-title">Fast, Private, and Offline-Friendly Notes</h2>
-        <p>
+    <div class="container">
+      <!-- Breadcrumbs -->
+      <nav class="breadcrumbs" aria-label="breadcrumb">
+        <a href="/">Home</a> › <a href="/#text">Text Tools</a> ›
+        <span>Quick Notes</span>
+      </nav>
+      <header class="header">
+        <h1 class="">Fast, Private, and Offline-<br />Friendly Notes</h1>
+        <p class="subtitle">
           Quick Notes is a simple
           <strong>online notepad with local auto-save</strong>. Your writing
           stays on this device — <em>no account, no server</em>. Export or
           import <code>.txt</code> files anytime. Full Unicode support
           (including Bangla).
         </p>
-      </section>
+        <span class="badge">RFC 3986 Compliant</span>
+      </header>
+      >
 
-      <!-- Breadcrumbs -->
-      <nav class="breadcrumbs" aria-label="breadcrumb">
-        <a href="/">Home</a> › <a href="/#text">Text Tools</a> ›
-        <span>Quick Notes</span>
-      </nav>
-
-      <!-- TOC -->
-      <p class="toc">
-        <a href="#notes-tool">Notes</a> · <a href="#how-to-use">How to use</a> ·
-        <a href="#faq">FAQ</a> · <a href="#related">Related tools</a>
+      <p class="toc" aria-label="Table of Contents">
+        <a href="#notes-tool">Notes</a> · <a href="#where">Where to use </a> ·
+        <a href="#best-practices">Best Practices</a> ·
+        <a href="#details">Details</a> · <a href="#faq">FAQ</a> ·
+        <a href="#related">Related tools</a>
       </p>
+      <main class="wrap">
+        <!-- Tool -->
+        <article class="card" id="notes-tool" aria-labelledby="notes-title">
+          <h2 id="notes-title" class="sr-only">Notes editor</h2>
+          <textarea
+            id="notes"
+            class="form-textarea"
+            placeholder="Write anything… Auto-saved to your browser."
+            aria-label="Notes editor"
+            aria-describedby="status"
+          ></textarea>
 
-      <!-- Tool -->
-      <article class="card" id="notes-tool" aria-labelledby="notes-title">
-        <h2 id="notes-title" class="sr-only">Notes editor</h2>
-        <textarea
-          id="notes"
-          class="textarea"
-          placeholder="Write anything… Auto-saved to your browser."
-          aria-label="Notes editor"
-          aria-describedby="status"
-        ></textarea>
-
-        <div class="actions" role="group" aria-label="Note actions">
-          <button class="btn" id="clear" type="button" aria-controls="notes">
-            Clear
-          </button>
-          <button class="btn" id="ex" type="button">Export .txt</button>
-          <label class="btn" for="imp" style="cursor: pointer">Import</label>
-          <input
-            id="imp"
-            type="file"
-            accept=".txt,text/plain"
-            style="display: none"
-          />
-        </div>
-
-        <div class="muted small" id="status" role="status" aria-live="polite">
-          Saved.
-        </div>
-        <p class="small muted" style="margin-top: 6px">
-          Notes are stored locally in this browser (no server).
-        </p>
-
-        <div class="ad-wrap ad-article" aria-label="Advertisement">
-          <span class="ad-label">Ad</span>
-          <ins
-            class="adsbygoogle"
-            style="display: block; text-align: center"
-            data-ad-client="ca-pub-1234567890123456"
-            data-ad-slot="2222222222"
-            data-ad-format="fluid"
-            data-ad-layout="in-article"
-            data-adtest="on"
-          ></ins>
-        </div>
-      </article>
-      <!-- Quick Notes: Details & Rules -->
-      <article class="card" id="quick-notes-details">
-        <h2>Quick Notes Basics</h2>
-
-        <div class="qn-grid">
-          <div class="qn-section">
-            <h3>What this tool can do</h3>
-            <ul>
-              <li>
-                <strong>Fast note taking</strong> in your browser (no account)
-              </li>
-              <li>
-                <strong>Auto-save</strong> notes to localStorage as you type
-              </li>
-              <li>
-                <strong>Multiple notes</strong> with titles &amp; timestamps
-              </li>
-              <li><strong>Search &amp; pin</strong> important notes</li>
-              <li><strong>Export/Import</strong> notes as JSON or text</li>
-            </ul>
-            <p class="small muted">
-              Everything is stored locally on your device—nothing is uploaded.
-            </p>
+          <div class="actions" role="group" aria-label="Note actions">
+            <button class="btn" id="clear" type="button" aria-controls="notes">
+              Clear
+            </button>
+            <button class="btn" id="ex" type="button">Export .txt</button>
+            <label class="btn" for="imp" style="cursor: pointer">Import</label>
+            <input
+              id="imp"
+              type="file"
+              class="form-input"
+              accept=".txt,text/plain"
+              style="display: none"
+            />
           </div>
 
-          <div class="qn-section">
-            <h3>Storage & privacy</h3>
-            <ul>
-              <li>
-                <strong>Location:</strong> Browser <code>localStorage</code>
-              </li>
-              <li>
-                <strong>Scope:</strong> Per browser &amp; device (no sync)
-              </li>
-              <li>
-                <strong>Limits:</strong> Typically ~5–10&nbsp;MB per origin
-              </li>
-            </ul>
+          <div class="muted small" id="status" role="status" aria-live="polite">
+            Saved.
           </div>
-
-          <div class="qn-section">
-            <h3>Note features</h3>
-            <ul>
-              <li>Markdown-friendly text area (plain text stored)</li>
-              <li>Pin/star notes to keep them on top</li>
-              <li>Word/character count (optional)</li>
-              <li>Trash/restore (soft delete) option</li>
-            </ul>
-          </div>
-        </div>
-
-        <h3>What counts as “local-only”?</h3>
-        <ul>
-          <li>
-            Notes never leave your browser unless you <em>export</em> them
-          </li>
-          <li>Clearing site data or using private windows may remove notes</li>
-          <li>
-            Switching browsers/devices won’t carry notes over automatically
-          </li>
-        </ul>
-      </article>
-
-      <!-- How to use -->
-      <article class="card" id="how-to-use-quick-notes">
-        <h2>How to use</h2>
-        <ol>
-          <li>
-            Click <strong>New</strong> and give your note a
-            <strong>title</strong>.
-          </li>
-          <li>
-            Start typing in the editor—your note
-            <strong>auto-saves</strong> every few keystrokes.
-          </li>
-          <li>Use <strong>Search</strong> to filter by title or content.</li>
-          <li>
-            Click <strong>Pin</strong> to keep a note at the top; use
-            <strong>Trash</strong> to archive (reversible).
-          </li>
-          <li>
-            Use <strong>Export</strong> to download your notes;
-            <strong>Import</strong> to load them back.
-          </li>
-        </ol>
-
-        <h3>Tips</h3>
-        <ul>
-          <li>
-            For long-term backup, export regularly (JSON). Keep a copy in your
-            cloud drive.
-          </li>
-          <li>Pinned notes are ideal for TODOs or daily logs.</li>
-          <li>
-            Use headings (e.g., <code># Title</code>) and lists for readability;
-            the app stores plain text, so it’s future-proof.
-          </li>
-        </ul>
-      </article>
-
-      <!-- Real-World Applications -->
-      <article class="card" id="quick-notes-applications">
-        <h2>Where to Use Quick Notes</h2>
-
-        <div class="applications-grid">
-          <div class="use-case">
-            <h4>📝 Scratchpad</h4>
-            <p>Ideas, snippets, meeting bullets</p>
-            <span class="badge">auto-save</span>
-          </div>
-
-          <div class="use-case">
-            <h4>✅ Tasks</h4>
-            <p>Short TODO lists and reminders</p>
-            <span class="badge">pin to top</span>
-          </div>
-
-          <div class="use-case">
-            <h4>📚 Study</h4>
-            <p>Glossary, formulas, links</p>
-            <span class="badge">search</span>
-          </div>
-
-          <div class="use-case">
-            <h4>💡 Content</h4>
-            <p>Draft posts, outlines, captions</p>
-            <span class="badge">export</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Best Practices -->
-      <article class="card" id="quick-notes-tips">
-        <h2>Quick Notes Best Practices</h2>
-
-        <div class="tip">
-          <h3>💾 Back up regularly</h3>
-          <p>
-            Export to JSON weekly if the notes matter—localStorage can be
-            cleared by browser resets.
+          <p class="small muted" style="margin-top: 6px">
+            Notes are stored locally in this browser (no server).
           </p>
+
+          <div class="ad-wrap ad-article" aria-label="Advertisement">
+            <span class="ad-label">Ad</span>
+            <ins
+              class="adsbygoogle"
+              style="display: inline-block; text-align: center"
+              data-ad-client="ca-pub-1234567890123456"
+              data-ad-slot="2222222222"
+              data-ad-format="fluid"
+              data-ad-layout="in-article"
+              data-adtest="on"
+            ></ins>
+          </div>
+        </article>
+
+        <div class="card" id="where">
+          <h2>Common Use Cases &amp; Examples</h2>
+          <div class="examples">
+            <!-- Applications -->
+            <div class="example">
+              <div class="example-title">📝 Scratchpad</div>
+              <div class="example-content">
+                Ideas, snippets, meeting bullets
+              </div>
+              <span class="badge">auto-save</span>
+            </div>
+
+            <div class="example">
+              <div class="example-title">✅ Tasks</div>
+              <div class="example-content">Short TODO lists and reminders</div>
+              <span class="badge">pin to top</span>
+            </div>
+
+            <div class="example">
+              <div class="example-title">📚 Study</div>
+              <div class="example-content">Glossary, formulas, links</div>
+              <span class="badge">search</span>
+            </div>
+
+            <div class="example">
+              <div class="example-title">💡 Content</div>
+              <div class="example-content">Draft posts, outlines, captions</div>
+              <span class="badge">export</span>
+            </div>
+
+            <!-- Best Practices -->
+            <div class="example" id="best-practices">
+              <div class="example-title">💾 Back up regularly</div>
+              <div class="example-content">
+                Export to JSON weekly if the notes matter — localStorage can be
+                cleared by browser resets.
+              </div>
+            </div>
+
+            <div class="example">
+              <div class="example-title">🔍 Name notes well</div>
+              <div class="example-content">
+                Short, descriptive titles make search far more useful.
+              </div>
+            </div>
+
+            <div class="example">
+              <div class="example-title">🛡️ Privacy-aware</div>
+              <div class="example-content">
+                Use device-level encryption or profiles if your device is
+                shared.
+              </div>
+            </div>
+
+            <!-- Technical -->
+            <div class="example">
+              <div class="example-title">🧩 Technical Implementation</div>
+              <div class="example-content">Data model</div>
+            </div>
+          </div>
+        </div>
+        <div class="info-grid" id="details">
+          <!-- Basics & Features -->
+          <div class="card">
+            <div class="info-section">
+              <h3>📝 Quick Notes Basics</h3>
+              <ul>
+                <li>
+                  <strong>Fast note taking</strong> in your browser (no account)
+                </li>
+                <li>
+                  <strong>Auto-save</strong> notes to localStorage as you type
+                </li>
+                <li>
+                  <strong>Multiple notes</strong> with titles &amp; timestamps
+                </li>
+                <li><strong>Search &amp; pin</strong> important notes</li>
+                <li><strong>Export/Import</strong> notes as JSON or text</li>
+              </ul>
+              <p class="small muted">
+                Everything is stored locally on your device — nothing is
+                uploaded.
+              </p>
+            </div>
+          </div>
+
+          <!-- Storage & Privacy + Note Features -->
+          <div class="card">
+            <div class="info-section">
+              <h3>🔒 Storage &amp; privacy</h3>
+              <ul>
+                <li>
+                  <strong>Location:</strong> Browser <code>localStorage</code>
+                </li>
+                <li>
+                  <strong>Scope:</strong> Per browser &amp; device (no sync)
+                </li>
+                <li>
+                  <strong>Limits:</strong> Typically ~5–10&nbsp;MB per origin
+                </li>
+              </ul>
+            </div>
+            <div class="info-section">
+              <h3>✨ Note features</h3>
+              <ul>
+                <li>Markdown-friendly text area (plain text stored)</li>
+                <li>Pin/star notes to keep them on top</li>
+                <li>Word/character count (optional)</li>
+                <li>Trash/restore (soft delete) option</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- How to Use -->
+          <div class="card">
+            <div class="info-section">
+              <h3>⚙️ How to use</h3>
+              <ol>
+                <li>
+                  Click <strong>New</strong> and give your note a
+                  <strong>title</strong>.
+                </li>
+                <li>
+                  Start typing — your note <strong>auto-saves</strong> every few
+                  keystrokes.
+                </li>
+                <li>
+                  Use <strong>Search</strong> to filter by title or content.
+                </li>
+                <li>
+                  Click <strong>Pin</strong> to keep a note at the top; use
+                  <strong>Trash</strong> to archive (reversible).
+                </li>
+                <li>
+                  Use <strong>Export</strong> to download your notes;
+                  <strong>Import</strong> to load them back.
+                </li>
+              </ol>
+            </div>
+          </div>
+
+          <!-- Tips & Local-only notes -->
+          <div class="card">
+            <div class="info-section">
+              <h3>💡 Tips</h3>
+              <ul>
+                <li>
+                  For long-term backup, export regularly (JSON). Keep a copy in
+                  your cloud drive.
+                </li>
+                <li>Pinned notes are ideal for TODOs or daily logs.</li>
+                <li>
+                  Use headings (e.g., <code># Title</code>) and lists for
+                  readability; plain text is future-proof.
+                </li>
+              </ul>
+            </div>
+            <div class="info-section">
+              <h3>📍 What counts as “local-only”?</h3>
+              <ul>
+                <li>
+                  Notes never leave your browser unless you
+                  <em>export</em> them.
+                </li>
+                <li>
+                  Clearing site data or using private windows may remove notes.
+                </li>
+                <li>
+                  Switching browsers/devices won’t carry notes over
+                  automatically.
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
 
-        <div class="tip">
-          <h3>🔍 Name notes well</h3>
-          <p>Short, descriptive titles make search far more useful.</p>
-        </div>
+        <section class="faq-section card" id="faq">
+          <h2 class="faq-title">Quick Notes – Frequently Asked Questions</h2>
 
-        <div class="tip">
-          <h3>🛡️ Privacy-aware</h3>
+          <div class="faq-container">
+            <!-- Quick Notes FAQs -->
+            <div class="faq-item">
+              <button class="faq-question">
+                Where are my notes stored?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  On this device only, inside your browser’s localStorage.
+                  Nothing is uploaded.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Is there a size limit?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Yes. Browsers typically allow around 5&nbsp;MB per site for
+                  localStorage.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Can I sync across devices?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Not automatically. Use Export to save a .txt and Import it
+                  elsewhere.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Are notes encrypted?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  No. Keep your device secure and avoid highly sensitive
+                  information.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Does it work offline?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>Yes. After the first load, it works without internet.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Related tools -->
+        <article class="card" id="related">
+          <h2>Related Text Tools</h2>
+          <p class="muted">More writing &amp; encoding utilities:</p>
           <p>
-            Use device-level encryption or profiles if your device is shared.
+            <a class="btn" href="/text-to-pdf/">Text → PDF Converter</a>
+            <a class="btn" href="/json-formatter/">JSON Formatter</a>
+            <a class="btn" href="/base64/">Base64 Encode/Decode</a>
+            <a class="btn" href="/url-tools/">URL Tools</a>
           </p>
-        </div>
-      </article>
+          <p class="small">
+            Prefer বাংলা? Try the
+            <a href="/bn/quick-notes/" hreflang="bn">বাংলা সংস্করণ</a>.
+          </p>
+        </article>
+      </main>
 
-      <!-- Technical Implementation -->
-      <article class="card" id="quick-notes-technical">
-        <h2>Technical Implementation</h2>
-
-        <h3>Data model</h3>
-      </article>
-
-      <section class="faq-section card">
-        <h2 class="faq-title">Quick Notes – Frequently Asked Questions</h2>
-
-        <div class="faq-container">
-          <!-- Quick Notes FAQs -->
-          <div class="faq-item">
-            <button class="faq-question">
-              Where are my notes stored?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                On this device only, inside your browser’s localStorage. Nothing
-                is uploaded.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              Is there a size limit?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Yes. Browsers typically allow around 5&nbsp;MB per site for
-                localStorage.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              Can I sync across devices?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Not automatically. Use Export to save a .txt and Import it
-                elsewhere.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              Are notes encrypted?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                No. Keep your device secure and avoid highly sensitive
-                information.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              Does it work offline?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>Yes. After the first load, it works without internet.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- Related tools -->
-      <article class="card" id="related">
-        <h2>Related Text Tools</h2>
-        <p class="muted">More writing &amp; encoding utilities:</p>
-        <p>
-          <a class="btn" href="/text-to-pdf/">Text → PDF Converter</a>
-          <a class="btn" href="/json-formatter/">JSON Formatter</a>
-          <a class="btn" href="/base64/">Base64 Encode/Decode</a>
-          <a class="btn" href="/url-tools/">URL Tools</a>
-        </p>
-        <p class="small">
-          Prefer বাংলা? Try the
-          <a href="/bn/quick-notes/" hreflang="bn">বাংলা সংস্করণ</a>.
-        </p>
-      </article>
-    </main>
-
-    <footer>
-      © <span id="y"></span> Tools Pack · <a href="/privacy/">Privacy</a> ·
-      <a href="/terms/">Terms</a>
-    </footer>
+      <footer>
+        © <span id="y"></span> Tools Pack · <a href="/privacy/">Privacy</a> ·
+        <a href="/terms/">Terms</a>
+      </footer>
+    </div>
 
     <noscript>
       <div class="wrap">

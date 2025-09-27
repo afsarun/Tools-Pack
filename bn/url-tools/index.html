@@ -195,210 +195,211 @@
         data-adtest="on"
       ></ins>
     </div>
-    <main class="wrap">
-      <!-- Breadcrumbs -->
-      <nav class="breadcrumbs" aria-label="breadcrumb">
-        <a href="/bn/">হোম</a> › <a href="/bn/#dev">ডেভ টুলস</a> ›
-        <span>ইউআরএল এনকোডার/ডিকোডার</span>
-      </nav>
+    <div class="container">
+      <main class="wrap">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs" aria-label="breadcrumb">
+          <a href="/bn/">হোম</a> › <a href="/bn/#dev">ডেভ টুলস</a> ›
+          <span>ইউআরএল এনকোডার/ডিকোডার</span>
+        </nav>
 
-      <!-- TOC -->
-      <p class="toc">
-        <a href="#tool">টুল</a> · <a href="#how">কীভাবে ব্যবহার করবেন</a> ·
-        <a href="#faq">প্রশ্নোত্তর</a> ·
-        <a href="#related">সম্পর্কিত</a>
-      </p>
-
-      <!-- Tool -->
-      <article class="card" id="tool">
-        <h2>URL/URI Encode/Decode</h2>
-
-        <div class="row">
-          <label class="pill"
-            ><input type="radio" name="mode" value="component" checked />
-            কম্পোনেন্ট</label
-          >
-          <label class="pill"
-            ><input type="radio" name="mode" value="full" /> পূর্ণ URL</label
-          >
-          <label class="pill"
-            ><input type="checkbox" id="spacePlus" /> স্পেসকে
-            <code>+</code> হিসেবে ধরুন</label
-          >
-        </div>
-
-        <label for="urlInput" class="muted">ইনপুট</label>
-        <textarea
-          id="urlInput"
-          class="field"
-          placeholder="এখানে টেক্সট বা লিংক লিখুন…"
-        ></textarea>
-
-        <div class="row" style="margin-top: 8px">
-          <button id="btnEncode" class="btn btn-primary" type="button">
-            এনকোড
-          </button>
-          <button id="btnDecode" class="btn" type="button">ডিকোড</button>
-          <button
-            id="btnSwap"
-            class="btn btn-ghost"
-            type="button"
-            aria-label="ইনপুট ↔ আউটপুট অদলবদল"
-          >
-            ⇄ অদলবদল
-          </button>
-          <button id="btnCopy" class="btn btn-ghost" type="button">
-            📋 আউটপুট কপি
-          </button>
-          <button id="btnClear" class="btn btn-ghost" type="button">
-            🗑 সাফ করুন
-          </button>
-          <span id="status" class="small">—</span>
-        </div>
-        <!-- Ad #2: In-article -->
-        <div
-          class="ad-wrap ad-article"
-          aria-label="Advertisement"
-          style="margin-top: 10px"
-        >
-          <span class="ad-label">Ad</span>
-          <ins
-            class="adsbygoogle"
-            style="display: inline-block; text-align: center"
-            data-ad-client="ca-pub-1234567890123456"
-            data-ad-slot="2222222222"
-            data-ad-format="fluid"
-            data-ad-layout="in-article"
-            data-adtest="on"
-          ></ins>
-        </div>
-        <label
-          for="urlOutput"
-          class="muted"
-          style="margin-top: 8px; display: block"
-          >আউটপুট</label
-        >
-        <textarea
-          id="urlOutput"
-          class="field mono"
-          readonly
-          placeholder="ফলাফল এখানে…"
-        ></textarea>
-
-        <p class="small" style="margin-top: 8px">
-          শর্টকাট: <kbd>Ctrl/⌘ + E</kbd> এনকোড, <kbd>Ctrl/⌘ + D</kbd> ডিকোড,
-          <kbd>Esc</kbd> সাফ।
+        <!-- TOC -->
+        <p class="toc">
+          <a href="#tool">টুল</a> · <a href="#how">কীভাবে ব্যবহার করবেন</a> ·
+          <a href="#faq">প্রশ্নোত্তর</a> ·
+          <a href="#related">সম্পর্কিত</a>
         </p>
-      </article>
 
-      <!-- How to use -->
-      <article class="card" id="how">
-        <h2>কীভাবে ব্যবহার করবেন</h2>
-        <ol>
-          <li>
-            <strong>কম্পোনেন্ট</strong> মোডে একেকটা অংশ (যেমন কুয়েরি ভ্যালু)
-            নিরাপদভাবে এনকোড হয় (<code>encodeURIComponent</code>)।
-          </li>
-          <li>
-            <strong>পূর্ণ URL</strong> মোডে সম্পূর্ণ লিংক এনকোড/ডিকোড হয়,
-            সংরক্ষিত ক্যারেক্টারগুলো অক্ষত থাকে (<code>encodeURI</code>)।
-          </li>
-          <li>
-            প্রয়োজনে <strong>স্পেস → +</strong> অপশন অন/অফ করুন (ওয়েব-ফর্ম
-            স্টাইল)।
-          </li>
-        </ol>
-      </article>
-      <section class="faq-section card">
-        <h2 class="faq-title">প্রশ্নোত্তর</h2>
+        <!-- Tool -->
+        <article class="card" id="tool">
+          <h2>URL/URI Encode/Decode</h2>
 
-        <div class="faq-container">
-          <!-- URL Encoder/Decoder FAQs (Bangla) -->
-          <div class="faq-item">
-            <button class="faq-question">
-              %20 বনাম +—কখন কোনটা?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                স্ট্যান্ডার্ড URL এনকোডিংয়ে স্পেস সাধারণত %20।
-                x-www-form-urlencoded (ওয়েব-ফর্ম) ধরণে স্পেসকে
-                <code>+</code> ধরা হয়— এ জন্য টগল রয়েছে।
-              </p>
-            </div>
+          <div class="row">
+            <label class="pill"
+              ><input type="radio" name="mode" value="component" checked />
+              কম্পোনেন্ট</label
+            >
+            <label class="pill"
+              ><input type="radio" name="mode" value="full" /> পূর্ণ URL</label
+            >
+            <label class="pill"
+              ><input type="checkbox" id="spacePlus" /> স্পেসকে
+              <code>+</code> হিসেবে ধরুন</label
+            >
           </div>
 
-          <div class="faq-item">
-            <button class="faq-question">
-              পুরো URL না কি শুধু প্যারাম ভ্যালু এনকোড করব?
-              <span class="faq-icon">+</span>
+          <label for="urlInput" class="muted">ইনপুট</label>
+          <textarea
+            id="urlInput"
+            class="field"
+            placeholder="এখানে টেক্সট বা লিংক লিখুন…"
+          ></textarea>
+
+          <div class="row" style="margin-top: 8px">
+            <button id="btnEncode" class="btn btn-primary" type="button">
+              এনকোড
             </button>
-            <div class="faq-answer">
-              <p>
-                সাধারণত কেবল query parameter এর value এনকোড করা উচিত। পুরো URL
-                এনকোড করলে
-                <code>:</code>, <code>/</code>, <code>?</code>,
-                <code>&amp;</code> ইত্যাদি রিজার্ভড ক্যারেক্টারও কনভার্ট হয়ে
-                যেতে পারে।
-              </p>
+            <button id="btnDecode" class="btn" type="button">ডিকোড</button>
+            <button
+              id="btnSwap"
+              class="btn btn-ghost"
+              type="button"
+              aria-label="ইনপুট ↔ আউটপুট অদলবদল"
+            >
+              ⇄ অদলবদল
+            </button>
+            <button id="btnCopy" class="btn btn-ghost" type="button">
+              📋 আউটপুট কপি
+            </button>
+            <button id="btnClear" class="btn btn-ghost" type="button">
+              🗑 সাফ করুন
+            </button>
+            <span id="status" class="small">—</span>
+          </div>
+          <!-- Ad #2: In-article -->
+          <div
+            class="ad-wrap ad-article"
+            aria-label="Advertisement"
+            style="margin-top: 10px"
+          >
+            <span class="ad-label">Ad</span>
+            <ins
+              class="adsbygoogle"
+              style="display: inline-block; text-align: center"
+              data-ad-client="ca-pub-1234567890123456"
+              data-ad-slot="2222222222"
+              data-ad-format="fluid"
+              data-ad-layout="in-article"
+              data-adtest="on"
+            ></ins>
+          </div>
+          <label
+            for="urlOutput"
+            class="muted"
+            style="margin-top: 8px; display: block"
+            >আউটপুট</label
+          >
+          <textarea
+            id="urlOutput"
+            class="field mono"
+            readonly
+            placeholder="ফলাফল এখানে…"
+          ></textarea>
+
+          <p class="small" style="margin-top: 8px">
+            শর্টকাট: <kbd>Ctrl/⌘ + E</kbd> এনকোড, <kbd>Ctrl/⌘ + D</kbd> ডিকোড,
+            <kbd>Esc</kbd> সাফ।
+          </p>
+        </article>
+
+        <!-- How to use -->
+        <article class="card" id="how">
+          <h2>কীভাবে ব্যবহার করবেন</h2>
+          <ol>
+            <li>
+              <strong>কম্পোনেন্ট</strong> মোডে একেকটা অংশ (যেমন কুয়েরি ভ্যালু)
+              নিরাপদভাবে এনকোড হয় (<code>encodeURIComponent</code>)।
+            </li>
+            <li>
+              <strong>পূর্ণ URL</strong> মোডে সম্পূর্ণ লিংক এনকোড/ডিকোড হয়,
+              সংরক্ষিত ক্যারেক্টারগুলো অক্ষত থাকে (<code>encodeURI</code>)।
+            </li>
+            <li>
+              প্রয়োজনে <strong>স্পেস → +</strong> অপশন অন/অফ করুন (ওয়েব-ফর্ম
+              স্টাইল)।
+            </li>
+          </ol>
+        </article>
+        <section class="faq-section card">
+          <h2 class="faq-title">প্রশ্নোত্তর</h2>
+
+          <div class="faq-container">
+            <!-- URL Encoder/Decoder FAQs (Bangla) -->
+            <div class="faq-item">
+              <button class="faq-question">
+                %20 বনাম +—কখন কোনটা?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  স্ট্যান্ডার্ড URL এনকোডিংয়ে স্পেস সাধারণত %20।
+                  x-www-form-urlencoded (ওয়েব-ফর্ম) ধরণে স্পেসকে
+                  <code>+</code> ধরা হয়— এ জন্য টগল রয়েছে।
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                পুরো URL না কি শুধু প্যারাম ভ্যালু এনকোড করব?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  সাধারণত কেবল query parameter এর value এনকোড করা উচিত। পুরো URL
+                  এনকোড করলে
+                  <code>:</code>, <code>/</code>, <code>?</code>,
+                  <code>&amp;</code> ইত্যাদি রিজার্ভড ক্যারেক্টারও কনভার্ট হয়ে
+                  যেতে পারে।
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                ইউনিকোড/ইমোজি সাপোর্ট আছে?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>হ্যাঁ—ইউনিকোড টেক্সট ও ইমোজি পুরোপুরি সাপোর্টেড।</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                ডিকোড করার সময় “Invalid Character” এラー কেন আসে?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  ইনপুটে অবৈধ বা আংশিক এনকোডেড ক্যারেক্টার থাকলে এラー আসতে
+                  পারে। যেমন <code>%</code> চিহ্নের পর সঠিক দুই অঙ্ক না থাকলে।
+                  সেক্ষেত্রে ইনপুট পরিষ্কার করে আবার চেষ্টা করুন।
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                প্রাইভেসি?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  সবকিছু লোকাল ব্রাউজারেই প্রক্রিয়াকরণ হয়; কোনো ডেটা সার্ভারে
+                  পাঠানো হয় না।
+                </p>
+              </div>
             </div>
           </div>
+        </section>
 
-          <div class="faq-item">
-            <button class="faq-question">
-              ইউনিকোড/ইমোজি সাপোর্ট আছে?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>হ্যাঁ—ইউনিকোড টেক্সট ও ইমোজি পুরোপুরি সাপোর্টেড।</p>
-            </div>
-          </div>
+        <!-- Related -->
+        <article class="card" id="related">
+          <h2>সম্পর্কিত</h2>
+          <p class="muted">আরও ডেভ/টেক্সট টুলস:</p>
+          <p>
+            <a class="btn" href="/bn/json-formatter/">JSON ফরম্যাটার</a>
+            <a class="btn" href="/bn/sha256/">SHA-256 হ্যাশ</a>
+            <a class="btn" href="/bn/text-utilities/">টেক্সট টুলস</a>
+          </p>
+        </article>
+      </main>
 
-          <div class="faq-item">
-            <button class="faq-question">
-              ডিকোড করার সময় “Invalid Character” এラー কেন আসে?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                ইনপুটে অবৈধ বা আংশিক এনকোডেড ক্যারেক্টার থাকলে এラー আসতে পারে।
-                যেমন <code>%</code> চিহ্নের পর সঠিক দুই অঙ্ক না থাকলে।
-                সেক্ষেত্রে ইনপুট পরিষ্কার করে আবার চেষ্টা করুন।
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              প্রাইভেসি?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                সবকিছু লোকাল ব্রাউজারেই প্রক্রিয়াকরণ হয়; কোনো ডেটা সার্ভারে
-                পাঠানো হয় না।
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Related -->
-      <article class="card" id="related">
-        <h2>সম্পর্কিত</h2>
-        <p class="muted">আরও ডেভ/টেক্সট টুলস:</p>
-        <p>
-          <a class="btn" href="/bn/json-formatter/">JSON ফরম্যাটার</a>
-          <a class="btn" href="/bn/sha256/">SHA-256 হ্যাশ</a>
-          <a class="btn" href="/bn/text-utilities/">টেক্সট টুলস</a>
-        </p>
-      </article>
-    </main>
-
-    <footer>
-      © <span id="y"></span> Tools Pack • <a class="muted" href="/bn/">হোম</a>
-    </footer>
-
+      <footer>
+        © <span id="y"></span> Tools Pack • <a class="muted" href="/bn/">হোম</a>
+      </footer>
+    </div>
     <script>
       // Year
       document.getElementById("y").textContent = new Date().getFullYear();

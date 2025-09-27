@@ -209,337 +209,358 @@
         </div>
       </div>
     </header>
+    <div class="container">
+      <!-- Ad #1: top banner (constrained, no full-width expansion) -->
+      <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
+        <span class="ad-label">Ad</span>
+        <ins
+          class="adsbygoogle"
+          style="display: inline-block"
+          data-ad-client="ca-pub-1234567890123456"
+          data-ad-slot="1111111111"
+          data-ad-format="auto"
+          data-full-width-responsive="false"
+          data-adtest="on"
+        ></ins>
+      </div>
 
-    <!-- Ad #1: top banner (constrained, no full-width expansion) -->
-    <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
-      <span class="ad-label">Ad</span>
-      <ins
-        class="adsbygoogle"
-        style="display: inline-block"
-        data-ad-client="ca-pub-1234567890123456"
-        data-ad-slot="1111111111"
-        data-ad-format="auto"
-        data-full-width-responsive="false"
-        data-adtest="on"
-      ></ins>
+      <main class="wrap">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs" aria-label="breadcrumb">
+          <a href="/">Home</a> ›
+          <span>UUID v4 Generator</span>
+        </nav>
+
+        <p class="toc" aria-label="Table of Contents">
+          <a href="#uuidv4">UUID v4</a>
+          <a href="#where">Where to use </a> ·
+          <a href="#best-practices">Best Practices</a> ·
+          <a href="#details">Details</a> · <a href="#faq">FAQ</a> ·
+          <a href="#related">Related tools</a>
+        </p>
+        <!-- Generator -->
+        <article class="card" id="uuidv4">
+          <label
+            for="out"
+            class="muted form-label"
+            style="display: block; margin-bottom: 0.25rem"
+            >Your UUID v4</label
+          >
+          <div class="copygroup">
+            <input
+              id="out"
+              class="field mono form-input"
+              readonly
+              aria-readonly="true"
+            />
+            <button class="btn btn-primary" id="gen" type="button">
+              Generate
+            </button>
+            <button class="btn" id="cpy" type="button">Copy</button>
+            <span
+              id="status"
+              class="muted"
+              style="margin-left: 0.5rem"
+              aria-live="polite"
+            ></span>
+          </div>
+          <p class="muted" style="margin-top: 0.75rem">
+            RFC&nbsp;4122 compliant: version <code>4</code> (random), variant
+            <code>10</code>.
+          </p>
+
+          <div class="ad-wrap ad-article" aria-label="Advertisement">
+            <span class="ad-label">Ad</span>
+            <ins
+              class="adsbygoogle"
+              style="display: inline-block; text-align: center"
+              data-ad-client="ca-pub-1234567890123456"
+              data-ad-slot="2222222222"
+              data-ad-format="fluid"
+              data-ad-layout="in-article"
+              data-adtest="on"
+            ></ins>
+          </div>
+        </article>
+
+        <div class="card" id="where">
+          <h2>UUID v4 Use Cases &amp; Best Practices</h2>
+          <div class="examples">
+            <div class="example">
+              <div class="example-title">🗄 Database Keys</div>
+              <div class="example-content">
+                Primary keys without coordination
+                <span class="badge">random IDs</span>
+              </div>
+            </div>
+
+            <div class="example">
+              <div class="example-title">📑 Request Tracing</div>
+              <div class="example-content">
+                Correlation IDs across services
+                <span class="badge">observability</span>
+              </div>
+            </div>
+
+            <div class="example">
+              <div class="example-title">↩️ Idempotency</div>
+              <div class="example-content">
+                De-duplicate retries safely
+                <span class="badge">safe retries</span>
+              </div>
+            </div>
+
+            <div class="example" id="best-practices">
+              <div class="example-title">📦 Files &amp; Objects</div>
+              <div class="example-content">
+                Stable object names in storage
+                <span class="badge">content refs</span>
+              </div>
+            </div>
+
+            <div class="example">
+              <div class="example-title">🔐 Not a secret</div>
+              <div class="example-content">
+                UUIDs are guess-resistant but not confidential — don’t use them
+                as tokens.
+              </div>
+            </div>
+
+            <div class="example">
+              <div class="example-title">📏 Keep a consistent format</div>
+              <div class="example-content">
+                Pick lowercase with hyphens for readability, or hyphenless for
+                compact storage — and stick to it.
+              </div>
+            </div>
+
+            <div class="example">
+              <div class="example-title">⚙️ Indexing considerations</div>
+              <div class="example-content">
+                Random keys can fragment B-trees; consider
+                <strong>UUIDv7</strong> for time-ordered needs, or store as
+                16-byte binary.
+              </div>
+            </div>
+
+            <div class="example">
+              <div class="example-title">⚡ Technical Implementation</div>
+              <div class="example-content">
+                Generate UUID v4 with <code>crypto.getRandomValues</code> for
+                entropy.<br />
+                <strong>Security note:</strong> Avoid
+                <code>Math.random()</code> or time-based hacks.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="info-grid" id="details">
+          <!-- Basics & Features -->
+          <div class="card">
+            <div class="info-section">
+              <h3>🛠️ What this tool can do</h3>
+              <ul>
+                <li>
+                  <strong>Generate</strong> RFC&nbsp;4122-compliant UUID version
+                  4
+                </li>
+                <li>
+                  <strong>Copy</strong> in canonical form
+                  (<code>8-4-4-4-12</code>) or compact (no hyphens)
+                </li>
+                <li><strong>Format</strong> options: lowercase / UPPERCASE</li>
+                <li>
+                  <strong>Batch</strong> creation (e.g., 100 or 1,000 UUIDs)
+                </li>
+              </ul>
+              <p class="small muted">
+                All UUIDs are generated locally using the browser’s
+                cryptographic PRNG.
+              </p>
+            </div>
+
+            <div class="info-section">
+              <h3>📜 RFC 4122 specifics</h3>
+              <ul>
+                <li>
+                  <strong>Version:</strong> 4 (random) → the high nibble of byte
+                  6 is <code>0100</code>
+                </li>
+                <li>
+                  <strong>Variant:</strong> RFC 4122 → the two high bits of byte
+                  8 are <code>10</code>
+                </li>
+                <li>
+                  <strong>Layout:</strong>
+                  <code>xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx</code> where
+                  <code>y</code> is <code>8–b</code>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Use Cases -->
+          <div class="card">
+            <div class="info-section">
+              <h3>📋 When to use</h3>
+              <ul>
+                <li>Database keys, request IDs, idempotency keys</li>
+                <li>Client-side identifiers that don’t reveal sequence/time</li>
+                <li>Cross-system correlation without central coordination</li>
+              </ul>
+            </div>
+
+            <div class="info-section">
+              <h3>🔑 Uniqueness</h3>
+              <ul>
+                <li>
+                  UUID v4 has 122 random bits (after version/variant) →
+                  astronomically low collision probability for practical use.
+                </li>
+                <li>Still treat UUIDs as <em>identifiers</em>, not secrets.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- How to Use -->
+          <div class="card">
+            <div class="info-section">
+              <h3>⚙️ How to use</h3>
+              <ol>
+                <li>Click <strong>Generate</strong> to create a UUID v4.</li>
+                <li>
+                  Use <strong>Copy</strong> to copy in canonical, hyphenless, or
+                  UPPERCASE form.
+                </li>
+                <li>
+                  Enable <strong>Batch</strong> to generate many UUIDs at once
+                  and <strong>Download</strong> as a file.
+                </li>
+              </ol>
+            </div>
+
+            <div class="info-section">
+              <h3>💡 Tips</h3>
+              <ul>
+                <li>
+                  Prefer <strong>lowercase</strong> for consistency in logs and
+                  URLs.
+                </li>
+                <li>
+                  Use <strong>hyphenless</strong> for compact storage or
+                  slug-like IDs (still validate as UUID format if required).
+                </li>
+                <li>
+                  Never expose UUIDs as authentication secrets — pair with
+                  access control.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Combined FAQ Section -->
+        <section class="faq-section card" id="faq">
+          <h2 class="faq-title">Frequently Asked Questions</h2>
+
+          <div class="faq-container">
+            <!-- General FAQs -->
+
+            <!-- UUID v4 Specific FAQs -->
+            <div class="faq-item">
+              <button class="faq-question">
+                Is this UUID generator RFC 4122 compliant?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Yes. The UUIDs follow RFC&nbsp;4122 standards. This means
+                  version
+                  <code>4</code> and variant <code>10</code> bits are set
+                  exactly as required, ensuring compliance.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Do you store or log the generated UUIDs?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  No. Everything runs locally in your browser. No UUIDs are
+                  uploaded, logged, or stored on any server.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Are UUID v4 values guaranteed to be unique?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Absolute uniqueness cannot be guaranteed, but thanks to strong
+                  randomness the probability of two UUID v4 values colliding is
+                  astronomically low—safe enough for all real-world
+                  applications.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Can I customize the format (remove hyphens or use uppercase)?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Yes. The default is lowercase with hyphens, but you may remove
+                  hyphens, convert to uppercase, or adjust formatting to suit
+                  your needs.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                How do I validate a UUID v4 string?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  A quick way is to use a regular expression (case-insensitive)
+                  such as:
+                </p>
+                <pre><code>^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$</code></pre>
+                <p>
+                  This ensures the value matches the official UUID v4 pattern.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Related tools -->
+        <article class="card" id="related">
+          <h2>Related tools</h2>
+          <p class="muted">More developer utilities:</p>
+          <p>
+            <a class="btn" href="/sha256/">SHA-256 Hash</a>
+            <a class="btn" href="/json-formatter/">JSON Formatter</a>
+            <a class="btn" href="/base64/">Base64 Encode/Decode</a>
+            <a class="btn" href="/url-tools/">URL Tools</a>
+          </p>
+          <p class="small">
+            Prefer বাংলা? Try the
+            <a href="/bn/uuid4/" hreflang="bn">বাংলা সংস্করণ</a>.
+          </p>
+        </article>
+      </main>
+
+      <footer>© <span id="y"></span> Tools Pack</footer>
     </div>
-
-    <main class="wrap">
-      <!-- Breadcrumbs -->
-      <nav class="breadcrumbs" aria-label="breadcrumb">
-        <a href="/">Home</a> ›
-        <span>UUID v4 Generator</span>
-      </nav>
-
-      <!-- TOC -->
-      <p class="toc">
-        <a href="#uuidv4">UUID v4</a> · <a href="#how-to-use">How to use</a> ·
-        <a href="#faq">FAQ</a> · <a href="#related">Related tools</a>
-      </p>
-
-      <!-- Generator -->
-      <article class="card" id="uuidv4">
-        <label
-          for="out"
-          class="muted"
-          style="display: block; margin-bottom: 0.25rem"
-          >Your UUID v4</label
-        >
-        <div class="copygroup">
-          <input id="out" class="field mono" readonly aria-readonly="true" />
-          <button class="btn btn-primary" id="gen" type="button">
-            Generate
-          </button>
-          <button class="btn" id="cpy" type="button">Copy</button>
-          <span
-            id="status"
-            class="muted"
-            style="margin-left: 0.5rem"
-            aria-live="polite"
-          ></span>
-        </div>
-        <p class="muted" style="margin-top: 0.75rem">
-          RFC&nbsp;4122 compliant: version <code>4</code> (random), variant
-          <code>10</code>.
-        </p>
-
-        <div class="ad-wrap ad-article" aria-label="Advertisement">
-          <span class="ad-label">Ad</span>
-          <ins
-            class="adsbygoogle"
-            style="display: block; text-align: center"
-            data-ad-client="ca-pub-1234567890123456"
-            data-ad-slot="2222222222"
-            data-ad-format="fluid"
-            data-ad-layout="in-article"
-            data-adtest="on"
-          ></ins>
-        </div>
-      </article>
-      <!-- UUID v4: Details & Rules -->
-      <article class="card" id="uuid-details">
-        <h2>UUID v4 Basics</h2>
-
-        <div class="uuid-grid">
-          <div class="uuid-section">
-            <h3>What this tool can do</h3>
-            <ul>
-              <li>
-                <strong>Generate</strong> RFC&nbsp;4122-compliant UUID version 4
-              </li>
-              <li>
-                <strong>Copy</strong> in canonical form
-                (<code>8-4-4-4-12</code>) or compact (no hyphens)
-              </li>
-              <li><strong>Format</strong> options: lowercase/UPPERCASE</li>
-              <li>
-                <strong>Batch</strong> creation (e.g., 100 or 1,000 UUIDs)
-              </li>
-            </ul>
-            <p class="small muted">
-              All UUIDs are generated locally using the browser’s cryptographic
-              PRNG.
-            </p>
-          </div>
-
-          <div class="uuid-section">
-            <h3>RFC 4122 specifics</h3>
-            <ul>
-              <li>
-                <strong>Version:</strong> 4 (random) → the high nibble of byte 6
-                is <code>0100</code>
-              </li>
-              <li>
-                <strong>Variant:</strong> RFC 4122 → the two high bits of byte 8
-                are <code>10</code>
-              </li>
-              <li>
-                <strong>Layout:</strong>
-                <code>xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx</code> where
-                <code>y</code> is <code>8–b</code>
-              </li>
-            </ul>
-          </div>
-
-          <div class="uuid-section">
-            <h3>When to use</h3>
-            <ul>
-              <li>Database keys, request IDs, idempotency keys</li>
-              <li>Client-side identifiers that don’t reveal sequence/time</li>
-              <li>Cross-system correlation without central coordination</li>
-            </ul>
-          </div>
-        </div>
-
-        <h3>Uniqueness</h3>
-        <ul>
-          <li>
-            UUID v4 has 122 random bits (after version/variant) → astronomically
-            low collision probability for practical use.
-          </li>
-          <li>Still treat UUIDs as <em>identifiers</em>, not secrets.</li>
-        </ul>
-      </article>
-
-      <!-- How to use -->
-      <article class="card" id="how-to-use-uuid">
-        <h2>How to use</h2>
-        <ol>
-          <li>Click <strong>Generate</strong> to create a UUID v4.</li>
-          <li>
-            Use <strong>Copy</strong> to copy in canonical, hyphenless, or
-            UPPERCASE form.
-          </li>
-          <li>
-            Enable <strong>Batch</strong> to generate many UUIDs at once and
-            <strong>Download</strong> as a file.
-          </li>
-        </ol>
-
-        <h3>Tips</h3>
-        <ul>
-          <li>
-            Prefer <strong>lowercase</strong> for consistency in logs and URLs.
-          </li>
-          <li>
-            Use <strong>hyphenless</strong> for compact storage or slug-like IDs
-            (still validate as UUID format if required).
-          </li>
-          <li>
-            Never expose UUIDs as authentication secrets—pair with access
-            control.
-          </li>
-        </ul>
-      </article>
-
-      <!-- Real-World Applications -->
-      <article class="card" id="uuid-applications">
-        <h2>Where to Use UUID v4</h2>
-
-        <div class="applications-grid">
-          <div class="use-case">
-            <h4>🗄 Database Keys</h4>
-            <p>Primary keys without coordination</p>
-            <span class="badge">random IDs</span>
-          </div>
-          <div class="use-case">
-            <h4>📑 Request Tracing</h4>
-            <p>Correlation IDs across services</p>
-            <span class="badge">observability</span>
-          </div>
-          <div class="use-case">
-            <h4>↩️ Idempotency</h4>
-            <p>De-duplicate retries safely</p>
-            <span class="badge">safe retries</span>
-          </div>
-          <div class="use-case">
-            <h4>📦 Files & Objects</h4>
-            <p>Stable object names in storage</p>
-            <span class="badge">content refs</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Best Practices -->
-      <article class="card" id="uuid-tips">
-        <h2>UUID v4 Best Practices</h2>
-
-        <div class="tip">
-          <h3>🔐 Not a secret</h3>
-          <p>
-            UUIDs are guess-resistant but not confidential—don’t use them as
-            tokens.
-          </p>
-        </div>
-
-        <div class="tip">
-          <h3>📏 Keep a consistent format</h3>
-          <p>
-            Pick lowercase with hyphens for readability, or hyphenless for
-            compact storage—and stick to it.
-          </p>
-        </div>
-
-        <div class="tip">
-          <h3>⚙️ Indexing considerations</h3>
-          <p>
-            Random keys can fragment B-trees; consider <em>UUIDv7</em> for
-            time-ordered needs, or store as 16-byte binary.
-          </p>
-        </div>
-      </article>
-
-      <!-- Technical Implementation -->
-      <article class="card" id="uuid-technical">
-        <h2>Technical Implementation</h2>
-
-        <h3>Generate UUID v4 with Web Crypto</h3>
-
-        <h3>Security note</h3>
-        <pre><code class="language-text">Use crypto.getRandomValues for entropy. Avoid Math.random() or time-based hacks.</code></pre>
-      </article>
-
-      <!-- Combined FAQ Section -->
-      <section class="faq-section card">
-        <h2 class="faq-title">Frequently Asked Questions</h2>
-
-        <div class="faq-container">
-          <!-- General FAQs -->
-
-          <!-- UUID v4 Specific FAQs -->
-          <div class="faq-item">
-            <button class="faq-question">
-              Is this UUID generator RFC 4122 compliant?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Yes. The UUIDs follow RFC&nbsp;4122 standards. This means
-                version
-                <code>4</code> and variant <code>10</code> bits are set exactly
-                as required, ensuring compliance.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              Do you store or log the generated UUIDs?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                No. Everything runs locally in your browser. No UUIDs are
-                uploaded, logged, or stored on any server.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              Are UUID v4 values guaranteed to be unique?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Absolute uniqueness cannot be guaranteed, but thanks to strong
-                randomness the probability of two UUID v4 values colliding is
-                astronomically low—safe enough for all real-world applications.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              Can I customize the format (remove hyphens or use uppercase)?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Yes. The default is lowercase with hyphens, but you may remove
-                hyphens, convert to uppercase, or adjust formatting to suit your
-                needs.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              How do I validate a UUID v4 string?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                A quick way is to use a regular expression (case-insensitive)
-                such as:
-              </p>
-              <pre><code>^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$</code></pre>
-              <p>
-                This ensures the value matches the official UUID v4 pattern.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- Related tools -->
-      <article class="card" id="related">
-        <h2>Related tools</h2>
-        <p class="muted">More developer utilities:</p>
-        <p>
-          <a class="btn" href="/sha256/">SHA-256 Hash</a>
-          <a class="btn" href="/json-formatter/">JSON Formatter</a>
-          <a class="btn" href="/base64/">Base64 Encode/Decode</a>
-          <a class="btn" href="/url-tools/">URL Tools</a>
-        </p>
-        <p class="small">
-          Prefer বাংলা? Try the
-          <a href="/bn/uuid4/" hreflang="bn">বাংলা সংস্করণ</a>.
-        </p>
-      </article>
-    </main>
-
-    <footer>© <span id="y"></span> Tools Pack</footer>
-
     <script>
       // year
       y.textContent = new Date().getFullYear();

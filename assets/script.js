@@ -1,24 +1,20 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const faqItems = document.querySelectorAll(".faq-item");
-
-  faqItems.forEach((item) => {
-    const question = item.querySelector(".faq-question");
-
-    question.addEventListener("click", () => {
-      // Close all other FAQ items
-      faqItems.forEach((otherItem) => {
-        if (otherItem !== item) {
-          otherItem.classList.remove("active");
-        }
-      });
-
-      // Toggle current item
-      item.classList.toggle("active");
-    });
+// FAQ toggles
+document.querySelectorAll(".faq-item .faq-question").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const ans = btn.nextElementSibling;
+    const icon = btn.querySelector(".faq-icon");
+    const show = !ans.classList.contains("show");
+    document
+      .querySelectorAll(".faq-answer")
+      .forEach((a) => a.classList.remove("show"));
+    document
+      .querySelectorAll(".faq-icon")
+      .forEach((i) => i.classList.remove("rotate"));
+    if (show) {
+      ans.classList.add("show");
+      icon.classList.add("rotate");
+    }
   });
-
-  // Optional: Open first FAQ by default
-  // faqItems[0].classList.add('active');
 });
 
 (function () {

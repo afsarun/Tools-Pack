@@ -171,199 +171,207 @@
         data-adtest="on"
       ></ins>
     </div>
+    <div class="container">
+      <main class="wrap">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs" aria-label="breadcrumb">
+          <a href="/bn/">হোম</a> › <a href="/bn/#text">টেক্সট টুলস</a> ›
+          <span>বেস৬৪ এনকোডার/ডিকোডার</span>
+        </nav>
 
-    <main class="wrap">
-      <!-- Breadcrumbs -->
-      <nav class="breadcrumbs" aria-label="breadcrumb">
-        <a href="/bn/">হোম</a> › <a href="/bn/#text">টেক্সট টুলস</a> ›
-        <span>বেস৬৪ এনকোডার/ডিকোডার</span>
-      </nav>
+        <!-- TOC -->
+        <p class="toc">
+          <a href="#base64">বেস৬৪ টুল</a> ·
+          <a href="#how-to-use">কীভাবে ব্যবহার করবেন</a> ·
+          <a href="#faq">প্রশ্নোত্তর</a> · <a href="#related">সম্পর্কিত টুলস</a>
+        </p>
 
-      <!-- TOC -->
-      <p class="toc">
-        <a href="#base64">বেস৬৪ টুল</a> ·
-        <a href="#how-to-use">কীভাবে ব্যবহার করবেন</a> ·
-        <a href="#faq">প্রশ্নোত্তর</a> · <a href="#related">সম্পর্কিত টুলস</a>
-      </p>
+        <!-- Tool -->
+        <article class="card" id="base64" aria-label="Base64 Tool">
+          <h2>বেস৬৪ টুল</h2>
 
-      <!-- Tool -->
-      <article class="card" id="base64" aria-label="Base64 Tool">
-        <h2>বেস৬৪ টুল</h2>
-
-        <label
-          for="b64Input"
-          class="muted"
-          style="display: block; margin-bottom: 4px"
-          >টেক্সট লিখুন</label
-        >
-        <textarea
-          id="b64Input"
-          class="field"
-          rows="6"
-          placeholder="এখানে টেক্সট লিখুন…"
-        ></textarea>
-
-        <div class="row" style="margin-top: 10px">
-          <button id="btnEncode" class="btn btn-primary" type="button">
-            এনকোড
-          </button>
-          <button id="btnDecode" class="btn" type="button">ডিকোড</button>
-          <button id="btnClear" class="btn btn-muted" type="button">
-            ক্লিয়ার
-          </button>
-        </div>
-
-        <!-- Ad #2 -->
-        <div
-          class="ad-wrap ad-article"
-          aria-label="Advertisement"
-          style="margin-top: 12px"
-        >
-          <span class="ad-label">Ad</span>
-          <ins
-            class="adsbygoogle"
-            style="display: block; text-align: center"
-            data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
-            data-ad-slot="2222222222"
-            data-ad-format="fluid"
-            data-ad-layout="in-article"
-            data-adtest="on"
-          ></ins>
-        </div>
-
-        <label
-          for="b64Output"
-          class="muted"
-          style="display: block; margin-top: 10px"
-          >ফলাফল</label
-        >
-        <textarea
-          id="b64Output"
-          class="field mono"
-          rows="6"
-          readonly
-        ></textarea>
-        <div class="muted" id="hint" aria-live="polite"></div>
-      </article>
-
-      <!-- How to use -->
-      <article class="card" id="how-to-use">
-        <h2>কীভাবে ব্যবহার করবেন</h2>
-        <ol>
-          <li>
-            উপরের বক্সে টেক্সট লিখুন (বাংলা/ইমোজি সহ যেকোনো ইউনিকোড টেক্সট
-            চলবে)।
-          </li>
-          <li>
-            <strong>এনকোড</strong> চাপলে Base64 আউটপুট পাবেন;
-            <strong>ডিকোড</strong> চাপলে Base64 ইনপুট থেকে টেক্সটে রূপান্তর হবে।
-          </li>
-          <li>ক্লিয়ার দিয়ে ইনপুট/আউটপুট রিসেট করুন।</li>
-        </ol>
-        <h3>টিপস</h3>
-        <ul>
-          <li>
-            এই টুল <code>TextEncoder</code>/<code>TextDecoder</code> ব্যবহার
-            করে—তাই ইউনিকোড-সেফ।
-          </li>
-          <li>
-            URL-safe দরকার হলে আউটপুটে <code>+</code>→<code>-</code>,
-            <code>/</code>→<code>_</code> ব্যবহার করা যায়; প্রয়োজনে প্যাডিং
-            <code>=</code> বাদ দিতে পারেন।
-          </li>
-          <li>খুব বড় টেক্সটে ব্রাউজারের মেমোরি সীমাবদ্ধতা প্রযোজ্য।</li>
-        </ul>
-      </article>
-
-      <section class="faq-section card">
-        <h2 class="faq-title">প্রশ্নোত্তর/faq</h2>
-
-        <div class="faq-container">
-          <!-- Base64 Tool FAQs (Bangla) -->
-          <div class="faq-item">
-            <button class="faq-question">
-              ইউনিকোড ও ইমোজি কি সাপোর্টেড?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>হ্যাঁ। UTF-8 বাইটে রূপান্তর করে Base64 এনকোড/ডিকোড করা হয়।</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              URL-safe Base64 কীভাবে পাব?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                <code>+</code> → <code>-</code>, <code>/</code> →
-                <code>_</code> এবং প্রয়োজনে শেষে থাকা <code>=</code> সরিয়ে নিন।
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              ডেটা কি সার্ভারে পাঠানো হয়?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                না—সবকিছু কেবল আপনার ব্রাউজারেই প্রক্রিয়াকরণ হয়; কোনো ট্র্যাকিং
-                নেই।
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              ডিকোড ত্রুটি হলে কী করব?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                ইনপুটে অবৈধ ক্যারেক্টার/প্যাডিং থাকতে পারে। স্পেস/লাইন ব্রেক
-                সরিয়ে আবার চেষ্টা করুন।
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              ফাইল এনকোড করা যাবে?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                এই টুল টেক্সটের জন্য। ফাইলের Base64 প্রয়োজন হলে ব্রাউজারের File
-                API দিয়ে করা যায়—ভবিষ্যৎ আপডেটে যুক্ত হতে পারে।
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Related -->
-      <article class="card" id="related">
-        <h2>সম্পর্কিত টুলস</h2>
-        <p class="muted">টেক্সট/এনকোডিং সম্পর্কিত আরও টুলস:</p>
-        <p>
-          <a class="btn" href="/bn/json-formatter/" hreflang="bn"
-            >JSON ফরম্যাটার</a
+          <label
+            for="b64Input"
+            class="muted"
+            style="display: block; margin-bottom: 4px"
+            >টেক্সট লিখুন</label
           >
-          <a class="btn" href="/bn/url-tools/" hreflang="bn">URL টুলস</a>
-          <a class="btn" href="/bn/text-to-pdf/" hreflang="bn">টেক্সট → PDF</a>
-        </p>
-        <p class="small">
-          English preferred? See the
-          <a href="/base64/" hreflang="en">English version</a>.
-        </p>
-      </article>
-    </main>
+          <textarea
+            id="b64Input"
+            class="field"
+            rows="6"
+            placeholder="এখানে টেক্সট লিখুন…"
+          ></textarea>
 
-    <footer>© <span id="y"></span> Tools Pack • ১০০% ব্রাউজারেই রান হয়</footer>
+          <div class="row" style="margin-top: 10px">
+            <button id="btnEncode" class="btn btn-primary" type="button">
+              এনকোড
+            </button>
+            <button id="btnDecode" class="btn" type="button">ডিকোড</button>
+            <button id="btnClear" class="btn btn-muted" type="button">
+              ক্লিয়ার
+            </button>
+          </div>
 
+          <!-- Ad #2 -->
+          <div
+            class="ad-wrap ad-article"
+            aria-label="Advertisement"
+            style="margin-top: 12px"
+          >
+            <span class="ad-label">Ad</span>
+            <ins
+              class="adsbygoogle"
+              style="display: block; text-align: center"
+              data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
+              data-ad-slot="2222222222"
+              data-ad-format="fluid"
+              data-ad-layout="in-article"
+              data-adtest="on"
+            ></ins>
+          </div>
+
+          <label
+            for="b64Output"
+            class="muted"
+            style="display: block; margin-top: 10px"
+            >ফলাফল</label
+          >
+          <textarea
+            id="b64Output"
+            class="field mono"
+            rows="6"
+            readonly
+          ></textarea>
+          <div class="muted" id="hint" aria-live="polite"></div>
+        </article>
+
+        <!-- How to use -->
+        <article class="card" id="how-to-use">
+          <h2>কীভাবে ব্যবহার করবেন</h2>
+          <ol>
+            <li>
+              উপরের বক্সে টেক্সট লিখুন (বাংলা/ইমোজি সহ যেকোনো ইউনিকোড টেক্সট
+              চলবে)।
+            </li>
+            <li>
+              <strong>এনকোড</strong> চাপলে Base64 আউটপুট পাবেন;
+              <strong>ডিকোড</strong> চাপলে Base64 ইনপুট থেকে টেক্সটে রূপান্তর
+              হবে।
+            </li>
+            <li>ক্লিয়ার দিয়ে ইনপুট/আউটপুট রিসেট করুন।</li>
+          </ol>
+          <h3>টিপস</h3>
+          <ul>
+            <li>
+              এই টুল <code>TextEncoder</code>/<code>TextDecoder</code> ব্যবহার
+              করে—তাই ইউনিকোড-সেফ।
+            </li>
+            <li>
+              URL-safe দরকার হলে আউটপুটে <code>+</code>→<code>-</code>,
+              <code>/</code>→<code>_</code> ব্যবহার করা যায়; প্রয়োজনে প্যাডিং
+              <code>=</code> বাদ দিতে পারেন।
+            </li>
+            <li>খুব বড় টেক্সটে ব্রাউজারের মেমোরি সীমাবদ্ধতা প্রযোজ্য।</li>
+          </ul>
+        </article>
+
+        <section class="faq-section card">
+          <h2 class="faq-title">প্রশ্নোত্তর/faq</h2>
+
+          <div class="faq-container">
+            <!-- Base64 Tool FAQs (Bangla) -->
+            <div class="faq-item">
+              <button class="faq-question">
+                ইউনিকোড ও ইমোজি কি সাপোর্টেড?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  হ্যাঁ। UTF-8 বাইটে রূপান্তর করে Base64 এনকোড/ডিকোড করা হয়।
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                URL-safe Base64 কীভাবে পাব?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  <code>+</code> → <code>-</code>, <code>/</code> →
+                  <code>_</code> এবং প্রয়োজনে শেষে থাকা <code>=</code> সরিয়ে
+                  নিন।
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                ডেটা কি সার্ভারে পাঠানো হয়?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  না—সবকিছু কেবল আপনার ব্রাউজারেই প্রক্রিয়াকরণ হয়; কোনো
+                  ট্র্যাকিং নেই।
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                ডিকোড ত্রুটি হলে কী করব?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  ইনপুটে অবৈধ ক্যারেক্টার/প্যাডিং থাকতে পারে। স্পেস/লাইন ব্রেক
+                  সরিয়ে আবার চেষ্টা করুন।
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                ফাইল এনকোড করা যাবে?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  এই টুল টেক্সটের জন্য। ফাইলের Base64 প্রয়োজন হলে ব্রাউজারের
+                  File API দিয়ে করা যায়—ভবিষ্যৎ আপডেটে যুক্ত হতে পারে।
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Related -->
+        <article class="card" id="related">
+          <h2>সম্পর্কিত টুলস</h2>
+          <p class="muted">টেক্সট/এনকোডিং সম্পর্কিত আরও টুলস:</p>
+          <p>
+            <a class="btn" href="/bn/json-formatter/" hreflang="bn"
+              >JSON ফরম্যাটার</a
+            >
+            <a class="btn" href="/bn/url-tools/" hreflang="bn">URL টুলস</a>
+            <a class="btn" href="/bn/text-to-pdf/" hreflang="bn"
+              >টেক্সট → PDF</a
+            >
+          </p>
+          <p class="small">
+            English preferred? See the
+            <a href="/base64/" hreflang="en">English version</a>.
+          </p>
+        </article>
+      </main>
+
+      <footer>
+        © <span id="y"></span> Tools Pack • ১০০% ব্রাউজারেই রান হয়
+      </footer>
+    </div>
     <script>
       // Footer year
       document.getElementById("y").textContent = new Date().getFullYear();

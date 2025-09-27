@@ -173,155 +173,160 @@
         data-adtest="on"
       ></ins>
     </div>
+    <div class="container">
+      <main class="wrap">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs" aria-label="breadcrumb">
+          <a href="/bn/">হোম</a> › <a href="/bn/#dev">ডেভ টুলস</a> ›
+          <span>JSON ফরম্যাটার/ভ্যালিডেটর</span>
+        </nav>
 
-    <main class="wrap">
-      <!-- Breadcrumbs -->
-      <nav class="breadcrumbs" aria-label="breadcrumb">
-        <a href="/bn/">হোম</a> › <a href="/bn/#dev">ডেভ টুলস</a> ›
-        <span>JSON ফরম্যাটার/ভ্যালিডেটর</span>
-      </nav>
-
-      <!-- TOC -->
-      <p class="toc">
-        <a href="#tool">ফরম্যাটার</a> ·
-        <a href="#how-to-use">কীভাবে ব্যবহার করবেন</a> ·
-        <a href="#faq">প্রশ্নোত্তর</a> ·
-        <a href="#related">সম্পর্কিত টুলস</a>
-      </p>
-
-      <!-- Tool -->
-      <article class="card" id="tool">
-        <h2>ফরম্যাট / ভ্যালিডেট</h2>
-
-        <textarea
-          id="in"
-          class="textarea mono"
-          placeholder='{"hello":"world","emoji":"🙂"}'
-          aria-label="ইনপুট JSON"
-        ></textarea>
-
-        <div style="margin-top: 10px">
-          <button class="btn btn-primary" id="fmt" type="button">
-            ফরম্যাট
-          </button>
-          <button class="btn" id="min" type="button">মিনিফাই</button>
-          <button class="btn" id="val" type="button">ভ্যালিডেট</button>
-          <button class="btn" id="cpy" type="button">আউটপুট কপি</button>
-        </div>
-
-        <!-- Ad #2: In-article -->
-        <div class="ad-wrap ad-article" aria-label="Advertisement">
-          <span class="ad-label">Ad</span>
-          <ins
-            class="adsbygoogle"
-            style="display: inline-block; text-align: center"
-            data-ad-client="ca-pub-1234567890123456"
-            data-ad-slot="2222222222"
-            data-ad-format="fluid"
-            data-ad-layout="in-article"
-            data-adtest="on"
-          ></ins>
-        </div>
-
-        <textarea
-          id="out"
-          class="textarea mono"
-          readonly
-          placeholder="আউটপুট…"
-          aria-label="আউটপুট JSON"
-        ></textarea>
-
-        <div id="status" class="muted" aria-live="polite"></div>
-      </article>
-
-      <!-- How to use -->
-      <article class="card" id="how-to-use">
-        <h2>কীভাবে ব্যবহার করবেন</h2>
-        <ol>
-          <li>উপরে JSON পেস্ট/টাইপ করুন।</li>
-          <li><strong>ফরম্যাট</strong> দিলে সুন্দর ইন্ডেন্টেড আউটপুট পাবেন।</li>
-          <li>
-            <strong>মিনিফাই</strong> দিলে স্পেস/লাইনব্রেক বাদ দিয়ে ছোট সাইজ।
-          </li>
-          <li>
-            <strong>ভ্যালিডেট</strong> JSON সিনট্যাক্স ঠিক আছে কি না দেখায়।
-          </li>
-          <li><strong>আউটপুট কপি</strong> দিয়ে ফলাফল ক্লিপবোর্ডে কপি করুন।</li>
-          <li><kbd>Ctrl/⌘ + Enter</kbd> চাপলে দ্রুত ফরম্যাট হবে।</li>
-        </ol>
-      </article>
-
-      <section class="faq-section card">
-        <h2 class="faq-title">প্রশ্নোত্তর</h2>
-
-        <div class="faq-container">
-          <!-- JSON Formatter FAQs (Bangla) -->
-          <div class="faq-item">
-            <button class="faq-question">
-              অফলাইনে চালানো যাবে?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>হ্যাঁ, প্রথম লোডের পর পুরোটা ব্রাউজারেই চলে।</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              ডেটা কি সার্ভারে যায়?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>না—কিছুই আপলোড হয় না; ১০০% লোকাল।</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              Unicode/ইমোজি সাপোর্ট আছে?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>হ্যাঁ—ইনপুট/আউটপুট উভয়ই ইউনিকোড নিরাপদ।</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              বড় JSON দিলে কী হবে?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                ব্রাউজারের মেমোরির উপর নির্ভর করবে; খুব বড় হলে কিছুটা সময়
-                লাগতে পারে।
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Related tools -->
-      <article class="card" id="related">
-        <h2>সম্পর্কিত টুলস</h2>
-        <p class="muted">আরও টেক্সট/ডেভেলপার টুলস:</p>
-        <p>
-          <a class="btn" href="/bn/text-utilities/">টেক্সট টুলস</a>
-          <a class="btn" href="/bn/url-tools/">URL এনকোডার/ডিকোডার</a>
-          <a class="btn" href="/bn/sha256/">SHA-256 হ্যাশ</a>
+        <!-- TOC -->
+        <p class="toc">
+          <a href="#tool">ফরম্যাটার</a> ·
+          <a href="#how-to-use">কীভাবে ব্যবহার করবেন</a> ·
+          <a href="#faq">প্রশ্নোত্তর</a> ·
+          <a href="#related">সম্পর্কিত টুলস</a>
         </p>
-        <p class="small">
-          English preferred? See the
-          <a href="/json-formatter/" hreflang="en">English version</a>.
-        </p>
-      </article>
-    </main>
 
-    <footer>
-      © <span id="y"></span> Tools Pack • <a class="muted" href="/bn/">হোম</a> •
-      <a class="muted" href="/json-formatter/" hreflang="en">English</a>
-    </footer>
+        <!-- Tool -->
+        <article class="card" id="tool">
+          <h2>ফরম্যাট / ভ্যালিডেট</h2>
 
+          <textarea
+            id="in"
+            class="textarea mono"
+            placeholder='{"hello":"world","emoji":"🙂"}'
+            aria-label="ইনপুট JSON"
+          ></textarea>
+
+          <div style="margin-top: 10px">
+            <button class="btn btn-primary" id="fmt" type="button">
+              ফরম্যাট
+            </button>
+            <button class="btn" id="min" type="button">মিনিফাই</button>
+            <button class="btn" id="val" type="button">ভ্যালিডেট</button>
+            <button class="btn" id="cpy" type="button">আউটপুট কপি</button>
+          </div>
+
+          <!-- Ad #2: In-article -->
+          <div class="ad-wrap ad-article" aria-label="Advertisement">
+            <span class="ad-label">Ad</span>
+            <ins
+              class="adsbygoogle"
+              style="display: inline-block; text-align: center"
+              data-ad-client="ca-pub-1234567890123456"
+              data-ad-slot="2222222222"
+              data-ad-format="fluid"
+              data-ad-layout="in-article"
+              data-adtest="on"
+            ></ins>
+          </div>
+
+          <textarea
+            id="out"
+            class="textarea mono"
+            readonly
+            placeholder="আউটপুট…"
+            aria-label="আউটপুট JSON"
+          ></textarea>
+
+          <div id="status" class="muted" aria-live="polite"></div>
+        </article>
+
+        <!-- How to use -->
+        <article class="card" id="how-to-use">
+          <h2>কীভাবে ব্যবহার করবেন</h2>
+          <ol>
+            <li>উপরে JSON পেস্ট/টাইপ করুন।</li>
+            <li>
+              <strong>ফরম্যাট</strong> দিলে সুন্দর ইন্ডেন্টেড আউটপুট পাবেন।
+            </li>
+            <li>
+              <strong>মিনিফাই</strong> দিলে স্পেস/লাইনব্রেক বাদ দিয়ে ছোট সাইজ।
+            </li>
+            <li>
+              <strong>ভ্যালিডেট</strong> JSON সিনট্যাক্স ঠিক আছে কি না দেখায়।
+            </li>
+            <li>
+              <strong>আউটপুট কপি</strong> দিয়ে ফলাফল ক্লিপবোর্ডে কপি করুন।
+            </li>
+            <li><kbd>Ctrl/⌘ + Enter</kbd> চাপলে দ্রুত ফরম্যাট হবে।</li>
+          </ol>
+        </article>
+
+        <section class="faq-section card">
+          <h2 class="faq-title">প্রশ্নোত্তর</h2>
+
+          <div class="faq-container">
+            <!-- JSON Formatter FAQs (Bangla) -->
+            <div class="faq-item">
+              <button class="faq-question">
+                অফলাইনে চালানো যাবে?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>হ্যাঁ, প্রথম লোডের পর পুরোটা ব্রাউজারেই চলে।</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                ডেটা কি সার্ভারে যায়?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>না—কিছুই আপলোড হয় না; ১০০% লোকাল।</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Unicode/ইমোজি সাপোর্ট আছে?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>হ্যাঁ—ইনপুট/আউটপুট উভয়ই ইউনিকোড নিরাপদ।</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                বড় JSON দিলে কী হবে?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  ব্রাউজারের মেমোরির উপর নির্ভর করবে; খুব বড় হলে কিছুটা সময়
+                  লাগতে পারে।
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Related tools -->
+        <article class="card" id="related">
+          <h2>সম্পর্কিত টুলস</h2>
+          <p class="muted">আরও টেক্সট/ডেভেলপার টুলস:</p>
+          <p>
+            <a class="btn" href="/bn/text-utilities/">টেক্সট টুলস</a>
+            <a class="btn" href="/bn/url-tools/">URL এনকোডার/ডিকোডার</a>
+            <a class="btn" href="/bn/sha256/">SHA-256 হ্যাশ</a>
+          </p>
+          <p class="small">
+            English preferred? See the
+            <a href="/json-formatter/" hreflang="en">English version</a>.
+          </p>
+        </article>
+      </main>
+
+      <footer>
+        © <span id="y"></span> Tools Pack •
+        <a class="muted" href="/bn/">হোম</a> •
+        <a class="muted" href="/json-formatter/" hreflang="en">English</a>
+      </footer>
+    </div>
     <script>
       // Year
       document.getElementById("y").textContent = new Date().getFullYear();

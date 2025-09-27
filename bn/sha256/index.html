@@ -163,164 +163,169 @@
         data-adtest="on"
       ></ins>
     </div>
+    <div class="container">
+      <main class="wrap">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs" aria-label="breadcrumb">
+          <a href="/bn/">হোম</a> › <a href="/bn/#security">সিকিউরিটি টুলস</a> ›
+          <span>SHA-256 হ্যাশ জেনারেটর</span>
+        </nav>
 
-    <main class="wrap">
-      <!-- Breadcrumbs -->
-      <nav class="breadcrumbs" aria-label="breadcrumb">
-        <a href="/bn/">হোম</a> › <a href="/bn/#security">সিকিউরিটি টুলস</a> ›
-        <span>SHA-256 হ্যাশ জেনারেটর</span>
-      </nav>
-
-      <!-- TOC -->
-      <p class="toc">
-        <a href="#tool">হ্যাশ টুল</a> ·
-        <a href="#how-to-use">কীভাবে ব্যবহার করবেন</a> ·
-        <a href="#faq">প্রশ্নোত্তর</a> ·
-        <a href="#related">সম্পর্কিত টুলস</a>
-      </p>
-
-      <!-- Tool -->
-      <article class="card" id="tool">
-        <h2>টেক্সট/ফাইল থেকে SHA-256</h2>
-
-        <label for="hashInput" class="muted">টেক্সট লিখুন</label>
-        <textarea
-          id="hashInput"
-          class="textarea mono"
-          rows="4"
-          placeholder="এখানে টেক্সট লিখুন…"
-        ></textarea>
-
-        <div class="row" style="margin-top: 10px">
-          <button id="btnHashText" class="btn btn-primary" type="button">
-            টেক্সট থেকে হ্যাশ
-          </button>
-
-          <label for="fileInput" class="btn file-label" style="cursor: pointer">
-            ⬆ ফাইল থেকে হ্যাশ
-          </label>
-          <input type="file" id="fileInput" class="file" />
-
-          <button id="btnCopy" class="btn" type="button">📋 কপি</button>
-          <button id="btnClear" class="btn" type="button">🗑 ক্লিয়ার</button>
-        </div>
-
-        <!-- Ad #2: In-article -->
-        <div
-          class="ad-wrap ad-article"
-          aria-label="Advertisement"
-          style="margin-top: 10px"
-        >
-          <span class="ad-label">Ad</span>
-          <ins
-            class="adsbygoogle"
-            style="display: inline-block; text-align: center"
-            data-ad-client="ca-pub-1234567890123456"
-            data-ad-slot="2222222222"
-            data-ad-format="fluid"
-            data-ad-layout="in-article"
-            data-adtest="on"
-          ></ins>
-        </div>
-
-        <label
-          for="hashOutput"
-          class="muted"
-          style="margin-top: 8px; display: block"
-          >SHA-256 আউটপুট</label
-        >
-        <textarea
-          id="hashOutput"
-          class="textarea mono"
-          rows="4"
-          readonly
-          placeholder="হ্যাশ এখানে…"
-        ></textarea>
-
-        <div id="status" class="help" aria-live="polite">—</div>
-      </article>
-
-      <!-- How to use -->
-      <article class="card" id="how-to-use">
-        <h2>কীভাবে ব্যবহার করবেন</h2>
-        <ol>
-          <li>
-            উপরে টেক্সট লিখে <strong>টেক্সট থেকে হ্যাশ</strong> চাপুন—নিচে
-            SHA-256 দেখাবে।
-          </li>
-          <li>
-            অথবা <strong>ফাইল থেকে হ্যাশ</strong> দিয়ে ফাইল সিলেক্ট করুন;
-            ফাইলের হ্যাশ হিসাব হবে।
-          </li>
-          <li>
-            <strong>কপি</strong> বাটনে আউটপুট ক্লিপবোর্ডে যাবে;
-            <strong>ক্লিয়ার</strong> দিলে সব ফিল্ড খালি হবে।
-          </li>
-          <li>সবকিছু আপনার ব্রাউজারেই প্রসেস হয়—কোনো ডেটা আপলোড হয় না।</li>
-        </ol>
-      </article>
-
-      <section class="faq-section card">
-        <h2 class="faq-title">প্রশ্নোত্তর</h2>
-
-        <div class="faq-container">
-          <!-- SHA-256 Tool FAQs (Bangla) -->
-          <div class="faq-item">
-            <button class="faq-question">
-              অফলাইনে চালানো যাবে?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>হ্যাঁ, প্রথম লোডের পর পুরোটা ব্রাউজারেই চলে।</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              বড় ফাইল দিলে ধীর হবে?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                খুব বড় ফাইলে সময় বেশি লাগতে পারে—ব্রাউজারের মেমোরির উপর নির্ভর
-                করে।
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              কোন অ্যালগরিদম?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>SHA-256 (Web Crypto API)।</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Related tools -->
-      <article class="card" id="related">
-        <h2>সম্পর্কিত টুলস</h2>
-        <p class="muted">আরও সিকিউরিটি/ডেভ টুলস:</p>
-        <p>
-          <a class="btn" href="/bn/password-uuid/">পাসওয়ার্ড জেনারেটর</a>
-          <a class="btn" href="/bn/json-formatter/">JSON ফরম্যাটার</a>
-          <a class="btn" href="/bn/url-tools/">URL এনকোডার/ডিকোডার</a>
+        <!-- TOC -->
+        <p class="toc">
+          <a href="#tool">হ্যাশ টুল</a> ·
+          <a href="#how-to-use">কীভাবে ব্যবহার করবেন</a> ·
+          <a href="#faq">প্রশ্নোত্তর</a> ·
+          <a href="#related">সম্পর্কিত টুলস</a>
         </p>
-        <p class="small">
-          English preferred? See the
-          <a href="/sha256/" hreflang="en">English version</a>.
-        </p>
-      </article>
-    </main>
 
-    <footer>
-      © <span id="y"></span> Tools Pack • <a class="muted" href="/bn/">হোম</a> •
-      <a class="muted" href="/sha256/" hreflang="en">English</a>
-    </footer>
+        <!-- Tool -->
+        <article class="card" id="tool">
+          <h2>টেক্সট/ফাইল থেকে SHA-256</h2>
 
+          <label for="hashInput" class="muted">টেক্সট লিখুন</label>
+          <textarea
+            id="hashInput"
+            class="textarea mono"
+            rows="4"
+            placeholder="এখানে টেক্সট লিখুন…"
+          ></textarea>
+
+          <div class="row" style="margin-top: 10px">
+            <button id="btnHashText" class="btn btn-primary" type="button">
+              টেক্সট থেকে হ্যাশ
+            </button>
+
+            <label
+              for="fileInput"
+              class="btn file-label"
+              style="cursor: pointer"
+            >
+              ⬆ ফাইল থেকে হ্যাশ
+            </label>
+            <input type="file" id="fileInput" class="file" />
+
+            <button id="btnCopy" class="btn" type="button">📋 কপি</button>
+            <button id="btnClear" class="btn" type="button">🗑 ক্লিয়ার</button>
+          </div>
+
+          <!-- Ad #2: In-article -->
+          <div
+            class="ad-wrap ad-article"
+            aria-label="Advertisement"
+            style="margin-top: 10px"
+          >
+            <span class="ad-label">Ad</span>
+            <ins
+              class="adsbygoogle"
+              style="display: inline-block; text-align: center"
+              data-ad-client="ca-pub-1234567890123456"
+              data-ad-slot="2222222222"
+              data-ad-format="fluid"
+              data-ad-layout="in-article"
+              data-adtest="on"
+            ></ins>
+          </div>
+
+          <label
+            for="hashOutput"
+            class="muted"
+            style="margin-top: 8px; display: block"
+            >SHA-256 আউটপুট</label
+          >
+          <textarea
+            id="hashOutput"
+            class="textarea mono"
+            rows="4"
+            readonly
+            placeholder="হ্যাশ এখানে…"
+          ></textarea>
+
+          <div id="status" class="help" aria-live="polite">—</div>
+        </article>
+
+        <!-- How to use -->
+        <article class="card" id="how-to-use">
+          <h2>কীভাবে ব্যবহার করবেন</h2>
+          <ol>
+            <li>
+              উপরে টেক্সট লিখে <strong>টেক্সট থেকে হ্যাশ</strong> চাপুন—নিচে
+              SHA-256 দেখাবে।
+            </li>
+            <li>
+              অথবা <strong>ফাইল থেকে হ্যাশ</strong> দিয়ে ফাইল সিলেক্ট করুন;
+              ফাইলের হ্যাশ হিসাব হবে।
+            </li>
+            <li>
+              <strong>কপি</strong> বাটনে আউটপুট ক্লিপবোর্ডে যাবে;
+              <strong>ক্লিয়ার</strong> দিলে সব ফিল্ড খালি হবে।
+            </li>
+            <li>সবকিছু আপনার ব্রাউজারেই প্রসেস হয়—কোনো ডেটা আপলোড হয় না।</li>
+          </ol>
+        </article>
+
+        <section class="faq-section card">
+          <h2 class="faq-title">প্রশ্নোত্তর</h2>
+
+          <div class="faq-container">
+            <!-- SHA-256 Tool FAQs (Bangla) -->
+            <div class="faq-item">
+              <button class="faq-question">
+                অফলাইনে চালানো যাবে?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>হ্যাঁ, প্রথম লোডের পর পুরোটা ব্রাউজারেই চলে।</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                বড় ফাইল দিলে ধীর হবে?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  খুব বড় ফাইলে সময় বেশি লাগতে পারে—ব্রাউজারের মেমোরির উপর
+                  নির্ভর করে।
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                কোন অ্যালগরিদম?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>SHA-256 (Web Crypto API)।</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Related tools -->
+        <article class="card" id="related">
+          <h2>সম্পর্কিত টুলস</h2>
+          <p class="muted">আরও সিকিউরিটি/ডেভ টুলস:</p>
+          <p>
+            <a class="btn" href="/bn/password-uuid/">পাসওয়ার্ড জেনারেটর</a>
+            <a class="btn" href="/bn/json-formatter/">JSON ফরম্যাটার</a>
+            <a class="btn" href="/bn/url-tools/">URL এনকোডার/ডিকোডার</a>
+          </p>
+          <p class="small">
+            English preferred? See the
+            <a href="/sha256/" hreflang="en">English version</a>.
+          </p>
+        </article>
+      </main>
+
+      <footer>
+        © <span id="y"></span> Tools Pack •
+        <a class="muted" href="/bn/">হোম</a> •
+        <a class="muted" href="/sha256/" hreflang="en">English</a>
+      </footer>
+    </div>
     <script>
       // Footer year
       document.getElementById("y").textContent = new Date().getFullYear();

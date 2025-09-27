@@ -249,329 +249,365 @@
         data-adtest="on"
       ></ins>
     </div>
-    <main class="wrap">
-      <!-- Breadcrumbs (page-level, consistent with header) -->
+    <div class="container">
+      <!-- Breadcrumbs -->
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="/">Home</a> › <a href="/text-utilities/">Developer Tools</a> ›
         <span aria-current="page">JSON Formatter</span>
       </nav>
-
+      <header class="header">
+        <h1 class="">Fast, Private, and Offline-<br />Friendly Notes</h1>
+        <p class="subtitle">
+          Quick Notes is a simple
+          <strong>online notepad with local auto-save</strong>. Your writing
+          stays on this device — <em>no account, no server</em>. Export or
+          import <code>.txt</code> files anytime. Full Unicode support
+          (including Bangla).
+        </p>
+        <span class="badge">RFC 3986 Compliant</span>
+      </header>
       <!-- TOC -->
-      <p class="toc">
-        <a href="#json-tool">Tool</a> · <a href="#how-to-use">How to use</a> ·
-        <a href="#faq">FAQ</a> ·
+      <p class="toc" aria-label="Table of Contents">
+        <a href="#json-tool">Format</a> · <a href="#where">Where to use </a> ·
+        <a href="#best-practices">Best Practices</a> ·
+        <a href="#details">Details</a> · <a href="#faq">FAQ</a> ·
         <a href="#related">Related tools</a>
       </p>
-      <!-- Tool -->
-      <article class="card" id="json-tool">
-        <h2>Format / Validate</h2>
+      <main class="wrap">
+        <!-- Breadcrumbs (page-level, consistent with header) -->
 
-        <label class="muted" for="in">Input JSON</label>
-        <textarea
-          id="in"
-          class="textarea"
-          placeholder='{"hello":"world"}'
-          aria-label="JSON input"
-        ></textarea>
+        <!-- Tool -->
+        <article class="card" id="json-tool">
+          <h2>Format / Validate</h2>
 
-        <div class="btn-row" role="group" aria-label="Actions">
-          <button
-            class="btn btn-primary"
-            id="fmt"
-            aria-label="Pretty print JSON"
-          >
-            Format
-          </button>
-          <button class="btn" id="min" aria-label="Minify JSON">Minify</button>
-          <button class="btn" id="val" aria-label="Validate JSON">
-            Validate
-          </button>
-          <button class="btn" id="cpy" aria-label="Copy output">
-            Copy Output
-          </button>
-        </div>
-        <div class="ad-wrap ad-article" aria-label="Advertisement">
-          <span class="ad-label">Ad</span>
-          <ins
-            class="adsbygoogle"
-            style="display: block; text-align: center"
-            data-ad-client="ca-pub-1234567890123456"
-            data-ad-slot="2222222222"
-            data-ad-format="fluid"
-            data-ad-layout="in-article"
-            data-adtest="on"
-          ></ins>
-        </div>
-        <label class="muted" for="out">Output</label>
-        <textarea
-          id="out"
-          class="textarea"
-          readonly
-          placeholder="Output…"
-          aria-label="Formatted/minified JSON output"
-        ></textarea>
-        <div id="status" class="muted" role="status" aria-live="polite"></div>
-      </article>
+          <label class="muted" for="in">Input JSON</label>
+          <textarea
+            id="in"
+            class="textarea"
+            placeholder='{"hello":"world"}'
+            aria-label="JSON input"
+          ></textarea>
 
-      <!-- JSON Formatter: Details & Rules -->
-      <article class="card" id="json-details">
-        <h2>JSON Formatting & Validation Basics</h2>
-
-        <div class="json-grid">
-          <div class="json-section">
-            <h3>What this tool can do</h3>
-            <ul>
-              <li>
-                <strong>Pretty-print</strong> JSON with custom indentation (2 /
-                4 spaces, tabs)
-              </li>
-              <li>
-                <strong>Minify</strong> JSON by removing whitespace and newlines
-              </li>
-              <li>
-                <strong>Validate</strong> and highlight syntax errors with
-                line/column
-              </li>
-              <li><strong>Sort keys</strong> (stable, optionally recursive)</li>
-              <li>
-                <strong>Escape/unescape</strong> special characters (e.g., turn
-                text into JSON string)
-              </li>
-              <li>
-                <strong>Copy/Download</strong> the result locally (no uploads)
-              </li>
-            </ul>
-            <p class="small muted">
-              Runs entirely in your browser. Large payloads are limited by
-              available memory.
-            </p>
-          </div>
-
-          <div class="json-section">
-            <h3>Inputs</h3>
-            <ul>
-              <li>
-                <strong>Paste JSON</strong> text or
-                <strong>drop a .json file</strong>
-              </li>
-              <li><strong>Indentation:</strong> 2, 4, or tab</li>
-              <li>
-                <strong>Options:</strong> sort keys, minify, trailing newline
-              </li>
-            </ul>
-          </div>
-
-          <div class="json-section">
-            <h3>Valid JSON expectations</h3>
-            <ul>
-              <li>UTF-8 text, <code>{}</code> or <code>[]</code> root</li>
-              <li>Double-quoted strings (<code>"key"</code>)</li>
-              <li>
-                No comments (<code>//</code>, <code>/* */</code>) and no
-                trailing commas
-              </li>
-            </ul>
-            <p class="small muted">
-              JSON5/JSON with comments is not standard; see tips for
-              workarounds.
-            </p>
-          </div>
-        </div>
-
-        <h3>Pretty vs. Minified</h3>
-        <ul>
-          <li><strong>Pretty</strong>: human-readable (indent, newlines)</li>
-          <li>
-            <strong>Minified</strong>: compact (smaller payloads for
-            network/storage)
-          </li>
-        </ul>
-      </article>
-
-      <!-- How to use -->
-      <article class="card" id="how-to-use-json">
-        <h2>How to use</h2>
-        <ol>
-          <li>Paste JSON or drop a file in the <strong>Input</strong> area.</li>
-          <li>
-            Choose <strong>Pretty</strong> (2/4/tab) or <strong>Minify</strong>.
-          </li>
-          <li>
-            (Optional) Enable <strong>Sort keys</strong> for deterministic
-            order.
-          </li>
-          <li>
-            Click <strong>Format</strong>. Errors (if any) show line/column with
-            a message.
-          </li>
-          <li>
-            Use <strong>Copy</strong> or <strong>Download</strong> to save the
-            result.
-          </li>
-        </ol>
-
-        <h3>Tips</h3>
-        <ul>
-          <li>
-            To fix “Unexpected token” errors, look for <em>missing quotes</em>,
-            <em>trailing commas</em>, or <em>unescaped</em> characters.
-          </li>
-          <li>
-            For JSON with comments/trailing commas, first convert to valid JSON
-            (see example below).
-          </li>
-          <li>
-            For very large JSON, toggle <em>minified</em> output to reduce
-            render time in the editor.
-          </li>
-        </ul>
-      </article>
-
-      <!-- Real-World Applications -->
-      <article class="card" id="json-applications">
-        <h2>Where to Use the JSON Formatter</h2>
-
-        <div class="applications-grid">
-          <div class="use-case">
-            <h4>🧩 APIs</h4>
-            <p>Inspect/beautify responses &amp; requests</p>
-            <span class="badge">pretty-print</span>
-          </div>
-
-          <div class="use-case">
-            <h4>⚙️ Config</h4>
-            <p>Normalize config files (package.json, tsconfig.json)</p>
-            <span class="badge">sort keys</span>
-          </div>
-
-          <div class="use-case">
-            <h4>🗃 Storage</h4>
-            <p>Shrink payloads for transport</p>
-            <span class="badge">minify</span>
-          </div>
-
-          <div class="use-case">
-            <h4>🧪 Debugging</h4>
-            <p>Pinpoint syntax errors quickly</p>
-            <span class="badge">validate</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- JSON Tips -->
-      <article class="card" id="json-tips">
-        <h2>JSON Best Practices</h2>
-
-        <div class="tip">
-          <h3>🔐 Always UTF-8</h3>
-          <p>
-            Make sure your files are UTF-8 encoded to avoid stray byte issues.
-          </p>
-        </div>
-
-        <div class="tip">
-          <h3>🗝 Deterministic keys</h3>
-          <p>
-            Sorting keys stabilizes diffs and cache keys in build pipelines.
-          </p>
-        </div>
-
-        <div class="tip">
-          <h3>💬 No comments in JSON</h3>
-          <p>
-            Standard JSON has no comments. Use JSONC/JSON5 in editors, then
-            strip to JSON for runtime.
-          </p>
-        </div>
-
-        <div class="tip">
-          <h3>🧹 Normalize before parsing</h3>
-          <p>
-            Remove trailing commas and comments if you imported JSON5/JSONC.
-          </p>
-        </div>
-      </article>
-
-      <!-- Technical Implementation -->
-      <article class="card" id="json-technical">
-        <h2>Technical Implementation</h2>
-
-        <h3>Safe parse with line/column error</h3>
-      </article>
-
-      <section class="faq-section card">
-        <h2 class="faq-title">JSON Formatter – Frequently Asked Questions</h2>
-
-        <div class="faq-container">
-          <!-- JSON Formatter FAQs -->
-          <div class="faq-item">
-            <button class="faq-question">
-              Is my JSON uploaded to a server?
-              <span class="faq-icon">+</span>
+          <div class="btn-row" role="group" aria-label="Actions">
+            <button
+              class="btn btn-primary"
+              id="fmt"
+              aria-label="Pretty print JSON"
+            >
+              Format
             </button>
-            <div class="faq-answer">
-              <p>No. All processing happens locally in your browser.</p>
+            <button class="btn" id="min" aria-label="Minify JSON">
+              Minify
+            </button>
+            <button class="btn" id="val" aria-label="Validate JSON">
+              Validate
+            </button>
+            <button class="btn" id="cpy" aria-label="Copy output">
+              Copy Output
+            </button>
+          </div>
+          <div class="ad-wrap ad-article" aria-label="Advertisement">
+            <span class="ad-label">Ad</span>
+            <ins
+              class="adsbygoogle"
+              style="display: block; text-align: center"
+              data-ad-client="ca-pub-1234567890123456"
+              data-ad-slot="2222222222"
+              data-ad-format="fluid"
+              data-ad-layout="in-article"
+              data-adtest="on"
+            ></ins>
+          </div>
+          <label class="muted" for="out">Output</label>
+          <textarea
+            id="out"
+            class="textarea"
+            readonly
+            placeholder="Output…"
+            aria-label="Formatted/minified JSON output"
+          ></textarea>
+          <div id="status" class="muted" role="status" aria-live="polite"></div>
+        </article>
+        <!-- Best Practices -->
+        <div class="card" id="best-practices">
+          <h2>JSON Best Practices</h2>
+          <div class="examples">
+            <div class="example">
+              <div class="example-title">🔐 Always UTF-8</div>
+              <div class="example-content">
+                Make sure your files are UTF-8 encoded to avoid stray byte
+                issues.
+              </div>
+            </div>
+
+            <div class="example">
+              <div class="example-title">🗝 Deterministic keys</div>
+              <div class="example-content">
+                Sorting keys stabilizes diffs and cache keys in build pipelines.
+              </div>
+            </div>
+
+            <div class="example">
+              <div class="example-title">💬 No comments in JSON</div>
+              <div class="example-content">
+                Standard JSON has no comments. Use JSONC/JSON5 in editors, then
+                strip to JSON for runtime.
+              </div>
+            </div>
+
+            <div class="example">
+              <div class="example-title">🧹 Normalize before parsing</div>
+              <div class="example-content">
+                Remove trailing commas and comments if you imported JSON5/JSONC.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" id="where">
+          <h2>Where to Use the JSON Formatter</h2>
+          <div class="examples">
+            <div class="example">
+              <div class="example-title">🧩 APIs</div>
+              <div class="example-content">
+                nspect/beautify responses &amp; requests
+              </div>
+              <div class="example-content">
+                <span class="badge">pretty-print</span>
+              </div>
+            </div>
+
+            <div class="example">
+              <div class="example-title">⚙️ Config</div>
+              <div class="example-content">
+                Normalize config files (package.json, tsconfig.json)
+              </div>
+              <div class="example-content">sort keys</div>
+            </div>
+
+            <div class="example">
+              <div class="example-title">💬 No comments in JSON</div>
+              <div class="example-content">Shrink payloads for transport</div>
+              <div class="example-content">minify</div>
+            </div>
+
+            <div class="example">
+              <div class="example-title">🧪 Debugging</div>
+              <div class="example-content">Pinpoint syntax errors quickly</div>
+              <div class="example-content">validate</div>
+            </div>
+          </div>
+        </div>
+        <!-- Information Grid (JSON Formatter) -->
+        <div class="info-grid" id="details">
+          <!-- Basics -->
+          <div class="card">
+            <div class="info-section">
+              <h3>🛠️ What this tool can do</h3>
+              <ul>
+                <li>
+                  <strong>Pretty-print</strong> JSON with custom indentation (2
+                  / 4 spaces, tabs)
+                </li>
+                <li>
+                  <strong>Minify</strong> JSON by removing whitespace and
+                  newlines
+                </li>
+                <li>
+                  <strong>Validate</strong> and highlight syntax errors with
+                  line/column
+                </li>
+                <li>
+                  <strong>Sort keys</strong> (stable, optionally recursive)
+                </li>
+                <li>
+                  <strong>Escape/Unescape</strong> special characters (e.g.,
+                  turn text into a JSON string)
+                </li>
+                <li>
+                  <strong>Copy/Download</strong> the result locally (no uploads)
+                </li>
+              </ul>
+              <p class="small muted">
+                Runs entirely in your browser. Large payloads are limited by
+                available memory.
+              </p>
+            </div>
+
+            <div class="info-section">
+              <h3>📋 Inputs</h3>
+              <ul>
+                <li>
+                  <strong>Paste JSON</strong> text or
+                  <strong>drop a .json file</strong>
+                </li>
+                <li><strong>Indentation:</strong> 2, 4, or tab</li>
+                <li>
+                  <strong>Options:</strong> sort keys, minify, trailing newline
+                </li>
+              </ul>
             </div>
           </div>
 
-          <div class="faq-item">
-            <button class="faq-question">
-              Does it support Unicode/Bangla?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>Yes. It is Unicode-safe.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              How do I pretty print and validate?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Paste JSON, click <em>Format</em> to pretty print; click
-                <em>Validate</em> to only check correctness.
+          <!-- Valid JSON & Scope -->
+          <div class="card">
+            <div class="info-section">
+              <h3>✅ Valid JSON expectations</h3>
+              <ul>
+                <li>UTF-8 text, <code>{}</code> or <code>[]</code> root</li>
+                <li>Double-quoted strings (<code>"key"</code>)</li>
+                <li>
+                  No comments (<code>//</code>, <code>/* */</code>) and no
+                  trailing commas
+                </li>
+              </ul>
+              <p class="small muted">
+                JSON5/“JSON with comments” is not standard; see tips for
+                workarounds.
               </p>
             </div>
           </div>
 
-          <div class="faq-item">
-            <button class="faq-question">
-              How do I minify or find related tools?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Use the <em>Minify</em> button here. See
-                <a href="#related">Related tools</a> below for URL/Base64
-                utilities.
-              </p>
+          <!-- Pretty vs Minified -->
+          <div class="card">
+            <div class="info-section">
+              <h3>🎯 Pretty vs. Minified</h3>
+              <ul>
+                <li>
+                  <strong>Pretty:</strong> human-readable (indent, newlines)
+                </li>
+                <li>
+                  <strong>Minified:</strong> compact (smaller payloads for
+                  network/storage)
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- How to Use -->
+          <div class="card">
+            <div class="info-section">
+              <h3>🧩 How to use</h3>
+              <ul>
+                <li>
+                  Paste JSON or drop a file in the <strong>Input</strong> area.
+                </li>
+                <li>
+                  Choose <strong>Pretty</strong> (2/4/tab) or
+                  <strong>Minify</strong>.
+                </li>
+                <li>
+                  (Optional) Enable <strong>Sort keys</strong> for deterministic
+                  order.
+                </li>
+                <li>
+                  Click <strong>Format</strong>. Errors (if any) show
+                  line/column with a message.
+                </li>
+                <li>
+                  Use <strong>Copy</strong> or <strong>Download</strong> to save
+                  the result.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Tips -->
+          <div class="card">
+            <div class="info-section">
+              <h3>💡 Tips</h3>
+              <ul>
+                <li>
+                  To fix “Unexpected token” errors, look for
+                  <em>missing quotes</em>, <em>trailing commas</em>, or
+                  <em>unescaped</em> characters.
+                </li>
+                <li>
+                  For JSON with comments/trailing commas, first convert to valid
+                  JSON (JSONC/JSON5 → plain JSON).
+                </li>
+                <li>
+                  For very large JSON, toggle <em>minified</em> output to reduce
+                  render time in the editor.
+                </li>
+              </ul>
             </div>
           </div>
         </div>
-      </section>
 
-      <!-- Related tools -->
-      <article class="card" id="related">
-        <h2>Related tools</h2>
-        <p class="muted">More developer &amp; encoding utilities:</p>
-        <p>
-          <a class="btn" href="/url-tools/">URL Tools</a>
-          <a class="btn" href="/base64/">Base64 Encode/Decode</a>
-          <a class="btn" href="/text-utilities/">Text Utilities</a>
-          <a class="btn" href="/sha256/">SHA-256 Hash</a>
-        </p>
-        <p class="small">
-          Prefer বাংলা? Try the
-          <a href="/bn/json-formatter/" hreflang="bn">বাংলা সংস্করণ</a>.
-        </p>
-      </article>
-    </main>
+        <section class="faq-section card" id="faq">
+          <h2 class="faq-title">JSON Formatter – Frequently Asked Questions</h2>
 
-    <footer>© <span id="y"></span> Tools Pack</footer>
+          <div class="faq-container">
+            <!-- JSON Formatter FAQs -->
+            <div class="faq-item">
+              <button class="faq-question">
+                Is my JSON uploaded to a server?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>No. All processing happens locally in your browser.</p>
+              </div>
+            </div>
 
+            <div class="faq-item">
+              <button class="faq-question">
+                Does it support Unicode/Bangla?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>Yes. It is Unicode-safe.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                How do I pretty print and validate?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Paste JSON, click <em>Format</em> to pretty print; click
+                  <em>Validate</em> to only check correctness.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                How do I minify or find related tools?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Use the <em>Minify</em> button here. See
+                  <a href="#related">Related tools</a> below for URL/Base64
+                  utilities.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Related tools -->
+        <article class="card" id="related">
+          <h2>Related tools</h2>
+          <p class="muted">More developer &amp; encoding utilities:</p>
+          <p>
+            <a class="btn" href="/url-tools/">URL Tools</a>
+            <a class="btn" href="/base64/">Base64 Encode/Decode</a>
+            <a class="btn" href="/text-utilities/">Text Utilities</a>
+            <a class="btn" href="/sha256/">SHA-256 Hash</a>
+          </p>
+          <p class="small">
+            Prefer বাংলা? Try the
+            <a href="/bn/json-formatter/" hreflang="bn">বাংলা সংস্করণ</a>.
+          </p>
+        </article>
+      </main>
+
+      <footer>© <span id="y"></span> Tools Pack</footer>
+    </div>
     <script>
       // Year
       document.getElementById("y").textContent = new Date().getFullYear();

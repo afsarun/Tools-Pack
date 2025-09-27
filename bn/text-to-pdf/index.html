@@ -314,206 +314,208 @@
         data-adtest="on"
       ></ins>
     </div>
+    <div class="container">
+      <main class="wrap">
+        <nav class="breadcrumbs" aria-label="breadcrumb">
+          <a href="/bn/">হোম</a> › <a href="/bn/#text">টেক্সট টুলস</a> ›
+          <span>টেক্সট → PDF</span>
+        </nav>
 
-    <main class="wrap">
-      <nav class="breadcrumbs" aria-label="breadcrumb">
-        <a href="/bn/">হোম</a> › <a href="/bn/#text">টেক্সট টুলস</a> ›
-        <span>টেক্সট → PDF</span>
-      </nav>
-
-      <p class="toc">
-        <a href="#tool">কনভার্টার</a> ·
-        <a href="#how">কীভাবে ব্যবহার করবেন</a> ·
-        <a href="#faq">প্রশ্নোত্তর</a> ·
-        <a href="#related">সম্পর্কিত টুলস</a>
-      </p>
-
-      <article class="card" id="tool">
-        <h2>টেক্সট → PDF কনভার্টার</h2>
-
-        <div class="row">
-          <select id="page" class="select" aria-label="পেজ সাইজ">
-            <option value="A4">A4</option>
-            <option value="Letter">লেটার</option>
-            <option value="Legal">লিগ্যাল</option>
-          </select>
-
-          <select id="orient" class="select" aria-label="অরিয়েন্টেশন">
-            <option value="portrait">পোর্ট্রেট</option>
-            <option value="landscape">ল্যান্ডস্কেপ</option>
-          </select>
-
-          <label
-            class="field"
-            style="display: flex; align-items: center; gap: 10px"
-          >
-            <span class="muted">মার্জিন</span>
-            <input
-              id="margin"
-              type="number"
-              class="field"
-              value="15"
-              min="5"
-              max="40"
-            />
-            <span class="pill mono">মিমি</span>
-          </label>
-
-          <!-- NEW: font size (pt) -->
-          <label
-            class="field"
-            style="display: flex; align-items: center; gap: 10px"
-          >
-            <span class="muted">ফন্ট সাইজ</span>
-            <input
-              id="fsize"
-              type="number"
-              class="field"
-              value="12"
-              min="8"
-              max="48"
-            />
-            <span class="pill mono">pt</span>
-          </label>
-
-          <label class="pill"
-            ><input id="hdr" type="checkbox" checked /> হেডার</label
-          >
-          <label class="pill"><input id="ftr" type="checkbox" /> ফুটার</label>
-
-          <!-- Legacy Bijoy toggle -->
-          <label class="pill">
-            <input id="bijoy" type="checkbox" />
-            লিগ্যাসি (বিজয়/SutonnyMJ)
-          </label>
-        </div>
-
-        <textarea
-          id="txt"
-          class="textarea"
-          placeholder="এখানে আপনার টেক্সট লিখুন/পেস্ট করুন… বাংলা/ইউনিকোড/ইমোজি ✅"
-        ></textarea>
-
-        <div class="row">
-          <button class="btn btn-primary" id="print" type="button">
-            প্রিভিউ ও প্রিন্ট
-          </button>
-          <button class="btn" id="sample" type="button">নমুনা টেক্সট</button>
-        </div>
-
-        <!-- Ad #2 -->
-        <div
-          class="ad-wrap ad-article"
-          aria-label="Advertisement"
-          style="margin-top: 10px"
-        >
-          <span class="ad-label">Ad</span>
-          <ins
-            class="adsbygoogle"
-            style="display: inline-block; text-align: center"
-            data-ad-client="ca-pub-1234567890123456"
-            data-ad-slot="2222222222"
-            data-ad-format="fluid"
-            data-ad-layout="in-article"
-            data-adtest="on"
-          ></ins>
-        </div>
-
-        <div id="status" class="muted small" aria-live="polite">
-          প্রিন্ট ডায়ালগে <strong>Save as PDF</strong> নির্বাচন করুন।
-        </div>
-      </article>
-
-      <article class="card" id="how">
-        <h2>কীভাবে ব্যবহার করবেন</h2>
-        <ol>
-          <li>
-            পেজ সাইজ, অরিয়েন্টেশন ও মার্জিন বেছে নিন; প্রয়োজনে হেডার/ফুটার অন
-            করুন।
-          </li>
-          <li>ফন্ট সাইজ (pt) সেট করুন—এডিটর ও PDF-এ দুটোতেই প্রযোজ্য।</li>
-          <li>
-            <strong>প্রিভিউ ও প্রিন্ট</strong> চাপুন → ব্রাউজারের প্রিন্ট
-            ডায়ালগে <em>Save as PDF</em> সিলেক্ট করুন।
-          </li>
-          <li>ডার্ক মোড থাকলেও PDF আউটপুট সাদা ব্যাকগ্রাউন্ডে প্রিন্ট হবে।</li>
-        </ol>
-      </article>
-
-      <section class="faq-section card">
-        <h2 class="faq-title">প্রশ্নোত্তর</h2>
-
-        <div class="faq-container">
-          <!-- Text to PDF Converter FAQs (Bangla) -->
-          <div class="faq-item">
-            <button class="faq-question">
-              অফলাইনে চলবে?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>হ্যাঁ—প্রথম লোডের পর সবকিছু ব্রাউজারেই সম্পন্ন হয়।</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              ফন্ট কী ব্যবহার হবে?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                সিস্টেম/ব্রাউজারের ডিফল্ট ফন্ট—বাংলা, ইমোজি ইত্যাদি ইউনিকোড
-                টেক্সট সাপোর্ট করে।
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              পেজ নম্বর/হেডার-ফুটার?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                টুলের হেডার/ফুটার অপশন অন করলে টাইটেল ও তৈরি হওয়ার সময় দেখাবে।
-                পেজ নম্বর দরকার হলে প্রিন্ট ডায়ালগের
-                <em>Headers &amp; Footers</em> অপশন ব্যবহার করতে পারেন
-                (ব্রাউজারভেদে ভিন্ন হতে পারে)।
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              প্রাইভেসি?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>কোনো ডেটা সার্ভারে পাঠানো হয় না—সব কাজ লোকালেই।</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <article class="card" id="related">
-        <h2>সম্পর্কিত টুলস</h2>
-        <p class="muted">আরও টেক্সট/ডকুমেন্ট টুলস:</p>
-        <p>
-          <a class="btn" href="/bn/quick-notes/">দ্রুত নোটস</a>
-          <a class="btn" href="/bn/text-utilities/">টেক্সট টুলস</a>
-          <a class="btn" href="/bn/json-formatter/">JSON ফরম্যাটার</a>
+        <p class="toc">
+          <a href="#tool">কনভার্টার</a> ·
+          <a href="#how">কীভাবে ব্যবহার করবেন</a> ·
+          <a href="#faq">প্রশ্নোত্তর</a> ·
+          <a href="#related">সম্পর্কিত টুলস</a>
         </p>
-        <p class="small">
-          English preferred? See the
-          <a href="/text-to-pdf/" hreflang="en">English version</a>.
-        </p>
-      </article>
-    </main>
 
-    <footer>
-      © <span id="y"></span> Tools Pack • <a class="muted" href="/bn/">হোম</a>
-    </footer>
+        <article class="card" id="tool">
+          <h2>টেক্সট → PDF কনভার্টার</h2>
 
+          <div class="row">
+            <select id="page" class="select" aria-label="পেজ সাইজ">
+              <option value="A4">A4</option>
+              <option value="Letter">লেটার</option>
+              <option value="Legal">লিগ্যাল</option>
+            </select>
+
+            <select id="orient" class="select" aria-label="অরিয়েন্টেশন">
+              <option value="portrait">পোর্ট্রেট</option>
+              <option value="landscape">ল্যান্ডস্কেপ</option>
+            </select>
+
+            <label
+              class="field"
+              style="display: flex; align-items: center; gap: 10px"
+            >
+              <span class="muted">মার্জিন</span>
+              <input
+                id="margin"
+                type="number"
+                class="field"
+                value="15"
+                min="5"
+                max="40"
+              />
+              <span class="pill mono">মিমি</span>
+            </label>
+
+            <!-- NEW: font size (pt) -->
+            <label
+              class="field"
+              style="display: flex; align-items: center; gap: 10px"
+            >
+              <span class="muted">ফন্ট সাইজ</span>
+              <input
+                id="fsize"
+                type="number"
+                class="field"
+                value="12"
+                min="8"
+                max="48"
+              />
+              <span class="pill mono">pt</span>
+            </label>
+
+            <label class="pill"
+              ><input id="hdr" type="checkbox" checked /> হেডার</label
+            >
+            <label class="pill"><input id="ftr" type="checkbox" /> ফুটার</label>
+
+            <!-- Legacy Bijoy toggle -->
+            <label class="pill">
+              <input id="bijoy" type="checkbox" />
+              লিগ্যাসি (বিজয়/SutonnyMJ)
+            </label>
+          </div>
+
+          <textarea
+            id="txt"
+            class="textarea"
+            placeholder="এখানে আপনার টেক্সট লিখুন/পেস্ট করুন… বাংলা/ইউনিকোড/ইমোজি ✅"
+          ></textarea>
+
+          <div class="row">
+            <button class="btn btn-primary" id="print" type="button">
+              প্রিভিউ ও প্রিন্ট
+            </button>
+            <button class="btn" id="sample" type="button">নমুনা টেক্সট</button>
+          </div>
+
+          <!-- Ad #2 -->
+          <div
+            class="ad-wrap ad-article"
+            aria-label="Advertisement"
+            style="margin-top: 10px"
+          >
+            <span class="ad-label">Ad</span>
+            <ins
+              class="adsbygoogle"
+              style="display: inline-block; text-align: center"
+              data-ad-client="ca-pub-1234567890123456"
+              data-ad-slot="2222222222"
+              data-ad-format="fluid"
+              data-ad-layout="in-article"
+              data-adtest="on"
+            ></ins>
+          </div>
+
+          <div id="status" class="muted small" aria-live="polite">
+            প্রিন্ট ডায়ালগে <strong>Save as PDF</strong> নির্বাচন করুন।
+          </div>
+        </article>
+
+        <article class="card" id="how">
+          <h2>কীভাবে ব্যবহার করবেন</h2>
+          <ol>
+            <li>
+              পেজ সাইজ, অরিয়েন্টেশন ও মার্জিন বেছে নিন; প্রয়োজনে হেডার/ফুটার
+              অন করুন।
+            </li>
+            <li>ফন্ট সাইজ (pt) সেট করুন—এডিটর ও PDF-এ দুটোতেই প্রযোজ্য।</li>
+            <li>
+              <strong>প্রিভিউ ও প্রিন্ট</strong> চাপুন → ব্রাউজারের প্রিন্ট
+              ডায়ালগে <em>Save as PDF</em> সিলেক্ট করুন।
+            </li>
+            <li>
+              ডার্ক মোড থাকলেও PDF আউটপুট সাদা ব্যাকগ্রাউন্ডে প্রিন্ট হবে।
+            </li>
+          </ol>
+        </article>
+
+        <section class="faq-section card">
+          <h2 class="faq-title">প্রশ্নোত্তর</h2>
+
+          <div class="faq-container">
+            <!-- Text to PDF Converter FAQs (Bangla) -->
+            <div class="faq-item">
+              <button class="faq-question">
+                অফলাইনে চলবে?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>হ্যাঁ—প্রথম লোডের পর সবকিছু ব্রাউজারেই সম্পন্ন হয়।</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                ফন্ট কী ব্যবহার হবে?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  সিস্টেম/ব্রাউজারের ডিফল্ট ফন্ট—বাংলা, ইমোজি ইত্যাদি ইউনিকোড
+                  টেক্সট সাপোর্ট করে।
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                পেজ নম্বর/হেডার-ফুটার?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  টুলের হেডার/ফুটার অপশন অন করলে টাইটেল ও তৈরি হওয়ার সময়
+                  দেখাবে। পেজ নম্বর দরকার হলে প্রিন্ট ডায়ালগের
+                  <em>Headers &amp; Footers</em> অপশন ব্যবহার করতে পারেন
+                  (ব্রাউজারভেদে ভিন্ন হতে পারে)।
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                প্রাইভেসি?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>কোনো ডেটা সার্ভারে পাঠানো হয় না—সব কাজ লোকালেই।</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <article class="card" id="related">
+          <h2>সম্পর্কিত টুলস</h2>
+          <p class="muted">আরও টেক্সট/ডকুমেন্ট টুলস:</p>
+          <p>
+            <a class="btn" href="/bn/quick-notes/">দ্রুত নোটস</a>
+            <a class="btn" href="/bn/text-utilities/">টেক্সট টুলস</a>
+            <a class="btn" href="/bn/json-formatter/">JSON ফরম্যাটার</a>
+          </p>
+          <p class="small">
+            English preferred? See the
+            <a href="/text-to-pdf/" hreflang="en">English version</a>.
+          </p>
+        </article>
+      </main>
+
+      <footer>
+        © <span id="y"></span> Tools Pack • <a class="muted" href="/bn/">হোম</a>
+      </footer>
+    </div>
     <script>
       // Footer year
       document.getElementById("y").textContent = new Date().getFullYear();

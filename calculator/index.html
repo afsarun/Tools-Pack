@@ -252,363 +252,396 @@
         data-adtest="on"
       ></ins>
     </div>
-
-    <main class="wrap">
+    <div class="container">
       <!-- Breadcrumbs -->
       <nav class="breadcrumbs" aria-label="breadcrumb">
         <a href="/">Home</a> › <a href="/#math">Math Tools</a> ›
         <span>Calculator</span>
       </nav>
-
-      <p class="intro">
-        Use this <strong>free online calculator</strong> Do fast, accurate math
-        with our <strong>Calculator</strong>. It supports the core
-        operations—addition, subtraction, multiplication, division—plus
-        percentages, parentheses, memory keys, and keyboard input. Everything
-        runs locally in your browser for instant, private results.
-      </p>
+      <header class="header">
+        <h1 class="">Fast, Private, and Offline-<br />Friendly Notes</h1>
+        <p class="subtitle">
+          Use this <strong>free online calculator</strong> Do fast, accurate
+          math with our <strong>Calculator</strong>. It supports the core
+          operations—addition, subtraction, multiplication, division—plus
+          percentages, parentheses, memory keys, and keyboard input. Everything
+          runs locally in your browser for instant, private results.
+        </p>
+        <span class="badge">RFC 3986 Compliant</span>
+      </header>
       <!-- TOC -->
-      <p class="toc">
-        <a href="#calc">Calculator</a> · <a href="#use-cases">Use cases</a> ·
-        <a href="#how-to-use">How to use</a> · <a href="#faq">FAQ</a> ·
+
+      <p class="toc" aria-label="Table of Contents">
+        <a href="#calc">Calculator</a> · <a href="#where">Where to use </a> ·
+        <a href="#best-practices">Best Practices</a> ·
+        <a href="#details">Details</a> · <a href="#faq">FAQ</a> ·
         <a href="#related">Related tools</a>
       </p>
+      <main class="wrap">
+        <!-- Calculator -->
+        <article class="card tool-card" id="calc">
+          <h2>Calculate</h2>
+          <textarea
+            id="expr"
+            class="form-textarea"
+            placeholder="e.g., (12 + 7) / 3 * 2   or   12% * 200"
+            aria-label="Expression"
+          ></textarea>
 
-      <!-- Calculator -->
-      <article class="card" id="calc">
-        <h2>Calculate</h2>
-        <textarea
-          id="expr"
-          class="textarea"
-          placeholder="e.g., (12 + 7) / 3 * 2   or   12% * 200"
-          aria-label="Expression"
-        ></textarea>
-
-        <div style="margin-top: 10px">
-          <button class="btn btn-primary" id="evalBtn" type="button">
-            Evaluate
-          </button>
-          <button class="btn" id="clrBtn" type="button">Clear</button>
-          <button class="btn" id="cpyBtn" type="button">Copy result</button>
-        </div>
-
-        <!-- Ad #2: in-article (fluid) -->
-        <div class="ad-wrap ad-article" aria-label="Advertisement">
-          <span class="ad-label">Ad</span>
-          <ins
-            class="adsbygoogle"
-            style="display: block; text-align: center"
-            data-ad-client="ca-pub-1234567890123456"
-            data-ad-slot="2222222222"
-            data-ad-format="fluid"
-            data-ad-layout="in-article"
-            data-adtest="on"
-          ></ins>
-        </div>
-
-        <input
-          id="out"
-          class="field"
-          readonly
-          placeholder="Result appears here"
-          aria-label="Result"
-        />
-        <p class="muted">
-          Allowed: digits, + − × ÷ * / ( ) . and % (as percent). Use parentheses
-          for order of operations.
-        </p>
-        <div id="msg" class="muted" aria-live="polite" role="status"></div>
-      </article>
-      <article class="card" id="calc-details">
-        <h2>What this Calculator Supports</h2>
-
-        <div class="calc-features-grid">
-          <div class="calc-group">
-            <h3>Core Math</h3>
-            <ul>
-              <li>
-                <strong>Addition (+)</strong> &amp;
-                <strong>Subtraction (−)</strong>
-              </li>
-              <li>
-                <strong>Multiplication (×)</strong> &amp;
-                <strong>Division (÷)</strong> (with divide-by-zero guard)
-              </li>
-              <li>
-                <strong>Percent (%)</strong>: <em>12 + 5%</em> ⇒
-                <code>12 + (12×0.05) = 12.6</code>
-              </li>
-              <li>
-                <strong>Parentheses</strong>: order of operations
-                <em>(PEMDAS)</em>
-              </li>
-              <li><strong>Decimals</strong> and negative numbers</li>
-            </ul>
-            <p class="small muted">
-              Follows standard operator precedence: parentheses → × ÷ → + −.
-            </p>
+          <div style="margin-top: 10px">
+            <button class="btn btn-primary" id="evalBtn" type="button">
+              Evaluate
+            </button>
+            <button class="btn" id="clrBtn" type="button">Clear</button>
+            <button class="btn" id="cpyBtn" type="button">Copy result</button>
           </div>
 
-          <div class="calc-group">
-            <h3>Memory Keys</h3>
-            <ul>
-              <li><strong>MC</strong>: clear memory</li>
-              <li><strong>MR</strong>: recall memory</li>
-              <li>
-                <strong>M+</strong>/<strong>M−</strong>: add/subtract displayed
-                value to memory
-              </li>
-            </ul>
-            <p class="small muted">
-              Memory persists until cleared or page refresh.
-            </p>
+          <!-- Ad #2: in-article (fluid) -->
+          <div class="ad-wrap ad-article" aria-label="Advertisement">
+            <span class="ad-label">Ad</span>
+            <ins
+              class="adsbygoogle"
+              style="display: inline-block; text-align: center"
+              data-ad-client="ca-pub-1234567890123456"
+              data-ad-slot="2222222222"
+              data-ad-format="fluid"
+              data-ad-layout="in-article"
+              data-adtest="on"
+            ></ins>
           </div>
 
-          <div class="calc-group">
-            <h3>Precision</h3>
-            <ul>
-              <li>
-                Smart rounding to reduce floating-point artifacts (<code
-                  >0.1 + 0.2 ≈ 0.3</code
-                >)
-              </li>
-              <li>Configurable max digits and decimal places</li>
-            </ul>
-          </div>
-        </div>
-
-        <h3>Error Handling</h3>
-        <ul>
-          <li>
-            <strong>Division by zero</strong> → shows <code>Error</code> and
-            keeps last valid value
-          </li>
-          <li>
-            <strong>Unbalanced parentheses</strong> → prompts to review
-            expression
-          </li>
-          <li>
-            <strong>Invalid input</strong> (e.g., two operators in a row) →
-            ignored or corrected safely
-          </li>
-        </ul>
-      </article>
-
-      <article class="card" id="how-to-use">
-        <h2>How to Use</h2>
-        <ol>
-          <li>Enter numbers via on-screen buttons or your keyboard.</li>
-          <li>
-            Select an operation (<strong>+, −, ×, ÷, %</strong>) or wrap parts
-            in <strong>( )</strong>.
-          </li>
-          <li>Press <strong>=</strong> or hit <kbd>Enter</kbd> to evaluate.</li>
-          <li>
-            Use <strong>C</strong>/<strong>AC</strong> to clear;
-            <strong>DEL</strong> to backspace one character.
-          </li>
-        </ol>
-
-        <h3>Keyboard Shortcuts</h3>
-        <ul>
-          <li><kbd>0–9</kbd> digits, <kbd>.</kbd> decimal point</li>
-          <li>
-            <kbd>+</kbd> <kbd>-</kbd> <kbd>*</kbd> (×) <kbd>/</kbd> (÷),
-            <kbd>%</kbd> percent
-          </li>
-          <li><kbd>(</kbd> <kbd>)</kbd> parentheses</li>
-          <li>
-            <kbd>Enter</kbd> = evaluate, <kbd>Backspace</kbd> = delete,
-            <kbd>Esc</kbd> = clear
-          </li>
-          <li>
-            <kbd>M</kbd><kbd>R</kbd> MR, <kbd>M</kbd><kbd>C</kbd> MC,
-            <kbd>M</kbd><kbd>+</kbd> M+, <kbd>M</kbd><kbd>-</kbd> M− (if
-            supported)
-          </li>
-        </ul>
-      </article>
-      <!-- Real-World Applications -->
-      <article class="card" id="applications">
-        <h2>Where This Helps</h2>
-        <div class="applications-grid">
-          <div class="use-case">
-            <h4>🛒 Discounts & Tax</h4>
-            <p>Apply % off/on, add sales tax, tip calculations</p>
-            <span class="badge">% &amp; totals</span>
-          </div>
-          <div class="use-case">
-            <h4>📈 Budgets & Reports</h4>
-            <p>Margins, averages, quick checks</p>
-            <span class="badge">× ÷ + −</span>
-          </div>
-          <div class="use-case">
-            <h4>📚 Homework</h4>
-            <p>Order of operations with parentheses</p>
-            <span class="badge">( ) first</span>
-          </div>
-          <div class="use-case">
-            <h4>⚙️ Everyday Math</h4>
-            <p>Splitting bills, unit prices, ratios</p>
-            <span class="badge">fast &amp; local</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Tips & Accuracy -->
-      <article class="card" id="calc-tips">
-        <h2>Tips for Accurate Results</h2>
-        <div class="tip">
-          <h3>🧮 Use parentheses to control order</h3>
-          <p>
-            e.g., <code>(100 + 20) × 0.15</code> vs
-            <code>100 + 20 × 0.15</code>.
+          <input
+            id="out"
+            class="form-input"
+            readonly
+            placeholder="Result appears here"
+            aria-label="Result"
+          />
+          <p class="muted">
+            Allowed: digits, + − × ÷ * / ( ) . and % (as percent). Use
+            parentheses for order of operations.
           </p>
+          <div id="msg" class="muted" aria-live="polite" role="status"></div>
+        </article>
+
+        <!-- Examples -->
+        <div class="card" id="where">
+          <h2>Where This Helps</h2>
+          <div class="examples">
+            <div class="example">
+              <div class="example-title">🛒 Discounts &amp; Tax</div>
+              <div class="example-content">
+                Apply % off/on, add sales tax, tip calculations
+              </div>
+              <span class="badge">% &amp; totals</span>
+            </div>
+
+            <div class="example">
+              <div class="example-title">📈 Budgets &amp; Reports</div>
+              <div class="example-content">Margins, averages, quick checks</div>
+              <span class="badge">× ÷ + −</span>
+            </div>
+
+            <div class="example">
+              <div class="example-title">📚 Homework</div>
+              <div class="example-content">
+                Order of operations with parentheses
+              </div>
+              <span class="badge">( ) first</span>
+            </div>
+
+            <div class="example">
+              <div class="example-title">⚙️ Everyday Math</div>
+              <div class="example-content">
+                Splitting bills, unit prices, ratios
+              </div>
+              <span class="badge">fast &amp; local</span>
+            </div>
+          </div>
         </div>
-        <div class="tip">
-          <h3>🔢 Limit displayed decimals</h3>
-          <p>Round to 2–4 decimals for currency or reporting clarity.</p>
+
+        <!-- Tips -->
+        <div class="card" id="best-practices">
+          <h2>Tips for Accurate Results</h2>
+          <div class="examples">
+            <div class="example">
+              <div class="example-title">
+                🧮 Use parentheses to control order
+              </div>
+              <div class="example-content">
+                Example: <code>(100 + 20) × 0.15</code> vs
+                <code>100 + 20 × 0.15</code>
+              </div>
+            </div>
+
+            <div class="example">
+              <div class="example-title">🔢 Limit displayed decimals</div>
+              <div class="example-content">
+                Round to 2–4 decimals for currency or reporting clarity.
+              </div>
+            </div>
+
+            <div class="example">
+              <div class="example-title">➗ Check percent intent</div>
+              <div class="example-content">
+                <code>50 + 10%</code> = add 10% of 50 <br />
+                <code>50 × 10%</code> = 10% of 50
+              </div>
+            </div>
+
+            <div class="example">
+              <div class="example-title">⌨️ Prefer keyboard for speed</div>
+              <div class="example-content">
+                Use Enter, Backspace, and operator keys for faster input.
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="tip">
-          <h3>➗ Check percent intent</h3>
+
+        <!-- Technical Implementation -->
+        <div class="card">
+          <h2>Technical Implementation</h2>
+          <div class="examples">
+            <div class="example">
+              <div class="example-title">⚙️ Safe Evaluate</div>
+              <div class="example-content">
+                Expression parser respects operator precedence (PEMDAS), handles
+                errors, and guards against invalid inputs for reliable
+                calculations.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Information Grid -->
+        <div class="info-grid" id="details">
+          <!-- Core Math -->
+          <div class="card">
+            <div class="info-section">
+              <h3>➕ Core Math</h3>
+              <ul>
+                <li>
+                  Addition, Subtraction, Multiplication, Division (with
+                  divide-by-zero guard)
+                </li>
+                <li>Percent calculations (e.g., 12 + 5% ⇒ 12.6)</li>
+                <li>Parentheses (PEMDAS)</li>
+                <li>Decimals and negatives</li>
+                <li>
+                  <strong>Supports operator precedence:</strong> ( ) → × ÷ → + −
+                </li>
+              </ul>
+              <span class="badge">core math</span>
+            </div>
+          </div>
+
+          <!-- Memory Keys -->
+          <div class="card">
+            <div class="info-section">
+              <h3>💾 Memory Keys</h3>
+              <ul>
+                <li><strong>MC:</strong> clear memory</li>
+                <li><strong>MR:</strong> recall memory</li>
+                <li>
+                  <strong>M+ / M−:</strong> add/subtract displayed value to
+                  memory
+                </li>
+                <li>Memory persists until cleared or page refresh</li>
+              </ul>
+              <span class="badge">memory</span>
+            </div>
+          </div>
+
+          <!-- Precision -->
+          <div class="card">
+            <div class="info-section">
+              <h3>🎯 Precision</h3>
+              <ul>
+                <li>
+                  Smart rounding to reduce floating-point artifacts (e.g., 0.1 +
+                  0.2 ≈ 0.3)
+                </li>
+                <li>Configurable max digits and decimal places</li>
+              </ul>
+              <span class="badge">precision</span>
+            </div>
+          </div>
+
+          <!-- Error Handling -->
+          <div class="card">
+            <div class="info-section">
+              <h3>⚠️ Error Handling</h3>
+              <ul>
+                <li>
+                  Division by zero → shows Error and keeps last valid value
+                </li>
+                <li>Unbalanced parentheses → prompts to review expression</li>
+                <li>
+                  Invalid input (e.g., two operators in a row) → ignored or
+                  corrected safely
+                </li>
+              </ul>
+              <span class="badge">safe input</span>
+            </div>
+          </div>
+
+          <!-- How to Use -->
+          <div class="card">
+            <div class="info-section">
+              <h3>🧩 How to Use</h3>
+              <ul>
+                <li>Enter numbers via on-screen buttons or keyboard</li>
+                <li>
+                  Select an operation (+, −, ×, ÷, %) or wrap parts in ( )
+                </li>
+                <li>Press <strong>=</strong> or hit Enter to evaluate</li>
+                <li>
+                  Use C/AC to clear; DEL/Backspace to remove last character
+                </li>
+              </ul>
+              <span class="badge">usage</span>
+            </div>
+          </div>
+
+          <!-- Keyboard Shortcuts -->
+          <div class="card">
+            <div class="info-section">
+              <h3>⌨️ Keyboard Shortcuts</h3>
+              <ul>
+                <li>0–9 digits, <code>.</code> decimal point</li>
+                <li><code>+ − × ÷ %</code> for operations</li>
+                <li><code>( )</code> for parentheses</li>
+                <li>Enter = evaluate</li>
+                <li>Backspace = delete</li>
+                <li>Esc = clear</li>
+                <li>MR, MC, M+, M− for memory</li>
+              </ul>
+              <span class="badge">shortcuts</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ✅ FAQ (plain language; keep JSON-LD in sync) -->
+        <section class="faq-section card" id="faq">
+          <h2 class="faq-title">Calculator – Frequently Asked Questions</h2>
+
+          <div class="faq-container">
+            <!-- Calculator FAQs -->
+            <div class="faq-item">
+              <button class="faq-question">
+                Does this calculator work offline?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Yes. After the first load, everything runs in your browser.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Are my calculations tracked?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  No. We don’t send your input anywhere — it stays on your
+                  device.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                How does % work here?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  A number followed by <code>%</code> is a percentage of 1. For
+                  example, <code>12%</code> becomes <code>12/100</code>, so
+                  <code>12% * 200 = 24</code>.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Which operations are supported?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Basic arithmetic with parentheses:
+                  <code>+</code> <code>−</code> <code>×</code>
+                  <code>÷</code> (also <code>*</code> and <code>/</code>),
+                  decimals, and <code>%</code>.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Why do I sometimes see long decimals?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  That’s normal with floating-point math in browsers. You may
+                  see tiny rounding artifacts (e.g.,
+                  <code>0.30000000000000004</code>).
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Is this mobile-friendly?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>Yes. It works in any modern mobile or desktop browser.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Does it support scientific functions?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Not in this tool — it keeps things simple. For advanced math,
+                  use a scientific calculator.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Related tools -->
+        <article class="card" id="related">
+          <h2>Related tools</h2>
+          <p class="muted">More math &amp; number utilities:</p>
           <p>
-            <code>50 + 10%</code> means add 10% of 50;
-            <code>50 × 10%</code> means 10% of 50.
+            <a class="btn" href="/percent-calculator/">Percent Calculator</a>
+            <a class="btn" href="/unit-converter/">Unit Converter</a>
+            <a class="btn" href="/age-calculator/">Age Calculator</a>
+            <a class="btn" href="/text-utilities/">Text Utilities</a>
           </p>
-        </div>
-        <div class="tip">
-          <h3>⌨️ Prefer keyboard for speed</h3>
-          <p>
-            Use <kbd>Enter</kbd>, <kbd>Backspace</kbd>, and operator keys for
-            faster input.
+          <p class="small">
+            Prefer বাংলা? Try the
+            <a href="/bn/calculator/" hreflang="bn">বাংলা সংস্করণ</a>.
           </p>
-        </div>
-      </article>
+        </article>
+      </main>
 
-      <!-- Technical Implementation -->
-      <article class="card" id="technical">
-        <h2>Technical Implementation</h2>
-
-        <h3>Safe Evaluate (order of operations)</h3>
-      </article>
-      <!-- ✅ FAQ (plain language; keep JSON-LD in sync) -->
-      <section class="faq-section card">
-        <h2 class="faq-title">Calculator – Frequently Asked Questions</h2>
-
-        <div class="faq-container">
-          <!-- Calculator FAQs -->
-          <div class="faq-item">
-            <button class="faq-question">
-              Does this calculator work offline?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>Yes. After the first load, everything runs in your browser.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              Are my calculations tracked?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                No. We don’t send your input anywhere — it stays on your device.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              How does % work here?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                A number followed by <code>%</code> is a percentage of 1. For
-                example, <code>12%</code> becomes <code>12/100</code>, so
-                <code>12% * 200 = 24</code>.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              Which operations are supported?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Basic arithmetic with parentheses:
-                <code>+</code> <code>−</code> <code>×</code>
-                <code>÷</code> (also <code>*</code> and <code>/</code>),
-                decimals, and <code>%</code>.
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              Why do I sometimes see long decimals?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                That’s normal with floating-point math in browsers. You may see
-                tiny rounding artifacts (e.g.,
-                <code>0.30000000000000004</code>).
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              Is this mobile-friendly?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>Yes. It works in any modern mobile or desktop browser.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              Does it support scientific functions?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Not in this tool — it keeps things simple. For advanced math,
-                use a scientific calculator.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Related tools -->
-      <article class="card" id="related">
-        <h2>Related tools</h2>
-        <p class="muted">More math &amp; number utilities:</p>
-        <p>
-          <a class="btn" href="/percent-calculator/">Percent Calculator</a>
-          <a class="btn" href="/unit-converter/">Unit Converter</a>
-          <a class="btn" href="/age-calculator/">Age Calculator</a>
-          <a class="btn" href="/text-utilities/">Text Utilities</a>
-        </p>
-        <p class="small">
-          Prefer বাংলা? Try the
-          <a href="/bn/calculator/" hreflang="bn">বাংলা সংস্করণ</a>.
-        </p>
-      </article>
-    </main>
-
-    <footer>
-      © <span id="y"></span> Tools Pack • <a class="muted" href="/">Home</a> •
-      <a class="muted" href="/bn/calculator/" hreflang="bn">বাংলা</a>
-    </footer>
-
+      <footer>
+        © <span id="y"></span> Tools Pack • <a class="muted" href="/">Home</a> •
+        <a class="muted" href="/bn/calculator/" hreflang="bn">বাংলা</a>
+      </footer>
+    </div>
     <script>
       // Footer year
       document.getElementById("y").textContent = new Date().getFullYear();

@@ -226,257 +226,259 @@
         data-adtest="on"
       ></ins>
     </div>
+    <div class="container">
+      <main class="wrap">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs" aria-label="breadcrumb">
+          <a href="/bn/">হোম</a> › <a href="/bn/#math">গণিত টুলস</a> ›
+          <span>ক্যালকুলেটর</span>
+        </nav>
 
-    <main class="wrap">
-      <!-- Breadcrumbs -->
-      <nav class="breadcrumbs" aria-label="breadcrumb">
-        <a href="/bn/">হোম</a> › <a href="/bn/#math">গণিত টুলস</a> ›
-        <span>ক্যালকুলেটর</span>
-      </nav>
+        <!-- ✅ সংক্ষিপ্ত ইন্ট্রো (সেমান্টিকালি সমৃদ্ধ) -->
+        <section class="card">
+          <p>
+            এই <strong>ফ্রি অনলাইন ক্যালকুলেটর</strong> দিয়ে মুহূর্তেই
+            <em>যোগ, বিয়োগ, গুণ, ভাগ</em> ও <em>শতাংশ</em>ের হিসাব করুন। হালকা,
+            নির্ভুল, এবং <strong>প্রাইভেসি-ফার্স্ট</strong> — প্রথম লোডের পর
+            অফলাইনে চলে।
+          </p>
+        </section>
 
-      <!-- ✅ সংক্ষিপ্ত ইন্ট্রো (সেমান্টিকালি সমৃদ্ধ) -->
-      <section class="card">
-        <p>
-          এই <strong>ফ্রি অনলাইন ক্যালকুলেটর</strong> দিয়ে মুহূর্তেই
-          <em>যোগ, বিয়োগ, গুণ, ভাগ</em> ও <em>শতাংশ</em>ের হিসাব করুন। হালকা,
-          নির্ভুল, এবং <strong>প্রাইভেসি-ফার্স্ট</strong> — প্রথম লোডের পর
-          অফলাইনে চলে।
+        <!-- TOC -->
+        <p class="toc">
+          <a href="#calc">ক্যালকুলেটর</a> ·
+          <a href="#use-cases">কোথায় কাজে লাগে</a> ·
+          <a href="#how-to-use">কীভাবে ব্যবহার করবেন</a> ·
+          <a href="#faq">প্রশ্নোত্তর</a> ·
+          <a href="#related">সম্পর্কিত টুলস</a>
         </p>
-      </section>
 
-      <!-- TOC -->
-      <p class="toc">
-        <a href="#calc">ক্যালকুলেটর</a> ·
-        <a href="#use-cases">কোথায় কাজে লাগে</a> ·
-        <a href="#how-to-use">কীভাবে ব্যবহার করবেন</a> ·
-        <a href="#faq">প্রশ্নোত্তর</a> ·
-        <a href="#related">সম্পর্কিত টুলস</a>
-      </p>
+        <!-- Calculator -->
+        <article class="card" id="calc">
+          <h2>হিসাব করুন</h2>
 
-      <!-- Calculator -->
-      <article class="card" id="calc">
-        <h2>হিসাব করুন</h2>
+          <textarea
+            id="expr"
+            class="textarea"
+            placeholder="যেমন: (12 + 7) / 3 * 2   অথবা   12% * 200"
+            aria-label="এক্সপ্রেশন"
+          ></textarea>
 
-        <textarea
-          id="expr"
-          class="textarea"
-          placeholder="যেমন: (12 + 7) / 3 * 2   অথবা   12% * 200"
-          aria-label="এক্সপ্রেশন"
-        ></textarea>
-
-        <div style="margin-top: 10px">
-          <button class="btn btn-primary" id="evalBtn" type="button">
-            হিসাব করুন
-          </button>
-          <button class="btn" id="clrBtn" type="button">সাফ করুন</button>
-          <button class="btn" id="cpyBtn" type="button">ফল কপি</button>
-        </div>
-
-        <!-- Ad #2: In-article -->
-        <div class="ad-wrap ad-article" aria-label="Advertisement">
-          <span class="ad-label">Ad</span>
-          <ins
-            class="adsbygoogle"
-            style="display: block; text-align: center"
-            data-ad-client="ca-pub-1234567890123456"
-            data-ad-slot="2222222222"
-            data-ad-format="fluid"
-            data-ad-layout="in-article"
-            data-adtest="on"
-          ></ins>
-        </div>
-
-        <input
-          id="out"
-          class="field"
-          readonly
-          placeholder="ফলাফল এখানে…"
-          aria-label="ফলাফল"
-        />
-        <p class="muted">
-          অনুমোদিত: সংখ্যা, + − × ÷ (অথবা * ও /), <code>( )</code>, দশমিক এবং %।
-          অর্ডার বজায় রাখতে ব্র্যাকেট ব্যবহার করুন।
-        </p>
-        <div id="msg" class="muted" aria-live="polite" role="status"></div>
-      </article>
-
-      <!-- ✅ Use cases -->
-      <article class="card" id="use-cases">
-        <h2>কোথায় কাজে লাগে</h2>
-        <ul>
-          <li>
-            <strong>শপিং/ডিসকাউন্ট:</strong> সেলে শতাংশের হিসাব (যেমন
-            <code>25% * 799</code> → সেভিংস)।
-          </li>
-          <li>
-            <strong>বাজেট/বিল:</strong> ডিনার, ভাড়া বা ইউটিলিটি সমানভাবে ভাগ
-            (যেমন <code>(1250 + 980) / 3</code>)।
-          </li>
-          <li><strong>পড়াশোনা/হোমওয়ার্ক:</strong> সাবমিটের আগে অংক যাচাই।</li>
-          <li>
-            <strong>ফর্ম/অ্যাডমিন:</strong> শতাংশ ও মোট ঠিক আছে কিনা দ্রুত
-            মিলিয়ে নিন।
-          </li>
-        </ul>
-      </article>
-
-      <!-- How to use -->
-      <article class="card" id="how-to-use">
-        <h2>কীভাবে ব্যবহার করবেন</h2>
-        <ol>
-          <li>
-            বক্সে এক্সপ্রেশন লিখুন। উদাহরণ: <code>(12 + 7) / 3 * 2</code>।
-          </li>
-          <li>
-            <strong>%</strong> ব্যবহার করুন শতাংশের জন্য। যেমন
-            <code>12% * 200</code> → <strong>24</strong> (আসলে
-            <code>12/100</code>)।
-          </li>
-          <li>
-            <strong>Enter</strong> চাপলে হিসাব হবে;
-            <strong>Shift+Enter</strong> দিলে নতুন লাইন।
-          </li>
-          <li>
-            <strong>ফল কপি</strong> দিয়ে রেজাল্ট কপি করুন;
-            <strong>সাফ করুন</strong> দিয়ে রিসেট করুন।
-          </li>
-          <li>
-            <em>×</em> ও <em>÷</em> লিখলেও স্বয়ংক্রিয়ভাবে <code>*</code> ও
-            <code>/</code> ধরা হবে।
-          </li>
-        </ol>
-        <h3>টিপস</h3>
-        <ul>
-          <li>
-            <strong>অফলাইনে চলে</strong> — প্রথম লোডের পর ইন্টারনেট ছাড়াই কাজ
-            করে।
-          </li>
-          <li>
-            ফ্লোটিং-পয়েন্টের কারণে ক্ষুদ্র রাউন্ডিং ত্রুটি দেখা যেতে পারে (যেমন
-            <code>0.1 + 0.2</code>)।
-          </li>
-          <li>
-            এটি <strong>বেসিক ক্যালকুলেটর</strong> — উন্নত ফাংশন (যেমন
-            <code>sin</code>, <code>sqrt</code>) নেই।
-          </li>
-        </ul>
-      </article>
-
-      <section class="faq-section card">
-        <h2 class="faq-title">প্রশ্নোত্তর/FAQ</h2>
-
-        <div class="faq-container">
-          <!-- Calculator FAQs (Bangla) -->
-          <div class="faq-item">
-            <button class="faq-question">
-              অফলাইনে চালানো যাবে?
-              <span class="faq-icon">+</span>
+          <div style="margin-top: 10px">
+            <button class="btn btn-primary" id="evalBtn" type="button">
+              হিসাব করুন
             </button>
-            <div class="faq-answer">
-              <p>হ্যাঁ। প্রথমবার লোডের পর সবকিছু আপনার ব্রাউজারেই চলে।</p>
-            </div>
+            <button class="btn" id="clrBtn" type="button">সাফ করুন</button>
+            <button class="btn" id="cpyBtn" type="button">ফল কপি</button>
           </div>
 
-          <div class="faq-item">
-            <button class="faq-question">
-              ইনপুট কি ট্র্যাক করা হয়?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                না। কোনো ডেটা কোথাও পাঠানো হয় না—সবকিছু আপনার ডিভাইসেই থাকে।
-              </p>
-            </div>
+          <!-- Ad #2: In-article -->
+          <div class="ad-wrap ad-article" aria-label="Advertisement">
+            <span class="ad-label">Ad</span>
+            <ins
+              class="adsbygoogle"
+              style="display: block; text-align: center"
+              data-ad-client="ca-pub-1234567890123456"
+              data-ad-slot="2222222222"
+              data-ad-format="fluid"
+              data-ad-layout="in-article"
+              data-adtest="on"
+            ></ins>
           </div>
 
-          <div class="faq-item">
-            <button class="faq-question">
-              % কিভাবে কাজ করে?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                সংখ্যার পরে <code>%</code> থাকলে সেটি ১-এর ভগ্নাংশ ধরা হয়। যেমন
-                <code>12%</code> = <code>12/100</code>, তাই
-                <code>12% * 200 = 24</code>।
-              </p>
+          <input
+            id="out"
+            class="field"
+            readonly
+            placeholder="ফলাফল এখানে…"
+            aria-label="ফলাফল"
+          />
+          <p class="muted">
+            অনুমোদিত: সংখ্যা, + − × ÷ (অথবা * ও /), <code>( )</code>, দশমিক এবং
+            %। অর্ডার বজায় রাখতে ব্র্যাকেট ব্যবহার করুন।
+          </p>
+          <div id="msg" class="muted" aria-live="polite" role="status"></div>
+        </article>
+
+        <!-- ✅ Use cases -->
+        <article class="card" id="use-cases">
+          <h2>কোথায় কাজে লাগে</h2>
+          <ul>
+            <li>
+              <strong>শপিং/ডিসকাউন্ট:</strong> সেলে শতাংশের হিসাব (যেমন
+              <code>25% * 799</code> → সেভিংস)।
+            </li>
+            <li>
+              <strong>বাজেট/বিল:</strong> ডিনার, ভাড়া বা ইউটিলিটি সমানভাবে ভাগ
+              (যেমন <code>(1250 + 980) / 3</code>)।
+            </li>
+            <li><strong>পড়াশোনা/হোমওয়ার্ক:</strong> সাবমিটের আগে অংক যাচাই।</li>
+            <li>
+              <strong>ফর্ম/অ্যাডমিন:</strong> শতাংশ ও মোট ঠিক আছে কিনা দ্রুত
+              মিলিয়ে নিন।
+            </li>
+          </ul>
+        </article>
+
+        <!-- How to use -->
+        <article class="card" id="how-to-use">
+          <h2>কীভাবে ব্যবহার করবেন</h2>
+          <ol>
+            <li>
+              বক্সে এক্সপ্রেশন লিখুন। উদাহরণ: <code>(12 + 7) / 3 * 2</code>।
+            </li>
+            <li>
+              <strong>%</strong> ব্যবহার করুন শতাংশের জন্য। যেমন
+              <code>12% * 200</code> → <strong>24</strong> (আসলে
+              <code>12/100</code>)।
+            </li>
+            <li>
+              <strong>Enter</strong> চাপলে হিসাব হবে;
+              <strong>Shift+Enter</strong> দিলে নতুন লাইন।
+            </li>
+            <li>
+              <strong>ফল কপি</strong> দিয়ে রেজাল্ট কপি করুন;
+              <strong>সাফ করুন</strong> দিয়ে রিসেট করুন।
+            </li>
+            <li>
+              <em>×</em> ও <em>÷</em> লিখলেও স্বয়ংক্রিয়ভাবে <code>*</code> ও
+              <code>/</code> ধরা হবে।
+            </li>
+          </ol>
+          <h3>টিপস</h3>
+          <ul>
+            <li>
+              <strong>অফলাইনে চলে</strong> — প্রথম লোডের পর ইন্টারনেট ছাড়াই কাজ
+              করে।
+            </li>
+            <li>
+              ফ্লোটিং-পয়েন্টের কারণে ক্ষুদ্র রাউন্ডিং ত্রুটি দেখা যেতে পারে
+              (যেমন
+              <code>0.1 + 0.2</code>)।
+            </li>
+            <li>
+              এটি <strong>বেসিক ক্যালকুলেটর</strong> — উন্নত ফাংশন (যেমন
+              <code>sin</code>, <code>sqrt</code>) নেই।
+            </li>
+          </ul>
+        </article>
+
+        <section class="faq-section card">
+          <h2 class="faq-title">প্রশ্নোত্তর/FAQ</h2>
+
+          <div class="faq-container">
+            <!-- Calculator FAQs (Bangla) -->
+            <div class="faq-item">
+              <button class="faq-question">
+                অফলাইনে চালানো যাবে?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>হ্যাঁ। প্রথমবার লোডের পর সবকিছু আপনার ব্রাউজারেই চলে।</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                ইনপুট কি ট্র্যাক করা হয়?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  না। কোনো ডেটা কোথাও পাঠানো হয় না—সবকিছু আপনার ডিভাইসেই থাকে।
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                % কিভাবে কাজ করে?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  সংখ্যার পরে <code>%</code> থাকলে সেটি ১-এর ভগ্নাংশ ধরা হয়।
+                  যেমন <code>12%</code> = <code>12/100</code>, তাই
+                  <code>12% * 200 = 24</code>।
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                কোন কোন অপারেশন সাপোর্টেড?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  বেসিক অংক ও ব্র্যাকেট: <code>+</code> <code>−</code>
+                  <code>×</code> <code>÷</code> (অথবা <code>*</code> /
+                  <code>/</code>), দশমিক, এবং <code>%</code>।
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                কেন কখনও কখনও লম্বা দশমিক দেখায়?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  ব্রাউজারের ফ্লোটিং-পয়েন্ট গাণিতিকের কারণে ক্ষুদ্র রাউন্ডিং
+                  ত্রুটি দেখা যেতে পারে (যেমন <code>0.30000000000000004</code>)।
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                মোবাইলে চলবে?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>হ্যাঁ। আধুনিক যেকোনো মোবাইল বা ডেস্কটপ ব্রাউজারে কাজ করে।</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                বৈজ্ঞানিক ফাংশন আছে?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  না—এটি বেসিক ক্যালকুলেটর। অ্যাডভান্সড হিসাবের জন্য সায়েন্টিফিক
+                  ক্যালকুলেটর ব্যবহার করুন।
+                </p>
+              </div>
             </div>
           </div>
+        </section>
 
-          <div class="faq-item">
-            <button class="faq-question">
-              কোন কোন অপারেশন সাপোর্টেড?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                বেসিক অংক ও ব্র্যাকেট: <code>+</code> <code>−</code>
-                <code>×</code> <code>÷</code> (অথবা <code>*</code> /
-                <code>/</code>), দশমিক, এবং <code>%</code>।
-              </p>
-            </div>
-          </div>
+        <!-- Related tools -->
+        <article class="card" id="related">
+          <h2>সম্পর্কিত টুলস</h2>
+          <p class="muted">আরও গণিত/সংখ্যা বিষয়ক টুলস:</p>
+          <p>
+            <a class="btn" href="/bn/percent-calculator/">শতকরা ক্যালকুলেটর</a>
+            <a class="btn" href="/bn/unit-converter/">ইউনিট কনভার্টার</a>
+            <a class="btn" href="/bn/age-calculator/">বয়স ক্যালকুলেটর</a>
+            <a class="btn" href="/bn/text-utilities/">টেক্সট টুলস</a>
+          </p>
+          <p class="small">
+            English preferred? See the
+            <a href="/calculator/" hreflang="en">English version</a>.
+          </p>
+        </article>
+      </main>
 
-          <div class="faq-item">
-            <button class="faq-question">
-              কেন কখনও কখনও লম্বা দশমিক দেখায়?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                ব্রাউজারের ফ্লোটিং-পয়েন্ট গাণিতিকের কারণে ক্ষুদ্র রাউন্ডিং
-                ত্রুটি দেখা যেতে পারে (যেমন <code>0.30000000000000004</code>)।
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              মোবাইলে চলবে?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>হ্যাঁ। আধুনিক যেকোনো মোবাইল বা ডেস্কটপ ব্রাউজারে কাজ করে।</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              বৈজ্ঞানিক ফাংশন আছে?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                না—এটি বেসিক ক্যালকুলেটর। অ্যাডভান্সড হিসাবের জন্য সায়েন্টিফিক
-                ক্যালকুলেটর ব্যবহার করুন।
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Related tools -->
-      <article class="card" id="related">
-        <h2>সম্পর্কিত টুলস</h2>
-        <p class="muted">আরও গণিত/সংখ্যা বিষয়ক টুলস:</p>
-        <p>
-          <a class="btn" href="/bn/percent-calculator/">শতকরা ক্যালকুলেটর</a>
-          <a class="btn" href="/bn/unit-converter/">ইউনিট কনভার্টার</a>
-          <a class="btn" href="/bn/age-calculator/">বয়স ক্যালকুলেটর</a>
-          <a class="btn" href="/bn/text-utilities/">টেক্সট টুলস</a>
-        </p>
-        <p class="small">
-          English preferred? See the
-          <a href="/calculator/" hreflang="en">English version</a>.
-        </p>
-      </article>
-    </main>
-
-    <footer>
-      © <span id="y"></span> Tools Pack • <a class="muted" href="/bn/">হোম</a> •
-      <a class="muted" href="/calculator/" hreflang="en">English</a>
-    </footer>
-
+      <footer>
+        © <span id="y"></span> Tools Pack •
+        <a class="muted" href="/bn/">হোম</a> •
+        <a class="muted" href="/calculator/" hreflang="en">English</a>
+      </footer>
+    </div>
     <script>
       // Year
       document.getElementById("y").textContent = new Date().getFullYear();

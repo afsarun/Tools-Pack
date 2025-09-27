@@ -190,179 +190,188 @@
         data-adtest="on"
       ></ins>
     </div>
-    <main class="wrap">
-      <!-- Breadcrumbs -->
-      <nav class="breadcrumbs" aria-label="breadcrumb">
-        <a href="/bn/">হোম</a> › <a href="/bn/#math">গণিত টুলস</a> ›
-        <span>ইউনিট কনভার্টার</span>
-      </nav>
+    <div class="container">
+      <main class="wrap">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs" aria-label="breadcrumb">
+          <a href="/bn/">হোম</a> › <a href="/bn/#math">গণিত টুলস</a> ›
+          <span>ইউনিট কনভার্টার</span>
+        </nav>
 
-      <!-- TOC -->
-      <p class="toc">
-        <a href="#tool">কনভার্টার</a> ·
-        <a href="#how">কীভাবে ব্যবহার করবেন</a> ·
-        <a href="#faq">প্রশ্নোত্তর</a> ·
-        <a href="#related">সম্পর্কিত</a>
-      </p>
+        <!-- TOC -->
+        <p class="toc">
+          <a href="#tool">কনভার্টার</a> ·
+          <a href="#how">কীভাবে ব্যবহার করবেন</a> ·
+          <a href="#faq">প্রশ্নোত্তর</a> ·
+          <a href="#related">সম্পর্কিত</a>
+        </p>
 
-      <!-- Tool -->
-      <article class="card" id="tool">
-        <h2>কনভার্টার</h2>
+        <!-- Tool -->
+        <article class="card" id="tool">
+          <h2>কনভার্টার</h2>
 
-        <div class="row">
-          <select id="cat" class="select" aria-label="ক্যাটাগরি">
-            <option value="length">দৈর্ঘ্য</option>
-            <option value="weight">ওজন</option>
-            <option value="temperature">তাপমাত্রা</option>
-          </select>
-
-          <label class="pill">
-            মান
-            <input
-              id="val"
-              class="field"
-              type="number"
-              step="any"
-              inputmode="decimal"
-              placeholder="যেমন: 12.5"
-              style="width: 140px"
-            />
-          </label>
-
-          <label class="pill">
-            দশমিক
-            <select id="prec" class="select">
-              <option>0</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option selected>6</option>
-              <option>8</option>
+          <div class="row">
+            <select id="cat" class="select" aria-label="ক্যাটাগরি">
+              <option value="length">দৈর্ঘ্য</option>
+              <option value="weight">ওজন</option>
+              <option value="temperature">তাপমাত্রা</option>
             </select>
-          </label>
-        </div>
 
-        <div class="row">
-          <select id="from" class="select" aria-label="কোন ইউনিট থেকে"></select>
-          <button
-            id="swap"
-            class="btn btn-ghost"
-            type="button"
-            aria-label="ইউনিট অদলবদল"
+            <label class="pill">
+              মান
+              <input
+                id="val"
+                class="field"
+                type="number"
+                step="any"
+                inputmode="decimal"
+                placeholder="যেমন: 12.5"
+                style="width: 140px"
+              />
+            </label>
+
+            <label class="pill">
+              দশমিক
+              <select id="prec" class="select">
+                <option>0</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option selected>6</option>
+                <option>8</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="row">
+            <select
+              id="from"
+              class="select"
+              aria-label="কোন ইউনিট থেকে"
+            ></select>
+            <button
+              id="swap"
+              class="btn btn-ghost"
+              type="button"
+              aria-label="ইউনিট অদলবদল"
+            >
+              ⇄
+            </button>
+            <select id="to" class="select" aria-label="কোন ইউনিটে"></select>
+          </div>
+
+          <div class="row">
+            <input
+              id="res"
+              class="field mono"
+              readonly
+              placeholder="রূপান্তরিত মান"
+              style="min-width: 240px"
+            />
+            <button id="copy" class="btn btn-ghost" type="button">
+              📋 কপি
+            </button>
+            <span id="status" class="muted small">—</span>
+          </div>
+          <!-- Ad #2: In-article -->
+          <div
+            class="ad-wrap ad-article"
+            aria-label="Advertisement"
+            style="margin-top: 10px"
           >
-            ⇄
-          </button>
-          <select id="to" class="select" aria-label="কোন ইউনিটে"></select>
-        </div>
+            <span class="ad-label">Ad</span>
+            <ins
+              class="adsbygoogle"
+              style="display: inline-block; text-align: center"
+              data-ad-client="ca-pub-1234567890123456"
+              data-ad-slot="2222222222"
+              data-ad-format="fluid"
+              data-ad-layout="in-article"
+              data-adtest="on"
+            ></ins>
+          </div>
+          <p class="muted small">
+            টিপস: <kbd>Enter</kbd> চাপলে কনভার্ট হবে। <kbd>⇄</kbd> দিয়ে ইউনিট
+            অদলবদল করুন।
+          </p>
+        </article>
 
-        <div class="row">
-          <input
-            id="res"
-            class="field mono"
-            readonly
-            placeholder="রূপান্তরিত মান"
-            style="min-width: 240px"
-          />
-          <button id="copy" class="btn btn-ghost" type="button">📋 কপি</button>
-          <span id="status" class="muted small">—</span>
-        </div>
-        <!-- Ad #2: In-article -->
-        <div
-          class="ad-wrap ad-article"
-          aria-label="Advertisement"
-          style="margin-top: 10px"
-        >
-          <span class="ad-label">Ad</span>
-          <ins
-            class="adsbygoogle"
-            style="display: inline-block; text-align: center"
-            data-ad-client="ca-pub-1234567890123456"
-            data-ad-slot="2222222222"
-            data-ad-format="fluid"
-            data-ad-layout="in-article"
-            data-adtest="on"
-          ></ins>
-        </div>
-        <p class="muted small">
-          টিপস: <kbd>Enter</kbd> চাপলে কনভার্ট হবে। <kbd>⇄</kbd> দিয়ে ইউনিট
-          অদলবদল করুন।
-        </p>
-      </article>
+        <!-- How to use -->
+        <article class="card" id="how">
+          <h2>কীভাবে ব্যবহার করবেন</h2>
+          <ol>
+            <li>উপরে ক্যাটাগরি (দৈর্ঘ্য/ওজন/তাপমাত্রা) নির্বাচন করুন।</li>
+            <li>মান লিখে <em>From</em> ও <em>To</em> ইউনিট ঠিক করুন।</li>
+            <li>
+              প্রয়োজনে <strong>দশমিক</strong> অপশনে আউটপুটের প্রিসিশন বেছে নিন।
+            </li>
+            <li><strong>কপি</strong> দিয়ে ফলাফল ক্লিপবোর্ডে নিন।</li>
+          </ol>
+        </article>
 
-      <!-- How to use -->
-      <article class="card" id="how">
-        <h2>কীভাবে ব্যবহার করবেন</h2>
-        <ol>
-          <li>উপরে ক্যাটাগরি (দৈর্ঘ্য/ওজন/তাপমাত্রা) নির্বাচন করুন।</li>
-          <li>মান লিখে <em>From</em> ও <em>To</em> ইউনিট ঠিক করুন।</li>
-          <li>
-            প্রয়োজনে <strong>দশমিক</strong> অপশনে আউটপুটের প্রিসিশন বেছে নিন।
-          </li>
-          <li><strong>কপি</strong> দিয়ে ফলাফল ক্লিপবোর্ডে নিন।</li>
-        </ol>
-      </article>
+        <section class="faq-section card">
+          <h2 class="faq-title">প্রশ্নোত্তর</h2>
 
-      <section class="faq-section card">
-        <h2 class="faq-title">প্রশ্নোত্তর</h2>
+          <div class="faq-container">
+            <!-- Unit Converter FAQs (Bangla) -->
+            <div class="faq-item">
+              <button class="faq-question">
+                কোন কোন ইউনিট আছে?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  দৈর্ঘ্য: m, km, cm, mm, mi, yd, ft, in<br />
+                  ওজন: kg, g, mg, lb, oz, tonne<br />
+                  তাপমাত্রা: °C, °F, K
+                </p>
+              </div>
+            </div>
 
-        <div class="faq-container">
-          <!-- Unit Converter FAQs (Bangla) -->
-          <div class="faq-item">
-            <button class="faq-question">
-              কোন কোন ইউনিট আছে?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                দৈর্ঘ্য: m, km, cm, mm, mi, yd, ft, in<br />
-                ওজন: kg, g, mg, lb, oz, tonne<br />
-                তাপমাত্রা: °C, °F, K
-              </p>
+            <div class="faq-item">
+              <button class="faq-question">
+                তাপমাত্রার ফর্মুলা কী?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  °F = °C × 1.8 + 32, °K = °C + 273.15 (এবং বিপরীত রূপান্তর)।
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                ফ্লোটিং-পয়েন্ট রাউন্ডিং?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  ব্রাউজারভিত্তিক গণনায় খুব ছোট রাউন্ডিং ত্রুটি দেখা যেতে
+                  পারে—প্রিসিশন সিলেক্ট থেকে নিয়ন্ত্রণ করুন।
+                </p>
+              </div>
             </div>
           </div>
+        </section>
+        <!-- Related -->
+        <article class="card" id="related">
+          <h2>সম্পর্কিত</h2>
+          <p class="muted">আরও সংখ্যা/গণিত টুলস:</p>
+          <p>
+            <a class="btn" href="/bn/calculator/">ক্যালকুলেটর</a>
+            <a class="btn" href="/bn/percent-calculator/">শতকরা ক্যালকুলেটর</a>
+            <a class="btn" href="/bn/age-calculator/">বয়স ক্যালকুলেটর</a>
+          </p>
+        </article>
+      </main>
 
-          <div class="faq-item">
-            <button class="faq-question">
-              তাপমাত্রার ফর্মুলা কী?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>°F = °C × 1.8 + 32, °K = °C + 273.15 (এবং বিপরীত রূপান্তর)।</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              ফ্লোটিং-পয়েন্ট রাউন্ডিং?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                ব্রাউজারভিত্তিক গণনায় খুব ছোট রাউন্ডিং ত্রুটি দেখা যেতে
-                পারে—প্রিসিশন সিলেক্ট থেকে নিয়ন্ত্রণ করুন।
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- Related -->
-      <article class="card" id="related">
-        <h2>সম্পর্কিত</h2>
-        <p class="muted">আরও সংখ্যা/গণিত টুলস:</p>
-        <p>
-          <a class="btn" href="/bn/calculator/">ক্যালকুলেটর</a>
-          <a class="btn" href="/bn/percent-calculator/">শতকরা ক্যালকুলেটর</a>
-          <a class="btn" href="/bn/age-calculator/">বয়স ক্যালকুলেটর</a>
-        </p>
-      </article>
-    </main>
-
-    <footer>
-      © <span id="y"></span> Tools Pack • <a class="muted" href="/bn/">হোম</a>
-    </footer>
-
+      <footer>
+        © <span id="y"></span> Tools Pack • <a class="muted" href="/bn/">হোম</a>
+      </footer>
+    </div>
     <script>
       // Year
       document.getElementById("y").textContent = new Date().getFullYear();

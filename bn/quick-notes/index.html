@@ -171,168 +171,171 @@
         data-adtest="on"
       ></ins>
     </div>
+    <div class="container">
+      <main class="wrap">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs" aria-label="breadcrumb">
+          <a href="/bn/">হোম</a> › <a href="/bn/#text">টেক্সট টুলস</a> ›
+          <span>দ্রুত নোটস</span>
+        </nav>
 
-    <main class="wrap">
-      <!-- Breadcrumbs -->
-      <nav class="breadcrumbs" aria-label="breadcrumb">
-        <a href="/bn/">হোম</a> › <a href="/bn/#text">টেক্সট টুলস</a> ›
-        <span>দ্রুত নোটস</span>
-      </nav>
-
-      <!-- TOC -->
-      <p class="toc">
-        <a href="#notes-card">নোটস</a> ·
-        <a href="#how-to-use">কীভাবে ব্যবহার করবেন</a> ·
-        <a href="#faq">প্রশ্নোত্তর</a> ·
-        <a href="#related">সম্পর্কিত টুলস</a>
-      </p>
-
-      <!-- Notes tool -->
-      <article class="card" id="notes-card">
-        <h2>নোট লিখুন</h2>
-
-        <textarea
-          id="notes"
-          class="textarea"
-          rows="12"
-          placeholder="এখানে আপনার নোট লিখুন... (ব্রাউজারে অটো-সেভ হবে)"
-        ></textarea>
-
-        <div class="actions">
-          <button id="exportBtn" class="btn" type="button">
-            ⬇ TXT এক্সপোর্ট
-          </button>
-          <label for="fileInput" class="btn">⬆ TXT ইমপোর্ট</label>
-          <input
-            type="file"
-            id="fileInput"
-            accept=".txt,text/plain"
-            style="display: none"
-          />
-          <button id="copyBtn" class="btn" type="button">📋 কপি</button>
-          <button id="clearBtn" class="btn" type="button">🗑 সব মুছুন</button>
-        </div>
-
-        <div class="stats">
-          <span id="wc">শব্দ: 0</span>
-          <span id="cc">অক্ষর: 0</span>
-          <span id="lc">লাইন: 0</span>
-          <span id="save" class="save-status">—</span>
-        </div>
-
-        <!-- Ad #2: In-article -->
-        <div
-          class="ad-wrap ad-article"
-          aria-label="Advertisement"
-          style="margin-top: 10px"
-        >
-          <span class="ad-label">Ad</span>
-          <ins
-            class="adsbygoogle"
-            style="display: inline-block; text-align: center"
-            data-ad-client="ca-pub-1234567890123456"
-            data-ad-slot="2222222222"
-            data-ad-format="fluid"
-            data-ad-layout="in-article"
-            data-adtest="on"
-          ></ins>
-        </div>
-      </article>
-
-      <!-- How to use -->
-      <article class="card" id="how-to-use">
-        <h2>কীভাবে ব্যবহার করবেন</h2>
-        <ol>
-          <li>উপরে নোট লিখুন—টাইপ করলেই অটো-সেভ হবে (localStorage)।</li>
-          <li>
-            <strong>TXT এক্সপোর্ট</strong> দিলে TXT ফাইল ডাউনলোড হবে;
-            <strong>TXT ইমপোর্ট</strong> দিয়ে ফাইল থেকে নোট লোড করুন।
-          </li>
-          <li>
-            <strong>কপি</strong> দিয়ে পুরো নোট ক্লিপবোর্ডে যাবে;
-            <strong>সব মুছুন</strong> দিলে লোকাল ডেটা ক্লিয়ার হবে।
-          </li>
-          <li>ডেটা কেবল আপনার ডিভাইসেই থাকে—কোনো নেটওয়ার্কে পাঠানো হয় না।</li>
-        </ol>
-      </article>
-
-      <section class="faq-section card">
-        <h2 class="faq-title">প্রশ্নোত্তর</h2>
-
-        <div class="faq-container">
-          <!-- Quick Notes FAQs (Bangla) -->
-          <div class="faq-item">
-            <button class="faq-question">
-              অফলাইনে চালানো যাবে?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>হ্যাঁ, প্রথম লোডের পর পুরোটা ব্রাউজারেই চলে।</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              ডেটা কোথায় সেভ থাকে?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                আপনার ব্রাউজারের <code>localStorage</code>-এ। ক্যাশ/ডেটা
-                ক্লিয়ার করলে মুছে যেতে পারে।
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              বড় নোট লিখলে সমস্যা হবে?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                ব্রাউজারের স্টোরেজ সীমা পর্যন্ত কাজ করবে (সাধারণত কয়েক MB)। খুব
-                বড় হলে পারফরম্যান্স কমতে পারে।
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              ফাইল ফরম্যাট কী?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                UTF-8 <strong>.txt</strong>। অন্য ফরম্যাটে কনভার্ট করে নিতে
-                পারেন।
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Related tools -->
-      <article class="card" id="related">
-        <h2>সম্পর্কিত টুলস</h2>
-        <p class="muted">আরও টেক্সট/ডেভ টুলস:</p>
-        <p>
-          <a class="btn" href="/bn/text-utilities/">টেক্সট টুলস</a>
-          <a class="btn" href="/bn/text-to-pdf/">টেক্সট → PDF</a>
-          <a class="btn" href="/bn/json-formatter/">JSON ফরম্যাটার</a>
+        <!-- TOC -->
+        <p class="toc">
+          <a href="#notes-card">নোটস</a> ·
+          <a href="#how-to-use">কীভাবে ব্যবহার করবেন</a> ·
+          <a href="#faq">প্রশ্নোত্তর</a> ·
+          <a href="#related">সম্পর্কিত টুলস</a>
         </p>
-        <p class="small">
-          English preferred? See the
-          <a href="/quick-notes/" hreflang="en">English version</a>.
-        </p>
-      </article>
-    </main>
 
-    <footer>
-      © <span id="y"></span> Tools Pack • <a class="muted" href="/bn/">হোম</a> •
-      <a class="muted" href="/quick-notes/" hreflang="en">English</a>
-    </footer>
+        <!-- Notes tool -->
+        <article class="card" id="notes-card">
+          <h2>নোট লিখুন</h2>
 
+          <textarea
+            id="notes"
+            class="textarea"
+            rows="12"
+            placeholder="এখানে আপনার নোট লিখুন... (ব্রাউজারে অটো-সেভ হবে)"
+          ></textarea>
+
+          <div class="actions">
+            <button id="exportBtn" class="btn" type="button">
+              ⬇ TXT এক্সপোর্ট
+            </button>
+            <label for="fileInput" class="btn">⬆ TXT ইমপোর্ট</label>
+            <input
+              type="file"
+              id="fileInput"
+              accept=".txt,text/plain"
+              style="display: none"
+            />
+            <button id="copyBtn" class="btn" type="button">📋 কপি</button>
+            <button id="clearBtn" class="btn" type="button">🗑 সব মুছুন</button>
+          </div>
+
+          <div class="stats">
+            <span id="wc">শব্দ: 0</span>
+            <span id="cc">অক্ষর: 0</span>
+            <span id="lc">লাইন: 0</span>
+            <span id="save" class="save-status">—</span>
+          </div>
+
+          <!-- Ad #2: In-article -->
+          <div
+            class="ad-wrap ad-article"
+            aria-label="Advertisement"
+            style="margin-top: 10px"
+          >
+            <span class="ad-label">Ad</span>
+            <ins
+              class="adsbygoogle"
+              style="display: inline-block; text-align: center"
+              data-ad-client="ca-pub-1234567890123456"
+              data-ad-slot="2222222222"
+              data-ad-format="fluid"
+              data-ad-layout="in-article"
+              data-adtest="on"
+            ></ins>
+          </div>
+        </article>
+
+        <!-- How to use -->
+        <article class="card" id="how-to-use">
+          <h2>কীভাবে ব্যবহার করবেন</h2>
+          <ol>
+            <li>উপরে নোট লিখুন—টাইপ করলেই অটো-সেভ হবে (localStorage)।</li>
+            <li>
+              <strong>TXT এক্সপোর্ট</strong> দিলে TXT ফাইল ডাউনলোড হবে;
+              <strong>TXT ইমপোর্ট</strong> দিয়ে ফাইল থেকে নোট লোড করুন।
+            </li>
+            <li>
+              <strong>কপি</strong> দিয়ে পুরো নোট ক্লিপবোর্ডে যাবে;
+              <strong>সব মুছুন</strong> দিলে লোকাল ডেটা ক্লিয়ার হবে।
+            </li>
+            <li>
+              ডেটা কেবল আপনার ডিভাইসেই থাকে—কোনো নেটওয়ার্কে পাঠানো হয় না।
+            </li>
+          </ol>
+        </article>
+
+        <section class="faq-section card">
+          <h2 class="faq-title">প্রশ্নোত্তর</h2>
+
+          <div class="faq-container">
+            <!-- Quick Notes FAQs (Bangla) -->
+            <div class="faq-item">
+              <button class="faq-question">
+                অফলাইনে চালানো যাবে?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>হ্যাঁ, প্রথম লোডের পর পুরোটা ব্রাউজারেই চলে।</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                ডেটা কোথায় সেভ থাকে?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  আপনার ব্রাউজারের <code>localStorage</code>-এ। ক্যাশ/ডেটা
+                  ক্লিয়ার করলে মুছে যেতে পারে।
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                বড় নোট লিখলে সমস্যা হবে?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  ব্রাউজারের স্টোরেজ সীমা পর্যন্ত কাজ করবে (সাধারণত কয়েক MB)।
+                  খুব বড় হলে পারফরম্যান্স কমতে পারে।
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                ফাইল ফরম্যাট কী?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  UTF-8 <strong>.txt</strong>। অন্য ফরম্যাটে কনভার্ট করে নিতে
+                  পারেন।
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Related tools -->
+        <article class="card" id="related">
+          <h2>সম্পর্কিত টুলস</h2>
+          <p class="muted">আরও টেক্সট/ডেভ টুলস:</p>
+          <p>
+            <a class="btn" href="/bn/text-utilities/">টেক্সট টুলস</a>
+            <a class="btn" href="/bn/text-to-pdf/">টেক্সট → PDF</a>
+            <a class="btn" href="/bn/json-formatter/">JSON ফরম্যাটার</a>
+          </p>
+          <p class="small">
+            English preferred? See the
+            <a href="/quick-notes/" hreflang="en">English version</a>.
+          </p>
+        </article>
+      </main>
+
+      <footer>
+        © <span id="y"></span> Tools Pack •
+        <a class="muted" href="/bn/">হোম</a> •
+        <a class="muted" href="/quick-notes/" hreflang="en">English</a>
+      </footer>
+    </div>
     <script>
       // Footer year
       document.getElementById("y").textContent = new Date().getFullYear();

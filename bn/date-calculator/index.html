@@ -208,313 +208,318 @@
         </div>
       </div>
     </header>
+    <div class="container">
+      <main class="wrap" role="main">
+        <nav class="breadcrumbs" aria-label="breadcrumb">
+          <a href="/">হোম</a> › <span>তারিখ ক্যালকুলেটর</span>
+        </nav>
 
-    <main class="wrap" role="main">
-      <nav class="breadcrumbs" aria-label="breadcrumb">
-        <a href="/">হোম</a> › <span>তারিখ ক্যালকুলেটর</span>
-      </nav>
+        <section class="card" id="intro">
+          <h2>এখানে কী কী করা যায়?</h2>
+          <p>
+            খুব দ্রুত জানতে পারবেন: <em>8/13 পর্যন্ত কতদিন বাকি</em>,
+            <em>9/30 কতদিন আগে ছিল</em>, <em>অক্টোবর পর্যন্ত আর কতদিন</em>,
+            <em>আজ থেকে 2015 দিন আগে কবে</em>,
+            <em>আজ থেকে 20 দিন পরে কোন তারিখ</em>,
+            <em>Sept 17 বা 6/11 পর্যন্ত কতদিন বাকি</em>, এবং
+            <em>2018 থেকে কত বছর/মাস/দিন হলো</em>। সবকিছু আপনার ব্রাউজারেই—ডাটা
+            বাইরে যায় না।
+          </p>
+          <div class="pill-row">
+            <button class="pill" data-fill="until-aug13">Aug 13 পর্যন্ত</button>
+            <button class="pill" data-fill="until-sep17">Sep 17 পর্যন্ত</button>
+            <button class="pill" data-fill="until-jun11">Jun 11 পর্যন্ত</button>
+            <button class="pill" data-fill="ago-2015">২০১৫ দিন আগে</button>
+            <button class="pill" data-fill="add-20">আজ থেকে ২০ দিন পরে</button>
+            <button class="pill" data-fill="since-2018">২০১৮ থেকে এখন</button>
+          </div>
+        </section>
 
-      <section class="card" id="intro">
-        <h2>এখানে কী কী করা যায়?</h2>
-        <p>
-          খুব দ্রুত জানতে পারবেন: <em>8/13 পর্যন্ত কতদিন বাকি</em>,
-          <em>9/30 কতদিন আগে ছিল</em>, <em>অক্টোবর পর্যন্ত আর কতদিন</em>,
-          <em>আজ থেকে 2015 দিন আগে কবে</em>,
-          <em>আজ থেকে 20 দিন পরে কোন তারিখ</em>,
-          <em>Sept 17 বা 6/11 পর্যন্ত কতদিন বাকি</em>, এবং
-          <em>2018 থেকে কত বছর/মাস/দিন হলো</em>। সবকিছু আপনার ব্রাউজারেই—ডাটা
-          বাইরে যায় না।
-        </p>
-        <div class="pill-row">
-          <button class="pill" data-fill="until-aug13">Aug 13 পর্যন্ত</button>
-          <button class="pill" data-fill="until-sep17">Sep 17 পর্যন্ত</button>
-          <button class="pill" data-fill="until-jun11">Jun 11 পর্যন্ত</button>
-          <button class="pill" data-fill="ago-2015">২০১৫ দিন আগে</button>
-          <button class="pill" data-fill="add-20">আজ থেকে ২০ দিন পরে</button>
-          <button class="pill" data-fill="since-2018">২০১৮ থেকে এখন</button>
-        </div>
-      </section>
-
-      <!-- Days Until -->
-      <section class="card" id="until">
-        <h2>কতদিন বাকি (Days Until)</h2>
-        <div class="grid">
-          <label class="field span-6">
-            <span class="muted">শেষ তারিখ</span>
-            <input id="untilEnd" type="date" class="field" required />
-          </label>
-          <label class="field span-6">
-            <span class="muted">শুরু তারিখ (ডিফল্ট আজ)</span>
-            <input id="untilStart" type="date" class="field" />
-          </label>
-          <div class="span-12">
-            <button class="btn btn-primary" id="btnUntil" type="button">
-              হিসাব করুন
-            </button>
-            <button class="btn" id="btnUntilReset" type="button">রিসেট</button>
-          </div>
-          <div class="span-12">
-            <textarea
-              id="outUntil"
-              class="textarea mono"
-              readonly
-              placeholder="রেজাল্ট…"
-            ></textarea>
-          </div>
-        </div>
-      </section>
-
-      <!-- Days Since -->
-      <section class="card" id="since-date">
-        <h2>কতদিন আগে ছিল (Days Since)</h2>
-        <div class="grid">
-          <label class="field span-6">
-            <span class="muted">পাস্ট তারিখ</span>
-            <input id="sincePast" type="date" class="field" required />
-          </label>
-          <label class="field span-6">
-            <span class="muted">যাবতীয় তারিখ (ডিফল্ট আজ)</span>
-            <input id="sinceAsOf" type="date" class="field" />
-          </label>
-          <div class="span-12">
-            <button class="btn btn-primary" id="btnSince" type="button">
-              হিসাব করুন
-            </button>
-            <button class="btn" id="btnSinceReset" type="button">রিসেট</button>
-          </div>
-          <div class="span-12">
-            <textarea
-              id="outSince"
-              class="textarea mono"
-              readonly
-              placeholder="রেজাল্ট…"
-            ></textarea>
-          </div>
-        </div>
-      </section>
-
-      <!-- N days ago -->
-      <section class="card" id="ago">
-        <h2>N দিন আগে</h2>
-        <div class="grid">
-          <label class="field span-4">
-            <span class="muted">N (দিন)</span>
-            <input
-              id="agoN"
-              type="number"
-              min="0"
-              step="1"
-              class="field"
-              placeholder="যেমন, 2015"
-            />
-          </label>
-          <label class="field span-4">
-            <span class="muted">যাবতীয় তারিখ (ডিফল্ট আজ)</span>
-            <input id="agoAsOf" type="date" class="field" />
-          </label>
-          <div class="span-12">
-            <button class="btn btn-primary" id="btnAgo" type="button">
-              হিসাব করুন
-            </button>
-            <button class="btn" id="btnAgoReset" type="button">রিসেট</button>
-          </div>
-          <div class="span-12">
-            <textarea
-              id="outAgo"
-              class="textarea mono"
-              readonly
-              placeholder="রেজাল্ট…"
-            ></textarea>
-          </div>
-        </div>
-      </section>
-
-      <!-- Add/Subtract Days -->
-      <section class="card" id="add">
-        <h2>দিন যোগ/বিয়োগ</h2>
-        <div class="grid">
-          <label class="field span-4">
-            <span class="muted">বেস তারিখ (ডিফল্ট আজ)</span>
-            <input id="addBase" type="date" class="field" />
-          </label>
-          <label class="field span-4">
-            <span class="muted">+ / − দিন (বিয়োগের জন্য ঋণাত্মক)</span>
-            <input
-              id="addN"
-              type="number"
-              step="1"
-              class="field"
-              placeholder="যেমন, 20 বা -20"
-            />
-          </label>
-          <div class="span-12">
-            <button class="btn btn-primary" id="btnAdd" type="button">
-              হিসাব করুন
-            </button>
-            <button class="btn" id="btnAddReset" type="button">রিসেট</button>
-          </div>
-          <div class="span-12">
-            <textarea
-              id="outAdd"
-              class="textarea mono"
-              readonly
-              placeholder="রেজাল্ট…"
-            ></textarea>
-          </div>
-        </div>
-      </section>
-
-      <!-- Years/Months/Days Since -->
-      <section class="card" id="since">
-        <h2>কত বছর/মাস/দিন হলো</h2>
-        <div class="grid">
-          <label class="field span-6">
-            <span class="muted">শুরু তারিখ (যেমন, 2018-01-01)</span>
-            <input id="sinceStart" type="date" class="field" />
-          </label>
-          <label class="field span-6">
-            <span class="muted">যাবতীয় তারিখ (ডিফল্ট আজ)</span>
-            <input id="sinceEnd" type="date" class="field" />
-          </label>
-          <div class="span-12">
-            <button class="btn btn-primary" id="btnSinceYMD" type="button">
-              হিসাব করুন
-            </button>
-            <button class="btn" id="btnSinceYMDReset" type="button">
-              রিসেট
-            </button>
-          </div>
-          <div class="span-12">
-            <textarea
-              id="outSinceYMD"
-              class="textarea mono"
-              readonly
-              placeholder="রেজাল্ট…"
-            ></textarea>
-          </div>
-        </div>
-        <p class="muted">
-          টিপস: “2018 থেকে কত বছর” জানতে <em>শুরু</em> হিসাবে 2018-01-01 দিন;
-          <em>যাবতীয়</em> ফাঁকা রাখলে আজ ধরা হবে।
-        </p>
-      </section>
-
-      <section class="faq-section card">
-        <h2 class="faq-title">প্রশ্নোত্তর (FAQ)</h2>
-
-        <div class="faq-container">
-          <!-- Days Calculator FAQs (Bangla) -->
-          <div class="faq-item">
-            <button class="faq-question">
-              8/13 পর্যন্ত কতদিন বাকি?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                <strong>কতদিন বাকি</strong> সেকশনে গিয়ে শেষ তারিখে আগস্ট ১৩
-                সিলেক্ট করুন। যদি এ বছর তারিখটি পার হয়ে যায়, নেগেটিভ দেখাতে
-                পারে—পরের বছরের Aug 13 দিন।
-              </p>
+        <!-- Days Until -->
+        <section class="card" id="until">
+          <h2>কতদিন বাকি (Days Until)</h2>
+          <div class="grid">
+            <label class="field span-6">
+              <span class="muted">শেষ তারিখ</span>
+              <input id="untilEnd" type="date" class="field" required />
+            </label>
+            <label class="field span-6">
+              <span class="muted">শুরু তারিখ (ডিফল্ট আজ)</span>
+              <input id="untilStart" type="date" class="field" />
+            </label>
+            <div class="span-12">
+              <button class="btn btn-primary" id="btnUntil" type="button">
+                হিসাব করুন
+              </button>
+              <button class="btn" id="btnUntilReset" type="button">
+                রিসেট
+              </button>
+            </div>
+            <div class="span-12">
+              <textarea
+                id="outUntil"
+                class="textarea mono"
+                readonly
+                placeholder="রেজাল্ট…"
+              ></textarea>
             </div>
           </div>
+        </section>
 
-          <div class="faq-item">
-            <button class="faq-question">
-              9/30 কতদিন আগে ছিল?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                <strong>কতদিন আগে ছিল</strong> সেকশনে সেপ্টেম্বর ৩০ (সালসহ)
-                সিলেক্ট করুন—ক’দিন আগে ছিল দেখাবে।
-              </p>
+        <!-- Days Since -->
+        <section class="card" id="since-date">
+          <h2>কতদিন আগে ছিল (Days Since)</h2>
+          <div class="grid">
+            <label class="field span-6">
+              <span class="muted">পাস্ট তারিখ</span>
+              <input id="sincePast" type="date" class="field" required />
+            </label>
+            <label class="field span-6">
+              <span class="muted">যাবতীয় তারিখ (ডিফল্ট আজ)</span>
+              <input id="sinceAsOf" type="date" class="field" />
+            </label>
+            <div class="span-12">
+              <button class="btn btn-primary" id="btnSince" type="button">
+                হিসাব করুন
+              </button>
+              <button class="btn" id="btnSinceReset" type="button">
+                রিসেট
+              </button>
+            </div>
+            <div class="span-12">
+              <textarea
+                id="outSince"
+                class="textarea mono"
+                readonly
+                placeholder="রেজাল্ট…"
+              ></textarea>
             </div>
           </div>
+        </section>
 
-          <div class="faq-item">
-            <button class="faq-question">
-              অক্টোবর পর্যন্ত আর কতদিন?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                <strong>কতদিন বাকি</strong> সেকশনে অক্টোবর ১ (বা নির্দিষ্ট
-                অক্টোবরের তারিখ) সিলেক্ট করুন—বাকি দিন দেখাবে।
-              </p>
+        <!-- N days ago -->
+        <section class="card" id="ago">
+          <h2>N দিন আগে</h2>
+          <div class="grid">
+            <label class="field span-4">
+              <span class="muted">N (দিন)</span>
+              <input
+                id="agoN"
+                type="number"
+                min="0"
+                step="1"
+                class="field"
+                placeholder="যেমন, 2015"
+              />
+            </label>
+            <label class="field span-4">
+              <span class="muted">যাবতীয় তারিখ (ডিফল্ট আজ)</span>
+              <input id="agoAsOf" type="date" class="field" />
+            </label>
+            <div class="span-12">
+              <button class="btn btn-primary" id="btnAgo" type="button">
+                হিসাব করুন
+              </button>
+              <button class="btn" id="btnAgoReset" type="button">রিসেট</button>
+            </div>
+            <div class="span-12">
+              <textarea
+                id="outAgo"
+                class="textarea mono"
+                readonly
+                placeholder="রেজাল্ট…"
+              ></textarea>
             </div>
           </div>
+        </section>
 
-          <div class="faq-item">
-            <button class="faq-question">
-              আজ থেকে 2015 দিন আগে কবে ছিল?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                <strong>N দিন আগে</strong> সেকশনে N = 2015 দিন—ঠিক তারিখ দেখাবে।
-              </p>
+        <!-- Add/Subtract Days -->
+        <section class="card" id="add">
+          <h2>দিন যোগ/বিয়োগ</h2>
+          <div class="grid">
+            <label class="field span-4">
+              <span class="muted">বেস তারিখ (ডিফল্ট আজ)</span>
+              <input id="addBase" type="date" class="field" />
+            </label>
+            <label class="field span-4">
+              <span class="muted">+ / − দিন (বিয়োগের জন্য ঋণাত্মক)</span>
+              <input
+                id="addN"
+                type="number"
+                step="1"
+                class="field"
+                placeholder="যেমন, 20 বা -20"
+              />
+            </label>
+            <div class="span-12">
+              <button class="btn btn-primary" id="btnAdd" type="button">
+                হিসাব করুন
+              </button>
+              <button class="btn" id="btnAddReset" type="button">রিসেট</button>
+            </div>
+            <div class="span-12">
+              <textarea
+                id="outAdd"
+                class="textarea mono"
+                readonly
+                placeholder="রেজাল্ট…"
+              ></textarea>
             </div>
           </div>
+        </section>
 
-          <div class="faq-item">
-            <button class="faq-question">
-              আজ থেকে 20 দিন পরে কোন তারিখ?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                <strong>দিন যোগ/বিয়োগ</strong> সেকশনে +20 দিন—রেজাল্টিং তারিখ
-                পাবেন।
-              </p>
+        <!-- Years/Months/Days Since -->
+        <section class="card" id="since">
+          <h2>কত বছর/মাস/দিন হলো</h2>
+          <div class="grid">
+            <label class="field span-6">
+              <span class="muted">শুরু তারিখ (যেমন, 2018-01-01)</span>
+              <input id="sinceStart" type="date" class="field" />
+            </label>
+            <label class="field span-6">
+              <span class="muted">যাবতীয় তারিখ (ডিফল্ট আজ)</span>
+              <input id="sinceEnd" type="date" class="field" />
+            </label>
+            <div class="span-12">
+              <button class="btn btn-primary" id="btnSinceYMD" type="button">
+                হিসাব করুন
+              </button>
+              <button class="btn" id="btnSinceYMDReset" type="button">
+                রিসেট
+              </button>
+            </div>
+            <div class="span-12">
+              <textarea
+                id="outSinceYMD"
+                class="textarea mono"
+                readonly
+                placeholder="রেজাল্ট…"
+              ></textarea>
             </div>
           </div>
+          <p class="muted">
+            টিপস: “2018 থেকে কত বছর” জানতে <em>শুরু</em> হিসাবে 2018-01-01 দিন;
+            <em>যাবতীয়</em> ফাঁকা রাখলে আজ ধরা হবে।
+          </p>
+        </section>
 
-          <div class="faq-item">
-            <button class="faq-question">
-              Sept 17 / 6/11 পর্যন্ত কতদিন বাকি?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                <strong>কতদিন বাকি</strong> সেকশনে কাঙ্ক্ষিত তারিখ (Sep 17 বা
-                Jun 11) সিলেক্ট করুন—আজ থেকে বাকি দিন দেখাবে।
-              </p>
+        <section class="faq-section card">
+          <h2 class="faq-title">প্রশ্নোত্তর (FAQ)</h2>
+
+          <div class="faq-container">
+            <!-- Days Calculator FAQs (Bangla) -->
+            <div class="faq-item">
+              <button class="faq-question">
+                8/13 পর্যন্ত কতদিন বাকি?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  <strong>কতদিন বাকি</strong> সেকশনে গিয়ে শেষ তারিখে আগস্ট ১৩
+                  সিলেক্ট করুন। যদি এ বছর তারিখটি পার হয়ে যায়, নেগেটিভ দেখাতে
+                  পারে—পরের বছরের Aug 13 দিন।
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                9/30 কতদিন আগে ছিল?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  <strong>কতদিন আগে ছিল</strong> সেকশনে সেপ্টেম্বর ৩০ (সালসহ)
+                  সিলেক্ট করুন—ক’দিন আগে ছিল দেখাবে।
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                অক্টোবর পর্যন্ত আর কতদিন?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  <strong>কতদিন বাকি</strong> সেকশনে অক্টোবর ১ (বা নির্দিষ্ট
+                  অক্টোবরের তারিখ) সিলেক্ট করুন—বাকি দিন দেখাবে।
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                আজ থেকে 2015 দিন আগে কবে ছিল?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  <strong>N দিন আগে</strong> সেকশনে N = 2015 দিন—ঠিক তারিখ
+                  দেখাবে।
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                আজ থেকে 20 দিন পরে কোন তারিখ?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  <strong>দিন যোগ/বিয়োগ</strong> সেকশনে +20 দিন—রেজাল্টিং তারিখ
+                  পাবেন।
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Sept 17 / 6/11 পর্যন্ত কতদিন বাকি?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  <strong>কতদিন বাকি</strong> সেকশনে কাঙ্ক্ষিত তারিখ (Sep 17 বা
+                  Jun 11) সিলেক্ট করুন—আজ থেকে বাকি দিন দেখাবে।
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                2018 থেকে কত বছর হলো?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  <strong>কত বছর/মাস/দিন হলো</strong> সেকশনে শুরু তারিখে
+                  2018-01-01 দিন—আজ পর্যন্ত বছর/মাস/দিন দেখাবে।
+                </p>
+              </div>
             </div>
           </div>
+        </section>
 
-          <div class="faq-item">
-            <button class="faq-question">
-              2018 থেকে কত বছর হলো?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                <strong>কত বছর/মাস/দিন হলো</strong> সেকশনে শুরু তারিখে
-                2018-01-01 দিন—আজ পর্যন্ত বছর/মাস/দিন দেখাবে।
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+        <section class="card" id="related">
+          <h2>আরো টুলস</h2>
+          <p class="muted">তারিখ ও সময় সংক্রান্ত টুলস:</p>
+          <p>
+            <a class="btn" href="/bn/age-calculator/">বয়স ক্যালকুলেটর</a>
+            <a class="btn" href="/stopwatch-countdown/"
+              >স্টপওয়াচ &amp; কাউন্টডাউন</a
+            >
+            <a class="btn" href="/unit-converter/">ইউনিট কনভার্টার</a>
+          </p>
+        </section>
+      </main>
 
-      <section class="card" id="related">
-        <h2>আরো টুলস</h2>
-        <p class="muted">তারিখ ও সময় সংক্রান্ত টুলস:</p>
-        <p>
-          <a class="btn" href="/bn/age-calculator/">বয়স ক্যালকুলেটর</a>
-          <a class="btn" href="/stopwatch-countdown/"
-            >স্টপওয়াচ &amp; কাউন্টডাউন</a
-          >
-          <a class="btn" href="/unit-converter/">ইউনিট কনভার্টার</a>
-        </p>
-      </section>
-    </main>
-
-    <footer>
-      © <span id="y"></span> Tools Pack • <a class="muted" href="/">হোম</a> •
-      <a class="muted" href="/bn/age-calculator/">বয়স ক্যালকুলেটর</a>
-    </footer>
-
+      <footer>
+        © <span id="y"></span> Tools Pack • <a class="muted" href="/">হোম</a> •
+        <a class="muted" href="/bn/age-calculator/">বয়স ক্যালকুলেটর</a>
+      </footer>
+    </div>
     <script>
       // ===== Utilities (UTC-safe) =====
       const pad2 = (n) => String(n).padStart(2, "0");

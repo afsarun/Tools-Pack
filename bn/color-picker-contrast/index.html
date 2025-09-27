@@ -178,166 +178,171 @@
         data-adtest="on"
       ></ins>
     </div>
+    <div class="container">
+      <main class="wrap">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs" aria-label="breadcrumb">
+          <a href="/bn/">হোম</a> › <a href="/bn/#design">ডিজাইন টুলস</a> ›
+          <span>কালার পিকার</span>
+        </nav>
 
-    <main class="wrap">
-      <!-- Breadcrumbs -->
-      <nav class="breadcrumbs" aria-label="breadcrumb">
-        <a href="/bn/">হোম</a> › <a href="/bn/#design">ডিজাইন টুলস</a> ›
-        <span>কালার পিকার</span>
-      </nav>
+        <!-- TOC -->
+        <p class="toc">
+          <a href="#picker">কালার পিকার</a> ·
+          <a href="#how-to-use">কীভাবে ব্যবহার করবেন</a> ·
+          <a href="#faq">প্রশ্নোত্তর</a> ·
+          <a href="#related">সম্পর্কিত টুলস</a>
+        </p>
 
-      <!-- TOC -->
-      <p class="toc">
-        <a href="#picker">কালার পিকার</a> ·
-        <a href="#how-to-use">কীভাবে ব্যবহার করবেন</a> ·
-        <a href="#faq">প্রশ্নোত্তর</a> ·
-        <a href="#related">সম্পর্কিত টুলস</a>
-      </p>
+        <!-- Picker -->
+        <article class="card" id="picker">
+          <h2>রঙ নির্বাচন ও কনট্রাস্ট</h2>
 
-      <!-- Picker -->
-      <article class="card" id="picker">
-        <h2>রঙ নির্বাচন ও কনট্রাস্ট</h2>
+          <div class="tool">
+            <div class="row">
+              <label for="fg" class="muted">ফোরগ্রাউন্ড</label>
+              <input type="color" id="fg" value="#000000" />
+              <input
+                type="text"
+                id="fgHex"
+                class="field mono"
+                value="#000000"
+                aria-label="ফোরগ্রাউন্ড হেক্স"
+              />
+              <button class="btn" id="swapBtn" type="button" title="রঙ অদলবদল">
+                ↔
+              </button>
+            </div>
 
-        <div class="tool">
-          <div class="row">
-            <label for="fg" class="muted">ফোরগ্রাউন্ড</label>
-            <input type="color" id="fg" value="#000000" />
-            <input
-              type="text"
-              id="fgHex"
-              class="field mono"
-              value="#000000"
-              aria-label="ফোরগ্রাউন্ড হেক্স"
-            />
-            <button class="btn" id="swapBtn" type="button" title="রঙ অদলবদল">
-              ↔
-            </button>
+            <div class="row">
+              <label for="bg" class="muted">ব্যাকগ্রাউন্ড</label>
+              <input type="color" id="bg" value="#ffffff" />
+              <input
+                type="text"
+                id="bgHex"
+                class="field mono"
+                value="#ffffff"
+                aria-label="ব্যাকগ্রাউন্ড হেক্স"
+              />
+            </div>
+
+            <div class="preview" id="previewBox">
+              <p>উদাহরণ টেক্সট (Sample Text)</p>
+            </div>
+
+            <p class="muted">
+              কনট্রাস্ট রেশিও: <strong id="ratio">—</strong>
+              <span id="wcag"></span>
+            </p>
           </div>
 
-          <div class="row">
-            <label for="bg" class="muted">ব্যাকগ্রাউন্ড</label>
-            <input type="color" id="bg" value="#ffffff" />
-            <input
-              type="text"
-              id="bgHex"
-              class="field mono"
-              value="#ffffff"
-              aria-label="ব্যাকগ্রাউন্ড হেক্স"
-            />
+          <!-- Ad #2: In-article -->
+          <div class="ad-wrap ad-article" aria-label="Advertisement">
+            <span class="ad-label">Ad</span>
+            <ins
+              class="adsbygoogle"
+              style="display: inline-block; text-align: center"
+              data-ad-client="ca-pub-1234567890123456"
+              data-ad-slot="2222222222"
+              data-ad-format="fluid"
+              data-ad-layout="in-article"
+              data-adtest="on"
+            ></ins>
           </div>
+        </article>
 
-          <div class="preview" id="previewBox">
-            <p>উদাহরণ টেক্সট (Sample Text)</p>
+        <!-- How to use -->
+        <article class="card" id="how-to-use">
+          <h2>কীভাবে ব্যবহার করবেন</h2>
+          <ol>
+            <li>ফোরগ্রাউন্ড/ব্যাকগ্রাউন্ড রঙ বাছাই করুন বা হেক্স কোড লিখুন।</li>
+            <li>
+              #RGB (যেমন <code>#abc</code>) দিলে স্বয়ংক্রিয়ভাবে
+              <code>#aabbcc</code> ধরা হয়।
+            </li>
+            <li>
+              রেশিও ≥ <strong>4.5</strong> হলে AA (Normal), ≥
+              <strong>7</strong> হলে AAA (Normal)।
+            </li>
+            <li>↔ বোতামে রঙ অদলবদল করা যায়।</li>
+            <li>এই টুলটি অফলাইনে চলতে পারে; কোনো ডেটা সার্ভারে যায় না।</li>
+          </ol>
+        </article>
+        <section class="faq-section card">
+          <h2 class="faq-title">প্রশ্নোত্তর/faq</h2>
+
+          <div class="faq-container">
+            <!-- Color Contrast Checker FAQs (Bangla) -->
+            <div class="faq-item">
+              <button class="faq-question">
+                অফলাইনে চালানো যাবে?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>হ্যাঁ, প্রথম লোডের পর পুরোটা ব্রাউজারেই চলে।</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                AA/AAA থ্রেশহোল্ড কত?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  AA (Normal) ≥ 4.5:1, AA (Large) ≥ 3:1, AAA (Normal) ≥ 7:1।
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                #RGB (৩-সংখ্যা) সাপোর্টেড?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>হ্যাঁ—#abc → #aabbcc করে কনট্রাস্ট ক্যালকুলেট করা হয়।</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                আলফা/স্বচ্ছতা ধরা হয়?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>না—এই সংস্করণে solid হেক্স (RGB) ব্যবহার করা হয়েছে।</p>
+              </div>
+            </div>
           </div>
+        </section>
 
-          <p class="muted">
-            কনট্রাস্ট রেশিও: <strong id="ratio">—</strong>
-            <span id="wcag"></span>
+        <!-- Related tools -->
+        <article class="card" id="related">
+          <h2>সম্পর্কিত টুলস</h2>
+          <p class="muted">ডিজাইন/মিডিয়া বিষয়ক আরও টুলস:</p>
+          <p>
+            <a class="btn" href="/bn/image-resizer-compressor/"
+              >ইমেজ রিসাইজার/কমপ্রেসর</a
+            >
+            <a class="btn" href="/bn/text-to-pdf/">টেক্সট → PDF</a>
+            <a class="btn" href="/bn/json-formatter/">JSON ফরম্যাটার</a>
           </p>
-        </div>
+          <p class="small">
+            English preferred? See the
+            <a href="/color-picker-contrast/" hreflang="en">English version</a>.
+          </p>
+        </article>
+      </main>
 
-        <!-- Ad #2: In-article -->
-        <div class="ad-wrap ad-article" aria-label="Advertisement">
-          <span class="ad-label">Ad</span>
-          <ins
-            class="adsbygoogle"
-            style="display: inline-block; text-align: center"
-            data-ad-client="ca-pub-1234567890123456"
-            data-ad-slot="2222222222"
-            data-ad-format="fluid"
-            data-ad-layout="in-article"
-            data-adtest="on"
-          ></ins>
-        </div>
-      </article>
-
-      <!-- How to use -->
-      <article class="card" id="how-to-use">
-        <h2>কীভাবে ব্যবহার করবেন</h2>
-        <ol>
-          <li>ফোরগ্রাউন্ড/ব্যাকগ্রাউন্ড রঙ বাছাই করুন বা হেক্স কোড লিখুন।</li>
-          <li>
-            #RGB (যেমন <code>#abc</code>) দিলে স্বয়ংক্রিয়ভাবে
-            <code>#aabbcc</code> ধরা হয়।
-          </li>
-          <li>
-            রেশিও ≥ <strong>4.5</strong> হলে AA (Normal), ≥
-            <strong>7</strong> হলে AAA (Normal)।
-          </li>
-          <li>↔ বোতামে রঙ অদলবদল করা যায়।</li>
-          <li>এই টুলটি অফলাইনে চলতে পারে; কোনো ডেটা সার্ভারে যায় না।</li>
-        </ol>
-      </article>
-      <section class="faq-section card">
-        <h2 class="faq-title">প্রশ্নোত্তর/faq</h2>
-
-        <div class="faq-container">
-          <!-- Color Contrast Checker FAQs (Bangla) -->
-          <div class="faq-item">
-            <button class="faq-question">
-              অফলাইনে চালানো যাবে?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>হ্যাঁ, প্রথম লোডের পর পুরোটা ব্রাউজারেই চলে।</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              AA/AAA থ্রেশহোল্ড কত?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>AA (Normal) ≥ 4.5:1, AA (Large) ≥ 3:1, AAA (Normal) ≥ 7:1।</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              #RGB (৩-সংখ্যা) সাপোর্টেড?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>হ্যাঁ—#abc → #aabbcc করে কনট্রাস্ট ক্যালকুলেট করা হয়।</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              আলফা/স্বচ্ছতা ধরা হয়?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>না—এই সংস্করণে solid হেক্স (RGB) ব্যবহার করা হয়েছে।</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Related tools -->
-      <article class="card" id="related">
-        <h2>সম্পর্কিত টুলস</h2>
-        <p class="muted">ডিজাইন/মিডিয়া বিষয়ক আরও টুলস:</p>
-        <p>
-          <a class="btn" href="/bn/image-resizer-compressor/"
-            >ইমেজ রিসাইজার/কমপ্রেসর</a
-          >
-          <a class="btn" href="/bn/text-to-pdf/">টেক্সট → PDF</a>
-          <a class="btn" href="/bn/json-formatter/">JSON ফরম্যাটার</a>
-        </p>
-        <p class="small">
-          English preferred? See the
-          <a href="/color-picker-contrast/" hreflang="en">English version</a>.
-        </p>
-      </article>
-    </main>
-
-    <footer>
-      © <span id="y"></span> Tools Pack • <a class="muted" href="/bn/">হোম</a> •
-      <a class="muted" href="/color-picker-contrast/" hreflang="en">English</a>
-    </footer>
-
+      <footer>
+        © <span id="y"></span> Tools Pack •
+        <a class="muted" href="/bn/">হোম</a> •
+        <a class="muted" href="/color-picker-contrast/" hreflang="en"
+          >English</a
+        >
+      </footer>
+    </div>
     <script>
       // Year
       document.getElementById("y").textContent = new Date().getFullYear();

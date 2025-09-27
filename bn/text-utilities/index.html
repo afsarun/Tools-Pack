@@ -194,179 +194,182 @@
         data-adtest="on"
       ></ins>
     </div>
-    <main class="wrap">
-      <!-- Breadcrumbs -->
-      <nav class="breadcrumbs" aria-label="breadcrumb">
-        <a href="/bn/">হোম</a> › <a href="/bn/#text">টেক্সট টুলস</a> ›
-        <span>টেক্সট ইউটিলিটিজ</span>
-      </nav>
+    <div class="container">
+      <main class="wrap">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs" aria-label="breadcrumb">
+          <a href="/bn/">হোম</a> › <a href="/bn/#text">টেক্সট টুলস</a> ›
+          <span>টেক্সট ইউটিলিটিজ</span>
+        </nav>
 
-      <!-- TOC -->
-      <p class="toc">
-        <a href="#tool">এডিটর</a> · <a href="#how">কীভাবে ব্যবহার করবেন</a> ·
-        <a href="#related">সম্পর্কিত</a>
-      </p>
-
-      <!-- Tool -->
-      <article class="card" id="tool">
-        <h2>এডিটর</h2>
-
-        <textarea
-          id="textInput"
-          class="textarea"
-          placeholder="এখানে আপনার টেক্সট লিখুন…"
-        ></textarea>
-
-        <div class="actions">
-          <button class="btn btn-primary" id="btnUpper">🔠 বড় হাতা</button>
-          <button class="btn" id="btnLower">🔡 ছোট হাতা</button>
-          <button class="btn" id="btnTitle">📝 শিরোনাম কেস</button>
-          <button class="btn" id="btnSentence">✒️ বাক্য কেস</button>
-          <button class="btn" id="btnSpaces">🚫 স্পেস ঠিক করুন</button>
-          <button class="btn" id="btnLinejoin">↩️ লাইনব্রেক → স্পেস</button>
-          <button class="btn" id="btnSort">🔽 লাইন সাজান (A→Z)</button>
-          <button class="btn" id="btnDedupe">🧹 ডুপ্লিকেট লাইন সরান</button>
-          <button class="btn btn-ghost" id="btnCopy">📋 কপি</button>
-          <button class="btn btn-ghost" id="btnClear">🗑 ক্লিয়ার</button>
-          <button class="btn btn-ghost" id="btnDownload">
-            ⬇ TXT এক্সপোর্ট
-          </button>
-          <label for="fileInput" class="btn btn-ghost">⬆ TXT ইমপোর্ট</label>
-          <input
-            id="fileInput"
-            type="file"
-            accept=".txt,text/plain"
-            style="display: none"
-          />
-        </div>
-        <!-- Ad #2: In-article -->
-        <div
-          class="ad-wrap ad-article"
-          aria-label="Advertisement"
-          style="margin-top: 10px"
-        >
-          <span class="ad-label">Ad</span>
-          <ins
-            class="adsbygoogle"
-            style="display: inline-block; text-align: center"
-            data-ad-client="ca-pub-1234567890123456"
-            data-ad-slot="2222222222"
-            data-ad-format="fluid"
-            data-ad-layout="in-article"
-            data-adtest="on"
-          ></ins>
-        </div>
-        <div class="stats">
-          <span id="wc">শব্দ: 0</span>
-          <span id="cc">অক্ষর: 0</span>
-          <span id="lc">লাইন: 0</span>
-          <span id="bc">বাইট (UTF-8): 0</span>
-          <span id="status" class="small">—</span>
-        </div>
-      </article>
-
-      <!-- How to -->
-      <article class="card" id="how">
-        <h2>কীভাবে ব্যবহার করবেন</h2>
-        <ol>
-          <li>টেক্সট লিখে প্রয়োজনমতো কেস/স্পেস টুল ব্যবহার করুন।</li>
-          <li>
-            <strong>কপি</strong> দিয়ে আউটপুট ক্লিপবোর্ডে নিন;
-            <strong>এক্সপোর্ট</strong> করলে TXT ফাইল পাবেন।
-          </li>
-          <li>
-            বাংলা অক্ষরে কেস পরিবর্তন প্রযোজ্য নয়—ল্যাটিন/ইংরেজি টেক্সটে প্রভাব
-            পড়বে।
-          </li>
-        </ol>
-      </article>
-      <section class="faq-section card">
-        <h2 class="faq-title">প্রশ্নোত্তর</h2>
-
-        <div class="faq-container">
-          <!-- Text Utilities FAQs (Bangla) -->
-          <div class="faq-item">
-            <button class="faq-question">
-              এই টুল কি অফলাইনে চলে?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                হ্যাঁ—প্রথমবার লোড হলে পরবর্তীতে সবকিছু ব্রাউজারেই সম্পন্ন হয়।
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              ইনপুট কি কোথাও পাঠানো হয়?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                না—সব অপারেশন (case change, trim, copy, count) শুধুমাত্র আপনার
-                ব্রাউজারেই হয়।
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              কী কী টেক্সট ইউটিলিটি আছে?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                বড় হাত/ছোট হাত অক্ষর রূপান্তর, স্পেস ক্লিনআপ, সব স্পেস মুছে
-                ফেলা, লাইন/শব্দ/ক্যারেক্টার গণনা এবং দ্রুত কপি করা।
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              ইমোজি বা বাংলা টেক্সটে কোনো পরিবর্তন হবে?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                না। কেস কনভার্শন শুধু ইংরেজি বর্ণমালায় প্রভাব ফেলে। বাংলা, আরবি
-                বা ইমোজি অপরিবর্তিত থাকে।
-              </p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-question">
-              টেক্সটের কোনো সীমা আছে?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                নির্দিষ্ট কোনো সীমা নেই। তবে খুব বড় টেক্সট (MB লেভেল) হলে কিছু
-                ডিভাইসে ধীরগতি হতে পারে। বড় ইনপুট হলে ভাগ করে ব্যবহার করা ভালো।
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Related -->
-      <article class="card" id="related">
-        <h2>সম্পর্কিত</h2>
-        <p class="muted">আরও টেক্সট/ডকুমেন্ট টুলস:</p>
-        <p>
-          <a class="btn" href="/bn/quick-notes/">দ্রুত নোটস</a>
-          <a class="btn" href="/bn/text-to-pdf/">টেক্সট → PDF</a>
-          <a class="btn" href="/bn/json-formatter/">JSON ফরম্যাটার</a>
+        <!-- TOC -->
+        <p class="toc">
+          <a href="#tool">এডিটর</a> · <a href="#how">কীভাবে ব্যবহার করবেন</a> ·
+          <a href="#related">সম্পর্কিত</a>
         </p>
-      </article>
-    </main>
 
-    <footer>
-      © <span id="y"></span> Tools Pack • <a class="muted" href="/bn/">হোম</a>
-    </footer>
+        <!-- Tool -->
+        <article class="card" id="tool">
+          <h2>এডিটর</h2>
 
+          <textarea
+            id="textInput"
+            class="textarea"
+            placeholder="এখানে আপনার টেক্সট লিখুন…"
+          ></textarea>
+
+          <div class="actions">
+            <button class="btn btn-primary" id="btnUpper">🔠 বড় হাতা</button>
+            <button class="btn" id="btnLower">🔡 ছোট হাতা</button>
+            <button class="btn" id="btnTitle">📝 শিরোনাম কেস</button>
+            <button class="btn" id="btnSentence">✒️ বাক্য কেস</button>
+            <button class="btn" id="btnSpaces">🚫 স্পেস ঠিক করুন</button>
+            <button class="btn" id="btnLinejoin">↩️ লাইনব্রেক → স্পেস</button>
+            <button class="btn" id="btnSort">🔽 লাইন সাজান (A→Z)</button>
+            <button class="btn" id="btnDedupe">🧹 ডুপ্লিকেট লাইন সরান</button>
+            <button class="btn btn-ghost" id="btnCopy">📋 কপি</button>
+            <button class="btn btn-ghost" id="btnClear">🗑 ক্লিয়ার</button>
+            <button class="btn btn-ghost" id="btnDownload">
+              ⬇ TXT এক্সপোর্ট
+            </button>
+            <label for="fileInput" class="btn btn-ghost">⬆ TXT ইমপোর্ট</label>
+            <input
+              id="fileInput"
+              type="file"
+              accept=".txt,text/plain"
+              style="display: none"
+            />
+          </div>
+          <!-- Ad #2: In-article -->
+          <div
+            class="ad-wrap ad-article"
+            aria-label="Advertisement"
+            style="margin-top: 10px"
+          >
+            <span class="ad-label">Ad</span>
+            <ins
+              class="adsbygoogle"
+              style="display: inline-block; text-align: center"
+              data-ad-client="ca-pub-1234567890123456"
+              data-ad-slot="2222222222"
+              data-ad-format="fluid"
+              data-ad-layout="in-article"
+              data-adtest="on"
+            ></ins>
+          </div>
+          <div class="stats">
+            <span id="wc">শব্দ: 0</span>
+            <span id="cc">অক্ষর: 0</span>
+            <span id="lc">লাইন: 0</span>
+            <span id="bc">বাইট (UTF-8): 0</span>
+            <span id="status" class="small">—</span>
+          </div>
+        </article>
+
+        <!-- How to -->
+        <article class="card" id="how">
+          <h2>কীভাবে ব্যবহার করবেন</h2>
+          <ol>
+            <li>টেক্সট লিখে প্রয়োজনমতো কেস/স্পেস টুল ব্যবহার করুন।</li>
+            <li>
+              <strong>কপি</strong> দিয়ে আউটপুট ক্লিপবোর্ডে নিন;
+              <strong>এক্সপোর্ট</strong> করলে TXT ফাইল পাবেন।
+            </li>
+            <li>
+              বাংলা অক্ষরে কেস পরিবর্তন প্রযোজ্য নয়—ল্যাটিন/ইংরেজি টেক্সটে
+              প্রভাব পড়বে।
+            </li>
+          </ol>
+        </article>
+        <section class="faq-section card">
+          <h2 class="faq-title">প্রশ্নোত্তর</h2>
+
+          <div class="faq-container">
+            <!-- Text Utilities FAQs (Bangla) -->
+            <div class="faq-item">
+              <button class="faq-question">
+                এই টুল কি অফলাইনে চলে?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  হ্যাঁ—প্রথমবার লোড হলে পরবর্তীতে সবকিছু ব্রাউজারেই সম্পন্ন
+                  হয়।
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                ইনপুট কি কোথাও পাঠানো হয়?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  না—সব অপারেশন (case change, trim, copy, count) শুধুমাত্র আপনার
+                  ব্রাউজারেই হয়।
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                কী কী টেক্সট ইউটিলিটি আছে?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  বড় হাত/ছোট হাত অক্ষর রূপান্তর, স্পেস ক্লিনআপ, সব স্পেস মুছে
+                  ফেলা, লাইন/শব্দ/ক্যারেক্টার গণনা এবং দ্রুত কপি করা।
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                ইমোজি বা বাংলা টেক্সটে কোনো পরিবর্তন হবে?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  না। কেস কনভার্শন শুধু ইংরেজি বর্ণমালায় প্রভাব ফেলে। বাংলা,
+                  আরবি বা ইমোজি অপরিবর্তিত থাকে।
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                টেক্সটের কোনো সীমা আছে?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  নির্দিষ্ট কোনো সীমা নেই। তবে খুব বড় টেক্সট (MB লেভেল) হলে
+                  কিছু ডিভাইসে ধীরগতি হতে পারে। বড় ইনপুট হলে ভাগ করে ব্যবহার
+                  করা ভালো।
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Related -->
+        <article class="card" id="related">
+          <h2>সম্পর্কিত</h2>
+          <p class="muted">আরও টেক্সট/ডকুমেন্ট টুলস:</p>
+          <p>
+            <a class="btn" href="/bn/quick-notes/">দ্রুত নোটস</a>
+            <a class="btn" href="/bn/text-to-pdf/">টেক্সট → PDF</a>
+            <a class="btn" href="/bn/json-formatter/">JSON ফরম্যাটার</a>
+          </p>
+        </article>
+      </main>
+
+      <footer>
+        © <span id="y"></span> Tools Pack • <a class="muted" href="/bn/">হোম</a>
+      </footer>
+    </div>
     <script>
       // Year
       document.getElementById("y").textContent = new Date().getFullYear();

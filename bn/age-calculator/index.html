@@ -287,276 +287,279 @@
         data-adtest="on"
       ></ins>
     </div>
+    <div class="container">
+      <main class="wrap">
+        <!-- Breadcrumbs (Bangla) -->
+        <nav class="breadcrumbs" aria-label="breadcrumb">
+          <a href="/bn/">হোম</a> › <a href="/bn/#math">গণিত টুলস</a> ›
+          <span>বয়স নির্ণায়ক</span>
+        </nav>
 
-    <main class="wrap">
-      <!-- Breadcrumbs (Bangla) -->
-      <nav class="breadcrumbs" aria-label="breadcrumb">
-        <a href="/bn/">হোম</a> › <a href="/bn/#math">গণিত টুলস</a> ›
-        <span>বয়স নির্ণায়ক</span>
-      </nav>
+        <!-- TOC (Bangla) -->
+        <p class="toc">
+          <a href="#calc">বয়স নির্ণায়ক</a> · <a href="#intro">পরিচিতি</a> ·
+          <a href="#use-cases">ব্যবহার ক্ষেত্র</a> ·
+          <a href="#how-to-use">কীভাবে ব্যবহার করবেন</a> ·
+          <a href="#faq">প্রশ্নোত্তর</a> · <a href="#verdict">উপসংহার</a> ·
+          <a href="#related">সম্পর্কিত টুলস</a>
+        </p>
 
-      <!-- TOC (Bangla) -->
-      <p class="toc">
-        <a href="#calc">বয়স নির্ণায়ক</a> · <a href="#intro">পরিচিতি</a> ·
-        <a href="#use-cases">ব্যবহার ক্ষেত্র</a> ·
-        <a href="#how-to-use">কীভাবে ব্যবহার করবেন</a> ·
-        <a href="#faq">প্রশ্নোত্তর</a> · <a href="#verdict">উপসংহার</a> ·
-        <a href="#related">সম্পর্কিত টুলস</a>
-      </p>
+        <!-- Calculator -->
+        <article class="card" id="calc">
+          <h2>তারিখ দিন</h2>
 
-      <!-- Calculator -->
-      <article class="card" id="calc">
-        <h2>তারিখ দিন</h2>
-
-        <div
-          class="grid"
-          style="grid-template-columns: repeat(12, 1fr); gap: 10px"
-        >
-          <label class="field" style="grid-column: span 6">
-            <span class="muted">জন্মতারিখ</span>
-            <input id="dob" class="field" type="date" />
-          </label>
-          <label class="field" style="grid-column: span 6">
-            <span class="muted">তারিখ পর্যন্ত</span>
-            <input id="asof" class="field" type="date" />
-          </label>
-        </div>
-
-        <div style="margin-top: 10px">
-          <button
-            class="btn btn-primary"
-            id="calcBtn"
-            type="button"
-            aria-label="বয়স গণনা করুন"
+          <div
+            class="grid"
+            style="grid-template-columns: repeat(12, 1fr); gap: 10px"
           >
-            গণনা
-          </button>
-          <button class="btn" id="resetBtn" type="button">রিসেট</button>
-          <button class="btn" id="copyBtn" type="button">কপি</button>
-        </div>
-
-        <!-- Ad #2: ফলাফলের আগে (in-article) -->
-        <div class="ad-wrap ad-article" aria-label="Advertisement">
-          <span class="ad-label">Ad</span>
-          <ins
-            class="adsbygoogle"
-            style="display: block; text-align: center"
-            data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
-            data-ad-slot="2222222222"
-            data-ad-format="fluid"
-            data-ad-layout="in-article"
-            data-adtest="on"
-          ></ins>
-        </div>
-
-        <textarea
-          id="out"
-          class="textarea mono"
-          readonly
-          placeholder="ফলাফল…"
-        ></textarea>
-        <div class="muted" id="next" aria-live="polite"></div>
-      </article>
-
-      <!-- Introduction (NEW) -->
-      <article class="card" id="intro">
-        <h2>Age Calculator কী ও কেন ব্যবহার করবেন?</h2>
-        <p>
-          এটি এমন একটি <strong>Online Utility</strong> যেখানে আপনার
-          <strong>Date of Birth (DOB)</strong> দিয়ে আজকের তারিখ ধরে
-          <strong>Exact Age Finder</strong> হিসেবে
-          <strong>বছর, মাস ও দিন</strong>—সব দেখায়।
-          <em>Birthday Calculator</em> বা
-          <em>Date of Birth Calculator</em> নামেও পরিচিত। আমাদের টুল
-          <strong>Simple & Accurate Tool</strong>—সম্পূর্ণ
-          <strong>Free Calculator</strong>, লগইন ছাড়াই।
-          <strong>Gregorian Calendar</strong> সাপোর্ট থাকায় লিপ-ইয়ারসহ তারিখ
-          গণনা নির্ভুল হয়।
-        </p>
-      </article>
-
-      <!-- Use Cases (NEW) -->
-      <article class="card" id="use-cases">
-        <h2>ব্যবহার ক্ষেত্র (Use Cases)</h2>
-        <ul>
-          <li>
-            <strong>Exam form filling:</strong> DOB থেকে যোগ্যতা-উপযোগী বয়স
-            দ্রুত বের করতে।
-          </li>
-          <li>
-            <strong>Insurance/Medical:</strong> বয়সভিত্তিক কভারেজ/পলিসি যাচাইয়ে
-            সঠিক বয়স দরকার হলে।
-          </li>
-          <li>
-            <strong>School admission:</strong> নির্দিষ্ট কাট-অফ অনুযায়ী ভর্তি
-            যোগ্যতা দেখতে।
-          </li>
-          <li>
-            <strong>Birthday events:</strong> জন্মদিন পরিকল্পনায়
-            <em>Months · Years · Days</em> হিসাবে বয়স জানার জন্য (কাউন্টডাউনের
-            জন্য
-            <a href="/bn/stopwatch-countdown/">স্টপওয়াচ/কাউন্টডাউন</a> দেখুন)।
-          </li>
-        </ul>
-      </article>
-
-      <!-- How to use (Bangla) -->
-      <article class="card" id="how-to-use">
-        <h2>কীভাবে ব্যবহার করবেন</h2>
-        <ol>
-          <li>
-            জন্মতারিখ নির্বাচন করুন। <strong>তারিখ পর্যন্ত</strong> আজকের তারিখ
-            হিসেবে সেট থাকবে—প্রয়োজনে বদলাতে পারবেন।
-          </li>
-          <li>
-            <strong>গণনা</strong> চাপুন—বছর, মাস, দিনসহ মোট দিনের হিসাব দেখাবে।
-          </li>
-          <li>
-            <strong>কপি</strong> বোতামে ক্লিক করে ফল কপি করতে পারেন;
-            <strong>রিসেট</strong> দিয়ে সব মুছে আবার শুরু করুন।
-          </li>
-          <li>
-            লিপ ইয়ার নয় এমন বছরে ২৯ ফেব্রুয়ারির জন্মদিনকে ২৮ ফেব্রুয়ারি ধরা হয়।
-          </li>
-        </ol>
-        <h3>টিপস</h3>
-        <ul>
-          <li>প্রথমবার লোডের পর অফলাইনে কাজ করে।</li>
-          <li>সব হিসাব ব্রাউজারেই হয়—ডেটা পাঠানো বা সংরক্ষণ করা হয় না।</li>
-          <li>
-            <strong>তারিখ পর্যন্ত</strong> জন্মতারিখের সমান বা পরের যেকোনো তারিখ
-            দিতে পারবেন।
-          </li>
-        </ul>
-      </article>
-
-      <section class="faq-section card">
-        <h2 class="faq-title">প্রশ্নোত্তর</h2>
-
-        <div class="faq-container">
-          <!-- Bangla Age Calculator FAQs -->
-          <div class="faq-item">
-            <button class="faq-question">
-              এই ক্যালকুলেটর কতটা সঠিক?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                এটি Gregorian Calendar অনুযায়ী দিন–মাস–বছর গণনা করে; লিপ-ইয়ারও
-                ধরা হয়—তাই ফলাফল নির্ভুল।
-              </p>
-            </div>
+            <label class="field" style="grid-column: span 6">
+              <span class="muted">জন্মতারিখ</span>
+              <input id="dob" class="field" type="date" />
+            </label>
+            <label class="field" style="grid-column: span 6">
+              <span class="muted">তারিখ পর্যন্ত</span>
+              <input id="asof" class="field" type="date" />
+            </label>
           </div>
 
-          <div class="faq-item">
-            <button class="faq-question">
-              আমি কি বছর, মাস ও দিনে বয়স দেখতে পারবো?
-              <span class="faq-icon">+</span>
+          <div style="margin-top: 10px">
+            <button
+              class="btn btn-primary"
+              id="calcBtn"
+              type="button"
+              aria-label="বয়স গণনা করুন"
+            >
+              গণনা
             </button>
-            <div class="faq-answer">
-              <p>
-                হ্যাঁ—Years, Months, Days—তিনভাবেই ফলাফল দেখায় এবং মোট দিনের
-                হিসাবও দেয়।
-              </p>
-            </div>
+            <button class="btn" id="resetBtn" type="button">রিসেট</button>
+            <button class="btn" id="copyBtn" type="button">কপি</button>
           </div>
 
-          <div class="faq-item">
-            <button class="faq-question">
-              ২৯ ফেব্রুয়ারির জন্মদিন হলে কীভাবে ধরা হয়?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                যে বছর লিপ ইয়ার নয়, সে বছর পরবর্তী জন্মদিন ২৮ ফেব্রুয়ারি ধরা হয়।
-              </p>
-            </div>
+          <!-- Ad #2: ফলাফলের আগে (in-article) -->
+          <div class="ad-wrap ad-article" aria-label="Advertisement">
+            <span class="ad-label">Ad</span>
+            <ins
+              class="adsbygoogle"
+              style="display: block; text-align: center"
+              data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
+              data-ad-slot="2222222222"
+              data-ad-format="fluid"
+              data-ad-layout="in-article"
+              data-adtest="on"
+            ></ins>
           </div>
 
-          <div class="faq-item">
-            <button class="faq-question">
-              ডেটা কি কোথাও পাঠানো বা সংরক্ষণ করা হয়?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                না—সব হিসাব আপনার ব্রাউজারেই চলে; কোনো তথ্য সার্ভারে পাঠানো বা
-                সংরক্ষণ করা হয় না।
-              </p>
+          <textarea
+            id="out"
+            class="textarea mono"
+            readonly
+            placeholder="ফলাফল…"
+          ></textarea>
+          <div class="muted" id="next" aria-live="polite"></div>
+        </article>
+
+        <!-- Introduction (NEW) -->
+        <article class="card" id="intro">
+          <h2>Age Calculator কী ও কেন ব্যবহার করবেন?</h2>
+          <p>
+            এটি এমন একটি <strong>Online Utility</strong> যেখানে আপনার
+            <strong>Date of Birth (DOB)</strong> দিয়ে আজকের তারিখ ধরে
+            <strong>Exact Age Finder</strong> হিসেবে
+            <strong>বছর, মাস ও দিন</strong>—সব দেখায়।
+            <em>Birthday Calculator</em> বা
+            <em>Date of Birth Calculator</em> নামেও পরিচিত। আমাদের টুল
+            <strong>Simple & Accurate Tool</strong>—সম্পূর্ণ
+            <strong>Free Calculator</strong>, লগইন ছাড়াই।
+            <strong>Gregorian Calendar</strong> সাপোর্ট থাকায় লিপ-ইয়ারসহ তারিখ
+            গণনা নির্ভুল হয়।
+          </p>
+        </article>
+
+        <!-- Use Cases (NEW) -->
+        <article class="card" id="use-cases">
+          <h2>ব্যবহার ক্ষেত্র (Use Cases)</h2>
+          <ul>
+            <li>
+              <strong>Exam form filling:</strong> DOB থেকে যোগ্যতা-উপযোগী বয়স
+              দ্রুত বের করতে।
+            </li>
+            <li>
+              <strong>Insurance/Medical:</strong> বয়সভিত্তিক কভারেজ/পলিসি
+              যাচাইয়ে সঠিক বয়স দরকার হলে।
+            </li>
+            <li>
+              <strong>School admission:</strong> নির্দিষ্ট কাট-অফ অনুযায়ী ভর্তি
+              যোগ্যতা দেখতে।
+            </li>
+            <li>
+              <strong>Birthday events:</strong> জন্মদিন পরিকল্পনায়
+              <em>Months · Years · Days</em> হিসাবে বয়স জানার জন্য (কাউন্টডাউনের
+              জন্য
+              <a href="/bn/stopwatch-countdown/">স্টপওয়াচ/কাউন্টডাউন</a> দেখুন)।
+            </li>
+          </ul>
+        </article>
+
+        <!-- How to use (Bangla) -->
+        <article class="card" id="how-to-use">
+          <h2>কীভাবে ব্যবহার করবেন</h2>
+          <ol>
+            <li>
+              জন্মতারিখ নির্বাচন করুন। <strong>তারিখ পর্যন্ত</strong> আজকের
+              তারিখ হিসেবে সেট থাকবে—প্রয়োজনে বদলাতে পারবেন।
+            </li>
+            <li>
+              <strong>গণনা</strong> চাপুন—বছর, মাস, দিনসহ মোট দিনের হিসাব
+              দেখাবে।
+            </li>
+            <li>
+              <strong>কপি</strong> বোতামে ক্লিক করে ফল কপি করতে পারেন;
+              <strong>রিসেট</strong> দিয়ে সব মুছে আবার শুরু করুন।
+            </li>
+            <li>
+              লিপ ইয়ার নয় এমন বছরে ২৯ ফেব্রুয়ারির জন্মদিনকে ২৮ ফেব্রুয়ারি ধরা
+              হয়।
+            </li>
+          </ol>
+          <h3>টিপস</h3>
+          <ul>
+            <li>প্রথমবার লোডের পর অফলাইনে কাজ করে।</li>
+            <li>সব হিসাব ব্রাউজারেই হয়—ডেটা পাঠানো বা সংরক্ষণ করা হয় না।</li>
+            <li>
+              <strong>তারিখ পর্যন্ত</strong> জন্মতারিখের সমান বা পরের যেকোনো
+              তারিখ দিতে পারবেন।
+            </li>
+          </ul>
+        </article>
+
+        <section class="faq-section card">
+          <h2 class="faq-title">প্রশ্নোত্তর</h2>
+
+          <div class="faq-container">
+            <!-- Bangla Age Calculator FAQs -->
+            <div class="faq-item">
+              <button class="faq-question">
+                এই ক্যালকুলেটর কতটা সঠিক?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  এটি Gregorian Calendar অনুযায়ী দিন–মাস–বছর গণনা করে; লিপ-ইয়ারও
+                  ধরা হয়—তাই ফলাফল নির্ভুল।
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                আমি কি বছর, মাস ও দিনে বয়স দেখতে পারবো?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  হ্যাঁ—Years, Months, Days—তিনভাবেই ফলাফল দেখায় এবং মোট দিনের
+                  হিসাবও দেয়।
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                ২৯ ফেব্রুয়ারির জন্মদিন হলে কীভাবে ধরা হয়?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  যে বছর লিপ ইয়ার নয়, সে বছর পরবর্তী জন্মদিন ২৮ ফেব্রুয়ারি ধরা
+                  হয়।
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                ডেটা কি কোথাও পাঠানো বা সংরক্ষণ করা হয়?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  না—সব হিসাব আপনার ব্রাউজারেই চলে; কোনো তথ্য সার্ভারে পাঠানো বা
+                  সংরক্ষণ করা হয় না।
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                অফলাইনে কাজ করবে?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>হ্যাঁ—পেজ একবার লোড হলে মৌলিক হিসাব অফলাইনে চলে।</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                'তারিখ পর্যন্ত' কি ভবিষ্যৎ/অতীত যেকোনো তারিখ দেওয়া যাবে?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  হ্যাঁ—জন্মতারিখের সমান বা পরের যেকোনো তারিখ বেছে নিতে পারবেন।
+                </p>
+              </div>
             </div>
           </div>
+        </section>
+        <!-- Verdict / CTA (NEW) -->
+        <article class="card" id="verdict">
+          <h2>উপসংহার: সিম্পল, একিউরেট, ফ্রি — এখনই বয়স দেখুন</h2>
+          <p>
+            আমাদের <strong>Age Calculator Online</strong> দ্রুত, সঠিক এবং
+            সম্পূর্ণ <strong>Free Calculator</strong>— কোনো সাইন-আপ লাগবে না।
+            বাংলা-ফ্রেন্ডলি UI, <strong>Exact Age Finder</strong> (Years ·
+            Months · Days), এবং
+            <strong>Gregorian Calendar</strong> সাপোর্ট—সবকিছু এক জায়গায়।
+          </p>
+          <p>
+            <a
+              class="btn btn-primary"
+              href="#calc"
+              aria-label="বয়স নির্ণায়ক ব্যবহার করুন"
+              >এখনই ব্যবহার করুন</a
+            >
+          </p>
+        </article>
 
-          <div class="faq-item">
-            <button class="faq-question">
-              অফলাইনে কাজ করবে?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>হ্যাঁ—পেজ একবার লোড হলে মৌলিক হিসাব অফলাইনে চলে।</p>
-            </div>
-          </div>
+        <!-- Related tools (expanded internal links) -->
+        <article class="card" id="related">
+          <h2>সম্পর্কিত টুলস</h2>
+          <p class="muted">আরও গণিত ও সংখ্যা-বিষয়ক টুলস:</p>
+          <p>
+            <a class="btn" href="/bn/calculator/">ক্যালকুলেটর</a>
+            <a class="btn" href="/bn/percent-calculator/">শতকরা ক্যালকুলেটর</a>
+            <a class="btn" href="/bn/unit-converter/">ইউনিট কনভার্টার</a>
+            <a class="btn" href="/bn/stopwatch-countdown/"
+              >স্টপওয়াচ ও কাউন্টডাউন</a
+            >
+            <a class="btn" href="/bn/quick-notes/">কুইক নোটস</a>
+            <a class="btn" href="/bn/text-to-pdf/">টেক্সট → PDF</a>
+          </p>
+          <p class="small">
+            English preferred? See the
+            <a href="/age-calculator/" hreflang="en">English version</a>.
+          </p>
+        </article>
+      </main>
 
-          <div class="faq-item">
-            <button class="faq-question">
-              'তারিখ পর্যন্ত' কি ভবিষ্যৎ/অতীত যেকোনো তারিখ দেওয়া যাবে?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                হ্যাঁ—জন্মতারিখের সমান বা পরের যেকোনো তারিখ বেছে নিতে পারবেন।
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- Verdict / CTA (NEW) -->
-      <article class="card" id="verdict">
-        <h2>উপসংহার: সিম্পল, একিউরেট, ফ্রি — এখনই বয়স দেখুন</h2>
-        <p>
-          আমাদের <strong>Age Calculator Online</strong> দ্রুত, সঠিক এবং সম্পূর্ণ
-          <strong>Free Calculator</strong>— কোনো সাইন-আপ লাগবে না।
-          বাংলা-ফ্রেন্ডলি UI, <strong>Exact Age Finder</strong> (Years · Months
-          · Days), এবং <strong>Gregorian Calendar</strong> সাপোর্ট—সবকিছু এক
-          জায়গায়।
-        </p>
-        <p>
-          <a
-            class="btn btn-primary"
-            href="#calc"
-            aria-label="বয়স নির্ণায়ক ব্যবহার করুন"
-            >এখনই ব্যবহার করুন</a
-          >
-        </p>
-      </article>
-
-      <!-- Related tools (expanded internal links) -->
-      <article class="card" id="related">
-        <h2>সম্পর্কিত টুলস</h2>
-        <p class="muted">আরও গণিত ও সংখ্যা-বিষয়ক টুলস:</p>
-        <p>
-          <a class="btn" href="/bn/calculator/">ক্যালকুলেটর</a>
-          <a class="btn" href="/bn/percent-calculator/">শতকরা ক্যালকুলেটর</a>
-          <a class="btn" href="/bn/unit-converter/">ইউনিট কনভার্টার</a>
-          <a class="btn" href="/bn/stopwatch-countdown/"
-            >স্টপওয়াচ ও কাউন্টডাউন</a
-          >
-          <a class="btn" href="/bn/quick-notes/">কুইক নোটস</a>
-          <a class="btn" href="/bn/text-to-pdf/">টেক্সট → PDF</a>
-        </p>
-        <p class="small">
-          English preferred? See the
-          <a href="/age-calculator/" hreflang="en">English version</a>.
-        </p>
-      </article>
-    </main>
-
-    <footer>
-      © <span id="y"></span> Tools Pack •
-      <span class="muted">Last updated: <time id="lu"></time></span> •
-      <a class="muted" href="/bn/">হোম</a> •
-      <a class="muted" href="/age-calculator/" hreflang="en">English</a>
-    </footer>
-
+      <footer>
+        © <span id="y"></span> Tools Pack •
+        <span class="muted">Last updated: <time id="lu"></time></span> •
+        <a class="muted" href="/bn/">হোম</a> •
+        <a class="muted" href="/age-calculator/" hreflang="en">English</a>
+      </footer>
+    </div>
     <script>
       // Footer year & last updated
       const now = new Date();
