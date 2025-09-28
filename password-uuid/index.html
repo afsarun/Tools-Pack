@@ -204,90 +204,6 @@
         opacity: 1;
         pointer-events: auto;
       }
-
-      .breadcrumbs {
-        font-size: 14px;
-        margin: 12px 0;
-        color: var(--muted, #9aa0b4);
-      }
-      .breadcrumbs a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      .toc a {
-        text-decoration: none;
-      }
-
-      .faq details {
-        border: 1px solid #2b2b44;
-        border-radius: 8px;
-        padding: 10px 12px;
-        margin-bottom: 10px;
-      }
-      .faq summary {
-        cursor: pointer;
-        font-weight: 600;
-      }
-
-      .muted-small {
-        font-size: 12px;
-        color: var(--muted, #9aa0b4);
-      }
-
-      .related a {
-        display: inline-block;
-        margin: 6px 8px 0 0;
-      }
-
-      .ad-spacer {
-        margin: 18px 0;
-      }
-
-      .copygroup input {
-        user-select: all;
-      }
-      .preview-box {
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        border: 2px dashed #ccc;
-        border-radius: 12px;
-        background: #fafafa;
-        min-height: 220px;
-        padding: 16px;
-        cursor: pointer;
-        transition: border-color 0.25s ease, background 0.25s ease;
-      }
-
-      .preview-box:hover {
-        border-color: #6c63ff;
-        background: #f0f0ff;
-      }
-
-      .preview-box img {
-        max-width: 100%;
-        max-height: 200px;
-        border-radius: 8px;
-        object-fit: contain;
-        display: none; /* hidden until image is loaded */
-      }
-
-      .preview-box span {
-        color: #777;
-        font-size: 14px;
-        text-align: center;
-      }
-
-      .preview-box.has-image img {
-        display: block;
-      }
-
-      .preview-box.has-image span {
-        display: none;
-      }
     </style>
   </head>
   <body>
@@ -323,16 +239,18 @@
         <span>Password Generator</span>
       </nav>
       <header class="header">
-        <h1 class="">Fast, Private, and Offline-<br />Friendly Notes</h1>
+        <h1 class="">Password Generator <br />— Strong & Secure</h1>
         <p class="subtitle">
-          Quick Notes is a simple
-          <strong>online notepad with local auto-save</strong>. Your writing
-          stays on this device — <em>no account, no server</em>. Export or
-          import <code>.txt</code> files anytime. Full Unicode support
-          (including Bangla).
+          Instantly create <strong>random, secure passwords</strong> and
+          <strong>UUID v4 identifiers</strong>. All generation happens locally
+          in your browser — <em>no server, no tracking</em>. Customize length,
+          character sets, and formats for your needs.
         </p>
-        <span class="badge">RFC 3986 Compliant</span>
+        <span class="badge">high-entropy</span>
+
+        <span class="badge">offline</span>
       </header>
+
       <!-- TOC -->
 
       <p class="toc" aria-label="Table of Contents">
