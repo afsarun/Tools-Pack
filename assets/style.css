@@ -113,7 +113,10 @@ body {
   border-radius: 4px;
   transition: background 0.2s, color 0.2s;
 }
-
+a {
+  text-decoration: none;
+  color: white;
+}
 .toc a:hover,
 .toc a:focus {
   background: #242529;
