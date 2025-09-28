@@ -8,6 +8,15 @@
       Tools Pack - Free Online Utilities: Calculator, JSON Formatter, Unit
       Converter
     </title>
+
+    <!-- Site CSS non-blocking (optional) -->
+    <link rel="preload" href="/assets/style.css" as="style" />
+    <link
+      rel="stylesheet"
+      href="/assets/style.css"
+      media="print"
+      onload="this.media='all'"
+    />
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
     <!-- Non-blocking Font Awesome -->
     <link
@@ -52,14 +61,6 @@
     <!-- Sitemap -->
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 
-    <!-- Site CSS non-blocking (optional) -->
-    <link rel="preload" href="/assets/style.css" as="style" />
-    <link
-      rel="stylesheet"
-      href="/assets/style.css"
-      media="print"
-      onload="this.media='all'"
-    />
     <noscript>
       <link rel="stylesheet" href="/assets/style.css" />
       <link
