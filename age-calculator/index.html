@@ -303,18 +303,15 @@
     </header>
 
     <!-- Ad #1 -->
-    <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
-      <span class="ad-label">Ad</span>
-      <ins
-        class="adsbygoogle"
-        style="display: inline-block"
-        data-ad-client="ca-pub-1234567890123456"
-        data-ad-slot="1111111111"
-        data-ad-format="auto"
-        data-full-width-responsive="false"
-        data-adtest="on"
-      ></ins>
-    </div>
+    <ins
+      class="adsbygoogle"
+      style="display: block; height: 120px"
+      data-ad-client="ca-pub-1234567890123456"
+      data-ad-slot="1111111111"
+      data-ad-format="auto"
+      data-full-width-responsive="false"
+    ></ins>
+
     <div class="container">
       <!-- Breadcrumbs -->
       <nav class="breadcrumbs" aria-label="breadcrumb">
@@ -1048,6 +1045,16 @@
           out.value + (next.textContent ? `\n${next.textContent}` : "");
         navigator.clipboard.writeText(text);
       };
+    </script>
+    <script>
+      window.addEventListener("load", function () {
+        var s = document.createElement("script");
+        s.src =
+          "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234567890123456";
+        s.async = true;
+        s.crossOrigin = "anonymous";
+        document.head.appendChild(s);
+      });
     </script>
 
     <!-- tracker path: keep whichever works in your project -->
