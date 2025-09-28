@@ -9,8 +9,17 @@
       Converter
     </title>
 
-    <!-- Site CSS non-blocking (optional) -->
-    <link rel="preload" href="/assets/style.css" as="style" />
+    <!-- Main CSS (blocking) -->
+    <link rel="stylesheet" href="/assets/style.css?v=2025-09-28-1" />
+
+    <!-- Font Awesome (normal load) -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      crossorigin
+      referrerpolicy="no-referrer"
+    />
     <link
       rel="stylesheet"
       href="/assets/style.css"
@@ -18,9 +27,7 @@
       onload="this.media='all'"
     />
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
-    <!-- Non-blocking Font Awesome -->
     <link
-      rel="preload"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
       as="style"
       crossorigin
@@ -32,6 +39,7 @@
       onload="this.media='all'"
       crossorigin
     />
+
     <meta
       name="description"
       content="Free online tools that run 100% in your browser. Calculator, JSON Formatter, Unit Converter, Image Resizer, Color Contrast, Stopwatch, Notes.  privacy first."

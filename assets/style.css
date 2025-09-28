@@ -33,9 +33,7 @@ body {
   /* background-attachment: fixed; */
   background-attachment: scroll; /* override your fixed attachment */
   background-image: none; /* we'll render gradients on ::before instead */
-
   position: relative;
-  overflow-x: hidden;
 }
 
 /* 2) Design tokens */
@@ -47,14 +45,11 @@ body {
   --danger: #ef4444;
   --warning: #f59e0b;
 
-  --muted: #9aa4b2;
   --background: #0f172a; /* page bg (slate-900) */
   --surface: #1e293b; /* card bg (slate-800) */
   --surface-light: #334155; /* lighter surface */
-
-  --text: #e6e8ef; /* আগে #f1f5f9 */
-  --text-muted: #a7b0bd; /* আগে #94a3b8 */
-
+  --text: #f1f5f9; /* slate-100 */
+  --text-muted: #94a3b8; /* slate-400 */
   --border: #475569; /* slate-600 */
 
   --gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
@@ -223,21 +218,14 @@ body {
   animation-delay: 0.2s;
 }
 
-header.sticky {
-  background: rgba(30, 41, 59, 0.86); /* fallback */
-  backdrop-filter: blur(10px);
-}
-@supports not (
-  (backdrop-filter: blur(4px)) or (-webkit-backdrop-filter: blur(4px))
-) {
-  header.sticky {
-    background: rgba(30, 41, 59, 0.96);
-  }
-}
-:where(a, button, [href], .tool-link, .btn):focus-visible {
-  outline: 2px solid var(--primary);
-  outline-offset: 2px;
-  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.4);
+/* “tool-card” = hero card on each tool page.
+   Keep generic here; override in per-tool CSS if needed. */
+.tool-card {
+  background: linear-gradient(
+    135deg,
+    var(--surface) 0%,
+    rgba(59, 130, 246, 0.05) 100%
+  );
 }
 
 /* 6) Forms (shared) */
