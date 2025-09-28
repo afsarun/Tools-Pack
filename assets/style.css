@@ -33,9 +33,28 @@ body {
   /* background-attachment: fixed; */
   background-attachment: scroll; /* override your fixed attachment */
   background-image: none; /* we'll render gradients on ::before instead */
-  position: relative;
-}
 
+  position: relative;
+  overflow-x: hidden;
+}
+body::before {
+  content: "";
+  position: fixed; /* fixed so scroll হলে repaints কম */
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background: radial-gradient(
+      circle at 20% 20%,
+      rgba(59, 130, 246, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(139, 92, 246, 0.1) 0%,
+      transparent 50%
+    );
+  will-change: transform, opacity;
+}
 /* 2) Design tokens */
 :root {
   --primary: #3b82f6;
@@ -44,12 +63,15 @@ body {
   --success: #10b981;
   --danger: #ef4444;
   --warning: #f59e0b;
-  --muted: #9aa0a6;
+
+  --muted: #9aa4b2;
   --background: #0f172a; /* page bg (slate-900) */
   --surface: #1e293b; /* card bg (slate-800) */
   --surface-light: #334155; /* lighter surface */
-  --text: #f1f5f9; /* slate-100 */
-  --text-muted: #94a3b8; /* slate-400 */
+
+  --text: #e6e8ef; /* আগে #f1f5f9 */
+  --text-muted: #a7b0bd; /* আগে #94a3b8 */
+
   --border: #475569; /* slate-600 */
 
   --gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
@@ -57,6 +79,17 @@ body {
   --shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
     0 10px 10px -5px rgb(0 0 0 / 0.04);
   --shadow-lg: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+}
+/* fallback first, then color-mix override */
+.wrap.brand nav a:hover,
+.wrap.brand nav a:focus-visible {
+  background: #2b3546; /* fallback approx */
+}
+@supports (background: color-mix(in oklab, black 50%, white)) {
+  .wrap.brand nav a:hover,
+  .wrap.brand nav a:focus-visible {
+    background: color-mix(in oklab, var(--surface-light) 60%, transparent);
+  }
 }
 
 #result,
@@ -226,6 +259,24 @@ body {
     var(--surface) 0%,
     rgba(59, 130, 246, 0.05) 100%
   );
+  content-visibility: auto;
+  contain-intrinsic-size: 120px 320px; /* rough placeholder to avoid CLS */
+}
+header.sticky {
+  background: rgba(30, 41, 59, 0.86); /* fallback */
+  backdrop-filter: blur(10px);
+}
+@supports not (
+  (backdrop-filter: blur(4px)) or (-webkit-backdrop-filter: blur(4px))
+) {
+  header.sticky {
+    background: rgba(30, 41, 59, 0.96);
+  }
+}
+:where(a, button, [href], .tool-link, .btn):focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.4);
 }
 
 /* 6) Forms (shared) */

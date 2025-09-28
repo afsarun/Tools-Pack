@@ -8,9 +8,20 @@
       Tools Pack - Free Online Utilities: Calculator, JSON Formatter, Unit
       Converter
     </title>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <!-- Non-blocking Font Awesome -->
+    <link
+      rel="preload"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      as="style"
+      crossorigin
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      media="print"
+      onload="this.media='all'"
+      crossorigin
     />
     <meta
       name="description"
@@ -41,12 +52,25 @@
     <!-- Sitemap -->
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="/assets/style.css" />
-
+    <!-- Site CSS non-blocking (optional) -->
+    <link rel="preload" href="/assets/style.css" as="style" />
+    <link
+      rel="stylesheet"
+      href="/assets/style.css"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link rel="stylesheet" href="/assets/style.css" />
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      />
+    </noscript>
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Tools Pack" />
+
     <meta
       property="og:title"
       content="Tools Pack - Free Online Utilities & Web Tools"
@@ -424,8 +448,8 @@
             aria-label="Search tools"
           />
         </div>
-
         <section class="grid" aria-label="Tools">
+          <!-- Percent Calculator -->
           <article
             class="carda tool-card"
             data-category="calculators"
@@ -435,7 +459,7 @@
               <i class="fas fa-percent" aria-hidden="true"></i>
             </div>
             <div class="tool-content">
-              <h3 class="tool-title">Percent Calculator</h3>
+              <h2 class="tool-title">Percent Calculator</h2>
               <p class="muted">
                 Calculate percentages, percentage increase/decrease, and find
                 what percent one number is of another. Works entirely in your
@@ -449,7 +473,11 @@
                 >
                   Open Percent Calculator
                 </a>
-                <a class="tool-link" href="/percent-calculator/">
+                <a
+                  class="tool-link"
+                  href="/percent-calculator/"
+                  aria-label="Learn more about Percent Calculator"
+                >
                   Learn more
                   <i class="fas fa-arrow-right" aria-hidden="true"></i>
                 </a>
@@ -467,7 +495,7 @@
               <i class="fas fa-user-clock" aria-hidden="true"></i>
             </div>
             <div class="tool-content">
-              <h3 class="tool-title">Age Calculator</h3>
+              <h2 class="tool-title">Age Calculator</h2>
               <p class="muted">
                 Find your exact age in years, months, and days. Accurate age
                 calculator that works entirely in your browser.
@@ -480,7 +508,11 @@
                 >
                   Open Age Calculator
                 </a>
-                <a class="tool-link" href="/age-calculator/">
+                <a
+                  class="tool-link"
+                  href="/age-calculator/"
+                  aria-label="Learn more about Age Calculator"
+                >
                   Learn more
                   <i class="fas fa-arrow-right" aria-hidden="true"></i>
                 </a>
@@ -498,7 +530,7 @@
               <i class="fas fa-calendar-alt" aria-hidden="true"></i>
             </div>
             <div class="tool-content">
-              <h3 class="tool-title">Date Calculator</h3>
+              <h2 class="tool-title">Date Calculator</h2>
               <p class="muted">
                 Calculate the difference between dates or add/subtract days from
                 a date. Free date calculator tool.
@@ -511,7 +543,11 @@
                 >
                   Open Date Calculator
                 </a>
-                <a class="tool-link" href="/date-calculator/">
+                <a
+                  class="tool-link"
+                  href="/date-calculator/"
+                  aria-label="Learn more about Date Calculator"
+                >
                   Learn more
                   <i class="fas fa-arrow-right" aria-hidden="true"></i>
                 </a>
@@ -529,7 +565,7 @@
               <i class="fas fa-calculator" aria-hidden="true"></i>
             </div>
             <div class="tool-content">
-              <h3 class="tool-title">Calculator</h3>
+              <h2 class="tool-title">Calculator</h2>
               <p class="muted">
                 Add, subtract, multiply, divide and calculate percentages.
                 Full-featured online calculator.
@@ -542,7 +578,11 @@
                 >
                   Open Calculator
                 </a>
-                <a class="tool-link" href="/calculator/">
+                <a
+                  class="tool-link"
+                  href="/calculator/"
+                  aria-label="Learn more about Calculator"
+                >
                   Learn more
                   <i class="fas fa-arrow-right" aria-hidden="true"></i>
                 </a>
@@ -560,7 +600,7 @@
               <i class="fas fa-ruler-combined" aria-hidden="true"></i>
             </div>
             <div class="tool-content">
-              <h3 class="tool-title">Unit Converter</h3>
+              <h2 class="tool-title">Unit Converter</h2>
               <p class="muted">
                 Convert length, weight, temperature, and other units. Free
                 online unit conversion tool.
@@ -573,7 +613,11 @@
                 >
                   Open Unit Converter
                 </a>
-                <a class="tool-link" href="/unit-converter/">
+                <a
+                  class="tool-link"
+                  href="/unit-converter/"
+                  aria-label="Learn more about Unit Converter"
+                >
                   Learn more
                   <i class="fas fa-arrow-right" aria-hidden="true"></i>
                 </a>
@@ -591,7 +635,7 @@
               <i class="fas fa-file-pdf" aria-hidden="true"></i>
             </div>
             <div class="tool-content">
-              <h3 class="tool-title">Text → PDF</h3>
+              <h2 class="tool-title">Text → PDF</h2>
               <p class="muted">
                 Convert plain text to PDF instantly. Free text to PDF converter
                 that works in your browser.
@@ -604,7 +648,11 @@
                 >
                   Open Text → PDF
                 </a>
-                <a class="tool-link" href="/text-to-pdf/">
+                <a
+                  class="tool-link"
+                  href="/text-to-pdf/"
+                  aria-label="Learn more about Text to PDF"
+                >
                   Learn more
                   <i class="fas fa-arrow-right" aria-hidden="true"></i>
                 </a>
@@ -622,7 +670,7 @@
               <i class="fas fa-i-cursor" aria-hidden="true"></i>
             </div>
             <div class="tool-content">
-              <h3 class="tool-title">Text Utilities</h3>
+              <h2 class="tool-title">Text Utilities</h2>
               <p class="muted">
                 Convert text to uppercase/lowercase, count words and characters,
                 remove extra spaces. Free text tools.
@@ -635,7 +683,11 @@
                 >
                   Open Text Utilities
                 </a>
-                <a class="tool-link" href="/text-utilities/">
+                <a
+                  class="tool-link"
+                  href="/text-utilities/"
+                  aria-label="Learn more about Text Utilities"
+                >
                   Learn more
                   <i class="fas fa-arrow-right" aria-hidden="true"></i>
                 </a>
@@ -653,7 +705,7 @@
               <i class="fas fa-code" aria-hidden="true"></i>
             </div>
             <div class="tool-content">
-              <h3 class="tool-title">Base64 Tools</h3>
+              <h2 class="tool-title">Base64 Tools</h2>
               <p class="muted">
                 Encode or decode Base64 safely online. Free Base64 encoder and
                 decoder for developers.
@@ -666,7 +718,11 @@
                 >
                   Open Base64 Tools
                 </a>
-                <a class="tool-link" href="/base64/">
+                <a
+                  class="tool-link"
+                  href="/base64/"
+                  aria-label="Learn more about Base64 Tools"
+                >
                   Learn more
                   <i class="fas fa-arrow-right" aria-hidden="true"></i>
                 </a>
@@ -684,7 +740,7 @@
               <i class="fas fa-link" aria-hidden="true"></i>
             </div>
             <div class="tool-content">
-              <h3 class="tool-title">URL Tools</h3>
+              <h2 class="tool-title">URL Tools</h2>
               <p class="muted">
                 Encode or decode URLs safely. Free URL encoder and decoder for
                 web developers.
@@ -697,7 +753,11 @@
                 >
                   Open URL Tools
                 </a>
-                <a class="tool-link" href="/url-tools/">
+                <a
+                  class="tool-link"
+                  href="/url-tools/"
+                  aria-label="Learn more about URL Tools"
+                >
                   Learn more
                   <i class="fas fa-arrow-right" aria-hidden="true"></i>
                 </a>
@@ -715,7 +775,7 @@
               <i class="fas fa-key" aria-hidden="true"></i>
             </div>
             <div class="tool-content">
-              <h3 class="tool-title">Password Generator</h3>
+              <h2 class="tool-title">Password Generator</h2>
               <p class="muted">
                 Generate secure passwords and UUID v4. Free password generator
                 for security and development.
@@ -728,7 +788,11 @@
                 >
                   Open Generator
                 </a>
-                <a class="tool-link" href="/password-uuid/">
+                <a
+                  class="tool-link"
+                  href="/password-uuid/"
+                  aria-label="Learn more about Password and UUID Generator"
+                >
                   Learn more
                   <i class="fas fa-arrow-right" aria-hidden="true"></i>
                 </a>
@@ -746,7 +810,7 @@
               <i class="fas fa-qrcode" aria-hidden="true"></i>
             </div>
             <div class="tool-content">
-              <h3 class="tool-title">UUID v4</h3>
+              <h2 class="tool-title">UUID v4</h2>
               <p class="muted">
                 Generate RFC 4122 version-4 UUIDs. Free UUID generator for
                 developers and applications.
@@ -759,7 +823,11 @@
                 >
                   Open UUID v4
                 </a>
-                <a class="tool-link" href="/uuid-v4/">
+                <a
+                  class="tool-link"
+                  href="/uuid-v4/"
+                  aria-label="Learn more about UUID v4"
+                >
                   Learn more
                   <i class="fas fa-arrow-right" aria-hidden="true"></i>
                 </a>
@@ -777,7 +845,7 @@
               <i class="fas fa-shield-alt" aria-hidden="true"></i>
             </div>
             <div class="tool-content">
-              <h3 class="tool-title">SHA-256 Hash</h3>
+              <h2 class="tool-title">SHA-256 Hash</h2>
               <p class="muted">
                 Hash any text or string using SHA-256. Free SHA-256 hash
                 generator for security and development.
@@ -790,7 +858,11 @@
                 >
                   Open SHA-256 Tool
                 </a>
-                <a class="tool-link" href="/sha256/">
+                <a
+                  class="tool-link"
+                  href="/sha256/"
+                  aria-label="Learn more about SHA-256 Tool"
+                >
                   Learn more
                   <i class="fas fa-arrow-right" aria-hidden="true"></i>
                 </a>
@@ -808,7 +880,7 @@
               <i class="fas fa-image" aria-hidden="true"></i>
             </div>
             <div class="tool-content">
-              <h3 class="tool-title">Image Resizer &amp; Compressor</h3>
+              <h2 class="tool-title">Image Resizer &amp; Compressor</h2>
               <p class="muted">
                 Resize and compress images (JPG/PNG/WebP). Free online image
                 optimization tool.
@@ -821,7 +893,11 @@
                 >
                   Open Image Resizer
                 </a>
-                <a class="tool-link" href="/image-resizer-compressor/">
+                <a
+                  class="tool-link"
+                  href="/image-resizer-compressor/"
+                  aria-label="Learn more about Image Resizer and Compressor"
+                >
                   Learn more
                   <i class="fas fa-arrow-right" aria-hidden="true"></i>
                 </a>
@@ -839,7 +915,7 @@
               <i class="fas fa-eye-dropper" aria-hidden="true"></i>
             </div>
             <div class="tool-content">
-              <h3 class="tool-title">Color Picker &amp; Contrast</h3>
+              <h2 class="tool-title">Color Picker &amp; Contrast</h2>
               <p class="muted">
                 Check WCAG contrast between colors. Free color picker and
                 accessibility contrast checker.
@@ -852,7 +928,11 @@
                 >
                   Open Contrast Checker
                 </a>
-                <a class="tool-link" href="/color-picker-contrast/">
+                <a
+                  class="tool-link"
+                  href="/color-picker-contrast/"
+                  aria-label="Learn more about Color Picker and Contrast Checker"
+                >
                   Learn more
                   <i class="fas fa-arrow-right" aria-hidden="true"></i>
                 </a>
@@ -870,7 +950,7 @@
               <i class="fas fa-stopwatch" aria-hidden="true"></i>
             </div>
             <div class="tool-content">
-              <h3 class="tool-title">Stopwatch &amp; Countdown</h3>
+              <h2 class="tool-title">Stopwatch &amp; Countdown</h2>
               <p class="muted">
                 Track time with stopwatch or countdown. Free online timer tools
                 for productivity.
@@ -883,7 +963,11 @@
                 >
                   Open Stopwatch
                 </a>
-                <a class="tool-link" href="/stopwatch-countdown/">
+                <a
+                  class="tool-link"
+                  href="/stopwatch-countdown/"
+                  aria-label="Learn more about Stopwatch and Countdown"
+                >
                   Learn more
                   <i class="fas fa-arrow-right" aria-hidden="true"></i>
                 </a>
@@ -901,7 +985,7 @@
               <i class="fas fa-sticky-note" aria-hidden="true"></i>
             </div>
             <div class="tool-content">
-              <h3 class="tool-title">Quick Notes</h3>
+              <h2 class="tool-title">Quick Notes</h2>
               <p class="muted">
                 Save notes in your browser (localStorage). Free online notepad
                 for quick notes.
@@ -914,7 +998,11 @@
                 >
                   Open Notes
                 </a>
-                <a class="tool-link" href="/quick-notes/">
+                <a
+                  class="tool-link"
+                  href="/quick-notes/"
+                  aria-label="Learn more about Quick Notes"
+                >
                   Learn more
                   <i class="fas fa-arrow-right" aria-hidden="true"></i>
                 </a>
@@ -932,7 +1020,7 @@
               <i class="fas fa-file-code" aria-hidden="true"></i>
             </div>
             <div class="tool-content">
-              <h3 class="tool-title">JSON Formatter</h3>
+              <h2 class="tool-title">JSON Formatter</h2>
               <p class="muted">
                 Format, minify, and validate JSON. Free JSON formatter and
                 validator for developers.
@@ -945,7 +1033,11 @@
                 >
                   Open JSON Formatter
                 </a>
-                <a class="tool-link" href="/json-formatter/">
+                <a
+                  class="tool-link"
+                  href="/json-formatter/"
+                  aria-label="Learn more about JSON Formatter"
+                >
                   Learn more
                   <i class="fas fa-arrow-right" aria-hidden="true"></i>
                 </a>
