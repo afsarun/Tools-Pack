@@ -348,11 +348,18 @@
         <!-- Tool Card -->
         <article class="card" id="generator">
           <label
-            class="field"
+            class="field form-label"
             style="display: flex; align-items: center; gap: 10px"
           >
             <span class="muted">Length</span>
-            <input id="len" type="range" min="8" max="128" value="16" />
+            <input
+              id="len"
+              type="range"
+              min="8"
+              max="128"
+              value="16"
+              class="form-input"
+            />
             <span class="pill mono" id="lenv">16</span>
           </label>
 
@@ -364,16 +371,16 @@
               margin-bottom: 10px;
             "
           >
-            <label class="pill" style="grid-column: span 3"
+            <label class="pill form-label" style="grid-column: span 3"
               ><input id="l" type="checkbox" checked /> a-z</label
             >
-            <label class="pill" style="grid-column: span 3"
+            <label class="pill form-label" style="grid-column: span 3"
               ><input id="u" type="checkbox" checked /> A-Z</label
             >
-            <label class="pill" style="grid-column: span 3"
+            <label class="pill form-label" style="grid-column: span 3"
               ><input id="n" type="checkbox" checked /> 0-9</label
             >
-            <label class="pill" style="grid-column: span 3"
+            <label class="pill form-label" style="grid-column: span 3"
               ><input id="s" type="checkbox" checked /> !@#$…</label
             >
           </div>
@@ -381,7 +388,7 @@
           <div class="copygroup">
             <input
               id="out"
-              class="field mono"
+              class="field mono form-input"
               readonly
               aria-label="Generated password"
             />

@@ -332,26 +332,30 @@
           <h2>টেক্সট → PDF কনভার্টার</h2>
 
           <div class="row">
-            <select id="page" class="select" aria-label="পেজ সাইজ">
+            <select id="page" class="select form-select" aria-label="পেজ সাইজ">
               <option value="A4">A4</option>
               <option value="Letter">লেটার</option>
               <option value="Legal">লিগ্যাল</option>
             </select>
 
-            <select id="orient" class="select" aria-label="অরিয়েন্টেশন">
+            <select
+              id="orient"
+              class="select form-select"
+              aria-label="অরিয়েন্টেশন"
+            >
               <option value="portrait">পোর্ট্রেট</option>
               <option value="landscape">ল্যান্ডস্কেপ</option>
             </select>
 
             <label
-              class="field"
+              class="field form-label"
               style="display: flex; align-items: center; gap: 10px"
             >
               <span class="muted">মার্জিন</span>
               <input
                 id="margin"
                 type="number"
-                class="field"
+                class="field form-input"
                 value="15"
                 min="5"
                 max="40"
@@ -361,14 +365,14 @@
 
             <!-- NEW: font size (pt) -->
             <label
-              class="field"
+              class="field form-label"
               style="display: flex; align-items: center; gap: 10px"
             >
               <span class="muted">ফন্ট সাইজ</span>
               <input
                 id="fsize"
                 type="number"
-                class="field"
+                class="field form-input"
                 value="12"
                 min="8"
                 max="48"
@@ -376,21 +380,25 @@
               <span class="pill mono">pt</span>
             </label>
 
-            <label class="pill"
-              ><input id="hdr" type="checkbox" checked /> হেডার</label
+            <label class="pill form-label"
+              ><input id="hdr" type="checkbox" class="form-input" checked />
+              হেডার</label
             >
-            <label class="pill"><input id="ftr" type="checkbox" /> ফুটার</label>
+            <label class="pill form-label"
+              ><input id="ftr" type="checkbox" class="form-input" />
+              ফুটার</label
+            >
 
             <!-- Legacy Bijoy toggle -->
-            <label class="pill">
-              <input id="bijoy" type="checkbox" />
+            <label class="pill form-label">
+              <input id="bijoy" type="checkbox" class="form-input" />
               লিগ্যাসি (বিজয়/SutonnyMJ)
             </label>
           </div>
 
           <textarea
             id="txt"
-            class="textarea"
+            class="textarea form-textarea"
             placeholder="এখানে আপনার টেক্সট লিখুন/পেস্ট করুন… বাংলা/ইউনিকোড/ইমোজি ✅"
           ></textarea>
 

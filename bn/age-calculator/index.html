@@ -228,33 +228,6 @@
     <!-- Page-specific tweaks: compact ads + related chips wrap -->
     <style>
       /* Date input simple style */
-      .field input[type="date"] {
-        width: 100%;
-        padding: 8px 12px;
-        font-size: 15px;
-        font-family: inherit;
-        border: 1px solid #ddd;
-        border-radius: 6px;
-        background-color: #fff;
-        color: #111;
-        box-sizing: border-box;
-        transition: border-color 0.2s, box-shadow 0.2s;
-      }
-
-      /* Placeholder/label muted color */
-      .field span.muted {
-        display: block;
-        margin-bottom: 4px;
-        font-size: 14px;
-        color: #6b7280;
-      }
-
-      /* Focus effect */
-      .field input[type="date"]:focus {
-        border-color: #ff00b8; /* আপনার প্রাইমারি রঙ */
-        box-shadow: 0 0 0 3px rgba(255, 0, 184, 0.2);
-        outline: none;
-      }
     </style>
   </head>
 
@@ -312,13 +285,13 @@
             class="grid"
             style="grid-template-columns: repeat(12, 1fr); gap: 10px"
           >
-            <label class="field" style="grid-column: span 6">
+            <label class="field form-label" style="grid-column: span 6">
               <span class="muted">জন্মতারিখ</span>
-              <input id="dob" class="field" type="date" />
+              <input id="dob" class="field form-input" type="date" />
             </label>
-            <label class="field" style="grid-column: span 6">
+            <label class="field form-label" style="grid-column: span 6">
               <span class="muted">তারিখ পর্যন্ত</span>
-              <input id="asof" class="field" type="date" />
+              <input id="asof" class="field form-input" type="date" />
             </label>
           </div>
 
@@ -351,7 +324,7 @@
 
           <textarea
             id="out"
-            class="textarea mono"
+            class="textarea mono form-textarea"
             readonly
             placeholder="ফলাফল…"
           ></textarea>

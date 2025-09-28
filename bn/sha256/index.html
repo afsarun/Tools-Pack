@@ -183,10 +183,10 @@
         <article class="card" id="tool">
           <h2>টেক্সট/ফাইল থেকে SHA-256</h2>
 
-          <label for="hashInput" class="muted">টেক্সট লিখুন</label>
+          <label for="hashInput" class="muted form-label">টেক্সট লিখুন</label>
           <textarea
             id="hashInput"
-            class="textarea mono"
+            class="textarea mono form-textarea"
             rows="4"
             placeholder="এখানে টেক্সট লিখুন…"
           ></textarea>
@@ -198,12 +198,12 @@
 
             <label
               for="fileInput"
-              class="btn file-label"
+              class="btn file-label form-label"
               style="cursor: pointer"
             >
               ⬆ ফাইল থেকে হ্যাশ
             </label>
-            <input type="file" id="fileInput" class="file" />
+            <input type="file" id="fileInput" class="file form-input" />
 
             <button id="btnCopy" class="btn" type="button">📋 কপি</button>
             <button id="btnClear" class="btn" type="button">🗑 ক্লিয়ার</button>
@@ -229,13 +229,13 @@
 
           <label
             for="hashOutput"
-            class="muted"
+            class="muted form-label"
             style="margin-top: 8px; display: block"
             >SHA-256 আউটপুট</label
           >
           <textarea
             id="hashOutput"
-            class="textarea mono"
+            class="textarea mono form-textarea"
             rows="4"
             readonly
             placeholder="হ্যাশ এখানে…"

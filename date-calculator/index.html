@@ -285,13 +285,18 @@
         <section class="card" id="until">
           <h2>Days Until a Date</h2>
           <div class="grid">
-            <label class="field span-6">
+            <label class="field span-6 form-label">
               <span class="muted">End date</span>
-              <input id="untilEnd" type="date" class="field" required />
+              <input
+                id="untilEnd"
+                type="date"
+                class="field form-input"
+                required
+              />
             </label>
             <label class="field span-6">
               <span class="muted">Start date (defaults to today)</span>
-              <input id="untilStart" type="date" class="field" />
+              <input id="untilStart" type="date" class="field form-input" />
             </label>
             <div class="span-12">
               <button class="btn btn-primary" id="btnUntil" type="button">
@@ -304,7 +309,7 @@
             <div class="span-12">
               <textarea
                 id="outUntil"
-                class="textarea mono"
+                class="textarea mono form-textarea"
                 readonly
                 placeholder="Result…"
               ></textarea>
@@ -316,13 +321,18 @@
         <section class="card" id="since-date">
           <h2>Days Since a Date (How long ago?)</h2>
           <div class="grid">
-            <label class="field span-6">
+            <label class="field span-6 form-label">
               <span class="muted">Past date</span>
-              <input id="sincePast" type="date" class="field" required />
+              <input
+                id="sincePast"
+                type="date"
+                class="field form-input"
+                required
+              />
             </label>
-            <label class="field span-6">
+            <label class="field span-6 form-label">
               <span class="muted">As of (defaults to today)</span>
-              <input id="sinceAsOf" type="date" class="field" />
+              <input id="sinceAsOf" type="date" class="field form-input" />
             </label>
             <div class="span-12">
               <button class="btn btn-primary" id="btnSince" type="button">
@@ -335,7 +345,7 @@
             <div class="span-12">
               <textarea
                 id="outSince"
-                class="textarea mono"
+                class="textarea mono form-textarea"
                 readonly
                 placeholder="Result…"
               ></textarea>
@@ -347,20 +357,20 @@
         <section class="card" id="ago">
           <h2>Days Ago (N days)</h2>
           <div class="grid">
-            <label class="field span-4">
+            <label class="field span-4 form-label">
               <span class="muted">N (days)</span>
               <input
                 id="agoN"
                 type="number"
                 min="0"
                 step="1"
-                class="field"
+                class="field form-input"
                 placeholder="e.g., 2015"
               />
             </label>
-            <label class="field span-4">
+            <label class="field span-4 form-label">
               <span class="muted">As of (defaults to today)</span>
-              <input id="agoAsOf" type="date" class="field" />
+              <input id="agoAsOf" type="date" class="field form-input" />
             </label>
             <div class="span-12">
               <button class="btn btn-primary" id="btnAgo" type="button">
@@ -371,7 +381,7 @@
             <div class="span-12">
               <textarea
                 id="outAgo"
-                class="textarea mono"
+                class="textarea mono form-textarea"
                 readonly
                 placeholder="Result…"
               ></textarea>
@@ -383,17 +393,17 @@
         <section class="card" id="add">
           <h2>Add/Subtract Days</h2>
           <div class="grid">
-            <label class="field span-4">
+            <label class="field span-4 form-label">
               <span class="muted">Base date (defaults to today)</span>
-              <input id="addBase" type="date" class="field" />
+              <input id="addBase" type="date" class="field form-input" />
             </label>
-            <label class="field span-4">
+            <label class="field span-4 form-label">
               <span class="muted">+ / − days (use negative to subtract)</span>
               <input
                 id="addN"
                 type="number"
                 step="1"
-                class="field"
+                class="field form-input"
                 placeholder="e.g., 20 or -20"
               />
             </label>
@@ -406,7 +416,7 @@
             <div class="span-12">
               <textarea
                 id="outAdd"
-                class="textarea mono"
+                class="textarea mono form-textarea"
                 readonly
                 placeholder="Result…"
               ></textarea>
@@ -418,13 +428,13 @@
         <section class="card" id="since">
           <h2>Years/Months/Days Since</h2>
           <div class="grid">
-            <label class="field span-6">
+            <label class="field span-6 form-label">
               <span class="muted">Start date (e.g., 2018-01-01)</span>
-              <input id="sinceStart" type="date" class="field" />
+              <input id="sinceStart" type="date" class="field form-input" />
             </label>
-            <label class="field span-6">
+            <label class="field span-6 form-label">
               <span class="muted">As of (defaults to today)</span>
-              <input id="sinceEnd" type="date" class="field" />
+              <input id="sinceEnd" type="date" class="field form-input" />
             </label>
             <div class="span-12">
               <button class="btn btn-primary" id="btnSinceYMD" type="button">
@@ -437,7 +447,7 @@
             <div class="span-12">
               <textarea
                 id="outSinceYMD"
-                class="textarea mono"
+                class="textarea mono form-textarea"
                 readonly
                 placeholder="Result…"
               ></textarea>

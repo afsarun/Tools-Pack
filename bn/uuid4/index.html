@@ -129,14 +129,7 @@
         gap: 10px;
         align-items: center;
       }
-      .pill {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        background: #3a3a55;
-        border-radius: 999px;
-        padding: 6px 10px;
-      }
+
       .muted {
         color: #a5a7c0;
       }
@@ -206,12 +199,12 @@
           <h2>UUID v4 তৈরি করুন</h2>
 
           <div class="row">
-            <label class="pill"
+            <label class="pill form-label"
               >পরিমাণ
               <input
                 id="count"
                 type="number"
-                class="field"
+                class="field form-input"
                 value="5"
                 min="1"
                 max="200"
@@ -220,23 +213,31 @@
               />
             </label>
 
-            <label class="pill"
-              ><input type="checkbox" id="keepDash" checked /> ড্যাশ
-              রাখুন</label
+            <label class="pill form-label"
+              ><input
+                type="checkbox"
+                id="keepDash"
+                checked
+                class="form-input"
+              />
+              ড্যাশ রাখুন</label
             >
-            <label class="pill"
-              ><input type="checkbox" id="upper" /> বড় হাতা (A–F)</label
+            <label class="pill form-label"
+              ><input type="checkbox" id="upper" class="form-input" /> বড় হাতা
+              (A–F)</label
             >
-            <label class="pill"
-              ><input type="checkbox" id="brace" /> {ব্রেস}</label
+            <label class="pill form-label"
+              ><input type="checkbox" id="brace" class="form-input" />
+              {ব্রেস}</label
             >
-            <label class="pill"
-              ><input type="checkbox" id="urn" /> urn:uuid: প্রিফিক্স</label
+            <label class="pill form-label"
+              ><input type="checkbox" id="urn" class="form-input" /> urn:uuid:
+              প্রিফিক্স</label
             >
 
-            <label class="pill"
+            <label class="pill form-label"
               >সেপারেটর
-              <select id="sep" class="select">
+              <select id="sep" class="select form-select">
                 <option value="nl" selected>নতুন লাইন</option>
                 <option value="comma">কমা (,)</option>
                 <option value="space">স্পেস</option>
@@ -258,7 +259,7 @@
 
           <textarea
             id="out"
-            class="textarea mono field"
+            class="textarea mono field form-textarea"
             rows="8"
             readonly
             placeholder="Generated UUIDs…"
@@ -268,6 +269,7 @@
             <span id="lines">লাইন: 0</span> •
             <span id="bytes">বাইট (UTF-8): 0</span>
           </p>
+
           <!-- Ad #2: In-article -->
           <div
             class="ad-wrap ad-article"
@@ -285,6 +287,7 @@
               data-adtest="on"
             ></ins>
           </div>
+
           <p class="small muted">
             শর্টকাট: <kbd>Ctrl/⌘ + Enter</kbd> জেনারেট •
             <kbd>Ctrl/⌘ + C</kbd> কপি

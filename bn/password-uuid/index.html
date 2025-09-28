@@ -199,37 +199,42 @@
           <h2>পাসওয়ার্ড তৈরি করুন</h2>
 
           <div class="row">
-            <label class="field">
+            <label class="field form-label">
               <span class="muted">দৈর্ঘ্য</span>
               <input
                 id="len"
                 type="number"
-                class="field"
+                class="field form-input"
                 value="12"
                 min="6"
                 max="64"
               />
             </label>
 
-            <label class="pill"
-              ><input type="checkbox" id="lower" checked /> a–z</label
+            <label class="pill form-label"
+              ><input type="checkbox" id="lower" class="form-input" checked />
+              a–z</label
             >
-            <label class="pill"
-              ><input type="checkbox" id="upper" checked /> A–Z</label
+            <label class="pill form-label"
+              ><input type="checkbox" id="upper" class="form-input" checked />
+              A–Z</label
             >
-            <label class="pill"
-              ><input type="checkbox" id="num" checked /> 0–9</label
+            <label class="pill form-label"
+              ><input type="checkbox" id="num" class="form-input" checked />
+              0–9</label
             >
-            <label class="pill"><input type="checkbox" id="sym" /> !@#</label>
-            <label class="pill"
-              ><input type="checkbox" id="noAmb" /> অস্পষ্ট অক্ষর বাদ
-              (O,0,l,1,I,|)</label
+            <label class="pill form-label"
+              ><input type="checkbox" id="sym" class="form-input" /> !@#</label
+            >
+            <label class="pill form-label"
+              ><input type="checkbox" id="noAmb" class="form-input" /> অস্পষ্ট
+              অক্ষর বাদ (O,0,l,1,I,|)</label
             >
           </div>
 
           <textarea
             id="out"
-            class="textarea mono"
+            class="textarea mono form-textarea"
             rows="2"
             readonly
             placeholder="Generated password…"

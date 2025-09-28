@@ -141,17 +141,17 @@
         gap: 10px;
         align-items: center;
       }
-      .pill {
+      /* .pill {
         display: inline-flex;
         align-items: center;
         gap: 6px;
         background: #3a3a55;
         border-radius: 999px;
         padding: 6px 10px;
-      }
+      } */
       .btn-ghost {
         background: transparent;
-        border: 1px solid var(--border);
+        border: 2px solid var(--border);
         color: inherit;
       }
       .muted {
@@ -211,17 +211,17 @@
           <h2>কনভার্টার</h2>
 
           <div class="row">
-            <select id="cat" class="select" aria-label="ক্যাটাগরি">
+            <select id="cat" class="select form-select" aria-label="ক্যাটাগরি">
               <option value="length">দৈর্ঘ্য</option>
               <option value="weight">ওজন</option>
               <option value="temperature">তাপমাত্রা</option>
             </select>
 
-            <label class="pill">
+            <label class="pill form-label">
               মান
               <input
                 id="val"
-                class="field"
+                class="field form-input"
                 type="number"
                 step="any"
                 inputmode="decimal"
@@ -230,9 +230,9 @@
               />
             </label>
 
-            <label class="pill">
+            <label class="pill form-label">
               দশমিক
-              <select id="prec" class="select">
+              <select id="prec" class="select form-select">
                 <option>0</option>
                 <option>1</option>
                 <option>2</option>
@@ -248,7 +248,7 @@
           <div class="row">
             <select
               id="from"
-              class="select"
+              class="select form-select"
               aria-label="কোন ইউনিট থেকে"
             ></select>
             <button
@@ -259,13 +259,17 @@
             >
               ⇄
             </button>
-            <select id="to" class="select" aria-label="কোন ইউনিটে"></select>
+            <select
+              id="to"
+              class="select form-select"
+              aria-label="কোন ইউনিটে"
+            ></select>
           </div>
 
           <div class="row">
             <input
               id="res"
-              class="field mono"
+              class="field form-input mono"
               readonly
               placeholder="রূপান্তরিত মান"
               style="min-width: 240px"
@@ -275,6 +279,7 @@
             </button>
             <span id="status" class="muted small">—</span>
           </div>
+
           <!-- Ad #2: In-article -->
           <div
             class="ad-wrap ad-article"
@@ -292,6 +297,7 @@
               data-adtest="on"
             ></ins>
           </div>
+
           <p class="muted small">
             টিপস: <kbd>Enter</kbd> চাপলে কনভার্ট হবে। <kbd>⇄</kbd> দিয়ে ইউনিট
             অদলবদল করুন।

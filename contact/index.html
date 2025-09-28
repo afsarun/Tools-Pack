@@ -141,87 +141,87 @@
         </nav>
       </div>
     </header>
+    <div class="container">
+      <!-- Main -->
+      <main role="main" class="prose">
+        <h1>Contact</h1>
+        <p>Questions, bug reports, or feature requests? Use the form below.</p>
 
-    <!-- Main -->
-    <main role="main" class="prose">
-      <h1>Contact</h1>
-      <p>Questions, bug reports, or feature requests? Use the form below.</p>
+        <!-- Netlify Forms (HTML + CSS only, no JS needed) -->
+        <form
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          action="/contact/success/"
+          class="contact-form"
+        >
+          <!-- Netlify needs this hidden field -->
+          <input type="hidden" name="form-name" value="contact" />
 
-      <!-- Netlify Forms (HTML + CSS only, no JS needed) -->
-      <form
-        name="contact"
-        method="POST"
-        data-netlify="true"
-        netlify-honeypot="bot-field"
-        action="/contact/success/"
-        class="contact-form"
-      >
-        <!-- Netlify needs this hidden field -->
-        <input type="hidden" name="form-name" value="contact" />
+          <!-- Honeypot (hidden from humans) -->
+          <p class="sr-only">
+            <label
+              >Don’t fill this out if you're human: <input name="bot-field"
+            /></label>
+          </p>
 
-        <!-- Honeypot (hidden from humans) -->
-        <p class="sr-only">
-          <label
-            >Don’t fill this out if you're human: <input name="bot-field"
-          /></label>
-        </p>
+          <div class="fields">
+            <div class="field">
+              <label for="name"
+                >Your Name <span class="req" aria-hidden="true">*</span></label
+              >
+              <input
+                id="name"
+                name="name"
+                type="text"
+                required
+                autocomplete="name"
+              />
+            </div>
 
-        <div class="fields">
-          <div class="field">
-            <label for="name"
-              >Your Name <span class="req" aria-hidden="true">*</span></label
-            >
-            <input
-              id="name"
-              name="name"
-              type="text"
-              required
-              autocomplete="name"
-            />
+            <div class="field">
+              <label for="email">Email (optional)</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                inputmode="email"
+                autocomplete="email"
+                placeholder="name@example.com"
+              />
+            </div>
+
+            <div class="field full">
+              <label for="message"
+                >Message <span class="req" aria-hidden="true">*</span></label
+              >
+              <textarea
+                id="message"
+                name="message"
+                rows="6"
+                required
+                placeholder="Write your message..."
+              ></textarea>
+            </div>
+
+            <div class="actions">
+              <button type="submit" class="btn btn-primary">Send</button>
+              <small class="hint"
+                >You’ll see a confirmation page after sending.</small
+              >
+            </div>
           </div>
+        </form>
+      </main>
 
-          <div class="field">
-            <label for="email">Email (optional)</label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              inputmode="email"
-              autocomplete="email"
-              placeholder="name@example.com"
-            />
-          </div>
-
-          <div class="field full">
-            <label for="message"
-              >Message <span class="req" aria-hidden="true">*</span></label
-            >
-            <textarea
-              id="message"
-              name="message"
-              rows="6"
-              required
-              placeholder="Write your message..."
-            ></textarea>
-          </div>
-
-          <div class="actions">
-            <button type="submit" class="btn btn-primary">Send</button>
-            <small class="hint"
-              >You’ll see a confirmation page after sending.</small
-            >
-          </div>
-        </div>
-      </form>
-    </main>
-
-    <!-- Footer -->
-    <footer class="wrap">
-      © <span id="y"></span> Tools Pack • Runs 100% locally. &nbsp;|&nbsp;
-      <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> ·
-      <a href="/about/">About</a> · <a href="/contact/">Contact</a>
-    </footer>
-
+      <!-- Footer -->
+      <footer class="wrap">
+        © <span id="y"></span> Tools Pack • Runs 100% locally. &nbsp;|&nbsp;
+        <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> ·
+        <a href="/about/">About</a> · <a href="/contact/">Contact</a>
+      </footer>
+    </div>
     <script>
       document.getElementById("y").textContent = new Date().getFullYear();
     </script>

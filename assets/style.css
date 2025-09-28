@@ -44,7 +44,7 @@ body {
   --success: #10b981;
   --danger: #ef4444;
   --warning: #f59e0b;
-
+  --muted: #9aa0a6;
   --background: #0f172a; /* page bg (slate-900) */
   --surface: #1e293b; /* card bg (slate-800) */
   --surface-light: #334155; /* lighter surface */

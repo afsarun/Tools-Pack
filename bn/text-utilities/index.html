@@ -97,43 +97,14 @@
         --muted: #a5a7c0;
         --border: #2f3152;
       }
-      body {
-        background: #1e1e2f;
-        color: #fff;
-        font-family: "Noto Sans Bengali", system-ui, sans-serif;
-        margin: 0;
-      }
-      .textarea {
-        width: 100%;
-        min-height: 220px;
-        background: #2a2a40;
-        border: 1px solid #444;
-        border-radius: 10px;
-        padding: 12px;
-        color: #fff;
-        font-size: 1rem;
-      }
+
       .actions {
         display: flex;
         flex-wrap: wrap;
         gap: 8px;
         margin: 10px 0;
       }
-      .btn {
-        border: 1px solid var(--border);
-        background: #2a2a42;
-        color: #fff;
-        border-radius: 8px;
-        padding: 0.55rem 0.9rem;
-        cursor: pointer;
-      }
-      .btn-primary {
-        background: #5965f3;
-        border-color: #5965f3;
-      }
-      .btn-ghost {
-        background: transparent;
-      }
+
       .stats {
         display: flex;
         flex-wrap: wrap;
@@ -150,7 +121,7 @@
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        background: #3a3a55;
+        /* background: #3a3a55; */
         border-radius: 999px;
         padding: 6px 10px;
       }
@@ -212,9 +183,10 @@
         <article class="card" id="tool">
           <h2>এডিটর</h2>
 
+          <label for="textInput" class="form-label muted">টেক্সট লিখুন</label>
           <textarea
             id="textInput"
-            class="textarea"
+            class="textarea form-textarea"
             placeholder="এখানে আপনার টেক্সট লিখুন…"
           ></textarea>
 
@@ -232,14 +204,18 @@
             <button class="btn btn-ghost" id="btnDownload">
               ⬇ TXT এক্সপোর্ট
             </button>
-            <label for="fileInput" class="btn btn-ghost">⬆ TXT ইমপোর্ট</label>
+            <label for="fileInput" class="btn btn-ghost form-label"
+              >⬆ TXT ইমপোর্ট</label
+            >
             <input
               id="fileInput"
               type="file"
+              class="form-input"
               accept=".txt,text/plain"
               style="display: none"
             />
           </div>
+
           <!-- Ad #2: In-article -->
           <div
             class="ad-wrap ad-article"
@@ -257,6 +233,7 @@
               data-adtest="on"
             ></ins>
           </div>
+
           <div class="stats">
             <span id="wc">শব্দ: 0</span>
             <span id="cc">অক্ষর: 0</span>

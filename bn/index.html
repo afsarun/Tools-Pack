@@ -9,7 +9,10 @@
       content="দ্রুত, আধুনিক, প্রাইভেসি-ফার্স্ট অনলাইন টুলস: ক্যালকুলেটর, JSON ফরম্যাটার, ইউনিট কনভার্টার, ইমেজ রিসাইজার, কালার কনট্রাস্ট, স্টপওয়াচ, নোটস এবং আরও—সবই আপনার ব্রাউজারেই।"
     />
     <meta name="robots" content="index,follow" />
-
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <!-- AdSense account (safe to include before approval) -->
     <meta name="google-adsense-account" content="ca-pub-XXXXXXXXXXXXXXXX" />
 
@@ -50,7 +53,7 @@
     <meta property="og:url" content="https://tools-pack.netlify.app/bn/" />
     <meta
       property="og:image"
-      content="https://tools-pack.netlify.app/og/home.png"
+      content="https://tools-pack.netlify.app/assets/og/home.png"
     />
     <meta
       property="og:image:alt"
@@ -311,181 +314,484 @@
         </div>
 
         <section class="grid" aria-label="টুলস" id="toolGrid">
-          <article class="card tool-card" data-category="calculators">
-            <h2>শতকরা হিসাব ক্যালকুলেটর</h2>
-            <p class="muted">
-              A% of B, A — B-এর কত শতাংশ, শতকরা পরিবর্তন, এবং % বাড়লে/কমলে মান।
-            </p>
-            <p>
-              <a class="btn btn-primary" href="/bn/percent-calculator/"
-                >খুলুন শতকরা হিসাব</a
-              >
-            </p>
+          <!-- Calculators -->
+          <article
+            class="carda tool-card"
+            data-category="calculators"
+            role="article"
+          >
+            <div class="tool-icon" aria-hidden="true">
+              <i class="fas fa-percent" aria-hidden="true"></i>
+            </div>
+            <div class="tool-content">
+              <h3 class="tool-title" id="calculators">
+                শতকরা হিসাব ক্যালকুলেটর
+              </h3>
+              <p class="muted">
+                A% of B, A — B-এর কত শতাংশ, শতকরা পরিবর্তন, এবং % বাড়লে/কমলে
+                মান।
+              </p>
+              <p class="actions">
+                <a
+                  class="btn btn-primary"
+                  href="/bn/percent-calculator/"
+                  aria-label="খুলুন শতকরা হিসাব ক্যালকুলেটর"
+                >
+                  খুলুন শতকরা হিসাব
+                </a>
+                <a class="tool-link" href="/bn/percent-calculator/">
+                  আরও জানুন
+                  <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                </a>
+              </p>
+            </div>
           </article>
 
-          <article class="card tool-card" data-category="calculators">
-            <h2>তারিখ ক্যালকুলেটর</h2>
-            <p class="muted">
-              তারিখ ক্যালকুলেটর — কতদিন বাকি, কতদিন আগে, দিন যোগ/বিয়োগ, কত বছর
-              হলো
-            </p>
-            <p>
-              <a class="btn btn-primary" href="/bn/date-calculator/"
-                >খুলুন তারিখ ক্যালকুলেটর</a
-              >
-            </p>
+          <article
+            class="carda tool-card"
+            data-category="calculators"
+            role="article"
+          >
+            <div class="tool-icon" aria-hidden="true">
+              <i class="fas fa-calendar-days" aria-hidden="true"></i>
+            </div>
+            <div class="tool-content">
+              <h3 class="tool-title">তারিখ ক্যালকুলেটর</h3>
+              <p class="muted">
+                কতদিন বাকি/আগে, দিন যোগ/বিয়োগ, কত বছর হলো—সব এক জায়গায়।
+              </p>
+              <p class="actions">
+                <a
+                  class="btn btn-primary"
+                  href="/bn/date-calculator/"
+                  aria-label="খুলুন তারিখ ক্যালকুলেটর"
+                >
+                  খুলুন তারিখ ক্যালকুলেটর
+                </a>
+                <a class="tool-link" href="/bn/date-calculator/">
+                  আরও জানুন
+                  <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                </a>
+              </p>
+            </div>
           </article>
 
-          <article class="card tool-card" data-category="text-tools">
-            <h2>Text → PDF</h2>
-            <p class="muted">
-              যেকোনো টেক্সটকে ইউনিকোড-সেফ PDF-এ রূপান্তর করুন।
-            </p>
-            <p>
-              <a class="btn btn-primary" href="/bn/text-to-pdf/"
-                >খুলুন Text → PDF</a
-              >
-            </p>
+          <article
+            class="carda tool-card"
+            data-category="calculators"
+            role="article"
+          >
+            <div class="tool-icon" aria-hidden="true">
+              <i class="fas fa-baby" aria-hidden="true"></i>
+            </div>
+            <div class="tool-content">
+              <h3 class="tool-title">বয়স ক্যালকুলেটর</h3>
+              <p class="muted">জন্মতারিখ দিয়ে বয়স বের করুন—বছর, মাস, দিনে।</p>
+              <p class="actions">
+                <a
+                  class="btn btn-primary"
+                  href="/bn/age-calculator/"
+                  aria-label="খুলুন বয়স ক্যালকুলেটর"
+                >
+                  খুলুন বয়স ক্যালকুলেটর
+                </a>
+                <a class="tool-link" href="/bn/age-calculator/">
+                  আরও জানুন
+                  <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                </a>
+              </p>
+            </div>
           </article>
 
-          <article class="card tool-card" data-category="calculators">
-            <h2>Age Calculator</h2>
-            <p class="muted">জন্মতারিখ দিয়ে বয়স বের করুন—বছর, মাস, দিনে।</p>
-            <p>
-              <a class="btn btn-primary" href="/bn/age-calculator/"
-                >খুলুন Age Calculator</a
-              >
-            </p>
+          <article
+            class="carda tool-card"
+            data-category="calculators"
+            role="article"
+          >
+            <div class="tool-icon" aria-hidden="true">
+              <i class="fas fa-calculator" aria-hidden="true"></i>
+            </div>
+            <div class="tool-content">
+              <h3 class="tool-title">ক্যালকুলেটর</h3>
+              <p class="muted">যোগ, বিয়োগ, গুণ, ভাগ ও শতকরা।</p>
+              <p class="actions">
+                <a
+                  class="btn btn-primary"
+                  href="/bn/calculator/"
+                  aria-label="খুলুন ক্যালকুলেটর"
+                >
+                  খুলুন ক্যালকুলেটর
+                </a>
+                <a class="tool-link" href="/bn/calculator/">
+                  আরও জানুন
+                  <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                </a>
+              </p>
+            </div>
           </article>
 
-          <article class="card tool-card" data-category="calculators">
-            <h2>ক্যালকুলেটর</h2>
-            <p class="muted">যোগ, বিয়োগ, গুণ, ভাগ ও শতকরা।</p>
-            <p>
-              <a class="btn btn-primary" href="/bn/calculator/"
-                >খুলুন ক্যালকুলেটর</a
-              >
-            </p>
+          <article
+            class="carda tool-card"
+            data-category="calculators"
+            role="article"
+          >
+            <div class="tool-icon" aria-hidden="true">
+              <i class="fas fa-ruler-combined" aria-hidden="true"></i>
+            </div>
+            <div class="tool-content">
+              <h3 class="tool-title">ইউনিট কনভার্টার</h3>
+              <p class="muted">দৈর্ঘ্য, ওজন, তাপমাত্রা—দ্রুত রূপান্তর।</p>
+              <p class="actions">
+                <a
+                  class="btn btn-primary"
+                  href="/bn/unit-converter/"
+                  aria-label="খুলুন ইউনিট কনভার্টার"
+                >
+                  খুলুন ইউনিট কনভার্টার
+                </a>
+                <a class="tool-link" href="/bn/unit-converter/">
+                  আরও জানুন
+                  <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                </a>
+              </p>
+            </div>
           </article>
 
-          <article class="card tool-card" data-category="calculators">
-            <h2>ইউনিট কনভার্টার</h2>
-            <p class="muted">দৈর্ঘ্য, ওজন, তাপমাত্রা—দ্রুত রূপান্তর।</p>
-            <p>
-              <a class="btn btn-primary" href="/bn/unit-converter/"
-                >খুলুন ইউনিট কনভার্টার</a
-              >
-            </p>
+          <!-- Text tools -->
+          <article
+            class="carda tool-card"
+            data-category="text-tools"
+            role="article"
+          >
+            <div class="tool-icon" aria-hidden="true">
+              <i class="fas fa-file-pdf" aria-hidden="true"></i>
+            </div>
+            <div class="tool-content">
+              <h3 class="tool-title" id="text-tools">টেক্সট → PDF</h3>
+              <p class="muted">
+                যেকোনো টেক্সটকে ইউনিকোড-সেফ PDF-এ রূপান্তর করুন।
+              </p>
+              <p class="actions">
+                <a
+                  class="btn btn-primary"
+                  href="/bn/text-to-pdf/"
+                  aria-label="খুলুন টেক্সট টু পিডিএফ"
+                >
+                  খুলুন টেক্সট → PDF
+                </a>
+                <a class="tool-link" href="/bn/text-to-pdf/">
+                  আরও জানুন
+                  <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                </a>
+              </p>
+            </div>
           </article>
 
-          <article class="card tool-card" data-category="developers">
-            <h2>পাসওয়ার্ড জেনারেটর</h2>
-            <p class="muted">শক্তিশালী ও র‍্যান্ডম পাসওয়ার্ড তৈরি করুন।</p>
-            <p>
-              <a class="btn btn-primary" href="/bn/password-uuid/"
-                >খুলুন পাসওয়ার্ড জেনারেটর</a
-              >
-            </p>
+          <article
+            class="carda tool-card"
+            data-category="text-tools"
+            role="article"
+          >
+            <div class="tool-icon" aria-hidden="true">
+              <i class="fas fa-text-width" aria-hidden="true"></i>
+            </div>
+            <div class="tool-content">
+              <h3 class="tool-title">টেক্সট ইউটিলিটি</h3>
+              <p class="muted">
+                uppercase/lowercase, শব্দ গণনা, স্পেস রিমুভ—সব একসাথে।
+              </p>
+              <p class="actions">
+                <a
+                  class="btn btn-primary"
+                  href="/bn/text-utilities/"
+                  aria-label="খুলুন টেক্সট ইউটিলিটি"
+                >
+                  খুলুন টেক্সট ইউটিলিটি
+                </a>
+                <a class="tool-link" href="/bn/text-utilities/">
+                  আরও জানুন
+                  <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                </a>
+              </p>
+            </div>
           </article>
 
-          <article class="card tool-card" data-category="text-tools">
-            <h2>টেক্সট ইউটিলিটি</h2>
-            <p class="muted">
-              uppercase/lowercase, শব্দ গণনা, স্পেস রিমুভ—সব একসাথে।
-            </p>
-            <p>
-              <a class="btn btn-primary" href="/bn/text-utilities/"
-                >খুলুন টেক্সট ইউটিলিটি</a
-              >
-            </p>
+          <!-- Productivity -->
+          <article
+            class="carda tool-card"
+            data-category="productivity"
+            role="article"
+          >
+            <div class="tool-icon" aria-hidden="true">
+              <i class="fas fa-stopwatch" aria-hidden="true"></i>
+            </div>
+            <div class="tool-content">
+              <h3 class="tool-title" id="productivity">
+                স্টপওয়াচ ও কাউন্টডাউন
+              </h3>
+              <p class="muted">সময় মাপুন বা টাইমার সেট করুন।</p>
+              <p class="actions">
+                <a
+                  class="btn btn-primary"
+                  href="/bn/stopwatch-countdown/"
+                  aria-label="খুলুন স্টপওয়াচ ও কাউন্টডাউন"
+                >
+                  খুলুন স্টপওয়াচ ও কাউন্টডাউন
+                </a>
+                <a class="tool-link" href="/bn/stopwatch-countdown/">
+                  আরও জানুন
+                  <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                </a>
+              </p>
+            </div>
           </article>
 
-          <article class="card tool-card" data-category="productivity">
-            <h2>স্টপওয়াচ ও কাউন্টডাউন</h2>
-            <p class="muted">সময় মাপুন বা টাইমার সেট করুন।</p>
-            <p>
-              <a class="btn btn-primary" href="/bn/stopwatch-countdown/"
-                >খুলুন স্টপওয়াচ ও কাউন্টডাউন</a
-              >
-            </p>
+          <article
+            class="carda tool-card"
+            data-category="productivity"
+            role="article"
+          >
+            <div class="tool-icon" aria-hidden="true">
+              <i class="fas fa-note-sticky" aria-hidden="true"></i>
+            </div>
+            <div class="tool-content">
+              <h3 class="tool-title">কুইক নোটস</h3>
+              <p class="muted">তাৎক্ষণিক নোট লিখুন (localStorage-এ সেভ হয়)।</p>
+              <p class="actions">
+                <a
+                  class="btn btn-primary"
+                  href="/bn/quick-notes/"
+                  aria-label="খুলুন কুইক নোটস"
+                >
+                  খুলুন কুইক নোটস
+                </a>
+                <a class="tool-link" href="/bn/quick-notes/">
+                  আরও জানুন
+                  <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                </a>
+              </p>
+            </div>
           </article>
 
-          <article class="card tool-card" data-category="productivity">
-            <h2>কুইক নোটস</h2>
-            <p class="muted">তাৎক্ষণিক নোট লিখুন (localStorage-এ সেভ হয়)।</p>
-            <p>
-              <a class="btn btn-primary" href="/bn/quick-notes/"
-                >খুলুন কুইক নোটস</a
-              >
-            </p>
+          <article
+            class="carda tool-card"
+            data-category="productivity"
+            role="article"
+          >
+            <div class="tool-icon" aria-hidden="true">
+              <i class="fas fa-image" aria-hidden="true"></i>
+            </div>
+            <div class="tool-content">
+              <h3 class="tool-title">ইমেজ রিসাইজার/কমপ্রেসর</h3>
+              <p class="muted">
+                ছবি ছোট-বড় করুন বা কমপ্রেস করুন—JPEG/PNG/WebP এক্সপোর্ট।
+              </p>
+              <p class="actions">
+                <a
+                  class="btn btn-primary"
+                  href="/bn/image-resizer-compressor/"
+                  aria-label="খুলুন ইমেজ রিসাইজার/কমপ্রেসর"
+                >
+                  খুলুন ইমেজ রিসাইজার/কমপ্রেসর
+                </a>
+                <a class="tool-link" href="/bn/image-resizer-compressor/">
+                  আরও জানুন
+                  <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                </a>
+              </p>
+            </div>
           </article>
 
-          <article class="card tool-card" data-category="productivity">
-            <h2>ইমেজ রিসাইজার/কমপ্রেসর</h2>
-            <p class="muted">
-              ছবি ছোট-বড় করুন বা কমপ্রেস করুন—JPEG/PNG/WebP এক্সপোর্ট।
-            </p>
-            <p>
-              <a class="btn btn-primary" href="/bn/image-resizer-compressor/"
-                >খুলুন ইমেজ রিসাইজার/কমপ্রেসর</a
-              >
-            </p>
+          <article
+            class="carda tool-card"
+            data-category="productivity"
+            role="article"
+          >
+            <div class="tool-icon" aria-hidden="true">
+              <i class="fas fa-palette" aria-hidden="true"></i>
+            </div>
+            <div class="tool-content">
+              <h3 class="tool-title">কালার পিকার ও কনট্রাস্ট</h3>
+              <p class="muted">রঙ বাছাই করুন এবং WCAG কনট্রাস্ট যাচাই করুন।</p>
+              <p class="actions">
+                <a
+                  class="btn btn-primary"
+                  href="/bn/color-picker-contrast/"
+                  aria-label="খুলুন কালার পিকার ও কনট্রাস্ট"
+                >
+                  খুলুন কালার পিকার ও কনট্রাস্ট
+                </a>
+                <a class="tool-link" href="/bn/color-picker-contrast/">
+                  আরও জানুন
+                  <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                </a>
+              </p>
+            </div>
           </article>
 
-          <article class="card tool-card" data-category="productivity">
-            <h2>কালার পিকার ও কনট্রাস্ট</h2>
-            <p class="muted">রঙ বাছাই করুন এবং WCAG কনট্রাস্ট যাচাই করুন।</p>
-            <p>
-              <a class="btn btn-primary" href="/bn/color-picker-contrast/"
-                >খুলুন কালার পিকার ও কনট্রাস্ট</a
-              >
-            </p>
+          <!-- Developer tools -->
+          <article
+            class="carda tool-card"
+            data-category="developers"
+            role="article"
+          >
+            <div class="tool-icon" aria-hidden="true">
+              <i class="fas fa-key" aria-hidden="true"></i>
+            </div>
+            <div class="tool-content">
+              <h3 class="tool-title" id="developers">পাসওয়ার্ড জেনারেটর</h3>
+              <p class="muted">শক্তিশালী ও র‍্যান্ডম পাসওয়ার্ড তৈরি করুন।</p>
+              <p class="actions">
+                <a
+                  class="btn btn-primary"
+                  href="/bn/password-uuid/"
+                  aria-label="খুলুন পাসওয়ার্ড জেনারেটর"
+                >
+                  খুলুন পাসওয়ার্ড জেনারেটর
+                </a>
+                <a class="tool-link" href="/bn/password-uuid/">
+                  আরও জানুন
+                  <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                </a>
+              </p>
+            </div>
           </article>
 
-          <article class="card tool-card" data-category="developers">
-            <h2>Base64 টুল</h2>
-            <p class="muted">Base64 এনকোড ও ডিকোড করুন সহজেই।</p>
-            <p>
-              <a class="btn btn-primary" href="/bn/base64/">খুলুন Base64 টুল</a>
-            </p>
+          <article
+            class="carda tool-card"
+            data-category="developers"
+            role="article"
+          >
+            <div class="tool-icon" aria-hidden="true">
+              <i class="fas fa-dna" aria-hidden="true"></i>
+            </div>
+            <div class="tool-content">
+              <h3 class="tool-title">Base64 টুল</h3>
+              <p class="muted">Base64 এনকোড ও ডিকোড করুন সহজেই।</p>
+              <p class="actions">
+                <a
+                  class="btn btn-primary"
+                  href="/bn/base64/"
+                  aria-label="খুলুন বেস৬৪ টুল"
+                >
+                  খুলুন Base64 টুল
+                </a>
+                <a class="tool-link" href="/bn/base64/">
+                  আরও জানুন
+                  <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                </a>
+              </p>
+            </div>
           </article>
 
-          <article class="card tool-card" data-category="developers">
-            <h2>URL টুলস</h2>
-            <p class="muted">URL এনকোড/ডিকোড ও কুইক টেস্ট।</p>
-            <p><a class="btn btn-primary" href="/bn/url-tools/">খুলুন </a></p>
+          <article
+            class="carda tool-card"
+            data-category="developers"
+            role="article"
+          >
+            <div class="tool-icon" aria-hidden="true">
+              <i class="fas fa-link" aria-hidden="true"></i>
+            </div>
+            <div class="tool-content">
+              <h3 class="tool-title">URL টুলস</h3>
+              <p class="muted">URL এনকোড/ডিকোড ও কুইক টেস্ট।</p>
+              <p class="actions">
+                <a
+                  class="btn btn-primary"
+                  href="/bn/url-tools/"
+                  aria-label="খুলুন ইউআরএল টুলস"
+                >
+                  খুলুন URL টুলস
+                </a>
+                <a class="tool-link" href="/bn/url-tools/">
+                  আরও জানুন
+                  <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                </a>
+              </p>
+            </div>
           </article>
 
-          <article class="card tool-card" data-category="developers">
-            <h2>UUID জেনারেটর</h2>
-            <p class="muted">v4 UUID অনন্য আইডি জেনারেট করুন।</p>
-            <p>
-              <a class="btn btn-primary" href="/bn/uuid4/"
-                >খুলুন UUID জেনারেটর</a
-              >
-            </p>
+          <article
+            class="carda tool-card"
+            data-category="developers"
+            role="article"
+          >
+            <div class="tool-icon" aria-hidden="true">
+              <i class="fas fa-id-badge" aria-hidden="true"></i>
+            </div>
+            <div class="tool-content">
+              <h3 class="tool-title">UUID জেনারেটর</h3>
+              <p class="muted">v4 UUID অনন্য আইডি জেনারেট করুন।</p>
+              <p class="actions">
+                <a
+                  class="btn btn-primary"
+                  href="/bn/uuid4/"
+                  aria-label="খুলুন ইউইউআইডি জেনারেটর"
+                >
+                  খুলুন UUID জেনারেটর
+                </a>
+                <a class="tool-link" href="/bn/uuid4/">
+                  আরও জানুন
+                  <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                </a>
+              </p>
+            </div>
           </article>
 
-          <article class="card tool-card" data-category="developers">
-            <h2>SHA-256 হ্যাশ</h2>
-            <p class="muted">টেক্সট থেকে SHA-256 হ্যাশ বের করুন।</p>
-            <p>
-              <a class="btn btn-primary" href="/bn/sha256/"
-                >খুলুন SHA-256 হ্যাশ</a
-              >
-            </p>
+          <article
+            class="carda tool-card"
+            data-category="developers"
+            role="article"
+          >
+            <div class="tool-icon" aria-hidden="true">
+              <i class="fas fa-shield-halved" aria-hidden="true"></i>
+            </div>
+            <div class="tool-content">
+              <h3 class="tool-title">SHA-256 হ্যাশ</h3>
+              <p class="muted">টেক্সট থেকে SHA-256 হ্যাশ বের করুন।</p>
+              <p class="actions">
+                <a
+                  class="btn btn-primary"
+                  href="/bn/sha256/"
+                  aria-label="খুলুন এসএইচএ-২৫৬ হ্যাশ"
+                >
+                  খুলুন SHA-256 হ্যাশ
+                </a>
+                <a class="tool-link" href="/bn/sha256/">
+                  আরও জানুন
+                  <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                </a>
+              </p>
+            </div>
           </article>
 
-          <article class="card tool-card" data-category="developers">
-            <h2>JSON ফরম্যাটার</h2>
-            <p class="muted">
-              JSON সুন্দরভাবে ফরম্যাট, মিনিফাই ও ভ্যালিডেট করুন।
-            </p>
-            <p>
-              <a class="btn btn-primary" href="/bn/json-formatter/"
-                >খুলুন JSON ফরম্যাটার</a
-              >
-            </p>
+          <article
+            class="carda tool-card"
+            data-category="developers"
+            role="article"
+          >
+            <div class="tool-icon" aria-hidden="true">
+              <i class="fas fa-puzzle-piece" aria-hidden="true"></i>
+            </div>
+            <div class="tool-content">
+              <h3 class="tool-title">JSON ফরম্যাটার</h3>
+              <p class="muted">
+                JSON সুন্দরভাবে ফরম্যাট, মিনিফাই ও ভ্যালিডেট করুন।
+              </p>
+              <p class="actions">
+                <a
+                  class="btn btn-primary"
+                  href="/bn/json-formatter/"
+                  aria-label="খুলুন জেসন ফরম্যাটার"
+                >
+                  খুলুন JSON ফরম্যাটার
+                </a>
+                <a class="tool-link" href="/bn/json-formatter/">
+                  আরও জানুন
+                  <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                </a>
+              </p>
+            </div>
           </article>
         </section>
 
@@ -584,6 +890,45 @@
         <a href="/bn/contact/">যোগাযোগ</a>
       </footer>
     </div>
+    <script>
+      (function () {
+        const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
+        const input = document.querySelector("#toolSearch");
+        const cards = $$(".carda.tool-card"); // <-- important
+
+        const index = cards.map((card) => {
+          const title = (
+            card.querySelector(".tool-title")?.textContent || ""
+          ).toLowerCase();
+          const body = (
+            card.querySelector(".muted")?.textContent || ""
+          ).toLowerCase();
+          const cat = (card.dataset.category || "").toLowerCase();
+          return { card, hay: [title, body, cat].join(" ") };
+        });
+
+        const apply = (q) => {
+          const term = (q || "").toLowerCase().trim();
+          let vis = 0;
+          index.forEach(({ card, hay }) => {
+            const hit = !term || hay.includes(term);
+            card.style.display = hit ? "" : "none";
+            if (hit) vis++;
+          });
+          const meta = document.querySelector("#searchMeta");
+          if (meta)
+            meta.textContent = `${term ? `‘${q}’` : "সব"} টুল: ${vis}/${
+              cards.length
+            }`;
+          const empty = document.querySelector("#searchEmpty");
+          if (empty) empty.style.display = vis ? "none" : "block";
+        };
+
+        input?.addEventListener("input", (e) => apply(e.target.value));
+        apply("");
+      })();
+    </script>
+
     <script>
       document.getElementById("y").textContent = new Date().getFullYear();
     </script>

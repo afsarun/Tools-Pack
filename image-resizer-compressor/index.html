@@ -353,7 +353,7 @@
           <div class="row">
             <input
               id="file"
-              class="field"
+              class="field form-input"
               type="file"
               accept="image/*"
               aria-label="Choose image file"
@@ -374,23 +374,23 @@
               style="display: flex; flex-direction: column; gap: 8px"
             >
               <div class="row">
-                <label class="pill">
+                <label class="pill form-label">
                   W
                   <input
                     id="w"
                     type="number"
-                    class="field"
+                    class="field form-input"
                     min="1"
                     inputmode="numeric"
                     aria-label="Width (pixels)"
                   />
                 </label>
-                <label class="pill">
+                <label class="pill form-label">
                   H
                   <input
                     id="h"
                     type="number"
-                    class="field"
+                    class="field form-input"
                     min="1"
                     inputmode="numeric"
                     aria-label="Height (pixels)"
@@ -398,12 +398,16 @@
                 </label>
               </div>
 
-              <label class="pill"
+              <label class="pill form-label"
                 ><input id="lock" type="checkbox" checked /> Keep aspect</label
               >
 
               <div class="row">
-                <select id="fmt" class="select" aria-label="Output format">
+                <select
+                  id="fmt"
+                  class="select form-select"
+                  aria-label="Output format"
+                >
                   <option value="image/jpeg">JPEG</option>
                   <option value="image/webp">webp</option>
                   <option value="image/webp">WebP</option>
@@ -411,7 +415,7 @@
 
                 <label
                   id="qwrap"
-                  class="field"
+                  class="field form-label"
                   style="display: flex; align-items: center; gap: 10px"
                 >
                   <span class="muted">Quality</span>
@@ -423,6 +427,7 @@
                     step="0.05"
                     value="0.8"
                     aria-label="Quality slider"
+                    class="form-input"
                   />
                   <span class="pill mono" id="qv">0.80</span>
                 </label>

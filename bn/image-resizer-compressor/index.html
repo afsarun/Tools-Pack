@@ -195,11 +195,16 @@
         </p>
 
         <!-- Tool -->
-        <article class="card" id="tool">
+        <article class="card tool-card" id="tool">
           <h2>ছবি রিসাইজ ও কমপ্রেস করুন</h2>
 
           <div class="row">
-            <input id="file" class="field" type="file" accept="image/*" />
+            <input
+              id="file"
+              class="field form-input"
+              type="file"
+              accept="image/*"
+            />
           </div>
 
           <div class="tool-grid">
@@ -221,35 +226,39 @@
             <!-- Controls -->
             <div class="field controls">
               <div class="row">
-                <label class="pill"
-                  >প্রস্থ (W)
+                <label class="pill form-label">
+                  প্রস্থ (W)
                   <input
                     id="w"
                     type="number"
-                    class="field"
+                    class="field form-input"
                     min="1"
                     inputmode="numeric"
                   />
                 </label>
-                <label class="pill"
-                  >উচ্চতা (H)
+                <label class="pill form-label">
+                  উচ্চতা (H)
                   <input
                     id="h"
                     type="number"
-                    class="field"
+                    class="field form-input"
                     min="1"
                     inputmode="numeric"
                   />
                 </label>
               </div>
 
-              <label class="pill">
-                <input id="lock" type="checkbox" checked />
+              <label class="pill form-label">
+                <input id="lock" type="checkbox" checked class="form-input" />
                 অ্যাসপেক্ট অনুপাত বজায় রাখুন
               </label>
 
               <div class="row">
-                <select id="fmt" class="select" aria-label="ফরম্যাট বাছাই">
+                <select
+                  id="fmt"
+                  class="select form-select"
+                  aria-label="ফরম্যাট বাছাই"
+                >
                   <option value="image/jpeg">JPEG</option>
                   <option value="image/png">PNG</option>
                   <option value="image/webp">WebP</option>
@@ -257,7 +266,7 @@
 
                 <label
                   id="qwrap"
-                  class="field"
+                  class="field form-label"
                   style="display: flex; align-items: center; gap: 10px"
                 >
                   <span class="muted">গুণমান</span>
@@ -268,6 +277,7 @@
                     max="1"
                     step="0.05"
                     value="0.8"
+                    class="form-input"
                   />
                   <span class="pill mono" id="qv">0.80</span>
                 </label>

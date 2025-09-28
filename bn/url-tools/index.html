@@ -138,14 +138,7 @@
         gap: 10px;
         align-items: center;
       }
-      .pill {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        background: #3a3a55;
-        border-radius: 999px;
-        padding: 6px 10px;
-      }
+
       .muted {
         color: var(--muted);
       }
@@ -215,23 +208,35 @@
           <h2>URL/URI Encode/Decode</h2>
 
           <div class="row">
-            <label class="pill"
-              ><input type="radio" name="mode" value="component" checked />
+            <label class="pill form-label"
+              ><input
+                type="radio"
+                name="mode"
+                value="component"
+                checked
+                class="form-input"
+              />
               কম্পোনেন্ট</label
             >
-            <label class="pill"
-              ><input type="radio" name="mode" value="full" /> পূর্ণ URL</label
+            <label class="pill form-label"
+              ><input
+                type="radio"
+                name="mode"
+                value="full"
+                class="form-input"
+              />
+              পূর্ণ URL</label
             >
-            <label class="pill"
-              ><input type="checkbox" id="spacePlus" /> স্পেসকে
-              <code>+</code> হিসেবে ধরুন</label
+            <label class="pill form-label"
+              ><input type="checkbox" id="spacePlus" class="form-input" />
+              স্পেসকে <code>+</code> হিসেবে ধরুন</label
             >
           </div>
 
-          <label for="urlInput" class="muted">ইনপুট</label>
+          <label for="urlInput" class="muted form-label">ইনপুট</label>
           <textarea
             id="urlInput"
-            class="field"
+            class="field form-textarea"
             placeholder="এখানে টেক্সট বা লিংক লিখুন…"
           ></textarea>
 
@@ -256,6 +261,7 @@
             </button>
             <span id="status" class="small">—</span>
           </div>
+
           <!-- Ad #2: In-article -->
           <div
             class="ad-wrap ad-article"
@@ -273,15 +279,16 @@
               data-adtest="on"
             ></ins>
           </div>
+
           <label
             for="urlOutput"
-            class="muted"
+            class="muted form-label"
             style="margin-top: 8px; display: block"
             >আউটপুট</label
           >
           <textarea
             id="urlOutput"
-            class="field mono"
+            class="field mono form-textarea"
             readonly
             placeholder="ফলাফল এখানে…"
           ></textarea>
