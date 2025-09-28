@@ -4,23 +4,28 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-    <!-- ✅ Enriched title + description for main & long-tail intents -->
-    <title>
-      Age Calculator Online — Calculate Age in Years, Months, Days .
-    </title>
+    <!-- Primary SEO -->
+    <title>Age Calculator Online — Calculate Age in Years, Months & Days</title>
     <meta
       name="description"
-      content="Free Age Calculator. Enter DOB to see age in years, months, days & next birthday countdown. Also  “what is my age today?” "
+      content="Free age calculator: enter your DOB to get age in years, months, days, total days lived, and a next-birthday countdown. Also answers 'what is my age today?'."
     />
-
     <link
       rel="canonical"
       href="https://tools-pack.netlify.app/age-calculator/"
     />
-    <link rel="stylesheet" href="/assets/style.css" />
     <meta name="theme-color" content="#1E1E2F" />
 
-    <!-- Hreflang alternates -->
+    <!-- Performance: make CSS highest priority -->
+    <link
+      rel="preload"
+      href="/assets/style.css"
+      as="style"
+      fetchpriority="high"
+    />
+    <link rel="stylesheet" href="/assets/style.css" />
+
+    <!-- Hreflang -->
     <link
       rel="alternate"
       hreflang="en"
@@ -43,7 +48,7 @@
     <meta property="og:title" content="Age Calculator Online — Tools Pack" />
     <meta
       property="og:description"
-      content="Instant age in years, months, days — plus next-birthday countdown. Also answers “what is my age today?” and “how many days until my birthday?”. Free, simple & accurate."
+      content="Instant age in years, months, days — plus next-birthday countdown. Also answers 'what is my age today?' and 'how many days until my birthday?'."
     />
     <meta
       property="og:url"
@@ -51,21 +56,14 @@
     />
     <meta property="og:locale" content="en_US" />
     <meta property="og:locale:alternate" content="bn_BD" />
-
-    <!-- ✅ Use PNG + dimensions -->
+    <!-- Prefer JPG for widest scraper support -->
     <meta
       property="og:image"
-      content="https://tools-pack.netlify.app/assets/og/age-calculator-en.webp"
+      content="https://tools-pack.netlify.app/assets/og/age-calculator-en.jpg"
     />
-    <meta
-      property="og:image:secure_url"
-      content="https://tools-pack.netlify.app/assets/og/age-calculator-en.webp"
-    />
-    <meta property="og:image:type" content="image/webp" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Age Calculator — Tools Pack" />
-
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Age Calculator Online — Tools Pack" />
     <meta
@@ -74,9 +72,10 @@
     />
     <meta
       name="twitter:image"
-      content="https://tools-pack.netlify.app/assets/og/age-calculator-en.webp"
+      content="https://tools-pack.netlify.app/assets/og/age-calculator-en.jpg"
     />
 
+    <!-- JSON-LD: WebApplication -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -87,7 +86,7 @@
         "url": "https://tools-pack.netlify.app/age-calculator/",
         "inLanguage": "en",
         "description": "Instantly calculate age in years, months, and days with next-birthday countdown.",
-        "image": "https://tools-pack.netlify.app/assets/og/age-calculator-en.webp",
+        "image": "https://tools-pack.netlify.app/assets/og/age-calculator-en.jpg",
         "isAccessibleForFree": true,
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
       }
@@ -148,7 +147,7 @@
       }
     </script>
 
-    <!-- ✅ JSON-LD: FAQ with Low-Hanging-Fruit queries -->
+    <!-- JSON-LD: FAQ -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -278,14 +277,12 @@
       }
     </script>
 
-    <!-- ========= Google AdSense loader ========= -->
+    <!-- Google AdSense loader -->
     <script
       async
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234567890123456"
       crossorigin="anonymous"
     ></script>
-
-    <!-- Page-specific styles -->
   </head>
 
   <body>
@@ -338,7 +335,10 @@
           <em>how old was I in 2018</em>. This calculator works fully
           <strong>offline in your browser</strong>—no data leaves your device.
         </p>
-        <span class="badge">RFC 3986 Compliant</span>
+        <span class="badge">Works Offline</span>
+        <span class="badge">Privacy-First</span>
+        <span class="badge">Leap Year Support</span>
+        <span class="badge">Next Birthday Countdown</span>
       </header>
       <!-- TOC -->
       <p class="toc" aria-label="Table of Contents">
