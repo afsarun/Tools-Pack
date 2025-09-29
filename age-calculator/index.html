@@ -278,6 +278,117 @@
         ]
       }
     </script>
+    <style>
+      .age-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      @media (min-width: 640px) {
+        .age-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      .cal-btn {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        color: var(--text-muted);
+        cursor: pointer;
+        padding: 5px;
+        border-radius: 4px;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .cal-btn:hover {
+        color: var(--primary);
+        background-color: rgba(59, 130, 246, 0.1);
+      }
+
+      .cal-btn svg {
+        width: 20px;
+        height: 20px;
+      }
+      .result-container {
+        margin-top: 25px;
+        padding: 20px;
+        background-color: var(--surface-light);
+        border-radius: 8px;
+        border: 1px solid var(--border);
+      }
+
+      .result-title {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+      }
+
+      .result-content {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--text);
+        min-height: 1.5em;
+      }
+
+      .success {
+        color: var(--success);
+      }
+
+      .error {
+        color: var(--danger);
+      }
+
+      .warning {
+        color: var(--warning);
+      }
+
+      .age-breakdown {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        margin-top: 15px;
+      }
+
+      .age-item {
+        text-align: center;
+        padding: 10px;
+        background-color: rgba(30, 41, 59, 0.5);
+        border-radius: 8px;
+      }
+
+      .age-value {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary);
+      }
+
+      .age-label {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        margin-top: 5px;
+      }
+
+      @media (max-width: 480px) {
+        .age-breakdown {
+          grid-template-columns: 1fr;
+        }
+
+        .btn-group {
+          flex-direction: column;
+        }
+
+        .btn {
+          width: 100%;
+        }
+      }
+    </style>
   </head>
 
   <body>
@@ -332,8 +443,8 @@
       </p>
       <main class="wrap" role="main">
         <!-- Tool -->
-        <article class="card tool-card" id="enter-dates">
-          <h2>Enter dates</h2>
+        <section class="card tool-card" id="ageCalculator">
+          <h3>Age Calculator</h3>
 
           <div class="age-grid">
             <!-- DOB -->
@@ -407,25 +518,38 @@
             </label>
           </div>
 
-          <div style="margin-top: 10px">
-            <button class="btn btn-primary" id="calc" type="button">
-              Calculate
+          <div class="btn-group">
+            <button class="btn btn-primary" id="calculateBtn" type="button">
+              Calculate Age
             </button>
-            <button class="btn" id="reset" type="button">Reset</button>
-            <button class="btn" id="copy" type="button">Copy</button>
+            <button class="btn" id="resetBtn" type="button">Reset</button>
+            <button class="btn" id="todayBtn" type="button">
+              Set to Today
+            </button>
           </div>
 
-          <!-- Ad #2 -->
+          <div class="result-container">
+            <div class="result-title">Your Age</div>
+            <div class="result-content" id="ageResult">
+              Enter dates to calculate
+            </div>
 
-          <textarea
-            id="out"
-            class="form-textarea mono"
-            readonly
-            placeholder="Result…"
-          ></textarea>
-          <div class="muted" id="next" aria-live="polite"></div>
-        </article>
-
+            <div class="age-breakdown" id="ageBreakdown" style="display: none">
+              <div class="age-item">
+                <div class="age-value" id="yearsValue">0</div>
+                <div class="age-label">Years</div>
+              </div>
+              <div class="age-item">
+                <div class="age-value" id="monthsValue">0</div>
+                <div class="age-label">Months</div>
+              </div>
+              <div class="age-item">
+                <div class="age-value" id="daysValue">0</div>
+                <div class="age-label">Days</div>
+              </div>
+            </div>
+          </div>
+        </section>
         <!-- Examples -->
         <div class="card" id="where">
           <h2>Where to Use Age Calculations</h2>
@@ -834,190 +958,115 @@
     </div>
 
     <script>
-      // Shorthand
-      const $ = (s) => document.querySelector(s);
+      document.addEventListener("DOMContentLoaded", function () {
+        const dobInput = document.getElementById("dob");
+        const asofInput = document.getElementById("asof");
+        const dobBtn = document.getElementById("dobBtn");
+        const asofBtn = document.getElementById("asofBtn");
+        const calculateBtn = document.getElementById("calculateBtn");
+        const resetBtn = document.getElementById("resetBtn");
+        const todayBtn = document.getElementById("todayBtn");
+        const ageResult = document.getElementById("ageResult");
+        const ageBreakdown = document.getElementById("ageBreakdown");
+        const yearsValue = document.getElementById("yearsValue");
+        const monthsValue = document.getElementById("monthsValue");
+        const daysValue = document.getElementById("daysValue");
 
-      // Bind elements
-      const yEl = document.getElementById("y");
-      const dob = document.getElementById("dob");
-      const asof = document.getElementById("asof");
-      const dobBtn = document.getElementById("dobBtn");
-      const asofBtn = document.getElementById("asofBtn");
-      const calc = document.getElementById("calc");
-      const reset = document.getElementById("reset");
-      const copy = document.getElementById("copy");
-      const out = document.getElementById("out");
-      const next = document.getElementById("next");
+        // Set "As of" date to today by default
+        const today = new Date().toISOString().split("T")[0];
+        asofInput.value = today;
 
-      // Footer year
-      yEl.textContent = new Date().getFullYear();
+        // Calendar button functionality
+        dobBtn.addEventListener("click", function () {
+          dobInput.showPicker ? dobInput.showPicker() : dobInput.focus();
+        });
 
-      // Lazy-load AdSense when visible
-      const initAds = () => {
-        window.adsbygoogle = window.adsbygoogle || [];
-        const slots = document.querySelectorAll(
-          "ins.adsbygoogle:not([data-loaded])"
-        );
-        if (!slots.length) return;
+        asofBtn.addEventListener("click", function () {
+          asofInput.showPicker ? asofInput.showPicker() : asofInput.focus();
+        });
 
-        const push = (el) => {
-          try {
-            (adsbygoogle = window.adsbygoogle || []).push({});
-            el.setAttribute("data-loaded", "1");
-          } catch (e) {}
-        };
+        // Calculate age
+        calculateBtn.addEventListener("click", function () {
+          const dob = new Date(dobInput.value);
+          const asof = new Date(asofInput.value);
 
-        if ("IntersectionObserver" in window) {
-          const io = new IntersectionObserver(
-            (entries) => {
-              entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                  push(entry.target);
-                  io.unobserve(entry.target);
-                }
-              });
-            },
-            { rootMargin: "200px 0px" }
-          );
-          slots.forEach((el) => io.observe(el));
-        } else {
-          slots.forEach(push);
-        }
-      };
-      window.addEventListener("load", initAds);
+          if (!dobInput.value) {
+            ageResult.textContent = "Please enter your date of birth";
+            ageResult.className = "result-content error";
+            ageBreakdown.style.display = "none";
+            return;
+          }
 
-      // ===== Calculator logic =====
-      const todayStr = () => {
-        const t = new Date();
-        const y = t.getFullYear();
-        const m = String(t.getMonth() + 1).padStart(2, "0");
-        const d = String(t.getDate()).padStart(2, "0");
-        return `${y}-${m}-${d}`;
-      };
+          if (dob > asof) {
+            ageResult.textContent = "Date of birth cannot be in the future";
+            ageResult.className = "result-content error";
+            ageBreakdown.style.display = "none";
+            return;
+          }
 
-      const parse = (s) => {
-        const [y, m, d] = (s || "").split("-").map(Number);
-        return y && m && d ? { y, m, d } : null;
-      };
-      const toD = (o) => new Date(o.y, o.m - 1, o.d);
-      const isLeap = (y) => (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0;
+          const age = calculateAge(dob, asof);
 
-      const diff = (b, a) => {
-        let y = a.y - b.y,
-          m = a.m - b.m,
-          d = a.d - b.d;
-        if (d < 0) {
-          d += new Date(a.y, a.m - 1, 0).getDate();
-          m--;
-        }
-        if (m < 0) {
-          m += 12;
-          y--;
-        }
-        return { y, m, d };
-      };
+          // Display result
+          ageResult.textContent = `You are ${age.years} years, ${age.months} months, and ${age.days} days old`;
+          ageResult.className = "result-content success";
 
-      const daysBetween = (A, B) =>
-        Math.round(
-          (Date.UTC(B.getFullYear(), B.getMonth(), B.getDate()) -
-            Date.UTC(A.getFullYear(), A.getMonth(), A.getDate())) /
-            86400000
-        );
+          // Update breakdown
+          yearsValue.textContent = age.years;
+          monthsValue.textContent = age.months;
+          daysValue.textContent = age.days;
+          ageBreakdown.style.display = "grid";
+        });
 
-      const bday = (dob, yr) => {
-        const feb29 = dob.m === 2 && dob.d === 29;
-        const leap = isLeap(yr);
-        const m = feb29 && !leap ? 2 : dob.m;
-        const d = feb29 && !leap ? 28 : dob.d;
-        return new Date(yr, m - 1, d);
-      };
+        // Reset form
+        resetBtn.addEventListener("click", function () {
+          dobInput.value = "";
+          asofInput.value = today;
+          ageResult.textContent = "Enter dates to calculate";
+          ageResult.className = "result-content";
+          ageBreakdown.style.display = "none";
+        });
 
-      // Defaults & constraints
-      const today = todayStr();
-      asof.value = today;
-      dob.max = asof.max = today;
+        // Set "As of" to today
+        todayBtn.addEventListener("click", function () {
+          asofInput.value = today;
+        });
 
-      // Native picker open helper
-      const openPicker = (inputEl) => {
-        try {
-          if (typeof inputEl.showPicker === "function") inputEl.showPicker();
-          else inputEl.focus();
-        } catch {
-          inputEl.focus();
-        }
-      };
+        // Calculate age function
+        function calculateAge(dob, asof) {
+          let years = asof.getFullYear() - dob.getFullYear();
+          let months = asof.getMonth() - dob.getMonth();
+          let days = asof.getDate() - dob.getDate();
 
-      // Auto-open DOB picker on load
-      window.addEventListener("load", () => openPicker(dob));
-      dobBtn.addEventListener("click", () => openPicker(dob));
-      asofBtn.addEventListener("click", () => openPicker(asof));
+          // Adjust for negative days
+          if (days < 0) {
+            months--;
+            // Get days in previous month
+            const prevMonth = new Date(asof.getFullYear(), asof.getMonth(), 0);
+            days += prevMonth.getDate();
+          }
 
-      // Enter key triggers calc
-      [dob, asof].forEach((el) =>
-        el.addEventListener("keydown", (e) => {
-          if (e.key === "Enter") calc.click();
-        })
-      );
+          // Adjust for negative months
+          if (months < 0) {
+            years--;
+            months += 12;
+          }
 
-      // Calculate
-      calc.onclick = () => {
-        const B = parse(dob.value);
-        const A = parse(asof.value || todayStr());
-
-        if (!B) {
-          out.value = "Select date of birth.";
-          openPicker(dob);
-          return;
-        }
-        if (!A) {
-          out.value = "Select 'As of' date.";
-          openPicker(asof);
-          return;
+          return { years, months, days };
         }
 
-        const Bd = toD(B),
-          Ad = toD(A);
-        if (Ad < Bd) {
-          out.value = "Error: 'As of' is before birth.";
-          next.textContent = "";
-          return;
-        }
+        // Auto-calculate when dates change
+        dobInput.addEventListener("change", function () {
+          if (dobInput.value && asofInput.value) {
+            calculateBtn.click();
+          }
+        });
 
-        const a = diff(B, A);
-        const total = daysBetween(Bd, Ad);
-
-        // Next birthday
-        let nb = bday(B, A.y);
-        if (daysBetween(Ad, nb) < 0) nb = bday(B, A.y + 1);
-        const left = daysBetween(Ad, nb);
-        const turning = a.y + (left ? 1 : 0);
-        const nbStr = nb.toDateString();
-
-        out.value =
-          `Age: ${a.y} years, ${a.m} months, ${a.d} days\n` +
-          `Total days lived: ${total.toLocaleString()}`;
-
-        next.textContent =
-          left === 0
-            ? `🎉 Happy birthday! Today (${nbStr}) — turned ${a.y}.`
-            : `Next birthday in ${left} day(s) — ${nbStr} (turning ${turning}).`;
-      };
-
-      // Reset
-      reset.onclick = () => {
-        dob.value = "";
-        asof.value = todayStr();
-        out.value = "";
-        next.textContent = "";
-        openPicker(dob);
-      };
-
-      // Copy
-      copy.onclick = () => {
-        const text =
-          out.value + (next.textContent ? `\n${next.textContent}` : "");
-        navigator.clipboard.writeText(text);
-      };
+        asofInput.addEventListener("change", function () {
+          if (dobInput.value && asofInput.value) {
+            calculateBtn.click();
+          }
+        });
+      });
     </script>
 
     <!-- tracker path: keep whichever works in your project -->

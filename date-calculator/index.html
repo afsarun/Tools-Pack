@@ -281,8 +281,8 @@
 
       <main class="wrap" role="main">
         <!-- Days Until -->
-        <section class="card" id="until">
-          <h2>Days Until a Date</h2>
+        <section class="card tool-card" id="until">
+          <h3>Days Until a Date</h3>
           <div class="grid">
             <label class="field span-6 form-label">
               <span class="muted">End date</span>
@@ -293,17 +293,19 @@
                 required
               />
             </label>
-            <label class="field span-6">
+            <label class="field span-6 form-label">
               <span class="muted">Start date (defaults to today)</span>
               <input id="untilStart" type="date" class="field form-input" />
             </label>
             <div class="span-12">
-              <button class="btn btn-primary" id="btnUntil" type="button">
-                Calculate
-              </button>
-              <button class="btn" id="btnUntilReset" type="button">
-                Reset
-              </button>
+              <div class="btn-group">
+                <button class="btn btn-primary" id="btnUntil" type="button">
+                  Calculate
+                </button>
+                <button class="btn" id="btnUntilReset" type="button">
+                  Reset
+                </button>
+              </div>
             </div>
             <div class="span-12">
               <textarea
@@ -317,8 +319,8 @@
         </section>
 
         <!-- Days Since (how long ago) -->
-        <section class="card" id="since-date">
-          <h2>Days Since a Date (How long ago?)</h2>
+        <section class="card tool-card" id="since-date">
+          <h3>Days Since a Date (How long ago?)</h3>
           <div class="grid">
             <label class="field span-6 form-label">
               <span class="muted">Past date</span>
@@ -333,7 +335,7 @@
               <span class="muted">As of (defaults to today)</span>
               <input id="sinceAsOf" type="date" class="field form-input" />
             </label>
-            <div class="span-12">
+            <div class="span-12 btn-group">
               <button class="btn btn-primary" id="btnSince" type="button">
                 Calculate
               </button>
@@ -353,10 +355,10 @@
         </section>
 
         <!-- N days ago -->
-        <section class="card" id="ago">
-          <h2>Days Ago (N days)</h2>
+        <section class="card tool-card" id="ago">
+          <h3>Days Ago (N days)</h3>
           <div class="grid">
-            <label class="field span-4 form-label">
+            <label class="field span-6 form-label">
               <span class="muted">N (days)</span>
               <input
                 id="agoN"
@@ -367,11 +369,11 @@
                 placeholder="e.g., 2015"
               />
             </label>
-            <label class="field span-4 form-label">
+            <label class="field span-6 form-label">
               <span class="muted">As of (defaults to today)</span>
               <input id="agoAsOf" type="date" class="field form-input" />
             </label>
-            <div class="span-12">
+            <div class="span-12 btn-group">
               <button class="btn btn-primary" id="btnAgo" type="button">
                 Calculate
               </button>
@@ -389,14 +391,14 @@
         </section>
 
         <!-- Add/Subtract Days -->
-        <section class="card" id="add">
-          <h2>Add/Subtract Days</h2>
+        <section class="card tool-card" id="add">
+          <h3>Add/Subtract Days</h3>
           <div class="grid">
-            <label class="field span-4 form-label">
+            <label class="field span-6 form-label">
               <span class="muted">Base date (defaults to today)</span>
               <input id="addBase" type="date" class="field form-input" />
             </label>
-            <label class="field span-4 form-label">
+            <label class="field span-6 form-label">
               <span class="muted">+ / − days (use negative to subtract)</span>
               <input
                 id="addN"
@@ -406,7 +408,7 @@
                 placeholder="e.g., 20 or -20"
               />
             </label>
-            <div class="span-12">
+            <div class="span-12 btn-group">
               <button class="btn btn-primary" id="btnAdd" type="button">
                 Calculate
               </button>
@@ -424,8 +426,8 @@
         </section>
 
         <!-- Years/Months/Days Since -->
-        <section class="card" id="since">
-          <h2>Years/Months/Days Since</h2>
+        <section class="card tool-card" id="since">
+          <h3>Years/Months/Days Since</h3>
           <div class="grid">
             <label class="field span-6 form-label">
               <span class="muted">Start date (e.g., 2018-01-01)</span>
@@ -435,7 +437,7 @@
               <span class="muted">As of (defaults to today)</span>
               <input id="sinceEnd" type="date" class="field form-input" />
             </label>
-            <div class="span-12">
+            <div class="span-12 btn-group">
               <button class="btn btn-primary" id="btnSinceYMD" type="button">
                 Calculate
               </button>
