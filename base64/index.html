@@ -210,43 +210,41 @@
 
       <main class="wrap" role="main">
         <!-- Tool -->
-        <article class="card" id="convert" aria-label="Base64 Tool">
-          <h2>Convert text ⇄ Base64</h2>
+        <article class="card tool-card" id="convert" aria-label="Base64 Tool">
+          <h3>Convert text ⇄ Base64</h3>
 
           <textarea
             id="inText"
             class="form-textarea mono"
-            placeholder="Text or Base64…"
+            placeholder="Enter text to encode or Base64 to decode…"
             rows="6"
           ></textarea>
 
-          <div style="margin-top: 10px">
+          <div class="btn-group">
             <button class="btn btn-primary" id="enc" type="button">
-              Encode
+              Encode to Base64
             </button>
-            <button class="btn" id="dec" type="button">Decode</button>
+            <button class="btn" id="dec" type="button">
+              Decode from Base64
+            </button>
             <button class="btn" id="cpy" type="button">Copy output</button>
+            <button class="btn" id="clear" type="button">Clear all</button>
           </div>
 
           <!-- Ad #2: in-article (fluid) -->
           <div class="ad-wrap ad-article" aria-label="Advertisement">
             <span class="ad-label">Ad</span>
-            <ins
-              class="adsbygoogle"
-              style="display: inline-block; text-align: center"
-              data-ad-client="ca-pub-1234567890123456"
-              data-ad-slot="2222222222"
-              data-ad-format="fluid"
-              data-ad-layout="in-article"
-              data-adtest="on"
-            ></ins>
+            <div class="ad-content">
+              Upgrade to Base64 Pro for unlimited conversions and advanced
+              features!
+            </div>
           </div>
 
           <textarea
             id="outText"
             class="form-textarea mono"
             readonly
-            placeholder="Output…"
+            placeholder="Output will appear here…"
             rows="6"
           ></textarea>
           <div class="muted" id="tip" aria-live="polite"></div>
@@ -576,116 +574,135 @@
     </div>
 
     <script>
-      // Elements
-      const year = document.getElementById("year");
-      const inText = document.getElementById("inText");
-      const outText = document.getElementById("outText");
-      const encBtn = document.getElementById("enc");
-      const decBtn = document.getElementById("dec");
-      const cpyBtn = document.getElementById("cpy");
-      const tip = document.getElementById("tip");
+      document.addEventListener("DOMContentLoaded", function () {
+        const inText = document.getElementById("inText");
+        const outText = document.getElementById("outText");
+        const encBtn = document.getElementById("enc");
+        const decBtn = document.getElementById("dec");
+        const cpyBtn = document.getElementById("cpy");
+        const clearBtn = document.getElementById("clear");
+        const tip = document.getElementById("tip");
 
-      // Footer year
-      year.textContent = new Date().getFullYear();
+        // Encode text to Base64
+        encBtn.addEventListener("click", function () {
+          const input = inText.value.trim();
 
-      // ===== Load AdSense slots lazily when visible (low CLS) =====
-      const initAds = () => {
-        window.adsbygoogle = window.adsbygoogle || [];
-        const slots = document.querySelectorAll(
-          "ins.adsbygoogle:not([data-loaded])"
-        );
-        if (!slots.length) return;
-
-        const push = (el) => {
-          try {
-            (adsbygoogle = window.adsbygoogle || []).push({});
-            el.setAttribute("data-loaded", "1");
-          } catch (e) {
-            /* ignore */
+          if (!input) {
+            showTip("Please enter text to encode", "error");
+            return;
           }
-        };
 
-        if ("IntersectionObserver" in window) {
-          const io = new IntersectionObserver(
-            (entries) =>
-              entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                  push(entry.target);
-                  io.unobserve(entry.target);
-                }
-              }),
-            { rootMargin: "200px 0px" }
-          );
-          slots.forEach((el) => io.observe(el));
-        } else {
-          slots.forEach(push);
+          try {
+            // Encode to Base64
+            const encoded = btoa(unescape(encodeURIComponent(input)));
+            outText.value = encoded;
+            showTip("Text successfully encoded to Base64", "success");
+          } catch (error) {
+            showTip("Error encoding text: " + error.message, "error");
+          }
+        });
+
+        // Decode Base64 to text
+        decBtn.addEventListener("click", function () {
+          const input = inText.value.trim();
+
+          if (!input) {
+            showTip("Please enter Base64 to decode", "error");
+            return;
+          }
+
+          try {
+            // Decode from Base64
+            const decoded = decodeURIComponent(escape(atob(input)));
+            outText.value = decoded;
+            showTip("Base64 successfully decoded to text", "success");
+          } catch (error) {
+            showTip(
+              "Error decoding Base64. Make sure it is valid Base64.",
+              "error"
+            );
+          }
+        });
+
+        // Copy output to clipboard
+        cpyBtn.addEventListener("click", function () {
+          if (!outText.value) {
+            showTip("No output to copy", "error");
+            return;
+          }
+
+          outText.select();
+          outText.setSelectionRange(0, 99999); // For mobile devices
+
+          try {
+            navigator.clipboard
+              .writeText(outText.value)
+              .then(() => {
+                showTip("Output copied to clipboard", "success");
+              })
+              .catch((err) => {
+                // Fallback for older browsers
+                document.execCommand("copy");
+                showTip("Output copied to clipboard", "success");
+              });
+          } catch (error) {
+            showTip("Failed to copy output: " + error.message, "error");
+          }
+        });
+
+        // Clear all fields
+        clearBtn.addEventListener("click", function () {
+          inText.value = "";
+          outText.value = "";
+          showTip("All fields cleared", "warning");
+        });
+
+        // Show tip message
+        function showTip(message, type) {
+          tip.textContent = message;
+          tip.className = "muted";
+
+          if (type === "success") {
+            tip.classList.add("success");
+          } else if (type === "error") {
+            tip.classList.add("error");
+          } else if (type === "warning") {
+            tip.classList.add("warning");
+          }
+
+          // Clear tip after 3 seconds
+          setTimeout(() => {
+            tip.textContent = "";
+            tip.className = "muted";
+          }, 3000);
         }
-      };
-      window.addEventListener("load", initAds);
 
-      // ===== Helpers (Unicode-safe Base64) =====
-      const b64enc = (str) => {
-        const bytes = new TextEncoder().encode(str);
-        let bin = "";
-        bytes.forEach((b) => (bin += String.fromCharCode(b)));
-        return btoa(bin);
-      };
+        // Auto-detect and process when Enter is pressed with Ctrl/Cmd
+        inText.addEventListener("keydown", function (e) {
+          if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+            const input = inText.value.trim();
 
-      const b64dec = (b64) => {
-        const bin = atob(b64);
-        const bytes = new Uint8Array(bin.length);
-        for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
-        return new TextDecoder().decode(bytes);
-      };
+            if (!input) return;
 
-      // Accept URL-safe and missing padding
-      const normalizeB64 = (s) => {
-        let cleaned = (s || "")
-          .replace(/\s+/g, "")
-          .replace(/-/g, "+")
-          .replace(/_/g, "/");
-        const pad = cleaned.length % 4;
-        if (pad) cleaned += "=".repeat(4 - pad);
-        return cleaned;
-      };
+            // Try to detect if it's Base64
+            const base64Regex = /^[A-Za-z0-9+/]*={0,2}$/;
+            const isBase64 = base64Regex.test(input) && input.length % 4 === 0;
 
-      // Events
-      encBtn.onclick = () => {
-        outText.value = b64enc(inText.value || "");
-        tip.textContent = "Encoded using Unicode-safe Base64.";
-      };
+            if (isBase64) {
+              decBtn.click();
+            } else {
+              encBtn.click();
+            }
+          }
+        });
 
-      decBtn.onclick = () => {
-        try {
-          const cleaned = normalizeB64(inText.value.trim());
-          outText.value = b64dec(cleaned);
-          tip.textContent = "Decoded successfully.";
-        } catch (e) {
-          outText.value = "Decode error: " + e.message;
-          tip.textContent = "";
-        }
-      };
-
-      cpyBtn.onclick = async () => {
-        try {
-          await navigator.clipboard.writeText(outText.value || "");
-          tip.textContent = outText.value
-            ? "Output copied to clipboard."
-            : "Nothing to copy.";
-        } catch {
-          tip.textContent = "Clipboard not available.";
-        }
-      };
-
-      // Enter to encode; Shift+Enter to decode
-      inText.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" && !e.shiftKey) {
-          e.preventDefault();
-          encBtn.click();
-        } else if (e.key === "Enter" && e.shiftKey) {
-          e.preventDefault();
-          decBtn.click();
-        }
+        // Clear output when input changes
+        inText.addEventListener("input", function () {
+          if (outText.value) {
+            outText.value = "";
+            tip.textContent = "";
+          }
+        });
       });
     </script>
 

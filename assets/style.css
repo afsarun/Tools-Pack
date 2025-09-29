@@ -230,7 +230,16 @@ a {
     rgba(59, 130, 246, 0.05) 100%
   );
 }
-
+.tool-card h3 {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.8rem;
+}
 /* 6) Forms (shared) */
 .form-group {
   margin-bottom: 1.5rem;
@@ -256,6 +265,22 @@ a {
   font-size: 0.9rem;
   line-height: 1.5;
   transition: all 0.3s ease;
+}
+
+.form-textarea {
+  width: 100%;
+  padding: 15px;
+  background-color: var(--surface-light);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: "Courier New", monospace;
+  font-size: 16px;
+  resize: vertical;
+  transition: all 0.3s;
+  color: var(--text);
+}
+.form-textarea::placeholder {
+  color: var(--text-muted);
 }
 .form-textarea {
   min-height: 120px;
@@ -875,4 +900,107 @@ footer.wrap nav a:focus-visible {
     animation: none !important;
     transition: none !important;
   }
+}
+
+/* add new style  */
+
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.btn-group {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  flex-grow: 1;
+  min-width: 120px;
+  background-color: var(--surface-light);
+  color: var(--text);
+}
+
+.btn-primary {
+  background: var(--gradient);
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover:not(.btn-primary) {
+  background-color: var(--border);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.muted {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: center;
+  min-height: 20px;
+}
+.success {
+  color: var(--success);
+}
+
+.error {
+  color: var(--danger);
+}
+
+.warning {
+  color: var(--warning);
+}
+
+@media (max-width: 600px) {
+  .btn-group {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+/* style for add  */
+/* style for add  */
+/* style for add  */
+
+.ad-wrap {
+  background-color: var(--surface-light);
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  padding: 15px;
+  margin: 20px 0;
+  text-align: center;
+  position: relative;
+}
+
+.ad-label {
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  background: var(--surface);
+  padding: 0 5px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.ad-content {
+  color: var(--text-muted);
+  font-style: italic;
 }
