@@ -84,13 +84,6 @@
       content="https://tools-pack.netlify.app/assets/og/stopwatch-countdown-en.webp"
     />
 
-    <!-- AdSense: use ONE consistent client id across all ad units -->
-    <script
-      async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
-      crossorigin="anonymous"
-    ></script>
-
     <!-- JSON-LD: WebApplication (upgraded) -->
     <script type="application/ld+json">
       {
@@ -199,18 +192,14 @@
     </header>
 
     <!-- Ad #1: top banner (constrained, no full-width expansion) -->
-    <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
-      <span class="ad-label">Ad</span>
-      <ins
-        class="adsbygoogle"
-        style="display: inline-block"
-        data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-        data-ad-slot="1111111111"
-        data-ad-format="auto"
-        data-full-width-responsive="false"
-      ></ins>
-    </div>
+
     <div class="container">
+      <div class="ad-wrap ad-article" aria-label="Advertisement">
+        <span class="ad-label">Ad</span>
+        <div class="ad-content">
+          Upgrade to Base64 Pro for unlimited conversions and advanced features!
+        </div>
+      </div>
       <nav class="breadcrumbs" aria-label="breadcrumb">
         <a href="/">Home</a> › <a href="/#time">Time Tools</a> ›
         <span aria-current="page">Stopwatch &amp; Countdown</span>
@@ -253,18 +242,6 @@
             </button>
             <button class="btn" id="swPause" type="button">Pause</button>
             <button class="btn" id="swReset" type="button">Reset</button>
-          </div>
-
-          <div class="ad-wrap ad-article" aria-label="Advertisement">
-            <span class="ad-label">Ad</span>
-            <ins
-              class="adsbygoogle"
-              style="display: inline-block; text-align: center"
-              data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-              data-ad-slot="2222222222"
-              data-ad-format="fluid"
-              data-ad-layout="in-article"
-            ></ins>
           </div>
 
           <hr style="border: none; border-top: var(--border)" />
@@ -317,6 +294,13 @@
           </div>
 
           <div id="cdDisp" class="field center" aria-live="polite">00:30</div>
+          <div class="ad-wrap ad-article" aria-label="Advertisement">
+            <span class="ad-label">Ad</span>
+            <div class="ad-content">
+              Upgrade to Base64 Pro for unlimited conversions and advanced
+              features!
+            </div>
+          </div>
         </article>
         <div class="card" id="where">
           <h2>Common Use Cases &amp; Examples</h2>
@@ -600,18 +584,6 @@
             <a href="/bn/stopwatch-countdown/" hreflang="bn">বাংলা সংস্করণ</a>.
           </p>
         </article>
-
-        <!-- Bottom responsive ad -->
-        <aside aria-label="advertisement" class="card" style="padding: 0">
-          <ins
-            class="adsbygoogle"
-            style="display: block"
-            data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-            data-ad-slot="3333333333"
-            data-ad-format="auto"
-            data-full-width-responsive="true"
-          ></ins>
-        </aside>
       </main>
     </div>
     <footer>© <span id="y"></span> Tools Pack</footer>

@@ -82,13 +82,6 @@
       content="https://tools-pack.netlify.app/assets/og/password-uuid-generator-en.webp"
     />
 
-    <!-- AdSense: Auto Ads (replace with your publisher ID) -->
-    <script
-      async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
-      crossorigin="anonymous"
-    ></script>
-
     <!-- JSON-LD: WebApplication -->
     <script type="application/ld+json">
       {
@@ -219,21 +212,14 @@
         </div>
       </div>
     </header>
-    <!-- Ad #1: top banner (constrained, no full-width expansion) -->
-    <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
-      <span class="ad-label">Ad</span>
-      <ins
-        class="adsbygoogle"
-        style="display: inline-block"
-        data-ad-client="ca-pub-1234567890123456"
-        data-ad-slot="1111111111"
-        data-ad-format="auto"
-        data-full-width-responsive="false"
-        data-adtest="on"
-      ></ins>
-    </div>
 
     <div class="container">
+      <div class="ad-wrap ad-article" aria-label="Advertisement">
+        <span class="ad-label">Ad</span>
+        <div class="ad-content">
+          Upgrade to Base64 Pro for unlimited conversions and advanced features!
+        </div>
+      </div>
       <nav class="breadcrumbs" aria-label="breadcrumb">
         <a href="/">Home</a> › <a href="/#security">Security Tools</a> ›
         <span>Password Generator</span>
@@ -310,33 +296,31 @@
               readonly
               aria-label="Generated password"
             />
-            <button
-              class="btn btn-primary"
-              id="gen"
-              aria-label="Generate password"
-            >
-              Generate
-            </button>
-            <button class="btn" id="cpy" aria-label="Copy password">
-              Copy
-            </button>
+            <div class="btn-group">
+              <button
+                class="btn btn-primary"
+                id="gen"
+                aria-label="Generate password"
+              >
+                Generate
+              </button>
+              <button class="btn" id="cpy" aria-label="Copy password">
+                Copy
+              </button>
+            </div>
           </div>
-          <div class="ad-wrap ad-article" aria-label="Advertisement">
-            <span class="ad-label">Ad</span>
-            <ins
-              class="adsbygoogle"
-              style="display: block; text-align: center"
-              data-ad-client="ca-pub-1234567890123456"
-              data-ad-slot="2222222222"
-              data-ad-format="fluid"
-              data-ad-layout="in-article"
-              data-adtest="on"
-            ></ins>
-          </div>
+
           <p class="muted-small" style="margin-top: 8px">
             Tip: For maximum security, use <strong>20+ characters</strong> with
             all sets enabled.
           </p>
+          <div class="ad-wrap ad-article" aria-label="Advertisement">
+            <span class="ad-label">Ad</span>
+            <div class="ad-content">
+              Upgrade to Base64 Pro for unlimited conversions and advanced
+              features!
+            </div>
+          </div>
         </article>
         <div class="card" id="where">
           <h2>Where to Use Generated Values</h2>

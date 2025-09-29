@@ -197,23 +197,7 @@
       body {
         height: 100%;
       }
-      body {
-        margin: 0;
-        font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
-          Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-        background: radial-gradient(
-            1200px 600px at 10% -10%,
-            rgba(124, 58, 237, 0.15),
-            transparent 60%
-          ),
-          radial-gradient(
-            1200px 600px at 90% -20%,
-            rgba(34, 211, 238, 0.12),
-            transparent 60%
-          ),
-          var(--bg);
-        color: var(--text);
-      }
+
       .container {
         max-width: 960px;
         margin: 40px auto;
@@ -285,20 +269,7 @@
         -webkit-appearance: none;
         margin: 0;
       }
-      .btn {
-        background: linear-gradient(135deg, var(--accent), var(--accent-2));
-        color: #0b0b14;
-        font-weight: 700;
-        border: 0;
-        padding: 10px 14px;
-        border-radius: 12px;
-        cursor: pointer;
-      }
-      .btn.secondary {
-        background: transparent;
-        color: var(--text);
-        border: 1px solid var(--border);
-      }
+
       .result {
         background: #17182a;
         border: 1px dashed var(--ring);
@@ -362,20 +333,14 @@
     </header>
 
     <!-- Ad #1 -->
-    <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
-      <span class="ad-label">Ad</span>
-      <ins
-        class="adsbygoogle"
-        style="display: inline-block"
-        data-ad-client="ca-pub-1234567890123456"
-        data-ad-slot="1111111111"
-        data-ad-format="auto"
-        data-full-width-responsive="false"
-        data-adtest="on"
-      ></ins>
-    </div>
 
     <div class="container">
+      <div class="ad-wrap ad-article" aria-label="Advertisement">
+        <span class="ad-label">Ad</span>
+        <div class="ad-content">
+          Upgrade to Base64 Pro for unlimited conversions and advanced features!
+        </div>
+      </div>
       <!-- Breadcrumbs (UI) -->
       <nav class="breadcrumbs" aria-label="breadcrumb">
         <a href="/">Home</a> › <a href="/#math">Math Tools</a> ›
@@ -571,18 +536,11 @@
         <div class="help formula small">Formula: B × (1 ± A ÷ 100)</div>
       </section>
 
-      <!-- In-article ad -->
       <div class="ad-wrap ad-article" aria-label="Advertisement">
         <span class="ad-label">Ad</span>
-        <ins
-          class="adsbygoogle"
-          style="display: block; text-align: center"
-          data-ad-client="ca-pub-1234567890123456"
-          data-ad-slot="2222222222"
-          data-ad-format="fluid"
-          data-ad-layout="in-article"
-          data-adtest="on"
-        ></ins>
+        <div class="ad-content">
+          Upgrade to Base64 Pro for unlimited conversions and advanced features!
+        </div>
       </div>
 
       <!-- How to use -->

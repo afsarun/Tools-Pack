@@ -236,20 +236,14 @@
         </div>
       </div>
     </header>
-    <!-- Ad #1: top banner (constrained, no full-width expansion) -->
-    <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
-      <span class="ad-label">Ad</span>
-      <ins
-        class="adsbygoogle"
-        style="display: inline-block"
-        data-ad-client="ca-pub-1234567890123456"
-        data-ad-slot="1111111111"
-        data-ad-format="auto"
-        data-full-width-responsive="false"
-        data-adtest="on"
-      ></ins>
-    </div>
+
     <div class="container">
+      <div class="ad-wrap ad-article" aria-label="Advertisement">
+        <span class="ad-label">Ad</span>
+        <div class="ad-content">
+          Upgrade to Base64 Pro for unlimited conversions and advanced features!
+        </div>
+      </div>
       <!-- Breadcrumbs -->
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="/">Home</a> › <a href="/text-utilities/">Developer Tools</a> ›
@@ -279,8 +273,8 @@
         <!-- Breadcrumbs (page-level, consistent with header) -->
 
         <!-- Tool -->
-        <article class="card" id="json-tool">
-          <h2>Format / Validate</h2>
+        <article class="card tool-card" id="json-tool">
+          <h3>Format / Validate</h3>
 
           <label class="muted" for="in">Input JSON</label>
           <textarea
@@ -290,7 +284,7 @@
             aria-label="JSON input"
           ></textarea>
 
-          <div class="btn-row" role="group" aria-label="Actions">
+          <div class="btn-group" role="group" aria-label="Actions">
             <button
               class="btn btn-primary"
               id="fmt"
@@ -308,18 +302,7 @@
               Copy Output
             </button>
           </div>
-          <div class="ad-wrap ad-article" aria-label="Advertisement">
-            <span class="ad-label">Ad</span>
-            <ins
-              class="adsbygoogle"
-              style="display: block; text-align: center"
-              data-ad-client="ca-pub-1234567890123456"
-              data-ad-slot="2222222222"
-              data-ad-format="fluid"
-              data-ad-layout="in-article"
-              data-adtest="on"
-            ></ins>
-          </div>
+
           <label class="muted" for="out">Output</label>
           <textarea
             id="out"
@@ -329,6 +312,13 @@
             aria-label="Formatted/minified JSON output"
           ></textarea>
           <div id="status" class="muted" role="status" aria-live="polite"></div>
+          <div class="ad-wrap ad-article" aria-label="Advertisement">
+            <span class="ad-label">Ad</span>
+            <div class="ad-content">
+              Upgrade to Base64 Pro for unlimited conversions and advanced
+              features!
+            </div>
+          </div>
         </article>
         <!-- Best Practices -->
         <div class="card" id="best-practices">

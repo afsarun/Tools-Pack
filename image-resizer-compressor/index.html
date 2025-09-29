@@ -188,16 +188,6 @@
       }
     </script>
 
-    <!-- ========= Google AdSense loader =========
-         Replace client with your publisher ID.
-         Keep data-adtest="on" while testing; remove when live. -->
-    <script
-      async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234567890123456"
-      crossorigin="anonymous"
-    ></script>
-
-    <!-- Page-specific styles (ads + layout tweaks) -->
     <style>
       /* Ad slots: reserve space & cap widths to avoid CLS */
 
@@ -306,19 +296,14 @@
     </header>
 
     <!-- Ad #1: top banner (constrained) -->
-    <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
-      <span class="ad-label">Ad</span>
-      <ins
-        class="adsbygoogle"
-        style="display: inline-block"
-        data-ad-client="ca-pub-1234567890123456"
-        data-ad-slot="1111111111"
-        data-ad-format="auto"
-        data-full-width-responsive="false"
-        data-adtest="on"
-      ></ins>
-    </div>
+
     <div class="container">
+      <div class="ad-wrap ad-article" aria-label="Advertisement">
+        <span class="ad-label">Ad</span>
+        <div class="ad-content">
+          Upgrade to Base64 Pro for unlimited conversions and advanced features!
+        </div>
+      </div>
       <!-- Breadcrumbs -->
       <nav class="breadcrumbs" aria-label="breadcrumb">
         <a href="/">Home</a> › <a href="/#image">Image Tools</a> ›

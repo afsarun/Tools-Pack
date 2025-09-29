@@ -194,29 +194,176 @@
     </script>
 
     <!-- ========= Google AdSense loader ========= -->
-    <script
+    <!-- <script
       async
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234567890123456"
       crossorigin="anonymous"
-    ></script>
+    ></script> -->
 
-    <!-- Page-specific styles (ads + tiny tweaks) -->
     <style>
-      /* ✅ Reserve space for ads by viewport to reduce CLS */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-      /* Optional: small figure style if you keep the inline screenshot */
-      figure.tool-shot {
-        margin: 12px 0 0;
+      .calculator {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
       }
-      figure.tool-shot img {
-        width: 100%;
-        height: auto;
+
+      .display {
+        background-color: var(--surface-light);
+        border: 1px solid var(--border);
         border-radius: 8px;
+        padding: 15px;
+        text-align: right;
+        min-height: 80px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
       }
-      figure.tool-shot figcaption {
-        font-size: 12px;
-        color: #6b7280;
-        margin-top: 6px;
+
+      .previous-operand {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        min-height: 1.2em;
+        word-break: break-all;
+      }
+
+      .current-operand {
+        font-size: 1.8rem;
+        font-weight: 600;
+        word-break: break-all;
+      }
+
+      .buttons-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+      }
+
+      .btn:active {
+        transform: translateY(0);
+      }
+
+      .btn-number {
+        background-color: var(--surface-light);
+      }
+
+      .btn-number:hover {
+        background-color: var(--border);
+      }
+
+      .btn-operator {
+        background-color: var(--primary);
+        color: white;
+      }
+
+      .btn-operator:hover {
+        background-color: var(--primary-hover);
+      }
+
+      .btn-equals {
+        background: var(--gradient);
+        color: white;
+        grid-column: span 2;
+      }
+
+      .btn-equals:hover {
+        box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+      }
+
+      .btn-clear {
+        background-color: var(--danger);
+        color: white;
+      }
+
+      .btn-clear:hover {
+        background-color: #dc2626;
+      }
+
+      .btn-function {
+        background-color: var(--secondary);
+        color: white;
+      }
+
+      .btn-function:hover {
+        background-color: #475569;
+      }
+
+      .history-panel {
+        margin-top: 20px;
+        padding: 15px;
+        background-color: var(--surface-light);
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        max-height: 200px;
+        overflow-y: auto;
+      }
+
+      .history-title {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .history-list {
+        list-style: none;
+      }
+
+      .history-item {
+        padding: 8px 0;
+        border-bottom: 1px solid var(--border);
+        font-family: "Courier New", monospace;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .history-expression {
+        color: var(--text-muted);
+      }
+
+      .history-result {
+        font-weight: 600;
+        color: var(--success);
+      }
+
+      .clear-history {
+        background: none;
+        border: none;
+        color: var(--text-muted);
+        cursor: pointer;
+        font-size: 0.8rem;
+        text-decoration: underline;
+      }
+
+      .clear-history:hover {
+        color: var(--danger);
+      }
+
+      @media (max-width: 480px) {
+        .card {
+          padding: 15px;
+        }
+
+        .btn {
+          padding: 12px;
+          font-size: 1rem;
+        }
+
+        .current-operand {
+          font-size: 1.5rem;
+        }
+      }
+
+      .calculator-card {
+        max-width: 600px;
+        margin: 0 auto;
       }
     </style>
   </head>
@@ -239,20 +386,13 @@
       </div>
     </header>
 
-    <!-- Ad #1: top banner (constrained) -->
-    <div class="wrap ad-wrap ad-top" aria-label="Advertisement">
-      <span class="ad-label">Ad</span>
-      <ins
-        class="adsbygoogle"
-        style="display: inline-block"
-        data-ad-client="ca-pub-1234567890123456"
-        data-ad-slot="1111111111"
-        data-ad-format="auto"
-        data-full-width-responsive="false"
-        data-adtest="on"
-      ></ins>
-    </div>
     <div class="container">
+      <div class="ad-wrap ad-article" aria-label="Advertisement">
+        <span class="ad-label">Ad</span>
+        <div class="ad-content">
+          Upgrade to Base64 Pro for unlimited conversions and advanced features!
+        </div>
+      </div>
       <!-- Breadcrumbs -->
       <nav class="breadcrumbs" aria-label="breadcrumb">
         <a href="/">Home</a> › <a href="/#math">Math Tools</a> ›
@@ -281,50 +421,56 @@
       </p>
       <main class="wrap">
         <!-- Calculator -->
-        <article class="card tool-card" id="calc">
-          <h2>Calculate</h2>
-          <textarea
-            id="expr"
-            class="form-textarea"
-            placeholder="e.g., (12 + 7) / 3 * 2   or   12% * 200"
-            aria-label="Expression"
-          ></textarea>
+        <section class="card tool-card" id="calculator">
+          <div class="calculator-card">
+            <h3>Calculator</h3>
 
-          <div style="margin-top: 10px">
-            <button class="btn btn-primary" id="evalBtn" type="button">
-              Evaluate
-            </button>
-            <button class="btn" id="clrBtn" type="button">Clear</button>
-            <button class="btn" id="cpyBtn" type="button">Copy result</button>
+            <div class="calculator">
+              <div class="display">
+                <div class="previous-operand" id="previousOperand"></div>
+                <div class="current-operand" id="currentOperand">0</div>
+              </div>
+
+              <div class="buttons-grid">
+                <button class="btn btn-clear" data-action="clear">C</button>
+                <button class="btn btn-function" data-action="backspace">
+                  ⌫
+                </button>
+                <button class="btn btn-function" data-action="percentage">
+                  %
+                </button>
+                <button class="btn btn-operator" data-operator="÷">÷</button>
+
+                <button class="btn btn-number" data-number="7">7</button>
+                <button class="btn btn-number" data-number="8">8</button>
+                <button class="btn btn-number" data-number="9">9</button>
+                <button class="btn btn-operator" data-operator="×">×</button>
+
+                <button class="btn btn-number" data-number="4">4</button>
+                <button class="btn btn-number" data-number="5">5</button>
+                <button class="btn btn-number" data-number="6">6</button>
+                <button class="btn btn-operator" data-operator="-">-</button>
+
+                <button class="btn btn-number" data-number="1">1</button>
+                <button class="btn btn-number" data-number="2">2</button>
+                <button class="btn btn-number" data-number="3">3</button>
+                <button class="btn btn-operator" data-operator="+">+</button>
+
+                <button class="btn btn-number" data-number="0">0</button>
+                <button class="btn btn-number" data-number=".">.</button>
+                <button class="btn btn-equals" data-action="equals">=</button>
+              </div>
+            </div>
+
+            <div class="history-panel">
+              <div class="history-title">
+                <span>History</span>
+                <button class="clear-history" id="clearHistory">Clear</button>
+              </div>
+              <ul class="history-list" id="historyList"></ul>
+            </div>
           </div>
-
-          <!-- Ad #2: in-article (fluid) -->
-          <div class="ad-wrap ad-article" aria-label="Advertisement">
-            <span class="ad-label">Ad</span>
-            <ins
-              class="adsbygoogle"
-              style="display: inline-block; text-align: center"
-              data-ad-client="ca-pub-1234567890123456"
-              data-ad-slot="2222222222"
-              data-ad-format="fluid"
-              data-ad-layout="in-article"
-              data-adtest="on"
-            ></ins>
-          </div>
-
-          <input
-            id="out"
-            class="form-input"
-            readonly
-            placeholder="Result appears here"
-            aria-label="Result"
-          />
-          <p class="muted">
-            Allowed: digits, + − × ÷ * / ( ) . and % (as percent). Use
-            parentheses for order of operations.
-          </p>
-          <div id="msg" class="muted" aria-live="polite" role="status"></div>
-        </article>
+        </section>
 
         <!-- Examples -->
         <div class="card" id="where">
@@ -645,103 +791,267 @@
       </footer>
     </div>
     <script>
-      // Footer year
-      document.getElementById("y").textContent = new Date().getFullYear();
-
-      // ===== Lazy init AdSense when slots are visible =====
-      const initAds = () => {
-        window.adsbygoogle = window.adsbygoogle || [];
-        const slots = document.querySelectorAll(
-          "ins.adsbygoogle:not([data-loaded])"
-        );
-        if (!slots.length) return;
-
-        const push = (el) => {
-          try {
-            (adsbygoogle = window.adsbygoogle || []).push({});
-            el.setAttribute("data-loaded", "1");
-          } catch (e) {
-            /* ignore */
-          }
+      document.addEventListener("DOMContentLoaded", function () {
+        // Calculator state
+        const calculator = {
+          currentOperand: "0",
+          previousOperand: "",
+          operator: null,
+          waitingForNewOperand: false,
+          history: [],
         };
 
-        if ("IntersectionObserver" in window) {
-          const io = new IntersectionObserver(
-            (entries) => {
-              entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                  push(entry.target);
-                  io.unobserve(entry.target);
-                }
-              });
-            },
-            { rootMargin: "200px 0px" }
-          );
-          slots.forEach((el) => io.observe(el));
-        } else {
-          slots.forEach(push);
-        }
-      };
-      window.addEventListener("load", initAds);
+        // DOM elements
+        const currentOperandElement = document.getElementById("currentOperand");
+        const previousOperandElement =
+          document.getElementById("previousOperand");
+        const historyList = document.getElementById("historyList");
+        const clearHistoryButton = document.getElementById("clearHistory");
 
-      // ===== Calculator logic =====
-      const expr = document.getElementById("expr");
-      const out = document.getElementById("out");
-      const msg = document.getElementById("msg");
-      const evalBtn = document.getElementById("evalBtn");
-      const clrBtn = document.getElementById("clrBtn");
-      const cpyBtn = document.getElementById("cpyBtn");
+        // Update display
+        function updateDisplay() {
+          currentOperandElement.textContent = calculator.currentOperand;
+          previousOperandElement.textContent = calculator.previousOperand;
+        }
 
-      const normalize = (s) => s.replace(/[×]/g, "*").replace(/[÷]/g, "/");
-      // Convert naked percents like "12%" into "(12/100)"
-      const percentsToFrac = (s) => s.replace(/(\d+(?:\.\d+)?)%/g, "($1/100)");
-      const allowed = (s) => /^[0-9+\-*/().% \t]+$/.test(s);
+        // Add to history
+        function addToHistory(expression, result) {
+          calculator.history.unshift({ expression, result });
+          if (calculator.history.length > 5) {
+            calculator.history.pop();
+          }
+          renderHistory();
+        }
 
-      const evaluate = () => {
-        let s = expr.value.trim();
-        if (!s) {
-          out.value = "";
-          msg.textContent = "";
-          return;
+        // Render history
+        function renderHistory() {
+          historyList.innerHTML = "";
+          calculator.history.forEach((item) => {
+            const li = document.createElement("li");
+            li.className = "history-item";
+            li.innerHTML = `
+                        <span class="history-expression">${item.expression}</span>
+                        <span class="history-result">${item.result}</span>
+                    `;
+            historyList.appendChild(li);
+          });
         }
-        s = normalize(s);
-        s = percentsToFrac(s);
-        if (!allowed(s)) {
-          out.value = "";
-          msg.textContent = "Error: invalid characters.";
-          return;
-        }
-        try {
-          const result = Function('"use strict";return(' + s + ")")(); // filtered input only
-          out.value = String(result);
-          msg.textContent = "Done.";
-        } catch (e) {
-          out.value = "";
-          msg.textContent = "Error: " + e.message;
-        }
-      };
 
-      evalBtn.onclick = evaluate;
-      clrBtn.onclick = () => {
-        expr.value = "";
-        out.value = "";
-        msg.textContent = "";
-        expr.focus();
-      };
-      cpyBtn.onclick = () => {
-        if (!out.value) {
-          msg.textContent = "Nothing to copy.";
-          return;
+        // Input digit
+        function inputDigit(digit) {
+          if (calculator.waitingForNewOperand) {
+            calculator.currentOperand = digit;
+            calculator.waitingForNewOperand = false;
+          } else {
+            calculator.currentOperand =
+              calculator.currentOperand === "0"
+                ? digit
+                : calculator.currentOperand + digit;
+          }
         }
-        navigator.clipboard.writeText(out.value).then(() => {
-          msg.textContent = "Result copied.";
+
+        // Input decimal
+        function inputDecimal() {
+          if (calculator.waitingForNewOperand) {
+            calculator.currentOperand = "0.";
+            calculator.waitingForNewOperand = false;
+            return;
+          }
+
+          if (!calculator.currentOperand.includes(".")) {
+            calculator.currentOperand += ".";
+          }
+        }
+
+        // Handle operator
+        function handleOperator(nextOperator) {
+          const inputValue = parseFloat(calculator.currentOperand);
+
+          if (calculator.operator && calculator.waitingForNewOperand) {
+            calculator.operator = nextOperator;
+            calculator.previousOperand =
+              calculator.previousOperand.split(" ")[0] + " " + nextOperator;
+            return;
+          }
+
+          if (calculator.previousOperand === "") {
+            calculator.previousOperand =
+              calculator.currentOperand + " " + nextOperator;
+          } else if (calculator.operator) {
+            const result = calculate();
+
+            calculator.currentOperand = `${parseFloat(result.toFixed(7))}`;
+            calculator.previousOperand =
+              calculator.currentOperand + " " + nextOperator;
+          }
+
+          calculator.operator = nextOperator;
+          calculator.waitingForNewOperand = true;
+        }
+
+        // Calculate
+        function calculate() {
+          const prevValue = parseFloat(calculator.previousOperand);
+          const currentValue = parseFloat(calculator.currentOperand);
+
+          if (isNaN(prevValue) || isNaN(currentValue)) return currentValue;
+
+          let computation;
+          switch (calculator.operator) {
+            case "+":
+              computation = prevValue + currentValue;
+              break;
+            case "-":
+              computation = prevValue - currentValue;
+              break;
+            case "×":
+              computation = prevValue * currentValue;
+              break;
+            case "÷":
+              if (currentValue === 0) {
+                alert("Cannot divide by zero");
+                return 0;
+              }
+              computation = prevValue / currentValue;
+              break;
+            default:
+              return currentValue;
+          }
+
+          return computation;
+        }
+
+        // Perform calculation
+        function performCalculation() {
+          if (!calculator.operator || calculator.waitingForNewOperand) return;
+
+          const expression =
+            calculator.previousOperand + " " + calculator.currentOperand;
+          const result = calculate();
+
+          calculator.currentOperand = `${parseFloat(result.toFixed(7))}`;
+          calculator.previousOperand = "";
+          calculator.operator = null;
+          calculator.waitingForNewOperand = true;
+
+          addToHistory(expression, calculator.currentOperand);
+        }
+
+        // Clear calculator
+        function clearCalculator() {
+          calculator.currentOperand = "0";
+          calculator.previousOperand = "";
+          calculator.operator = null;
+          calculator.waitingForNewOperand = false;
+        }
+
+        // Backspace
+        function backspace() {
+          if (calculator.waitingForNewOperand) return;
+
+          if (calculator.currentOperand.length > 1) {
+            calculator.currentOperand = calculator.currentOperand.slice(0, -1);
+          } else {
+            calculator.currentOperand = "0";
+          }
+        }
+
+        // Percentage
+        function percentage() {
+          const currentValue = parseFloat(calculator.currentOperand);
+          calculator.currentOperand = (currentValue / 100).toString();
+        }
+
+        // Event listeners for buttons
+        document.querySelectorAll(".btn").forEach((button) => {
+          button.addEventListener("click", () => {
+            if (button.dataset.number) {
+              if (button.dataset.number === ".") {
+                inputDecimal();
+              } else {
+                inputDigit(button.dataset.number);
+              }
+              updateDisplay();
+            } else if (button.dataset.operator) {
+              handleOperator(button.dataset.operator);
+              updateDisplay();
+            } else if (button.dataset.action) {
+              switch (button.dataset.action) {
+                case "clear":
+                  clearCalculator();
+                  updateDisplay();
+                  break;
+                case "equals":
+                  performCalculation();
+                  updateDisplay();
+                  break;
+                case "backspace":
+                  backspace();
+                  updateDisplay();
+                  break;
+                case "percentage":
+                  percentage();
+                  updateDisplay();
+                  break;
+              }
+            }
+          });
         });
-      };
-      expr.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" && !e.shiftKey) {
-          e.preventDefault();
-          evaluate();
-        }
+
+        // Clear history
+        clearHistoryButton.addEventListener("click", () => {
+          calculator.history = [];
+          renderHistory();
+        });
+
+        // Keyboard support
+        document.addEventListener("keydown", (event) => {
+          if (event.key >= "0" && event.key <= "9") {
+            inputDigit(event.key);
+            updateDisplay();
+          } else if (event.key === ".") {
+            inputDecimal();
+            updateDisplay();
+          } else if (
+            event.key === "+" ||
+            event.key === "-" ||
+            event.key === "*" ||
+            event.key === "/"
+          ) {
+            let operator;
+            switch (event.key) {
+              case "+":
+                operator = "+";
+                break;
+              case "-":
+                operator = "-";
+                break;
+              case "*":
+                operator = "×";
+                break;
+              case "/":
+                operator = "÷";
+                break;
+            }
+            handleOperator(operator);
+            updateDisplay();
+          } else if (event.key === "Enter" || event.key === "=") {
+            performCalculation();
+            updateDisplay();
+          } else if (event.key === "Escape" || event.key === "Delete") {
+            clearCalculator();
+            updateDisplay();
+          } else if (event.key === "Backspace") {
+            backspace();
+            updateDisplay();
+          } else if (event.key === "%") {
+            percentage();
+            updateDisplay();
+          }
+        });
+
+        // Initialize display
+        updateDisplay();
       });
     </script>
 
