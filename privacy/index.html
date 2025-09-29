@@ -67,15 +67,396 @@
     </script>
 
     <style>
-      .prose {
-        padding: 5rem 0;
+      /* Reset and Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary: #3b82f6;
+        --primary-hover: #2563eb;
+        --secondary: #64748b;
+        --success: #10b981;
+        --danger: #ef4444;
+        --warning: #f59e0b;
+
+        --background: #0f172a; /* page bg (slate-900) */
+        --surface: #1e293b; /* card bg (slate-800) */
+        --surface-light: #334155; /* lighter surface */
+        --text: #f1f5f9; /* slate-100 */
+        --text-muted: #94a3b8; /* slate-400 */
+        --border: #475569; /* slate-600 */
+
+        --gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+
+        --shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+          0 10px 10px -5px rgb(0 0 0 / 0.04);
+        --shadow-lg: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+        line-height: 1.6;
+        color: var(--text);
+        background-color: var(--background);
+      }
+
+      /* Navigation */
+      .navbar {
+        background: var(--surface);
+        box-shadow: var(--shadow);
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 70px;
+      }
+
+      .nav-logo a {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary);
+        text-decoration: none;
+      }
+
+      .nav-menu {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav-link {
+        text-decoration: none;
+        color: var(--text);
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .nav-link:hover,
+      .nav-link.active {
+        color: var(--primary);
+      }
+
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+      }
+
+      .bar {
+        width: 25px;
+        height: 3px;
+        background: var(--text);
+        margin: 3px 0;
+        transition: 0.3s;
+      }
+
+      /* Main Content */
+      main {
+        margin-top: 70px;
+        min-height: calc(100vh - 140px);
+      }
+
+      /* Policy Page Styles */
+      .policy-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+      }
+
+      .policy-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .policy-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        color: var(--text);
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .last-updated {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+      }
+
+      .policy-section {
+        margin-bottom: 3rem;
+        padding: 2rem;
+        background: var(--surface);
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+        border-left: 4px solid var(--primary);
+      }
+
+      .policy-section h2 {
+        color: var(--text);
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+      }
+
+      .info-types {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1rem;
+      }
+
+      .info-type {
+        padding: 1.5rem;
+        background: var(--surface-light);
+        border-radius: 8px;
+        border: 1px solid var(--border);
+      }
+
+      .info-type h4 {
+        margin-bottom: 1rem;
+        color: var(--primary);
+      }
+
+      .info-type ul {
+        list-style-position: inside;
+        color: var(--text-muted);
+      }
+
+      .info-type li {
+        margin-bottom: 0.5rem;
+      }
+
+      /* Cookie Banner */
+      .cookie-consent-banner {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: var(--surface);
+        color: var(--text);
+        padding: 1rem;
+        z-index: 1000;
+        display: none;
+        border-top: 1px solid var(--border);
+      }
+
+      .cookie-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .cookie-buttons {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+      }
+
+      .learn-more {
+        color: var(--primary);
+        text-decoration: none;
+      }
+
+      /* Usage Grid */
+      .usage-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+      }
+
+      .usage-item {
+        text-align: center;
+        padding: 1.5rem;
+        background: var(--surface-light);
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+        border: 1px solid var(--border);
+      }
+
+      .usage-item:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .usage-icon {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      /* Rights Accordion */
+      .rights-container {
+        margin-top: 1.5rem;
+      }
+
+      .right-item {
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        margin-bottom: 0.5rem;
+        overflow: hidden;
+        background: var(--surface-light);
+      }
+
+      .right-item h4 {
+        padding: 1rem;
+        margin: 0;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: var(--surface-light);
+        color: var(--text);
+      }
+
+      .right-details {
+        padding: 0 1rem;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+        color: var(--text-muted);
+      }
+
+      .right-details.active {
+        padding: 1rem;
+        max-height: 200px;
+      }
+
+      .toggle-icon {
+        transition: transform 0.3s ease;
+        color: var(--primary);
+      }
+
+      .right-item.active .toggle-icon {
+        transform: rotate(45deg);
+      }
+
+      /* Footer */
+      .footer {
+        background: var(--surface);
+        color: var(--text);
+        padding: 2rem 0;
+        text-align: center;
+        border-top: 1px solid var(--border);
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+
+      .footer-links {
+        margin-top: 1rem;
+      }
+
+      .footer-links a {
+        color: var(--text);
+        text-decoration: none;
+        margin: 0 1rem;
+        transition: color 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: var(--primary);
+      }
+
+      /* Buttons */
+      .btn-primary {
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: background 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        background: var(--primary-hover);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: var(--text);
+        border: 1px solid var(--border);
+        padding: 0.75rem 1.5rem;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .btn-secondary:hover {
+        background: var(--surface-light);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .hamburger {
+          display: flex;
+        }
+
+        .nav-menu {
+          position: fixed;
+          left: -100%;
+          top: 70px;
+          flex-direction: column;
+          background: var(--surface);
+          width: 100%;
+          text-align: center;
+          transition: 0.3s;
+          box-shadow: var(--shadow);
+          padding: 2rem 0;
+          border-top: 1px solid var(--border);
+        }
+
+        .nav-menu.active {
+          left: 0;
+        }
+
+        .policy-section {
+          padding: 1rem;
+        }
+
+        .info-types {
+          grid-template-columns: 1fr;
+        }
+
+        .usage-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .cookie-content {
+          flex-direction: column;
+          text-align: center;
+        }
       }
     </style>
   </head>
-  <body class="wrap">
-    <!-- Header -->
-    <header class="sticky" role="banner">
-      <div class="brand" style="display: flex; gap: 16px; align-items: center">
+  <body class="">
+    <header class="sticky navbar" role="banner">
+      <div
+        class="brand nav-container"
+        style="display: flex; gap: 16px; align-items: center"
+      >
         <a href="/" aria-label="Go to home">
           <div class="logo" aria-hidden="true"></div>
         </a>
@@ -99,229 +480,307 @@
         </nav>
       </div>
     </header>
-    <div class="contaier">
-      <main role="main" class="prose">
-        <h1>Privacy Policy</h1>
-        <p><strong>Last updated:</strong> <span id="last-updated"></span></p>
 
-        <p>
-          Tools Pack provides client-side utility tools that run in your
-          browser. Unless a tool explicitly says otherwise, your inputs are
-          processed locally on your device and are not sent to our servers.
-        </p>
+    <main>
+      <div class="policy-container">
+        <header class="policy-header">
+          <h1>Privacy Policy</h1>
+          <p class="last-updated">
+            Last Updated: <span id="current-date"></span>
+          </p>
+        </header>
 
-        <h2>1) Overview</h2>
-        <ul>
-          <li>
-            <strong>No accounts required.</strong> You can use the site without
-            creating an account.
-          </li>
-          <li>
-            <strong>Local processing first.</strong> Most tools work entirely in
-            your browser (HTML/JS/Web APIs).
-          </li>
-          <li>
-            <strong>Minimal metrics.</strong> We may collect aggregate,
-            non-identifying usage statistics to keep the site reliable and
-            improve it.
-          </li>
-        </ul>
+        <div class="policy-content">
+          <section class="policy-section" id="introduction">
+            <h2>1. Introduction</h2>
+            <p>
+              Welcome to Your Brand ("we," "our," "us"). We are committed to
+              protecting your personal information and your right to privacy.
+            </p>
+          </section>
 
-        <h2>2) Data we process</h2>
-        <ul>
-          <li>
-            <strong>Tool inputs.</strong> Text, numbers, files, and settings you
-            enter into a tool. By default these stay in your browser tab and are
-            lost when you close it, unless you export or save.
-          </li>
-          <li>
-            <strong>Local storage.</strong> Some tools (e.g., notes,
-            preferences, recent files list) may save small items to
-            <em>localStorage</em> on your device so they persist across visits.
-            You can clear this at any time.
-          </li>
-          <li>
-            <strong>Technical diagnostics.</strong> For uptime and performance
-            we may record aggregated events such as page views, approximate
-            device type, anonymized IP (or truncated IP), error codes, and
-            response times.
-          </li>
-          <li>
-            <strong>Server logs.</strong> Our hosting provider may keep standard
-            web logs (e.g., timestamp, requested URL, user-agent, truncated IP)
-            for security and debugging.
-          </li>
-        </ul>
+          <section class="policy-section" id="information-collected">
+            <h2>Our privacy policy is very simple.</h2>
+            <div class="info-types">
+              <div class="info-type">
+                <h4>Personal Information</h4>
+                <ul>
+                  <li>Your data is yours. We don’t sell it,</li>
+                  <li>and we don’t share it with anyone.</li>
+                  <li>
+                    Our tools (calculators, converters, editors, etc.) run
+                    directly in your browser.
+                  </li>
+                  <li>
+                    We don’t upload or store your text, numbers, or files on our
+                    servers unless required by specific tools (e.g., image
+                    processing).
+                  </li>
+                </ul>
+              </div>
+              <div class="info-type">
+                <h4>Technical Information</h4>
+                <ul>
+                  <li>IP address and device information</li>
+                  <li>Browser type and version</li>
+                  <li>Usage data and analytics</li>
+                  <li>Cookies and tracking data</li>
+                </ul>
+              </div>
+            </div>
+          </section>
 
-        <h2>3) Files you upload</h2>
-        <p>
-          Where a tool needs a file (e.g., image converter), it is handled in
-          your browser when possible. If a feature requires remote processing,
-          we will state that in the tool UI. Files used for remote processing
-          are transmitted securely, processed, and—unless stated
-          otherwise—deleted automatically after completion.
-        </p>
+          <section class="policy-section" id="cookies">
+            <h2>3. Cookies and Tracking</h2>
+            <div class="cookie-consent-banner" id="cookieBanner">
+              <div class="cookie-content">
+                <p>
+                  We use cookies to enhance your experience. By continuing to
+                  visit this site you agree to our use of cookies.
+                </p>
+                <div class="cookie-buttons">
+                  <button class="btn-primary" onclick="acceptCookies()">
+                    Accept
+                  </button>
+                  <button class="btn-secondary" onclick="declineCookies()">
+                    Decline
+                  </button>
+                  <a href="#cookies" class="learn-more">Learn More</a>
+                </div>
+              </div>
+            </div>
+            <p>We use the following types of cookies:</p>
+            <div class="cookie-types">
+              <div class="cookie-type">
+                <strong>Essential Cookies:</strong> Required for basic
+                functionality
+              </div>
+              <div class="cookie-type">
+                <strong>Analytics Cookies:</strong> Help us improve our website
+              </div>
+              <div class="cookie-type">
+                <strong>Marketing Cookies:</strong> Used for personalized
+                advertising
+              </div>
+            </div>
+          </section>
 
-        <h2>4) Cookies & similar tech</h2>
-        <ul>
-          <li>
-            <strong>Essential cookies.</strong> Used to deliver the site,
-            prevent abuse, or remember minimal preferences.
-          </li>
-          <li>
-            <strong>Preference storage.</strong> Tool settings may be stored via
-            localStorage (not sent to us).
-          </li>
-          <li>
-            <strong>Analytics/ads cookies.</strong> See sections below for
-            details and your choices.
-          </li>
-        </ul>
+          <section class="policy-section" id="data-usage">
+            <h2>4. How We Use Your Information</h2>
+            <div class="usage-grid">
+              <div class="usage-item">
+                <div class="usage-icon">🚀</div>
+                <h4>Service Delivery</h4>
+                <p>To provide and maintain our services</p>
+              </div>
+              <div class="usage-item">
+                <div class="usage-icon">📧</div>
+                <h4>Communication</h4>
+                <p>To send updates and support messages</p>
+              </div>
+              <div class="usage-item">
+                <div class="usage-icon">🔍</div>
+                <h4>Analytics</h4>
+                <p>To understand and improve user experience</p>
+              </div>
+              <div class="usage-item">
+                <div class="usage-icon">🛡️</div>
+                <h4>Security</h4>
+                <p>To protect against fraud and abuse</p>
+              </div>
+            </div>
+          </section>
 
-        <h2>5) Analytics</h2>
-        <p>
-          We may use lightweight, privacy-respecting analytics to understand
-          overall usage (which pages are popular, performance, referrers). We do
-          not build profiles or sell personal data. Where possible, we avoid
-          storing full IP addresses.
-        </p>
+          <section class="policy-section" id="user-rights">
+            <h2>5. Your Rights</h2>
+            <div class="rights-container">
+              <div class="right-item" onclick="toggleRight(this)">
+                <h4>Right to Access <span class="toggle-icon">+</span></h4>
+                <div class="right-details">
+                  <p>
+                    You can request a copy of the personal data we hold about
+                    you.
+                  </p>
+                </div>
+              </div>
+              <div class="right-item" onclick="toggleRight(this)">
+                <h4>Right to Deletion <span class="toggle-icon">+</span></h4>
+                <div class="right-details">
+                  <p>You can request that we delete your personal data.</p>
+                </div>
+              </div>
+              <div class="right-item" onclick="toggleRight(this)">
+                <h4>Right to Correction <span class="toggle-icon">+</span></h4>
+                <div class="right-details">
+                  <p>You can update or correct your information at any time.</p>
+                </div>
+              </div>
+            </div>
+          </section>
 
-        <h2>6) Advertising</h2>
-        <p>
-          We may show ads (e.g., Google AdSense). Ad partners may use cookies or
-          device identifiers to deliver, limit, and measure ads, and—if you
-          allow—personalize them. You can opt for non-personalized ads where
-          offered.
-        </p>
-        <p>
-          Learn how Google uses data with partner sites:
-          <a
-            href="https://policies.google.com/technologies/partner-sites"
-            target="_blank"
-            rel="noopener nofollow"
-          >
-            policies.google.com/technologies/partner-sites
-          </a>
-        </p>
-
-        <h2>7) Legal bases (EEA/UK)</h2>
-        <ul>
-          <li>
-            <strong>Contract/legitimate interests:</strong> to deliver and
-            secure the service, prevent abuse, and fix problems.
-          </li>
-          <li>
-            <strong>Consent:</strong> for non-essential cookies/ads
-            personalisation where required by law. You can withdraw consent at
-            any time.
-          </li>
-        </ul>
-
-        <h2>8) Your choices & controls</h2>
-        <ul>
-          <li>
-            <strong>Browser controls:</strong> block/clear cookies, site data,
-            and localStorage from your browser settings.
-          </li>
-          <li>
-            <strong>Export & delete:</strong> tools that save data locally
-            usually offer export/clear options; you can also clear site data in
-            your browser.
-          </li>
-          <li>
-            <strong>Ads settings:</strong> manage ad personalisation in your
-            Google account or use “Ad Personalization Off”.
-          </li>
-          <li>
-            <strong>Do Not Track:</strong> we honor browser privacy features
-            where feasible.
-          </li>
-        </ul>
-
-        <h2>9) Data retention</h2>
-        <ul>
-          <li>
-            <strong>Local data:</strong> remains on your device until you clear
-            it or uninstall the browser.
-          </li>
-          <li>
-            <strong>Server logs:</strong> kept for a limited period for
-            security/diagnostics, then deleted or anonymized.
-          </li>
-          <li>
-            <strong>Remotely processed files (if any):</strong> deleted after
-            processing unless clearly stated otherwise.
-          </li>
-        </ul>
-
-        <h2>10) Security</h2>
-        <p>
-          We use industry-standard protections (HTTPS, access controls,
-          least-privilege). No method is 100% secure, but we aim to minimize
-          collected data and keep most processing on your device.
-        </p>
-
-        <h2>11) International transfers</h2>
-        <p>
-          Hosting and providers may operate globally. Where required, we use
-          safeguards (e.g., SCCs) for data transfers.
-        </p>
-
-        <h2>12) Children’s privacy</h2>
-        <p>
-          Our site is not directed to children and we do not knowingly collect
-          personal information from children. If you believe a child has
-          provided personal data, please contact us and we’ll remove it.
-        </p>
-
-        <h2>13) Changes to this policy</h2>
-        <p>
-          We may update this notice as our service evolves or to meet legal
-          requirements. The “Last updated” date shows the latest version.
-          Material changes will be highlighted where practical.
-        </p>
-
-        <h2>14) Contact us</h2>
-        <p>
-          Questions or privacy requests? Email:
-          <a href="mailto:afsarun150@gamil.com">you@example.com</a>
-        </p>
-
-        <h2>15) Definitions (quick)</h2>
-        <ul>
-          <li>
-            <strong>LocalStorage:</strong> browser feature that stores small
-            data on your device only.
-          </li>
-          <li>
-            <strong>Personal data:</strong> information that identifies or can
-            reasonably identify a person.
-          </li>
-          <li>
-            <strong>Processing:</strong> any operation performed on data
-            (collecting, storing, using, deleting, etc.).
-          </li>
-        </ul>
-      </main>
-
-      <!-- Footer -->
-      <footer class="wrap">
-        © <span id="y"></span> Tools Pack • Runs 100% in your browser
-        &nbsp;|&nbsp; <a href="/privacy/">Privacy Policy</a> ·
-        <a href="/terms/">Terms</a> · <a href="/about/">About</a> ·
-        <a href="/contact/">Contact</a>
-      </footer>
-    </div>
-    <script>
-      document.getElementById("y").textContent = new Date().getFullYear();
-      document.getElementById("last-updated").textContent = new Date()
-        .toISOString()
-        .slice(0, 10);
-    </script>
-
-    <!-- Root-relative scripts so paths work from any depth -->
+          <section class="policy-section" id="contact">
+            <h2>6. Contact Us</h2>
+            <div class="contact-info">
+              <p>
+                If you have any questions about this Privacy Policy, please
+                contact us:
+              </p>
+              <div class="contact-methods">
+                <div class="contact-method">
+                  <strong>Email:</strong> privacy@yourcompany.com
+                </div>
+                <div class="contact-method">
+                  <strong>Address:</strong> 123 Business St, City, State 12345
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <article class="card" id="related"></article>
+        <!-- Footer -->
+        <footer class="footer">
+          <div class="footer-content">
+            <p>&copy; 2024 Your Company. All rights reserved.</p>
+            <div class="footer-links">
+              © <span id="y"></span> Tools Pack • Runs 100% in your browser
+              &nbsp;|&nbsp; <a href="/privacy/">Privacy Policy</a> ·
+              <a href="/terms/">Terms</a> · <a href="/about/">About</a> ·
+              <a href="/contact/">Contact</a>
+            </div>
+          </div>
+        </footer>
+        <!-- Root-relative scripts so paths work from any depth -->
+      </div>
+    </main>
     <script src="/assets/tracker.js" defer data-trk-site="tools-pack"></script>
     <script src="/assets/related-more.js" defer></script>
+    <!-- Cookie Banner -->
+    <div class="cookie-consent-banner" id="cookieBanner">
+      <div class="cookie-content">
+        <p>
+          We use cookies to enhance your experience. By continuing to visit this
+          site you agree to our use of cookies.
+        </p>
+        <div class="cookie-buttons">
+          <button class="btn-primary" onclick="acceptCookies()">Accept</button>
+          <button class="btn-secondary" onclick="declineCookies()">
+            Decline
+          </button>
+          <a href="#cookies" class="learn-more">Learn More</a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Initialize the application
+      document.addEventListener("DOMContentLoaded", function () {
+        initializeApp();
+      });
+
+      function initializeApp() {
+        // Set current date in privacy policy
+        setCurrentDate();
+
+        // Initialize mobile menu
+        initMobileMenu();
+
+        // Initialize cookie banner
+        initCookieBanner();
+      }
+
+      // Mobile Menu Toggle
+      function initMobileMenu() {
+        const hamburger = document.querySelector(".hamburger");
+        const navMenu = document.querySelector(".nav-menu");
+
+        if (hamburger && navMenu) {
+          hamburger.addEventListener("click", function () {
+            hamburger.classList.toggle("active");
+            navMenu.classList.toggle("active");
+          });
+
+          // Close menu when clicking on links
+          document.querySelectorAll(".nav-link").forEach((link) => {
+            link.addEventListener("click", () => {
+              hamburger.classList.remove("active");
+              navMenu.classList.remove("active");
+            });
+          });
+        }
+      }
+
+      // Set current date in privacy policy
+      function setCurrentDate() {
+        const dateElement = document.getElementById("current-date");
+        if (dateElement) {
+          const now = new Date();
+          const options = { year: "numeric", month: "long", day: "numeric" };
+          dateElement.textContent = now.toLocaleDateString("en-US", options);
+        }
+      }
+
+      // Cookie Banner Functionality
+      function initCookieBanner() {
+        const banner = document.getElementById("cookieBanner");
+        if (banner && !getCookiePreference()) {
+          setTimeout(() => {
+            banner.style.display = "block";
+          }, 1000);
+        }
+      }
+
+      function acceptCookies() {
+        setCookiePreference("accepted");
+        document.getElementById("cookieBanner").style.display = "none";
+      }
+
+      function declineCookies() {
+        setCookiePreference("declined");
+        document.getElementById("cookieBanner").style.display = "none";
+      }
+
+      function setCookiePreference(value) {
+        localStorage.setItem("cookiePreference", value);
+        // Set a cookie that expires in 1 year
+        const date = new Date();
+        date.setFullYear(date.getFullYear() + 1);
+        document.cookie = `cookiePreference=${value}; expires=${date.toUTCString()}; path=/`;
+      }
+
+      function getCookiePreference() {
+        return (
+          localStorage.getItem("cookiePreference") ||
+          getCookie("cookiePreference")
+        );
+      }
+
+      function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(";").shift();
+      }
+
+      // Rights Accordion Toggle
+      function toggleRight(element) {
+        const details = element.querySelector(".right-details");
+        const isActive = details.classList.contains("active");
+
+        // Close all other items
+        document.querySelectorAll(".right-details").forEach((item) => {
+          item.classList.remove("active");
+        });
+        document.querySelectorAll(".right-item").forEach((item) => {
+          item.classList.remove("active");
+        });
+
+        // Toggle current item
+        if (!isActive) {
+          details.classList.add("active");
+          element.classList.add("active");
+        }
+      }
+    </script>
+    <!-- Footer -->
 
     <noscript>JavaScript is disabled; some tools may not work.</noscript>
   </body>

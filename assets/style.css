@@ -1116,3 +1116,6 @@ kbd {
     width: 100%;
   }
 }
+#related .btn {
+  margin: 2rem 0;
+}
