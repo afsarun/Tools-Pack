@@ -202,6 +202,12 @@
     <!-- Ad #1: top banner (constrained, no full-width expansion) -->
 
     <div class="container">
+      <div class="ad-wrap ad-article" aria-label="Advertisement">
+        <span class="ad-label">Ad</span>
+        <div class="ad-content">
+          Upgrade to Base64 Pro for unlimited conversions and advanced features!
+        </div>
+      </div>
       <nav class="breadcrumbs" aria-label="breadcrumb">
         <a href="/">Home</a> › <a href="/#text">Text Tools</a> ›
         <span>Text Utilities</span>
@@ -239,7 +245,7 @@
               placeholder="Paste text…"
               aria-label="Text input"
             ></textarea>
-            <div>
+            <div class="btn-group">
               <button class="btn" id="up" type="button">UPPERCASE</button>
               <button class="btn" id="low" type="button">lowercase</button>
               <button class="btn" id="collapse" type="button">
@@ -253,18 +259,7 @@
               </button>
             </div>
           </div>
-          <div class="ad-wrap ad-article" aria-label="Advertisement">
-            <span class="ad-label">Ad</span>
-            <ins
-              class="adsbygoogle"
-              style="display: inline-block; text-align: center"
-              data-ad-client="ca-pub-1234567890123456"
-              data-ad-slot="2222222222"
-              data-ad-format="fluid"
-              data-ad-layout="in-article"
-              data-adtest="on"
-            ></ins>
-          </div>
+
           <div class="muted" id="stats" aria-live="polite">
             Words: 0 • Characters: 0
           </div>
@@ -272,18 +267,6 @@
             All processing happens locally in your browser (no upload).
           </p>
         </article>
-
-        <!-- In-article Ad (Responsive Fluid) -->
-        <div class="ad-spacer">
-          <ins
-            class="adsbygoogle"
-            style="display: block; text-align: center"
-            data-ad-layout="in-article"
-            data-ad-format="fluid"
-            data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-            data-ad-slot="1234567890"
-          ></ins>
-        </div>
 
         <div class="ad-wrap ad-article" aria-label="Advertisement">
           <span class="ad-label">Ad</span>
