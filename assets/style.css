@@ -49,7 +49,7 @@ body {
   --surface: #1e293b; /* card bg (slate-800) */
   --surface-light: #334155; /* lighter surface */
   --text: #f1f5f9; /* slate-100 */
-  --text-muted: #94a3b8; /* slate-400 */
+  --text-muted: #c4cdd6; /* slate-400 */
   --border: #475569; /* slate-600 */
 
   --gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
@@ -106,7 +106,7 @@ body {
 }
 
 .toc a {
-  color: #868fad; /* dark blue for links */
+  color: var(--text-muted); /* dark blue for links */
   text-decoration: none;
   font-weight: 500;
   padding: 4px 8px;
@@ -175,9 +175,10 @@ a {
   border: 1px solid var(--border);
 }
 .breadcrumbs a {
-  color: var(--primary);
+  color: var(--text);
   text-decoration: none;
   transition: color 0.3s ease;
+  font-size: 1rem;
 }
 .breadcrumbs a:hover {
   color: var(--primary-hover);
@@ -515,13 +516,13 @@ a {
 }
 .example-title {
   font-weight: 600;
-  color: var(--primary);
+  color: var(--text-muted);
   margin-bottom: 0.5rem;
+  font-size: 22px;
 }
 .example-content {
-  font-family: monospace;
-  font-size: 0.875rem;
-  color: var(--text-muted);
+  font-size: 0.975rem;
+  color: var(--white);
   word-break: break-all;
 }
 
@@ -951,7 +952,7 @@ footer.wrap nav a:focus-visible {
 
 .muted {
   color: var(--text-muted);
-  font-size: 14px;
+  font-size: 28px;
   margin-top: 10px;
   /* text-align: center; */
   min-height: 20px;
@@ -1118,4 +1119,14 @@ kbd {
 }
 #related .btn {
   margin: 2rem 0;
+}
+#related .muted {
+  font-size: 18px;
+}
+
+#related .small {
+  font-size: 18px;
+}
+footer .muted {
+  font-size: 1.1rem;
 }
