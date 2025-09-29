@@ -804,7 +804,7 @@ header.sticky {
   display: grid;
   gap: 8px;
 }
-.tool-title {
+.carda .tool-title {
   font-size: 1.05rem;
   font-weight: 800;
   color: var(--text);
