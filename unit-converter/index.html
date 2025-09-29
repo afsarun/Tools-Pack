@@ -137,42 +137,7 @@
       }
     </script>
 
-    <style>
-      /* Page-local tweaks that harmonize with your existing theme */
-      main.wrap {
-        margin-top: 1rem;
-      }
-      .converter {
-        max-width: 900px;
-        margin: 0 auto;
-      }
-      .grid-3 {
-        display: grid;
-        gap: 1rem;
-      }
-      .row {
-        display: flex;
-        gap: 0.5rem;
-        flex-wrap: wrap;
-        align-items: center;
-      }
-      .row input,
-      .row select {
-        flex: 1 1 180px;
-      }
-      .result {
-        min-height: 1.5em;
-        margin: 0.25rem 0 0;
-      }
-      .unit-block + .unit-block {
-        margin-top: 1rem;
-      }
-      .muted small kbd {
-        border: 1px solid #555;
-        padding: 0 0.3em;
-        border-radius: 0.25rem;
-      }
-    </style>
+    <style></style>
   </head>
   <body>
     <header class="sticky">
@@ -232,7 +197,7 @@
 
         <!-- Converter -->
         <section class="card tool-card" id="converter">
-          <h2>Convert Units</h2>
+          <h3>Convert Units</h3>
 
           <div class="unit-block form-group">
             <label for="lengthInput" class="form-label">Length</label>
@@ -249,12 +214,20 @@
                 <option value="km">Kilometers (km)</option>
                 <option value="mi">Miles (mi)</option>
                 <option value="ft">Feet (ft)</option>
+                <option value="in">Inches (in)</option>
+                <option value="yd">Yards (yd)</option>
+                <option value="cm">Centimeters (cm)</option>
+                <option value="mm">Millimeters (mm)</option>
               </select>
               <select id="lengthTo" class="form-select">
                 <option value="km">Kilometers (km)</option>
                 <option value="m">Meters (m)</option>
                 <option value="mi">Miles (mi)</option>
                 <option value="ft">Feet (ft)</option>
+                <option value="in">Inches (in)</option>
+                <option value="yd">Yards (yd)</option>
+                <option value="cm">Centimeters (cm)</option>
+                <option value="mm">Millimeters (mm)</option>
               </select>
             </div>
             <p
@@ -279,11 +252,15 @@
                 <option value="kg">Kilograms (kg)</option>
                 <option value="g">Grams (g)</option>
                 <option value="lb">Pounds (lb)</option>
+                <option value="oz">Ounces (oz)</option>
+                <option value="st">Stone (st)</option>
               </select>
               <select id="weightTo" class="form-select">
                 <option value="lb">Pounds (lb)</option>
                 <option value="kg">Kilograms (kg)</option>
                 <option value="g">Grams (g)</option>
+                <option value="oz">Ounces (oz)</option>
+                <option value="st">Stone (st)</option>
               </select>
             </div>
             <p
@@ -604,85 +581,221 @@
     </noscript>
 
     <script>
-      // Year
-      document.getElementById("y").textContent = new Date().getFullYear();
+      document.addEventListener("DOMContentLoaded", function () {
+        // Length conversion elements
+        const lengthInput = document.getElementById("lengthInput");
+        const lengthFrom = document.getElementById("lengthFrom");
+        const lengthTo = document.getElementById("lengthTo");
+        const lengthResult = document.getElementById("lengthResult");
 
-      // Helpers
-      const $ = (s) => document.querySelector(s);
-      const trimZeros = (s) =>
-        s.replace(/(\.\d*?[1-9])0+$/, "$1").replace(/\.0+$/, "");
-      const fmt = (n, d = 6) => trimZeros(n.toFixed(d));
+        // Weight conversion elements
+        const weightInput = document.getElementById("weightInput");
+        const weightFrom = document.getElementById("weightFrom");
+        const weightTo = document.getElementById("weightTo");
+        const weightResult = document.getElementById("weightResult");
 
-      // Length conversion factors (to meters)
-      const lengthFactors = { m: 1, km: 1000, mi: 1609.344, ft: 0.3048 };
+        // Temperature conversion elements
+        const tempInput = document.getElementById("tempInput");
+        const tempFrom = document.getElementById("tempFrom");
+        const tempTo = document.getElementById("tempTo");
+        const tempResult = document.getElementById("tempResult");
 
-      function convertLength() {
-        const val = parseFloat($("#lengthInput").value);
-        if (isNaN(val)) {
-          $("#lengthResult").textContent = "";
-          return;
-        }
-        const from = $("#lengthFrom").value;
-        const to = $("#lengthTo").value;
-        const result =
-          from === to ? val : val * (lengthFactors[from] / lengthFactors[to]);
-        $("#lengthResult").textContent = "= " + fmt(result, 6) + " " + to;
-      }
+        // Conversion factors (to base unit)
+        const lengthFactors = {
+          m: 1,
+          km: 1000,
+          mi: 1609.344,
+          ft: 0.3048,
+          in: 0.0254,
+          yd: 0.9144,
+          cm: 0.01,
+          mm: 0.001,
+        };
 
-      // Weight conversion factors (to kg)
-      const weightFactors = { kg: 1, g: 0.001, lb: 0.45359237 };
+        const weightFactors = {
+          kg: 1,
+          g: 0.001,
+          lb: 0.453592,
+          oz: 0.0283495,
+          st: 6.35029,
+        };
 
-      function convertWeight() {
-        const val = parseFloat($("#weightInput").value);
-        if (isNaN(val)) {
-          $("#weightResult").textContent = "";
-          return;
-        }
-        const from = $("#weightFrom").value;
-        const to = $("#weightTo").value;
-        const result =
-          from === to ? val : val * (weightFactors[from] / weightFactors[to]);
-        $("#weightResult").textContent = "= " + fmt(result, 6) + " " + to;
-      }
+        // Initialize with empty results
+        lengthResult.textContent = "Enter a value to convert";
+        weightResult.textContent = "Enter a value to convert";
+        tempResult.textContent = "Enter a value to convert";
 
-      // Temperature conversion
-      function convertTemp() {
-        const val = parseFloat($("#tempInput").value);
-        if (isNaN(val)) {
-          $("#tempResult").textContent = "";
-          return;
-        }
-        const from = $("#tempFrom").value;
-        const to = $("#tempTo").value;
-        let result = val;
+        // Event listeners for length conversion
+        lengthInput.addEventListener("input", convertLength);
+        lengthFrom.addEventListener("change", convertLength);
+        lengthTo.addEventListener("change", convertLength);
 
-        if (from !== to) {
-          if (from === "C") {
-            if (to === "F") result = (val * 9) / 5 + 32;
-            else if (to === "K") result = val + 273.15;
-          } else if (from === "F") {
-            if (to === "C") result = ((val - 32) * 5) / 9;
-            else if (to === "K") result = ((val - 32) * 5) / 9 + 273.15;
-          } else if (from === "K") {
-            if (to === "C") result = val - 273.15;
-            else if (to === "F") result = ((val - 273.15) * 9) / 5 + 32;
+        // Event listeners for weight conversion
+        weightInput.addEventListener("input", convertWeight);
+        weightFrom.addEventListener("change", convertWeight);
+        weightTo.addEventListener("change", convertWeight);
+
+        // Event listeners for temperature conversion
+        tempInput.addEventListener("input", convertTemperature);
+        tempFrom.addEventListener("change", convertTemperature);
+        tempTo.addEventListener("change", convertTemperature);
+
+        // Length conversion function
+        function convertLength() {
+          const value = parseFloat(lengthInput.value);
+
+          if (isNaN(value)) {
+            lengthResult.textContent = "Enter a valid number";
+            return;
           }
+
+          const fromUnit = lengthFrom.value;
+          const toUnit = lengthTo.value;
+
+          // Convert to base unit (meters) first
+          const valueInMeters = value * lengthFactors[fromUnit];
+
+          // Convert from base unit to target unit
+          const result = valueInMeters / lengthFactors[toUnit];
+
+          // Format the result
+          const formattedResult = formatNumber(result);
+          lengthResult.textContent = `${value} ${getUnitName(
+            fromUnit
+          )} = ${formattedResult} ${getUnitName(toUnit)}`;
         }
-        $("#tempResult").textContent = "= " + fmt(result, 4) + " " + to;
-      }
 
-      // Wire up events
-      $("#lengthInput").addEventListener("input", convertLength);
-      $("#lengthFrom").addEventListener("change", convertLength);
-      $("#lengthTo").addEventListener("change", convertLength);
+        // Weight conversion function
+        function convertWeight() {
+          const value = parseFloat(weightInput.value);
 
-      $("#weightInput").addEventListener("input", convertWeight);
-      $("#weightFrom").addEventListener("change", convertWeight);
-      $("#weightTo").addEventListener("change", convertWeight);
+          if (isNaN(value)) {
+            weightResult.textContent = "Enter a valid number";
+            return;
+          }
 
-      $("#tempInput").addEventListener("input", convertTemp);
-      $("#tempFrom").addEventListener("change", convertTemp);
-      $("#tempTo").addEventListener("change", convertTemp);
+          const fromUnit = weightFrom.value;
+          const toUnit = weightTo.value;
+
+          // Convert to base unit (kilograms) first
+          const valueInKg = value * weightFactors[fromUnit];
+
+          // Convert from base unit to target unit
+          const result = valueInKg / weightFactors[toUnit];
+
+          // Format the result
+          const formattedResult = formatNumber(result);
+          weightResult.textContent = `${value} ${getUnitName(
+            fromUnit
+          )} = ${formattedResult} ${getUnitName(toUnit)}`;
+        }
+
+        // Temperature conversion function
+        function convertTemperature() {
+          const value = parseFloat(tempInput.value);
+
+          if (isNaN(value)) {
+            tempResult.textContent = "Enter a valid number";
+            return;
+          }
+
+          const fromUnit = tempFrom.value;
+          const toUnit = tempTo.value;
+
+          let result;
+
+          // Convert to Celsius first
+          let valueInCelsius;
+          switch (fromUnit) {
+            case "C":
+              valueInCelsius = value;
+              break;
+            case "F":
+              valueInCelsius = ((value - 32) * 5) / 9;
+              break;
+            case "K":
+              valueInCelsius = value - 273.15;
+              break;
+          }
+
+          // Convert from Celsius to target unit
+          switch (toUnit) {
+            case "C":
+              result = valueInCelsius;
+              break;
+            case "F":
+              result = (valueInCelsius * 9) / 5 + 32;
+              break;
+            case "K":
+              result = valueInCelsius + 273.15;
+              break;
+          }
+
+          // Format the result
+          const formattedResult = formatNumber(result);
+          const fromSymbol = getTemperatureSymbol(fromUnit);
+          const toSymbol = getTemperatureSymbol(toUnit);
+          tempResult.textContent = `${value}${fromSymbol} = ${formattedResult}${toSymbol}`;
+        }
+
+        // Helper function to format numbers (remove unnecessary decimal places)
+        function formatNumber(num) {
+          // If it's an integer, don't show decimals
+          if (Number.isInteger(num)) {
+            return num.toString();
+          }
+
+          // Otherwise, show up to 6 decimal places but remove trailing zeros
+          return parseFloat(num.toFixed(6)).toString();
+        }
+
+        // Helper function to get unit names for display
+        function getUnitName(unit) {
+          const unitNames = {
+            m: "meters",
+            km: "kilometers",
+            mi: "miles",
+            ft: "feet",
+            in: "inches",
+            yd: "yards",
+            cm: "centimeters",
+            mm: "millimeters",
+            kg: "kilograms",
+            g: "grams",
+            lb: "pounds",
+            oz: "ounces",
+            st: "stone",
+          };
+
+          return unitNames[unit] || unit;
+        }
+
+        // Helper function to get temperature symbols
+        function getTemperatureSymbol(unit) {
+          const symbols = {
+            C: "°C",
+            F: "°F",
+            K: "K",
+          };
+
+          return symbols[unit] || unit;
+        }
+
+        // Auto-convert when page loads with default values
+        convertLength();
+        convertWeight();
+        convertTemperature();
+
+        // Set default values for demonstration
+        lengthInput.value = "1";
+        weightInput.value = "1";
+        tempInput.value = "0";
+
+        // Trigger conversions with default values
+        convertLength();
+        convertWeight();
+        convertTemperature();
+      });
     </script>
     <script src="/assets/tracker.js" defer data-trk-site="tools-pack"></script>
     <script src="/assets/related-more.js" defer></script>
