@@ -125,6 +125,333 @@
         ]
       }
     </script>
+    <style>
+      :root {
+        --badge: #073c92;
+        --primary: #3b82f6;
+        --primary-hover: #2563eb;
+        --secondary: #64748b;
+        --success: #10b981;
+        --danger: #ef4444;
+        --warning: #f59e0b;
+        --background: #0f172a;
+        --surface: #1e293b;
+        --surface-light: #334155;
+        --text: #f1f5f9;
+        --text-muted: #c4cdd6;
+        --border: #475569;
+        --gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+        --shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+          0 10px 10px -5px rgb(0 0 0 / 0.04);
+        --shadow-lg: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+        --link: #60a5fa;
+        --link-hover: #93c5fd;
+        --link-visited: #a78bfa;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background: var(--background);
+        color: var(--text);
+        line-height: 1.6;
+        padding: 20px;
+        min-height: 100vh;
+      }
+
+      h1 {
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+      }
+
+      .subtitle {
+        color: var(--text-muted);
+        font-size: 1.1rem;
+      }
+
+      .card {
+        background: var(--surface);
+        border-radius: 12px;
+        padding: 30px;
+        box-shadow: var(--shadow-lg);
+        margin-bottom: 30px;
+      }
+
+      h2 {
+        color: var(--text);
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .badge {
+        background: var(--badge);
+        color: white;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+      }
+
+      .tabs {
+        display: flex;
+        margin-bottom: 20px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .tab {
+        padding: 12px 24px;
+        cursor: pointer;
+        border-bottom: 3px solid transparent;
+        transition: all 0.3s ease;
+        font-weight: 600;
+      }
+
+      .tab.active {
+        border-bottom-color: var(--primary);
+        color: var(--primary);
+      }
+
+      .tab-content {
+        display: none;
+      }
+
+      .tab-content.active {
+        display: block;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-label {
+        display: block;
+        color: var(--text);
+        margin-bottom: 8px;
+        font-weight: 600;
+      }
+
+      .form-textarea {
+        width: 100%;
+        min-height: 150px;
+        background: var(--background);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 15px;
+        color: var(--text);
+        font-size: 1rem;
+        resize: vertical;
+        font-family: monospace;
+      }
+
+      .file-upload {
+        border: 2px dashed var(--border);
+        border-radius: 8px;
+        padding: 40px 20px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-bottom: 15px;
+      }
+
+      .file-upload:hover {
+        border-color: var(--primary);
+        background: rgba(59, 130, 246, 0.05);
+      }
+
+      .file-upload.dragover {
+        border-color: var(--primary);
+        background: rgba(59, 130, 246, 0.1);
+      }
+
+      .file-input {
+        display: none;
+      }
+
+      .file-info {
+        margin-top: 15px;
+        padding: 10px;
+        background: var(--surface-light);
+        border-radius: 6px;
+        display: none;
+      }
+
+      .file-info.show {
+        display: block;
+      }
+
+      .file-name {
+        font-weight: 600;
+        color: var(--text);
+      }
+
+      .file-size {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+      }
+
+      .controls {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        padding: 12px 24px;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .btn-primary {
+        background: var(--primary);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background: var(--primary-hover);
+        transform: translateY(-2px);
+      }
+
+      .btn:disabled {
+        background: var(--secondary);
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      .btn:disabled:hover {
+        transform: none;
+      }
+
+      .result-container {
+        margin-top: 20px;
+      }
+
+      .result-label {
+        color: var(--text-muted);
+        margin-bottom: 8px;
+        font-weight: 600;
+      }
+
+      .result {
+        background: var(--background);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 15px;
+        font-family: monospace;
+        word-break: break-all;
+        color: var(--success);
+        font-size: 1.1rem;
+        min-height: 60px;
+        display: flex;
+        align-items: center;
+      }
+
+      .hash-info {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+        flex-wrap: wrap;
+      }
+
+      .hash-stat {
+        background: var(--surface-light);
+        padding: 8px 12px;
+        border-radius: 6px;
+        font-size: 0.9rem;
+      }
+
+      .hash-stat .label {
+        color: var(--text-muted);
+      }
+
+      .hash-stat .value {
+        color: var(--text);
+        font-weight: 600;
+      }
+
+      .ad-wrap {
+        background: var(--surface-light);
+        border-radius: 8px;
+        padding: 15px;
+        margin-top: 20px;
+        position: relative;
+      }
+
+      .ad-label {
+        position: absolute;
+        top: -10px;
+        left: 10px;
+        background: var(--secondary);
+        color: white;
+        padding: 2px 8px;
+        border-radius: 10px;
+        font-size: 0.7rem;
+      }
+
+      .ad-content {
+        color: var(--text-muted);
+        text-align: center;
+      }
+
+      .loading {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: var(--primary);
+        animation: spin 1s ease-in-out infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .empty-state {
+        color: var(--text-muted);
+        text-align: center;
+        padding: 20px;
+        font-style: italic;
+      }
+
+      @media (max-width: 768px) {
+        .tabs {
+          flex-direction: column;
+        }
+
+        .tab {
+          text-align: center;
+        }
+
+        .controls {
+          flex-direction: column;
+        }
+
+        .btn {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+    </style>
   </head>
 
   <body>
@@ -161,8 +488,8 @@
         <header class="header">
           <h1>SHA-256 হ্যাশ জেনারেটর</h1>
           <p class="subtitle">
-            <strong>টেক্সট বা ফাইলের জন্য SHA-256 হ্যাশ</strong> বের করুন। ফাইল
-            ড্রপ করুন বা লিখুন, <em>WebCrypto API</em> দিয়ে তাৎক্ষণিক হ্যাশ পান।
+            টেক্সট বা ফাইল থেকে SHA-256 হ্যাশ তৈরি করুন । ফাইল ড্রপ করুন বা
+            টেক্সট লিখুন, <em>WebCrypto API</em> দিয়ে তাৎক্ষণিক হ্যাশ পান।
             ডাউনলোড যাচাইয়ের জন্য উপযোগী।
           </p>
           <span class="badge">WebCrypto</span>
@@ -178,77 +505,93 @@
           <a href="#related">সম্পর্কিত টুলস</a>
         </p>
 
-        <!-- Tool -->
-        <article class="card" id="tool">
-          <h2>টেক্সট/ফাইল থেকে SHA-256</h2>
+        <div class="container">
+          <article class="card" id="sha256-tool">
+            <h2>
+              <span>SHA-256 হ্যাশ জেনারেটর</span>
+              <span class="badge">সিকিউর</span>
+            </h2>
 
-          <label for="hashInput" class="muted form-label">টেক্সট লিখুন</label>
-          <textarea
-            id="hashInput"
-            class="textarea mono form-textarea"
-            rows="4"
-            placeholder="এখানে টেক্সট লিখুন…"
-          ></textarea>
-
-          <div class="row" style="margin-top: 10px">
-            <button id="btnHashText" class="btn btn-primary" type="button">
-              টেক্সট থেকে হ্যাশ
-            </button>
-
-            <label
-              for="fileInput"
-              class="btn file-label form-label"
-              style="cursor: pointer"
-            >
-              ⬆ ফাইল থেকে হ্যাশ
-            </label>
-            <input type="file" id="fileInput" class="file form-input" />
-
-            <button id="btnCopy" class="btn" type="button">📋 কপি</button>
-            <button id="btnClear" class="btn" type="button">🗑 ক্লিয়ার</button>
-          </div>
-
-          <!-- Ad #2: In-article -->
-          <div
-            class="ad-wrap ad-article"
-            aria-label="Advertisement"
-            style="margin-top: 10px"
-          >
-            <span class="ad-label">Ad</span>
-            <ins
-              class="adsbygoogle"
-              style="display: inline-block; text-align: center"
-              data-ad-client="ca-pub-1234567890123456"
-              data-ad-slot="2222222222"
-              data-ad-format="fluid"
-              data-ad-layout="in-article"
-              data-adtest="on"
-            ></ins>
-          </div>
-
-          <label
-            for="hashOutput"
-            class="muted form-label"
-            style="margin-top: 8px; display: block"
-            >SHA-256 আউটপুট</label
-          >
-          <textarea
-            id="hashOutput"
-            class="textarea mono form-textarea"
-            rows="4"
-            readonly
-            placeholder="হ্যাশ এখানে…"
-          ></textarea>
-
-          <div id="status" class="help" aria-live="polite">—</div>
-          <div class="ad-wrap ad-article" aria-label="Advertisement">
-            <span class="ad-label">Ad</span>
-            <div class="ad-content">
-              Upgrade to Base64 Pro for unlimited conversions and advanced
-              features!
+            <div class="tabs">
+              <div class="tab active" data-tab="text">টেক্সট থেকে</div>
+              <div class="tab" data-tab="file">ফাইল থেকে</div>
             </div>
-          </div>
-        </article>
+
+            <!-- Text Tab -->
+            <div class="tab-content active" id="text-tab">
+              <div class="form-group">
+                <label for="text-input" class="form-label">টেক্সট ইনপুট</label>
+                <textarea
+                  id="text-input"
+                  class="form-textarea"
+                  placeholder="এখানে আপনার টেক্সট লিখুন বা পেস্ট করুন..."
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- File Tab -->
+            <div class="tab-content" id="file-tab">
+              <div class="form-group">
+                <label class="form-label">ফাইল আপলোড</label>
+                <div class="file-upload" id="file-upload-area">
+                  <div style="font-size: 3rem; margin-bottom: 10px">📁</div>
+                  <p>ফাইল এখানে ড্রপ করুন অথবা ক্লিক করে সিলেক্ট করুন</p>
+                  <p class="muted" style="margin-top: 5px; font-size: 0.9rem">
+                    সর্বোচ্চ 100MB সাইজের ফাইল সাপোর্টেড
+                  </p>
+                  <input type="file" id="file-input" class="file-input" />
+                </div>
+                <div class="file-info" id="file-info">
+                  <div class="file-name" id="file-name">ফাইল নাম</div>
+                  <div class="file-size" id="file-size">ফাইল সাইজ</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="controls">
+              <button class="btn btn-primary" id="generate-hash">
+                <span id="generate-text">হ্যাশ জেনারেট করুন</span>
+                <span
+                  id="generate-loading"
+                  class="loading"
+                  style="display: none"
+                ></span>
+              </button>
+              <button class="btn" id="copy-hash" disabled>কপি করুন</button>
+              <button class="btn" id="clear-all">সব ক্লিয়ার</button>
+            </div>
+
+            <div class="result-container">
+              <div class="result-label">SHA-256 হ্যাশ রেজাল্ট</div>
+              <div class="result" id="hash-result">
+                <div class="empty-state">হ্যাশ এখানে প্রদর্শিত হবে</div>
+              </div>
+
+              <div class="hash-info">
+                <div class="hash-stat">
+                  <span class="label">হ্যাশ দৈর্ঘ্য:</span>
+                  <span class="value" id="hash-length">0</span>
+                </div>
+                <div class="hash-stat">
+                  <span class="label">ক্যারেক্টার:</span>
+                  <span class="value" id="hash-chars">0</span>
+                </div>
+                <div class="hash-stat">
+                  <span class="label">বাইট:</span>
+                  <span class="value" id="hash-bytes">0</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="ad-wrap ad-article" aria-label="Advertisement">
+              <span class="ad-label">Ad</span>
+              <div class="ad-content">
+                Upgrade to Base64 Pro for unlimited conversions and advanced
+                features!
+              </div>
+            </div>
+          </article>
+        </div>
 
         <!-- How to use -->
         <article class="card" id="how-to-use">
@@ -321,123 +664,329 @@
           </p>
           <p class="small">
             English preferred? See the
-            <a href="/sha256/" hreflang="en">English version</a>.
+            <a
+              class="text-link"
+              href="/sha256/"
+              hreflang="en"
+              lang="en"
+              aria-label="English version"
+              >English version</a
+            >.
           </p>
         </article>
       </main>
 
       <footer>
         © <span id="y"></span> Tools Pack •
-        <a class="muted" href="/bn/">হোম</a> •
-        <a class="muted" href="/sha256/" hreflang="en">English</a>
+        <a
+          class="text-link"
+          href="/bn/"
+          hreflang="bn"
+          lang="bn"
+          aria-label="বাংলা হোম"
+          >হোম</a
+        >
+        •
+        <a
+          class="text-link"
+          href="/sha256/"
+          hreflang="en"
+          lang="en"
+          aria-label="English Version"
+          >English</a
+        >
       </footer>
     </div>
     <script>
-      // Footer year
-      document.getElementById("y").textContent = new Date().getFullYear();
+      document.addEventListener("DOMContentLoaded", function () {
+        // Elements
+        const tabs = document.querySelectorAll(".tab");
+        const tabContents = document.querySelectorAll(".tab-content");
+        const textInput = document.getElementById("text-input");
+        const fileInput = document.getElementById("file-input");
+        const fileUploadArea = document.getElementById("file-upload-area");
+        const fileInfo = document.getElementById("file-info");
+        const fileName = document.getElementById("file-name");
+        const fileSize = document.getElementById("file-size");
+        const generateBtn = document.getElementById("generate-hash");
+        const generateText = document.getElementById("generate-text");
+        const generateLoading = document.getElementById("generate-loading");
+        const copyBtn = document.getElementById("copy-hash");
+        const clearBtn = document.getElementById("clear-all");
+        const hashResult = document.getElementById("hash-result");
+        const hashLength = document.getElementById("hash-length");
+        const hashChars = document.getElementById("hash-chars");
+        const hashBytes = document.getElementById("hash-bytes");
 
-      // ===== Lazy init AdSense when slots are visible =====
-      const initAds = () => {
-        window.adsbygoogle = window.adsbygoogle || [];
-        const slots = document.querySelectorAll(
-          "ins.adsbygoogle:not([data-loaded])"
-        );
-        if (!slots.length) return;
-        const push = (el) => {
-          try {
-            (adsbygoogle = window.adsbygoogle || []).push({});
-            el.setAttribute("data-loaded", "1");
-          } catch (e) {}
-        };
-        if ("IntersectionObserver" in window) {
-          const io = new IntersectionObserver(
-            (entries) => {
-              entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                  push(entry.target);
-                  io.unobserve(entry.target);
-                }
-              });
-            },
-            { rootMargin: "200px 0px" }
-          );
-          slots.forEach((el) => io.observe(el));
-        } else {
-          slots.forEach(push);
-        }
-      };
-      window.addEventListener("load", initAds);
+        let currentFile = null;
+        let currentHash = "";
 
-      // ===== SHA-256 tool logic =====
-      const $ = (id) => document.getElementById(id);
-      const inEl = $("hashInput");
-      const fileEl = $("fileInput");
-      const outEl = $("hashOutput");
-      const statusEl = $("status");
-      const btnText = $("btnHashText");
-      const btnCopy = $("btnCopy");
-      const btnClear = $("btnClear");
+        // Tab switching
+        tabs.forEach((tab) => {
+          tab.addEventListener("click", () => {
+            const tabId = tab.getAttribute("data-tab");
 
-      // Utility: ArrayBuffer -> hex
-      function buf2hex(buffer) {
-        return [...new Uint8Array(buffer)]
-          .map((b) => b.toString(16).padStart(2, "0"))
-          .join("");
-      }
+            // Update tabs
+            tabs.forEach((t) => t.classList.remove("active"));
+            tab.classList.add("active");
 
-      async function hashText() {
-        try {
-          const data = new TextEncoder().encode(inEl.value || "");
-          const digest = await crypto.subtle.digest("SHA-256", data);
-          outEl.value = buf2hex(digest);
-          statusEl.textContent = "✅ টেক্সট হ্যাশ সম্পন্ন।";
-        } catch (e) {
-          outEl.value = "";
-          statusEl.textContent = "⚠️ ত্রুটি: " + e.message;
-        }
-      }
+            // Update content
+            tabContents.forEach((content) => {
+              content.classList.remove("active");
+              if (content.id === `${tabId}-tab`) {
+                content.classList.add("active");
+              }
+            });
+          });
+        });
 
-      async function hashFile(file) {
-        if (!file) return;
-        try {
-          statusEl.textContent = "⏳ ফাইল হ্যাশ হচ্ছে…";
-          const buffer = await file.arrayBuffer();
-          const digest = await crypto.subtle.digest("SHA-256", buffer);
-          outEl.value = buf2hex(digest);
-          const sizeKB = (file.size / 1024).toFixed(1);
-          statusEl.textContent = `✅ ফাইল হ্যাশ সম্পন্ন • ${file.name} (${sizeKB} KB)`;
-        } catch (e) {
-          outEl.value = "";
-          statusEl.textContent = "⚠️ ফাইল হ্যাশ ত্রুটি: " + e.message;
-        }
-      }
+        // File upload handling
+        fileUploadArea.addEventListener("click", () => {
+          fileInput.click();
+        });
 
-      btnText.addEventListener("click", hashText);
-      fileEl.addEventListener("change", (e) => hashFile(e.target.files?.[0]));
+        fileInput.addEventListener("change", handleFileSelect);
 
-      btnCopy.addEventListener("click", async () => {
-        try {
-          await navigator.clipboard.writeText(outEl.value || "");
-          statusEl.textContent = "📋 কপি হয়েছে।";
-        } catch {
-          statusEl.textContent = "কপি করা যায়নি।";
-        }
-      });
-
-      btnClear.addEventListener("click", () => {
-        inEl.value = "";
-        outEl.value = "";
-        fileEl.value = "";
-        statusEl.textContent = "—";
-        inEl.focus();
-      });
-
-      // Keyboard: Ctrl/⌘ + Enter => hash text
-      inEl.addEventListener("keydown", (e) => {
-        if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+        // Drag and drop functionality
+        fileUploadArea.addEventListener("dragover", (e) => {
           e.preventDefault();
-          hashText();
+          fileUploadArea.classList.add("dragover");
+        });
+
+        fileUploadArea.addEventListener("dragleave", () => {
+          fileUploadArea.classList.remove("dragover");
+        });
+
+        fileUploadArea.addEventListener("drop", (e) => {
+          e.preventDefault();
+          fileUploadArea.classList.remove("dragover");
+
+          if (e.dataTransfer.files.length) {
+            fileInput.files = e.dataTransfer.files;
+            handleFileSelect();
+          }
+        });
+
+        function handleFileSelect() {
+          if (fileInput.files.length > 0) {
+            currentFile = fileInput.files[0];
+
+            // Validate file size (max 100MB)
+            if (currentFile.size > 100 * 1024 * 1024) {
+              alert("ফাইল সাইজ খুব বড়! সর্বোচ্চ 100MB সাইজের ফাইল সাপোর্টেড।");
+              resetFileInput();
+              return;
+            }
+
+            // Update file info
+            fileName.textContent = currentFile.name;
+            fileSize.textContent = formatFileSize(currentFile.size);
+            fileInfo.classList.add("show");
+          }
         }
+
+        function resetFileInput() {
+          fileInput.value = "";
+          currentFile = null;
+          fileInfo.classList.remove("show");
+        }
+
+        function formatFileSize(bytes) {
+          if (bytes === 0) return "0 Bytes";
+
+          const k = 1024;
+          const sizes = ["Bytes", "KB", "MB", "GB"];
+          const i = Math.floor(Math.log(bytes) / Math.log(k));
+
+          return (
+            parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i]
+          );
+        }
+
+        // Generate hash
+        generateBtn.addEventListener("click", generateHash);
+
+        async function generateHash() {
+          const activeTab = document
+            .querySelector(".tab.active")
+            .getAttribute("data-tab");
+
+          if (activeTab === "text") {
+            await generateTextHash();
+          } else if (activeTab === "file") {
+            await generateFileHash();
+          }
+        }
+
+        async function generateTextHash() {
+          const text = textInput.value.trim();
+
+          if (!text) {
+            showResult("দয়া করে কিছু টেক্সট লিখুন", "error");
+            return;
+          }
+
+          setLoadingState(true);
+
+          try {
+            // Convert text to buffer
+            const encoder = new TextEncoder();
+            const data = encoder.encode(text);
+
+            // Generate SHA-256 hash
+            const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+
+            // Convert buffer to hex string
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hashHex = hashArray
+              .map((b) => b.toString(16).padStart(2, "0"))
+              .join("");
+
+            displayHash(hashHex);
+          } catch (error) {
+            console.error("Hash generation error:", error);
+            showResult("হ্যাশ জেনারেট করতে সমস্যা হয়েছে", "error");
+          } finally {
+            setLoadingState(false);
+          }
+        }
+
+        async function generateFileHash() {
+          if (!currentFile) {
+            showResult("দয়া করে একটি ফাইল সিলেক্ট করুন", "error");
+            return;
+          }
+
+          setLoadingState(true);
+
+          try {
+            const fileBuffer = await readFileAsArrayBuffer(currentFile);
+            const hashBuffer = await crypto.subtle.digest(
+              "SHA-256",
+              fileBuffer
+            );
+
+            // Convert buffer to hex string
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hashHex = hashArray
+              .map((b) => b.toString(16).padStart(2, "0"))
+              .join("");
+
+            displayHash(hashHex);
+          } catch (error) {
+            console.error("File hash generation error:", error);
+            showResult("ফাইল হ্যাশ জেনারেট করতে সমস্যা হয়েছে", "error");
+          } finally {
+            setLoadingState(false);
+          }
+        }
+
+        function readFileAsArrayBuffer(file) {
+          return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+
+            reader.onload = () => {
+              resolve(reader.result);
+            };
+
+            reader.onerror = () => {
+              reject(new Error("ফাইল পড়তে সমস্যা হয়েছে"));
+            };
+
+            reader.readAsArrayBuffer(file);
+          });
+        }
+
+        function displayHash(hash) {
+          currentHash = hash;
+          hashResult.textContent = hash;
+          hashResult.style.color = "var(--success)";
+
+          // Update hash info
+          hashLength.textContent = hash.length;
+          hashChars.textContent = hash.length;
+          hashBytes.textContent = hash.length / 2; // Each byte is 2 hex chars
+
+          // Enable copy button
+          copyBtn.disabled = false;
+        }
+
+        function showResult(message, type = "info") {
+          hashResult.textContent = message;
+          hashResult.style.color =
+            type === "error" ? "var(--danger)" : "var(--text-muted)";
+
+          // Reset hash info
+          hashLength.textContent = "0";
+          hashChars.textContent = "0";
+          hashBytes.textContent = "0";
+
+          // Disable copy button
+          copyBtn.disabled = true;
+          currentHash = "";
+        }
+
+        function setLoadingState(loading) {
+          if (loading) {
+            generateText.textContent = "জেনারেট হচ্ছে...";
+            generateLoading.style.display = "inline-block";
+            generateBtn.disabled = true;
+          } else {
+            generateText.textContent = "হ্যাশ জেনারেট করুন";
+            generateLoading.style.display = "none";
+            generateBtn.disabled = false;
+          }
+        }
+
+        // Copy hash to clipboard
+        copyBtn.addEventListener("click", () => {
+          if (!currentHash) return;
+
+          navigator.clipboard
+            .writeText(currentHash)
+            .then(() => {
+              // Show temporary feedback
+              const originalText = copyBtn.textContent;
+              copyBtn.textContent = "কপি হয়েছে!";
+              copyBtn.style.background = "var(--success)";
+
+              setTimeout(() => {
+                copyBtn.textContent = originalText;
+                copyBtn.style.background = "";
+              }, 2000);
+            })
+            .catch((err) => {
+              console.error("Copy failed:", err);
+            });
+        });
+
+        // Clear all
+        clearBtn.addEventListener("click", () => {
+          textInput.value = "";
+          resetFileInput();
+          showResult("হ্যাশ এখানে প্রদর্শিত হবে", "info");
+        });
+
+        // Auto-generate hash on text input change (with debounce)
+        let textHashTimeout;
+        textInput.addEventListener("input", () => {
+          clearTimeout(textHashTimeout);
+
+          // Only auto-generate if text is not empty
+          if (textInput.value.trim()) {
+            textHashTimeout = setTimeout(() => {
+              if (
+                document
+                  .querySelector(".tab.active")
+                  .getAttribute("data-tab") === "text"
+              ) {
+                generateTextHash();
+              }
+            }, 500);
+          } else {
+            showResult("হ্যাশ এখানে প্রদর্শিত হবে", "info");
+          }
+        });
       });
     </script>
     <script src="/assets/tracker.js" defer data-trk-site="tools-pack"></script>

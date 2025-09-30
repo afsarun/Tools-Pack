@@ -168,20 +168,182 @@
       }
     </script>
 
-    <!-- ✅ Page-specific tweaks (CLS-safe ads + small layout) -->
     <style>
-      figure.tool-shot {
-        margin: 12px 0 0;
+      :root {
+        --primary: #3b82f6;
+        --primary-hover: #2563eb;
+        --secondary: #64748b;
+        --success: #10b981;
+        --danger: #ef4444;
+        --warning: #f59e0b;
+        --background: #0f172a;
+        --surface: #1e293b;
+        --surface-light: #334155;
+        --text: #f1f5f9;
+        --text-muted: #c4cdd6;
+        --border: #475569;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
       }
-      figure.tool-shot img {
-        width: 100%;
-        height: auto;
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      .calculator {
+        background-color: var(--surface);
+        border-radius: 12px;
+        padding: 25px;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--border);
+      }
+
+      .display {
+        background-color: var(--surface-light);
         border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 20px;
+        text-align: right;
+        min-height: 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
       }
-      figure.tool-shot figcaption {
-        font-size: 12px;
-        color: #6b7280;
-        margin-top: 6px;
+
+      .previous-operand {
+        font-size: 1.2rem;
+        color: var(--text-muted);
+        min-height: 1.5rem;
+        word-wrap: break-word;
+        word-break: break-all;
+      }
+
+      .current-operand {
+        font-size: 2rem;
+        font-weight: bold;
+        word-wrap: break-word;
+        word-break: break-all;
+      }
+
+      .buttons {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+      }
+
+      .calculator .buttons .btn {
+        padding: 18px;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        background-color: var(--surface-light);
+        color: var(--text);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .calculator .buttons .btn:hover {
+        background-color: var(--primary);
+        transform: translateY(-2px);
+      }
+
+      .calculator .buttons .btn:active {
+        transform: translateY(0);
+      }
+
+      .calculator .buttons .btn-operator {
+        background-color: var(--primary);
+        color: white;
+      }
+
+      .calculator .buttons .btn-operator:hover {
+        background-color: var(--primary-hover);
+      }
+
+      .calculator .buttons .btn-equals {
+        background-color: var(--success);
+        color: white;
+      }
+
+      .calculator .buttons .btn-equals:hover {
+        background-color: #0da271;
+      }
+
+      .calculator .buttons .btn-clear {
+        background-color: var(--danger);
+        color: white;
+      }
+
+      .calculator .buttons .btn-clear:hover {
+        background-color: #dc2626;
+      }
+
+      .calculator .buttons .btn-zero {
+        grid-column: span 2;
+      }
+
+      .history {
+        margin-top: 20px;
+        background-color: var(--surface);
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--border);
+        max-height: 200px;
+        overflow-y: auto;
+      }
+
+      .history h3 {
+        color: var(--primary);
+        margin-bottom: 15px;
+        font-size: 1.2rem;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 10px;
+      }
+
+      .history-item {
+        padding: 8px 0;
+        border-bottom: 1px solid var(--border);
+        font-size: 0.9rem;
+      }
+
+      .history-item:last-child {
+        border-bottom: none;
+      }
+
+      .empty-history {
+        color: var(--text-muted);
+        text-align: center;
+        font-style: italic;
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 30px;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          max-width: 100%;
+        }
+
+        .btn {
+          padding: 15px;
+          font-size: 1rem;
+        }
+
+        .current-operand {
+          font-size: 1.8rem;
+        }
       }
     </style>
   </head>
@@ -194,9 +356,7 @@
         ></a>
         <div>
           <!-- ✅ কীওয়ার্ড-সমৃদ্ধ H1 -->
-          <h1 style="margin: 0">
-            অনলাইন ক্যালকুলেটর — যোগ, বিয়োগ, গুণ, ভাগ ও শতাংশ
-          </h1>
+          <h1 style="margin: 0">অনলাইন ক্যালকুলেটর</h1>
           <div class="sub">দ্রুত, ফ্রি, প্রাইভেসি-ফার্স্ট</div>
         </div>
         <div style="margin-left: auto">
@@ -232,7 +392,8 @@
         <!-- ✅ সংক্ষিপ্ত ইন্ট্রো (সেমান্টিকালি সমৃদ্ধ) -->
         <section class="card">
           <p>
-            এই <strong>ফ্রি অনলাইন ক্যালকুলেটর</strong> দিয়ে মুহূর্তেই
+            সহজে গণনা করুন বাংলায় এই
+            <strong>ফ্রি অনলাইন ক্যালকুলেটর</strong> দিয়ে মুহূর্তেই
             <em>যোগ, বিয়োগ, গুণ, ভাগ</em> ও <em>শতাংশ</em>ের হিসাব করুন। হালকা,
             নির্ভুল, এবং <strong>প্রাইভেসি-ফার্স্ট</strong> — প্রথম লোডের পর
             অফলাইনে চলে।
@@ -248,45 +409,50 @@
           <a href="#related">সম্পর্কিত টুলস</a>
         </p>
 
-        <!-- Calculator -->
-        <article class="card" id="calc">
-          <h2>হিসাব করুন</h2>
+        <div class="container">
+          <div class="calculator">
+            <div class="display">
+              <div class="previous-operand" id="previous-operand"></div>
+              <div class="current-operand" id="current-operand">০</div>
+            </div>
+            <div class="buttons">
+              <button class="btn btn-clear" data-action="clear">সাফ</button>
+              <button class="btn btn-clear" data-action="delete">⌫</button>
+              <button class="btn btn-operator" data-operation="%">%</button>
+              <button class="btn btn-operator" data-operation="÷">÷</button>
 
-          <textarea
-            id="expr"
-            class="textarea form-textarea"
-            placeholder="যেমন: (12 + 7) / 3 * 2   অথবা   12% * 200"
-            aria-label="এক্সপ্রেশন"
-          ></textarea>
+              <button class="btn" data-number="7">৭</button>
+              <button class="btn" data-number="8">৮</button>
+              <button class="btn" data-number="9">৯</button>
+              <button class="btn btn-operator" data-operation="×">×</button>
 
-          <div style="margin-top: 10px">
-            <button class="btn btn-primary" id="evalBtn" type="button">
-              হিসাব করুন
-            </button>
-            <button class="btn" id="clrBtn" type="button">সাফ করুন</button>
-            <button class="btn" id="cpyBtn" type="button">ফল কপি</button>
-          </div>
+              <button class="btn" data-number="4">৪</button>
+              <button class="btn" data-number="5">৫</button>
+              <button class="btn" data-number="6">৬</button>
+              <button class="btn btn-operator" data-operation="-">−</button>
 
-          <input
-            id="out"
-            class="field form-input"
-            readonly
-            placeholder="ফলাফল এখানে…"
-            aria-label="ফলাফল"
-          />
-          <p class="muted">
-            অনুমোদিত: সংখ্যা, + − × ÷ (অথবা * ও /), <code>( )</code>, দশমিক এবং
-            %। অর্ডার বজায় রাখতে ব্র্যাকেট ব্যবহার করুন।
-          </p>
-          <div id="msg" class="muted" aria-live="polite" role="status"></div>
-          <div class="ad-wrap ad-article" aria-label="Advertisement">
-            <span class="ad-label">Ad</span>
-            <div class="ad-content">
-              Upgrade to Base64 Pro for unlimited conversions and advanced
-              features!
+              <button class="btn" data-number="1">১</button>
+              <button class="btn" data-number="2">২</button>
+              <button class="btn" data-number="3">৩</button>
+              <button class="btn btn-operator" data-operation="+">+</button>
+
+              <button class="btn btn-zero" data-number="0">০</button>
+              <button class="btn" data-number=".">.</button>
+              <button class="btn btn-equals" data-action="equals">=</button>
             </div>
           </div>
-        </article>
+
+          <div class="history">
+            <h3>গণনার ইতিহাস</h3>
+            <div id="history-list" class="empty-history">
+              কোনো গণনা করা হয়নি
+            </div>
+          </div>
+
+          <footer>
+            <p>© ২০২৩ বাংলা ক্যালকুলেটর | সকল অধিকার সংরক্ষিত</p>
+          </footer>
+        </div>
 
         <!-- ✅ Use cases -->
         <article class="card" id="use-cases">
@@ -456,120 +622,293 @@
           </p>
           <p class="small">
             English preferred? See the
-            <a href="/calculator/" hreflang="en">English version</a>.
+            <a
+              class="text-link"
+              href="/calculator/"
+              hreflang="en"
+              lang="en"
+              aria-label="English version"
+              >English version</a
+            >.
           </p>
         </article>
       </main>
 
       <footer>
         © <span id="y"></span> Tools Pack •
-        <a class="muted" href="/bn/">হোম</a> •
-        <a class="muted" href="/calculator/" hreflang="en">English</a>
+        <a
+          class="text-link"
+          href="/bn/"
+          hreflang="bn"
+          lang="bn"
+          aria-label="বাংলা হোম"
+          >হোম</a
+        >
+        •
+        <a
+          class="text-link"
+          href="/calculator/"
+          hreflang="en"
+          lang="en"
+          aria-label="English Version"
+          >English</a
+        >
       </footer>
     </div>
     <script>
-      // Year
-      document.getElementById("y").textContent = new Date().getFullYear();
+      document.addEventListener("DOMContentLoaded", function () {
+        // DOM Elements
+        const currentOperandElement =
+          document.getElementById("current-operand");
+        const previousOperandElement =
+          document.getElementById("previous-operand");
+        const historyListElement = document.getElementById("history-list");
 
-      // ===== Lazy init AdSense when slots are visible =====
-      const initAds = () => {
-        window.adsbygoogle = window.adsbygoogle || [];
-        const slots = document.querySelectorAll(
-          "ins.adsbygoogle:not([data-loaded])"
-        );
-        if (!slots.length) return;
+        // Calculator state
+        let currentOperand = "০";
+        let previousOperand = "";
+        let operation = null;
+        let resetScreen = false;
+        let calculationHistory = [];
 
-        const push = (el) => {
-          try {
-            (adsbygoogle = window.adsbygoogle || []).push({});
-            el.setAttribute("data-loaded", "1");
-          } catch (e) {
-            /* ignore */
+        // Update display
+        function updateDisplay() {
+          currentOperandElement.textContent = currentOperand;
+          previousOperandElement.textContent = previousOperand;
+        }
+
+        // Append number to current operand
+        function appendNumber(number) {
+          if (resetScreen) {
+            currentOperand = "";
+            resetScreen = false;
           }
-        };
 
-        if ("IntersectionObserver" in window) {
-          const io = new IntersectionObserver(
-            (entries) => {
-              entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                  push(entry.target);
-                  io.unobserve(entry.target);
-                }
-              });
-            },
-            { rootMargin: "200px 0px" }
-          );
-          slots.forEach((el) => io.observe(el));
-        } else {
-          slots.forEach(push);
-        }
-      };
-      window.addEventListener("load", initAds);
+          // Convert English digits to Bengali if needed
+          const bengaliDigits = {
+            0: "০",
+            1: "১",
+            2: "২",
+            3: "৩",
+            4: "৪",
+            5: "৫",
+            6: "৬",
+            7: "৭",
+            8: "৮",
+            9: "৯",
+          };
 
-      // ===== Calculator helpers =====
-      const expr = document.getElementById("expr");
-      const out = document.getElementById("out");
-      const msg = document.getElementById("msg");
-      const evalBtn = document.getElementById("evalBtn");
-      const clrBtn = document.getElementById("clrBtn");
-      const cpyBtn = document.getElementById("cpyBtn");
+          let bengaliNumber = number;
+          if (bengaliDigits[number]) {
+            bengaliNumber = bengaliDigits[number];
+          }
 
-      const normalize = (s) => s.replace(/[×]/g, "*").replace(/[÷]/g, "/");
-      // Convert "12%" => "(12/100)"
-      const percentsToFrac = (s) => s.replace(/(\d+(?:\.\d+)?)%/g, "($1/100)");
-      const allowed = (s) => /^[0-9+\-*/().% \t]+$/.test(s);
+          if (bengaliNumber === "." && currentOperand.includes(".")) return;
 
-      const evaluate = () => {
-        let s = expr.value.trim();
-        if (!s) {
-          out.value = "";
-          msg && (msg.textContent = "");
-          return;
-        }
-        s = normalize(s);
-        s = percentsToFrac(s);
-        if (!allowed(s)) {
-          out.value = "";
-          msg && (msg.textContent = "ত্রুটি: অবৈধ ক্যারেক্টার।");
-          return;
+          // If current operand is 0, replace it
+          if (currentOperand === "০" && bengaliNumber !== ".") {
+            currentOperand = bengaliNumber;
+          } else {
+            currentOperand += bengaliNumber;
+          }
         }
 
-        try {
-          const result = Function('"use strict";return(' + s + ")")();
-          out.value = String(result);
-          msg && (msg.textContent = "সম্পন্ন।");
-        } catch (e) {
-          out.value = "";
-          msg && (msg.textContent = "ত্রুটি: " + e.message);
-        }
-      };
+        // Choose operation
+        function chooseOperation(op) {
+          if (currentOperand === "") return;
 
-      evalBtn && (evalBtn.onclick = evaluate);
-      clrBtn &&
-        (clrBtn.onclick = () => {
-          expr.value = "";
-          out.value = "";
-          msg && (msg.textContent = "");
-          expr.focus();
-        });
-      cpyBtn &&
-        (cpyBtn.onclick = () => {
-          if (!out.value) {
-            msg && (msg.textContent = "কপি করার মতো কিছু নেই।");
+          if (previousOperand !== "") {
+            compute();
+          }
+
+          operation = op;
+          previousOperand = `${currentOperand} ${op}`;
+          currentOperand = "";
+        }
+
+        // Compute calculation
+        function compute() {
+          let computation;
+          const prev = convertToEnglish(previousOperand.split(" ")[0]);
+          const current = convertToEnglish(currentOperand);
+
+          if (isNaN(prev) || isNaN(current)) return;
+
+          switch (operation) {
+            case "+":
+              computation = prev + current;
+              break;
+            case "−":
+              computation = prev - current;
+              break;
+            case "×":
+              computation = prev * current;
+              break;
+            case "÷":
+              computation = prev / current;
+              break;
+            case "%":
+              computation = prev % current;
+              break;
+            default:
+              return;
+          }
+
+          // Add to history
+          const historyItem = {
+            expression: `${previousOperand} ${currentOperand}`,
+            result: computation,
+          };
+
+          calculationHistory.unshift(historyItem);
+          updateHistory();
+
+          // Update display
+          currentOperand = convertToBengali(computation.toString());
+          operation = null;
+          previousOperand = "";
+          resetScreen = true;
+        }
+
+        // Clear calculator
+        function clear() {
+          currentOperand = "০";
+          previousOperand = "";
+          operation = null;
+        }
+
+        // Delete last character
+        function deleteNumber() {
+          if (currentOperand.length > 1) {
+            currentOperand = currentOperand.slice(0, -1);
+          } else {
+            currentOperand = "০";
+          }
+        }
+
+        // Convert Bengali digits to English
+        function convertToEnglish(bengaliNumber) {
+          const digitMap = {
+            "০": "0",
+            "১": "1",
+            "২": "2",
+            "৩": "3",
+            "৪": "4",
+            "৫": "5",
+            "৬": "6",
+            "৭": "7",
+            "৮": "8",
+            "৯": "9",
+          };
+
+          let englishNumber = "";
+          for (let char of bengaliNumber) {
+            englishNumber += digitMap[char] || char;
+          }
+
+          return parseFloat(englishNumber);
+        }
+
+        // Convert English digits to Bengali
+        function convertToBengali(englishNumber) {
+          const digitMap = {
+            0: "০",
+            1: "১",
+            2: "২",
+            3: "৩",
+            4: "৪",
+            5: "৫",
+            6: "৬",
+            7: "৭",
+            8: "৮",
+            9: "৯",
+          };
+
+          let bengaliNumber = "";
+          for (let char of englishNumber) {
+            bengaliNumber += digitMap[char] || char;
+          }
+
+          return bengaliNumber;
+        }
+
+        // Update history display
+        function updateHistory() {
+          if (calculationHistory.length === 0) {
+            historyListElement.innerHTML =
+              '<div class="empty-history">কোনো গণনা করা হয়নি</div>';
             return;
           }
-          navigator.clipboard.writeText(out.value).then(() => {
-            msg && (msg.textContent = "ফল কপি হয়েছে।");
+
+          historyListElement.innerHTML = "";
+          calculationHistory.slice(0, 5).forEach((item) => {
+            const historyItem = document.createElement("div");
+            historyItem.className = "history-item";
+            historyItem.textContent = `${item.expression} = ${convertToBengali(
+              item.result.toString()
+            )}`;
+            historyListElement.appendChild(historyItem);
+          });
+        }
+
+        // Event listeners for buttons
+        document.querySelectorAll("[data-number]").forEach((button) => {
+          button.addEventListener("click", () => {
+            appendNumber(button.getAttribute("data-number"));
+            updateDisplay();
           });
         });
 
-      // Enter = evaluate; Shift+Enter = newline
-      expr.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" && !e.shiftKey) {
-          e.preventDefault();
-          evaluate();
-        }
+        document.querySelectorAll("[data-operation]").forEach((button) => {
+          button.addEventListener("click", () => {
+            chooseOperation(button.getAttribute("data-operation"));
+            updateDisplay();
+          });
+        });
+
+        document.querySelectorAll("[data-action]").forEach((button) => {
+          button.addEventListener("click", () => {
+            const action = button.getAttribute("data-action");
+
+            if (action === "equals") {
+              compute();
+            } else if (action === "clear") {
+              clear();
+            } else if (action === "delete") {
+              deleteNumber();
+            }
+
+            updateDisplay();
+          });
+        });
+
+        // Keyboard support
+        document.addEventListener("keydown", (event) => {
+          if (event.key >= "0" && event.key <= "9") {
+            appendNumber(event.key);
+          } else if (event.key === ".") {
+            appendNumber(".");
+          } else if (event.key === "+" || event.key === "-") {
+            chooseOperation(event.key === "+" ? "+" : "−");
+          } else if (event.key === "*" || event.key === "x") {
+            chooseOperation("×");
+          } else if (event.key === "/") {
+            chooseOperation("÷");
+          } else if (event.key === "Enter" || event.key === "=") {
+            compute();
+          } else if (event.key === "Escape") {
+            clear();
+          } else if (event.key === "Backspace") {
+            deleteNumber();
+          } else if (event.key === "%") {
+            chooseOperation("%");
+          }
+
+          updateDisplay();
+        });
+
+        // Initialize display
+        updateDisplay();
       });
     </script>
 

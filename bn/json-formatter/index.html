@@ -135,6 +135,388 @@
     </script>
 
     <!-- Page-specific tweaks (compact ads + related chips wrap) -->
+
+    <style>
+      :root {
+        --badge: #073c92;
+        --primary: #3b82f6;
+        --primary-hover: #2563eb;
+        --secondary: #64748b;
+        --success: #10b981;
+        --danger: #ef4444;
+        --warning: #f59e0b;
+        --background: #0f172a;
+        --surface: #1e293b;
+        --surface-light: #334155;
+        --text: #f1f5f9;
+        --text-muted: #c4cdd6;
+        --border: #475569;
+        --gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+        --shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+          0 10px 10px -5px rgb(0 0 0 / 0.04);
+        --shadow-lg: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+        --link: #60a5fa;
+        --link-hover: #93c5fd;
+        --link-visited: #a78bfa;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background: var(--background);
+        color: var(--text);
+        line-height: 1.6;
+        padding: 20px;
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+      }
+
+      .subtitle {
+        color: var(--text-muted);
+        font-size: 1.1rem;
+      }
+
+      .card {
+        background: var(--surface);
+        border-radius: 12px;
+        padding: 30px;
+        box-shadow: var(--shadow-lg);
+        margin-bottom: 30px;
+      }
+
+      h2 {
+        color: var(--text);
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .badge {
+        background: var(--badge);
+        color: white;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+      }
+
+      .editor-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-bottom: 20px;
+      }
+
+      @media (max-width: 768px) {
+        .editor-container {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .editor-panel {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .panel-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+
+      .panel-title {
+        color: var(--text);
+        font-weight: 600;
+        font-size: 1rem;
+      }
+
+      .panel-actions {
+        display: flex;
+        gap: 8px;
+      }
+
+      .btn {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.9rem;
+      }
+
+      .btn-primary {
+        background: var(--primary);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background: var(--primary-hover);
+        transform: translateY(-2px);
+      }
+
+      .btn-success {
+        background: var(--success);
+        color: white;
+      }
+
+      .btn-success:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+      }
+
+      .btn-danger {
+        background: var(--danger);
+        color: white;
+      }
+
+      .btn-danger:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+      }
+
+      .btn-secondary {
+        background: var(--secondary);
+        color: white;
+      }
+
+      .btn-secondary:hover {
+        background: var(--surface-light);
+      }
+
+      .btn:disabled {
+        background: var(--surface-light);
+        color: var(--text-muted);
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      .btn:disabled:hover {
+        transform: none;
+      }
+
+      .textarea {
+        width: 100%;
+        min-height: 300px;
+        background: var(--background);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 15px;
+        color: var(--text);
+        font-size: 0.95rem;
+        resize: vertical;
+        font-family: "Courier New", monospace;
+        line-height: 1.4;
+      }
+
+      .textarea:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+      }
+
+      .form-textarea {
+        width: 100%;
+        min-height: 300px;
+        background: var(--background);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 15px;
+        color: var(--text);
+        font-size: 0.95rem;
+        resize: vertical;
+        font-family: "Courier New", monospace;
+        line-height: 1.4;
+      }
+
+      .form-textarea:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+      }
+
+      .controls {
+        display: flex;
+        gap: 10px;
+        margin: 20px 0;
+        flex-wrap: wrap;
+      }
+
+      .status {
+        padding: 12px 15px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        font-weight: 600;
+      }
+
+      .status-valid {
+        background: rgba(16, 185, 129, 0.2);
+        color: var(--success);
+        border: 1px solid var(--success);
+      }
+
+      .status-invalid {
+        background: rgba(239, 68, 68, 0.2);
+        color: var(--danger);
+        border: 1px solid var(--danger);
+      }
+
+      .status-info {
+        background: rgba(59, 130, 246, 0.2);
+        color: var(--primary);
+        border: 1px solid var(--primary);
+      }
+
+      .error-details {
+        background: var(--surface-light);
+        border-radius: 6px;
+        padding: 15px;
+        margin-top: 10px;
+        font-family: monospace;
+        font-size: 0.9rem;
+        color: var(--danger);
+        display: none;
+      }
+
+      .error-details.show {
+        display: block;
+      }
+
+      .stats {
+        display: flex;
+        gap: 20px;
+        margin-top: 15px;
+        padding: 12px;
+        background: var(--surface-light);
+        border-radius: 8px;
+        flex-wrap: wrap;
+      }
+
+      .stat {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .stat-value {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--primary);
+      }
+
+      .stat-label {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+      }
+
+      .ad-wrap {
+        background: var(--surface-light);
+        border-radius: 8px;
+        padding: 15px;
+        margin-top: 20px;
+        position: relative;
+      }
+
+      .ad-label {
+        position: absolute;
+        top: -10px;
+        left: 10px;
+        background: var(--secondary);
+        color: white;
+        padding: 2px 8px;
+        border-radius: 10px;
+        font-size: 0.7rem;
+      }
+
+      .ad-content {
+        color: var(--text-muted);
+        text-align: center;
+      }
+
+      .muted {
+        color: var(--text-muted);
+      }
+
+      .small {
+        font-size: 0.85rem;
+      }
+
+      .loading {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: var(--primary);
+        animation: spin 1s ease-in-out infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* JSON syntax highlighting */
+      .json-key {
+        color: var(--primary);
+      }
+      .json-string {
+        color: var(--success);
+      }
+      .json-number {
+        color: var(--warning);
+      }
+      .json-boolean {
+        color: var(--danger);
+      }
+      .json-null {
+        color: var(--secondary);
+      }
+
+      /* Custom scrollbar */
+      .textarea::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      .textarea::-webkit-scrollbar-track {
+        background: var(--background);
+        border-radius: 4px;
+      }
+
+      .textarea::-webkit-scrollbar-thumb {
+        background: var(--border);
+        border-radius: 4px;
+      }
+
+      .textarea::-webkit-scrollbar-thumb:hover {
+        background: var(--primary);
+      }
+    </style>
   </head>
 
   <body>
@@ -186,43 +568,117 @@
           <a href="#related">সম্পর্কিত টুলস</a>
         </p>
 
-        <!-- Tool -->
-        <article class="card" id="tool">
-          <h2>ফরম্যাট / ভ্যালিডেট</h2>
+        <div class="container">
+          <header>
+            <h1>JSON ফরম্যাটার / ভ্যালিডেটর</h1>
+            <p class="subtitle">JSON ডাটা ফরম্যাট এবং ভ্যালিডেশন করুন সহজেই</p>
+          </header>
 
-          <textarea
-            id="in"
-            class="textarea mono form-textarea"
-            placeholder='{"hello":"world","emoji":"🙂"}'
-            aria-label="ইনপুট JSON"
-          ></textarea>
+          <article class="card" id="json-tool">
+            <h2>
+              <span>JSON ফরম্যাটার / ভ্যালিডেটর</span>
+              <span class="badge">ডেভেলপার টুল</span>
+            </h2>
 
-          <div style="margin-top: 10px">
-            <button class="btn btn-primary" id="fmt" type="button">
-              ফরম্যাট
-            </button>
-            <button class="btn" id="min" type="button">মিনিফাই</button>
-            <button class="btn" id="val" type="button">ভ্যালিডেট</button>
-            <button class="btn" id="cpy" type="button">আউটপুট কপি</button>
-          </div>
+            <div class="editor-container">
+              <!-- Input Panel -->
+              <div class="editor-panel">
+                <div class="panel-header">
+                  <div class="panel-title">ইনপুট JSON</div>
+                  <div class="panel-actions">
+                    <button class="btn btn-secondary" id="clear-input">
+                      🗑 ক্লিয়ার
+                    </button>
+                    <button class="btn btn-secondary" id="load-sample">
+                      📝 নমুনা
+                    </button>
+                  </div>
+                </div>
+                <textarea
+                  id="json-input"
+                  class="textarea form-textarea"
+                  placeholder='এখানে আপনার JSON ডাটা লিখুন বা পেস্ট করুন...&#10;উদাহরণ: {"name": "John", "age": 30, "city": "New York"}'
+                ></textarea>
+              </div>
 
-          <textarea
-            id="out"
-            class="textarea mono form-textarea"
-            readonly
-            placeholder="আউটপুট…"
-            aria-label="আউটপুট JSON"
-          ></textarea>
-
-          <div id="status" class="muted" aria-live="polite"></div>
-          <div class="ad-wrap ad-article" aria-label="Advertisement">
-            <span class="ad-label">Ad</span>
-            <div class="ad-content">
-              Upgrade to Base64 Pro for unlimited conversions and advanced
-              features!
+              <!-- Output Panel -->
+              <div class="editor-panel">
+                <div class="panel-header">
+                  <div class="panel-title">ফরম্যাটেড JSON</div>
+                  <div class="panel-actions">
+                    <button class="btn btn-secondary" id="copy-output">
+                      📋 কপি
+                    </button>
+                    <button class="btn btn-secondary" id="minify-json">
+                      📏 মিনিফাই
+                    </button>
+                  </div>
+                </div>
+                <textarea
+                  id="json-output"
+                  class="textarea form-textarea"
+                  readonly
+                  placeholder="ফরম্যাটেড JSON এখানে দেখানো হবে..."
+                ></textarea>
+              </div>
             </div>
-          </div>
-        </article>
+
+            <div class="controls">
+              <button class="btn btn-primary" id="format-json">
+                <span id="format-text">ফরম্যাট করুন</span>
+                <span
+                  id="format-loading"
+                  class="loading"
+                  style="display: none"
+                ></span>
+              </button>
+              <button class="btn btn-success" id="validate-json">
+                <span id="validate-text">ভ্যালিডেট করুন</span>
+                <span
+                  id="validate-loading"
+                  class="loading"
+                  style="display: none"
+                ></span>
+              </button>
+              <button class="btn btn-danger" id="clear-all">🗑 সব মুছুন</button>
+            </div>
+
+            <div id="validation-status" class="status status-info">
+              JSON ডাটা ইনপুট করুন এবং ফরম্যাট/ভ্যালিডেট বাটনে ক্লিক করুন
+            </div>
+
+            <div id="error-details" class="error-details">
+              <!-- Error details will be shown here -->
+            </div>
+
+            <div class="stats">
+              <div class="stat">
+                <span class="stat-value" id="char-count">0</span>
+                <span class="stat-label">অক্ষর</span>
+              </div>
+              <div class="stat">
+                <span class="stat-value" id="line-count">0</span>
+                <span class="stat-label">লাইন</span>
+              </div>
+              <div class="stat">
+                <span class="stat-value" id="size-kb">0</span>
+                <span class="stat-label">কিলোবাইট</span>
+              </div>
+              <div class="stat">
+                <span class="stat-value" id="depth-level">0</span>
+                <span class="stat-label">গভীরতা</span>
+              </div>
+            </div>
+
+            <div class="ad-wrap ad-article" aria-label="Advertisement">
+              <span class="ad-label">Ad</span>
+              <div class="ad-content">
+                Upgrade to Base64 Pro for unlimited conversions and advanced
+                features!
+              </div>
+            </div>
+          </article>
+        </div>
 
         <!-- How to use -->
         <article class="card" id="how-to-use">
@@ -306,125 +762,333 @@
           </p>
           <p class="small">
             English preferred? See the
-            <a href="/json-formatter/" hreflang="en">English version</a>.
+            <a
+              class="text-link"
+              href="/json-formatter/"
+              hreflang="en"
+              lang="en"
+              aria-label="English version"
+              >English version</a
+            >.
           </p>
         </article>
       </main>
 
       <footer>
         © <span id="y"></span> Tools Pack •
-        <a class="muted" href="/bn/">হোম</a> •
-        <a class="muted" href="/json-formatter/" hreflang="en">English</a>
+        <a
+          class="text-link"
+          href="/bn/"
+          hreflang="bn"
+          lang="bn"
+          aria-label="বাংলা হোম"
+          >হোম</a
+        >
+        •
+        <a
+          class="text-link"
+          href="/json-formatter/"
+          hreflang="en"
+          lang="en"
+          aria-label="English Version"
+          >English</a
+        >
       </footer>
     </div>
     <script>
-      // Year
-      document.getElementById("y").textContent = new Date().getFullYear();
+      document.addEventListener("DOMContentLoaded", function () {
+        // Elements
+        const jsonInput = document.getElementById("json-input");
+        const jsonOutput = document.getElementById("json-output");
+        const formatBtn = document.getElementById("format-json");
+        const validateBtn = document.getElementById("validate-json");
+        const clearAllBtn = document.getElementById("clear-all");
+        const clearInputBtn = document.getElementById("clear-input");
+        const loadSampleBtn = document.getElementById("load-sample");
+        const copyOutputBtn = document.getElementById("copy-output");
+        const minifyBtn = document.getElementById("minify-json");
+        const validationStatus = document.getElementById("validation-status");
+        const errorDetails = document.getElementById("error-details");
+        const formatText = document.getElementById("format-text");
+        const formatLoading = document.getElementById("format-loading");
+        const validateText = document.getElementById("validate-text");
+        const validateLoading = document.getElementById("validate-loading");
 
-      // ===== Lazy init AdSense when slots are visible =====
-      const initAds = () => {
-        window.adsbygoogle = window.adsbygoogle || [];
-        const slots = document.querySelectorAll(
-          "ins.adsbygoogle:not([data-loaded])"
-        );
-        if (!slots.length) return;
+        // Stats elements
+        const charCount = document.getElementById("char-count");
+        const lineCount = document.getElementById("line-count");
+        const sizeKb = document.getElementById("size-kb");
+        const depthLevel = document.getElementById("depth-level");
 
-        const push = (el) => {
-          try {
-            (adsbygoogle = window.adsbygoogle || []).push({});
-            el.setAttribute("data-loaded", "1");
-          } catch (e) {
-            /* ignore */
-          }
+        // Sample JSON data
+        const sampleJson = {
+          users: [
+            {
+              id: 1,
+              name: "John Doe",
+              email: "john@example.com",
+              active: true,
+              preferences: {
+                theme: "dark",
+                notifications: true,
+              },
+              tags: ["developer", "javascript"],
+            },
+            {
+              id: 2,
+              name: "Jane Smith",
+              email: "jane@example.com",
+              active: false,
+              preferences: {
+                theme: "light",
+                notifications: false,
+              },
+              tags: ["designer", "ui/ux"],
+            },
+          ],
+          total: 2,
+          success: true,
         };
 
-        if ("IntersectionObserver" in window) {
-          const io = new IntersectionObserver(
-            (entries) => {
-              entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                  push(entry.target);
-                  io.unobserve(entry.target);
-                }
-              });
-            },
-            { rootMargin: "200px 0px" }
-          );
-          slots.forEach((el) => io.observe(el));
-        } else {
-          slots.forEach(push);
+        // Load sample JSON
+        loadSampleBtn.addEventListener("click", function () {
+          jsonInput.value = JSON.stringify(sampleJson, null, 2);
+          updateStats();
+          validateJson();
+        });
+
+        // Clear input
+        clearInputBtn.addEventListener("click", function () {
+          jsonInput.value = "";
+          updateStats();
+          clearValidationStatus();
+        });
+
+        // Clear all
+        clearAllBtn.addEventListener("click", function () {
+          jsonInput.value = "";
+          jsonOutput.value = "";
+          updateStats();
+          clearValidationStatus();
+        });
+
+        // Copy output
+        copyOutputBtn.addEventListener("click", function () {
+          if (!jsonOutput.value.trim()) {
+            showValidationStatus("কপি করার জন্য কোন আউটপুট নেই", "invalid");
+            return;
+          }
+
+          navigator.clipboard
+            .writeText(jsonOutput.value)
+            .then(() => {
+              const originalText = copyOutputBtn.textContent;
+              copyOutputBtn.textContent = "কপি হয়েছে!";
+              copyOutputBtn.style.background = "var(--success)";
+
+              setTimeout(() => {
+                copyOutputBtn.textContent = originalText;
+                copyOutputBtn.style.background = "";
+              }, 2000);
+            })
+            .catch((err) => {
+              console.error("Copy failed:", err);
+              showValidationStatus("কপি করতে সমস্যা হয়েছে", "invalid");
+            });
+        });
+
+        // Format JSON
+        formatBtn.addEventListener("click", formatJson);
+
+        // Validate JSON
+        validateBtn.addEventListener("click", validateJson);
+
+        // Minify JSON
+        minifyBtn.addEventListener("click", function () {
+          const inputText = jsonInput.value.trim();
+
+          if (!inputText) {
+            showValidationStatus(
+              "মিনিফাই করার জন্য JSON ইনপুট করুন",
+              "invalid"
+            );
+            return;
+          }
+
+          try {
+            const parsedJson = JSON.parse(inputText);
+            const minifiedJson = JSON.stringify(parsedJson);
+            jsonOutput.value = minifiedJson;
+            showValidationStatus("JSON সফলভাবে মিনিফাই করা হয়েছে", "valid");
+            updateStats();
+          } catch (error) {
+            showValidationStatus("ইনভ্যালিড JSON", "invalid");
+            showErrorDetails(error.message);
+          }
+        });
+
+        // Auto-validate on input (with debounce)
+        let validateTimeout;
+        jsonInput.addEventListener("input", function () {
+          clearTimeout(validateTimeout);
+          updateStats();
+
+          validateTimeout = setTimeout(() => {
+            if (jsonInput.value.trim()) {
+              validateJson();
+            } else {
+              clearValidationStatus();
+            }
+          }, 500);
+        });
+
+        // Format JSON function
+        function formatJson() {
+          const inputText = jsonInput.value.trim();
+
+          if (!inputText) {
+            showValidationStatus(
+              "ফরম্যাট করার জন্য JSON ইনপুট করুন",
+              "invalid"
+            );
+            return;
+          }
+
+          setLoadingState(formatText, formatLoading, true);
+
+          try {
+            const parsedJson = JSON.parse(inputText);
+            const formattedJson = JSON.stringify(parsedJson, null, 2);
+            jsonOutput.value = formattedJson;
+            showValidationStatus("JSON সফলভাবে ফরম্যাট করা হয়েছে", "valid");
+            hideErrorDetails();
+            updateStats();
+          } catch (error) {
+            showValidationStatus("ইনভ্যালিড JSON", "invalid");
+            showErrorDetails(error.message);
+            jsonOutput.value = "";
+          } finally {
+            setLoadingState(formatText, formatLoading, false);
+          }
         }
-      };
-      window.addEventListener("load", initAds);
 
-      // ===== JSON tool logic =====
-      const $ = (id) => document.getElementById(id);
-      const inEl = $("in");
-      const outEl = $("out");
-      const statusEl = $("status");
-      const fmtBtn = $("fmt");
-      const minBtn = $("min");
-      const valBtn = $("val");
-      const cpyBtn = $("cpy");
+        // Validate JSON function
+        function validateJson() {
+          const inputText = jsonInput.value.trim();
 
-      const ok = (msg, good) => {
-        statusEl.textContent = msg;
-        statusEl.style.color = good
-          ? "var(--ok,#46c06f)"
-          : "var(--danger,#ff5c5c)";
-      };
+          if (!inputText) {
+            showValidationStatus("ভ্যালিডেট করার জন্য JSON ইনপুট করুন", "info");
+            return;
+          }
 
-      const tryParse = () => {
-        try {
-          return [JSON.parse(inEl.value), null];
-        } catch (e) {
-          return [null, e];
+          setLoadingState(validateText, validateLoading, true);
+
+          try {
+            JSON.parse(inputText);
+            showValidationStatus("ভ্যালিড JSON", "valid");
+            hideErrorDetails();
+
+            // Auto-format if valid
+            if (!jsonOutput.value.trim()) {
+              formatJson();
+            }
+          } catch (error) {
+            showValidationStatus("ইনভ্যালিড JSON", "invalid");
+            showErrorDetails(error.message);
+          } finally {
+            setLoadingState(validateText, validateLoading, false);
+          }
         }
-      };
 
-      fmtBtn.onclick = () => {
-        const [obj, err] = tryParse();
-        if (err) {
-          outEl.value = "";
-          ok("Invalid JSON: " + err.message, false);
-          return;
+        // Show validation status
+        function showValidationStatus(message, type) {
+          validationStatus.textContent = message;
+          validationStatus.className = "status";
+
+          if (type === "valid") {
+            validationStatus.classList.add("status-valid");
+          } else if (type === "invalid") {
+            validationStatus.classList.add("status-invalid");
+          } else {
+            validationStatus.classList.add("status-info");
+          }
         }
-        outEl.value = JSON.stringify(obj, null, 2);
-        ok("Valid JSON • Formatted", true);
-      };
 
-      minBtn.onclick = () => {
-        const [obj, err] = tryParse();
-        if (err) {
-          outEl.value = "";
-          ok("Invalid JSON: " + err.message, false);
-          return;
+        // Clear validation status
+        function clearValidationStatus() {
+          validationStatus.textContent =
+            "JSON ডাটা ইনপুট করুন এবং ফরম্যাট/ভ্যালিডেট বাটনে ক্লিক করুন";
+          validationStatus.className = "status status-info";
+          hideErrorDetails();
         }
-        outEl.value = JSON.stringify(obj);
-        ok("Valid JSON • Minified", true);
-      };
 
-      valBtn.onclick = () => {
-        const [, err] = tryParse();
-        if (err) ok("Invalid JSON: " + err.message, false);
-        else ok("Valid JSON ✔", true);
-      };
-
-      cpyBtn.onclick = async () => {
-        try {
-          await navigator.clipboard.writeText(outEl.value || "");
-          ok("আউটপুট কপি হয়েছে।", true);
-        } catch {
-          ok("কপি করা যায়নি।", false);
+        // Show error details
+        function showErrorDetails(errorMessage) {
+          errorDetails.textContent = errorMessage;
+          errorDetails.classList.add("show");
         }
-      };
 
-      // Keyboard shortcut: Ctrl/⌘ + Enter => Format
-      inEl.addEventListener("keydown", (e) => {
-        if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
-          e.preventDefault();
-          fmtBtn.click();
+        // Hide error details
+        function hideErrorDetails() {
+          errorDetails.classList.remove("show");
         }
+
+        // Set loading state
+        function setLoadingState(textElement, loadingElement, loading) {
+          if (loading) {
+            textElement.style.display = "none";
+            loadingElement.style.display = "inline-block";
+          } else {
+            textElement.style.display = "inline";
+            loadingElement.style.display = "none";
+          }
+        }
+
+        // Update statistics
+        function updateStats() {
+          const inputText = jsonInput.value;
+          const outputText = jsonOutput.value;
+          const textToCount = inputText || outputText;
+
+          // Character count
+          charCount.textContent = textToCount.length;
+
+          // Line count
+          const lines = textToCount ? textToCount.split("\n").length : 0;
+          lineCount.textContent = lines;
+
+          // Size in KB
+          const size = new Blob([textToCount]).size / 1024;
+          sizeKb.textContent = size.toFixed(2);
+
+          // Depth level (simplified)
+          try {
+            const parsed = JSON.parse(textToCount);
+            const depth = calculateDepth(parsed);
+            depthLevel.textContent = depth;
+          } catch (e) {
+            depthLevel.textContent = "0";
+          }
+        }
+
+        // Calculate JSON depth
+        function calculateDepth(obj) {
+          let depth = 0;
+
+          if (typeof obj === "object" && obj !== null) {
+            for (let key in obj) {
+              if (obj.hasOwnProperty(key)) {
+                const currentDepth = calculateDepth(obj[key]) + 1;
+                depth = Math.max(depth, currentDepth);
+              }
+            }
+          }
+
+          return depth;
+        }
+
+        // Initialize
+        updateStats();
       });
     </script>
     <script src="/assets/tracker.js" defer data-trk-site="tools-pack"></script>

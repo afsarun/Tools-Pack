@@ -225,7 +225,251 @@
 
     <!-- Page-specific tweaks: compact ads + related chips wrap -->
     <style>
-      /* Date input simple style */
+      :root {
+        --primary: #3b82f6;
+        --primary-hover: #2563eb;
+        --secondary: #64748b;
+        --success: #10b981;
+        --danger: #ef4444;
+        --warning: #f59e0b;
+        --background: #0f172a;
+        --surface: #1e293b;
+        --surface-light: #334155;
+        --text: #f1f5f9;
+        --text-muted: #c4cdd6;
+        --border: #475569;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: var(--background);
+        color: var(--text);
+        line-height: 1.6;
+        padding: 20px;
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .card {
+        background-color: var(--surface);
+        border-radius: 12px;
+        padding: 25px;
+        margin-bottom: 25px;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--border);
+      }
+
+      h2 {
+        color: var(--primary);
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 10px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: var(--text-muted);
+      }
+
+      .input-group {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+
+      select,
+      input {
+        padding: 12px 15px;
+        background-color: var(--surface-light);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        color: var(--text);
+        font-size: 16px;
+        flex: 1;
+      }
+
+      select:focus,
+      input:focus {
+        outline: none;
+        border-color: var(--primary);
+      }
+
+      .btn {
+        padding: 12px 24px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        /* background-color: var(--primary); */
+        color: white;
+        display: inline-block;
+      }
+
+      .btn:hover {
+        background-color: var(--primary-hover);
+        transform: translateY(-2px);
+      }
+
+      .btn-secondary {
+        background-color: var(--secondary);
+      }
+
+      .btn-secondary:hover {
+        background-color: #475569;
+      }
+
+      .result-container {
+        margin-top: 30px;
+        padding: 20px;
+        background-color: var(--surface-light);
+        border-radius: 8px;
+        /* FIX: Remove display: none and use opacity/transform for hiding */
+        opacity: 0;
+        transform: translateY(120px);
+        height: 0;
+        overflow: hidden;
+        transition: all 0.5s ease;
+      }
+
+      .result-container.show {
+        opacity: 1;
+        transform: translateY(0);
+        height: auto;
+        overflow: visible;
+      }
+
+      .result-title {
+        color: var(--primary);
+        margin-bottom: 15px;
+        font-size: 1.3rem;
+      }
+
+      .age-display {
+        display: flex;
+        justify-content: space-around;
+        text-align: center;
+        margin: 20px 0;
+      }
+
+      .age-item {
+        padding: 15px;
+        background-color: var(--surface);
+        border-radius: 8px;
+        flex: 1;
+        margin: 0 10px;
+      }
+
+      .age-value {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: var(--primary);
+        margin-bottom: 5px;
+      }
+
+      .age-label {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+      }
+
+      .detail-results {
+        margin-top: 20px;
+      }
+
+      .detail-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .detail-label {
+        color: var(--text-muted);
+      }
+
+      .detail-value {
+        font-weight: 600;
+      }
+
+      .next-birthday {
+        margin-top: 20px;
+        padding: 15px;
+        background-color: var(--surface);
+        border-radius: 8px;
+        text-align: center;
+      }
+
+      .next-birthday-title {
+        color: var(--success);
+        margin-bottom: 10px;
+        font-weight: 600;
+      }
+
+      .notification {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 15px 25px;
+        background-color: var(--success);
+        color: white;
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        transform: translateX(150%);
+        transition: transform 0.3s ease;
+        z-index: 1000;
+      }
+
+      .notification.show {
+        transform: translateX(0);
+      }
+
+      .notification.error {
+        background-color: var(--danger);
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border);
+        color: var(--text-muted);
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 768px) {
+        .input-group {
+          flex-direction: column;
+        }
+
+        .age-display {
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .age-item {
+          margin: 0;
+        }
+      }
     </style>
   </head>
 
@@ -246,12 +490,6 @@
     </header>
 
     <div class="container">
-      <div class="ad-wrap ad-article" aria-label="Advertisement">
-        <span class="ad-label">Ad</span>
-        <div class="ad-content">
-          Upgrade to Base64 Pro for unlimited conversions and advanced features!
-        </div>
-      </div>
       <main class="wrap">
         <!-- Breadcrumbs (Bangla) -->
         <nav class="breadcrumbs" aria-label="breadcrumb">
@@ -279,57 +517,102 @@
           <a href="#faq">প্রশ্নোত্তর</a> · <a href="#verdict">উপসংহার</a> ·
           <a href="#related">সম্পর্কিত টুলস</a>
         </p>
+        <div class="notification" id="notification"></div>
 
-        <!-- Calculator -->
-        <article class="card" id="calc">
-          <h2>তারিখ দিন</h2>
+        <div class="container">
+          <div class="card">
+            <h2>জন্ম তারিখ লিখুন</h2>
 
-          <div
-            class="grid"
-            style="grid-template-columns: repeat(12, 1fr); gap: 10px"
-          >
-            <label class="field form-label" style="grid-column: span 6">
-              <span class="muted">জন্মতারিখ</span>
-              <input id="dob" class="field form-input" type="date" />
-            </label>
-            <label class="field form-label" style="grid-column: span 6">
-              <span class="muted">তারিখ পর্যন্ত</span>
-              <input id="asof" class="field form-input" type="date" />
-            </label>
+            <div class="form-group">
+              <label for="birth-day">দিন</label>
+              <div class="input-group">
+                <select id="birth-day">
+                  <option value="">দিন নির্বাচন করুন</option>
+                </select>
+
+                <select id="birth-month">
+                  <option value="">মাস নির্বাচন করুন</option>
+                </select>
+
+                <select id="birth-year">
+                  <option value="">বছর নির্বাচন করুন</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="current-date">বর্তমান তারিখ (ঐচ্ছিক)</label>
+              <div class="input-group">
+                <select id="current-day">
+                  <option value="">দিন নির্বাচন করুন</option>
+                </select>
+
+                <select id="current-month">
+                  <option value="">মাস নির্বাচন করুন</option>
+                </select>
+
+                <select id="current-year">
+                  <option value="">বছর নির্বাচন করুন</option>
+                </select>
+              </div>
+              <p
+                style="
+                  color: var(--text-muted);
+                  font-size: 0.9rem;
+                  margin-top: 5px;
+                "
+              >
+                যদি খালি রাখেন, তাহলে আজকের তারিখ ব্যবহার করা হবে
+              </p>
+            </div>
+
+            <button class="btn" id="calculate-btn">বয়স নির্ণয় করুন</button>
+            <button class="btn btn-secondary" id="reset-btn">রিসেট করুন</button>
           </div>
 
-          <div class="btn-group">
-            <button
-              class="btn btn-primary"
-              id="calcBtn"
-              type="button"
-              aria-label="বয়স গণনা করুন"
-            >
-              গণনা
-            </button>
-            <button class="btn" id="resetBtn" type="button">রিসেট</button>
-            <button class="btn" id="copyBtn" type="button">কপি</button>
-          </div>
+          <div class="card result-container" id="result-container">
+            <h2 class="result-title">আপনার বয়স</h2>
 
-          <!-- Ad #2: ফলাফলের আগে (in-article) -->
+            <div class="age-display">
+              <div class="age-item">
+                <div class="age-value" id="years">০</div>
+                <div class="age-label">বছর</div>
+              </div>
+              <div class="age-item">
+                <div class="age-value" id="months">০</div>
+                <div class="age-label">মাস</div>
+              </div>
+              <div class="age-item">
+                <div class="age-value" id="days">০</div>
+                <div class="age-label">দিন</div>
+              </div>
+            </div>
 
-          <textarea
-            style="margin-top: 1rem"
-            id="out"
-            class="textarea mono form-textarea"
-            readonly
-            placeholder="ফলাফল…"
-          ></textarea>
-          <div class="muted" id="next" aria-live="polite"></div>
-          <div class="ad-wrap ad-article" aria-label="Advertisement">
-            <span class="ad-label">Ad</span>
-            <div class="ad-content">
-              Upgrade to Base64 Pro for unlimited conversions and advanced
-              features!
+            <div class="detail-results">
+              <div class="detail-item">
+                <span class="detail-label">মোট দিন:</span>
+                <span class="detail-value" id="total-days">০</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">মোট সপ্তাহ:</span>
+                <span class="detail-value" id="total-weeks">০</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">মোট মাস:</span>
+                <span class="detail-value" id="total-months">০</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">জন্মদিনের দিন:</span>
+                <span class="detail-value" id="birthday-day">রবিবার</span>
+              </div>
+            </div>
+
+            <div class="next-birthday">
+              <div class="next-birthday-title">পরবর্তী জন্মদিন</div>
+              <div id="next-birthday-info">লোড হচ্ছে...</div>
             </div>
           </div>
-        </article>
-
+        </div>
         <!-- Introduction (NEW) -->
         <article class="card" id="intro">
           <h2>Age Calculator কী ও কেন ব্যবহার করবেন?</h2>
@@ -367,7 +650,6 @@
               <strong>Birthday events:</strong> জন্মদিন পরিকল্পনায়
               <em>Months · Years · Days</em> হিসাবে বয়স জানার জন্য (কাউন্টডাউনের
               জন্য
-              <a href="/bn/stopwatch-countdown/">স্টপওয়াচ/কাউন্টডাউন</a> দেখুন)।
             </li>
           </ul>
         </article>
@@ -520,196 +802,314 @@
           </p>
           <p class="small">
             English preferred? See the
-            <a href="/age-calculator/" hreflang="en">English version</a>.
+            <a
+              class="text-link"
+              href="/age-calculator/"
+              hreflang="en"
+              lang="en"
+              aria-label="English version"
+              >English version</a
+            >.
           </p>
         </article>
       </main>
 
       <footer>
-        © <span id="y"></span> Tools Pack •
-        <span class="muted">Last updated: <time id="lu"></time></span> •
-        <a class="muted" href="/bn/">হোম</a> •
-        <a class="muted" href="/age-calculator/" hreflang="en">English</a>
+        <a
+          class="text-link"
+          href="/bn/"
+          hreflang="bn"
+          lang="bn"
+          aria-label="বাংলা হোম"
+          >হোম</a
+        >
+        •
+        <a
+          class="text-link"
+          href="/age-calculator/"
+          hreflang="en"
+          lang="en"
+          aria-label="English Version"
+          >English</a
+        >
       </footer>
     </div>
     <script>
-      // Footer year & last updated
-      const now = new Date();
-      document.getElementById("y").textContent = now.getFullYear();
-      const lm = new Date(document.lastModified);
-      const pad2 = (n) => String(n).padStart(2, "0");
-      document.getElementById("lu").textContent =
-        lm.getFullYear() +
-        "-" +
-        pad2(lm.getMonth() + 1) +
-        "-" +
-        pad2(lm.getDate());
+      document.addEventListener("DOMContentLoaded", function () {
+        // DOM Elements
+        const birthDay = document.getElementById("birth-day");
+        const birthMonth = document.getElementById("birth-month");
+        const birthYear = document.getElementById("birth-year");
+        const currentDay = document.getElementById("current-day");
+        const currentMonth = document.getElementById("current-month");
+        const currentYear = document.getElementById("current-year");
+        const calculateBtn = document.getElementById("calculate-btn");
+        const resetBtn = document.getElementById("reset-btn");
+        const resultContainer = document.getElementById("result-container");
+        const notification = document.getElementById("notification");
 
-      // ===== Lazy init AdSense when slots are visible =====
-      const initAds = () => {
-        window.adsbygoogle = window.adsbygoogle || [];
-        const slots = document.querySelectorAll(
-          "ins.adsbygoogle:not([data-loaded])"
-        );
-        if (!slots.length) return;
+        // Result elements
+        const yearsElement = document.getElementById("years");
+        const monthsElement = document.getElementById("months");
+        const daysElement = document.getElementById("days");
+        const totalDaysElement = document.getElementById("total-days");
+        const totalWeeksElement = document.getElementById("total-weeks");
+        const totalMonthsElement = document.getElementById("total-months");
+        const birthdayDayElement = document.getElementById("birthday-day");
+        const nextBirthdayElement =
+          document.getElementById("next-birthday-info");
 
-        const push = (el) => {
-          try {
-            (adsbygoogle = window.adsbygoogle || []).push({});
-            el.setAttribute("data-loaded", "1");
-          } catch (e) {
-            /* ignore */
+        // Bengali month names
+        const bengaliMonths = [
+          "জানুয়ারি",
+          "ফেব্রুয়ারি",
+          "মার্চ",
+          "এপ্রিল",
+          "মে",
+          "জুন",
+          "জুলাই",
+          "আগস্ট",
+          "সেপ্টেম্বর",
+          "অক্টোবর",
+          "নভেম্বর",
+          "ডিসেম্বর",
+        ];
+
+        // Bengali day names
+        const bengaliDays = [
+          "রবিবার",
+          "সোমবার",
+          "মঙ্গলবার",
+          "বুধবার",
+          "বৃহস্পতিবার",
+          "শুক্রবার",
+          "শনিবার",
+        ];
+
+        // Populate dropdowns
+        function populateDropdowns() {
+          // Populate days (1-31)
+          for (let i = 1; i <= 31; i++) {
+            const option = document.createElement("option");
+            option.value = i;
+            option.textContent = convertToBengali(i);
+            birthDay.appendChild(option.cloneNode(true));
+            currentDay.appendChild(option);
           }
-        };
 
-        if ("IntersectionObserver" in window) {
-          const io = new IntersectionObserver(
-            (entries) => {
-              entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                  push(entry.target);
-                  io.unobserve(entry.target);
-                }
-              });
-            },
-            { rootMargin: "200px 0px" }
+          // Populate months
+          bengaliMonths.forEach((month, index) => {
+            const option = document.createElement("option");
+            option.value = index + 1;
+            option.textContent = month;
+            birthMonth.appendChild(option.cloneNode(true));
+            currentMonth.appendChild(option);
+          });
+
+          // Populate years (1900-current year)
+          const currentYearValue = new Date().getFullYear();
+          for (let i = currentYearValue; i >= 1900; i--) {
+            const option = document.createElement("option");
+            option.value = i;
+            option.textContent = convertToBengali(i);
+            birthYear.appendChild(option.cloneNode(true));
+            currentYear.appendChild(option);
+          }
+
+          // Set current date as default for current date fields
+          const today = new Date();
+          currentDay.value = today.getDate();
+          currentMonth.value = today.getMonth() + 1;
+          currentYear.value = today.getFullYear();
+        }
+
+        // Convert English numbers to Bengali
+        function convertToBengali(number) {
+          const bengaliDigits = {
+            0: "০",
+            1: "১",
+            2: "২",
+            3: "৩",
+            4: "৪",
+            5: "৫",
+            6: "৬",
+            7: "৭",
+            8: "৮",
+            9: "৯",
+          };
+
+          return number
+            .toString()
+            .split("")
+            .map((digit) => bengaliDigits[digit] || digit)
+            .join("");
+        }
+
+        // Show notification
+        function showNotification(message, isError = false) {
+          notification.textContent = message;
+          notification.className = "notification";
+          if (isError) {
+            notification.classList.add("error");
+          }
+          notification.classList.add("show");
+
+          setTimeout(() => {
+            notification.classList.remove("show");
+          }, 3000);
+        }
+
+        // Validate inputs
+        function validateInputs() {
+          if (!birthDay.value || !birthMonth.value || !birthYear.value) {
+            showNotification("দয়া করে আপনার জন্ম তারিখ নির্বাচন করুন", true);
+            return false;
+          }
+
+          // Check if birth date is valid
+          const birthDate = new Date(
+            parseInt(birthYear.value),
+            parseInt(birthMonth.value) - 1,
+            parseInt(birthDay.value)
           );
-          slots.forEach((el) => io.observe(el));
-        } else {
-          slots.forEach(push);
-        }
-      };
-      window.addEventListener("load", initAds);
 
-      // ===== Elements =====
-      const dob = document.getElementById("dob");
-      const asof = document.getElementById("asof");
-      const out = document.getElementById("out");
-      const next = document.getElementById("next");
-      const calcBtn = document.getElementById("calcBtn");
-      const resetBtn = document.getElementById("resetBtn");
-      const copyBtn = document.getElementById("copyBtn");
-
-      // ===== Defaults & picker helpers =====
-      const todayStr = () => {
-        const t = new Date(),
-          y = t.getFullYear();
-        const m = String(t.getMonth() + 1).padStart(2, "0");
-        const d = String(t.getDate()).padStart(2, "0");
-        return `${y}-${m}-${d}`;
-      };
-      asof.value = todayStr();
-      dob.max = asof.max = todayStr();
-
-      function openDatePicker() {
-        if (dob && dob.showPicker) {
-          try {
-            dob.showPicker();
-          } catch {
-            dob.focus();
+          if (isNaN(birthDate.getTime())) {
+            showNotification(
+              "অবৈধ জন্ম তারিখ! দয়া করে সঠিক তারিখ নির্বাচন করুন",
+              true
+            );
+            return false;
           }
-        } else if (dob) {
-          dob.focus();
+
+          // Check if birth date is in the future
+          const today = new Date();
+          if (birthDate > today) {
+            showNotification("জন্ম তারিখ ভবিষ্যতের হতে পারে না!", true);
+            return false;
+          }
+
+          return true;
         }
-      }
-      // ছোট delay দিয়ে ওপেন; প্রথম একবার ক্লিকেও fallback
-      window.addEventListener("load", () => setTimeout(openDatePicker, 150));
-      document.body.addEventListener("click", () => openDatePicker(), {
-        once: true,
+
+        // Calculate age
+        function calculateAge() {
+          if (!validateInputs()) return;
+
+          // Get birth date
+          const birthDate = new Date(
+            parseInt(birthYear.value),
+            parseInt(birthMonth.value) - 1,
+            parseInt(birthDay.value)
+          );
+
+          // Get current/selected date
+          let currentDate;
+          if (currentDay.value && currentMonth.value && currentYear.value) {
+            currentDate = new Date(
+              parseInt(currentYear.value),
+              parseInt(currentMonth.value) - 1,
+              parseInt(currentDay.value)
+            );
+          } else {
+            currentDate = new Date();
+          }
+
+          // Calculate age
+          let years = currentDate.getFullYear() - birthDate.getFullYear();
+          let months = currentDate.getMonth() - birthDate.getMonth();
+          let days = currentDate.getDate() - birthDate.getDate();
+
+          if (days < 0) {
+            months--;
+            // Get days in the previous month
+            const prevMonth = new Date(
+              currentDate.getFullYear(),
+              currentDate.getMonth(),
+              0
+            );
+            days += prevMonth.getDate();
+          }
+
+          if (months < 0) {
+            years--;
+            months += 12;
+          }
+
+          // Calculate total days
+          const timeDiff = currentDate.getTime() - birthDate.getTime();
+          const totalDays = Math.floor(timeDiff / (1000 * 3600 * 24));
+
+          // Calculate total weeks and months
+          const totalWeeks = Math.floor(totalDays / 7);
+          const totalMonths = years * 12 + months;
+
+          // Get day of birth
+          const birthDayOfWeek = bengaliDays[birthDate.getDay()];
+
+          // Calculate next birthday
+          const nextBirthday = new Date(
+            currentDate.getFullYear(),
+            birthDate.getMonth(),
+            birthDate.getDate()
+          );
+
+          if (nextBirthday < currentDate) {
+            nextBirthday.setFullYear(nextBirthday.getFullYear() + 1);
+          }
+
+          const daysUntilNextBirthday = Math.ceil(
+            (nextBirthday.getTime() - currentDate.getTime()) /
+              (1000 * 3600 * 24)
+          );
+
+          // Update UI with results
+          yearsElement.textContent = convertToBengali(years);
+          monthsElement.textContent = convertToBengali(months);
+          daysElement.textContent = convertToBengali(days);
+          totalDaysElement.textContent = convertToBengali(totalDays);
+          totalWeeksElement.textContent = convertToBengali(totalWeeks);
+          totalMonthsElement.textContent = convertToBengali(totalMonths);
+          birthdayDayElement.textContent = birthDayOfWeek;
+
+          if (daysUntilNextBirthday === 365 || daysUntilNextBirthday === 366) {
+            nextBirthdayElement.textContent = "আজই আপনার জন্মদিন! শুভ জন্মদিন!";
+          } else {
+            nextBirthdayElement.textContent = `${convertToBengali(
+              daysUntilNextBirthday
+            )} দিন বাকি (${
+              bengaliMonths[nextBirthday.getMonth()]
+            } ${convertToBengali(nextBirthday.getDate())}, ${convertToBengali(
+              nextBirthday.getFullYear()
+            )})`;
+          }
+
+          // Show result container
+          resultContainer.classList.add("show");
+          showNotification("বয়স সফলভাবে গণনা করা হয়েছে!");
+        }
+
+        // Reset form
+        function resetForm() {
+          birthDay.value = "";
+          birthMonth.value = "";
+          birthYear.value = "";
+
+          const today = new Date();
+          currentDay.value = today.getDate();
+          currentMonth.value = today.getMonth() + 1;
+          currentYear.value = today.getFullYear();
+
+          resultContainer.classList.remove("show");
+          showNotification("ফর্ম রিসেট করা হয়েছে");
+        }
+
+        // Event listeners
+        calculateBtn.addEventListener("click", calculateAge);
+        resetBtn.addEventListener("click", resetForm);
+
+        // Initialize the form
+        populateDropdowns();
       });
-
-      // ===== Date utils =====
-      const parse = (s) => {
-        const [y, m, d] = (s || "").split("-").map(Number);
-        return y && m && d ? { y, m, d } : null;
-      };
-      const toD = (o) => new Date(o.y, o.m - 1, o.d);
-      const isLeap = (y) => (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0;
-
-      const diff = (b, a) => {
-        let y = a.y - b.y,
-          m = a.m - b.m,
-          d = a.d - b.d;
-        if (d < 0) {
-          d += new Date(a.y, a.m - 1, 0).getDate();
-          m--;
-        }
-        if (m < 0) {
-          m += 12;
-          y--;
-        }
-        return { y, m, d };
-      };
-
-      const daysBetween = (A, B) =>
-        Math.round(
-          (Date.UTC(B.getFullYear(), B.getMonth(), B.getDate()) -
-            Date.UTC(A.getFullYear(), A.getMonth(), A.getDate())) /
-            86400000
-        );
-
-      const nextBdayInYear = (dobObj, yr) =>
-        new Date(
-          yr,
-          (dobObj.m === 2 && dobObj.d === 29 && !isLeap(yr) ? 1 : dobObj.m) - 1,
-          dobObj.m === 2 && dobObj.d === 29 && !isLeap(yr) ? 28 : dobObj.d
-        );
-
-      // ===== Actions =====
-      calcBtn.onclick = () => {
-        const B = parse(dob.value);
-        const A = parse(asof.value || todayStr());
-
-        if (!B) {
-          out.value = "জন্মতারিখ দিন।";
-          openDatePicker();
-          return;
-        }
-        if (!A) {
-          out.value = "'তারিখ পর্যন্ত' ফাঁকা।";
-          asof.focus();
-          return;
-        }
-
-        const Bd = toD(B),
-          Ad = toD(A);
-        if (Ad < Bd) {
-          out.value = "ত্রুটি: 'তারিখ পর্যন্ত' জন্মতারিখের আগে।";
-          next.textContent = "";
-          return;
-        }
-
-        const age = diff(B, A);
-        const total = daysBetween(Bd, Ad);
-
-        let nb = nextBdayInYear(B, A.y);
-        if (daysBetween(Ad, nb) < 0) nb = nextBdayInYear(B, A.y + 1);
-
-        const left = daysBetween(Ad, nb);
-        const turning = age.y + (left ? 1 : 0);
-
-        out.value =
-          `বয়স: ${age.y} বছর, ${age.m} মাস, ${age.d} দিন\n` +
-          `মোট দিন: ${total.toLocaleString()}`;
-
-        next.textContent =
-          left === 0
-            ? `🎉 আজ (${nb.toDateString()}) — ${age.y}`
-            : `পরের জন্মদিন ${left} দিন পর — ${nb.toDateString()} (হবে ${turning})`;
-      };
-
-      resetBtn.onclick = () => {
-        dob.value = "";
-        asof.value = todayStr();
-        out.value = "";
-        next.textContent = "";
-        openDatePicker();
-      };
-
-      copyBtn.onclick = () =>
-        navigator.clipboard.writeText(
-          out.value + (next.textContent ? `\n${next.textContent}` : "")
-        );
     </script>
 
     <!-- Tracking & extras -->

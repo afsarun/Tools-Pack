@@ -3,15 +3,15 @@ document.querySelectorAll(".faq-item .faq-question").forEach((btn) => {
   btn.addEventListener("click", () => {
     const ans = btn.nextElementSibling;
     const icon = btn.querySelector(".faq-icon");
-    const show = !ans.classList.contains("show");
+    const shows = !ans.classList.contains("shows");
     document
       .querySelectorAll(".faq-answer")
-      .forEach((a) => a.classList.remove("show"));
+      .forEach((a) => a.classList.remove("shows"));
     document
       .querySelectorAll(".faq-icon")
       .forEach((i) => i.classList.remove("rotate"));
-    if (show) {
-      ans.classList.add("show");
+    if (shows) {
+      ans.classList.add("shows");
       icon.classList.add("rotate");
     }
   });

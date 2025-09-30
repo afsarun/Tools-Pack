@@ -32,8 +32,6 @@ body {
     );
   /* background-attachment: fixed; */
   background-attachment: scroll; /* override your fixed attachment */
-  background-image: none; /* we'll render gradients on ::before instead */
-  position: relative;
 }
 
 /* 2) Design tokens */
@@ -165,6 +163,7 @@ a {
   color: var(--text-muted);
   max-width: 700px;
   margin: 0 auto 1rem;
+  line-height: 2;
 }
 
 .breadcrumbs {
@@ -438,32 +437,6 @@ a {
   font-size: 0.875rem;
 }
 
-/* 8) Shared status/toast */
-.status {
-  margin-top: 1rem;
-  padding: 0.75rem;
-  border-radius: 0.5rem;
-  text-align: center;
-  font-weight: 600;
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: all 0.3s ease;
-}
-.status.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-.status.success {
-  background: rgba(16, 185, 129, 0.2);
-  color: var(--success);
-  border: 1px solid var(--success);
-}
-.status.error {
-  background: rgba(239, 68, 68, 0.2);
-  color: var(--danger);
-  border: 1px solid var(--danger);
-}
-
 /* 9) Info grid + examples (shared) */
 .info-grid {
   display: grid;
@@ -577,7 +550,7 @@ a {
   transition: all 0.3s ease;
   color: var(--text-muted);
 }
-.faq-answer.show {
+.faq-answer.shows {
   max-height: 500px;
   padding-top: 1rem;
 }

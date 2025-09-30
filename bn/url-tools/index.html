@@ -129,34 +129,177 @@
     <!-- Page tweaks -->
     <style>
       :root {
-        --muted: #a5a7c0;
-        --border: #2f3152;
+        --badge: #073c92;
+        --primary: #3b82f6;
+        --primary-hover: #2563eb;
+        --secondary: #64748b;
+        --success: #10b981;
+        --danger: #ef4444;
+        --warning: #f59e0b;
+        --background: #0f172a;
+        --surface: #1e293b;
+        --surface-light: #334155;
+        --text: #f1f5f9;
+        --text-muted: #c4cdd6;
+        --border: #475569;
+        --gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+        --shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+          0 10px 10px -5px rgb(0 0 0 / 0.04);
+        --shadow-lg: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+        --link: #60a5fa;
+        --link-hover: #93c5fd;
+        --link-visited: #a78bfa;
       }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      .card {
+        background: var(--surface);
+        border-radius: 12px;
+        padding: 30px;
+        box-shadow: var(--shadow-lg);
+        margin-bottom: 30px;
+      }
+
+      h2 {
+        color: var(--text);
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+      }
+
       .row {
         display: flex;
         flex-wrap: wrap;
-        gap: 10px;
+        gap: 15px;
+        margin-bottom: 15px;
         align-items: center;
       }
 
-      .muted {
-        color: var(--muted);
+      .pill {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--surface-light);
+        padding: 8px 15px;
+        border-radius: 20px;
+        white-space: nowrap;
       }
-      .small {
+
+      .form-label {
+        color: var(--text);
         font-size: 0.9rem;
-        color: var(--muted);
       }
-      .mono {
-        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-          "Liberation Mono", monospace;
+
+      .field {
+        width: 100%;
+        background: var(--background);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 8px 12px;
+        color: var(--text);
+        font-size: 0.9rem;
       }
+
+      .form-input {
+        accent-color: var(--primary);
+      }
+
+      .form-textarea {
+        min-height: 120px;
+        resize: vertical;
+        font-family: monospace;
+      }
+
+      .btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .btn-primary {
+        background: var(--primary);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background: var(--primary-hover);
+        transform: translateY(-2px);
+      }
+
+      .btn-secondary {
+        background: var(--secondary);
+        color: white;
+      }
+
+      .btn-secondary:hover {
+        background: var(--surface-light);
+      }
+
       .btn-ghost {
         background: transparent;
+        color: var(--text);
         border: 1px solid var(--border);
-        color: inherit;
       }
-      textarea.field {
-        min-height: 140px;
+
+      .btn-ghost:hover {
+        background: var(--surface-light);
+      }
+
+      .muted {
+        color: var(--text-muted);
+      }
+
+      .small {
+        font-size: 0.85rem;
+      }
+
+      .mono {
+        font-family: monospace;
+      }
+
+      kbd {
+        background: var(--surface-light);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 2px 6px;
+        font-family: monospace;
+        font-size: 0.8rem;
+      }
+
+      code {
+        background: var(--surface-light);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: monospace;
+        font-size: 0.9rem;
+      }
+
+      #status {
+        margin-left: 15px;
+        color: var(--text-muted);
+      }
+
+      @media (max-width: 768px) {
+        .row {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .pill {
+          width: 100%;
+          justify-content: space-between;
+        }
       }
     </style>
   </head>
@@ -209,34 +352,28 @@
           <a href="#related">সম্পর্কিত</a>
         </p>
 
-        <!-- Tool -->
         <article class="card" id="tool">
-          <h2>URL/URI Encode/Decode</h2>
+          <h2>URL/URI এনকোড/ডিকোড</h2>
 
           <div class="row">
-            <label class="pill form-label"
-              ><input
+            <label class="pill form-label">
+              <input
                 type="radio"
                 name="mode"
                 value="component"
                 checked
                 class="form-input"
               />
-              কম্পোনেন্ট</label
-            >
-            <label class="pill form-label"
-              ><input
-                type="radio"
-                name="mode"
-                value="full"
-                class="form-input"
-              />
-              পূর্ণ URL</label
-            >
-            <label class="pill form-label"
-              ><input type="checkbox" id="spacePlus" class="form-input" />
-              স্পেসকে <code>+</code> হিসেবে ধরুন</label
-            >
+              কম্পোনেন্ট
+            </label>
+            <label class="pill form-label">
+              <input type="radio" name="mode" value="full" class="form-input" />
+              পূর্ণ URL
+            </label>
+            <label class="pill form-label">
+              <input type="checkbox" id="spacePlus" class="form-input" />
+              স্পেসকে <code>+</code> হিসেবে ধরুন
+            </label>
           </div>
 
           <label for="urlInput" class="muted form-label">ইনপুট</label>
@@ -250,7 +387,9 @@
             <button id="btnEncode" class="btn btn-primary" type="button">
               এনকোড
             </button>
-            <button id="btnDecode" class="btn" type="button">ডিকোড</button>
+            <button id="btnDecode" class="btn btn-secondary" type="button">
+              ডিকোড
+            </button>
             <button
               id="btnSwap"
               class="btn btn-ghost"
@@ -275,15 +414,10 @@
             style="margin-top: 10px"
           >
             <span class="ad-label">Ad</span>
-            <ins
-              class="adsbygoogle"
-              style="display: inline-block; text-align: center"
-              data-ad-client="ca-pub-1234567890123456"
-              data-ad-slot="2222222222"
-              data-ad-format="fluid"
-              data-ad-layout="in-article"
-              data-adtest="on"
-            ></ins>
+            <div class="ad-content">
+              Upgrade to Base64 Pro for unlimited conversions and advanced
+              features!
+            </div>
           </div>
 
           <label
@@ -413,119 +547,222 @@
             <a class="btn" href="/bn/sha256/">SHA-256 হ্যাশ</a>
             <a class="btn" href="/bn/text-utilities/">টেক্সট টুলস</a>
           </p>
+
+          <p class="small">
+            English preferred? See the
+            <a
+              class="text-link"
+              href="/url-tools/"
+              hreflang="en"
+              lang="en"
+              aria-label="English version"
+              >English version</a
+            >.
+          </p>
         </article>
       </main>
 
       <footer>
-        © <span id="y"></span> Tools Pack • <a class="muted" href="/bn/">হোম</a>
+        © <span id="y"></span> Tools Pack •
+        <a
+          class="text-link"
+          href="/bn/"
+          hreflang="bn"
+          lang="bn"
+          aria-label="বাংলা হোম"
+          >হোম</a
+        >
+        •
+        <a
+          class="text-link"
+          href="/url-tools/"
+          hreflang="en"
+          lang="en"
+          aria-label="English Version"
+          >English</a
+        >
       </footer>
     </div>
     <script>
-      // Year
-      document.getElementById("y").textContent = new Date().getFullYear();
+      document.addEventListener("DOMContentLoaded", function () {
+        const modeRadios = document.querySelectorAll('input[name="mode"]');
+        const spacePlusCheckbox = document.getElementById("spacePlus");
+        const urlInput = document.getElementById("urlInput");
+        const urlOutput = document.getElementById("urlOutput");
+        const btnEncode = document.getElementById("btnEncode");
+        const btnDecode = document.getElementById("btnDecode");
+        const btnSwap = document.getElementById("btnSwap");
+        const btnCopy = document.getElementById("btnCopy");
+        const btnClear = document.getElementById("btnClear");
+        const statusSpan = document.getElementById("status");
 
-      // Elements
-      const $ = (s, ctx = document) => ctx.querySelector(s);
-      const input = $("#urlInput");
-      const output = $("#urlOutput");
-      const statusEl = $("#status");
-      const spacePlus = $("#spacePlus");
-      const modeRadios = document.getElementsByName("mode");
-
-      const getMode = () =>
-        [...modeRadios].find((r) => r.checked)?.value || "component";
-
-      function encodeValue() {
-        const mode = getMode();
-        const raw = input.value || "";
-        let out = "";
-        try {
-          if (mode === "full") {
-            out = encodeURI(raw);
-          } else {
-            out = encodeURIComponent(raw);
-            if (spacePlus.checked) out = out.replace(/%20/g, "+");
+        // Get current mode
+        function getMode() {
+          for (const radio of modeRadios) {
+            if (radio.checked) return radio.value;
           }
-          output.value = out;
-          setStatus("✅ এনকোড সম্পন্ন");
-        } catch (e) {
-          output.value = "";
-          setStatus("⚠️ এনকোডিং ত্রুটি: " + e.message);
+          return "component";
         }
-      }
 
-      function decodeValue() {
-        const mode = getMode();
-        let raw = input.value || "";
-        try {
-          if (spacePlus.checked) raw = raw.replace(/\+/g, "%20");
-          const out =
-            mode === "full" ? decodeURI(raw) : decodeURIComponent(raw);
-          output.value = out;
-          setStatus("✅ ডিকোড সম্পন্ন");
-        } catch (e) {
-          output.value = "";
-          setStatus("⚠️ ডিকোডিং ত্রুটি: " + e.message);
+        // Show status message
+        function showStatus(message, type = "info") {
+          statusSpan.textContent = message;
+          statusSpan.style.color =
+            type === "success"
+              ? "var(--success)"
+              : type === "error"
+              ? "var(--danger)"
+              : "var(--text-muted)";
+
+          setTimeout(() => {
+            statusSpan.textContent = "—";
+            statusSpan.style.color = "var(--text-muted)";
+          }, 3000);
         }
-      }
 
-      function swapIO() {
-        const a = input.value;
-        input.value = output.value;
-        output.value = a;
-        setStatus("↔ অদলবদল করা হয়েছে");
-      }
+        // Encode function
+        function encodeText() {
+          const input = urlInput.value.trim();
+          if (!input) {
+            showStatus("এনকোড করার জন্য কোন টেক্সট নেই", "error");
+            return;
+          }
 
-      async function copyOut() {
-        try {
-          await navigator.clipboard.writeText(output.value || "");
-          setStatus("📋 কপি হয়েছে।");
-        } catch {
-          setStatus("কপি করা যায়নি।");
+          const mode = getMode();
+          const spaceAsPlus = spacePlusCheckbox.checked;
+
+          try {
+            let result;
+
+            if (mode === "component") {
+              // Use encodeURIComponent for component encoding
+              result = encodeURIComponent(input);
+              if (spaceAsPlus) {
+                result = result.replace(/%20/g, "+");
+              }
+            } else {
+              // Use encodeURI for full URL encoding
+              result = encodeURI(input);
+              if (spaceAsPlus) {
+                result = result.replace(/%20/g, "+");
+              }
+            }
+
+            urlOutput.value = result;
+            showStatus("টেক্সট এনকোড করা হয়েছে", "success");
+          } catch (error) {
+            showStatus("এনকোড করতে সমস্যা হয়েছে", "error");
+            console.error("Encode error:", error);
+          }
         }
-      }
 
-      function clearAll() {
-        input.value = "";
-        output.value = "";
-        setStatus("🗑 সাফ করা হয়েছে");
-      }
+        // Decode function
+        function decodeText() {
+          const input = urlInput.value.trim();
+          if (!input) {
+            showStatus("ডিকোড করার জন্য কোন টেক্সট নেই", "error");
+            return;
+          }
 
-      function setStatus(msg) {
-        statusEl.textContent = msg;
-        clearTimeout(setStatus._t);
-        setStatus._t = setTimeout(() => (statusEl.textContent = "—"), 1400);
-      }
+          const spaceAsPlus = spacePlusCheckbox.checked;
 
-      // Wire up
-      $("#btnEncode").addEventListener("click", encodeValue);
-      $("#btnDecode").addEventListener("click", decodeValue);
-      $("#btnSwap").addEventListener("click", swapIO);
-      $("#btnCopy").addEventListener("click", copyOut);
-      $("#btnClear").addEventListener("click", clearAll);
-      spacePlus.addEventListener("change", () =>
-        setStatus(spacePlus.checked ? "স্পেস ‘+’ মোড অন" : "স্পেস ‘+’ মোড অফ")
-      );
-      [...modeRadios].forEach((r) =>
-        r.addEventListener("change", () =>
-          setStatus(r.value === "full" ? "পূর্ণ URL মোড" : "কম্পোনেন্ট মোড")
-        )
-      );
+          try {
+            let processedInput = input;
 
-      // Shortcuts
-      document.addEventListener("keydown", (e) => {
-        if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "e") {
-          e.preventDefault();
-          encodeValue();
+            if (spaceAsPlus) {
+              processedInput = processedInput.replace(/\+/g, " ");
+            }
+
+            // Try decodeURIComponent first, fallback to decodeURI if it fails
+            let result;
+            try {
+              result = decodeURIComponent(processedInput);
+            } catch (e) {
+              result = decodeURI(processedInput);
+            }
+
+            urlOutput.value = result;
+            showStatus("টেক্সট ডিকোড করা হয়েছে", "success");
+          } catch (error) {
+            showStatus("ডিকোড করতে সমস্যা হয়েছে", "error");
+            console.error("Decode error:", error);
+          }
         }
-        if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "d") {
-          e.preventDefault();
-          decodeValue();
+
+        // Swap input and output
+        function swapText() {
+          const inputValue = urlInput.value;
+          const outputValue = urlOutput.value;
+
+          urlInput.value = outputValue;
+          urlOutput.value = inputValue;
+
+          showStatus("ইনপুট এবং আউটপুট অদলবদল করা হয়েছে", "success");
         }
-        if (e.key === "Escape") {
-          e.preventDefault();
-          clearAll();
+
+        // Copy output to clipboard
+        function copyOutput() {
+          if (!urlOutput.value.trim()) {
+            showStatus("কপি করার জন্য কোন আউটপুট নেই", "error");
+            return;
+          }
+
+          navigator.clipboard
+            .writeText(urlOutput.value)
+            .then(() => {
+              showStatus("আউটপুট কপি করা হয়েছে", "success");
+            })
+            .catch((err) => {
+              showStatus("কপি করতে সমস্যা হয়েছে", "error");
+              console.error("Copy failed:", err);
+            });
         }
+
+        // Clear input and output
+        function clearText() {
+          urlInput.value = "";
+          urlOutput.value = "";
+          showStatus("সাফ করা হয়েছে", "info");
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener("keydown", function (e) {
+          if ((e.ctrlKey || e.metaKey) && e.key === "e") {
+            e.preventDefault();
+            encodeText();
+          }
+
+          if ((e.ctrlKey || e.metaKey) && e.key === "d") {
+            e.preventDefault();
+            decodeText();
+          }
+
+          if (e.key === "Escape") {
+            e.preventDefault();
+            clearText();
+          }
+        });
+
+        // Event listeners
+        btnEncode.addEventListener("click", encodeText);
+        btnDecode.addEventListener("click", decodeText);
+        btnSwap.addEventListener("click", swapText);
+        btnCopy.addEventListener("click", copyOutput);
+        btnClear.addEventListener("click", clearText);
+
+        // Auto-resize textareas
+        function autoResize(textarea) {
+          textarea.style.height = "auto";
+          textarea.style.height = textarea.scrollHeight + "px";
+        }
+
+        urlInput.addEventListener("input", function () {
+          autoResize(this);
+        });
+
+        urlOutput.addEventListener("input", function () {
+          autoResize(this);
+        });
       });
     </script>
     <script src="/assets/tracker.js" defer data-trk-site="tools-pack"></script>

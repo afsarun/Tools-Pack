@@ -183,102 +183,198 @@
 
     <!-- AdSense (dev/test) -->
 
-    <!-- Page tweaks -->
-    <style>
-      :root {
-        --muted: #9aa0a6;
-        --danger: #ff6b6b;
-      }
-      .ad-wrap {
-        margin: 6px 0 8px;
-      }
-      .ad-label {
-        display: inline-block;
-        font-size: 11px;
-        line-height: 1;
-        color: var(--muted);
-        margin: 0 0 2px;
-      }
-      .adsbygoogle {
-        display: block;
-      }
-      .ad-top {
-        margin-inline: auto;
-      }
-      @media (min-width: 900px) {
-        .ad-top {
-          max-width: 728px;
-        }
-        .ad-top .adsbygoogle {
-          min-height: 60px;
-        }
-      }
-      @media (max-width: 899px) and (min-width: 600px) {
-        .ad-top {
-          max-width: 468px;
-        }
-        .ad-top .adsbygoogle {
-          min-height: 50px;
-        }
-      }
-      @media (max-width: 599px) {
-        .ad-top {
-          max-width: 320px;
-        }
-        .ad-top .adsbygoogle {
-          min-height: 50px;
-        }
-      }
-      .ad-top .adsbygoogle:empty {
-        display: none;
-      }
+<style>
+:root {
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --secondary: #64748b;
+  --success: #10b981;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --background: #0f172a;
+  --surface: #1e293b;
+  --surface-light: #334155;
+  --text: #f1f5f9;
+  --text-muted: #c4cdd6;
+  --border: #475569;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
 
-      body {
-        background: #1e1e2f;
-        color: #eee;
-        font-family: "Noto Sans Bengali", system-ui, sans-serif;
-      }
-      .row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-bottom: 10px;
-      }
-      .textarea {
-        width: 100%;
-        height: 220px;
-        margin: 10px 0;
-      }
-      .btn {
-        padding: 0.6rem 1rem;
-        border: 1px solid #3a3a55;
-        background: #2a2a42;
-        border-radius: 8px;
-        cursor: pointer;
-      }
-      .btn-primary {
-        border-color: #5965f3;
-        background: #5965f3;
-        color: #fff;
-      }
-      .muted {
-        color: var(--muted);
-      }
-      .small {
-        font-size: 0.9rem;
-      }
-      .mono {
-        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-          "Liberation Mono", monospace;
-      }
 
-      /* Editor preview: Bijoy toggle */
-      #txt.font-bijoy {
-        font-family: "SutonnyMJ", "Noto Sans Bengali", system-ui, sans-serif;
-      }
-      /* NOTE: no global print font here; the injected print CSS controls it */
-    </style>
-  </head>
+
+.card h2 {
+  color: var(--primary);
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 10px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.select, .field, .pill {
+  padding: 10px 15px;
+  background-color: var(--surface-light);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.select:focus, .field:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.form-select {
+  min-width: 120px;
+}
+
+.form-input {
+  width: 70px;
+  text-align: center;
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.muted {
+  color: var(--text-muted);
+}
+
+.mono {
+  font-family: monospace;
+  font-size: 12px;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 300px;
+  padding: 15px;
+  background-color: var(--surface-light);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 16px;
+  resize: vertical;
+  transition: border-color 0.3s;
+  margin-bottom: 20px;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+.btn:hover {
+  background-color: var(--surface-light);
+  transform: translateY(-2px);
+}
+
+.small {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-top: 15px;
+  padding: 10px;
+  background-color: var(--surface-light);
+  border-radius: 6px;
+  text-align: center;
+}
+
+
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .select, .field, .pill {
+    width: 100%;
+  }
+  
+  .form-label {
+    justify-content: space-between;
+  }
+}
+
+/* Custom checkbox styling */
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  background-color: var(--surface-light);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+}
+
+input[type="checkbox"]:checked {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+input[type="checkbox"]:checked::after {
+  content: "✓";
+  position: absolute;
+  color: white;
+  font-size: 12px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Number input styling */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+</style>
 
   <body>
     <header class="sticky">
@@ -503,13 +599,37 @@
           </p>
           <p class="small">
             English preferred? See the
-            <a href="/text-to-pdf/" hreflang="en">English version</a>.
+            <a
+              class="text-link"
+              href="/text-to-pdf/"
+              hreflang="en"
+              lang="en"
+              aria-label="English version"
+              >English version</a
+            >.
           </p>
         </article>
       </main>
 
       <footer>
-        © <span id="y"></span> Tools Pack • <a class="muted" href="/bn/">হোম</a>
+        © <span id="y"></span> Tools Pack •
+        <a
+          class="text-link"
+          href="/bn/"
+          hreflang="bn"
+          lang="bn"
+          aria-label="বাংলা হোম"
+          >হোম</a
+        >
+        •
+        <a
+          class="text-link"
+          href="/text-to-pdf/"
+          hreflang="en"
+          lang="en"
+          aria-label="English Version"
+          >English</a
+        >
       </footer>
     </div>
     <script>

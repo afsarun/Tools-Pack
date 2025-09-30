@@ -120,6 +120,318 @@
         ]
       }
     </script>
+    <style>
+      :root {
+        --badge: #073c92;
+        --primary: #3b82f6;
+        --primary-hover: #2563eb;
+        --secondary: #64748b;
+        --success: #10b981;
+        --danger: #ef4444;
+        --warning: #f59e0b;
+        --background: #0f172a;
+        --surface: #1e293b;
+        --surface-light: #334155;
+        --text: #f1f5f9;
+        --text-muted: #c4cdd6;
+        --border: #475569;
+        --gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+        --shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+          0 10px 10px -5px rgb(0 0 0 / 0.04);
+        --shadow-lg: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+        --link: #60a5fa;
+        --link-hover: #93c5fd;
+        --link-visited: #a78bfa;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background: var(--background);
+        color: var(--text);
+        line-height: 1.6;
+        padding: 20px;
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+      }
+
+      .subtitle {
+        color: var(--text-muted);
+        font-size: 1.1rem;
+      }
+
+      .cards-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+        gap: 30px;
+        margin-bottom: 30px;
+      }
+
+      @media (max-width: 600px) {
+        .cards-container {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .card {
+        background: var(--surface);
+        border-radius: 12px;
+        padding: 30px;
+        box-shadow: var(--shadow-lg);
+      }
+
+      h2 {
+        color: var(--text);
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .badge {
+        background: var(--badge);
+        color: white;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+      }
+
+      .timer-display {
+        text-align: center;
+        margin: 25px 0;
+      }
+
+      .time {
+        font-family: monospace;
+        font-size: 3.5rem;
+        font-weight: bold;
+        color: var(--primary);
+        text-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+      }
+
+      .controls {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+      }
+
+      .btn {
+        padding: 12px 24px;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 1rem;
+      }
+
+      .btn-primary {
+        background: var(--primary);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background: var(--primary-hover);
+        transform: translateY(-2px);
+      }
+
+      .btn-success {
+        background: var(--success);
+        color: white;
+      }
+
+      .btn-success:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+      }
+
+      .btn-danger {
+        background: var(--danger);
+        color: white;
+      }
+
+      .btn-danger:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+      }
+
+      .btn-warning {
+        background: var(--warning);
+        color: white;
+      }
+
+      .btn-warning:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+      }
+
+      .btn:disabled {
+        background: var(--secondary);
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      .btn:disabled:hover {
+        transform: none;
+      }
+
+      .laps-container {
+        margin-top: 20px;
+        max-height: 200px;
+        overflow-y: auto;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 10px;
+      }
+
+      .lap-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 12px;
+        border-bottom: 1px solid var(--border);
+        font-family: monospace;
+      }
+
+      .lap-item:last-child {
+        border-bottom: none;
+      }
+
+      .lap-number {
+        color: var(--text-muted);
+      }
+
+      .lap-time {
+        color: var(--text);
+        font-weight: 600;
+      }
+
+      .input-group {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+      }
+
+      .time-input {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .time-input label {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+      }
+
+      .time-input input {
+        background: var(--background);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 10px;
+        color: var(--text);
+        font-size: 1.2rem;
+        width: 80px;
+        text-align: center;
+      }
+
+      .status {
+        text-align: center;
+        margin: 15px 0;
+        padding: 10px;
+        border-radius: 6px;
+        font-weight: 600;
+      }
+
+      .status-active {
+        background: rgba(16, 185, 129, 0.2);
+        color: var(--success);
+        border: 1px solid var(--success);
+      }
+
+      .status-paused {
+        background: rgba(245, 158, 11, 0.2);
+        color: var(--warning);
+        border: 1px solid var(--warning);
+      }
+
+      .status-idle {
+        background: rgba(100, 116, 139, 0.2);
+        color: var(--text-muted);
+        border: 1px solid var(--border);
+      }
+
+      .progress-bar {
+        height: 8px;
+        background: var(--surface-light);
+        border-radius: 4px;
+        margin: 20px 0;
+        overflow: hidden;
+      }
+
+      .progress {
+        height: 100%;
+        background: var(--primary);
+        border-radius: 4px;
+        transition: width 0.3s ease;
+      }
+
+      .ad-wrap {
+        background: var(--surface-light);
+        border-radius: 8px;
+        padding: 15px;
+        margin-top: 20px;
+        position: relative;
+      }
+
+      .ad-label {
+        position: absolute;
+        top: -10px;
+        left: 10px;
+        background: var(--secondary);
+        color: white;
+        padding: 2px 8px;
+        border-radius: 10px;
+        font-size: 0.7rem;
+      }
+
+      .ad-content {
+        color: var(--text-muted);
+        text-align: center;
+      }
+
+      .empty-state {
+        text-align: center;
+        color: var(--text-muted);
+        padding: 20px;
+        font-style: italic;
+      }
+    </style>
   </head>
 
   <body>
@@ -129,7 +441,7 @@
           ><div class="logo" aria-hidden="true"></div
         ></a>
         <div>
-          <h1 style="margin: 0">⏱️ স্টপওয়াচ ও কাউন্টডাউন</h1>
+          <h1 style="margin: 0">স্টপওয়াচ ও কাউন্টডাউন</h1>
           <div class="sub">পজ/রিসেট/ল্যাপ/অ্যালার্মসহ নির্ভুল সময় নির্ণায়ক</div>
         </div>
         <div style="margin-left: auto">
@@ -172,126 +484,103 @@
           <a href="#related">সম্পর্কিত</a>
         </p>
 
-        <!-- Stopwatch -->
-        <article class="card" id="sw">
-          <h2>স্টপওয়াচ</h2>
-          <div class="display mono" id="swDisplay" aria-live="polite">
-            00:00:00.000
-          </div>
-          <div class="row actions">
-            <button id="swStart" class="btn btn-primary" type="button">
-              স্টার্ট
-            </button>
-            <button id="swPause" class="btn btn-ghost" type="button">পজ</button>
-            <button id="swLap" class="btn btn-ghost" type="button">
-              ল্যাপ
-            </button>
-            <button id="swReset" class="btn btn-ghost" type="button">
-              রিসেট
-            </button>
-            <button id="swExport" class="btn btn-ghost" type="button">
-              CSV এক্সপোর্ট
-            </button>
-            <span class="muted small"
-              >শর্টকাট: <span class="kbd">Space</span> স্টার্ট/পজ,
-              <span class="kbd">L</span> ল্যাপ,
-              <span class="kbd">R</span> রিসেট</span
-            >
-          </div>
-          <div class="muted small" id="swStatus">—</div>
-          <div style="overflow: auto; margin-top: 10px">
-            <table id="swTable" aria-label="Lap table">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>ল্যাপ</th>
-                  <th>মোট</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
-          </div>
-        </article>
+        <div class="cards-container">
+          <!-- Stopwatch Card -->
+          <article class="card" id="stopwatch">
+            <h2>
+              <span>স্টপওয়াচ</span>
+              <span class="badge">লাইভ</span>
+            </h2>
 
-        <!-- Countdown -->
-        <article class="card" id="cd">
-          <h2>কাউন্টডাউন</h2>
-          <div class="row" role="group" aria-label="সময় দিন">
-            <label class="pill form-label"
-              >ঘন্টা
-              <input
-                id="cdH"
-                class="field form-input"
-                type="number"
-                min="0"
-                value="0"
-                style="width: 80px"
-            /></label>
-            <label class="pill form-label"
-              >মিনিট
-              <input
-                id="cdM"
-                class="field form-input"
-                type="number"
-                min="0"
-                max="59"
-                value="1"
-                style="width: 80px"
-            /></label>
-            <label class="pill form-label"
-              >সেকেন্ড
-              <input
-                id="cdS"
-                class="field form-input"
-                type="number"
-                min="0"
-                max="59"
-                value="0"
-                style="width: 80px"
-            /></label>
-            <div class="row">
-              <button class="btn btn-ghost" data-preset="60" type="button">
-                +1m
+            <div class="timer-display">
+              <div class="time" id="stopwatch-time">00:00:00.00</div>
+            </div>
+
+            <div class="controls">
+              <button class="btn btn-primary" id="start-stopwatch">
+                শুরু করুন
               </button>
-              <button class="btn btn-ghost" data-preset="300" type="button">
-                +5m
+              <button class="btn btn-warning" id="pause-stopwatch" disabled>
+                বিরতি
               </button>
-              <button class="btn btn-ghost" data-preset="600" type="button">
-                +10m
+              <button class="btn btn-danger" id="reset-stopwatch">রিসেট</button>
+              <button class="btn btn-success" id="lap-stopwatch" disabled>
+                ল্যাপ
               </button>
             </div>
-          </div>
 
-          <div class="display mono" id="cdDisplay" aria-live="polite">
-            00:01:00
-          </div>
-          <div class="row actions">
-            <button id="cdStart" class="btn btn-primary" type="button">
-              স্টার্ট
-            </button>
-            <button id="cdPause" class="btn btn-ghost" type="button">পজ</button>
-            <button id="cdReset" class="btn btn-ghost" type="button">
-              রিসেট
-            </button>
-            <label class="pill form-label"
-              ><input type="checkbox" id="cdLoop" class="form-input" /> শেষ হলে
-              পুনরায় শুরু</label
-            >
-            <span class="muted small"
-              >শর্টকাট: <span class="kbd">Enter</span> স্টার্ট/পজ,
-              <span class="kbd">Esc</span> রিসেট</span
-            >
-          </div>
-          <div class="muted small" id="cdStatus">—</div>
+            <div class="status status-idle" id="stopwatch-status">প্রস্তুত</div>
 
-          <div class="ad-wrap ad-article" aria-label="Advertisement">
-            <span class="ad-label">Ad</span>
-            <div class="ad-content">
-              Upgrade to Base64 Pro for unlimited conversions and advanced
-              features!
+            <div class="laps-container" id="stopwatch-laps">
+              <div class="empty-state">কোনো ল্যাপ রেকর্ড করা হয়নি</div>
             </div>
-          </div>
-        </article>
+
+            <div class="ad-wrap ad-article" aria-label="Advertisement">
+              <span class="ad-label">Ad</span>
+              <div class="ad-content">
+                Upgrade to Base64 Pro for unlimited conversions and advanced
+                features!
+              </div>
+            </div>
+          </article>
+
+          <!-- Countdown Card -->
+          <article class="card" id="countdown">
+            <h2>
+              <span>কাউন্টডাউন টাইমার</span>
+              <span class="badge">টাইমার</span>
+            </h2>
+
+            <div class="input-group">
+              <div class="time-input">
+                <label for="hours">ঘণ্টা</label>
+                <input type="number" id="hours" min="0" max="23" value="0" />
+              </div>
+              <div class="time-input">
+                <label for="minutes">মিনিট</label>
+                <input type="number" id="minutes" min="0" max="59" value="5" />
+              </div>
+              <div class="time-input">
+                <label for="seconds">সেকেন্ড</label>
+                <input type="number" id="seconds" min="0" max="59" value="0" />
+              </div>
+            </div>
+
+            <div class="timer-display">
+              <div class="time" id="countdown-time">05:00:00</div>
+            </div>
+
+            <div class="progress-bar">
+              <div
+                class="progress"
+                id="countdown-progress"
+                style="width: 100%"
+              ></div>
+            </div>
+
+            <div class="controls">
+              <button class="btn btn-primary" id="start-countdown">
+                শুরু করুন
+              </button>
+              <button class="btn btn-warning" id="pause-countdown" disabled>
+                বিরতি
+              </button>
+              <button class="btn btn-danger" id="reset-countdown">রিসেট</button>
+            </div>
+
+            <div class="status status-idle" id="countdown-status">
+              কাউন্টডাউন সেট করুন
+            </div>
+
+            <div class="ad-wrap ad-article" aria-label="Advertisement">
+              <span class="ad-label">Ad</span>
+              <div class="ad-content">
+                Upgrade to Base64 Pro for unlimited conversions and advanced
+                features!
+              </div>
+            </div>
+          </article>
+        </div>
 
         <!-- How to use -->
         <article class="card" id="how">
@@ -367,321 +656,354 @@
           </p>
           <p class="small">
             English preferred? See the
-            <a href="/stopwatch-countdown/" hreflang="en">English version</a>.
+            <a
+              class="text-link"
+              href="/stopwatch-countdown/"
+              hreflang="en"
+              lang="en"
+              aria-label="English version"
+              >English version</a
+            >.
           </p>
         </article>
       </main>
 
       <footer>
-        © <span id="y"></span> Tools Pack • <a class="muted" href="/bn/">হোম</a>
+        © <span id="y"></span> Tools Pack •
+        <a
+          class="text-link"
+          href="/bn/"
+          hreflang="bn"
+          lang="bn"
+          aria-label="বাংলা হোম"
+          >হোম</a
+        >
+        •
+        <a
+          class="text-link"
+          href="/stopwatch-countdown/"
+          hreflang="en"
+          lang="en"
+          aria-label="English Version"
+          >English</a
+        >
       </footer>
     </div>
     <script>
-      // Footer year
-      document.getElementById("y").textContent = new Date().getFullYear();
+      document.addEventListener("DOMContentLoaded", function () {
+        // Stopwatch functionality
+        const stopwatchTime = document.getElementById("stopwatch-time");
+        const startStopwatchBtn = document.getElementById("start-stopwatch");
+        const pauseStopwatchBtn = document.getElementById("pause-stopwatch");
+        const resetStopwatchBtn = document.getElementById("reset-stopwatch");
+        const lapStopwatchBtn = document.getElementById("lap-stopwatch");
+        const stopwatchStatus = document.getElementById("stopwatch-status");
+        const stopwatchLaps = document.getElementById("stopwatch-laps");
 
-      // ===== Lazy init AdSense =====
-      const initAds = () => {
-        window.adsbygoogle = window.adsbygoogle || [];
-        const slots = document.querySelectorAll(
-          "ins.adsbygoogle:not([data-loaded])"
-        );
-        if (!slots.length) return;
-        const push = (el) => {
-          try {
-            (adsbygoogle = window.adsbygoogle || []).push({});
-            el.setAttribute("data-loaded", "1");
-          } catch (e) {}
-        };
-        if ("IntersectionObserver" in window) {
-          const io = new IntersectionObserver(
-            (entries) => {
-              entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                  push(entry.target);
-                  io.unobserve(entry.target);
-                }
-              });
-            },
-            { rootMargin: "200px 0px" }
-          );
-          slots.forEach((el) => io.observe(el));
-        } else {
-          slots.forEach(push);
+        let stopwatchInterval;
+        let stopwatchRunning = false;
+        let stopwatchStartTime = 0;
+        let stopwatchElapsedTime = 0;
+        let stopwatchLapTimes = [];
+
+        function formatStopwatchTime(ms) {
+          const hours = Math.floor(ms / 3600000);
+          const minutes = Math.floor((ms % 3600000) / 60000);
+          const seconds = Math.floor((ms % 60000) / 1000);
+          const centiseconds = Math.floor((ms % 1000) / 10);
+
+          return `${hours
+            .toString()
+            .padStart(
+              2,
+              "0"
+            )}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}.${centiseconds.toString().padStart(2, "0")}`;
         }
-      };
-      window.addEventListener("load", initAds);
 
-      // ===== Helpers =====
-      const $$ = (s, ctx = document) => Array.from(ctx.querySelectorAll(s));
-      const $ = (s, ctx = document) => ctx.querySelector(s);
-      const pad = (n, w = 2) => String(n).padStart(w, "0");
-      const fmtMS = (ms) => {
-        const t = Math.max(0, ms | 0);
-        const h = Math.floor(t / 3600000);
-        const m = Math.floor((t % 3600000) / 60000);
-        const s = Math.floor((t % 60000) / 1000);
-        const ms3 = t % 1000;
-        return `${pad(h)}:${pad(m)}:${pad(s)}.${pad(ms3, 3)}`;
-      };
-      const fmtHMS = (sec) => {
-        sec = Math.max(0, Math.floor(sec));
-        const h = Math.floor(sec / 3600);
-        const m = Math.floor((sec % 3600) / 60);
-        const s = sec % 60;
-        return `${pad(h)}:${pad(m)}:${pad(s)}`;
-      };
+        function updateStopwatch() {
+          const currentTime = Date.now();
+          const elapsed =
+            currentTime - stopwatchStartTime + stopwatchElapsedTime;
+          stopwatchTime.textContent = formatStopwatchTime(elapsed);
+        }
 
-      // ===== Stopwatch =====
-      let swRunning = false,
-        swStart = 0,
-        swAccum = 0,
-        swRaf = null,
-        swLastTotal = 0;
-      const swDisplay = $("#swDisplay");
-      const swTableBody = $("#swTable tbody");
-      const swStatus = $("#swStatus");
+        function startStopwatch() {
+          if (!stopwatchRunning) {
+            stopwatchStartTime = Date.now();
+            stopwatchInterval = setInterval(updateStopwatch, 10);
+            stopwatchRunning = true;
 
-      function swTick(now) {
-        const total = swAccum + (now - swStart);
-        swLastTotal = total;
-        swDisplay.textContent = fmtMS(total);
-        if (swRunning) swRaf = requestAnimationFrame(swTick);
-      }
+            startStopwatchBtn.textContent = "পুনরায় শুরু";
+            startStopwatchBtn.disabled = true;
+            pauseStopwatchBtn.disabled = false;
+            lapStopwatchBtn.disabled = false;
 
-      function swStartFn() {
-        if (swRunning) return;
-        swRunning = true;
-        swStart = performance.now();
-        swStatus.textContent = "চলছে…";
-        swRaf = requestAnimationFrame(swTick);
-      }
+            stopwatchStatus.textContent = "চলছে...";
+            stopwatchStatus.className = "status status-active";
+          }
+        }
 
-      function swPauseFn() {
-        if (!swRunning) return;
-        swRunning = false;
-        cancelAnimationFrame(swRaf);
-        swAccum += performance.now() - swStart;
-        swStatus.textContent = "পজ করা হয়েছে";
-      }
+        function pauseStopwatch() {
+          if (stopwatchRunning) {
+            clearInterval(stopwatchInterval);
+            stopwatchElapsedTime += Date.now() - stopwatchStartTime;
+            stopwatchRunning = false;
 
-      function swResetFn() {
-        swRunning = false;
-        cancelAnimationFrame(swRaf);
-        swStart = 0;
-        swAccum = 0;
-        swLastTotal = 0;
-        swDisplay.textContent = "00:00:00.000";
-        swTableBody.innerHTML = "";
-        swStatus.textContent = "রিসেট সম্পন্ন";
-      }
+            startStopwatchBtn.disabled = false;
+            pauseStopwatchBtn.disabled = true;
 
-      function swLapFn() {
-        const total = swRunning ? swLastTotal : swAccum;
-        const n = swTableBody.children.length;
-        const prevTotal = n
-          ? Number(swTableBody.lastElementChild.dataset.total)
-          : 0;
-        const lap = total - prevTotal;
-        const tr = document.createElement("tr");
-        tr.dataset.total = String(total | 0);
-        tr.innerHTML = `<td>${n + 1}</td><td class="mono">${fmtMS(
-          lap
-        )}</td><td class="mono">${fmtMS(total)}</td>`;
-        swTableBody.appendChild(tr);
-        swStatus.textContent = `ল্যাপ ${n + 1} যোগ হয়েছে`;
-      }
+            stopwatchStatus.textContent = "বিরতিতে আছে";
+            stopwatchStatus.className = "status status-paused";
+          }
+        }
 
-      function swExportCSV() {
-        const rows = [["#", "Lap", "Total"]];
-        $$("#swTable tbody tr").forEach((tr) => {
-          const [i, lap, tot] = Array.from(tr.children).map((td) =>
-            td.textContent.trim()
+        function resetStopwatch() {
+          clearInterval(stopwatchInterval);
+          stopwatchRunning = false;
+          stopwatchStartTime = 0;
+          stopwatchElapsedTime = 0;
+          stopwatchLapTimes = [];
+
+          stopwatchTime.textContent = "00:00:00.00";
+          startStopwatchBtn.textContent = "শুরু করুন";
+          startStopwatchBtn.disabled = false;
+          pauseStopwatchBtn.disabled = true;
+          lapStopwatchBtn.disabled = true;
+
+          stopwatchStatus.textContent = "প্রস্তুত";
+          stopwatchStatus.className = "status status-idle";
+
+          updateLapsDisplay();
+        }
+
+        function addLap() {
+          if (stopwatchRunning) {
+            const currentTime = Date.now();
+            const elapsed =
+              currentTime - stopwatchStartTime + stopwatchElapsedTime;
+            stopwatchLapTimes.unshift({
+              time: elapsed,
+              display: formatStopwatchTime(elapsed),
+            });
+
+            updateLapsDisplay();
+          }
+        }
+
+        function updateLapsDisplay() {
+          if (stopwatchLapTimes.length === 0) {
+            stopwatchLaps.innerHTML =
+              '<div class="empty-state">কোনো ল্যাপ রেকর্ড করা হয়নি</div>';
+          } else {
+            stopwatchLaps.innerHTML = stopwatchLapTimes
+              .map(
+                (lap, index) => `
+                        <div class="lap-item">
+                            <span class="lap-number">ল্যাপ ${
+                              stopwatchLapTimes.length - index
+                            }</span>
+                            <span class="lap-time">${lap.display}</span>
+                        </div>
+                    `
+              )
+              .join("");
+          }
+        }
+
+        // Countdown functionality
+        const hoursInput = document.getElementById("hours");
+        const minutesInput = document.getElementById("minutes");
+        const secondsInput = document.getElementById("seconds");
+        const countdownTime = document.getElementById("countdown-time");
+        const countdownProgress = document.getElementById("countdown-progress");
+        const startCountdownBtn = document.getElementById("start-countdown");
+        const pauseCountdownBtn = document.getElementById("pause-countdown");
+        const resetCountdownBtn = document.getElementById("reset-countdown");
+        const countdownStatus = document.getElementById("countdown-status");
+
+        let countdownInterval;
+        let countdownRunning = false;
+        let countdownTotalTime = 0;
+        let countdownRemainingTime = 0;
+        let countdownStartTime = 0;
+
+        function formatCountdownTime(ms) {
+          const hours = Math.floor(ms / 3600000);
+          const minutes = Math.floor((ms % 3600000) / 60000);
+          const seconds = Math.floor((ms % 60000) / 1000);
+
+          return `${hours
+            .toString()
+            .padStart(
+              2,
+              "0"
+            )}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+        }
+
+        function updateCountdown() {
+          const currentTime = Date.now();
+          const elapsed = currentTime - countdownStartTime;
+          countdownRemainingTime = Math.max(0, countdownTotalTime - elapsed);
+
+          countdownTime.textContent = formatCountdownTime(
+            countdownRemainingTime
           );
-          rows.push([i, lap, tot]);
-        });
-        const csv = rows
-          .map((r) => r.map((x) => `"${x.replace(/"/g, '""')}"`).join(","))
-          .join("\n");
-        const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = "stopwatch_laps.csv";
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-        URL.revokeObjectURL(url);
-      }
 
-      $("#swStart").addEventListener("click", swStartFn);
-      $("#swPause").addEventListener("click", swPauseFn);
-      $("#swReset").addEventListener("click", swResetFn);
-      $("#swLap").addEventListener("click", swLapFn);
-      $("#swExport").addEventListener("click", swExportCSV);
+          // Update progress bar
+          const progress = (countdownRemainingTime / countdownTotalTime) * 100;
+          countdownProgress.style.width = `${progress}%`;
 
-      // Keyboard shortcuts (when not typing in an input/textarea)
-      document.addEventListener("keydown", (e) => {
-        const tag = document.activeElement?.tagName;
-        if (tag === "INPUT" || tag === "TEXTAREA") return;
-        if (e.code === "Space") {
-          e.preventDefault();
-          swRunning ? swPauseFn() : swStartFn();
-        } else if (e.key.toLowerCase() === "l") swLapFn();
-        else if (e.key.toLowerCase() === "r") swResetFn();
-      });
+          // Change progress bar color based on remaining time
+          if (progress < 20) {
+            countdownProgress.style.background = "var(--danger)";
+          } else if (progress < 50) {
+            countdownProgress.style.background = "var(--warning)";
+          } else {
+            countdownProgress.style.background = "var(--primary)";
+          }
 
-      // ===== Countdown =====
-      let cdRunning = false,
-        cdEnd = 0,
-        cdRemain = 0,
-        cdRaf = null;
-      const cdH = $("#cdH"),
-        cdM = $("#cdM"),
-        cdS = $("#cdS");
-      const cdDisplay = $("#cdDisplay"),
-        cdStatus = $("#cdStatus"),
-        cdLoop = $("#cdLoop");
+          if (countdownRemainingTime <= 0) {
+            clearInterval(countdownInterval);
+            countdownRunning = false;
+            countdownTime.textContent = "00:00:00";
+            countdownStatus.textContent = "কাউন্টডাউন সম্পন্ন!";
+            countdownStatus.className = "status status-active";
 
-      function getTotalSec() {
-        const h = Math.max(0, parseInt(cdH.value || "0", 10));
-        const m = Math.max(0, parseInt(cdM.value || "0", 10));
-        const s = Math.max(0, parseInt(cdS.value || "0", 10));
-        return h * 3600 + m * 60 + s;
-      }
-      function setFromSeconds(sec) {
-        const h = Math.floor(sec / 3600),
-          m = Math.floor((sec % 3600) / 60),
-          s = sec % 60;
-        cdH.value = h;
-        cdM.value = m;
-        cdS.value = s;
-        cdDisplay.textContent = fmtHMS(sec);
-      }
+            startCountdownBtn.disabled = false;
+            pauseCountdownBtn.disabled = true;
 
-      function cdTick(now) {
-        const remainMs = Math.max(0, cdEnd - now);
-        const remainSec = Math.ceil(remainMs / 1000);
-        cdDisplay.textContent = fmtHMS(remainSec);
-        if (remainMs <= 0) {
-          cdRunning = false;
-          cdStatus.textContent = "⏰ সময় শেষ!";
-          alarm();
-          if (cdLoop.checked) {
-            // restart with same duration
-            const dur = getTotalSec();
-            if (dur > 0) {
-              cdStartFn(dur);
-              return;
+            // Play alert sound (browser beep)
+            try {
+              const audioContext = new (window.AudioContext ||
+                window.webkitAudioContext)();
+              const oscillator = audioContext.createOscillator();
+              oscillator.type = "sine";
+              oscillator.frequency.setValueAtTime(
+                800,
+                audioContext.currentTime
+              );
+              oscillator.connect(audioContext.destination);
+              oscillator.start();
+              oscillator.stop(audioContext.currentTime + 0.5);
+            } catch (e) {
+              console.log("Audio not supported");
             }
           }
-          return;
         }
-        if (cdRunning) cdRaf = requestAnimationFrame(cdTick);
-      }
 
-      function cdStartFn(presetSec) {
-        const total = typeof presetSec === "number" ? presetSec : getTotalSec();
-        if (total <= 0) {
-          cdStatus.textContent = "সময় দিন";
-          return;
+        function startCountdown() {
+          if (!countdownRunning) {
+            // Get time from inputs
+            const hours = parseInt(hoursInput.value) || 0;
+            const minutes = parseInt(minutesInput.value) || 0;
+            const seconds = parseInt(secondsInput.value) || 0;
+
+            countdownTotalTime = (hours * 3600 + minutes * 60 + seconds) * 1000;
+
+            if (countdownTotalTime <= 0) {
+              countdownStatus.textContent = "দয়া করে বৈধ সময় সেট করুন";
+              countdownStatus.className = "status status-paused";
+              return;
+            }
+
+            countdownRemainingTime = countdownTotalTime;
+            countdownStartTime = Date.now();
+
+            countdownInterval = setInterval(updateCountdown, 100);
+            countdownRunning = true;
+
+            startCountdownBtn.disabled = true;
+            pauseCountdownBtn.disabled = false;
+            hoursInput.disabled = true;
+            minutesInput.disabled = true;
+            secondsInput.disabled = true;
+
+            countdownStatus.textContent = "কাউন্টডাউন চলছে...";
+            countdownStatus.className = "status status-active";
+
+            updateCountdown();
+          }
         }
-        cdEnd = performance.now() + total * 1000;
-        cdRunning = true;
-        cdStatus.textContent = "চলছে…";
-        cdRaf && cancelAnimationFrame(cdRaf);
-        cdRaf = requestAnimationFrame(cdTick);
-      }
 
-      function cdPauseFn() {
-        if (!cdRunning) return;
-        cdRunning = false;
-        cancelAnimationFrame(cdRaf);
-        const remainMs = Math.max(0, cdEnd - performance.now());
-        cdRemain = Math.ceil(remainMs / 1000);
-        cdStatus.textContent = "পজ করা হয়েছে";
-      }
+        function pauseCountdown() {
+          if (countdownRunning) {
+            clearInterval(countdownInterval);
+            countdownRunning = false;
 
-      function cdResetFn() {
-        cdRunning = false;
-        cancelAnimationFrame(cdRaf);
-        const sec = getTotalSec();
-        cdDisplay.textContent = fmtHMS(sec);
-        cdStatus.textContent = "রিসেট সম্পন্ন";
-      }
+            startCountdownBtn.disabled = false;
+            pauseCountdownBtn.disabled = true;
 
-      // Preset buttons
-      $$("button[data-preset]").forEach((b) => {
-        b.addEventListener("click", () => {
-          const add = parseInt(b.dataset.preset, 10);
-          const cur = getTotalSec();
-          setFromSeconds(cur + add);
-        });
-      });
-
-      $("#cdStart").addEventListener("click", () => {
-        if (!cdRunning && cdRemain > 0) {
-          cdStartFn(cdRemain);
-          cdRemain = 0;
-        } else cdStartFn();
-      });
-      $("#cdPause").addEventListener("click", cdPauseFn);
-      $("#cdReset").addEventListener("click", () => {
-        cdRemain = 0;
-        cdResetFn();
-      });
-      [cdH, cdM, cdS].forEach((el) =>
-        el.addEventListener(
-          "input",
-          () => (cdDisplay.textContent = fmtHMS(getTotalSec()))
-        )
-      );
-
-      // Keyboard: Enter toggles start/pause, Esc resets (when focus not in text inputs other than cd inputs it's fine too)
-      document.addEventListener("keydown", (e) => {
-        const tag = document.activeElement?.tagName;
-        if (tag === "INPUT" || tag === "TEXTAREA") return; // avoid while typing
-        if (e.key === "Enter") {
-          e.preventDefault();
-          cdRunning ? cdPauseFn() : $("#cdStart").click();
+            countdownStatus.textContent = "বিরতিতে আছে";
+            countdownStatus.className = "status status-paused";
+          }
         }
-        if (e.key === "Escape") {
-          cdRemain = 0;
-          cdResetFn();
-        }
-      });
 
-      // ===== Alarm (WebAudio + Vibration + Notification) =====
-      let audioCtx;
-      function alarm() {
-        try {
-          if (!audioCtx)
-            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-          const o = audioCtx.createOscillator();
-          const g = audioCtx.createGain();
-          o.type = "sine";
-          o.frequency.value = 880;
-          o.connect(g);
-          g.connect(audioCtx.destination);
-          g.gain.setValueAtTime(0, audioCtx.currentTime);
-          g.gain.linearRampToValueAtTime(0.2, audioCtx.currentTime + 0.02);
-          g.gain.exponentialRampToValueAtTime(
-            0.0001,
-            audioCtx.currentTime + 1.2
+        function resetCountdown() {
+          clearInterval(countdownInterval);
+          countdownRunning = false;
+
+          hoursInput.disabled = false;
+          minutesInput.disabled = false;
+          secondsInput.disabled = false;
+
+          startCountdownBtn.disabled = false;
+          pauseCountdownBtn.disabled = true;
+
+          countdownStatus.textContent = "কাউন্টডাউন সেট করুন";
+          countdownStatus.className = "status status-idle";
+
+          countdownProgress.style.width = "100%";
+          countdownProgress.style.background = "var(--primary)";
+
+          // Reset to initial values
+          const hours = parseInt(hoursInput.value) || 0;
+          const minutes = parseInt(minutesInput.value) || 5;
+          const seconds = parseInt(secondsInput.value) || 0;
+
+          countdownTime.textContent = formatCountdownTime(
+            (hours * 3600 + minutes * 60 + seconds) * 1000
           );
-          o.start();
-          o.stop(audioCtx.currentTime + 1.25);
-        } catch (e) {
-          /* ignore */
         }
-        if (navigator.vibrate) navigator.vibrate([150, 80, 150]);
-        if ("Notification" in window) {
-          if (Notification.permission === "granted")
-            new Notification("⏰ সময় শেষ!", { body: "কাউন্টডাউন সম্পন্ন।" });
-          else if (Notification.permission !== "denied")
-            Notification.requestPermission();
-        }
-      }
+
+        // Event listeners for stopwatch
+        startStopwatchBtn.addEventListener("click", startStopwatch);
+        pauseStopwatchBtn.addEventListener("click", pauseStopwatch);
+        resetStopwatchBtn.addEventListener("click", resetStopwatch);
+        lapStopwatchBtn.addEventListener("click", addLap);
+
+        // Event listeners for countdown
+        startCountdownBtn.addEventListener("click", startCountdown);
+        pauseCountdownBtn.addEventListener("click", pauseCountdown);
+        resetCountdownBtn.addEventListener("click", resetCountdown);
+
+        // Input validation for countdown
+        [hoursInput, minutesInput, secondsInput].forEach((input) => {
+          input.addEventListener("change", function () {
+            let value = parseInt(this.value) || 0;
+
+            if (this.id === "hours") {
+              value = Math.min(23, Math.max(0, value));
+            } else {
+              value = Math.min(59, Math.max(0, value));
+            }
+
+            this.value = value;
+
+            if (!countdownRunning) {
+              const hours = parseInt(hoursInput.value) || 0;
+              const minutes = parseInt(minutesInput.value) || 5;
+              const seconds = parseInt(secondsInput.value) || 0;
+
+              countdownTime.textContent = formatCountdownTime(
+                (hours * 3600 + minutes * 60 + seconds) * 1000
+              );
+            }
+          });
+        });
+
+        // Initialize countdown display
+        resetCountdown();
+      });
     </script>
     <script src="/assets/tracker.js" defer data-trk-site="tools-pack"></script>
     <script src="/assets/related-more.js" defer></script>

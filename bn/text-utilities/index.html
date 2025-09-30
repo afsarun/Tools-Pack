@@ -91,49 +91,203 @@
       }
     </script>
 
-    <!-- Page-only tweaks -->
     <style>
       :root {
-        --muted: #a5a7c0;
-        --border: #2f3152;
+        --primary: #3b82f6;
+        --primary-hover: #2563eb;
+        --secondary: #64748b;
+        --success: #10b981;
+        --danger: #ef4444;
+        --warning: #f59e0b;
+        --background: #0f172a;
+        --surface: #1e293b;
+        --surface-light: #334155;
+        --text: #f1f5f9;
+        --text-muted: #c4cdd6;
+        --border: #475569;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: var(--background);
+        color: var(--text);
+        line-height: 1.6;
+        padding: 20px;
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .subtitle {
+        color: var(--text-muted);
+        font-size: 1.1rem;
+      }
+
+      .card {
+        background-color: var(--surface);
+        border-radius: 12px;
+        padding: 25px;
+        margin-bottom: 25px;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--border);
+      }
+
+      h2 {
+        color: var(--primary);
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 10px;
+      }
+
+      .form-label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: var(--text-muted);
+      }
+
+      .muted {
+        color: var(--text-muted);
+      }
+
+      .textarea {
+        width: 100%;
+        min-height: 200px;
+        padding: 15px;
+        background-color: var(--surface-light);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        color: var(--text);
+        font-size: 16px;
+        resize: vertical;
+        transition: border-color 0.3s;
+      }
+
+      .textarea:focus {
+        outline: none;
+        border-color: var(--primary);
       }
 
       .actions {
         display: flex;
         flex-wrap: wrap;
-        gap: 8px;
-        margin: 10px 0;
+        gap: 10px;
+        margin: 20px 0;
+      }
+
+      .btn:hover {
+        background-color: var(--primary);
+        transform: translateY(-2px);
+      }
+
+      .btn-primary {
+        background-color: var(--primary);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background-color: var(--primary-hover);
+      }
+
+      .btn-ghost {
+        background-color: transparent;
+        border: 1px dashed var(--border);
+      }
+
+      .btn-ghost:hover {
+        background-color: var(--surface-light);
       }
 
       .stats {
         display: flex;
         flex-wrap: wrap;
-        gap: 10px;
-        margin-top: 8px;
-        color: var(--muted);
-        font-size: 0.9rem;
+        gap: 15px;
+        margin-top: 20px;
+        padding: 15px;
+        background-color: var(--surface-light);
+        border-radius: 8px;
+        font-size: 14px;
       }
-      .mono {
-        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas,
-          "Liberation Mono", monospace;
-      }
-      .pill {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        /* background: #3a3a55; */
-        border-radius: 999px;
-        padding: 6px 10px;
-      }
-      .row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        align-items: center;
-      }
+
       .small {
-        font-size: 0.9rem;
-        color: var(--muted);
+        font-size: 12px;
+        color: var(--text-muted);
+      }
+
+      .ad-wrap {
+        margin: 20px 0;
+        padding: 15px;
+        background-color: var(--surface-light);
+        border-radius: 8px;
+        border: 1px dashed var(--border);
+        text-align: center;
+      }
+
+      .ad-label {
+        display: inline-block;
+        padding: 2px 8px;
+        background-color: var(--secondary);
+        color: white;
+        border-radius: 4px;
+        font-size: 12px;
+        margin-bottom: 10px;
+      }
+
+      .ad-content {
+        color: var(--text-muted);
+        font-style: italic;
+      }
+
+      .notification {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 15px 25px;
+        background-color: var(--success);
+        color: white;
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        transform: translateX(150%);
+        transition: transform 0.3s ease;
+        z-index: 1000;
+      }
+
+      .notification.show {
+        transform: translateX(0);
+      }
+
+      @media (max-width: 768px) {
+        .actions {
+          flex-direction: column;
+        }
+
+        .btn {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .stats {
+          flex-direction: column;
+          gap: 10px;
+        }
       }
     </style>
   </head>
@@ -186,7 +340,6 @@
           <a href="#related">সম্পর্কিত</a>
         </p>
 
-        <!-- Tool -->
         <article class="card" id="tool">
           <h2>এডিটর</h2>
 
@@ -223,22 +376,16 @@
             />
           </div>
 
-          <!-- Ad #2: In-article -->
+          <!-- Ad #1: In-article -->
           <div
             class="ad-wrap ad-article"
             aria-label="Advertisement"
             style="margin-top: 10px"
           >
             <span class="ad-label">Ad</span>
-            <ins
-              class="adsbygoogle"
-              style="display: inline-block; text-align: center"
-              data-ad-client="ca-pub-1234567890123456"
-              data-ad-slot="2222222222"
-              data-ad-format="fluid"
-              data-ad-layout="in-article"
-              data-adtest="on"
-            ></ins>
+            <div class="ad-content">
+              আপনার টেক্সট এডিটিং অভিজ্ঞতা উন্নত করুন প্রিমিয়াম ফিচার সহ!
+            </div>
           </div>
 
           <div class="stats">
@@ -248,11 +395,12 @@
             <span id="bc">বাইট (UTF-8): 0</span>
             <span id="status" class="small">—</span>
           </div>
+
+          <!-- Ad #2: In-article -->
           <div class="ad-wrap ad-article" aria-label="Advertisement">
             <span class="ad-label">Ad</span>
             <div class="ad-content">
-              Upgrade to Base64 Pro for unlimited conversions and advanced
-              features!
+              প্রো ভার্সনে আপগ্রেড করুন সীমাহীন কনভার্শন এবং উন্নত ফিচারের জন্য!
             </div>
           </div>
         </article>
@@ -354,145 +502,232 @@
             <a class="btn" href="/bn/text-to-pdf/">টেক্সট → PDF</a>
             <a class="btn" href="/bn/json-formatter/">JSON ফরম্যাটার</a>
           </p>
+          <p class="small">
+            English preferred? See the
+            <a
+              class="text-link"
+              href="/text-utilities/"
+              hreflang="en"
+              lang="en"
+              aria-label="English version"
+              >English version</a
+            >.
+          </p>
         </article>
       </main>
 
       <footer>
-        © <span id="y"></span> Tools Pack • <a class="muted" href="/bn/">হোম</a>
+        © <span id="y"></span> Tools Pack •
+        <a
+          class="text-link"
+          href="/bn/"
+          hreflang="bn"
+          lang="bn"
+          aria-label="বাংলা হোম"
+          >হোম</a
+        >
+        •
+        <a
+          class="text-link"
+          href="/text-utilities/"
+          hreflang="en"
+          lang="en"
+          aria-label="English Version"
+          >English</a
+        >
       </footer>
     </div>
     <script>
-      // Year
-      document.getElementById("y").textContent = new Date().getFullYear();
+      document.addEventListener("DOMContentLoaded", function () {
+        const textInput = document.getElementById("textInput");
+        const btnUpper = document.getElementById("btnUpper");
+        const btnLower = document.getElementById("btnLower");
+        const btnTitle = document.getElementById("btnTitle");
+        const btnSentence = document.getElementById("btnSentence");
+        const btnSpaces = document.getElementById("btnSpaces");
+        const btnLinejoin = document.getElementById("btnLinejoin");
+        const btnSort = document.getElementById("btnSort");
+        const btnDedupe = document.getElementById("btnDedupe");
+        const btnCopy = document.getElementById("btnCopy");
+        const btnClear = document.getElementById("btnClear");
+        const btnDownload = document.getElementById("btnDownload");
+        const fileInput = document.getElementById("fileInput");
+        const notification = document.getElementById("notification");
 
-      // Elements
-      const $ = (id) => document.getElementById(id);
-      const input = $("textInput");
-      const wc = $("wc"),
-        cc = $("cc"),
-        lc = $("lc"),
-        bc = $("bc"),
-        statusEl = $("status");
+        // Stats elements
+        const wc = document.getElementById("wc");
+        const cc = document.getElementById("cc");
+        const lc = document.getElementById("lc");
+        const bc = document.getElementById("bc");
+        const status = document.getElementById("status");
 
-      // Utilities
-      const enc = new TextEncoder();
-      const updateCount = () => {
-        const t = input.value;
-        const words = (t.trim().match(/\S+/g) || []).length;
-        wc.textContent = `শব্দ: ${words}`;
-        cc.textContent = `অক্ষর: ${t.length}`;
-        lc.textContent = `লাইন: ${t ? t.split(/\r?\n/).length : 0}`;
-        bc.textContent = `বাইট (UTF-8): ${enc.encode(t).length}`;
-      };
-      const set = (v, note = "—") => {
-        input.value = v;
-        updateCount();
-        statusEl.textContent = note;
-      };
+        // Update stats function
+        function updateStats() {
+          const text = textInput.value;
 
-      // Case helpers (Latin-focused; Bangla unaffected)
-      const titleCase = (s) =>
-        s.replace(
-          /\S+/g,
-          (w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()
-        );
-      const sentenceCase = (s) =>
-        s
-          .toLowerCase()
-          .replace(
-            /(^|[.!?।]\s+)([a-z])/g,
-            (m, p1, p2) => p1 + p2.toUpperCase()
-          );
+          // Word count (split by spaces and filter empty strings)
+          const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+          wc.textContent = `শব্দ: ${words}`;
 
-      // Actions
-      $("btnUpper").onclick = () =>
-        set(input.value.toUpperCase(), "🔠 বড় হাতা");
-      $("btnLower").onclick = () =>
-        set(input.value.toLowerCase(), "🔡 ছোট হাতা");
-      $("btnTitle").onclick = () =>
-        set(titleCase(input.value), "📝 শিরোনাম কেস");
-      $("btnSentence").onclick = () =>
-        set(sentenceCase(input.value), "✒️ বাক্য কেস");
-      $("btnSpaces").onclick = () =>
-        set(
-          input.value.replace(/\s+/g, " ").trim(),
-          "🚫 অতিরিক্ত স্পেস সরানো হয়েছে"
-        );
-      $("btnLinejoin").onclick = () =>
-        set(
-          input.value
-            .replace(/\r?\n+/g, " ")
-            .replace(/\s+/g, " ")
-            .trim(),
-          "↩️ লাইনব্রেক স্পেসে রূপান্তর"
-        );
-      $("btnSort").onclick = () => {
-        const lines = input.value.split(/\r?\n/);
-        lines.sort((a, b) => a.localeCompare(b));
-        set(lines.join("\n"), "🔽 লাইন সাজানো হয়েছে");
-      };
-      $("btnDedupe").onclick = () => {
-        const seen = new Set();
-        const out = [];
-        for (const line of input.value.split(/\r?\n/)) {
-          if (!seen.has(line)) {
-            seen.add(line);
-            out.push(line);
-          }
+          // Character count
+          cc.textContent = `অক্ষর: ${text.length}`;
+
+          // Line count
+          const lines = text ? text.split("\n").length : 0;
+          lc.textContent = `লাইন: ${lines}`;
+
+          // Byte count (UTF-8)
+          const byteCount = new Blob([text]).size;
+          bc.textContent = `বাইট (UTF-8): ${byteCount}`;
         }
-        set(out.join("\n"), "🧹 ডুপ্লিকেট লাইন মুছে ফেলা হয়েছে");
-      };
 
-      $("btnCopy").onclick = async () => {
-        try {
-          await navigator.clipboard.writeText(input.value || "");
-          statusEl.textContent = "📋 কপি হয়েছে।";
-        } catch {
-          statusEl.textContent = "কপি করা যায়নি।";
+        // Show notification function
+        function showNotification(message) {
+          notification.textContent = message;
+          notification.classList.add("show");
+          setTimeout(() => {
+            notification.classList.remove("show");
+          }, 2000);
         }
-      };
-      $("btnClear").onclick = () => set("", "🗑 খালি করা হয়েছে");
 
-      $("btnDownload").onclick = () => {
-        const blob = new Blob([input.value], {
-          type: "text/plain;charset=utf-8",
+        // Update status function
+        function updateStatus(message) {
+          status.textContent = message;
+          setTimeout(() => {
+            status.textContent = "—";
+          }, 3000);
+        }
+
+        // Uppercase function
+        btnUpper.addEventListener("click", function () {
+          textInput.value = textInput.value.toUpperCase();
+          updateStats();
+          updateStatus("বড় হাতের অক্ষরে রূপান্তরিত হয়েছে");
         });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        const ts = new Date();
-        const f = `text_${ts.getFullYear()}${String(ts.getMonth() + 1).padStart(
-          2,
-          "0"
-        )}${String(ts.getDate()).padStart(2, "0")}.txt`;
-        a.href = url;
-        a.download = f;
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-        URL.revokeObjectURL(url);
-        statusEl.textContent = "⬇ TXT ডাউনলোড হয়েছে।";
-      };
 
-      $("fileInput").addEventListener("change", (e) => {
-        const f = e.target.files && e.target.files[0];
-        if (!f) return;
-        const r = new FileReader();
-        r.onload = (ev) =>
-          set(String(ev.target.result || ""), "⬆ TXT ইমপোর্ট হয়েছে");
-        r.readAsText(f);
-        e.target.value = "";
-      });
+        // Lowercase function
+        btnLower.addEventListener("click", function () {
+          textInput.value = textInput.value.toLowerCase();
+          updateStats();
+          updateStatus("ছোট হাতের অক্ষরে রূপান্তরিত হয়েছে");
+        });
 
-      // Auto update
-      input.addEventListener("input", updateCount);
-      updateCount();
+        // Title case function
+        btnTitle.addEventListener("click", function () {
+          const text = textInput.value.toLowerCase();
+          textInput.value = text.replace(/\b\w/g, function (char) {
+            return char.toUpperCase();
+          });
+          updateStats();
+          updateStatus("শিরোনাম কেসে রূপান্তরিত হয়েছে");
+        });
 
-      // Keyboard: Ctrl/Cmd + Enter => remove extra spaces
-      input.addEventListener("keydown", (e) => {
-        if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
-          e.preventDefault();
-          $("btnSpaces").click();
-        }
+        // Sentence case function
+        btnSentence.addEventListener("click", function () {
+          const text = textInput.value.toLowerCase();
+          textInput.value = text.replace(
+            /(^\s*|[.!?]\s+)(\w)/g,
+            function (match, p1, p2) {
+              return p1 + p2.toUpperCase();
+            }
+          );
+          updateStats();
+          updateStatus("বাক্য কেসে রূপান্তরিত হয়েছে");
+        });
+
+        // Fix spaces function
+        btnSpaces.addEventListener("click", function () {
+          textInput.value = textInput.value.replace(/\s+/g, " ").trim();
+          updateStats();
+          updateStatus("অতিরিক্ত স্পেস ঠিক করা হয়েছে");
+        });
+
+        // Line join function
+        btnLinejoin.addEventListener("click", function () {
+          textInput.value = textInput.value.replace(/\n+/g, " ");
+          updateStats();
+          updateStatus("লাইনব্রেক স্পেসে রূপান্তরিত হয়েছে");
+        });
+
+        // Sort lines function
+        btnSort.addEventListener("click", function () {
+          const lines = textInput.value
+            .split("\n")
+            .filter((line) => line.trim() !== "");
+          lines.sort();
+          textInput.value = lines.join("\n");
+          updateStats();
+          updateStatus("লাইনগুলো A-Z অনুসারে সাজানো হয়েছে");
+        });
+
+        // Remove duplicate lines function
+        btnDedupe.addEventListener("click", function () {
+          const lines = textInput.value.split("\n");
+          const uniqueLines = [...new Set(lines)];
+          textInput.value = uniqueLines.join("\n");
+          updateStats();
+          updateStatus("ডুপ্লিকেট লাইন সরানো হয়েছে");
+        });
+
+        // Copy function
+        btnCopy.addEventListener("click", function () {
+          if (textInput.value) {
+            textInput.select();
+            navigator.clipboard
+              .writeText(textInput.value)
+              .then(() => {
+                showNotification("কপি করা হয়েছে!");
+              })
+              .catch((err) => {
+                showNotification("কপি করতে সমস্যা হয়েছে");
+                console.error("কপি করতে সমস্যা: ", err);
+              });
+          }
+        });
+
+        // Clear function
+        btnClear.addEventListener("click", function () {
+          textInput.value = "";
+          updateStats();
+          updateStatus("টেক্সট ক্লিয়ার করা হয়েছে");
+        });
+
+        // Download function
+        btnDownload.addEventListener("click", function () {
+          if (textInput.value) {
+            const blob = new Blob([textInput.value], { type: "text/plain" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "text-editor-export.txt";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            updateStatus("ফাইল ডাউনলোড করা হয়েছে");
+          }
+        });
+
+        // File import function
+        fileInput.addEventListener("change", function (e) {
+          const file = e.target.files[0];
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+              textInput.value = e.target.result;
+              updateStats();
+              updateStatus("ফাইল ইমপোর্ট করা হয়েছে");
+            };
+            reader.readAsText(file);
+          }
+          // Reset file input
+          fileInput.value = "";
+        });
+
+        // Update stats on input
+        textInput.addEventListener("input", updateStats);
+
+        // Initialize with sample text
       });
     </script>
     <script src="/assets/tracker.js" defer data-trk-site="tools-pack"></script>

@@ -125,40 +125,160 @@
       }
     </script>
 
-    <!-- Page-only tweaks -->
     <style>
       :root {
-        --muted: #a5a7c0;
-        --border: #2f3152;
+        --badge: #073c92;
+        --primary: #3b82f6;
+        --primary-hover: #2563eb;
+        --secondary: #64748b;
+        --success: #10b981;
+        --danger: #ef4444;
+        --warning: #f59e0b;
+        --background: #0f172a;
+        --surface: #1e293b;
+        --surface-light: #334155;
+        --text: #f1f5f9;
+        --text-muted: #c4cdd6;
+        --border: #475569;
+        --gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+        --shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+          0 10px 10px -5px rgb(0 0 0 / 0.04);
+        --shadow-lg: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+        --link: #60a5fa;
+        --link-hover: #93c5fd;
+        --link-visited: #a78bfa;
       }
-      .mono {
-        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas,
-          "Liberation Mono", monospace;
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       }
+
+      body {
+        background: var(--background);
+        color: var(--text);
+        line-height: 1.6;
+        padding: 20px;
+        min-height: 100vh;
+      }
+
+      h1 {
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+      }
+
+      .subtitle {
+        color: var(--text-muted);
+        font-size: 1.1rem;
+      }
+
+      .tool-card {
+        background: var(--surface);
+        border-radius: 12px;
+        padding: 30px;
+        box-shadow: var(--shadow-lg);
+        margin-bottom: 30px;
+      }
+
+      h3 {
+        color: var(--text);
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+      }
+
+      .unit-block {
+        margin-bottom: 25px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .unit-block:last-child {
+        border-bottom: none;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .form-label {
+        color: var(--text);
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
       .row {
         display: flex;
-        flex-wrap: wrap;
         gap: 10px;
+        flex-wrap: wrap;
         align-items: center;
       }
-      /* .pill {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        background: #3a3a55;
-        border-radius: 999px;
-        padding: 6px 10px;
-      } */
-      .btn-ghost {
-        background: transparent;
-        border: 2px solid var(--border);
-        color: inherit;
+
+      .form-input {
+        background: var(--background);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 10px 12px;
+        color: var(--text);
+        font-size: 1rem;
+        width: 140px;
       }
+
+      .form-select {
+        background: var(--background);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 10px 12px;
+        color: var(--text);
+        font-size: 1rem;
+        flex: 1;
+        min-width: 180px;
+      }
+
+      .result {
+        margin-top: 10px;
+        padding: 10px;
+        background: var(--surface-light);
+        border-radius: 6px;
+        color: var(--success);
+        font-size: 1rem;
+        min-height: 20px;
+      }
+
+      .mono {
+        font-family: monospace;
+      }
+
       .muted {
-        color: var(--muted);
+        color: var(--text-muted);
       }
-      .small {
-        font-size: 0.9rem;
+
+      kbd {
+        background: var(--surface-light);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 2px 6px;
+        font-family: monospace;
+        font-size: 0.8rem;
+      }
+
+      @media (max-width: 768px) {
+        .row {
+          flex-direction: column;
+        }
+
+        .form-input,
+        .form-select {
+          width: 100%;
+        }
       }
     </style>
   </head>
@@ -212,93 +332,119 @@
           <a href="#related">সম্পর্কিত</a>
         </p>
 
-        <!-- Tool -->
-        <article class="card" id="tool">
-          <h2>কনভার্টার</h2>
+        <section class="tool-card" id="converter">
+          <h3>একক রূপান্তর</h3>
 
-          <div class="row">
-            <select id="cat" class="select form-select" aria-label="ক্যাটাগরি">
-              <option value="length">দৈর্ঘ্য</option>
-              <option value="weight">ওজন</option>
-              <option value="temperature">তাপমাত্রা</option>
-            </select>
-
-            <label class="pill form-label">
-              মান
+          <div class="unit-block form-group">
+            <label for="lengthInput" class="form-label">দৈর্ঘ্য</label>
+            <div class="row">
               <input
-                id="val"
-                class="field form-input"
                 type="number"
-                step="any"
+                id="lengthInput"
+                class="form-input"
+                placeholder="মান লিখুন"
                 inputmode="decimal"
-                placeholder="যেমন: 12.5"
-                style="width: 140px"
+                value="1"
               />
-            </label>
-
-            <label class="pill form-label">
-              দশমিক
-              <select id="prec" class="select form-select">
-                <option>0</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option selected>6</option>
-                <option>8</option>
+              <select id="lengthFrom" class="form-select">
+                <option value="m">মিটার (m)</option>
+                <option value="km">কিলোমিটার (km)</option>
+                <option value="mi">মাইল (mi)</option>
+                <option value="ft">ফুট (ft)</option>
+                <option value="in">ইঞ্চি (in)</option>
+                <option value="yd">গজ (yd)</option>
+                <option value="cm">সেন্টিমিটার (cm)</option>
+                <option value="mm">মিলিমিটার (mm)</option>
               </select>
-            </label>
-          </div>
-
-          <div class="row">
-            <select
-              id="from"
-              class="select form-select"
-              aria-label="কোন ইউনিট থেকে"
-            ></select>
-            <button
-              id="swap"
-              class="btn btn-ghost"
-              type="button"
-              aria-label="ইউনিট অদলবদল"
-            >
-              ⇄
-            </button>
-            <select
-              id="to"
-              class="select form-select"
-              aria-label="কোন ইউনিটে"
-            ></select>
-          </div>
-
-          <div class="row">
-            <input
-              id="res"
-              class="field form-input mono"
-              readonly
-              placeholder="রূপান্তরিত মান"
-              style="min-width: 240px"
-            />
-            <button id="copy" class="btn btn-ghost" type="button">
-              📋 কপি
-            </button>
-            <span id="status" class="muted small">—</span>
-          </div>
-
-          <p class="muted small">
-            টিপস: <kbd>Enter</kbd> চাপলে কনভার্ট হবে। <kbd>⇄</kbd> দিয়ে ইউনিট
-            অদলবদল করুন।
-          </p>
-          <div class="ad-wrap ad-article" aria-label="Advertisement">
-            <span class="ad-label">Ad</span>
-            <div class="ad-content">
-              Upgrade to Base64 Pro for unlimited conversions and advanced
-              features!
+              <select id="lengthTo" class="form-select">
+                <option value="km">কিলোমিটার (km)</option>
+                <option value="m">মিটার (m)</option>
+                <option value="mi">মাইল (mi)</option>
+                <option value="ft">ফুট (ft)</option>
+                <option value="in">ইঞ্চি (in)</option>
+                <option value="yd">গজ (yd)</option>
+                <option value="cm">সেন্টিমিটার (cm)</option>
+                <option value="mm">মিলিমিটার (mm)</option>
+              </select>
             </div>
+            <p
+              id="lengthResult"
+              class="result mono"
+              role="status"
+              aria-live="polite"
+            ></p>
           </div>
-        </article>
 
+          <div class="unit-block">
+            <label for="weightInput" class="form-label">ওজন</label>
+            <div class="row">
+              <input
+                type="number"
+                id="weightInput"
+                class="form-input"
+                placeholder="মান লিখুন"
+                inputmode="decimal"
+                value="1"
+              />
+              <select id="weightFrom" class="form-select">
+                <option value="kg">কিলোগ্রাম (kg)</option>
+                <option value="g">গ্রাম (g)</option>
+                <option value="lb">পাউন্ড (lb)</option>
+                <option value="oz">আউন্স (oz)</option>
+                <option value="st">স্টোন (st)</option>
+              </select>
+              <select id="weightTo" class="form-select">
+                <option value="lb">পাউন্ড (lb)</option>
+                <option value="kg">কিলোগ্রাম (kg)</option>
+                <option value="g">গ্রাম (g)</option>
+                <option value="oz">আউন্স (oz)</option>
+                <option value="st">স্টোন (st)</option>
+              </select>
+            </div>
+            <p
+              id="weightResult"
+              class="result mono"
+              role="status"
+              aria-live="polite"
+            ></p>
+          </div>
+
+          <div class="unit-block">
+            <label for="tempInput" class="form-label">তাপমাত্রা</label>
+            <div class="row">
+              <input
+                type="number"
+                id="tempInput"
+                class="form-input"
+                placeholder="মান লিখুন"
+                inputmode="decimal"
+                value="0"
+              />
+              <select id="tempFrom" class="form-select">
+                <option value="C">সেলসিয়াস (°C)</option>
+                <option value="F">ফারেনহাইট (°F)</option>
+                <option value="K">কেলভিন (K)</option>
+              </select>
+              <select id="tempTo" class="form-select">
+                <option value="F">ফারেনহাইট (°F)</option>
+                <option value="C">সেলসিয়াস (°C)</option>
+                <option value="K">কেলভিন (K)</option>
+              </select>
+            </div>
+            <p
+              id="tempResult"
+              class="result mono"
+              role="status"
+              aria-live="polite"
+            ></p>
+          </div>
+
+          <p class="muted" style="margin-top: 0.75rem">
+            টিপ: কীবোর্ড ব্যবহার করুন। একটি মান টাইপ করুন এবং
+            <kbd>Tab</kbd> চাপলে সামনে যান, অথবা <kbd>Shift</kbd>+<kbd>Tab</kbd>
+            চাপলে পিছনে যান।
+          </p>
+        </section>
         <!-- How to use -->
         <article class="card" id="how">
           <h2>কীভাবে ব্যবহার করবেন</h2>
@@ -366,150 +512,248 @@
             <a class="btn" href="/bn/percent-calculator/">শতকরা ক্যালকুলেটর</a>
             <a class="btn" href="/bn/age-calculator/">বয়স ক্যালকুলেটর</a>
           </p>
+
+          <p class="small">
+            English preferred? See the
+            <a
+              class="text-link"
+              href="/unit-converter/"
+              hreflang="en"
+              lang="en"
+              aria-label="English version"
+              >English version</a
+            >.
+          </p>
         </article>
       </main>
 
       <footer>
-        © <span id="y"></span> Tools Pack • <a class="muted" href="/bn/">হোম</a>
+        © <span id="y"></span> Tools Pack •
+        <a
+          class="text-link"
+          href="/bn/"
+          hreflang="bn"
+          lang="bn"
+          aria-label="বাংলা হোম"
+          >হোম</a
+        >
+        •
+        <a
+          class="text-link"
+          href="/unit-converter/"
+          hreflang="en"
+          lang="en"
+          aria-label="English Version"
+          >English</a
+        >
       </footer>
     </div>
     <script>
-      // Year
-      document.getElementById("y").textContent = new Date().getFullYear();
+      document.addEventListener("DOMContentLoaded", function () {
+        // Length conversion elements
+        const lengthInput = document.getElementById("lengthInput");
+        const lengthFrom = document.getElementById("lengthFrom");
+        const lengthTo = document.getElementById("lengthTo");
+        const lengthResult = document.getElementById("lengthResult");
 
-      // ---- Elements
-      const $ = (s, ctx = document) => ctx.querySelector(s);
-      const yEl = $("#y");
-      const cat = $("#cat");
-      const val = $("#val");
-      const from = $("#from");
-      const to = $("#to");
-      const res = $("#res");
-      const prec = $("#prec");
-      const swapBtn = $("#swap");
-      const copyBtn = $("#copy");
-      const statusEl = $("#status");
+        // Weight conversion elements
+        const weightInput = document.getElementById("weightInput");
+        const weightFrom = document.getElementById("weightFrom");
+        const weightTo = document.getElementById("weightTo");
+        const weightResult = document.getElementById("weightResult");
 
-      // ---- Data (base: meter for length, kilogram for weight)
-      const units = {
-        length: {
+        // Temperature conversion elements
+        const tempInput = document.getElementById("tempInput");
+        const tempFrom = document.getElementById("tempFrom");
+        const tempTo = document.getElementById("tempTo");
+        const tempResult = document.getElementById("tempResult");
+
+        // Conversion factors (to base unit)
+        const lengthFactors = {
           m: 1,
           km: 1000,
-          cm: 0.01,
-          mm: 0.001,
           mi: 1609.344,
-          yd: 0.9144,
           ft: 0.3048,
           in: 0.0254,
-        },
-        weight: {
+          yd: 0.9144,
+          cm: 0.01,
+          mm: 0.001,
+        };
+
+        const weightFactors = {
           kg: 1,
           g: 0.001,
-          mg: 0.000001,
-          lb: 0.45359237,
-          oz: 0.028349523125,
-          tonne: 1000,
-        },
-        temperature: ["C", "F", "K"],
-      };
+          lb: 0.453592,
+          oz: 0.0283495,
+          st: 6.35029,
+        };
 
-      // ---- Populate unit selects
-      function populate() {
-        from.innerHTML = "";
-        to.innerHTML = "";
+        // Initialize with empty results
+        lengthResult.textContent = "রূপান্তর করতে একটি মান লিখুন";
+        weightResult.textContent = "রূপান্তর করতে একটি মান লিখুন";
+        tempResult.textContent = "রূপান্তর করতে একটি মান লিখুন";
 
-        if (cat.value === "temperature") {
-          for (const u of units.temperature) {
-            from.add(new Option(u, u));
-            to.add(new Option(u, u));
+        // Event listeners for length conversion
+        lengthInput.addEventListener("input", convertLength);
+        lengthFrom.addEventListener("change", convertLength);
+        lengthTo.addEventListener("change", convertLength);
+
+        // Event listeners for weight conversion
+        weightInput.addEventListener("input", convertWeight);
+        weightFrom.addEventListener("change", convertWeight);
+        weightTo.addEventListener("change", convertWeight);
+
+        // Event listeners for temperature conversion
+        tempInput.addEventListener("input", convertTemperature);
+        tempFrom.addEventListener("change", convertTemperature);
+        tempTo.addEventListener("change", convertTemperature);
+
+        // Length conversion function
+        function convertLength() {
+          const value = parseFloat(lengthInput.value);
+
+          if (isNaN(value)) {
+            lengthResult.textContent = "একটি বৈধ সংখ্যা লিখুন";
+            return;
           }
-          from.value = "C";
-          to.value = "F";
-        } else {
-          const keys = Object.keys(units[cat.value]);
-          for (const u of keys) {
-            from.add(new Option(u, u));
-            to.add(new Option(u, u));
+
+          const fromUnit = lengthFrom.value;
+          const toUnit = lengthTo.value;
+
+          // Convert to base unit (meters) first
+          const valueInMeters = value * lengthFactors[fromUnit];
+
+          // Convert from base unit to target unit
+          const result = valueInMeters / lengthFactors[toUnit];
+
+          // Format the result
+          const formattedResult = formatNumber(result);
+          lengthResult.textContent = `${value} ${getUnitName(
+            fromUnit
+          )} = ${formattedResult} ${getUnitName(toUnit)}`;
+        }
+
+        // Weight conversion function
+        function convertWeight() {
+          const value = parseFloat(weightInput.value);
+
+          if (isNaN(value)) {
+            weightResult.textContent = "একটি বৈধ সংখ্যা লিখুন";
+            return;
           }
-          from.value = keys[0];
-          to.value = keys[1] || keys[0];
-        }
-      }
 
-      // ---- Format number nicely
-      function fmtNumber(n, dp) {
-        if (!isFinite(n)) return "";
-        const f = Number(n).toFixed(Math.min(8, Math.max(0, dp)));
-        // trim trailing zeros
-        return f.replace(/\.?0+$/, "");
-      }
+          const fromUnit = weightFrom.value;
+          const toUnit = weightTo.value;
 
-      // ---- Convert
-      function convert() {
-        const v = parseFloat(val.value);
-        if (Number.isNaN(v)) {
-          res.value = "";
-          return;
+          // Convert to base unit (kilograms) first
+          const valueInKg = value * weightFactors[fromUnit];
+
+          // Convert from base unit to target unit
+          const result = valueInKg / weightFactors[toUnit];
+
+          // Format the result
+          const formattedResult = formatNumber(result);
+          weightResult.textContent = `${value} ${getUnitName(
+            fromUnit
+          )} = ${formattedResult} ${getUnitName(toUnit)}`;
         }
 
-        let out;
-        if (cat.value === "temperature") {
-          let c;
-          if (from.value === "C") c = v;
-          else if (from.value === "F") c = (v - 32) / 1.8;
-          else if (from.value === "K") c = v - 273.15;
+        // Temperature conversion function
+        function convertTemperature() {
+          const value = parseFloat(tempInput.value);
 
-          if (to.value === "C") out = c;
-          else if (to.value === "F") out = c * 1.8 + 32;
-          else if (to.value === "K") out = c + 273.15;
-        } else {
-          const base = v * units[cat.value][from.value]; // to base
-          out = base / units[cat.value][to.value];
+          if (isNaN(value)) {
+            tempResult.textContent = "একটি বৈধ সংখ্যা লিখুন";
+            return;
+          }
+
+          const fromUnit = tempFrom.value;
+          const toUnit = tempTo.value;
+
+          let result;
+
+          // Convert to Celsius first
+          let valueInCelsius;
+          switch (fromUnit) {
+            case "C":
+              valueInCelsius = value;
+              break;
+            case "F":
+              valueInCelsius = ((value - 32) * 5) / 9;
+              break;
+            case "K":
+              valueInCelsius = value - 273.15;
+              break;
+          }
+
+          // Convert from Celsius to target unit
+          switch (toUnit) {
+            case "C":
+              result = valueInCelsius;
+              break;
+            case "F":
+              result = (valueInCelsius * 9) / 5 + 32;
+              break;
+            case "K":
+              result = valueInCelsius + 273.15;
+              break;
+          }
+
+          // Format the result
+          const formattedResult = formatNumber(result);
+          const fromSymbol = getTemperatureSymbol(fromUnit);
+          const toSymbol = getTemperatureSymbol(toUnit);
+          tempResult.textContent = `${value}${fromSymbol} = ${formattedResult}${toSymbol}`;
         }
 
-        res.value = fmtNumber(out, Number(prec.value || 6));
-      }
+        // Helper function to format numbers (remove unnecessary decimal places)
+        function formatNumber(num) {
+          // If it's an integer, don't show decimals
+          if (Number.isInteger(num)) {
+            return num.toString();
+          }
 
-      // ---- Swap
-      function swapUnits() {
-        const a = from.value,
-          b = to.value;
-        from.value = b;
-        to.value = a;
-        convert();
-      }
-
-      // ---- Copy
-      async function copyResult() {
-        try {
-          await navigator.clipboard.writeText(res.value || "");
-          statusEl.textContent = "📋 কপি হয়েছে।";
-        } catch {
-          statusEl.textContent = "কপি করা যায়নি।";
+          // Otherwise, show up to 6 decimal places but remove trailing zeros
+          return parseFloat(num.toFixed(6)).toString();
         }
-        setTimeout(() => (statusEl.textContent = "—"), 1200);
-      }
 
-      // ---- Events
-      val.addEventListener("input", convert);
-      [from, to, prec].forEach((el) => el.addEventListener("change", convert));
-      cat.addEventListener("change", () => {
-        populate();
-        convert();
+        // Helper function to get unit names for display
+        function getUnitName(unit) {
+          const unitNames = {
+            m: "মিটার",
+            km: "কিলোমিটার",
+            mi: "মাইল",
+            ft: "ফুট",
+            in: "ইঞ্চি",
+            yd: "গজ",
+            cm: "সেন্টিমিটার",
+            mm: "মিলিমিটার",
+            kg: "কিলোগ্রাম",
+            g: "গ্রাম",
+            lb: "পাউন্ড",
+            oz: "আউন্স",
+            st: "স্টোন",
+          };
+
+          return unitNames[unit] || unit;
+        }
+
+        // Helper function to get temperature symbols
+        function getTemperatureSymbol(unit) {
+          const symbols = {
+            C: "°C",
+            F: "°F",
+            K: "K",
+          };
+
+          return symbols[unit] || unit;
+        }
+
+        // Auto-convert when page loads with default values
+        convertLength();
+        convertWeight();
+        convertTemperature();
       });
-      swapBtn.addEventListener("click", swapUnits);
-      copyBtn.addEventListener("click", copyResult);
-
-      // Enter => convert
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Enter") {
-          convert();
-        }
-      });
-
-      // ---- Init
-      populate();
-      convert();
     </script>
     <script src="/assets/tracker.js" defer data-trk-site="tools-pack"></script>
     <script src="/assets/related-more.js" defer></script>
