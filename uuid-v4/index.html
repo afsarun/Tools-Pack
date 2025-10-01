@@ -188,6 +188,235 @@
         ]
       }
     </script>
+    <style>
+      :root {
+        --primary: #3b82f6;
+        --primary-hover: #2563eb;
+        --secondary: #64748b;
+        --success: #10b981;
+        --danger: #ef4444;
+        --warning: #f59e0b;
+        --background: #0f172a;
+        --surface: #1e293b;
+        --surface-light: #334155;
+        --text: #f1f5f9;
+        --text-muted: #c4cdd6;
+        --border: #475569;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: var(--background);
+        color: var(--text);
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+
+        min-height: 100vh;
+      }
+
+      .card {
+        background: var(--surface);
+        border-radius: 12px;
+        padding: 30px;
+        box-shadow: var(--shadow-lg);
+        margin-bottom: 30px;
+      }
+
+      h2 {
+        color: var(--text);
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+        text-align: center;
+        border-bottom: 2px solid var(--primary);
+        padding-bottom: 10px;
+      }
+
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-bottom: 15px;
+        align-items: center;
+      }
+
+      .pill {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--surface-light);
+        padding: 8px 15px;
+        border-radius: 20px;
+        white-space: nowrap;
+        transition: all 0.2s ease;
+      }
+
+      .pill:hover {
+        background: var(--border);
+      }
+
+      .form-label {
+        color: var(--text);
+        font-size: 0.9rem;
+      }
+
+      .field {
+        background: var(--background);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 8px 12px;
+        color: var(--text);
+        font-size: 0.9rem;
+      }
+
+      .form-input {
+        accent-color: var(--primary);
+      }
+
+      .form-select {
+        background: var(--background);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 8px 12px;
+        color: var(--text);
+        font-size: 0.9rem;
+        cursor: pointer;
+      }
+
+      .form-select:focus,
+      .field:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+      }
+
+      .btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .btn-primary {
+        background: var(--primary);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background: var(--primary-hover);
+        transform: translateY(-2px);
+      }
+
+      .btn-secondary {
+        background: var(--secondary);
+        color: white;
+      }
+
+      .btn-secondary:hover {
+        background: var(--surface-light);
+        transform: translateY(-2px);
+      }
+
+      .textarea {
+        width: 100%;
+        background: var(--background);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 15px;
+        color: var(--text);
+        font-family: monospace;
+        font-size: 1rem;
+        resize: vertical;
+        margin-top: 15px;
+        min-height: 200px;
+      }
+
+      .mono {
+        font-family: monospace;
+      }
+
+      .muted {
+        color: var(--text-muted);
+      }
+
+      .small {
+        font-size: 0.85rem;
+      }
+
+      .stat {
+        margin-top: 10px;
+        display: flex;
+        gap: 15px;
+      }
+
+      kbd {
+        background: var(--surface-light);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 2px 6px;
+        font-family: monospace;
+        font-size: 0.8rem;
+      }
+
+      #status {
+        margin-left: 15px;
+        font-style: italic;
+      }
+
+      .ad-wrap {
+        background-color: var(--surface-light);
+        border-radius: 8px;
+        padding: 15px;
+        margin-top: 20px;
+        position: relative;
+      }
+
+      .ad-label {
+        position: absolute;
+        top: -10px;
+        left: 10px;
+        background-color: var(--primary);
+        color: white;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+      }
+
+      .ad-content {
+        text-align: center;
+        color: var(--text-muted);
+        font-style: italic;
+      }
+
+      @media (max-width: 768px) {
+        .row {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .pill {
+          width: 100%;
+          justify-content: space-between;
+        }
+
+        .card {
+          padding: 20px;
+        }
+      }
+    </style>
   </head>
 
   <body>
@@ -195,7 +424,7 @@
       <div class="wrap brand">
         <a href="/"><div class="logo" aria-label="Tools Pack"></div></a>
         <div>
-          <h1 style="margin: 0">UUID v4</h1>
+          <h1 class="site-title" style="margin: 0">UUID v4</h1>
           <div class="sub">RFC 4122</div>
         </div>
         <div style="margin-left: auto">
@@ -237,47 +466,103 @@
           <a href="#details">Details</a> · <a href="#faq">FAQ</a> ·
           <a href="#related">Related tools</a>
         </p>
-        <!-- Generator -->
-        <article class="card" id="uuidv4">
-          <label
-            for="out"
-            class="muted form-label"
-            style="display: block; margin-bottom: 0.25rem"
-            >Your UUID v4</label
-          >
-          <div class="copygroup">
-            <input
-              id="out"
-              class="field mono form-input"
-              readonly
-              aria-readonly="true"
-            />
-            <div class="btn-group">
-              <button class="btn btn-primary" id="gen" type="button">
+        <div class="container">
+          <article class="card" id="gen">
+            <h2>Generate UUID v4</h2>
+
+            <div class="row">
+              <label class="pill form-label">
+                Quantity
+                <input
+                  id="count"
+                  type="number"
+                  class="field form-input"
+                  value="5"
+                  min="1"
+                  max="500"
+                  inputmode="numeric"
+                  style="width: 90px"
+                />
+              </label>
+
+              <label class="pill form-label">
+                <input
+                  type="checkbox"
+                  id="keepDash"
+                  checked
+                  class="form-input"
+                />
+                Keep Dashes
+              </label>
+
+              <label class="pill form-label">
+                <input type="checkbox" id="upper" class="form-input" />
+                Uppercase (A-F)
+              </label>
+
+              <label class="pill form-label">
+                <input type="checkbox" id="brace" class="form-input" />
+                {Braces}
+              </label>
+
+              <label class="pill form-label">
+                <input type="checkbox" id="urn" class="form-input" />
+                urn:uuid: Prefix
+              </label>
+
+              <label class="pill form-label">
+                Separator
+                <select id="sep" class="select form-select">
+                  <option value="nl" selected>New Line</option>
+                  <option value="comma">Comma (,)</option>
+                  <option value="space">Space</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="row" style="margin-top: 6px">
+              <button class="btn btn-primary" id="generateBtn" type="button">
                 Generate
               </button>
-              <button class="btn" id="cpy" type="button">Copy</button>
+              <button class="btn btn-secondary" id="copyBtn" type="button">
+                Copy
+              </button>
+              <button class="btn btn-secondary" id="downloadBtn" type="button">
+                ⬇ Download TXT
+              </button>
+              <button class="btn btn-secondary" id="clearBtn" type="button">
+                🗑 Clear
+              </button>
+              <span id="status" class="muted small" aria-live="polite">—</span>
             </div>
-            <span
-              id="status"
-              class="muted"
-              style="margin-left: 0.5rem"
-              aria-live="polite"
-            ></span>
-          </div>
-          <p class="muted" style="margin-top: 0.75rem">
-            RFC&nbsp;4122 compliant: version <code>4</code> (random), variant
-            <code>10</code>.
-          </p>
 
-          <div class="ad-wrap ad-article" aria-label="Advertisement">
-            <span class="ad-label">Ad</span>
-            <div class="ad-content">
-              Upgrade to Base64 Pro for unlimited conversions and advanced
-              features!
+            <textarea
+              id="out"
+              class="textarea mono field form-textarea"
+              rows="8"
+              readonly
+              placeholder="Generated UUIDs…"
+            ></textarea>
+
+            <p class="muted small stat">
+              <span id="lines">Lines: 0</span> •
+              <span id="bytes">Bytes (UTF-8): 0</span>
+            </p>
+
+            <p class="small muted">
+              Shortcuts: <kbd>Ctrl/⌘ + Enter</kbd> Generate •
+              <kbd>Ctrl/⌘ + C</kbd> Copy
+            </p>
+
+            <div class="ad-wrap ad-article" aria-label="Advertisement">
+              <span class="ad-label">Ad</span>
+              <div class="ad-content">
+                Upgrade to Base64 Pro for unlimited conversions and advanced
+                features!
+              </div>
             </div>
-          </div>
-        </article>
+          </article>
+        </div>
 
         <div class="card" id="where">
           <h2>UUID v4 Use Cases &amp; Best Practices</h2>
@@ -342,10 +627,9 @@
             <div class="example">
               <div class="example-title">⚡ Technical Implementation</div>
               <div class="example-content">
-                Generate UUID v4 with <code>crypto.getRandomValues</code> for
-                entropy.<br />
-                <strong>Security note:</strong> Avoid
-                <code>Math.random()</code> or time-based hacks.
+                Generate UUID v4 with crypto.getRandomValues for entropy.<br />
+                <strong>Security note:</strong> Avoid Math.random() or
+                time-based hacks.
               </div>
             </div>
           </div>
@@ -361,8 +645,8 @@
                   4
                 </li>
                 <li>
-                  <strong>Copy</strong> in canonical form
-                  (<code>8-4-4-4-12</code>) or compact (no hyphens)
+                  <strong>Copy</strong> in canonical form (8-4-4-4-12) or
+                  compact (no hyphens)
                 </li>
                 <li><strong>Format</strong> options: lowercase / UPPERCASE</li>
                 <li>
@@ -380,16 +664,15 @@
               <ul>
                 <li>
                   <strong>Version:</strong> 4 (random) → the high nibble of byte
-                  6 is <code>0100</code>
+                  6 is 0100
                 </li>
                 <li>
                   <strong>Variant:</strong> RFC 4122 → the two high bits of byte
-                  8 are <code>10</code>
+                  8 are 10
                 </li>
                 <li>
                   <strong>Layout:</strong>
-                  <code>xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx</code> where
-                  <code>y</code> is <code>8–b</code>
+                  xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx where y is 8–b
                 </li>
               </ul>
             </div>
@@ -413,7 +696,7 @@
                   UUID v4 has 122 random bits (after version/variant) →
                   astronomically low collision probability for practical use.
                 </li>
-                <li>Still treat UUIDs as <em>identifiers</em>, not secrets.</li>
+                <li>Still treat UUIDs as identifiers, not secrets.</li>
               </ul>
             </div>
           </div>
@@ -471,9 +754,8 @@
               <div class="faq-answer">
                 <p>
                   Yes. The UUIDs follow RFC&nbsp;4122 standards. This means
-                  version
-                  <code>4</code> and variant <code>10</code> bits are set
-                  exactly as required, ensuring compliance.
+                  version 4 and variant 10 bits are set exactly as required,
+                  ensuring compliance.
                 </p>
               </div>
             </div>
@@ -530,7 +812,9 @@
                   A quick way is to use a regular expression (case-insensitive)
                   such as:
                 </p>
-                <pre><code>^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$</code></pre>
+                <pre>
+^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$</pre
+                >
                 <p>
                   This ensures the value matches the official UUID v4 pattern.
                 </p>
@@ -576,52 +860,187 @@
       </footer>
     </div>
     <script>
-      // year
-      y.textContent = new Date().getFullYear();
+      document.addEventListener("DOMContentLoaded", function () {
+        // DOM Elements
+        const countInput = document.getElementById("count");
+        const keepDashCheckbox = document.getElementById("keepDash");
+        const upperCheckbox = document.getElementById("upper");
+        const braceCheckbox = document.getElementById("brace");
+        const urnCheckbox = document.getElementById("urn");
+        const sepSelect = document.getElementById("sep");
+        const generateBtn = document.getElementById("generateBtn");
+        const copyBtn = document.getElementById("copyBtn");
+        const downloadBtn = document.getElementById("downloadBtn");
+        const clearBtn = document.getElementById("clearBtn");
+        const statusSpan = document.getElementById("status");
+        const outTextarea = document.getElementById("out");
+        const linesSpan = document.getElementById("lines");
+        const bytesSpan = document.getElementById("bytes");
 
-      // RFC 4122 v4 generator using CSPRNG
-      const uuid = () => {
-        const a = new Uint8Array(16);
-        crypto.getRandomValues(a);
-        a[6] = (a[6] & 0x0f) | 0x40; // version 4
-        a[8] = (a[8] & 0x3f) | 0x80; // variant 10
-        const b = [...a].map(
-          (v, i) =>
-            (i === 4 || i === 6 || i === 8 || i === 10 ? "-" : "") +
-            v.toString(16).padStart(2, "0")
-        );
-        return b.join("");
-      };
-
-      const out = document.getElementById("out");
-      const gen = document.getElementById("gen");
-      const cpy = document.getElementById("cpy");
-      const status = document.getElementById("status");
-
-      const make = () => (out.value = uuid());
-      const say = (msg) => {
-        status.textContent = msg;
-        setTimeout(() => (status.textContent = ""), 1500);
-      };
-
-      gen.addEventListener("click", make);
-      cpy.addEventListener("click", async () => {
-        try {
-          await navigator.clipboard.writeText(out.value || "");
-          say("Copied!");
-        } catch {
-          say("Copy failed");
+        // Generate UUID v4
+        function generateUUID() {
+          return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
+            /[xy]/g,
+            function (c) {
+              const r = (Math.random() * 16) | 0;
+              const v = c === "x" ? r : (r & 0x3) | 0x8;
+              return v.toString(16);
+            }
+          );
         }
+
+        // Format UUID based on options
+        function formatUUID(uuid, keepDash, upper, brace, urn) {
+          let result = uuid;
+
+          if (!keepDash) {
+            result = result.replace(/-/g, "");
+          }
+
+          if (upper) {
+            result = result.toUpperCase();
+          }
+
+          if (brace) {
+            result = "{" + result + "}";
+          }
+
+          if (urn) {
+            result = "urn:uuid:" + result;
+          }
+
+          return result;
+        }
+
+        // Generate multiple UUIDs
+        function generateUUIDs() {
+          const count = parseInt(countInput.value);
+          if (isNaN(count) || count < 1 || count > 500) {
+            statusSpan.textContent =
+              "Please enter a valid number between 1 and 500";
+            return;
+          }
+
+          const keepDash = keepDashCheckbox.checked;
+          const upper = upperCheckbox.checked;
+          const brace = braceCheckbox.checked;
+          const urn = urnCheckbox.checked;
+          const separator = sepSelect.value;
+
+          let separatorChar;
+          switch (separator) {
+            case "comma":
+              separatorChar = ",";
+              break;
+            case "space":
+              separatorChar = " ";
+              break;
+            default:
+              separatorChar = "\n";
+          }
+
+          const uuids = [];
+          for (let i = 0; i < count; i++) {
+            const uuid = generateUUID();
+            const formattedUUID = formatUUID(uuid, keepDash, upper, brace, urn);
+            uuids.push(formattedUUID);
+          }
+
+          const result = uuids.join(separatorChar);
+          outTextarea.value = result;
+
+          // Update stats
+          updateStats(result);
+
+          statusSpan.textContent = `Generated ${count} UUID${
+            count > 1 ? "s" : ""
+          }`;
+        }
+
+        // Update line and byte counts
+        function updateStats(text) {
+          const lines = text ? text.split("\n").length : 0;
+          const bytes = new TextEncoder().encode(text).length;
+
+          linesSpan.textContent = `Lines: ${lines}`;
+          bytesSpan.textContent = `Bytes (UTF-8): ${bytes}`;
+        }
+
+        // Copy to clipboard
+        function copyToClipboard() {
+          if (!outTextarea.value) {
+            statusSpan.textContent = "Nothing to copy";
+            return;
+          }
+
+          outTextarea.select();
+          document.execCommand("copy");
+
+          statusSpan.textContent = "Copied to clipboard!";
+          setTimeout(() => {
+            statusSpan.textContent = "—";
+          }, 2000);
+        }
+
+        // Download as text file
+        function downloadAsText() {
+          if (!outTextarea.value) {
+            statusSpan.textContent = "Nothing to download";
+            return;
+          }
+
+          const blob = new Blob([outTextarea.value], { type: "text/plain" });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = "uuids.txt";
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+
+          statusSpan.textContent = "Download started";
+          setTimeout(() => {
+            statusSpan.textContent = "—";
+          }, 2000);
+        }
+
+        // Clear output
+        function clearOutput() {
+          outTextarea.value = "";
+          updateStats("");
+          statusSpan.textContent = "Cleared";
+          setTimeout(() => {
+            statusSpan.textContent = "—";
+          }, 2000);
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener("keydown", function (e) {
+          if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+            e.preventDefault();
+            generateUUIDs();
+          }
+
+          if (
+            (e.ctrlKey || e.metaKey) &&
+            e.key === "c" &&
+            document.activeElement !== outTextarea
+          ) {
+            e.preventDefault();
+            copyToClipboard();
+          }
+        });
+
+        // Event listeners
+        generateBtn.addEventListener("click", generateUUIDs);
+        copyBtn.addEventListener("click", copyToClipboard);
+        downloadBtn.addEventListener("click", downloadAsText);
+        clearBtn.addEventListener("click", clearOutput);
+
+        // Initialize
+        updateStats("");
       });
-
-      // Generate once on load
-      make();
-
-      // Initialize ads (safe even if blocked)
-      try {
-        (adsbygoogle = window.adsbygoogle || []).push({});
-        (adsbygoogle = window.adsbygoogle || []).push({});
-      } catch {}
     </script>
     <script src="/assets/tracker.js" defer data-trk-site="tools-pack"></script>
     <script src="/assets/related-more.js" defer></script>

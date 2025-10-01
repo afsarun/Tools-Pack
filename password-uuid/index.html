@@ -180,22 +180,415 @@
 
     <!-- Page-only CSS -->
     <style>
-      .toast {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background: #1e1e2f;
-        color: #fff;
-        padding: 8px 14px;
-        border-radius: 6px;
-        font-size: 14px;
+      :root {
+        --badge: #073c92;
+        --primary: #3b82f6;
+        --primary-hover: #2563eb;
+        --secondary: #64748b;
+        --success: #10b981;
+        --danger: #ef4444;
+        --warning: #f59e0b;
+        --background: #0f172a;
+        --surface: #1e293b;
+        --surface-light: #334155;
+        --text: #f1f5f9;
+        --text-muted: #c4cdd6;
+        --border: #475569;
+        --gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+        --shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+          0 10px 10px -5px rgb(0 0 0 / 0.04);
+        --shadow-lg: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+        --link: #60a5fa;
+        --link-hover: #93c5fd;
+        --link-visited: #a78bfa;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      .card {
+        background: var(--surface);
+        border-radius: 16px;
+        padding: 30px;
+        box-shadow: var(--shadow-lg);
+        margin-bottom: 30px;
+        border: 1px solid var(--border);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.35);
+      }
+
+      h3 {
+        color: var(--text);
+        margin-bottom: 25px;
+        font-size: 1.8rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 700;
+      }
+
+      .badge {
+        background: var(--gradient);
+        color: white;
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+      }
+
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-bottom: 25px;
+        align-items: center;
+      }
+
+      .field {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .form-label {
+        color: var(--text);
+        font-size: 0.95rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 600;
+      }
+
+      .form-input {
+        accent-color: var(--primary);
+      }
+
+      .pill {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--surface-light);
+        padding: 12px 18px;
+        border-radius: 30px;
+        white-space: nowrap;
+        transition: all 0.3s ease;
+        border: 1px solid transparent;
+        cursor: pointer;
+      }
+
+      .pill:hover {
+        background: var(--surface);
+        border-color: var(--primary);
+        transform: translateY(-2px);
+      }
+
+      .pill.active {
+        background: rgba(59, 130, 246, 0.15);
+        border-color: var(--primary);
+      }
+
+      .muted {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+      }
+
+      input[type="number"] {
+        background: var(--background);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 10px 12px;
+        color: var(--text);
+        font-size: 1rem;
+        width: 90px;
+        text-align: center;
+        font-weight: 600;
+      }
+
+      input[type="number"]:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+      }
+
+      .textarea-container {
+        position: relative;
+        margin-bottom: 20px;
+      }
+
+      .textarea {
+        width: 100%;
+        min-height: 80px;
+        background: var(--background);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 18px;
+        color: var(--success);
+        font-size: 1.2rem;
+        resize: none;
+        font-family: "Courier New", monospace;
+        line-height: 1.4;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+      }
+
+      .textarea:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+      }
+
+      .copy-indicator {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: var(--success);
+        color: white;
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 0.8rem;
         opacity: 0;
-        pointer-events: none;
         transition: opacity 0.3s ease;
       }
-      .toast.show {
+
+      .copy-indicator.show {
         opacity: 1;
-        pointer-events: auto;
+      }
+
+      .btn-group {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+
+      .btn {
+        padding: 14px 24px;
+        border: none;
+        border-radius: 10px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 1rem;
+      }
+
+      .btn-primary {
+        background: var(--primary);
+        color: white;
+        flex: 2;
+        justify-content: center;
+      }
+
+      .btn-primary:hover {
+        background: var(--primary-hover);
+        transform: translateY(-3px);
+        box-shadow: var(--shadow);
+      }
+
+      .btn-secondary {
+        background: var(--surface-light);
+        color: var(--text);
+        flex: 1;
+        justify-content: center;
+      }
+
+      .btn-secondary:hover {
+        background: var(--surface);
+        transform: translateY(-3px);
+        box-shadow: var(--shadow);
+      }
+
+      .small {
+        font-size: 0.85rem;
+      }
+
+      #status {
+        margin-top: 15px;
+        padding: 12px 16px;
+        border-radius: 8px;
+        background: var(--surface-light);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: all 0.3s ease;
+      }
+
+      .ad-wrap {
+        background: var(--surface-light);
+        border-radius: 12px;
+        padding: 20px;
+        margin-top: 25px;
+        position: relative;
+        border: 1px solid var(--border);
+      }
+
+      .ad-label {
+        position: absolute;
+        top: -10px;
+        left: 15px;
+        background: var(--secondary);
+        color: white;
+        padding: 4px 12px;
+        border-radius: 12px;
+        font-size: 0.75rem;
+        font-weight: 600;
+      }
+
+      .ad-content {
+        color: var(--text-muted);
+        text-align: center;
+        font-size: 0.95rem;
+      }
+
+      @media (max-width: 768px) {
+        .row {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .pill {
+          width: 100%;
+          justify-content: space-between;
+        }
+
+        .field {
+          width: 100%;
+        }
+
+        input[type="number"] {
+          width: 100%;
+        }
+
+        .btn-group {
+          flex-direction: column;
+        }
+      }
+
+      /* Password strength indicator */
+      .strength-container {
+        margin: 20px 0;
+      }
+
+      .strength-label {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        font-size: 0.9rem;
+      }
+
+      .strength-meter {
+        height: 8px;
+        background: var(--surface-light);
+        border-radius: 4px;
+        overflow: hidden;
+        margin-bottom: 5px;
+      }
+
+      .strength-level {
+        height: 100%;
+        border-radius: 4px;
+        transition: all 0.5s ease;
+      }
+
+      .strength-weak {
+        background: var(--danger);
+        width: 25%;
+      }
+
+      .strength-medium {
+        background: var(--warning);
+        width: 50%;
+      }
+
+      .strength-strong {
+        background: var(--success);
+        width: 75%;
+      }
+
+      .strength-very-strong {
+        background: var(--success);
+        width: 100%;
+      }
+
+      .strength-text {
+        font-size: 0.85rem;
+        text-align: right;
+        color: var(--text-muted);
+      }
+
+      /* Custom checkbox styling */
+      input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+
+      /* Focus states for accessibility */
+      .btn:focus,
+      input:focus,
+      textarea:focus {
+        outline: 2px solid var(--primary);
+        outline-offset: 2px;
+      }
+
+      /* Animation for generated password */
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.02);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .pulse {
+        animation: pulse 0.5s ease;
+      }
+
+      /* Tooltip for information */
+      .info-tooltip {
+        position: relative;
+        display: inline-block;
+        cursor: help;
+      }
+
+      .info-tooltip .tooltip-text {
+        visibility: hidden;
+        width: 200px;
+        background-color: var(--surface);
+        color: var(--text);
+        text-align: center;
+        border-radius: 6px;
+        padding: 8px;
+        position: absolute;
+        z-index: 1;
+        bottom: 125%;
+        left: 50%;
+        margin-left: -100px;
+        opacity: 0;
+        transition: opacity 0.3s;
+        border: 1px solid var(--border);
+        font-size: 0.85rem;
+        font-weight: normal;
+      }
+
+      .info-tooltip:hover .tooltip-text {
+        visibility: visible;
+        opacity: 1;
       }
     </style>
   </head>
@@ -204,7 +597,7 @@
       <div class="wrap brand">
         <a href="/"><div class="logo" aria-label="Tools Pack"></div></a>
         <div>
-          <h1 style="margin: 0">Password Generator</h1>
+          <h1 class="site-title" style="margin: 0">Password Generator</h1>
           <div class="sub">Crypto-secure</div>
         </div>
         <div style="margin-left: auto">
@@ -249,79 +642,160 @@
       <main class="wrap">
         <!-- Breadcrumbs (updated for this tool) -->
 
-        <!-- Tool Card -->
-        <article class="card" id="generator">
-          <label
-            class="field form-label"
-            style="display: flex; align-items: center; gap: 10px"
-          >
-            <span class="muted">Length</span>
-            <input
-              id="len"
-              type="range"
-              min="8"
-              max="128"
-              value="16"
-              class="form-input"
-            />
-            <span class="pill mono" id="lenv">16</span>
-          </label>
+        <div class="">
+          <article class="card" id="gen">
+            <h3>
+              <span>Password Generator</span>
+              <span class="badge">Secure</span>
+            </h3>
 
-          <div
-            class="grid"
-            style="
-              grid-template-columns: repeat(12, 1fr);
-              gap: 10px;
-              margin-bottom: 10px;
-            "
-          >
-            <label class="pill form-label" style="grid-column: span 3"
-              ><input id="l" type="checkbox" checked /> a-z</label
-            >
-            <label class="pill form-label" style="grid-column: span 3"
-              ><input id="u" type="checkbox" checked /> A-Z</label
-            >
-            <label class="pill form-label" style="grid-column: span 3"
-              ><input id="n" type="checkbox" checked /> 0-9</label
-            >
-            <label class="pill form-label" style="grid-column: span 3"
-              ><input id="s" type="checkbox" checked /> !@#$…</label
-            >
-          </div>
+            <div class="row">
+              <label class="field form-label">
+                <span class="muted">Length</span>
+                <input
+                  id="len"
+                  type="number"
+                  class="field form-input"
+                  value="16"
+                  min="6"
+                  max="64"
+                />
+              </label>
 
-          <div class="copygroup">
-            <input
-              id="out"
-              class="field mono form-input"
-              readonly
-              aria-label="Generated password"
-            />
+              <label class="pill form-label">
+                <input type="checkbox" id="lower" class="form-input" checked />
+                a–z
+              </label>
+              <label class="pill form-label">
+                <input type="checkbox" id="upper" class="form-input" checked />
+                A–Z
+              </label>
+              <label class="pill form-label">
+                <input type="checkbox" id="num" class="form-input" checked />
+                0–9
+              </label>
+              <label class="pill form-label">
+                <input type="checkbox" id="sym" class="form-input" />
+                !@#$%^&*
+              </label>
+              <label class="pill form-label">
+                <input type="checkbox" id="noAmb" class="form-input" />
+                Exclude ambiguous characters (O,0,l,1,I,|)
+              </label>
+            </div>
+
+            <div class="textarea-container">
+              <textarea
+                id="out"
+                class="textarea mono form-textarea"
+                rows="2"
+                readonly
+                placeholder="Generated password will appear here..."
+                aria-label="Generated password"
+              ></textarea>
+              <div class="copy-indicator" id="copy-indicator">Copied!</div>
+            </div>
+
+            <!-- Password Strength Indicator -->
+            <div class="strength-container">
+              <div class="strength-label">
+                <span>Password Strength</span>
+                <span id="strength-text">-</span>
+              </div>
+              <div class="strength-meter">
+                <div class="strength-level" id="strength-level"></div>
+              </div>
+              <div class="strength-text" id="entropy-info">Entropy: 0 bits</div>
+            </div>
+
             <div class="btn-group">
-              <button
-                class="btn btn-primary"
-                id="gen"
-                aria-label="Generate password"
-              >
-                Generate
+              <button class="btn btn-primary" id="generate" type="button">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M15 7L20 12L15 17"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M4 12H20"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                Generate Password
               </button>
-              <button class="btn" id="cpy" aria-label="Copy password">
+              <button class="btn btn-secondary" id="copy" type="button">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="9"
+                    y="9"
+                    width="13"
+                    height="13"
+                    rx="2"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M5 15H4C2.89543 15 2 14.1046 2 13V4C2 2.89543 2.89543 2 4 2H13C14.1046 2 15 2.89543 15 4V5"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                </svg>
                 Copy
               </button>
             </div>
-          </div>
 
-          <p class="muted-small" style="margin-top: 8px">
-            Tip: For maximum security, use <strong>20+ characters</strong> with
-            all sets enabled.
-          </p>
-          <div class="ad-wrap ad-article" aria-label="Advertisement">
-            <span class="ad-label">Ad</span>
-            <div class="ad-content">
-              Upgrade to Base64 Pro for unlimited conversions and advanced
-              features!
+            <div id="status" class="muted small" aria-live="polite">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="2"
+                />
+                <path
+                  d="M12 16V12"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+                <circle cx="12" cy="8" r="1" fill="currentColor" />
+              </svg>
+              Click "Generate Password" to create a secure password
             </div>
-          </div>
-        </article>
+
+            <div class="ad-wrap ad-article" aria-label="Advertisement">
+              <span class="ad-label">Ad</span>
+              <div class="ad-content">
+                Upgrade to Password Pro for unlimited password generation and
+                advanced security features!
+              </div>
+            </div>
+          </article>
+        </div>
         <div class="card" id="where">
           <h2>Where to Use Generated Values</h2>
           <div class="examples">
@@ -646,76 +1120,233 @@
     </noscript>
 
     <script>
-      // year
-      y.textContent = new Date().getFullYear();
+      // Elements
+      const $ = (id) => document.getElementById(id);
+      const lenEl = $("len");
+      const lowerEl = $("lower");
+      const upperEl = $("upper");
+      const numEl = $("num");
+      const symEl = $("sym");
+      const noAmbEl = $("noAmb");
+      const outEl = $("out");
+      const genBtn = $("generate");
+      const copyBtn = $("copy");
+      const statusEl = $("status");
+      const copyIndicator = $("copy-indicator");
+      const strengthLevel = $("strength-level");
+      const strengthText = $("strength-text");
+      const entropyInfo = $("entropy-info");
 
-      // show range value
-      len.oninput = (e) => (lenv.textContent = e.target.value);
-
-      // character sets
-      const sets = {
-        l: [..."abcdefghijklmnopqrstuvwxyz"],
-        u: [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"],
-        n: [..."0123456789"],
-        s: [..."!@#$%^&*()-_=+[]{};:,.<>?/|~"],
+      const SETS = {
+        lower: "abcdefghijklmnopqrstuvwxyz",
+        upper: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+        num: "0123456789",
+        sym: "!@#$%^&*()-_=+[]{};:,.<>?/|",
       };
+      const AMBIGUOUS = new Set(["O", "0", "l", "1", "I", "|"]);
 
-      const randUint32 = () => crypto.getRandomValues(new Uint32Array(1))[0];
+      const filterAmbiguous = (s) =>
+        [...s].filter((ch) => !AMBIGUOUS.has(ch)).join("");
 
-      const pick = (a) => a[Math.floor((randUint32() / 2 ** 32) * a.length)];
-
-      // password generator function
-      const generatePassword = () => {
-        const use = [];
-        if (l.checked) use.push(sets.l);
-        if (u.checked) use.push(sets.u);
-        if (n.checked) use.push(sets.n);
-        if (s.checked) use.push(sets.s);
-        if (!use.length) use.push(sets.l, sets.n); // fallback: at least letters+digits
-
-        const L = +len.value;
-        const out = [];
-
-        // ensure at least one char from each selected set
-        use.forEach((set) => out.push(pick(set)));
-
-        // fill the rest from the union
-        const flat = use.flat();
-        const need = L - out.length;
-        const bytes = new Uint32Array(need);
-        crypto.getRandomValues(bytes);
-        for (let i = 0; i < need; i++) out.push(flat[bytes[i] % flat.length]);
-
-        // shuffle (Fisher–Yates) with crypto randomness
-        for (let i = out.length - 1; i > 0; i--) {
-          const j = randUint32() % (i + 1);
-          [out[i], out[j]] = [out[j], out[i]];
+      const getPool = () => {
+        let pool = "";
+        let usedSets = [];
+        if (lowerEl.checked) {
+          pool += SETS.lower;
+          usedSets.push("lower");
         }
-        return out.join("");
-      };
-
-      // buttons
-      gen.onclick = () => (out.value = generatePassword());
-      cpy.onclick = () => {
-        if (out.value) {
-          navigator.clipboard.writeText(out.value);
-          showToast();
+        if (upperEl.checked) {
+          pool += SETS.upper;
+          usedSets.push("upper");
         }
+        if (numEl.checked) {
+          pool += SETS.num;
+          usedSets.push("num");
+        }
+        if (symEl.checked) {
+          pool += SETS.sym;
+          usedSets.push("sym");
+        }
+        if (noAmbEl.checked) {
+          pool = filterAmbiguous(pool);
+          usedSets = usedSets
+            .map((k) => {
+              const f = filterAmbiguous(SETS[k]);
+              return f.length ? k : null;
+            })
+            .filter(Boolean);
+        }
+        return { pool, usedSets };
       };
 
-      // generate one on load
-      out.value = generatePassword();
-
-      // toast function
-      function showToast() {
-        const t = document.getElementById("toast");
-        t.classList.add("show");
-        setTimeout(() => t.classList.remove("show"), 2000);
+      // Cryptographically strong random integer in [0, max)
+      function randInt(max) {
+        if (max <= 0) return 0;
+        const arr = new Uint32Array(1);
+        const limit = Math.floor(0x100000000 / max) * max; // avoid modulo bias
+        let x;
+        do {
+          crypto.getRandomValues(arr);
+          x = arr[0];
+        } while (x >= limit);
+        return x % max;
       }
 
-      // Initialize AdSense in-article/display units
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
+      const pick = (str) => str[randInt(str.length)];
+
+      function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = randInt(i + 1);
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+      }
+
+      function entropyBits(length, poolSize) {
+        if (poolSize <= 1) return 0;
+        return length * Math.log2(poolSize);
+      }
+
+      function strengthLabel(bits) {
+        if (bits >= 100) return "Very Strong";
+        if (bits >= 80) return "Strong";
+        if (bits >= 60) return "Medium";
+        return "Weak";
+      }
+
+      function updateStrengthIndicator(bits) {
+        const label = strengthLabel(bits);
+        strengthText.textContent = label;
+        entropyInfo.textContent = `Entropy: ${bits.toFixed(1)} bits`;
+
+        // Update strength meter
+        strengthLevel.className = "strength-level";
+        if (bits >= 100) {
+          strengthLevel.classList.add("strength-very-strong");
+        } else if (bits >= 80) {
+          strengthLevel.classList.add("strength-strong");
+        } else if (bits >= 60) {
+          strengthLevel.classList.add("strength-medium");
+        } else {
+          strengthLevel.classList.add("strength-weak");
+        }
+
+        // Update status color based on strength
+        if (bits >= 80) {
+          statusEl.style.color = "var(--success)";
+        } else if (bits >= 60) {
+          statusEl.style.color = "var(--warning)";
+        } else {
+          statusEl.style.color = "var(--danger)";
+        }
+      }
+
+      function generatePassword() {
+        const length = Math.max(
+          6,
+          Math.min(64, parseInt(lenEl.value || "16", 10))
+        );
+        const { pool, usedSets } = getPool();
+
+        if (!pool || usedSets.length === 0) {
+          outEl.value = "";
+          statusEl.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 8V12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M12 16H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg> Please select at least one character set.`;
+          statusEl.style.color = "var(--danger)";
+          updateStrengthIndicator(0);
+          return;
+        }
+
+        let poolMap = {
+          lower: SETS.lower,
+          upper: SETS.upper,
+          num: SETS.num,
+          sym: SETS.sym,
+        };
+        if (noAmbEl.checked) {
+          for (const k in poolMap) poolMap[k] = filterAmbiguous(poolMap[k]);
+        }
+
+        // Ensure each selected set contributes at least one char
+        const chars = [];
+        for (const k of usedSets) {
+          const set = poolMap[k];
+          if (!set.length) continue;
+          chars.push(pick(set));
+        }
+
+        // Fill the rest from the full pool
+        while (chars.length < length) {
+          chars.push(pick(pool));
+        }
+
+        // Shuffle to avoid predictable first positions
+        const pwd = shuffle(chars).join("");
+        outEl.value = pwd;
+        outEl.classList.add("pulse");
+        setTimeout(() => outEl.classList.remove("pulse"), 500);
+
+        const bits = entropyBits(length, pool.length);
+        statusEl.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg> New password generated — Estimated entropy: ~${bits.toFixed(
+          1
+        )} bits (${strengthLabel(bits)})`;
+
+        updateStrengthIndicator(bits);
+      }
+
+      // Event Listeners
+      genBtn.addEventListener("click", generatePassword);
+
+      // Keyboard shortcut: Ctrl/⌘ + Enter => Generate
+      document.addEventListener("keydown", (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+          e.preventDefault();
+          generatePassword();
+        }
+      });
+
+      copyBtn.addEventListener("click", async () => {
+        if (!outEl.value) {
+          statusEl.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 8V12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M12 16H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg> No password to copy.`;
+          statusEl.style.color = "var(--danger)";
+          return;
+        }
+        try {
+          await navigator.clipboard.writeText(outEl.value);
+          copyIndicator.classList.add("show");
+          statusEl.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg> Password copied to clipboard!`;
+          statusEl.style.color = "var(--success)";
+          setTimeout(() => {
+            copyIndicator.classList.remove("show");
+          }, 2000);
+        } catch {
+          statusEl.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 8V12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M12 16H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg> Failed to copy password.`;
+          statusEl.style.color = "var(--danger)";
+        }
+      });
+
+      // Generate password when any setting changes
+      [lenEl, lowerEl, upperEl, numEl, symEl, noAmbEl].forEach((el) => {
+        el.addEventListener("change", generatePassword);
+      });
+
+      // Generate one by default for convenience
+      generatePassword();
     </script>
     <script src="/assets/tracker.js" defer data-trk-site="tools-pack"></script>
     <script src="/assets/related-more.js" defer></script>

@@ -174,7 +174,22 @@
    URL Encoder/Decoder — Local (page-specific)
    Only include on this tool’s page
    =========================================== */
-
+      :root {
+        --primary: #3b82f6;
+        --primary-hover: #2563eb;
+        --secondary: #64748b;
+        --success: #10b981;
+        --danger: #ef4444;
+        --warning: #f59e0b;
+        --background: #0f172a;
+        --surface: #1e293b;
+        --surface-light: #334155;
+        --text: #f1f5f9;
+        --text-muted: #c4cdd6;
+        --border: #475569;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      }
       /* If you want a unique hero tint for this tool only, override tool-card here: */
       .tool-card {
         background: linear-gradient(
@@ -303,7 +318,13 @@
         color: var(--text);
         font-family: monospace;
       }
+      .controls .btn-secondary {
+        background-color: var(--secondary);
+      }
 
+      .controls .btn-success {
+        background-color: var(--success);
+      }
       /* Mobile tweaks only this page needs */
       @media (max-width: 768px) {
         .mode-selector {
@@ -321,6 +342,20 @@
     </style>
   </head>
   <body>
+    <header class="sticky">
+      <div class="wrap brand">
+        <a href="/"><div class="logo" aria-label="Tools Pack"></div></a>
+        <div>
+          <h1 class="site-title" style="margin: 0">
+            URL Tools — Encode & Decode
+          </h1>
+          <div class="sub">Safely encode and decode full URLs</div>
+        </div>
+        <div style="margin-left: auto">
+          <a class="muted" href="/bn/url-tools/" hreflang="bn">বাংলা</a>
+        </div>
+      </div>
+    </header>
     <div class="container">
       <div class="ad-wrap ad-article" aria-label="Advertisement">
         <span class="ad-label">Ad</span>
@@ -690,7 +725,27 @@
           </div>
         </div>
       </div>
-
+      <article class="card" id="related">
+        <h2>Related tools</h2>
+        <p class="muted">More developer utilities:</p>
+        <p>
+          <a class="btn" href="/sha256/">SHA-256 Hash</a>
+          <a class="btn" href="/json-formatter/">JSON Formatter</a>
+          <a class="btn" href="/base64/">Base64 Encode/Decode</a>
+          <a class="btn" href="/password-uuid/">Password Generator</a>
+        </p>
+        <p class="small">
+          <span lang="bn">Prefer বাংলা?</span> Try the
+          <a
+            class="text-link"
+            href="/bn/url-tools/"
+            hreflang="bn"
+            lang="bn"
+            aria-label="বাংলা সংস্করণ"
+            >বাংলা সংস্করণ</a
+          >.
+        </p>
+      </article>
       <!-- Footer -->
       <footer>
         © <span id="y"></span> Tools Pack •
@@ -911,6 +966,8 @@
         setStatus("URL built ✓", true);
       });
     </script>
-    <script src="/assets/script.js"></script>
+    <script src="/assets/tracker.js" defer data-trk-site="tools-pack"></script>
+    <script src="/assets/related-more.js" defer></script>
+    <script src="/assets/script.js" defer></script>
   </body>
 </html>

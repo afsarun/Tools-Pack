@@ -471,8 +471,7 @@ a {
   margin-top: 0.125rem;
 }
 .info-section code {
-  background: rgba(59, 130, 246, 0.1);
-  color: var(--primary);
+  color: var(--white);
   padding: 0.125rem 0.375rem;
   border-radius: 0.25rem;
   font-size: 0.875rem;
