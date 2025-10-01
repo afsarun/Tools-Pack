@@ -638,13 +638,13 @@ header.sticky {
   gap: 14px;
 }
 
-.logo {
+/* .logo {
   width: 36px;
   height: 36px;
   border-radius: 10px;
   background: var(--gradient);
   box-shadow: var(--shadow);
-}
+} */
 
 .site-title {
   font-size: 1.25rem;

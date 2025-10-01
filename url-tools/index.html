@@ -320,10 +320,12 @@
       }
       .controls .btn-secondary {
         background-color: var(--secondary);
+        color: #000000;
       }
 
       .controls .btn-success {
         background-color: var(--success);
+        color: #050505;
       }
       /* Mobile tweaks only this page needs */
       @media (max-width: 768px) {
@@ -344,7 +346,9 @@
   <body>
     <header class="sticky">
       <div class="wrap brand">
-        <a href="/"><div class="logo" aria-label="Tools Pack"></div></a>
+        <a href="/" class="logo" aria-label="Tools Pack Home">
+          <img src="/assets/logo.png" alt="Tools Pack" width="80" height="60" />
+        </a>
         <div>
           <h1 class="site-title" style="margin: 0">
             URL Tools — Encode & Decode

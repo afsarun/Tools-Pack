@@ -202,7 +202,7 @@
         line-height: 1.6;
         color: var(--text);
         background-color: var(--background);
-        padding: 20px;
+
         min-height: 100vh;
       }
 
@@ -418,7 +418,10 @@
   <body>
     <header class="sticky">
       <div class="wrap brand">
-        <a href="/"><div class="logo"></div></a>
+        <a href="/" class="logo" aria-label="Tools Pack Home">
+          <img src="/assets/logo.png" alt="Tools Pack" width="80" height="60" />
+        </a>
+
         <div>
           <h1 class="site-title" style="margin: 0">Text → PDF</h1>
           <div class="sub">Paste • Format • Download</div>

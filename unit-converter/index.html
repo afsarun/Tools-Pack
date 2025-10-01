@@ -137,12 +137,25 @@
       }
     </script>
 
-    <style></style>
+    <style>
+      .result {
+        padding: 10px;
+        background-color: var(--surface-light);
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        font-family: "Courier New", monospace;
+        font-size: 1rem;
+        min-height: 1.5em;
+        color: #ffffff;
+      }
+    </style>
   </head>
   <body>
     <header class="sticky">
       <div class="wrap brand">
-        <a href="/"><div class="logo" aria-label="Tools Pack"></div></a>
+        <a href="/" class="logo" aria-label="Tools Pack Home">
+          <img src="/assets/logo.png" alt="Tools Pack" width="80" height="60" />
+        </a>
         <div>
           <h1 class="site-title" style="margin: 0">Unit Converter</h1>
           <div class="sub">
@@ -199,8 +212,16 @@
         <section class="card tool-card" id="converter">
           <h3>Convert Units</h3>
 
-          <div class="unit-block form-group">
-            <label for="lengthInput" class="form-label">Length</label>
+          <div
+            class="unit-block form-group"
+            role="group"
+            aria-labelledby="lengthGroupLabel"
+          >
+            <!-- Visible group label, already matches your style -->
+            <label id="lengthGroupLabel" for="lengthInput" class="form-label"
+              >Length</label
+            >
+
             <div class="row">
               <input
                 type="number"
@@ -208,8 +229,20 @@
                 class="form-input"
                 placeholder="Enter value"
                 inputmode="decimal"
+                aria-describedby="lengthResult"
+                name="lengthValue"
               />
-              <select id="lengthFrom" class="form-select">
+
+              <!-- Visually hidden but semantic labels for selects -->
+              <label for="lengthFrom" class="sr-only"
+                >Convert from (unit)</label
+              >
+              <select
+                id="lengthFrom"
+                class="form-select"
+                aria-label="Convert from"
+                name="lengthFrom"
+              >
                 <option value="m">Meters (m)</option>
                 <option value="km">Kilometers (km)</option>
                 <option value="mi">Miles (mi)</option>
@@ -219,7 +252,14 @@
                 <option value="cm">Centimeters (cm)</option>
                 <option value="mm">Millimeters (mm)</option>
               </select>
-              <select id="lengthTo" class="form-select">
+
+              <label for="lengthTo" class="sr-only">Convert to (unit)</label>
+              <select
+                id="lengthTo"
+                class="form-select"
+                aria-label="Convert to"
+                name="lengthTo"
+              >
                 <option value="km">Kilometers (km)</option>
                 <option value="m">Meters (m)</option>
                 <option value="mi">Miles (mi)</option>
@@ -230,6 +270,7 @@
                 <option value="mm">Millimeters (mm)</option>
               </select>
             </div>
+
             <p
               id="lengthResult"
               class="result mono"
@@ -238,8 +279,14 @@
             ></p>
           </div>
 
-          <div class="unit-block">
-            <label for="weightInput" class="form-label">Weight</label>
+          <div
+            class="unit-block"
+            role="group"
+            aria-labelledby="weightGroupLabel"
+          >
+            <label id="weightGroupLabel" for="weightInput" class="form-label"
+              >Weight</label
+            >
             <div class="row">
               <input
                 type="number"
@@ -247,15 +294,35 @@
                 class="form-input"
                 placeholder="Enter value"
                 inputmode="decimal"
+                aria-describedby="weightResult"
+                name="weightValue"
               />
-              <select id="weightFrom" class="form-select">
+
+              <!-- Hidden but semantic label for "from" -->
+              <label for="weightFrom" class="sr-only"
+                >Convert from (unit)</label
+              >
+              <select
+                id="weightFrom"
+                class="form-select"
+                aria-label="Convert from"
+                name="weightFrom"
+              >
                 <option value="kg">Kilograms (kg)</option>
                 <option value="g">Grams (g)</option>
                 <option value="lb">Pounds (lb)</option>
                 <option value="oz">Ounces (oz)</option>
                 <option value="st">Stone (st)</option>
               </select>
-              <select id="weightTo" class="form-select">
+
+              <!-- Hidden but semantic label for "to" -->
+              <label for="weightTo" class="sr-only">Convert to (unit)</label>
+              <select
+                id="weightTo"
+                class="form-select"
+                aria-label="Convert to"
+                name="weightTo"
+              >
                 <option value="lb">Pounds (lb)</option>
                 <option value="kg">Kilograms (kg)</option>
                 <option value="g">Grams (g)</option>
@@ -263,6 +330,7 @@
                 <option value="st">Stone (st)</option>
               </select>
             </div>
+
             <p
               id="weightResult"
               class="result mono"
@@ -270,9 +338,11 @@
               aria-live="polite"
             ></p>
           </div>
+          <div class="unit-block" role="group" aria-labelledby="tempGroupLabel">
+            <label id="tempGroupLabel" for="tempInput" class="form-label"
+              >Temperature</label
+            >
 
-          <div class="unit-block">
-            <label for="tempInput" class="form-label">Temperature</label>
             <div class="row">
               <input
                 type="number"
@@ -280,18 +350,37 @@
                 class="form-input"
                 placeholder="Enter value"
                 inputmode="decimal"
+                aria-describedby="tempResult"
+                name="tempValue"
               />
-              <select id="tempFrom" class="form-select">
+
+              <!-- Hidden but semantic label -->
+              <label for="tempFrom" class="sr-only">Convert from (unit)</label>
+              <select
+                id="tempFrom"
+                class="form-select"
+                aria-label="Convert from"
+                name="tempFrom"
+              >
                 <option value="C">Celsius (°C)</option>
                 <option value="F">Fahrenheit (°F)</option>
                 <option value="K">Kelvin (K)</option>
               </select>
-              <select id="tempTo" class="form-select">
+
+              <!-- Hidden but semantic label -->
+              <label for="tempTo" class="sr-only">Convert to (unit)</label>
+              <select
+                id="tempTo"
+                class="form-select"
+                aria-label="Convert to"
+                name="tempTo"
+              >
                 <option value="F">Fahrenheit (°F)</option>
                 <option value="C">Celsius (°C)</option>
                 <option value="K">Kelvin (K)</option>
               </select>
             </div>
+
             <p
               id="tempResult"
               class="result mono"
