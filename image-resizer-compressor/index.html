@@ -223,7 +223,7 @@
         line-height: 1.6;
         color: var(--text);
         background: var(--background);
-        padding: 20px;
+
         min-height: 100vh;
       }
 
@@ -647,12 +647,6 @@
     </header>
 
     <div class="container">
-      <div class="ad-wrap ad-article" aria-label="Advertisement">
-        <span class="ad-label">Ad</span>
-        <div class="ad-content">
-          Upgrade to Base64 Pro for unlimited conversions and advanced features!
-        </div>
-      </div>
       <!-- Breadcrumbs -->
       <nav class="breadcrumbs" aria-label="breadcrumb">
         <a href="/">Home</a> › <a href="/#image">Image Tools</a> ›
@@ -703,8 +697,8 @@
 
         <div class="settings-grid">
           <div class="form-group">
-            <label class="form-label">Resize Mode</label>
-            <select id="resizeMode" class="form-select">
+            <label for="resizeMode" class="form-label">Resize Mode</label>
+            <select id="resizeMode" class="form-select" name="resizeMode">
               <option value="none">No Resize</option>
               <option value="custom">Custom Dimensions</option>
               <option value="percentage">By Percentage</option>
@@ -756,7 +750,9 @@
           </div>
 
           <div class="form-group" id="percentageGroup">
-            <label class="form-label">Resize Percentage</label>
+            <label for="percentageInput" class="form-label"
+              >Resize Percentage</label
+            >
             <div class="range-container">
               <input
                 type="range"
@@ -765,14 +761,16 @@
                 min="10"
                 max="200"
                 value="100"
+                aria-describedby="percentageValue"
+                name="resizePercentage"
               />
               <span class="range-value" id="percentageValue">100%</span>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="form-label">Output Format</label>
-            <select id="formatSelect" class="form-select">
+            <label for="formatSelect" class="form-label">Output Format</label>
+            <select id="formatSelect" class="form-select" name="outputFormat">
               <option value="original">Keep Original</option>
               <option value="jpeg">JPEG</option>
               <option value="png">PNG</option>
