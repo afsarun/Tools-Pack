@@ -432,7 +432,7 @@
       }
 
       .result-title {
-        color: var(--primary);
+        color: var(--text);
         margin-bottom: 15px;
         font-size: 1.3rem;
       }
@@ -541,6 +541,17 @@
         .age-item {
           margin: 0;
         }
+      } /* Screen-reader only text (doesn't affect layout) */
+      .visually-hidden {
+        position: absolute !important;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 1px, 1px);
+        white-space: nowrap;
+        border: 0;
       }
     </style>
   </head>
@@ -600,46 +611,60 @@
         <!-- Tool -->
         <div class="notification" id="notification"></div>
 
-        <div class="container">
-          <header>
-            <h1>Age Calculator</h1>
-            <p class="subtitle">
-              Calculate Your Exact Age in Years, Months and Days
-            </p>
-          </header>
-
+        <div class="">
           <div class="card">
             <h2>Enter Your Birth Date</h2>
 
             <div class="form-group">
+              <!-- Visible label for the first select (kept as-is) -->
               <label for="birth-day">Day</label>
               <div class="input-group">
-                <select id="birth-day">
+                <!-- Birth Day -->
+                <select id="birth-day" aria-label="Birth day">
                   <option value="">Select Day</option>
                 </select>
 
-                <select id="birth-month">
+                <!-- Hidden label for Month -->
+                <label class="visually-hidden" for="birth-month"
+                  >Birth month</label
+                >
+                <select id="birth-month" aria-label="Birth month">
                   <option value="">Select Month</option>
                 </select>
 
-                <select id="birth-year">
+                <!-- Hidden label for Year -->
+                <label class="visually-hidden" for="birth-year"
+                  >Birth year</label
+                >
+                <select id="birth-year" aria-label="Birth year">
                   <option value="">Select Year</option>
                 </select>
               </div>
             </div>
 
             <div class="form-group">
+              <!-- Group title kept for sighted users -->
               <label for="current-date">Current Date (Optional)</label>
               <div class="input-group">
-                <select id="current-day">
+                <!-- Hidden label + aria-label for accessibility -->
+                <label class="visually-hidden" for="current-day"
+                  >Current day</label
+                >
+                <select id="current-day" aria-label="Current day">
                   <option value="">Select Day</option>
                 </select>
 
-                <select id="current-month">
+                <label class="visually-hidden" for="current-month"
+                  >Current month</label
+                >
+                <select id="current-month" aria-label="Current month">
                   <option value="">Select Month</option>
                 </select>
 
-                <select id="current-year">
+                <label class="visually-hidden" for="current-year"
+                  >Current year</label
+                >
+                <select id="current-year" aria-label="Current year">
                   <option value="">Select Year</option>
                 </select>
               </div>
@@ -703,6 +728,7 @@
             </div>
           </div>
         </div>
+
         <!-- Examples -->
         <div class="card" id="where">
           <h2>Where to Use Age Calculations</h2>
