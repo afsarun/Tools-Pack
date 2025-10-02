@@ -245,8 +245,8 @@
       }
 
       .tab.active {
-        border-bottom-color: var(--primary);
-        color: var(--primary);
+        border-bottom-color: #fff;
+        color: #fff;
       }
 
       .tab-content {
@@ -347,7 +347,7 @@
       }
 
       .btn-primary {
-        background: var(--primary);
+        background: var(--badge);
         color: white;
       }
 
@@ -730,11 +730,11 @@
                   digest
                 </li>
                 <li><strong>HMAC-SHA-256</strong> (hash with a secret key)</li>
+                <li class="small muted">
+                  All hashing happens locally using the Web Crypto API — nothing
+                  is uploaded.
+                </li>
               </ul>
-              <li class="small muted">
-                All hashing happens locally using the Web Crypto API — nothing
-                is uploaded.
-              </li>
             </div>
 
             <div class="info-section">
@@ -786,6 +786,7 @@
           <div class="card">
             <div class="info-section">
               <h3>⚙️ How to use the SHA-256 hash generator</h3>
+
               <ol>
                 <li>Choose Text or File mode.</li>
                 <li>
