@@ -966,8 +966,18 @@ footer.wrap nav a:focus-visible {
   border-radius: 8px;
   padding: 15px;
   margin: 20px 0;
+
   text-align: center;
   position: relative;
+
+  /* 🧱 Layout stability */
+  min-height: 70px; /* Ad block-এর নির্দিষ্ট জায়গা রাখে */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* 🪄 Smooth appearance */
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .ad-label {
