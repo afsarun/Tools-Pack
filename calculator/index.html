@@ -223,116 +223,148 @@
           0 10px 10px -5px rgb(0 0 0 / 0.04);
         --shadow-lg: 0 25px 50px -12px rgb(0 0 0 / 0.25);
 
-        --link: #60a5fa; /* sky-400 on dark bg: passes 4.5:1 */
-        --link-hover: #93c5fd; /* lighter on hover */
-        --link-visited: #a78bfa; /* violet-400, still passes on dark bg */
+        --link: #60a5fa;
+        --link-hover: #93c5fd;
+        --link-visited: #a78bfa;
       }
+
       * {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
       }
 
+      /* ---- layout shell ---- */
+      .calculator-card {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
       .calculator {
         display: flex;
         flex-direction: column;
-        gap: 15px;
+        gap: 16px;
       }
 
+      /* ---- display ---- */
       .display {
         background-color: var(--surface-light);
         border: 1px solid var(--border);
-        border-radius: 8px;
-        padding: 15px;
+        border-radius: 12px;
+        padding: 16px 18px;
         text-align: right;
-        min-height: 80px;
+        min-height: 88px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        box-shadow: var(--shadow);
       }
 
       .previous-operand {
         color: var(--text-muted);
-        font-size: 0.9rem;
+        font-size: 0.92rem;
         min-height: 1.2em;
         word-break: break-all;
       }
 
       .current-operand {
-        font-size: 1.8rem;
+        font-size: clamp(1.4rem, 4.5vw, 2rem); /* fluid on small screens */
         font-weight: 600;
+        line-height: 1.2;
         word-break: break-all;
       }
 
+      /* ---- keypad ---- */
       .buttons-grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: 10px;
       }
 
+      /* base button (was missing) */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 12px;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        background: var(--surface);
+        color: var(--text);
+        font-size: 1.05rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 120ms ease, background-color 120ms ease,
+          box-shadow 120ms ease;
+        touch-action: manipulation;
+        user-select: none;
+      }
+
       .btn:active {
-        transform: translateY(0);
+        transform: translateY(1px);
       }
 
       .btn-number {
         background-color: var(--surface-light);
       }
-
       .btn-number:hover {
         background-color: var(--border);
       }
 
       .btn-operator {
         background-color: var(--primary);
-        color: white;
+        color: #fff;
+        border-color: transparent;
       }
-
       .btn-operator:hover {
         background-color: var(--primary-hover);
       }
 
       .btn-equals {
         background: var(--gradient);
-        color: white;
+        color: #fff;
         grid-column: span 2;
+        border-color: transparent;
       }
-
       .btn-equals:hover {
-        box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+        box-shadow: 0 5px 15px rgba(59, 130, 246, 0.35);
       }
 
       .btn-clear {
         background-color: var(--danger);
-        color: #dde0e4;
+        color: #ffecec;
+        border-color: transparent;
       }
-
       .btn-clear:hover {
         background-color: #dc2626;
       }
 
       .btn-function {
         background-color: var(--secondary);
-        color: white;
+        color: #fff;
+        border-color: transparent;
       }
-
       .btn-function:hover {
         background-color: #475569;
       }
 
+      /* ---- history ---- */
       .history-panel {
-        margin-top: 20px;
-        padding: 15px;
+        margin-top: 12px;
+        padding: 14px;
         background-color: var(--surface-light);
-        border-radius: 8px;
+        border-radius: 10px;
         border: 1px solid var(--border);
-        max-height: 200px;
+        max-height: 220px;
         overflow-y: auto;
       }
 
       .history-title {
         color: var(--text-muted);
-        font-size: 0.9rem;
-        margin-bottom: 10px;
+        font-size: 0.92rem;
+        margin-bottom: 8px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -341,21 +373,20 @@
       .history-list {
         list-style: none;
       }
-
       .history-item {
         padding: 8px 0;
         border-bottom: 1px solid var(--border);
-        font-family: "Courier New", monospace;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", "Courier New", monospace;
         display: flex;
         justify-content: space-between;
+        gap: 12px;
       }
-
       .history-expression {
         color: var(--text-muted);
       }
-
       .history-result {
-        font-weight: 600;
+        font-weight: 700;
         color: var(--success);
       }
 
@@ -364,32 +395,136 @@
         border: none;
         color: var(--text-muted);
         cursor: pointer;
-        font-size: 0.8rem;
+        font-size: 0.85rem;
         text-decoration: underline;
       }
-
       .clear-history:hover {
         color: var(--danger);
       }
 
-      @media (max-width: 480px) {
-        .card {
-          padding: 15px;
-        }
+      /* ---- responsiveness ---- */
 
+      /* tablets */
+      @media (max-width: 900px) {
+        .calculator-card {
+          padding: 0 16px;
+        }
+        .buttons-grid {
+          gap: 8px;
+        }
         .btn {
-          padding: 12px;
+          padding: 13px 10px;
           font-size: 1rem;
-        }
-
-        .current-operand {
-          font-size: 1.5rem;
         }
       }
 
+      /* phones */
+      @media (max-width: 680px) {
+        .card {
+          padding: 14px;
+        }
+        .buttons-grid {
+          gap: 8px;
+        }
+        .current-operand {
+          font-size: clamp(1.25rem, 6vw, 1.6rem);
+        }
+        .btn {
+          padding: 12px 10px;
+          border-radius: 10px;
+        }
+        .history-panel {
+          max-height: 180px;
+        }
+      }
+
+      /* narrow phones */
+      @media (max-width: 420px) {
+        .buttons-grid {
+          grid-template-columns: repeat(4, 1fr);
+          gap: 6px;
+        }
+        .btn {
+          padding: 12px 8px;
+          font-size: 0.98rem;
+        }
+        .btn-equals {
+          grid-column: span 2;
+        }
+        .display {
+          padding: 14px 14px;
+          min-height: 78px;
+        }
+      }
+
+      /* ultra-narrow & landscape helpers */
+      @media (max-width: 360px),
+        (max-height: 420px) and (orientation: landscape) {
+        .btn {
+          padding: 10px 6px;
+          font-size: 0.92rem;
+        }
+        .current-operand {
+          font-size: 1.2rem;
+        }
+        .history-panel {
+          max-height: 140px;
+        }
+      }
+
+      /* reduce motion preference */
+      @media (prefers-reduced-motion: reduce) {
+        .btn {
+          transition: none;
+        }
+      }
+
+      /* iOS safe areas */
       .calculator-card {
-        max-width: 600px;
-        margin: 0 auto;
+        padding-bottom: env(safe-area-inset-bottom);
+      } /* --- Overlap fixes --- */
+      .display {
+        /* guarantee visual separation even if flex-gap fails */
+        margin-bottom: 10px;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* give every grid row a minimum height so rows can't collapse */
+      .buttons-grid {
+        grid-auto-rows: minmax(56px, auto);
+      }
+
+      /* ensure buttons are tall enough to keep the grid row open */
+      .btn {
+        min-height: 48px; /* touch target + prevents collapse */
+        min-width: 0; /* avoid overflow in narrow view */
+        line-height: 1.1; /* prevent tall text from stretching */
+      }
+
+      /* equals still spans two cells but obeys row height */
+      .btn-equals {
+        grid-column: span 2;
+      }
+
+      /* tighter but still safe on narrow phones */
+      @media (max-width: 680px) {
+        .buttons-grid {
+          grid-auto-rows: minmax(50px, auto);
+        }
+        .btn {
+          min-height: 44px;
+        }
+      }
+
+      @media (max-width: 420px),
+        (max-height: 420px) and (orientation: landscape) {
+        .buttons-grid {
+          grid-auto-rows: minmax(44px, auto);
+        }
+        .btn {
+          min-height: 40px;
+        }
       }
     </style>
   </head>

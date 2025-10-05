@@ -345,6 +345,128 @@
           font-size: 1.8rem;
         }
       }
+      /* tablets */
+      @media (max-width: 900px) {
+        .calculator-card {
+          padding: 0 16px;
+        }
+        .buttons-grid {
+          gap: 8px;
+        }
+        .btn {
+          padding: 13px 10px;
+          font-size: 1rem;
+        }
+      }
+
+      /* phones */
+      @media (max-width: 680px) {
+        .card {
+          padding: 14px;
+        }
+        .buttons-grid {
+          gap: 8px;
+        }
+        .current-operand {
+          font-size: clamp(1.25rem, 6vw, 1.6rem);
+        }
+        .btn {
+          padding: 12px 10px;
+          border-radius: 10px;
+        }
+        .history-panel {
+          max-height: 180px;
+        }
+      }
+
+      /* narrow phones */
+      @media (max-width: 420px) {
+        .buttons-grid {
+          grid-template-columns: repeat(4, 1fr);
+          gap: 6px;
+        }
+        .btn {
+          padding: 12px 8px;
+          font-size: 0.98rem;
+        }
+        .btn-equals {
+          grid-column: span 2;
+        }
+        .display {
+          padding: 14px 14px;
+          min-height: 78px;
+        }
+      }
+
+      /* ultra-narrow & landscape helpers */
+      @media (max-width: 360px),
+        (max-height: 420px) and (orientation: landscape) {
+        .btn {
+          padding: 10px 6px;
+          font-size: 0.92rem;
+        }
+        .current-operand {
+          font-size: 1.2rem;
+        }
+        .history-panel {
+          max-height: 140px;
+        }
+      }
+
+      /* reduce motion preference */
+      @media (prefers-reduced-motion: reduce) {
+        .btn {
+          transition: none;
+        }
+      }
+
+      /* iOS safe areas */
+      .calculator-card {
+        padding-bottom: env(safe-area-inset-bottom);
+      } /* --- Overlap fixes --- */
+      .display {
+        /* guarantee visual separation even if flex-gap fails */
+        margin-bottom: 10px;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* give every grid row a minimum height so rows can't collapse */
+      .buttons-grid {
+        grid-auto-rows: minmax(56px, auto);
+      }
+
+      /* ensure buttons are tall enough to keep the grid row open */
+      .btn {
+        min-height: 48px; /* touch target + prevents collapse */
+        min-width: 0; /* avoid overflow in narrow view */
+        line-height: 1.1; /* prevent tall text from stretching */
+      }
+
+      /* equals still spans two cells but obeys row height */
+      .btn-equals {
+        grid-column: span 2;
+      }
+
+      /* tighter but still safe on narrow phones */
+      @media (max-width: 680px) {
+        .buttons-grid {
+          grid-auto-rows: minmax(50px, auto);
+        }
+        .btn {
+          min-height: 44px;
+        }
+      }
+
+      @media (max-width: 420px),
+        (max-height: 420px) and (orientation: landscape) {
+        .buttons-grid {
+          grid-auto-rows: minmax(44px, auto);
+        }
+        .btn {
+          min-height: 40px;
+        }
+      }
     </style>
   </head>
 
@@ -410,7 +532,7 @@
         </p>
 
         <div class="container">
-          <div class="calculator">
+          <div class="calculator calculator-card">
             <div class="display">
               <div class="previous-operand" id="previous-operand"></div>
               <div class="current-operand" id="current-operand">০</div>
