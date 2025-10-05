@@ -46,7 +46,14 @@
       content="https://tools-pack.netlify.app/assets/og/percent-calculator-bn.webp"
     />
     <!-- Styles -->
-    <link rel="stylesheet" href="/assets/style.css" />
+    <link
+      rel="preload"
+      href="/assets/style.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+      fetchpriority="high"
+    />
+    <noscript><link rel="stylesheet" href="/assets/style.css" /></noscript>
 
     <script type="application/ld+json">
       {

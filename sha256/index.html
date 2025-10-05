@@ -9,6 +9,15 @@
       name="description"
       content="Convert text to SHA-256 hash. Free online SHA256 generator & checker — secure, instant, works offline in your browser, with full privacy protection."
     />
+
+    <link
+      rel="preload"
+      href="/assets/style.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+      fetchpriority="high"
+    />
+    <noscript><link rel="stylesheet" href="/assets/style.css" /></noscript>
     <meta name="theme-color" content="#1E1E2F" />
 
     <!-- Canonical & hreflang -->
@@ -28,9 +37,6 @@
       hreflang="x-default"
       href="https://tools-pack.netlify.app/sha256/"
     />
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="/assets/style.css" />
 
     <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />

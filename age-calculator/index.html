@@ -41,9 +41,10 @@
       rel="preload"
       href="/assets/style.css"
       as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
       fetchpriority="high"
     />
-    <link rel="stylesheet" href="/assets/style.css" />
+    <noscript><link rel="stylesheet" href="/assets/style.css" /></noscript>
 
     <!-- Hreflang -->
     <link

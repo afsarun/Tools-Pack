@@ -9,6 +9,15 @@
       name="description"
       content="Format, minify, and validate JSON in your browser. Unicode-safe, fast, no tracking. Pretty print and copy instantly."
     />
+
+    <link
+      rel="preload"
+      href="/assets/style.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+      fetchpriority="high"
+    />
+    <noscript><link rel="stylesheet" href="/assets/style.css" /></noscript>
     <meta name="theme-color" content="#1E1E2F" />
 
     <!-- Canonical -->
@@ -33,9 +42,6 @@
       hreflang="x-default"
       href="https://tools-pack.netlify.app/json-formatter/"
     />
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="/assets/style.css" />
 
     <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />

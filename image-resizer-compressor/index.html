@@ -17,7 +17,15 @@
     />
 
     <!-- Styles + Theme -->
-    <link rel="stylesheet" href="/assets/style.css" />
+    <link
+      rel="preload"
+      href="/assets/style.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+      fetchpriority="high"
+    />
+    <noscript><link rel="stylesheet" href="/assets/style.css" /></noscript>
+
     <meta name="theme-color" content="#1E1E2F" />
 
     <!-- Hreflang alternates -->

@@ -9,7 +9,7 @@
     <title>
       URL Encoder &amp; Decoder Online | Tools Pack - RFC 3986 Compliant
     </title>
-    <link rel="stylesheet" href="/assets/style.css" />
+
     <meta
       name="description"
       content="Encode or decode full URLs and URI components instantly. Safe for query parameters and path segments. Works locally in your browser with RFC 3986 compliance."
@@ -22,6 +22,15 @@
       name="robots"
       content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
     />
+
+    <link
+      rel="preload"
+      href="/assets/style.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+      fetchpriority="high"
+    />
+    <noscript><link rel="stylesheet" href="/assets/style.css" /></noscript>
     <meta name="theme-color" content="#1E1E2F" />
 
     <!-- Canonical & hreflang -->

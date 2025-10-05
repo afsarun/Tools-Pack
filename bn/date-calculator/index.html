@@ -16,7 +16,14 @@
       href="https://tools-pack.netlify.app/bn/date-calculator/"
     />
     <meta name="theme-color" content="#1E1E2F" />
-    <link rel="stylesheet" href="/assets/style.css" />
+    <link
+      rel="preload"
+      href="/assets/style.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+      fetchpriority="high"
+    />
+    <noscript><link rel="stylesheet" href="/assets/style.css" /></noscript>
 
     <!-- Hreflang -->
     <link

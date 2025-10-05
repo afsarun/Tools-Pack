@@ -9,6 +9,15 @@
       name="description"
       content="Fast, accurate percentage calculator: A% of B, what percent is A of B, percent change, and value after increase/decrease. No tracking."
     />
+
+    <link
+      rel="preload"
+      href="/assets/style.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+      fetchpriority="high"
+    />
+    <noscript><link rel="stylesheet" href="/assets/style.css" /></noscript>
     <meta name="theme-color" content="#1E1E2F" />
 
     <!-- Canonical & hreflang -->
@@ -31,9 +40,6 @@
       hreflang="x-default"
       href="https://tools-pack.netlify.app/percent-calculator/"
     />
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="/assets/style.css" />
 
     <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />

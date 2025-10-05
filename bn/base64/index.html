@@ -30,7 +30,14 @@
     />
 
     <!-- Styles (root-relative so it works from any depth) -->
-    <link rel="stylesheet" href="/assets/style.css" />
+    <link
+      rel="preload"
+      href="/assets/style.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+      fetchpriority="high"
+    />
+    <noscript><link rel="stylesheet" href="/assets/style.css" /></noscript>
 
     <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
