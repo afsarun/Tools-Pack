@@ -150,7 +150,7 @@ a {
   animation: fadeInUp 0.8s ease-out;
 }
 .header h2 {
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
   font-weight: 800;
   background: var(--gradient);
   -webkit-background-clip: text;
