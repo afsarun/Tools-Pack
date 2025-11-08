@@ -26,14 +26,64 @@
       hreflang="x-default"
       href="https://tools-pack.netlify.app/contact/"
     />
-
+    <script src="/assets/theme.js" defer></script>
     <!-- Site styles -->
     <link rel="stylesheet" href="/assets/style.css" />
 
     <!-- Page-scoped form styles (CSS only) -->
     <style>
+      :root {
+        --badge: #073c92;
+        --primary: #2563eb;
+        --primary-hover: #1e40af;
+        --secondary: #64748b;
+        --success: #10b981;
+        --danger: #ef4444;
+        --warning: #f59e0b;
+
+        /* site tokens mapped for existing rules */
+        --background: #ffffff; /* page background (light) */
+        --surface: #f8fafc; /* card / panel bg */
+        --surface-light: #f1f5f9; /* inputs, lighter surfaces */
+        --text: #0f172a; /* body text (dark on light bg) */
+        --text-muted: #475569;
+        --border: #e6edf6;
+        --gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+        --shadow: 0 10px 30px rgba(2, 6, 23, 0.06);
+        --shadow-lg: 0 20px 40px rgba(2, 6, 23, 0.08);
+
+        --link: #2563eb;
+        --link-hover: #3b82f6;
+        --link-visited: #8b5cf6;
+      }
+
+      /* Dark theme — use your exact dark tokens (applied when html[data-theme="dark"]) */
+      html[data-theme="dark"] {
+        --badge: #073c92;
+        --primary: #3b82f6;
+        --primary-hover: #2563eb;
+        --secondary: #64748b;
+        --success: #10b981;
+        --danger: #ef4444;
+        --warning: #f59e0b;
+
+        --background: #0f172a;
+        --surface: #1e293b;
+        --surface-light: #334155;
+        --text: #f1f5f9;
+        --text-muted: #c4cdd6;
+        --border: #475569;
+        --gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+        --shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+          0 10px 10px -5px rgb(0 0 0 / 0.04);
+        --shadow-lg: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+
+        --link: #60a5fa;
+        --link-hover: #93c5fd;
+        --link-visited: #a78bfa;
+      }
       .contact-form {
-        background: #161a23;
+        background: var(--background);
         border: 1px solid #262b36;
         border-radius: 14px;
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
@@ -71,7 +121,7 @@
         padding: 12px 14px;
         border-radius: 10px;
         border: 1px solid #262b36;
-        background: #121620;
+        background: var(--background);
         color: #e7eaf1;
         outline: none;
         transition: border-color 0.15s cubic-bezier(0.2, 0.8, 0.2, 1),

@@ -89,7 +89,7 @@
       name="twitter:image"
       content="https://tools-pack.netlify.app/assets/og/age-calculator-en.jpg"
     />
-
+    <script src="/assets/theme.js" defer></script>
     <!-- JSON-LD: WebApplication -->
     <script type="application/ld+json">
       {
@@ -292,6 +292,7 @@
       }
     </script>
     <style>
+      /* Light theme = default */
       :root {
         --primary: #3b82f6;
         --primary-hover: #2563eb;
@@ -299,16 +300,39 @@
         --success: #10b981;
         --danger: #ef4444;
         --warning: #f59e0b;
+
+        --background: #f8fafc; /* page background (light) */
+        --surface: #ffffff; /* cards */
+        --surface-light: #f1f5f9; /* inputs / subtle surfaces */
+        --text: #0f172a;
+        --text-muted: #475569;
+        --border: #e2e8f0;
+
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      }
+
+      /* Dark theme overrides */
+      [data-theme="dark"] {
+        --primary: #3b82f6;
+        --primary-hover: #2563eb;
+        --secondary: #64748b;
+        --success: #10b981;
+        --danger: #ef4444;
+        --warning: #f59e0b;
+
         --background: #0f172a;
         --surface: #1e293b;
         --surface-light: #334155;
         --text: #f1f5f9;
         --text-muted: #c4cdd6;
         --border: #475569;
-        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+        --shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+          0 10px 10px -5px rgb(0 0 0 / 0.04);
       }
 
+      /* --- the rest of your CSS (no changes necessary) --- */
       * {
         margin: 0;
         padding: 0;
@@ -320,7 +344,6 @@
         background-color: var(--background);
         color: var(--text);
         line-height: 1.6;
-
         min-height: 100vh;
       }
 
@@ -366,7 +389,7 @@
       select,
       input {
         padding: 12px 15px;
-        background-color: var(--surface-light);
+        background-color: var(--background);
         border: 1px solid var(--border);
         border-radius: 8px;
         color: var(--text);
@@ -389,7 +412,7 @@
         cursor: pointer;
         transition: all 0.3s;
         /* background-color: var(--primary); */
-        color: white;
+        color: var(--text);
         display: inline-block;
       }
 
@@ -411,7 +434,6 @@
         padding: 20px;
         background-color: var(--surface-light);
         border-radius: 8px;
-        /* FIX: Remove display: none and use opacity/transform for hiding */
         opacity: 0;
         transform: translateY(120px);
         height: 0;
@@ -536,7 +558,8 @@
         .age-item {
           margin: 0;
         }
-      } /* Screen-reader only text (doesn't affect layout) */
+      }
+
       .visually-hidden {
         position: absolute !important;
         width: 1px;

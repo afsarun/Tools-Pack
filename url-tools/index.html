@@ -79,7 +79,7 @@
       name="twitter:image"
       content="https://tools-pack.netlify.app/assets/og/url-tools-en.webp"
     />
-
+    <script src="/assets/theme.js" defer></script>
     <!-- Structured Data: WebApplication -->
     <script type="application/ld+json">
       {
@@ -173,9 +173,11 @@
 
     <style>
       /* ===========================================
-   URL Encoder/Decoder — Local (page-specific)
-   Only include on this tool’s page
-   =========================================== */
+     URL Encoder/Decoder — Local (page-specific)
+     Only include on this tool’s page
+     =========================================== */
+
+      /* Light theme = default */
       :root {
         --primary: #3b82f6;
         --primary-hover: #2563eb;
@@ -183,15 +185,36 @@
         --success: #10b981;
         --danger: #ef4444;
         --warning: #f59e0b;
+
+        --background: #f8fafc; /* page background (light) */
+        --surface: #ffffff; /* cards */
+        --surface-light: #f1f5f9; /* inputs / subtle surfaces */
+        --text: #0f172a;
+        --text-muted: #475569;
+        --border: #e2e8f0;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      }
+
+      /* Dark theme overrides */
+      [data-theme="dark"] {
+        --primary: #3b82f6;
+        --primary-hover: #2563eb;
+        --secondary: #64748b;
+        --success: #10b981;
+        --danger: #ef4444;
+        --warning: #f59e0b;
+
         --background: #0f172a;
         --surface: #1e293b;
         --surface-light: #334155;
         --text: #f1f5f9;
         --text-muted: #c4cdd6;
         --border: #475569;
-        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.12),
           0 2px 4px -1px rgba(0, 0, 0, 0.06);
       }
+
       /* If you want a unique hero tint for this tool only, override tool-card here: */
       .tool-card {
         background: linear-gradient(
@@ -216,6 +239,7 @@
         cursor: pointer;
         transition: all 0.3s ease;
         text-align: center;
+        color: var(--text);
       }
       .mode-option:hover {
         border-color: var(--primary);
@@ -223,7 +247,7 @@
       }
       .mode-option.active {
         border-color: var(--primary);
-        background: rgba(59, 130, 246, 0.1);
+        background: rgba(59, 130, 246, 0.06);
       }
       .mode-option h3 {
         color: var(--primary);
@@ -251,6 +275,7 @@
         padding: 1.5rem;
         margin-top: 1.5rem;
         border: 1px solid var(--border);
+        color: var(--text);
       }
       .url-parser.active {
         display: block;
@@ -271,6 +296,7 @@
         background: var(--surface);
         border-radius: 0.5rem;
         border: 1px solid var(--border);
+        color: var(--text);
       }
       .url-part-label {
         font-weight: 600;
@@ -291,6 +317,7 @@
         padding: 1.5rem;
         margin-top: 1.5rem;
         border: 1px solid var(--border);
+        color: var(--text);
       }
       .query-editor.active {
         display: block;
@@ -311,6 +338,7 @@
         background: var(--surface);
         border-radius: 0.75rem;
         border: 1px solid var(--border);
+        color: var(--text);
       }
       .query-param input {
         background: var(--background);
@@ -329,6 +357,38 @@
         background-color: var(--success);
         color: #050505;
       }
+
+      /* Theme toggle button (used by /assets/theme.js) */
+      #theme-toggle {
+        background: none;
+        color: var(--text);
+        border: 1px solid var(--border);
+        padding: 8px 10px;
+        border-radius: 8px;
+        font-size: 14px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        transition: background 0.12s ease, transform 0.12s ease;
+      }
+      #theme-toggle:hover {
+        background: var(--surface-light);
+        transform: translateY(-2px);
+      }
+      #theme-toggle[aria-pressed="true"] {
+        background: linear-gradient(
+          90deg,
+          rgba(59, 130, 246, 0.08),
+          rgba(16, 185, 129, 0.04)
+        );
+        border-color: var(--primary);
+      }
+      #theme-toggle-icon {
+        font-size: 16px;
+        line-height: 1;
+      }
+
       /* Mobile tweaks only this page needs */
       @media (max-width: 768px) {
         .mode-selector {
@@ -341,6 +401,18 @@
         .query-param {
           grid-template-columns: 1fr;
           gap: 1rem;
+        }
+      }
+
+      /* small animation used above */
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
       }
     </style>

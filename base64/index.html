@@ -70,7 +70,7 @@
       name="twitter:image"
       content="https://tools-pack.netlify.app/assets/og/base64-tools-en.webp"
     />
-
+    <script src="/assets/theme.js" defer></script>
     <!-- JSON-LD: WebApplication (upgraded) -->
     <script type="application/ld+json">
       {
@@ -166,6 +166,61 @@
         --link: #60a5fa;
         --link-hover: #93c5fd;
         --link-visited: #a78bfa;
+      }
+      /* --- Light theme explicit defaults (site-wide) --- */
+      :root {
+        --background: #ffffff;
+        --surface: #f8fafc;
+        --surface-light: #f1f5f9;
+        --text: #0f172a;
+        --text-muted: #475569;
+        --border: #e6edf6;
+        --link: #2563eb;
+        --link-hover: #3b82f6;
+      }
+
+      /* --- Dark theme overrides (applied when html[data-theme="dark"]) --- */
+      [data-theme="dark"] {
+        --background: #0f172a;
+        --surface: #1e293b;
+        --surface-light: #334155;
+        --text: #f1f5f9;
+        --text-muted: #c4cdd6;
+        --border: #475569;
+        --link: #60a5fa;
+        --link-hover: #93c5fd;
+      }
+
+      /* small style for toggle button (global) */
+      #theme-toggle {
+        background: none;
+        color: var(--text);
+        border: 1px solid var(--border);
+        padding: 8px 10px;
+        border-radius: 8px;
+        font-size: 14px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        transition: background 0.12s ease, transform 0.12s ease,
+          border-color 0.12s ease;
+      }
+      #theme-toggle:hover {
+        background: var(--surface-light);
+        transform: translateY(-2px);
+      }
+      #theme-toggle[aria-pressed="true"] {
+        border-color: var(--primary);
+        background: linear-gradient(
+          90deg,
+          rgba(59, 130, 246, 0.06),
+          rgba(16, 185, 129, 0.03)
+        );
+      }
+      #theme-toggle-icon {
+        font-size: 16px;
+        line-height: 1;
       }
 
       * {

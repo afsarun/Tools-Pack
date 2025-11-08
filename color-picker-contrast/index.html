@@ -87,7 +87,7 @@
       name="twitter:image"
       content="https://tools-pack.netlify.app/assets/og/color-picker-contrast-en.webp"
     />
-
+    <script src="/assets/theme.js" defer></script>
     <!-- JSON-LD: WebApplication (upgraded) -->
     <script type="application/ld+json">
       {
@@ -230,7 +230,35 @@
     </script>
 
     <style>
+      /* ---------- THEME TOKENS ---------- */
+      /* Light theme defaults */
       :root {
+        --badge: #073c92;
+        --primary: #2563eb;
+        --primary-hover: #1e40af;
+        --secondary: #64748b;
+        --success: #10b981;
+        --danger: #ef4444;
+        --warning: #f59e0b;
+
+        --background: #ffffff;
+        --surface: #f8fafc;
+        --surface-light: #f1f5f9;
+        --text: #0f172a;
+        --text-muted: #475569;
+        --border: #e6edf6;
+
+        --gradient: linear-gradient(135deg, #2563eb 0%, #8b5cf6 100%);
+        --shadow: 0 10px 20px rgba(2, 6, 23, 0.06);
+        --shadow-lg: 0 20px 40px rgba(2, 6, 23, 0.08);
+
+        --link: #2563eb;
+        --link-hover: #3b82f6;
+        --link-visited: #8b5cf6;
+      }
+
+      /* Dark theme — EXACT tokens you provided */
+      html[data-theme="dark"] {
         --badge: #073c92;
         --primary: #3b82f6;
         --primary-hover: #2563eb;
@@ -251,6 +279,71 @@
         --link: #60a5fa;
         --link-hover: #93c5fd;
         --link-visited: #a78bfa;
+      }
+
+      /* ---------- APPLY THE TOKENS (examples) ---------- */
+      html,
+      body {
+        background: var(--background);
+        color: var(--text);
+      }
+
+      .card,
+      .tool-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow-lg);
+      }
+
+      a {
+        color: var(--link);
+      }
+      a:hover {
+        color: var(--link-hover);
+      }
+
+      /* Theme toggle button visuals (place in header) */
+      #theme-toggle {
+        background: none;
+        color: var(--text);
+        border: 1px solid var(--border);
+        padding: 8px 10px;
+        border-radius: 8px;
+        font-size: 14px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        transition: background 0.12s ease, transform 0.12s ease,
+          border-color 0.12s ease;
+      }
+      #theme-toggle:hover {
+        background: color-mix(in srgb, var(--surface-light) 8%, transparent);
+        transform: translateY(-2px);
+      }
+      #theme-toggle[aria-pressed="true"] {
+        border-color: var(--primary);
+        background: linear-gradient(
+          90deg,
+          rgba(59, 130, 246, 0.06),
+          rgba(16, 185, 129, 0.03)
+        );
+      }
+      #theme-toggle svg {
+        width: 18px;
+        height: 18px;
+        display: block;
+      }
+      .sr-only {
+        position: absolute !important;
+        width: 1px !important;
+        height: 1px !important;
+        padding: 0 !important;
+        margin: -1px !important;
+        overflow: hidden !important;
+        clip: rect(0, 0, 1px, 1px) !important;
+        white-space: nowrap !important;
+        border: 0 !important;
       }
 
       * {
