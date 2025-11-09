@@ -37,9 +37,10 @@ body {
 /* 2) Design tokens */
 :root {
   --badge: #073c92;
-  --primary: #3b82f6;
+  --primary: #4a6fa5;
   --primary-hover: #2563eb;
-  --secondary: #64748b;
+  --secondary: #6b8cbc;
+  --accent: #ff7e5f;
   --success: #10b981;
   --danger: #ef4444;
   --warning: #f59e0b;
@@ -80,7 +81,7 @@ body {
   --surface: #1e293b;
   --surface-light: #334155;
   --text: #f1f5f9;
-  --text-muted: #c4cdd6;
+  --text-muted: #eef6ff;
   --border: #475569;
   --link: #60a5fa;
   --link-hover: #93c5fd;
@@ -137,15 +138,6 @@ body {
   font: 14px/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas,
     "Liberation Mono", monospace;
 }
-.ok {
-  color: var(--success);
-} /* PASS */
-.bad {
-  color: var(--danger);
-} /* FAIL */
-.mono {
-  font-family: inherit;
-}
 
 /* tock style  */
 
@@ -191,7 +183,27 @@ a {
   background: #1e40af;
   color: #fff;
 }
-
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: var(--surface);
+  border-radius: 0.75rem;
+  border: 1px solid var(--border);
+}
+.breadcrumbs a {
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 1rem;
+}
+.breadcrumbs a:hover {
+  color: var(--primary-hover);
+}
 /* 3) Layout */
 .container {
   max-width: 1200px;
@@ -220,28 +232,6 @@ a {
   max-width: 700px;
   margin: 0 auto 1rem;
   line-height: 2;
-}
-
-.breadcrumbs {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.875rem;
-  color: var(--text-muted);
-  margin-bottom: 2rem;
-  padding: 1rem;
-  background: var(--surface);
-  border-radius: 0.75rem;
-  border: 1px solid var(--border);
-}
-.breadcrumbs a {
-  color: var(--text);
-  text-decoration: none;
-  transition: color 0.3s ease;
-  font-size: 1rem;
-}
-.breadcrumbs a:hover {
-  color: var(--primary-hover);
 }
 
 .badge {
