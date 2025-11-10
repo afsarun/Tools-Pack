@@ -456,13 +456,6 @@ a {
   transform: translateY(0);
 }
 
-.btn-secondary {
-  background: var(--surface-light);
-  color: var(--text);
-}
-.btn-secondary:hover {
-  background: var(--border);
-}
 .btn-success {
   background: var(--success);
 }
