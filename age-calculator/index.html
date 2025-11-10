@@ -579,7 +579,16 @@
         color: var(--text-muted);
         font-size: 0.9rem;
       }
-
+      .top-card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+      @media (max-width: 992px) {
+        .top-card {
+          grid-template-columns: 1fr;
+        }
+      }
       @media (max-width: 768px) {
         .input-group {
           flex-direction: column;
@@ -605,11 +614,6 @@
         clip: rect(0, 0, 1px, 1px);
         white-space: nowrap;
         border: 0;
-      }
-      .top-card {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
       }
     </style>
   </head>
