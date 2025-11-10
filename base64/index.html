@@ -222,7 +222,47 @@
         font-size: 16px;
         line-height: 1;
       }
+      header.top-header {
+        text-align: center;
+        margin-bottom: 40px;
+        padding: 30px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: white;
+        border-radius: 10px;
+        box-shadow: var(--shadow);
+      }
 
+      .top-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+      }
+      .tagline {
+        font-size: 1.2rem;
+        opacity: 0.9;
+      }
+      .content-section {
+        background: var(--surface);
+        border-radius: var(--radius);
+        padding: 2rem;
+        box-shadow: var(--shadow);
+        margin-bottom: 2rem;
+      }
+
+      .content-section h2 {
+        color: var(--primary);
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--light);
+      }
+
+      .content-section h3 {
+        color: var(--secondary);
+        margin: 1.5rem 0 1rem;
+      }
+
+      .content-section p {
+        margin-bottom: 1rem;
+      }
       * {
         margin: 0;
         padding: 0;
@@ -594,8 +634,7 @@
           />
         </a>
         <div>
-          <h1 class="site-title" style="margin: 0">Base64 Encode / Decode</h1>
-          <div class="sub">Unicode-safe • Private</div>
+          <p class="site-title" style="margin: 0">Base64 Encode / Decode</p>
         </div>
         <div style="margin-left: auto">
           <a class="muted" href="/bn/base64/" hreflang="bn">বাংলা</a>
@@ -615,15 +654,9 @@
         <a href="/">Home</a> › <a href="/#text">Text Tools</a> ›
         <span>Base64 Encoder/Decoder</span>
       </nav>
-      <header class="header">
-        <h2>Base64 Encoder &amp; Decoder — Online &amp; Free</h2>
-        <p class="subtitle">
-          Convert text and small files to and from <strong>Base64</strong> with
-          <em>full Unicode support</em> (emoji, Bangla, and all scripts). Runs
-          <strong>entirely in your browser</strong> — no uploads, no tracking,
-          100% privacy-friendly.
-        </p>
-        <span class="badge">Base64 Standard (RFC&nbsp;4648)</span>
+      <header class="top-header">
+        <h1>Base64 Encoder &amp; Decoder — Online &amp; Free</h1>
+        <p class="tagline">Base64 Standard (RFC&nbsp;4648)</p>
       </header>
 
       <!-- TOC -->
@@ -773,219 +806,13 @@
             </div>
           </article>
         </div>
-        <!-- Examples -->
-        <div class="card" id="where">
-          <h2>Where to Use Base64</h2>
-          <div class="examples">
-            <div class="example">
-              <div class="example-title">🖼 Images &amp; Icons</div>
-              <div class="example-content">Embed small assets as Data URLs</div>
-              <span class="badge">data:*;base64</span>
-            </div>
 
-            <div class="example">
-              <div class="example-title">🔐 Tokens</div>
-              <div class="example-content">
-                JWT parts use Base64URL (no padding)
-              </div>
-              <span class="badge">Base64URL</span>
-            </div>
-
-            <div class="example">
-              <div class="example-title">📦 Transport</div>
-              <div class="example-content">
-                Encode binary in JSON or text protocols
-              </div>
-              <span class="badge">binary → text</span>
-            </div>
-
-            <div class="example">
-              <div class="example-title">🧪 Debugging</div>
-              <div class="example-content">
-                Inspect or fix malformed Base64 strings
-              </div>
-              <span class="badge">validate</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Best Practices -->
-        <div class="card" id="best-practices">
-          <h2>Base64 Best Practices</h2>
-          <div class="examples">
-            <div class="example">
-              <div class="example-title">🔤 Use UTF-8 for text</div>
-              <div class="example-content">
-                Always encode/decode strings via <code>TextEncoder</code>/<code
-                  >TextDecoder</code
-                >
-                (avoids <code>atob</code>/<code>btoa</code> Unicode issues).
-              </div>
-            </div>
-
-            <div class="example">
-              <div class="example-title">
-                🔁 Strip or add padding as required
-              </div>
-              <div class="example-content">
-                APIs differ: standard Base64 expects <code>=</code>, while
-                Base64URL often removes it.
-              </div>
-            </div>
-
-            <div class="example">
-              <div class="example-title">🧹 Ignore whitespace</div>
-              <div class="example-content">
-                Robust decoders should remove spaces/newlines before processing.
-              </div>
-            </div>
-
-            <div class="example">
-              <div class="example-title">📏 Prefer small embeds</div>
-              <div class="example-content">
-                Data URLs bloat HTML/CSS if large — inline only tiny assets
-                (e.g., &lt;10–20 KB).
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Technical Implementation -->
-        <div class="card" id="technical">
-          <h2>Technical Implementation</h2>
-          <div class="examples">
-            <div class="example">
-              <div class="example-title">⚙️ Text ⇄ Base64 (UTF-8 safe)</div>
-              <div class="example-content">
-                Encode text with <code>TextEncoder</code> →
-                <code>btoa</code> (or custom), decode with
-                <code>TextDecoder</code> for full Unicode &amp; emoji support.
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Information Grid -->
-        <div class="info-grid" id="details">
-          <!-- Basics -->
-          <div class="card">
-            <div class="info-section">
-              <h3>🛠️ What this tool can do</h3>
-              <ul>
-                <li><strong>Encode</strong> text or files to Base64</li>
-                <li><strong>Decode</strong> Base64 back to text or files</li>
-                <li><strong>URL-safe Base64</strong> (Base64URL) conversion</li>
-                <li><strong>Data URLs</strong> for images and other assets</li>
-                <li>
-                  All processing happens locally in your browser; nothing is
-                  uploaded
-                </li>
-              </ul>
-            </div>
-            <div class="info-section">
-              <h3>📋 Inputs</h3>
-              <ul>
-                <li>
-                  <strong>Text:</strong> UTF-8 safe (emoji and non-Latin
-                  supported)
-                </li>
-                <li>
-                  <strong>Files:</strong> drag &amp; drop or file picker
-                  (images, PDFs, etc.)
-                </li>
-                <li>
-                  <strong>Options:</strong> URL-safe variant, strip/add padding,
-                  line wrap
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Standards & Variants -->
-          <div class="card">
-            <div class="info-section">
-              <h3>📑 Standards &amp; Variants</h3>
-              <ul>
-                <li>
-                  <strong>Standard Base64:</strong> alphabet A–Z a–z 0–9 + /,
-                  padding =
-                </li>
-                <li>
-                  <strong>Base64URL:</strong> replace + → -, / → _; padding
-                  often omitted
-                </li>
-                <li>
-                  <strong>MIME wrap:</strong> optional line breaks every 76
-                  chars; whitespace ignored
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Valid Base64 -->
-          <div class="card">
-            <div class="info-section">
-              <h3>🎯 What counts as “valid Base64”?</h3>
-              <ul>
-                <li>
-                  Characters from the selected alphabet (standard or URL-safe)
-                </li>
-                <li>
-                  Optional <code>=</code> padding (0–2 chars) to make length
-                  divisible by 4
-                </li>
-                <li>
-                  Whitespace/newlines allowed and ignored by robust decoders
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- How to Use -->
-          <div class="card">
-            <div class="info-section">
-              <h3>🧩 How to use</h3>
-              <ul>
-                <li>
-                  Paste text or drop a file to <strong>Encode</strong> (or
-                  select Decode for reverse)
-                </li>
-                <li>
-                  Toggle <strong>URL-safe</strong>, <strong>Padding</strong>, or
-                  <strong>Line wrap</strong> options
-                </li>
-                <li>
-                  Copy the result, or for files use <strong>Download</strong> to
-                  save the decoded blob
-                </li>
-                <li>
-                  For images, select <strong>Data URL</strong> to prepend
-                  <code>data:&lt;mime&gt;;base64</code>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Tips -->
-          <div class="card">
-            <div class="info-section">
-              <h3>💡 Tips</h3>
-              <ul>
-                <li>
-                  If Base64 lacks padding, enable “auto-pad” or add
-                  <code>=</code> until length % 4 == 0
-                </li>
-                <li>
-                  “URL-safe” mode is required for JWTs, signed URLs, and some
-                  APIs
-                </li>
-                <li>
-                  Large files use memory; browsers may slow with hundreds of MB
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
+        <p class="subtitle">
+          Convert text and small files to and from <strong>Base64</strong> with
+          <em>full Unicode support</em> (emoji, Bangla, and all scripts). Runs
+          <strong>entirely in your browser</strong> — no uploads, no tracking,
+          100% privacy-friendly.
+        </p>
 
         <section class="faq-section card" id="faq">
           <h2 class="faq-title">

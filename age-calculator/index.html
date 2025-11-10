@@ -294,12 +294,13 @@
     <style>
       /* Light theme = default */
       :root {
-        --primary: #3b82f6;
+        --primary: #4a6fa5;
         --primary-hover: #2563eb;
-        --secondary: #64748b;
+        --secondary: #6b8cbc;
         --success: #10b981;
         --danger: #ef4444;
         --warning: #f59e0b;
+        --radius: 10px;
 
         --background: #f8fafc; /* page background (light) */
         --surface: #ffffff; /* cards */
@@ -382,6 +383,34 @@
         font-size: 2.5rem;
         margin-bottom: 10px;
       }
+      .tagline {
+        font-size: 1.2rem;
+        opacity: 0.9;
+      }
+      .content-section {
+        background: var(--surface);
+        border-radius: var(--radius);
+        padding: 2rem;
+        box-shadow: var(--shadow);
+        margin-bottom: 2rem;
+      }
+
+      .content-section h2 {
+        color: var(--primary);
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--light);
+      }
+
+      .content-section h3 {
+        color: var(--secondary);
+        margin: 1.5rem 0 1rem;
+      }
+
+      .content-section p {
+        margin-bottom: 1rem;
+      }
+
       .form-group {
         margin-bottom: 20px;
       }
@@ -548,29 +577,7 @@
       .notification.error {
         background-color: var(--danger);
       }
-      .content-section {
-        background: var(--surface);
-        border-radius: var(--radius);
-        padding: 2rem;
-        box-shadow: var(--shadow);
-        margin-bottom: 2rem;
-      }
 
-      .content-section h2 {
-        color: var(--primary);
-        margin-bottom: 1.5rem;
-        padding-bottom: 0.5rem;
-        border-bottom: 2px solid var(--light);
-      }
-
-      .content-section h3 {
-        color: var(--secondary);
-        margin: 1.5rem 0 1rem;
-      }
-
-      .content-section p {
-        margin-bottom: 1rem;
-      }
       footer {
         text-align: center;
         margin-top: 40px;
@@ -652,11 +659,10 @@
         </p>
       </header>
       <!-- TOC -->
-      <p class="toc" aria-label="Table of Contents">
+      <p class="toc content-section" aria-label="Table of Contents">
         <a href="#enter-dates">Enter dates</a> ·
-        <a href="#where">Where to use </a> ·
-        <a href="#best-practices">Best Practices</a> ·
-        <a href="#details">Details</a> · <a href="#faq">FAQ</a> ·
+
+        <a href="#faq">FAQ</a> ·
         <a href="#related">Related tools</a>
       </p>
 
@@ -665,7 +671,7 @@
 
       <div class="top-card">
         <div>
-          <div class="card">
+          <div class="card" id="enter-dates">
             <h2>Enter Your Birth Date</h2>
 
             <div class="form-group">
