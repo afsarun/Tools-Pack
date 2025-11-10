@@ -57,6 +57,7 @@ body {
 
   --shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
     0 10px 10px -5px rgb(0 0 0 / 0.04);
+
   --shadow-lg: 0 25px 50px -12px rgb(0 0 0 / 0.25);
 
   --link: #60a5fa; /* sky-400 on dark bg: passes 4.5:1 */
@@ -208,7 +209,7 @@ header.top-header {
   transition: background 0.2s, color 0.2s;
 }
 a {
-  text-decoration: none;
+  /* text-decoration: none; */
   color: white;
 }
 .toc a:hover,
