@@ -571,6 +571,11 @@
         white-space: nowrap;
         border: 0;
       }
+      .top-card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
     </style>
   </head>
 
@@ -616,120 +621,146 @@
       <!-- Tool -->
       <div class="notification" id="notification"></div>
 
-      <div class="">
-        <div class="card">
-          <h2>Enter Your Birth Date</h2>
+      <div class="top-card">
+        <div>
+          <div class="card">
+            <h2>Enter Your Birth Date</h2>
 
-          <div class="form-group">
-            <!-- Visible label for the first select (kept as-is) -->
-            <label for="birth-day">Day</label>
-            <div class="input-group">
-              <!-- Birth Day -->
-              <select id="birth-day" aria-label="Birth day">
-                <option value="">Select Day</option>
-              </select>
+            <div class="form-group">
+              <!-- Visible label for the first select (kept as-is) -->
+              <label for="birth-day">Day</label>
+              <div class="input-group">
+                <!-- Birth Day -->
+                <select id="birth-day" aria-label="Birth day">
+                  <option value="">Select Day</option>
+                </select>
 
-              <!-- Hidden label for Month -->
-              <label class="visually-hidden" for="birth-month"
-                >Birth month</label
-              >
-              <select id="birth-month" aria-label="Birth month">
-                <option value="">Select Month</option>
-              </select>
+                <!-- Hidden label for Month -->
+                <label class="visually-hidden" for="birth-month"
+                  >Birth month</label
+                >
+                <select id="birth-month" aria-label="Birth month">
+                  <option value="">Select Month</option>
+                </select>
 
-              <!-- Hidden label for Year -->
-              <label class="visually-hidden" for="birth-year">Birth year</label>
-              <select id="birth-year" aria-label="Birth year">
-                <option value="">Select Year</option>
-              </select>
+                <!-- Hidden label for Year -->
+                <label class="visually-hidden" for="birth-year"
+                  >Birth year</label
+                >
+                <select id="birth-year" aria-label="Birth year">
+                  <option value="">Select Year</option>
+                </select>
+              </div>
             </div>
+
+            <div class="form-group">
+              <!-- Group title kept for sighted users -->
+              <label for="current-date">Current Date (Optional)</label>
+              <div class="input-group">
+                <!-- Hidden label + aria-label for accessibility -->
+                <label class="visually-hidden" for="current-day"
+                  >Current day</label
+                >
+                <select id="current-day" aria-label="Current day">
+                  <option value="">Select Day</option>
+                </select>
+
+                <label class="visually-hidden" for="current-month"
+                  >Current month</label
+                >
+                <select id="current-month" aria-label="Current month">
+                  <option value="">Select Month</option>
+                </select>
+
+                <label class="visually-hidden" for="current-year"
+                  >Current year</label
+                >
+                <select id="current-year" aria-label="Current year">
+                  <option value="">Select Year</option>
+                </select>
+              </div>
+              <p
+                style="
+                  color: var(--text-muted);
+                  font-size: 0.9rem;
+                  margin-top: 5px;
+                "
+              >
+                If left empty, today's date will be used
+              </p>
+            </div>
+
+            <button class="btn" id="calculate-btn">Calculate Age</button>
+            <button class="btn btn-secondary" id="reset-btn">Reset</button>
           </div>
 
-          <div class="form-group">
-            <!-- Group title kept for sighted users -->
-            <label for="current-date">Current Date (Optional)</label>
-            <div class="input-group">
-              <!-- Hidden label + aria-label for accessibility -->
-              <label class="visually-hidden" for="current-day"
-                >Current day</label
-              >
-              <select id="current-day" aria-label="Current day">
-                <option value="">Select Day</option>
-              </select>
+          <div class="card result-container" id="result-container">
+            <h2 class="result-title">Your Age</h2>
 
-              <label class="visually-hidden" for="current-month"
-                >Current month</label
-              >
-              <select id="current-month" aria-label="Current month">
-                <option value="">Select Month</option>
-              </select>
-
-              <label class="visually-hidden" for="current-year"
-                >Current year</label
-              >
-              <select id="current-year" aria-label="Current year">
-                <option value="">Select Year</option>
-              </select>
+            <div class="age-display">
+              <div class="age-item">
+                <div class="age-value" id="years">0</div>
+                <div class="age-label">Years</div>
+              </div>
+              <div class="age-item">
+                <div class="age-value" id="months">0</div>
+                <div class="age-label">Months</div>
+              </div>
+              <div class="age-item">
+                <div class="age-value" id="days">0</div>
+                <div class="age-label">Days</div>
+              </div>
             </div>
-            <p
-              style="
-                color: var(--text-muted);
-                font-size: 0.9rem;
-                margin-top: 5px;
-              "
+
+            <div class="detail-results">
+              <div class="detail-item">
+                <span class="detail-label">Total Days:</span>
+                <span class="detail-value" id="total-days">0</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Total Weeks:</span>
+                <span class="detail-value" id="total-weeks">0</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Total Months:</span>
+                <span class="detail-value" id="total-months">0</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Day of Birth:</span>
+                <span class="detail-value" id="birthday-day">Sunday</span>
+              </div>
+            </div>
+
+            <div class="next-birthday">
+              <div class="next-birthday-title">Next Birthday</div>
+              <div id="next-birthday-info">
+                Enter your birth date to see when your next birthday is
+              </div>
+            </div>
+          </div>
+        </div>
+        <article class="card" id="related">
+          <h2>Related tools</h2>
+          <p class="muted">More date &amp; time utilities:</p>
+          <p>
+            <a class="btn" href="/calculator/">Calculator</a>
+            <a class="btn" href="/stopwatch-countdown/"
+              >Stopwatch &amp; Countdown</a
             >
-              If left empty, today's date will be used
-            </p>
-          </div>
-
-          <button class="btn" id="calculate-btn">Calculate Age</button>
-          <button class="btn btn-secondary" id="reset-btn">Reset</button>
-        </div>
-
-        <div class="card result-container" id="result-container">
-          <h2 class="result-title">Your Age</h2>
-
-          <div class="age-display">
-            <div class="age-item">
-              <div class="age-value" id="years">0</div>
-              <div class="age-label">Years</div>
-            </div>
-            <div class="age-item">
-              <div class="age-value" id="months">0</div>
-              <div class="age-label">Months</div>
-            </div>
-            <div class="age-item">
-              <div class="age-value" id="days">0</div>
-              <div class="age-label">Days</div>
-            </div>
-          </div>
-
-          <div class="detail-results">
-            <div class="detail-item">
-              <span class="detail-label">Total Days:</span>
-              <span class="detail-value" id="total-days">0</span>
-            </div>
-            <div class="detail-item">
-              <span class="detail-label">Total Weeks:</span>
-              <span class="detail-value" id="total-weeks">0</span>
-            </div>
-            <div class="detail-item">
-              <span class="detail-label">Total Months:</span>
-              <span class="detail-value" id="total-months">0</span>
-            </div>
-            <div class="detail-item">
-              <span class="detail-label">Day of Birth:</span>
-              <span class="detail-value" id="birthday-day">Sunday</span>
-            </div>
-          </div>
-
-          <div class="next-birthday">
-            <div class="next-birthday-title">Next Birthday</div>
-            <div id="next-birthday-info">
-              Enter your birth date to see when your next birthday is
-            </div>
-          </div>
-        </div>
+            <a class="btn" href="/unit-converter/">Unit Converter</a>
+          </p>
+          <p class="small">
+            <span lang="bn">Prefer বাংলা?</span> Try the
+            <a
+              class="text-link"
+              href="/bn/age-calculator/"
+              hreflang="bn"
+              lang="bn"
+              aria-label="বাংলা সংস্করণ"
+              >বাংলা সংস্করণ</a
+            >.
+          </p>
+        </article>
       </div>
 
       <div class="card">
@@ -952,28 +983,6 @@
       </section>
 
       <!-- Related tools (stronger topical links) -->
-      <article class="card" id="related">
-        <h2>Related tools</h2>
-        <p class="muted">More date &amp; time utilities:</p>
-        <p>
-          <a class="btn" href="/calculator/">Calculator</a>
-          <a class="btn" href="/stopwatch-countdown/"
-            >Stopwatch &amp; Countdown</a
-          >
-          <a class="btn" href="/unit-converter/">Unit Converter</a>
-        </p>
-        <p class="small">
-          <span lang="bn">Prefer বাংলা?</span> Try the
-          <a
-            class="text-link"
-            href="/bn/age-calculator/"
-            hreflang="bn"
-            lang="bn"
-            aria-label="বাংলা সংস্করণ"
-            >বাংলা সংস্করণ</a
-          >.
-        </p>
-      </article>
 
       <footer>
         © <span id="y"></span> Tools Pack •
@@ -1303,7 +1312,6 @@
     <!-- <script src="../assets/tracker.js" defer data-trk-site="tools-pack"></script> -->
     <script src="/assets/tracker.js" defer data-trk-site="tools-pack"></script>
 
-    <script src="/assets/related-more.js" defer></script>
     <script src="/assets/script.js" defer></script>
     <noscript
       >Your browser has JavaScript disabled; this tool needs JavaScript to
