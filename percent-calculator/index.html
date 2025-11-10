@@ -131,42 +131,66 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "What calculations does this tool support?",
+            "name": "What is the simplest way to find a percentage of any number?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "It supports A% of B, what percent A is of B, percent change between two values, and value after a percentage increase or decrease."
+              "text": "To find X% of Y, convert the percentage X into a decimal by dividing it by 100, then multiply the result by Y. For example, 25% of 80 is 0.25 multiplied by 80, which equals 20."
             }
           },
           {
             "@type": "Question",
-            "name": "Do I need to type the % sign?",
+            "name": "How do I calculate percentage increase between two numbers?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No. Enter plain numbers only; the calculator treats A as a percentage automatically."
+              "text": "Subtract the original number from the new number, divide the result by the original number, and then multiply the quotient by 100."
             }
           },
           {
             "@type": "Question",
-            "name": "How is percent change calculated?",
+            "name": "How do you convert a fraction into a percentage?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Percent change = ((New − Old) ÷ Old) × 100. Positive means increase; negative means decrease."
+              "text": "Divide the numerator (top number) by the denominator (bottom number). Then, take the resulting decimal and multiply it by 100 to get the percentage."
             }
           },
           {
             "@type": "Question",
-            "name": "Can I use decimals and negative values?",
+            "name": "What is the difference between percentage change and percentage difference?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. Decimals are supported across all fields, and negative values are allowed where meaningful (e.g., a negative change)."
+              "text": "Percentage change measures the change relative to the starting value (original number), while percentage difference measures the difference relative to the average of the two numbers."
             }
           },
           {
             "@type": "Question",
-            "name": "What if the denominator is 0?",
+            "name": "If an item is 30% off, how do I quickly find the final price?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Division by 0 is undefined. The tool will show an error when a calculation requires dividing by 0."
+              "text": "Subtract the discount percentage (30%) from 100% to find the remaining percentage (70%). Then, multiply the original price by 0.70 to find the final price."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the formula for calculating reverse percentage?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "To find the original amount (X), divide the final amount (Y) by the percentage remaining (or increased) in decimal form. Example: $100 after 20% tax ($100 / 1.20)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why is the percent sign (%) used?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The percent sign is a stylized representation derived from the symbols used in the 17th century to denote "per cento" or "by the hundred.""
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do you calculate percentages without a calculator?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Break down the percentage into simpler parts (e.g., 15% is 10% plus 5%). Find 10% (by moving the decimal one place left) and add half of that amount for the 5%."
             }
           }
         ]
@@ -229,7 +253,15 @@
         --primary-hover: color-mix(in srgb, var(--accent) 80%, black 20%);
         --link: var(--accent-2);
       }
-
+      .formula-box {
+        background-color: var(--bg);
+        padding: 1rem;
+        border-radius: 5px;
+        margin: 1rem 0;
+        font-family: monospace;
+        font-size: 1.1rem;
+        border: 1px dashed var(--primary);
+      }
       /* Theme toggle button visuals */
       #theme-toggle {
         background: none;
@@ -407,8 +439,7 @@
           />
         </a>
         <div>
-          <h1 class="site-title" style="margin: 0">Tools Pack</h1>
-          <div class="sub">Pretty • Minify • Validate</div>
+          <p class="site-title" style="margin: 0">Percentage Calculator</p>
         </div>
         <div style="margin-left: auto">
           <a class="muted" href="/bn/percent-calculator/" hreflang="bn"
@@ -429,11 +460,9 @@
       <header class="top-header">
         <h1>Percentage Calculator — Quick & Accurate</h1>
         <p class="tagline">
-          Easily solve common percentage problems: <em>what is X% of Y</em>,
-          <em>increase/decrease by a percentage</em>,
-          <em>percentage change</em>, and <em>reverse percentage</em>. Works
-          instantly in your browser —
-          <strong>fast, private, and offline-ready</strong>.
+          Calculate percentages, percentage change, increase/decrease, and more
+          with our free online tool. Includes step-by-step explanations and
+          formulas.
         </p>
       </header>
 
@@ -613,40 +642,121 @@
         <div class="help formula small">Formula: B × (1 ± A ÷ 100)</div>
       </section>
 
-      <!-- How to use -->
-      <article class="card" id="how-to-use">
-        <h2>How to use</h2>
-        <ol>
-          <li>
-            Pick a calculator tab: <strong>A% of B</strong>,
-            <strong>What % is A of B?</strong>, <strong>Percent Change</strong>,
-            or <strong>After % Increase/Decrease</strong>.
-          </li>
-          <li>Enter numbers only (no “%” symbol). Decimals are allowed.</li>
-          <li>
-            Results update as you type or when you click
-            <strong>Calculate</strong>.
-          </li>
-          <li>
-            Use <strong>Copy</strong> to copy the result; use
-            <strong>Clear</strong> to reset fields.
-          </li>
-          <li>
-            For “After % Increase/Decrease”, choose <strong>Increase</strong> or
-            <strong>Decrease</strong> first.
-          </li>
-        </ol>
-        <h3>Tips</h3>
-        <ul>
-          <li>
-            Percent change is positive for increases and negative for decreases.
-          </li>
-          <li>If a denominator is 0, the calculation is undefined.</li>
-          <li>
-            Up to 8 decimal places are supported; trailing zeros are trimmed.
-          </li>
-        </ul>
-      </article>
+      <section class="content-section">
+        <h2>How to Use the Percentage Calculator</h2>
+        <p>
+          Our percentage calculator offers five different calculation modes to
+          handle various percentage-related problems. Simply select the tab that
+          matches your calculation needs and enter the required values.
+        </p>
+
+        <h3>Three Simple Calculation Modes</h3>
+        <p>
+          <strong>1. Percentage of a Number:</strong> Find what X% of Y is
+          (e.g., what is 15% of 200?).
+        </p>
+        <p>
+          <strong>2. Percentage Change:</strong> Calculate the percentage
+          increase or decrease between two values.
+        </p>
+        <p>
+          <strong>3. Percentage Increase/Decrease:</strong> Find the new value
+          after increasing or decreasing by a certain percentage.
+        </p>
+        <p>
+          <strong>4. Reverse Percentage:</strong> Find the original value before
+          a percentage increase or decrease was applied.
+        </p>
+      </section>
+
+      <section class="content-section">
+        <h2>Percentage Fundamentals: Definitions and Formulas</h2>
+
+        <h3>What Does 'Percent' Mean?</h3>
+        <p>
+          The word "percent" comes from the Latin "per centum," meaning "by the
+          hundred." A percentage is a way of expressing a number as a fraction
+          of 100. It is denoted using the percent sign (%).
+        </p>
+
+        <h3>The Core Formula: Finding X% of Y</h3>
+        <p>The fundamental percentage formula is:</p>
+        <div class="formula-box">Percentage = (Value / Total Value) × 100</div>
+        <p>Or to find a percentage of a number:</p>
+        <div class="formula-box">Result = (Percentage / 100) × Number</div>
+      </section>
+
+      <section class="content-section">
+        <h2>Step-by-Step Manual Calculations</h2>
+
+        <h3>Example 1: Calculating Percentage of a Whole</h3>
+        <p>To find 25% of 80:</p>
+        <div class="example-box">
+          <p>Step 1: Convert 25% to a decimal: 25 ÷ 100 = 0.25</p>
+          <p>Step 2: Multiply the decimal by the number: 0.25 × 80 = 20</p>
+          <p>Answer: 25% of 80 is 20</p>
+        </div>
+
+        <h3>Example 2: Calculating Percentage Increase (Growth Rate)</h3>
+        <p>If a product's price increases from $50 to $65:</p>
+        <div class="example-box">
+          <p>Step 1: Find the difference: $65 - $50 = $15</p>
+          <p>
+            Step 2: Divide the difference by the original value: $15 ÷ $50 = 0.3
+          </p>
+          <p>Step 3: Multiply by 100 to get percentage: 0.3 × 100 = 30%</p>
+          <p>Answer: The price increased by 30%</p>
+        </div>
+
+        <h3>Example 3: Calculating Percentage Decrease (Discounts)</h3>
+        <p>If an item originally priced at $80 is on sale for $64:</p>
+        <div class="example-box">
+          <p>Step 1: Find the difference: $80 - $64 = $16</p>
+          <p>
+            Step 2: Divide the difference by the original value: $16 ÷ $80 = 0.2
+          </p>
+          <p>Step 3: Multiply by 100 to get percentage: 0.2 × 100 = 20%</p>
+          <p>Answer: The discount is 20%</p>
+        </div>
+
+        <h3>Example 4: The Reverse Percentage Calculation</h3>
+        <p>If you know the final price after a 15% discount is $85:</p>
+        <div class="example-box">
+          <p>
+            Step 1: The final price represents 85% of the original (100% - 15%)
+          </p>
+          <p>
+            Step 2: Divide the final price by the percentage in decimal form:
+            $85 ÷ 0.85 = $100
+          </p>
+          <p>Answer: The original price was $100</p>
+        </div>
+      </section>
+
+      <section class="content-section">
+        <h2>Real-World Percentage Applications</h2>
+
+        <h3>Financial Applications (Interest, Tax, CPI)</h3>
+        <p>
+          Percentages are crucial in finance for calculating interest rates on
+          loans and savings, determining sales tax or VAT, and understanding
+          inflation through the Consumer Price Index (CPI).
+        </p>
+
+        <h3>Everyday Use (Tipping, Sales Discounts)</h3>
+        <p>
+          Calculate appropriate tips at restaurants (typically 15-20%),
+          determine final prices during sales, and compare product discounts to
+          make informed purchasing decisions.
+        </p>
+
+        <h3>Academic and Statistical Use (Grades, Error Margin)</h3>
+        <p>
+          In education, percentages calculate grades and score improvements. In
+          statistics, they express margins of error, confidence intervals, and
+          proportional relationships in data.
+        </p>
+      </section>
 
       <section class="faq-section card" id="faq">
         <h2 class="faq-title">
@@ -657,66 +767,102 @@
           <!-- Percentage Calculator FAQs -->
           <div class="faq-item">
             <button class="faq-question">
-              What calculations does this tool support?
+              What is the simplest way to find a percentage of any number?
               <span class="faq-icon">+</span>
             </button>
             <div class="faq-answer">
               <p>
-                It supports A% of B, what percent A is of B, percent change
-                between two values, and value after a percentage increase or
-                decrease.
+                Convert the percentage to a decimal by dividing by 100, then
+                multiply by the number. (Example: 25% of 80 → 0.25 × 80 = 20.)
               </p>
             </div>
           </div>
 
           <div class="faq-item">
             <button class="faq-question">
-              Do I need to type the % sign?
+              How do I calculate percentage increase between two numbers?
               <span class="faq-icon">+</span>
             </button>
             <div class="faq-answer">
               <p>
-                No. Enter plain numbers only; the calculator treats A as a
-                percentage automatically.
+                Subtract the original from the new value, divide that difference
+                by the original value, then multiply by 100.
               </p>
             </div>
           </div>
 
           <div class="faq-item">
             <button class="faq-question">
-              How is percent change calculated?
+              How do you convert a fraction into a percentage?
               <span class="faq-icon">+</span>
             </button>
             <div class="faq-answer">
               <p>
-                Percent change = <code>((New − Old) ÷ Old) × 100</code>.
-                Positive means increase; negative means decrease.
+                Divide the numerator by the denominator to get a decimal, then
+                multiply by 100.
               </p>
             </div>
           </div>
 
           <div class="faq-item">
             <button class="faq-question">
-              Can I use decimals and negative values?
+              What is the difference between percentage change and percentage
+              difference?
               <span class="faq-icon">+</span>
             </button>
             <div class="faq-answer">
               <p>
-                Yes. Decimals are supported across all fields, and negative
-                values are allowed where meaningful (e.g., a negative change).
+                Percentage change is relative to the starting value; percentage
+                difference is relative to the average of the two values.
               </p>
             </div>
           </div>
-
           <div class="faq-item">
             <button class="faq-question">
-              What if the denominator is 0?
+              If an item is 30% off, how do I quickly find the final price?
               <span class="faq-icon">+</span>
             </button>
             <div class="faq-answer">
               <p>
-                Division by 0 is undefined. The tool will show an error when a
-                calculation requires dividing by 0.
+                Subtract 30% from 100% to get 70%, then multiply the original
+                price by 0.70.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              What is the formula for calculating reverse percentage?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Divide the final amount by the remaining percentage in decimal
+                form. (Example: original = final ÷ 1.20 for a 20% tax.)
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              Why is the percent sign (%) used?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                It evolved from shorthand for "per cento" (per hundred) used in
+                the 17th century.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              How do you calculate percentages without a calculator?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Break the percent into simple parts (e.g., 15% = 10% + 5%). Find
+                10% by moving the decimal one place left, then add half of that
+                for 5%.
               </p>
             </div>
           </div>
