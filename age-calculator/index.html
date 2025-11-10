@@ -587,8 +587,7 @@
         </a>
         <div>
           <!-- ✅ H1 uses exact match phrase -->
-          <h1 class="site-title" style="margin: 0">Age Calculator Online</h1>
-          <div class="sub">Years • Months • Days</div>
+          <p class="site-title" style="margin: 0">Age Calculator Online</p>
         </div>
         <div style="margin-left: auto">
           <a class="muted" href="/bn/age-calculator/" hreflang="bn">বাংলা</a>
@@ -604,23 +603,6 @@
       </nav>
       <header class="header">
         <h2>What is an Age Calculator Online?</h2>
-        <p class="subtitle">
-          The <strong>Age Calculator Online</strong> is a free tool that
-          instantly calculates your exact age in
-          <em>years, months, and days</em> from your
-          <strong>Date of Birth (DOB)</strong>. It also shows your
-          <strong>total days lived</strong>, your <strong>age in days</strong>,
-          and a live <strong>next-birthday countdown</strong>. Use this
-          calculator to answer common questions like
-          <em>“What is my age today?”</em>,
-          <em>“How many days until my birthday?”</em>, or
-          <em>“How old was I in 2018?”</em>. Everything runs directly in your
-          browser — <strong>no data uploaded</strong>, ensuring full privacy.
-        </p>
-
-        <span class="badge">Privacy-First</span>
-        <span class="badge">Leap Year Support</span>
-        <span class="badge">Next Birthday Countdown</span>
       </header>
       <!-- TOC -->
       <p class="toc" aria-label="Table of Contents">
@@ -750,173 +732,20 @@
         </div>
       </div>
 
-      <!-- Examples -->
-      <div class="card" id="where">
-        <h2>Where to Use Age Calculations</h2>
-        <div class="examples">
-          <div class="example">
-            <div class="example-title">🧾 Legal &amp; Forms</div>
-            <div class="example-content">
-              Eligibility checks (voting, exams, benefits)
-            </div>
-            <span class="badge">exact age</span>
-          </div>
-
-          <div class="example">
-            <div class="example-title">🎉 Events</div>
-            <div class="example-content">
-              Countdown to next birthday or anniversary
-            </div>
-            <span class="badge">next birthday</span>
-          </div>
-
-          <div class="example">
-            <div class="example-title">🏥 Health</div>
-            <div class="example-content">
-              Age in months/days for dosage or charts
-            </div>
-            <span class="badge">months &amp; days</span>
-          </div>
-
-          <div class="example">
-            <div class="example-title">📚 Education</div>
-            <div class="example-content">School cutoff comparisons</div>
-            <span class="badge">compare to date</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Best Practices -->
-      <div class="card" id="best-practices">
-        <h2>Age Calculation Best Practices</h2>
-        <div class="examples">
-          <div class="example">
-            <div class="example-title">📅 Use ISO Dates</div>
-            <div class="example-content">
-              Enter dates as <code>YYYY-MM-DD</code> to avoid confusion across
-              locales.
-            </div>
-          </div>
-
-          <div class="example">
-            <div class="example-title">🕛 Calendar vs. Clock</div>
-            <div class="example-content">
-              This tool computes calendar age; time-of-day isn’t required.
-            </div>
-          </div>
-
-          <div class="example">
-            <div class="example-title">🔁 Compare to Any Date</div>
-            <div class="example-content">
-              Great for future eligibility or backdated legal checks.
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Technical Implementation -->
-      <div class="card" id="technical">
-        <h2>Technical Implementation</h2>
-        <div class="examples">
-          <div class="example">
-            <div class="example-title">📐 Calendar-accurate</div>
-            <div class="example-content">
-              Year/Month/Day difference computed using actual calendars.
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Information Grid -->
-      <div class="info-grid" id="details">
-        <!-- Basics -->
-        <div class="card">
-          <div class="info-section">
-            <h3>🛠️ What this tool returns</h3>
-            <ul>
-              <li><strong>Exact age:</strong> years, months, days</li>
-              <li><strong>Total days:</strong> difference between two dates</li>
-              <li>
-                <strong>Next birthday:</strong> months &amp; days remaining
-              </li>
-              <li><strong>Weekday of birth</strong></li>
-              <li>
-                Follows civil calendar rules (real month lengths &amp; leap
-                years)
-              </li>
-            </ul>
-          </div>
-          <div class="info-section">
-            <h3>📋 Inputs</h3>
-            <ul>
-              <li><strong>Date of Birth (DOB):</strong> e.g., YYYY-MM-DD</li>
-              <li>
-                <strong>Compare to:</strong> defaults to today; choose any date
-              </li>
-              <li><strong>Time zone:</strong> your local time is used</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Edge Cases -->
-        <div class="card">
-          <div class="info-section">
-            <h3>⚖️ Edge cases</h3>
-            <ul>
-              <li>Leap-day births (Feb 29) handled consistently</li>
-              <li>End-of-month rollovers (e.g., Jan 31 → Feb) handled</li>
-              <li>No data leaves your browser (local-only)</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Exact Age Definition -->
-        <div class="card">
-          <div class="info-section">
-            <h3>🎯 What counts as “exact age”?</h3>
-            <ul>
-              <li>Calendar-accurate difference (years → months → days)</li>
-              <li>Accounts for varying month lengths and leap years</li>
-              <li>Comparison uses local midnight unless a time is specified</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- How to Use -->
-        <div class="card">
-          <div class="info-section">
-            <h3>🧩 How to use</h3>
-            <ul>
-              <li>Enter your Date of Birth (e.g., 1998-11-10)</li>
-              <li>
-                (Optional) Pick a Compare To date; otherwise today is used
-              </li>
-              <li>
-                Click <strong>Calculate</strong> to see age in years • months •
-                days plus totals
-              </li>
-              <li>Use <strong>Clear</strong> to reset inputs</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Tips -->
-        <div class="card">
-          <div class="info-section">
-            <h3>💡 Tips</h3>
-            <ul>
-              <li>Prefer ISO format to avoid locale confusion</li>
-              <li>
-                You don’t need birth time — this is calendar age, not
-                time-of-day precision
-              </li>
-              <li>
-                Use Compare To for future eligibility dates (exams, benefits,
-                etc.)
-              </li>
-            </ul>
-          </div>
-        </div>
+      <div class="card">
+        <p class="subtitle">
+          The <strong>Age Calculator Online</strong> is a free tool that
+          instantly calculates your exact age in
+          <em>years, months, and days</em> from your
+          <strong>Date of Birth (DOB)</strong>. It also shows your
+          <strong>total days lived</strong>, your <strong>age in days</strong>,
+          and a live <strong>next-birthday countdown</strong>. Use this
+          calculator to answer common questions like
+          <em>“What is my age today?”</em>,
+          <em>“How many days until my birthday?”</em>, or
+          <em>“How old was I in 2018?”</em>. Everything runs directly in your
+          browser — <strong>no data uploaded</strong>, ensuring full privacy.
+        </p>
       </div>
 
       <section class="faq-section card" id="faq">
