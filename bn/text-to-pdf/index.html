@@ -74,7 +74,8 @@
     />
 
     <!-- Styles -->
-      <link rel="stylesheet" href="/assets/style.css" />    <meta name="theme-color" content="#1E1E2F" />
+    <link rel="stylesheet" href="/assets/style.css" />
+    <meta name="theme-color" content="#1E1E2F" />
 
     <!-- OG/Twitter -->
     <meta property="og:type" content="website" />
@@ -94,7 +95,7 @@
     />
     <meta property="og:image:alt" content="টেক্সট → PDF — Tools Pack" />
     <meta name="twitter:card" content="summary_large_image" />
-  <script src="/assets/theme.js" defer></script>
+    <script src="/assets/theme.js" defer></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -182,304 +183,327 @@
 
     <!-- AdSense (dev/test) -->
 
-<style>
-:root {
-  --primary: #3b82f6;
-  --primary-hover: #2563eb;
-  --secondary: #64748b;
-  --success: #10b981;
-  --danger: #ef4444;
-  --warning: #f59e0b;
-  --background: #0f172a;
-  --surface: #1e293b;
-  --surface-light: #334155;
-  --text: #f1f5f9;
-  --text-muted: #c4cdd6;
-  --border: #475569;
-  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-}
+    <style>
+      :root {
+        --primary: #3b82f6;
+        --primary-hover: #2563eb;
+        --secondary: #64748b;
+        --success: #10b981;
+        --danger: #ef4444;
+        --warning: #f59e0b;
+        --background: #0f172a;
+        --surface: #1e293b;
+        --surface-light: #334155;
+        --text: #f1f5f9;
+        --text-muted: #c4cdd6;
+        --border: #475569;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      }
 
-
-/* ------------------------
+      /* ------------------------
    Theme tokens: Light defaults
    ------------------------ */
-:root{
-  /* your site's canonical tokens (light defaults) */
-  --badge: #073c92;
-  --primary: #3b82f6;
-  --primary-hover: #2563eb;
-  --secondary: #64748b;
-  --success: #10b981;
-  --danger: #ef4444;
-  --warning: #f59e0b;
+      :root {
+        /* your site's canonical tokens (light defaults) */
+        --badge: #073c92;
+        --primary: #3b82f6;
+        --primary-hover: #2563eb;
+        --secondary: #64748b;
+        --success: #10b981;
+        --danger: #ef4444;
+        --warning: #f59e0b;
 
-  --background: #ffffff;      /* light page bg */
-  --surface: #f8fafc;         /* card bg */
-  --surface-light: #f1f5f9;   /* inputs */
-  --text: #0f172a;
-  --text-muted: #475569;
-  --border: #e6edf6;
+        --background: #ffffff; /* light page bg */
+        --surface: #f8fafc; /* card bg */
+        --surface-light: #f1f5f9; /* inputs */
+        --text: #0f172a;
+        --text-muted: #475569;
+        --border: #e6edf6;
 
-  --gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-  --shadow: 0 8px 20px rgba(2,6,23,0.06);
-  --shadow-lg: 0 18px 40px rgba(2,6,23,0.08);
+        --gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+        --shadow: 0 8px 20px rgba(2, 6, 23, 0.06);
+        --shadow-lg: 0 18px 40px rgba(2, 6, 23, 0.08);
 
-  --link: #2563eb;
-  --link-hover: #3b82f6;
-  --link-visited: #8b5cf6;
-}
+        --link: #2563eb;
+        --link-hover: #3b82f6;
+        --link-visited: #8b5cf6;
+      }
 
-/* ------------------------
+      /* ------------------------
    Dark theme (your provided tokens)
    Triggered when html[data-theme="dark"]
    ------------------------ */
-html[data-theme="dark"]{
-  /* exact tokens you provided (kept as-is so you can use them directly) */
-  --badge: #073c92;
-  --primary: #3b82f6;
-  --primary-hover: #2563eb;
-  --secondary: #64748b;
-  --success: #10b981;
-  --danger: #ef4444;
-  --warning: #f59e0b;
+      html[data-theme="dark"] {
+        /* exact tokens you provided (kept as-is so you can use them directly) */
+        --badge: #073c92;
+        --primary: #3b82f6;
+        --primary-hover: #2563eb;
+        --secondary: #64748b;
+        --success: #10b981;
+        --danger: #ef4444;
+        --warning: #f59e0b;
 
-  /* your dark colors (mapped to canonical tokens) */
-  --background: #0f172a;     /* page bg (slate-900) */
-  --surface: #1e293b;        /* card bg (slate-800) */
-  --surface-light: #334155;  /* lighter surface */
-  --text: #f1f5f9;           /* slate-100 */
-  --text-muted: #c4cdd6;     /* slate-400 */
-  --border: #475569;         /* slate-600 */
+        /* your dark colors (mapped to canonical tokens) */
+        --background: #0f172a; /* page bg (slate-900) */
+        --surface: #1e293b; /* card bg (slate-800) */
+        --surface-light: #334155; /* lighter surface */
+        --text: #f1f5f9; /* slate-100 */
+        --text-muted: #c4cdd6; /* slate-400 */
+        --border: #475569; /* slate-600 */
 
-  --gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-  --shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
-  --shadow-lg: 0 25px 50px -12px rgba(0,0,0,0.25);
+        --gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+        --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 
-  --link: #60a5fa;
-  --link-hover: #93c5fd;
-  --link-visited: #a78bfa;
-}
+        --link: #60a5fa;
+        --link-hover: #93c5fd;
+        --link-visited: #a78bfa;
+      }
 
-/* ------------------------
+      /* ------------------------
    Small helpers that make tokens apply site-wide
    (optional but recommended)
    ------------------------ */
-html, body {
-  background: var(--background);
-  color: var(--text);
-}
+      html,
+      body {
+        background: var(--background);
+        color: var(--text);
+      }
 
-/* Example components use tokens — these keep working in both themes */
-.card, .form-input, .form-textarea, .tool-card {
-  background: var(--surface);
-  color: var(--text);
-  border: 1px solid var(--border);
-  box-shadow: none;
-}
+      /* Example components use tokens — these keep working in both themes */
+      .card,
+      .form-input,
+      .form-textarea,
+      .tool-card {
+        background: var(--surface);
+        color: var(--text);
+        border: 1px solid var(--border);
+        box-shadow: none;
+      }
 
-/* ------------------------
+      /* ------------------------
    Theme toggle button visuals
    ------------------------ */
-#theme-toggle {
-  background: none;
-  color: var(--text);
-  border: 1px solid var(--border);
-  padding: 8px 10px;
-  border-radius: 8px;
-  font-size: 14px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  transition: background 0.12s ease, transform 0.12s ease, border-color 0.12s ease;
-}
-#theme-toggle:hover {
-  background: color-mix(in srgb, var(--surface-light) 8%, transparent);
-  transform: translateY(-2px);
-}
-#theme-toggle[aria-pressed="true"] {
-  border-color: var(--primary);
-  background: linear-gradient(90deg, rgba(59,130,246,0.06), rgba(16,185,129,0.03));
-}
-#theme-toggle svg { width: 18px; height: 18px; display: block; }
+      #theme-toggle {
+        background: none;
+        color: var(--text);
+        border: 1px solid var(--border);
+        padding: 8px 10px;
+        border-radius: 8px;
+        font-size: 14px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        transition: background 0.12s ease, transform 0.12s ease,
+          border-color 0.12s ease;
+      }
+      #theme-toggle:hover {
+        background: color-mix(in srgb, var(--surface-light) 8%, transparent);
+        transform: translateY(-2px);
+      }
+      #theme-toggle[aria-pressed="true"] {
+        border-color: var(--primary);
+        background: linear-gradient(
+          90deg,
+          rgba(59, 130, 246, 0.06),
+          rgba(16, 185, 129, 0.03)
+        );
+      }
+      #theme-toggle svg {
+        width: 18px;
+        height: 18px;
+        display: block;
+      }
 
-/* accessible sr-only */
-.sr-only { position: absolute !important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
+      /* accessible sr-only */
+      .sr-only {
+        position: absolute !important;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+        border: 0;
+      }
 
-.card h2 {
-  color: var(--primary);
-  margin-bottom: 20px;
-  font-size: 1.5rem;
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 10px;
-}
+      .card h2 {
+        color: var(--primary);
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 10px;
+      }
 
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  margin-bottom: 20px;
-  align-items: center;
-}
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-bottom: 20px;
+        align-items: center;
+      }
 
-.select, .field, .pill {
-  padding: 10px 15px;
-  background-color: var(--surface-light);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  color: var(--text);
-  font-size: 14px;
-  transition: all 0.3s;
-}
+      .select,
+      .field,
+      .pill {
+        padding: 10px 15px;
+        background-color: var(--surface-light);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        color: var(--text);
+        font-size: 14px;
+        transition: all 0.3s;
+      }
 
-.select:focus, .field:focus {
-  outline: none;
-  border-color: var(--primary);
-}
+      .select:focus,
+      .field:focus {
+        outline: none;
+        border-color: var(--primary);
+      }
 
-.form-select {
-  min-width: 120px;
-}
+      .form-select {
+        min-width: 120px;
+      }
 
-.form-input {
-  width: 70px;
-  text-align: center;
-}
+      .form-input {
+        width: 70px;
+        text-align: center;
+      }
 
-.form-label {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 14px;
-  color: var(--text-muted);
-  cursor: pointer;
-}
+      .form-label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+        color: var(--text-muted);
+        cursor: pointer;
+      }
 
-.muted {
-  color: var(--text-muted);
-}
+      .muted {
+        color: var(--text-muted);
+      }
 
-.mono {
-  font-family: monospace;
-  font-size: 12px;
-}
+      .mono {
+        font-family: monospace;
+        font-size: 12px;
+      }
 
-.textarea {
-  width: 100%;
-  min-height: 300px;
-  padding: 15px;
-  background-color: var(--surface-light);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  color: var(--text);
-  font-size: 16px;
-  resize: vertical;
-  transition: border-color 0.3s;
-  margin-bottom: 20px;
-}
+      .textarea {
+        width: 100%;
+        min-height: 300px;
+        padding: 15px;
+        background-color: var(--surface-light);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        color: var(--text);
+        font-size: 16px;
+        resize: vertical;
+        transition: border-color 0.3s;
+        margin-bottom: 20px;
+      }
 
-.textarea:focus {
-  outline: none;
-  border-color: var(--primary);
-}
+      .textarea:focus {
+        outline: none;
+        border-color: var(--primary);
+      }
 
-.textarea::placeholder {
-  color: var(--text-muted);
-}
+      .textarea::placeholder {
+        color: var(--text-muted);
+      }
 
-.btn {
-  padding: 12px 24px;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s;
-}
+      .btn {
+        padding: 12px 24px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
 
-.btn-primary {
-  background-color: var(--primary);
-  color: white;
-}
+      .btn-primary {
+        background-color: var(--primary);
+        color: white;
+      }
 
-.btn-primary:hover {
-  background-color: var(--primary-hover);
-  transform: translateY(-2px);
-}
+      .btn-primary:hover {
+        background-color: var(--primary-hover);
+        transform: translateY(-2px);
+      }
 
-.btn:hover {
-  background-color: var(--surface-light);
-  transform: translateY(-2px);
-}
+      .btn:hover {
+        background-color: var(--surface-light);
+        transform: translateY(-2px);
+      }
 
-.small {
-  font-size: 14px;
-  color: var(--text-muted);
-  margin-top: 15px;
-  padding: 10px;
-  background-color: var(--surface-light);
-  border-radius: 6px;
-  text-align: center;
-}
+      .small {
+        font-size: 14px;
+        color: var(--text-muted);
+        margin-top: 15px;
+        padding: 10px;
+        background-color: var(--surface-light);
+        border-radius: 6px;
+        text-align: center;
+      }
 
+      /* Responsive design */
+      @media (max-width: 768px) {
+        .row {
+          flex-direction: column;
+          align-items: stretch;
+        }
 
+        .select,
+        .field,
+        .pill {
+          width: 100%;
+        }
 
-/* Responsive design */
-@media (max-width: 768px) {
-  .row {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  
-  .select, .field, .pill {
-    width: 100%;
-  }
-  
-  .form-label {
-    justify-content: space-between;
-  }
-}
+        .form-label {
+          justify-content: space-between;
+        }
+      }
 
-/* Custom checkbox styling */
-input[type="checkbox"] {
-  appearance: none;
-  -webkit-appearance: none;
-  width: 18px;
-  height: 18px;
-  background-color: var(--surface-light);
-  border: 1px solid var(--border);
-  border-radius: 3px;
-  cursor: pointer;
-  position: relative;
-}
+      /* Custom checkbox styling */
+      input[type="checkbox"] {
+        appearance: none;
+        -webkit-appearance: none;
+        width: 18px;
+        height: 18px;
+        background-color: var(--surface-light);
+        border: 1px solid var(--border);
+        border-radius: 3px;
+        cursor: pointer;
+        position: relative;
+      }
 
-input[type="checkbox"]:checked {
-  background-color: var(--primary);
-  border-color: var(--primary);
-}
+      input[type="checkbox"]:checked {
+        background-color: var(--primary);
+        border-color: var(--primary);
+      }
 
-input[type="checkbox"]:checked::after {
-  content: "✓";
-  position: absolute;
-  color: white;
-  font-size: 12px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
+      input[type="checkbox"]:checked::after {
+        content: "✓";
+        position: absolute;
+        color: white;
+        font-size: 12px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
 
-/* Number input styling */
-input[type="number"] {
-  -moz-appearance: textfield;
-}
+      /* Number input styling */
 
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-</style>
-
+      input[type="number"]::-webkit-outer-spin-button,
+      input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    </style>
+  </head>
   <body>
     <header class="sticky">
       <div class="wrap brand">
@@ -487,40 +511,27 @@ input[type="number"]::-webkit-inner-spin-button {
           <img src="/assets/logo.png" alt="Tools Pack" width="60" height="60" />
         </a>
         <div>
-          <h1 class="site-title"style="margin: 0">টেক্সট → PDF</h1>
-          <div class="sub">ইউনিকোড সাপোর্ট • প্রিন্ট টু PDF</div>
+          <p class="site-title" style="margin: 0">টেক্সট → PDF</p>
         </div>
         <div style="margin-left: auto">
           <a class="muted" href="/text-to-pdf/" hreflang="en">English</a>
         </div>
       </div>
     </header>
-
     <div class="container">
-      <div class="ad-wrap ad-article" aria-label="Advertisement">
-        <span class="ad-label">Ad</span>
-        <div class="ad-content">
-          Upgrade to Base64 Pro for unlimited conversions and advanced features!
-        </div>
-      </div>
       <main class="wrap">
         <nav class="breadcrumbs" aria-label="breadcrumb">
           <a href="/bn/">হোম</a> › <a href="/bn/#text">টেক্সট টুলস</a> ›
           <span>টেক্সট → PDF</span>
-        </nav>  <header class="top-header">
-        <h1>Base64 Encoder &amp; Decoder — Online &amp; Free</h1>
-        <p class="tagline">Base64 Standard (RFC&nbsp;4648)</p>
-      </header>
-        <header class="header">
+        </nav>
+
+        <header class="top-header">
           <h1>টেক্সট → PDF কনভার্টার</h1>
-          <p class="subtitle">
+          <p class="tagline">
             সাধারণ <strong>টেক্সট</strong> কে দ্রুত একটি পরিষ্কার
             <strong>PDF ডকুমেন্টে</strong> রূপান্তর করুন।
             <em>কোনো ডেটা আপলোড ছাড়াই, সরাসরি আপনার ব্রাউজারে</em>।
           </p>
-          <span class="badge">instant export</span>
-          <span class="badge">Unicode ready</span>
-          <span class="badge">offline</span>
         </header>
 
         <p class="toc">
@@ -613,13 +624,6 @@ input[type="number"]::-webkit-inner-spin-button {
 
           <div id="status" class="muted small" aria-live="polite">
             প্রিন্ট ডায়ালগে <strong>Save as PDF</strong> নির্বাচন করুন।
-          </div>
-          <div class="ad-wrap ad-article" aria-label="Advertisement">
-            <span class="ad-label">Ad</span>
-            <div class="ad-content">
-              Upgrade to Base64 Pro for unlimited conversions and advanced
-              features!
-            </div>
           </div>
         </article>
 
@@ -930,12 +934,7 @@ ${footer}`;
         });
       })();
     </script>
-    <script src="/assets/tracker.js" defer data-trk-site="tools-pack"></script>
-    <script src="/assets/related-more.js" defer></script>
+
     <script src="/assets/script.js" defer></script>
-    <noscript
-      >জাভাস্ক্রিপ্ট চালু করুন—এই টুলটি কাজ করতে জাভাস্ক্রিপ্ট
-      প্রয়োজন।</noscript
-    >
   </body>
 </html>

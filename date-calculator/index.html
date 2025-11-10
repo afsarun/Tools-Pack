@@ -176,7 +176,8 @@
       /* Light defaults (you can tweak) */
       :root {
         --badge: #073c92;
-        --primary: #2563eb;
+        --primary: #4a6fa5;
+        --secondary: #6b8cbc;
         --primary-hover: #1e40af;
         --secondary: #64748b;
         --success: #10b981;
@@ -201,9 +202,10 @@
       /* Dark theme: EXACT tokens you provided */
       html[data-theme="dark"] {
         --badge: #073c92;
-        --primary: #3b82f6;
+        --primary: #4a6fa5;
+        --secondary: #6b8cbc;
         --primary-hover: #2563eb;
-        --secondary: #64748b;
+
         --success: #10b981;
         --danger: #ef4444;
         --warning: #f59e0b;
@@ -233,12 +235,6 @@
         background: var(--surface);
         border: 1px solid var(--border);
         box-shadow: var(--shadow-lg);
-      }
-      a {
-        color: var(--link);
-      }
-      a:hover {
-        color: var(--link-hover);
       }
 
       /* Theme toggle UI (place in header) */
@@ -302,16 +298,6 @@
         min-height: 100vh;
       }
 
-      a {
-        color: var(--link);
-      }
-      a:hover {
-        color: var(--link-hover);
-      }
-      a:visited {
-        color: var(--link-visited);
-      }
-
       .container {
         max-width: 1200px;
         margin: 0 auto;
@@ -319,14 +305,7 @@
       }
 
       /* ===== Headings ===== */
-      h1 {
-        font-size: 2.4rem;
-        margin: 0 0 10px;
-        background: var(--gradient);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-      }
+
       .subtitle {
         color: var(--text-muted);
         font-size: 1.05rem;
@@ -502,8 +481,9 @@
         font-size: 1rem;
         padding: 1rem;
         border-radius: 999px;
-        background: var(--surface-light);
+        background: var(--background);
         display: inline-block;
+        color: var(--text);
       }
       .pill-row {
         margin: 2rem 0;
@@ -550,10 +530,8 @@
           <img src="/assets/logo.png" alt="Tools Pack" width="60" height="60" />
         </a>
         <div>
-          <h1 class="site-title" style="margin: 0">Date Calculator</h1>
-          <div class="sub">
-            Days Until • Days Ago • Add/Subtract • Years Since
-          </div>
+          <p class="site-title" style="margin: 0">Date Calculator</p>
+          <div class="sub"></div>
         </div>
         <div style="margin-left: auto">
           <a class="muted" href="/age-calculator/">Age Calculator</a>
@@ -561,32 +539,17 @@
       </div>
     </header>
     <div class="container">
-      <div class="ad-wrap ad-article" aria-label="Advertisement">
-        <span class="ad-label">Ad</span>
-        <div class="ad-content">
-          Upgrade to Base64 Pro for unlimited conversions and advanced features!
-        </div>
-      </div>
       <nav class="breadcrumbs" aria-label="breadcrumb">
         <a href="/">Home</a> › <span>Date Calculator</span>
       </nav>
 
       <header class="top-header">
-        <h1>Base64 Encoder &amp; Decoder — Online &amp; Free</h1>
-        <p class="tagline">Base64 Standard (RFC&nbsp;4648)</p>
+        <h1>What can this Date Calculator do?</h1>
+        <p class="tagline">
+          Days Until • Days Ago • Add/Subtract • Years Since
+        </p>
       </header>
       <header class="header">
-        <h2 class="">What can this Date Calculator do?</h2>
-        <p class="subtitle">
-          Quickly find <em>how long until 8/13</em>,
-          <em>how long ago was 9/30</em>,
-          <em>how many more days till October</em>, compute
-          <em>2015 days ago</em>, answer <em>what is 20 days from today</em>, or
-          check <em>days till Sept 17</em> / <em>days till 6/11</em>. You can
-          also see <em>how many years since 2018</em>. Works offline in your
-          browser — no data leaves your device.
-        </p>
-        <span class="badge">calendar-accurate</span>
         <div class="pill-row">
           <button class="pill" data-fill="until-aug13">Until Aug 13</button>
           <button class="pill" data-fill="until-sep17">Until Sep 17</button>
@@ -643,13 +606,6 @@
                 readonly
                 placeholder="Result…"
               ></textarea>
-            </div>
-          </div>
-          <div class="ad-wrap ad-article" aria-label="Advertisement">
-            <span class="ad-label">Ad</span>
-            <div class="ad-content">
-              Upgrade to Base64 Pro for unlimited conversions and advanced
-              features!
             </div>
           </div>
         </section>

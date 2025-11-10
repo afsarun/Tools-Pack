@@ -329,7 +329,7 @@
       }
       input[type="number"] {
         width: 100%;
-        background: #181a2b;
+        background: var(--bg);
         color: var(--text);
         border: 1px solid var(--border);
         border-radius: 10px;
@@ -349,7 +349,7 @@
       }
 
       .result {
-        background: #17182a;
+        background: var(--bg);
         border: 1px dashed var(--ring);
         border-radius: 12px;
         padding: 14px;
@@ -416,33 +416,20 @@
     <!-- Ad #1 -->
 
     <div class="container">
-      <div class="ad-wrap ad-article" aria-label="Advertisement">
-        <span class="ad-label">Ad</span>
-        <div class="ad-content">
-          Upgrade to Base64 Pro for unlimited conversions and advanced features!
-        </div>
-      </div>
       <!-- Breadcrumbs (UI) -->
       <nav class="breadcrumbs" aria-label="breadcrumb">
         <a href="/">Home</a> › <a href="/#math">Math Tools</a> ›
         <span>Percentage Calculator</span>
       </nav>
       <header class="top-header">
-        <h1>Base64 Encoder &amp; Decoder — Online &amp; Free</h1>
-        <p class="tagline">Base64 Standard (RFC&nbsp;4648)</p>
-      </header>
-      <header class="header">
-        <h2 class="">Percentage Calculator — Quick & Accurate</h2>
-        <p class="subtitle">
+        <h1>Percentage Calculator — Quick & Accurate</h1>
+        <p class="tagline">
           Easily solve common percentage problems: <em>what is X% of Y</em>,
           <em>increase/decrease by a percentage</em>,
           <em>percentage change</em>, and <em>reverse percentage</em>. Works
           instantly in your browser —
           <strong>fast, private, and offline-ready</strong>.
         </p>
-        <span class="badge">instant results</span>
-        <span class="badge">percent change</span>
-        <span class="badge">offline</span>
       </header>
 
       <!-- TOC -->
@@ -620,13 +607,6 @@
         <div class="result" id="t4_out" aria-live="polite"></div>
         <div class="help formula small">Formula: B × (1 ± A ÷ 100)</div>
       </section>
-
-      <div class="ad-wrap ad-article" aria-label="Advertisement">
-        <span class="ad-label">Ad</span>
-        <div class="ad-content">
-          Upgrade to Base64 Pro for unlimited conversions and advanced features!
-        </div>
-      </div>
 
       <!-- How to use -->
       <article class="card" id="how-to-use">
