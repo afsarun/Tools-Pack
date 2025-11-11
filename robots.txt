@@ -2,5 +2,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tools-pack.netlify.app/sitemap.xml
-Sitemap: https://tools-pack.netlify.app/sitemap.txt
+Sitemap: https://utilityera.com/sitemap.xml
+Sitemap: https://utilityera.com/sitemap.txt
