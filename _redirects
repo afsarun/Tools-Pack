@@ -41,3 +41,6 @@
 /bn/notes/                   /bn/quick-notes/                    301!
 /bn/notes/*                  /bn/quick-notes/:splat              301!
 
+
+
+/*  https://utilityera.com/:splat  301!
