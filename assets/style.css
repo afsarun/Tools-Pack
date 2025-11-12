@@ -45,7 +45,7 @@ body {
   --success: #10b981;
   --danger: #ef4444;
   --warning: #f59e0b;
-
+  --radius: 10px;
   --background: #0f172a; /* page bg (slate-900) */
   --surface: #1e293b; /* card bg (slate-800) */
   --surface-light: #334155; /* lighter surface */
@@ -130,6 +130,17 @@ header.top-header {
 
 .content-section p {
   margin-bottom: 1rem;
+}
+
+.top-card {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 2rem;
+}
+@media (max-width: 992px) {
+  .top-card {
+    grid-template-columns: 1fr;
+  }
 }
 /* Theme toggle visual */
 #theme-toggle {

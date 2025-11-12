@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-    <title>Free UUID v4 Generator Online — RFC 4122 | utilityera</title>
+    <title>Free UUID v4 Generator Online — RFC 4122</title>
     <meta
       name="description"
       content="Generate free UUID v4 online. RFC 4122 compliant, secure, and cryptographically random. Copy with one click — 100% browser-based, no data uploaded.
@@ -507,93 +507,130 @@
           <a href="#related">Related tools</a>
         </p>
         <div class="container">
-          <article class="card" id="gen">
-            <h2>Generate UUID v4</h2>
+          <div class="top-card">
+            <div>
+              <article class="card" id="gen">
+                <h2>Generate UUID v4</h2>
 
-            <div class="row">
-              <label class="pill form-label">
-                Quantity
-                <input
-                  id="count"
-                  type="number"
-                  class="field form-input"
-                  value="5"
-                  min="1"
-                  max="500"
-                  inputmode="numeric"
-                  style="width: 90px"
-                />
-              </label>
+                <div class="row">
+                  <label class="pill form-label">
+                    Quantity
+                    <input
+                      id="count"
+                      type="number"
+                      class="field form-input"
+                      value="5"
+                      min="1"
+                      max="500"
+                      inputmode="numeric"
+                      style="width: 90px"
+                    />
+                  </label>
 
-              <label class="pill form-label">
-                <input
-                  type="checkbox"
-                  id="keepDash"
-                  checked
-                  class="form-input"
-                />
-                Keep Dashes
-              </label>
+                  <label class="pill form-label">
+                    <input
+                      type="checkbox"
+                      id="keepDash"
+                      checked
+                      class="form-input"
+                    />
+                    Keep Dashes
+                  </label>
 
-              <label class="pill form-label">
-                <input type="checkbox" id="upper" class="form-input" />
-                Uppercase (A-F)
-              </label>
+                  <label class="pill form-label">
+                    <input type="checkbox" id="upper" class="form-input" />
+                    Uppercase (A-F)
+                  </label>
 
-              <label class="pill form-label">
-                <input type="checkbox" id="brace" class="form-input" />
-                {Braces}
-              </label>
+                  <label class="pill form-label">
+                    <input type="checkbox" id="brace" class="form-input" />
+                    {Braces}
+                  </label>
 
-              <label class="pill form-label">
-                <input type="checkbox" id="urn" class="form-input" />
-                urn:uuid: Prefix
-              </label>
+                  <label class="pill form-label">
+                    <input type="checkbox" id="urn" class="form-input" />
+                    urn:uuid: Prefix
+                  </label>
 
-              <label class="pill form-label">
-                Separator
-                <select id="sep" class="select form-select">
-                  <option value="nl" selected>New Line</option>
-                  <option value="comma">Comma (,)</option>
-                  <option value="space">Space</option>
-                </select>
-              </label>
+                  <label class="pill form-label">
+                    Separator
+                    <select id="sep" class="select form-select">
+                      <option value="nl" selected>New Line</option>
+                      <option value="comma">Comma (,)</option>
+                      <option value="space">Space</option>
+                    </select>
+                  </label>
+                </div>
+
+                <div class="row" style="margin-top: 6px">
+                  <button
+                    class="btn btn-primary"
+                    id="generateBtn"
+                    type="button"
+                  >
+                    Generate
+                  </button>
+                  <button class="btn btn-secondary" id="copyBtn" type="button">
+                    Copy
+                  </button>
+                  <button
+                    class="btn btn-secondary"
+                    id="downloadBtn"
+                    type="button"
+                  >
+                    ⬇ Download TXT
+                  </button>
+                  <button class="btn btn-secondary" id="clearBtn" type="button">
+                    🗑 Clear
+                  </button>
+                  <span id="status" class="muted small" aria-live="polite"
+                    >—</span
+                  >
+                </div>
+
+                <textarea
+                  id="out"
+                  class="textarea mono field form-textarea"
+                  rows="8"
+                  readonly
+                  placeholder="Generated UUIDs…"
+                ></textarea>
+
+                <p class="muted small stat">
+                  <span id="lines">Lines: 0</span> •
+                  <span id="bytes">Bytes (UTF-8): 0</span>
+                </p>
+
+                <p class="small muted">
+                  Shortcuts: <kbd>Ctrl/⌘ + Enter</kbd> Generate •
+                  <kbd>Ctrl/⌘ + C</kbd> Copy
+                </p>
+              </article>
             </div>
-
-            <div class="row" style="margin-top: 6px">
-              <button class="btn btn-primary" id="generateBtn" type="button">
-                Generate
-              </button>
-              <button class="btn btn-secondary" id="copyBtn" type="button">
-                Copy
-              </button>
-              <button class="btn btn-secondary" id="downloadBtn" type="button">
-                ⬇ Download TXT
-              </button>
-              <button class="btn btn-secondary" id="clearBtn" type="button">
-                🗑 Clear
-              </button>
-              <span id="status" class="muted small" aria-live="polite">—</span>
+            <div>
+              <article class="content-section" id="related">
+                <h2>Related tools</h2>
+                <p class="muted">More developer utilities:</p>
+                <p>
+                  <a class="btn" href="/sha256/">SHA-256 Hash</a>
+                  <a class="btn" href="/json-formatter/">JSON Formatter</a>
+                  <a class="btn" href="/base64/">Base64 Encode/Decode</a>
+                  <a class="btn" href="/url-tools/">URL Tools</a>
+                </p>
+                <p class="small">
+                  <span lang="bn">Prefer বাংলা?</span> Try the
+                  <a
+                    class="text-link"
+                    href="/bn/uuid4/"
+                    hreflang="bn"
+                    lang="bn"
+                    aria-label="বাংলা সংস্করণ"
+                    >বাংলা সংস্করণ</a
+                  >.
+                </p>
+              </article>
             </div>
-
-            <textarea
-              id="out"
-              class="textarea mono field form-textarea"
-              rows="8"
-              readonly
-              placeholder="Generated UUIDs…"
-            ></textarea>
-
-            <p class="muted small stat">
-              <span id="lines">Lines: 0</span> •
-              <span id="bytes">Bytes (UTF-8): 0</span>
-            </p>
-
-            <p class="small muted">
-              Shortcuts: <kbd>Ctrl/⌘ + Enter</kbd> Generate •
-              <kbd>Ctrl/⌘ + C</kbd> Copy
-            </p>
-          </article>
+          </div>
         </div>
 
         <div class="card" id="where">
@@ -855,27 +892,6 @@
           </div>
         </section>
         <!-- Related tools -->
-        <article class="card" id="related">
-          <h2>Related tools</h2>
-          <p class="muted">More developer utilities:</p>
-          <p>
-            <a class="btn" href="/sha256/">SHA-256 Hash</a>
-            <a class="btn" href="/json-formatter/">JSON Formatter</a>
-            <a class="btn" href="/base64/">Base64 Encode/Decode</a>
-            <a class="btn" href="/url-tools/">URL Tools</a>
-          </p>
-          <p class="small">
-            <span lang="bn">Prefer বাংলা?</span> Try the
-            <a
-              class="text-link"
-              href="/bn/uuid4/"
-              hreflang="bn"
-              lang="bn"
-              aria-label="বাংলা সংস্করণ"
-              >বাংলা সংস্করণ</a
-            >.
-          </p>
-        </article>
       </main>
 
       <footer>
@@ -1074,8 +1090,7 @@
         updateStats("");
       });
     </script>
-    <script src="/assets/tracker.js" defer data-trk-site="tools-pack"></script>
-    <script src="/assets/related-more.js" defer></script>
+
     <script src="/assets/script.js" defer></script>
     <noscript>
       JavaScript is required to generate a UUID v4. Please enable JavaScript in
