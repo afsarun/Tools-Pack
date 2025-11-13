@@ -122,49 +122,73 @@
     </script>
 
     <!-- Structured data: FAQ (matches visible FAQ below) -->
-    <script type="application/ld+json" id="faq-jsonld">
+    <script type="application/ld+json" id="faq-jsonld-passwords">
       {
         "@context": "https://schema.org",
         "@type": "FAQPage",
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "Are passwords stored or sent to a server?",
+            "name": "Are online password generators safe to use?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No. Everything runs in your browser only. We do not send or store your passwords on any server."
+              "text": "Yes. Reputable generators run cryptographic routines locally in your browser and do not transmit generated passwords to remote servers. Prefer well-known providers or open-source tools when possible."
             }
           },
           {
             "@type": "Question",
-            "name": "Is this generator crypto-secure?",
+            "name": "What defines a \"strong\" password?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. It uses the Web Crypto API (window.crypto.getRandomValues) for high-quality randomness."
+              "text": "A strong password maximizes entropy: it is long (generally at least 12–16 characters), unique per account, and uses a mix of uppercase, lowercase, numbers, and symbols."
             }
           },
           {
             "@type": "Question",
-            "name": "What length should I use?",
+            "name": "How long should a generated password be?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "We recommend 16+ characters, and 20+ for sensitive accounts. Longer is stronger."
+              "text": "Aim for 12–16 characters as a baseline and 20+ for high-value accounts. Increasing length is the most effective way to raise resistance to guessing and brute-force attacks."
             }
           },
           {
             "@type": "Question",
-            "name": "Why include symbols?",
+            "name": "What is password entropy and why does it matter?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Symbols increase the character set size and entropy, making passwords harder to guess. Some sites may restrict certain symbols—toggle them off if needed."
+              "text": "Password entropy measures randomness (in bits). Higher entropy means more possible combinations and exponentially greater effort for an attacker to guess the password."
             }
           },
           {
             "@type": "Question",
-            "name": "Does it work offline?",
+            "name": "Should I use a passphrase instead of a random string?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. Once loaded, the generator continues to work without internet."
+              "text": "Passphrases of several random words can be secure and easier to remember if they are long (20+ characters). For maximum security, fully random strings from a generator are still preferable."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What character options should I choose in the generator?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Select all available character sets—uppercase, lowercase, numbers, and symbols—to maximize complexity. Optionally exclude ambiguous characters like l, I, 1, 0, and O if usability is a concern."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use the same strong password for multiple accounts?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Reusing any password across services is risky: a breach at one service exposes all accounts that share it. Use unique passwords for every account."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I still need a password manager if I use a generator?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. A password manager securely stores, organizes, and autofills complex passwords across devices. Generators create the password; managers keep it safe and usable."
             }
           }
         ]
@@ -496,6 +520,28 @@
         align-items: center;
         gap: 10px;
         transition: all 0.3s ease;
+      }
+
+      .comparison-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+      }
+
+      .comparison-table th,
+      .comparison-table td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+      }
+
+      .comparison-table th {
+        background-color: var(--primary);
+        color: white;
+      }
+
+      .comparison-table tr:nth-child(even) {
+        background-color: #f2f2f2;
       }
 
       @media (max-width: 768px) {
@@ -833,208 +879,279 @@
             </div>
           </article>
         </div>
-        <div class="card" id="where">
-          <h2>Where to Use Generated Values</h2>
-          <div class="examples">
-            <div class="example">
-              <div class="example-title">🔐 Accounts</div>
-              <div class="example-content">Unique passwords per site/app</div>
-              <span class="badge">manager-friendly</span>
-            </div>
+        <!-- Section 2: Why Password Generators Are Essential -->
+        <section class="content-section">
+          <h2>Why Password Generators Are Essential for Security</h2>
+          <p>
+            In today's digital landscape, weak passwords are one of the most
+            common vulnerabilities exploited by cybercriminals. Using
+            predictable patterns, common words, or reusing passwords across
+            multiple accounts puts your personal and financial information at
+            significant risk.
+          </p>
 
-            <div class="example">
-              <div class="example-title">🗂 API Keys</div>
-              <div class="example-content">Random tokens and secrets</div>
-              <span class="badge">high entropy</span>
-            </div>
+          <h3>Understanding the Risk: Brute Force vs. Dictionary Attacks</h3>
+          <p>Cybercriminals use sophisticated methods to crack passwords:</p>
+          <ul>
+            <li>
+              <strong>Brute Force Attacks:</strong> Attackers systematically try
+              every possible combination of characters until they find the
+              correct password. The shorter and simpler the password, the faster
+              it can be cracked.
+            </li>
+            <li>
+              <strong>Dictionary Attacks:</strong> Attackers use pre-compiled
+              lists of common passwords, words, and phrases to guess passwords
+              more efficiently than brute force methods.
+            </li>
+            <li>
+              <strong>Rainbow Tables:</strong> Precomputed tables for reversing
+              cryptographic hash functions, primarily used for cracking password
+              hashes.
+            </li>
+          </ul>
 
-            <div class="example">
-              <div class="example-title">🧩 Identifiers</div>
-              <div class="example-content">
-                UUIDs for database records/messages
-              </div>
-              <span class="badge">RFC 4122</span>
-            </div>
+          <p>
+            A strong password generator creates truly random sequences that are
+            resistant to these attack methods, significantly enhancing your
+            digital security.
+          </p>
+        </section>
 
-            <div class="example">
-              <div class="example-title">👥 Temporary Links</div>
-              <div class="example-content">Non-guessable slugs</div>
-              <span class="badge">random IDs</span>
-            </div>
-          </div>
-        </div>
+        <!-- Section 3: The Science of Randomness -->
+        <section class="content-section">
+          <h2>The Science of Randomness: How Secure Generation Works</h2>
+          <p>
+            True randomness is critical for password security. Our generator
+            uses advanced algorithms to ensure maximum unpredictability.
+          </p>
 
-        <div class="card" id="best-practices">
-          <h2>Password &amp; UUID Best Practices</h2>
-          <div class="examples">
-            <div class="example">
-              <div class="example-title">🔑 Prefer length over symbols</div>
-              <div class="example-content">
-                Longer passwords (14–20+) are usually stronger and easier to
-                manage than short, complex ones.
-              </div>
-            </div>
+          <h3>
+            What is Cryptographically Secure Pseudorandom Number Generation
+            (CSPRNG)?
+          </h3>
+          <p>
+            Unlike standard random number generators, CSPRNGs are specifically
+            designed to be unpredictable even when an attacker knows the
+            algorithm and previous outputs. They use entropy sources (like
+            system noise) to generate values that are statistically
+            indistinguishable from true randomness.
+          </p>
 
-            <div class="example">
-              <div class="example-title">🧠 Passphrases for memorability</div>
-              <div class="example-content">
-                4–6 random words with a separator (e.g.,
-                <code>drift-lamp-cobalt-river</code>) give high entropy with
-                better recall.
-              </div>
-            </div>
+          <h3>Calculating Password Entropy: The Measure of True Strength</h3>
+          <p>
+            Password entropy measures the unpredictability of a password in
+            bits. The formula is:
+          </p>
+          <p>
+            <strong
+              >Entropy = log₂(Character Set Size ^ Password Length)</strong
+            >
+          </p>
+          <p>
+            For example, a 12-character password using uppercase, lowercase,
+            numbers, and symbols (94 possible characters) has:
+          </p>
+          <p>log₂(94¹²) ≈ 78.8 bits of entropy</p>
+          <p>
+            This means there are 2⁷⁸.⁸ possible combinations, making it
+            computationally infeasible to brute force with current technology.
+          </p>
+        </section>
 
-            <div class="example">
-              <div class="example-title">♻️ Don’t reuse passwords</div>
-              <div class="example-content">
-                Use unique passwords per service; a password manager makes this
-                simple.
-              </div>
-            </div>
+        <!-- Section 4: Password Settings and Features -->
+        <section class="content-section">
+          <h2>Choosing the Right Password Settings and Features</h2>
+          <p>
+            Understanding how to configure your password generator is key to
+            creating optimal security.
+          </p>
 
-            <div class="example">
-              <div class="example-title">🚫 UUIDs aren’t secrets</div>
-              <div class="example-content">
-                They’re great as identifiers but provide no access control on
-                their own.
-              </div>
-            </div>
-          </div>
-        </div>
+          <h3>The Ideal Password Length: Why Longer is Always Better</h3>
+          <p>
+            Length is the most important factor in password strength. Each
+            additional character exponentially increases the number of possible
+            combinations:
+          </p>
+          <ul>
+            <li>
+              <strong>8 characters:</strong> Minimum for low-security accounts
+            </li>
+            <li>
+              <strong>12-16 characters:</strong> Recommended for most online
+              accounts
+            </li>
+            <li>
+              <strong>20+ characters:</strong> Ideal for high-security
+              applications (email, banking)
+            </li>
+          </ul>
 
-        <div class="info-grid" id="details">
-          <!-- Basics -->
-          <div class="card">
-            <div class="info-section">
-              <h3>🔑 Password &amp; UUID Basics</h3>
-              <ul>
-                <li>
-                  <strong>Generate passwords</strong> with custom length &amp;
-                  character sets
-                </li>
-                <li>
-                  <strong>Create passphrases</strong> (multi-word,
-                  separator-based)
-                </li>
-                <li>
-                  <strong>Generate UUID v4</strong> (RFC&nbsp;4122 compliant)
-                </li>
-                <li>
-                  <strong>Format options</strong> (uppercase, exclude ambiguous,
-                  etc.)
-                </li>
-              </ul>
-              <p class="small muted">
-                All generation happens locally using the browser’s cryptographic
-                PRNG.
-              </p>
-            </div>
+          <h3>Character Sets: Symbols, Numbers, and Ambiguous Characters</h3>
+          <p>
+            Expanding the character set increases complexity. However, some
+            characters can cause input issues:
+          </p>
+          <ul>
+            <li>
+              <strong>Similar characters (i, l, 1, L, o, 0, O):</strong> Can be
+              confused when typing
+            </li>
+            <li>
+              <strong
+                >Ambiguous characters ({ } [ ] ( ) / \ ' " ` ~ , ; : . <
+                >):</strong
+              >
+              May cause parsing issues in some systems
+            </li>
+          </ul>
 
-            <div class="info-section">
-              <h3>🧩 Password options</h3>
-              <ul>
-                <li><strong>Length:</strong> 8–128 (recommended ≥ 12)</li>
-                <li><strong>Character sets:</strong> a–z, A–Z, 0–9, symbols</li>
-                <li>
-                  <strong>Exclude ambiguous:</strong> l, I, 1, O, 0, { }, [ ], (
-                  ), /, \, etc.
-                </li>
-                <li>
-                  <strong>Guarantee inclusion:</strong> ensure each selected set
-                  appears at least once
-                </li>
-              </ul>
-            </div>
-          </div>
+          <h3>Passphrases vs. Random Strings (Is a Passphrase Secure?)</h3>
+          <p>
+            Passphrases (sequences of random words) offer a balance between
+            security and memorability:
+          </p>
+          <ul>
+            <li>
+              <strong>Advantages:</strong> Easier to remember, often longer
+            </li>
+            <li>
+              <strong>Disadvantages:</strong> Lower entropy per character,
+              vulnerable to dictionary attacks if not truly random
+            </li>
+          </ul>
+          <p>
+            For maximum security, fully random strings are preferable,
+            especially when used with a password manager.
+          </p>
+        </section>
 
-          <!-- UUID specifics -->
-          <div class="card">
-            <div class="info-section">
-              <h3>🆔 UUID v4 specifics</h3>
-              <ul>
-                <li>
-                  Random version set to <code>4</code>; variant bits
-                  <code>10</code>
-                </li>
-                <li>
-                  Canonical format: <code>8-4-4-4-12</code> hex digits
-                  (lowercase)
-                </li>
-                <li>
-                  Example: <code>f47ac10b-58cc-4372-a567-0e02b2c3d479</code>
-                </li>
-              </ul>
-            </div>
+        <!-- Section 5: Management and Protection -->
+        <section class="content-section">
+          <h2>Beyond Creation: Management and Protection Best Practices</h2>
+          <p>
+            Creating strong passwords is only half the battle. Proper management
+            is equally important.
+          </p>
 
-            <div class="info-section">
-              <h3>📊 Strength &amp; Entropy</h3>
-              <ul>
-                <li>
-                  <strong>Entropy (bits)</strong> ≈
-                  <code>length × log2(characterSetSize)</code>
-                </li>
-                <li>
-                  Example: 16 chars from 62-symbol set → ~<code
-                    >16 × log2(62) ≈ 95.3 bits</code
-                  >
-                </li>
-                <li>
-                  Prefer longer passwords or multi-word passphrases for
-                  usability and strength
-                </li>
-              </ul>
-            </div>
-          </div>
+          <h3>Why Integration with a Password Manager is Non-Negotiable</h3>
+          <p>
+            Password managers like LastPass, 1Password, and Bitwarden provide:
+          </p>
+          <ul>
+            <li>Secure, encrypted storage for all your passwords</li>
+            <li>Automatic form filling across devices</li>
+            <li>
+              Password strength analysis and alerts for compromised accounts
+            </li>
+            <li>Secure password sharing capabilities</li>
+          </ul>
 
-          <!-- How to Use -->
-          <div class="card">
-            <div class="info-section">
-              <h3>⚙️ How to use</h3>
-              <ol>
-                <li>
-                  Choose <strong>Password</strong> or
-                  <strong>UUID v4</strong> mode.
-                </li>
-                <li>
-                  For passwords: pick <strong>length</strong>, select
-                  <strong>character sets</strong>, and (optional) exclude
-                  ambiguous characters.
-                </li>
-                <li>
-                  Click <strong>Generate</strong>. Copy the result or generate
-                  again for a new one.
-                </li>
-                <li>
-                  For passphrases: set <strong>word count</strong> and a
-                  <strong>separator</strong> (e.g., <code>-</code> or
-                  <code>·</code>).
-                </li>
-              </ol>
-            </div>
-          </div>
+          <h3>Secure Storage and Key Derivation Functions</h3>
+          <p>
+            Password managers use advanced encryption and Key Derivation
+            Functions (KDFs) like PBKDF2, bcrypt, or Argon2 to protect your
+            data. These functions intentionally slow down the hashing process to
+            resist brute-force attacks.
+          </p>
 
-          <!-- Tips -->
-          <div class="card">
-            <div class="info-section">
-              <h3>💡 Tips</h3>
-              <ul>
-                <li>
-                  Use a <strong>password manager</strong> to store generated
-                  passwords securely.
-                </li>
-                <li>
-                  Enable <strong>guarantee inclusion</strong> to avoid missing a
-                  selected character class.
-                </li>
-                <li>
-                  UUIDs are identifiers, <em>not</em> secrets — do not use UUIDs
-                  as passwords.
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
+          <h3>Implementing Credential Rotation Policies</h3>
+          <p>
+            While frequent password changes are no longer universally
+            recommended, certain situations warrant updates:
+          </p>
+          <ul>
+            <li>After a data breach affecting a service you use</li>
+            <li>If you suspect your device has been compromised</li>
+            <li>When sharing passwords temporarily (change afterward)</li>
+            <li>According to organizational security policies</li>
+          </ul>
+        </section>
 
+        <!-- Section 6: Regulatory Requirements -->
+        <section class="content-section">
+          <h2>Regulatory Requirements and Enterprise Use</h2>
+          <p>
+            For organizations, password policies must align with regulatory
+            standards and security frameworks.
+          </p>
+
+          <h3>FIPS 140-2 Compliance and Generator Trust</h3>
+          <p>
+            The Federal Information Processing Standard (FIPS) 140-2 validates
+            cryptographic modules. For password generation, this ensures:
+          </p>
+          <ul>
+            <li>Approved cryptographic algorithms</li>
+            <li>Proper entropy sources</li>
+            <li>Secure key generation and storage</li>
+            <li>Tamper resistance</li>
+          </ul>
+
+          <h3>Setting Internal Password Policies for Maximum Security</h3>
+          <p>Enterprise password policies should include:</p>
+          <ul>
+            <li>Minimum length requirements (12+ characters)</li>
+            <li>Complexity requirements (multiple character types)</li>
+            <li>Password history to prevent reuse</li>
+            <li>Account lockout policies after failed attempts</li>
+            <li>Multi-factor authentication requirements</li>
+          </ul>
+        </section>
+
+        <!-- Section 7: Generator Comparison -->
+        <section class="content-section">
+          <h2>Comparing the Top Generators in the Directory</h2>
+          <p>
+            Not all password generators are created equal. Here's how popular
+            options compare:
+          </p>
+
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Generator</th>
+                <th>Key Features</th>
+                <th>Security Approach</th>
+                <th>Best For</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>GRC Perfect Passwords</td>
+                <td>Ultra-high entropy, no options</td>
+                <td>Server-side generation with extensive entropy sources</td>
+                <td>Maximum security applications</td>
+              </tr>
+              <tr>
+                <td>LastPass Generator</td>
+                <td>Integrated with password manager, customizable</td>
+                <td>Client-side generation in browser</td>
+                <td>LastPass users seeking convenience</td>
+              </tr>
+              <tr>
+                <td>1Password Generator</td>
+                <td>Memorable passwords, symbols placement options</td>
+                <td>Client-side generation, focused on usability</td>
+                <td>1Password users wanting memorable yet secure passwords</td>
+              </tr>
+              <tr>
+                <td>Bitwarden Generator</td>
+                <td>Open source, multiple password types</td>
+                <td>Client-side generation, transparent algorithm</td>
+                <td>Security-conscious users preferring open source</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>Offline vs. Online Generation Methods</h3>
+          <p>
+            Online generators provide convenience but require trust in the
+            service provider. Offline methods (command-line tools, dedicated
+            applications) eliminate this trust requirement but may be less
+            user-friendly.
+          </p>
+        </section>
         <!-- FAQ (visible content now matches the JSON-LD above) -->
         <section class="faq-section card" id="faq">
           <h2 class="faq-title">
@@ -1043,69 +1160,138 @@
 
           <div class="faq-container">
             <!-- Password Generator FAQs -->
+
             <div class="faq-item">
-              <button class="faq-question">
-                Are passwords stored or sent to a server?
-                <span class="faq-icon">+</span>
-              </button>
+              <div class="faq-question">
+                <span>Are online password generators safe to use?</span>
+                <span>+</span>
+              </div>
               <div class="faq-answer">
                 <p>
-                  No. Everything runs in your browser only. We do not send or
-                  store your passwords on any server.
+                  Yes, reputable generators (such as those provided by Avast,
+                  Norton, and Bitwarden) use secure cryptographic processes to
+                  generate passwords locally in your web browser, ensuring the
+                  resulting password is never transmitted over the internet or
+                  logged by the service provider.
                 </p>
               </div>
             </div>
 
             <div class="faq-item">
-              <button class="faq-question">
-                Is this generator crypto-secure?
-                <span class="faq-icon">+</span>
-              </button>
+              <div class="faq-question">
+                <span>What defines a "strong" password?</span>
+                <span>+</span>
+              </div>
               <div class="faq-answer">
                 <p>
-                  Yes. It uses the Web Crypto API
-                  (<code>window.crypto.getRandomValues</code>) for high-quality
-                  randomness.
+                  A strong password is one that maximizes entropy by being long
+                  (recommended minimum of 12-16 characters), unique across all
+                  accounts, and incorporating a mix of uppercase and lowercase
+                  letters, numbers, and symbols.
                 </p>
               </div>
             </div>
 
             <div class="faq-item">
-              <button class="faq-question">
-                What length should I use?
-                <span class="faq-icon">+</span>
-              </button>
+              <div class="faq-question">
+                <span>How long should a generated password be?</span>
+                <span>+</span>
+              </div>
               <div class="faq-answer">
                 <p>
-                  We recommend 16+ characters, and 20+ for sensitive accounts.
-                  Longer is stronger.
+                  Security experts recommend a minimum length of 12 to 16
+                  characters, as simply increasing the length provides the most
+                  significant boost in resistance against guessing and
+                  brute-force attacks.
                 </p>
               </div>
             </div>
 
             <div class="faq-item">
-              <button class="faq-question">
-                Why include symbols?
-                <span class="faq-icon">+</span>
-              </button>
+              <div class="faq-question">
+                <span>What is password entropy and why does it matter?</span>
+                <span>+</span>
+              </div>
               <div class="faq-answer">
                 <p>
-                  Symbols increase the character set size and entropy, making
-                  passwords harder to guess. Some sites may restrict certain
-                  symbols—toggle them off if needed.
+                  Password entropy is a measurement, typically in bits, of a
+                  password's randomness and unpredictability. The higher the
+                  entropy, the more complex the password is, and the
+                  exponentially longer it would take for an attacker to guess.
                 </p>
               </div>
             </div>
 
             <div class="faq-item">
-              <button class="faq-question">
-                Does it work offline?
-                <span class="faq-icon">+</span>
-              </button>
+              <div class="faq-question">
+                <span
+                  >Should I use a passphrase instead of a random string?</span
+                >
+                <span>+</span>
+              </div>
               <div class="faq-answer">
                 <p>
-                  Yes. Once loaded, the generator continues to work without
-                  internet.
+                  Passphrases (long sequences of random words) can be easier to
+                  memorize and highly secure if they are very long (over 20
+                  characters). However, complex, fully random strings generated
+                  by tools like those offered by LastPass or 1Password provide
+                  the highest theoretical security.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <span
+                  >What character options should I choose in the
+                  generator?</span
+                >
+                <span>+</span>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  You should select all available character sets, including
+                  uppercase, lowercase, numbers, and symbols, to maximize
+                  complexity. Many generators also offer the option to exclude
+                  ambiguous characters (like 'l', 'I', '1', and '0', 'O') to
+                  prevent input errors.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <span
+                  >Can I use the same strong password for multiple
+                  accounts?</span
+                >
+                <span>+</span>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  No. Using the same password—no matter how strong—for different
+                  services is highly dangerous. If one service suffers a data
+                  breach, all your accounts become immediately vulnerable. Tools
+                  like these generators help ensure uniqueness.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <span
+                  >Do I still need a password manager if I use a
+                  generator?</span
+                >
+                <span>+</span>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  Yes. The generator creates the secure password, but a
+                  dedicated password manager (like Bitwarden, Dashlane, or
+                  NordPass) is necessary to securely store, encrypt, organize,
+                  and autofill those complex, unmemorable credentials across all
+                  your devices.
                 </p>
               </div>
             </div>

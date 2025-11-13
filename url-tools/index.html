@@ -134,34 +134,66 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "What's the difference between encodeURI and encodeURIComponent?",
+            "name": "What is the main purpose of a Campaign URL Builder tool?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "encodeURIComponent is for individual components (like query values or path segments) and escapes more characters. encodeURI is for full URLs and leaves reserved characters like : / ? & = intact."
+              "text": "A Campaign URL Builder adds UTM parameters to a URL so marketers can track source, medium, and campaign performance in analytics platforms like Google Analytics."
             }
           },
           {
             "@type": "Question",
-            "name": "Can I paste a full URL and still use Encode?",
+            "name": "How do URL extraction tools work?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes, but if you intend to encode only a parameter value, encode the value, not the whole URL, to avoid over-encoding reserved characters."
+              "text": "URL extraction tools take input text or a webpage and automatically identify and list all links found in the content, making it easy to collect or audit URLs."
             }
           },
           {
             "@type": "Question",
-            "name": "Why does plus (+) decode to space?",
+            "name": "What differentiates a URL splitter from a standard URL parser?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "In application/x-www-form-urlencoded form data, + represents a space. This tool converts + to spaces before decoding to be helpful."
+              "text": "A URL splitter breaks a URL into core components—protocol, domain, path, and query parameters—so you can analyze or isolate specific parts. A general parser may perform broader validation or normalization tasks."
             }
           },
           {
             "@type": "Question",
-            "name": "Is this URL encoder safe and private?",
+            "name": "Are \"URL tools\" primarily used for SEO?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes, everything runs locally in your browser. No URLs or data are uploaded, logged, or stored on any server."
+              "text": "They are important for SEO, but also widely used in digital marketing for campaign tracking, in security for scanning malicious links, and in data analysis for link extraction."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why is checking the redirection path of a URL important?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Checking redirect paths ensures users and search engines reach the intended destination via correct 301/302 redirects, which preserves link equity and prevents user experience issues."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How can I perform bulk operations on many URLs at once?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Bulk URL tools process large lists simultaneously to perform tasks like batch status checks, link health verification, or mass conversions—ideal for scale operations."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What kind of security information can URL scanning tools provide?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "URL scanners can report a URL's safety rating, associated IP address, malware or phishing indicators, and categorical classification to help assess risk."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is a URL cleaner used for?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A URL cleaner removes unnecessary tracking parameters and fragments from a URL to produce a shorter, cleaner, and more SEO-friendly link."
             }
           }
         ]
@@ -213,7 +245,7 @@
       }
 
       /* If you want a unique hero tint for this tool only, override tool-card here: */
-      .tool-card {
+      .tool-cardu {
         background: linear-gradient(
           135deg,
           var(--surface) 0%,
@@ -386,6 +418,37 @@
         line-height: 1;
       }
 
+      .tool-grids {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+      }
+
+      .tool-cardu {
+        background-color: var(--light-color);
+        padding: 1.5rem;
+        border-radius: var(--border-radius);
+        text-align: center;
+        transition: var(--transition);
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .tool-cardu:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--box-shadow);
+      }
+
+      .tool-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: var(--primary-color);
+        text-align: center;
+      }
       /* Mobile tweaks only this page needs */
       @media (max-width: 768px) {
         .mode-selector {
@@ -459,7 +522,7 @@
       </p>
 
       <!-- Main Tool -->
-      <div class="card tool-card" id="encoder">
+      <div class="card tool-cards" id="encoder">
         <div class="mode-selector" role="tablist" aria-label="Modes">
           <div
             class="mode-option active"
@@ -604,190 +667,210 @@
         </div>
       </div>
 
-      <!-- Examples -->
-      <div class="card" id="where">
-        <h2>Common Use Cases &amp; Examples</h2>
-        <div class="examples">
-          <div class="example">
-            <div class="example-title">Encoding Query Parameters</div>
-            <div class="example-content">
-              Input: Hello World &amp; Special Characters!<br />
-              Output: Hello%20World%20%26%20Special%20Characters%21
-            </div>
+      <section class="content-section">
+        <h2>Why URL Management Tools are Essential for Digital Success</h2>
+        <p>
+          Effective URL management is crucial for SEO performance, user
+          experience, and accurate marketing analytics. Our comprehensive suite
+          of URL tools helps you optimize every aspect of your link strategy.
+        </p>
+
+        <h3>Understanding the Anatomy of a High-Performing URL</h3>
+        <p>
+          A well-structured URL includes clear components that help both users
+          and search engines understand the content:
+        </p>
+        <ul>
+          <li>
+            <strong>Protocol:</strong> HTTP or HTTPS (always use HTTPS for
+            security)
+          </li>
+          <li><strong>Domain:</strong> Your website's address</li>
+          <li>
+            <strong>Path:</strong> The hierarchical structure of your content
+          </li>
+          <li>
+            <strong>Query Parameters:</strong> Used for tracking and filtering
+            (UTM parameters, etc.)
+          </li>
+          <li><strong>Fragment:</strong> Specific section within a page</li>
+        </ul>
+      </section>
+
+      <section class="content-section">
+        <h2>Comprehensive URL Tool Categories</h2>
+        <div class="tool-grids">
+          <div class="tool-cardu" data-tool="url-builder">
+            <div class="tool-icon">🔗</div>
+            <h3>URL Builders</h3>
+            <p>
+              Create tracking URLs with UTM parameters for marketing campaigns
+            </p>
           </div>
-          <div class="example">
-            <div class="example-title">Decoding URL Components</div>
-            <div class="example-content">
-              Input: https%3A//example.com/path%3Fquery%3Dvalue<br />
-              Output: https://example.com/path?query=value
-            </div>
+
+          <div class="tool-cardu" data-tool="url-splitter">
+            <div class="tool-icon">✂️</div>
+            <h3>URL Splitters</h3>
+            <p>Parse URLs into components for analysis and debugging</p>
           </div>
-          <div class="example">
-            <div class="example-title">Form Data (+ to space)</div>
-            <div class="example-content">
-              Input: search+query+with+spaces<br />
-              Output: search query with spaces
-            </div>
+
+          <div class="tool-cardu" data-tool="url-scanner">
+            <div class="tool-icon">🔍</div>
+            <h3>URL Scanners</h3>
+            <p>Check URLs for security threats and redirect chains</p>
+          </div>
+
+          <div class="tool-cardu" data-tool="url-extractor">
+            <div class="tool-icon">📥</div>
+            <h3>URL Extractors</h3>
+            <p>Extract all URLs from text content or webpages</p>
+          </div>
+
+          <div class="tool-cardu" data-tool="url-cleaner">
+            <div class="tool-icon">🧹</div>
+            <h3>URL Cleaners</h3>
+            <p>Remove tracking parameters for cleaner, SEO-friendly URLs</p>
+          </div>
+
+          <div class="tool-cardu">
+            <div class="tool-icon">📊</div>
+            <h3>Bulk URL Tools</h3>
+            <p>Process multiple URLs simultaneously for efficiency</p>
           </div>
         </div>
-      </div>
-      <div class="card" id="best-practices">
-        <h2>Best Practices — What to Encode & How</h2>
-        <div class="examples">
-          <div class="example">
-            <div class="example-title">🔑 Use the right function</div>
-            <div class="example-content">
-              <code>encodeURIComponent()</code> for query values;
-              <code>encodeURI()</code> for whole URLs.
-            </div>
-          </div>
+      </section>
 
-          <div class="example">
-            <div class="example-title">📐 Follow RFC 3986</div>
-            <div class="example-content">
-              Spaces → <code>%20</code> (not <code>+</code>). Forms
-              (<code>x-www-form-urlencoded</code>) may use <code>+</code>.
-            </div>
-          </div>
+      <section class="content-section">
+        <h2>Advanced URL Applications</h2>
 
-          <div class="example">
-            <div class="example-title">🚫 Avoid double-encoding</div>
-            <div class="example-content">
-              Don’t re-encode already escaped values like <code>%20</code>.
-            </div>
-          </div>
+        <h3>URL Optimization for Voice Search and Mobile SEO</h3>
+        <p>
+          With the rise of voice search and mobile browsing, URL structure has
+          become even more important. Shorter, descriptive URLs perform better
+          in voice search results and are easier to share on mobile devices.
+        </p>
 
-          <div class="example">
-            <div class="example-title">📂 Encode only segments</div>
-            <div class="example-content">
-              Encode path parts, not slashes (<code>/</code>) that separate
-              them.
-            </div>
-          </div>
+        <h3>Integrating URL Tools into Workflow Automation</h3>
+        <p>
+          Many URL tools offer API access, allowing you to automate tasks like
+          daily link health checks, bulk URL processing, and security scanning
+          as part of your development or marketing workflows.
+        </p>
 
-          <div class="example">
-            <div class="example-title">🌐 Always UTF-8</div>
-            <div class="example-content">
-              Encode Unicode text (e.g., emoji, বাংলা) directly—no pre-escaping.
-            </div>
-          </div>
-
-          <div class="example">
-            <div class="example-title">🛡 Decode carefully</div>
-            <div class="example-content">
-              Only decode query values you control. Don’t decode whole URLs—
-              keep safe escapes like <code>%2F</code> intact.
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Information Grid -->
-      <div class="info-grid" id="details">
-        <div class="card">
-          <div class="info-section">
-            <h3>🛠️ Features</h3>
-            <ul>
-              <li><strong>RFC 3986 compliant</strong> encoding/decoding</li>
-              <li>
-                <strong>Multiple modes:</strong> encoder, parser, query editor
-              </li>
-              <li>
-                <strong>Component-safe encoding</strong> with encodeURIComponent
-              </li>
-              <li>
-                <strong>Form data handling</strong> (+ to space conversion)
-              </li>
-              <li>
-                <strong>URL parsing</strong> into protocol, host, path, query
-              </li>
-              <li><strong>Query parameter editor</strong> with add/remove</li>
-              <li><strong>One-click copy</strong> to clipboard</li>
-              <li>
-                <strong>Completely private</strong> — no data leaves browser
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="info-section">
-            <h3>📋 Use Cases</h3>
-            <ul>
-              <li>
-                <strong>API development:</strong> safe query parameter encoding
-              </li>
-              <li><strong>Web debugging:</strong> decode malformed URLs</li>
-              <li>
-                <strong>SEO &amp; marketing:</strong> UTM parameter management
-              </li>
-              <li><strong>Form handling:</strong> process form-encoded data</li>
-              <li>
-                <strong>Link sharing:</strong> clean and encode share URLs
-              </li>
-              <li><strong>Data analysis:</strong> parse URLs from logs</li>
-              <li><strong>Security testing:</strong> encode payloads safely</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+        <h3>Troubleshooting Common URL Errors</h3>
+        <p>
+          URL tools can help diagnose and fix common issues like 404 errors,
+          redirect chains, and broken links that negatively impact user
+          experience and SEO performance.
+        </p>
+      </section>
 
       <!-- FAQ -->
       <div class="card faq-section" id="faq">
         <h2>FAQ</h2>
 
-        <div class="faq-item">
-          <button class="faq-question">
-            What's the difference between encodeURI and encodeURIComponent?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>
-              <code>encodeURIComponent</code> is for individual components (like
-              query values or path segments) and escapes more characters.
-              <code>encodeURI</code> is for full URLs and leaves reserved
-              characters like <code>:/?&amp;=</code> intact.
-            </p>
+        <div class="faq-container">
+          <div class="faq-item">
+            <div class="faq-question">
+              What is the main purpose of a Campaign URL Builder tool?
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              A Campaign URL Builder (like the Google tool) is used to add
+              specific parameters (known as UTMs) to a URL, allowing marketers
+              to track the source, medium, and campaign that generated traffic
+              when analyzing website data in platforms like Google Analytics.
+            </div>
           </div>
-        </div>
 
-        <div class="faq-item">
-          <button class="faq-question">
-            Can I paste a full URL and still use Encode?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>
-              Yes. If you intend to encode only a parameter value, encode just
-              the value to avoid over-encoding reserved characters.
-            </p>
+          <div class="faq-item">
+            <div class="faq-question">
+              How do URL extraction tools work?
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              URL extraction tools (e.g., SimpleScraper or Browserling) take
+              source text or a webpage URL as input and automatically identify
+              and list all associated links or hypertext references found within
+              that content.
+            </div>
           </div>
-        </div>
 
-        <div class="faq-item">
-          <button class="faq-question">
-            Why does plus (+) decode to space?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>
-              In <code>application/x-www-form-urlencoded</code> form data,
-              <code>+</code> represents a space. This tool converts
-              <code>+</code> to spaces before decoding to be helpful.
-            </p>
+          <div class="faq-item">
+            <div class="faq-question">
+              What differentiates a URL splitter from a standard URL parser?
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              A URL splitter tool breaks down a complex URL string into its core
+              components, such as the protocol, domain, path, and query
+              parameters, making it easier to analyze or isolate specific
+              elements.
+            </div>
           </div>
-        </div>
 
-        <div class="faq-item">
-          <button class="faq-question">
-            Is this tool private?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>
-              Yes, everything runs locally in your browser. No data is uploaded,
-              logged, or stored on any server.
-            </p>
+          <div class="faq-item">
+            <div class="faq-question">
+              Are "URL tools" primarily used for SEO?
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              While URL tools are crucial for SEO (e.g., ensuring clean slugs
+              and proper redirects), they are also heavily used in digital
+              marketing (campaign tracking), security (scanning for malicious
+              links), and data analysis (link extraction).
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              Why is checking the redirection path of a URL important?
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              Checking the redirection path using tools like WhereGoes helps
+              ensure that users and search engines are routed correctly from an
+              old URL to a new one (via 301 or 302 redirects), which is vital
+              for maintaining link equity and user experience.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              How can I perform bulk operations on many URLs at once?
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              Services labeled as "Bulk URL Tools" specialize in processing
+              large lists of URLs simultaneously, often used for tasks like
+              batch checking status codes, verifying link health, or performing
+              mass conversions.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              What kind of security information can URL scanning tools provide?
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              Security tools (like URLScan.io or BrightCloud) can provide
+              insights into a URL's safety rating, associated IP address,
+              potential malware or phishing threats, and categorization status.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              What is a URL cleaner used for?
+              <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+              A URL cleaner tool, such as OrangeFox, is used to remove
+              unnecessary tracking parameters or fragmented data from a URL
+              string, resulting in a cleaner, shorter, and often more
+              SEO-friendly link.
+            </div>
           </div>
         </div>
       </div>

@@ -135,34 +135,66 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "Is my JSON uploaded to a server?",
+            "name": "What is the primary difference between formatting and minifying JSON?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No. All processing happens locally in your browser."
+              "text": "Formatting (pretty printing) adds line breaks and indentation to make JSON readable for humans. Minifying removes unnecessary whitespace and line breaks to reduce file size for faster machine processing and transmission."
             }
           },
           {
             "@type": "Question",
-            "name": "Does it support Unicode/Bangla?",
+            "name": "Is it safe to paste sensitive data into an online JSON formatter?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. It is Unicode-safe."
+              "text": "Many reputable online formatters process data locally in your browser and do not transmit it to a server. For highly sensitive or proprietary data, use offline tools or IDE extensions for maximum security."
             }
           },
           {
             "@type": "Question",
-            "name": "How do I pretty print and validate?",
+            "name": "What exactly does JSON validation check for?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Paste JSON, click Format to pretty print with 2-space indentation. Click Validate to only check correctness without output."
+              "text": "JSON validation verifies strict JSON syntax: correct use of double quotes for keys and strings, proper delimiters like colons and commas, valid primitive values (null, true, false), and correct object/array structure."
             }
           },
           {
             "@type": "Question",
-            "name": "Where can I minify or use related tools?",
+            "name": "How do I fix the common \"Unexpected token\" error in JSON?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Use the Minify button for compact JSON. For URL encoding/decoding and Base64, use the related tools section on the page."
+              "text": "This error usually points to a syntax mistake such as a trailing comma, missing quotation marks around a key, or single quotes used instead of required double quotes. A validator will identify the exact line causing the issue."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can a JSON formatter handle exceptionally large files?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Most online formatters handle moderate to large files, but extremely large JSON files (for example, over ~50 MB) may cause browser memory or performance issues. Use dedicated desktop or command-line tools for very large files."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why do developers choose JSON over XML for modern APIs?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "JSON is generally lighter and less verbose, maps naturally to JavaScript data structures, and is faster to parse in web applications. XML requires more boilerplate and specialized parsing."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I customize the indentation level of the formatted JSON output?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Many JSON formatters offer options to set indentation (for example 2 or 4 spaces or tabs) so the output matches your preferred code style guide."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does formatting JSON change the actual data values?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Formatting only changes whitespace and line breaks for readability; it does not alter keys, values, or the data structure."
             }
           }
         ]
@@ -520,6 +552,37 @@
         border-radius: 50%;
         animation: spin 1s linear infinite;
       }
+      .code-block {
+        background: #2d2d2d;
+        color: #f8f8f2;
+        padding: 1rem;
+        border-radius: 4px;
+        margin: 1rem 0;
+        overflow-x: auto;
+        font-family: "Courier New", monospace;
+      }
+
+      .comparison-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+      }
+
+      .comparison-table th,
+      .comparison-table td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+      }
+
+      .comparison-table th {
+        background-color: var(--primary);
+        color: white;
+      }
+
+      .comparison-table tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
 
       @keyframes spin {
         0% {
@@ -706,261 +769,417 @@
             <p>© 2023 JSON Formatter / Validator | All rights reserved</p>
           </footer>
         </div>
-        <!-- Best Practices -->
-        <div class="card" id="best-practices">
-          <h2>JSON Best Practices</h2>
-          <div class="examples">
-            <div class="example">
-              <div class="example-title">🔐 Always UTF-8</div>
-              <div class="example-content">
-                Make sure your files are UTF-8 encoded to avoid stray byte
-                issues.
-              </div>
-            </div>
 
-            <div class="example">
-              <div class="example-title">🗝 Deterministic keys</div>
-              <div class="example-content">
-                Sorting keys stabilizes diffs and cache keys in build pipelines.
-              </div>
-            </div>
+        <!-- Section 2: What is JSON Formatting -->
+        <section class="content-section">
+          <h2>
+            What is JSON Formatting (Pretty Printing) and Why Developers Use It
+          </h2>
+          <p>
+            JSON (JavaScript Object Notation) is a lightweight data interchange
+            format that is easy for humans to read and write, and easy for
+            machines to parse and generate. However, when JSON is transmitted or
+            stored, it's often compressed without whitespace to save bandwidth.
+          </p>
 
-            <div class="example">
-              <div class="example-title">💬 No comments in JSON</div>
-              <div class="example-content">
-                Standard JSON has no comments. Use JSONC/JSON5 in editors, then
-                strip to JSON for runtime.
-              </div>
-            </div>
+          <h3>Understanding the Anatomy of Valid JSON Syntax</h3>
+          <p>Valid JSON must follow these rules:</p>
+          <ul>
+            <li>Data is in name/value pairs</li>
+            <li>Data is separated by commas</li>
+            <li>Curly braces hold objects</li>
+            <li>Square brackets hold arrays</li>
+            <li>Strings must be enclosed in double quotes</li>
+            <li>
+              Values can be strings, numbers, objects, arrays, true, false, or
+              null
+            </li>
+          </ul>
 
-            <div class="example">
-              <div class="example-title">🧹 Normalize before parsing</div>
-              <div class="example-content">
-                Remove trailing commas and comments if you imported JSON5/JSONC.
-              </div>
-            </div>
+          <h3>Formatting vs. Minifying: Choosing the Right Output</h3>
+          <p>
+            Formatting (pretty printing) adds indentation and line breaks to
+            make JSON readable for developers. Minifying removes all unnecessary
+            whitespace to reduce file size for transmission and storage.
+          </p>
+
+          <div class="code-block">
+            <span class="json-key">// Formatted JSON (Human-readable)</span
+            ><br />
+            {<br />
+            &nbsp;&nbsp;"<span class="json-string">name</span>": "<span
+              class="json-string"
+              >John Doe</span
+            >",<br />
+            &nbsp;&nbsp;"<span class="json-string">age</span>":
+            <span class="json-number">30</span>,<br />
+            &nbsp;&nbsp;"<span class="json-string">isAdmin</span>":
+            <span class="json-boolean">true</span><br />
+            }<br /><br />
+            <span class="json-key">// Minified JSON (Machine-optimized)</span
+            ><br />
+            {"name":"John Doe","age":30,"isAdmin":true}
           </div>
-        </div>
+        </section>
 
-        <div class="card" id="where">
-          <h2>Where to Use the JSON Formatter</h2>
-          <div class="examples">
-            <div class="example">
-              <div class="example-title">🧩 APIs</div>
-              <div class="example-content">
-                nspect/beautify responses &amp; requests
-              </div>
-              <div class="example-content">
-                <span class="badge">pretty-print</span>
-              </div>
-            </div>
+        <!-- Section 3: How to Use the Tool -->
+        <section class="content-section">
+          <h2>How to Use the High-Speed Online JSON Formatter</h2>
+          <p>
+            Our tool is designed for maximum efficiency and ease of use. Simply
+            paste your JSON data into the input area and click "Format JSON" to
+            instantly beautify your code.
+          </p>
 
-            <div class="example">
-              <div class="example-title">⚙️ Config</div>
-              <div class="example-content">
-                Normalize config files (package.json, tsconfig.json)
-              </div>
-              <div class="example-content">sort keys</div>
-            </div>
+          <h3>Setting Custom Indentation Levels and Style Options</h3>
+          <p>Customize the output to match your coding style preferences:</p>
+          <ul>
+            <li>
+              <strong>Indentation:</strong> Choose between 2, 4, or 8 spaces, or
+              tabs
+            </li>
+            <li>
+              <strong>Sort Keys:</strong> Alphabetically sort object keys for
+              consistent output
+            </li>
+            <li>
+              <strong>Quote Style:</strong> Use double or single quotes for
+              strings (though double quotes are JSON standard)
+            </li>
+          </ul>
 
-            <div class="example">
-              <div class="example-title">💬 No comments in JSON</div>
-              <div class="example-content">Shrink payloads for transport</div>
-              <div class="example-content">minify</div>
-            </div>
+          <h3>Auto-Detection and Handling of Large JSON Payloads</h3>
+          <p>
+            Our tool efficiently handles JSON payloads of various sizes. For
+            extremely large files (50MB+), we recommend using desktop
+            applications for optimal performance.
+          </p>
+        </section>
 
-            <div class="example">
-              <div class="example-title">🧪 Debugging</div>
-              <div class="example-content">Pinpoint syntax errors quickly</div>
-              <div class="example-content">validate</div>
-            </div>
+        <!-- Section 4: JSON Validation and Troubleshooting -->
+        <section class="content-section">
+          <h2>Comprehensive JSON Validation and Troubleshooting</h2>
+          <p>
+            Our validator checks your JSON against the official specification to
+            ensure it's syntactically correct and ready for use in your
+            applications.
+          </p>
+
+          <h3>Identifying and Fixing Common JSON Parsing Errors</h3>
+          <p>Common JSON errors include:</p>
+          <ul>
+            <li>
+              <strong>Trailing commas:</strong> Extra commas after the last
+              element in an object or array
+            </li>
+            <li>
+              <strong>Missing quotes:</strong> Unquoted or improperly quoted
+              keys
+            </li>
+            <li>
+              <strong>Single quotes:</strong> Using single quotes instead of
+              double quotes
+            </li>
+            <li>
+              <strong>Comments:</strong> JSON doesn't support comments (unlike
+              JavaScript)
+            </li>
+            <li>
+              <strong>Invalid escapes:</strong> Incorrectly escaped characters
+              in strings
+            </li>
+          </ul>
+
+          <h3>Using the Built-in JSON Linter and Error Reporting</h3>
+          <p>
+            Our linter provides detailed error messages with line numbers to
+            help you quickly identify and fix issues in your JSON data.
+          </p>
+        </section>
+
+        <!-- Section 5: Advanced Developer Workflows and Security -->
+        <section class="content-section">
+          <h2>Advanced Developer Workflows and Security</h2>
+          <p>
+            Integrate JSON formatting into your development workflow while
+            maintaining security best practices.
+          </p>
+
+          <h3>Securely Handling Sensitive Data (PII) in JSON</h3>
+          <p>When working with sensitive data:</p>
+          <ul>
+            <li>
+              Avoid pasting Personally Identifiable Information (PII) into
+              online tools
+            </li>
+            <li>Use local tools or IDE extensions for sensitive data</li>
+            <li>
+              Sanitize data before formatting by replacing sensitive values with
+              placeholders
+            </li>
+            <li>Ensure the tool processes data client-side (like ours does)</li>
+          </ul>
+
+          <h3>Formatting JSON for API Testing and Debugging</h3>
+          <p>Well-formatted JSON is essential for API development:</p>
+          <ul>
+            <li>Easier to identify structural issues in API responses</li>
+            <li>Simplifies comparison between expected and actual responses</li>
+            <li>Helps in documenting API payload examples</li>
+            <li>Facilitates debugging during integration testing</li>
+          </ul>
+
+          <div class="code-block">
+            <span class="json-key"
+              >// Example API response formatted for readability</span
+            ><br />
+            {<br />
+            &nbsp;&nbsp;"<span class="json-string">status</span>": "<span
+              class="json-string"
+              >success</span
+            >",<br />
+            &nbsp;&nbsp;"<span class="json-string">data</span>": {<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;"<span class="json-string">user</span>":
+            {<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"<span class="json-string"
+              >id</span
+            >": <span class="json-number">12345</span>,<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"<span class="json-string"
+              >name</span
+            >": "<span class="json-string">Jane Smith</span>",<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"<span class="json-string"
+              >email</span
+            >": "<span class="json-string">jane@example.com</span>"<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;}<br />
+            &nbsp;&nbsp;}<br />
+            }
           </div>
-        </div>
-        <!-- Information Grid (JSON Formatter) -->
-        <div class="info-grid" id="details">
-          <!-- Basics -->
-          <div class="card">
-            <div class="info-section">
-              <h3>🛠️ What this tool can do</h3>
-              <ul>
-                <li>
-                  <strong>Pretty-print</strong> JSON with custom indentation (2
-                  / 4 spaces, tabs)
-                </li>
-                <li>
-                  <strong>Minify</strong> JSON by removing whitespace and
-                  newlines
-                </li>
-                <li>
-                  <strong>Validate</strong> and highlight syntax errors with
-                  line/column
-                </li>
-                <li>
-                  <strong>Sort keys</strong> (stable, optionally recursive)
-                </li>
-                <li>
-                  <strong>Escape/Unescape</strong> special characters (e.g.,
-                  turn text into a JSON string)
-                </li>
-                <li>
-                  <strong>Copy/Download</strong> the result locally (no uploads)
-                </li>
-              </ul>
-              <p class="small muted">
-                Runs entirely in your browser. Large payloads are limited by
-                available memory.
-              </p>
-            </div>
+        </section>
 
-            <div class="info-section">
-              <h3>📋 Inputs</h3>
-              <ul>
-                <li>
-                  <strong>Paste JSON</strong> text or
-                  <strong>drop a .json file</strong>
-                </li>
-                <li><strong>Indentation:</strong> 2, 4, or tab</li>
-                <li>
-                  <strong>Options:</strong> sort keys, minify, trailing newline
-                </li>
-              </ul>
-            </div>
-          </div>
+        <!-- Section 6: JSON vs Other Formats -->
+        <section class="content-section">
+          <h2>When to Choose JSON: A Comparison with XML and YAML</h2>
+          <p>
+            JSON has become the dominant data interchange format for web APIs,
+            but it's important to understand when alternatives might be more
+            appropriate.
+          </p>
 
-          <!-- Valid JSON & Scope -->
-          <div class="card">
-            <div class="info-section">
-              <h3>✅ Valid JSON expectations</h3>
-              <ul>
-                <li>UTF-8 text, <code>{}</code> or <code>[]</code> root</li>
-                <li>Double-quoted strings (<code>"key"</code>)</li>
-                <li>
-                  No comments (<code>//</code>, <code>/* */</code>) and no
-                  trailing commas
-                </li>
-              </ul>
-              <p class="small muted">
-                JSON5/“JSON with comments” is not standard; see tips for
-                workarounds.
-              </p>
-            </div>
-          </div>
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Format</th>
+                <th>Pros</th>
+                <th>Cons</th>
+                <th>Best Use Cases</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>JSON</td>
+                <td>
+                  Lightweight, easy to parse, native to JavaScript,
+                  human-readable
+                </td>
+                <td>
+                  No comments, limited data types, no schema support by default
+                </td>
+                <td>Web APIs, configuration files, NoSQL databases</td>
+              </tr>
+              <tr>
+                <td>XML</td>
+                <td>
+                  Extensible, supports schemas (XSD), comments, namespaces
+                </td>
+                <td>Verbose, complex to parse, heavier than JSON</td>
+                <td>Enterprise systems, document markup, SOAP APIs</td>
+              </tr>
+              <tr>
+                <td>YAML</td>
+                <td>
+                  Very human-readable, supports comments, complex data
+                  structures
+                </td>
+                <td>
+                  Whitespace-sensitive, potential security issues with arbitrary
+                  objects
+                </td>
+                <td>Configuration files, DevOps tools, data serialization</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
 
-          <!-- Pretty vs Minified -->
-          <div class="card">
-            <div class="info-section">
-              <h3>🎯 Pretty vs. Minified</h3>
-              <ul>
-                <li>
-                  <strong>Pretty:</strong> human-readable (indent, newlines)
-                </li>
-                <li>
-                  <strong>Minified:</strong> compact (smaller payloads for
-                  network/storage)
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- How to Use -->
-          <div class="card">
-            <div class="info-section">
-              <h3>🧩 How to use</h3>
-              <ul>
-                <li>
-                  Paste JSON or drop a file in the <strong>Input</strong> area.
-                </li>
-                <li>
-                  Choose <strong>Pretty</strong> (2/4/tab) or
-                  <strong>Minify</strong>.
-                </li>
-                <li>
-                  (Optional) Enable <strong>Sort keys</strong> for deterministic
-                  order.
-                </li>
-                <li>
-                  Click <strong>Format</strong>. Errors (if any) show
-                  line/column with a message.
-                </li>
-                <li>
-                  Use <strong>Copy</strong> or <strong>Download</strong> to save
-                  the result.
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Tips -->
-          <div class="card">
-            <div class="info-section">
-              <h3>💡 Tips</h3>
-              <ul>
-                <li>
-                  To fix “Unexpected token” errors, look for
-                  <em>missing quotes</em>, <em>trailing commas</em>, or
-                  <em>unescaped</em> characters.
-                </li>
-                <li>
-                  For JSON with comments/trailing commas, first convert to valid
-                  JSON (JSONC/JSON5 → plain JSON).
-                </li>
-                <li>
-                  For very large JSON, toggle <em>minified</em> output to reduce
-                  render time in the editor.
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
+        <!-- Section 7: Alternative Tools -->
+        <section class="content-section">
+          <h2>Alternative Offline and Desktop JSON Tools</h2>
+          <p>
+            For environments with strict security requirements or when working
+            with extremely large files, consider these alternatives:
+          </p>
+          <ul>
+            <li>
+              <strong>IDE Extensions:</strong> Most modern code editors (VS
+              Code, Sublime Text, Atom) have JSON formatting extensions
+            </li>
+            <li>
+              <strong>Command Line Tools:</strong> jq (lightweight), python -m
+              json.tool, Node.js JSON.parse/stringify
+            </li>
+            <li>
+              <strong>Desktop Applications:</strong> JSON Editor Online (desktop
+              version), Postman (for API responses)
+            </li>
+            <li>
+              <strong>Browser Developer Tools:</strong> Built-in JSON formatting
+              in browser consoles
+            </li>
+          </ul>
+        </section>
 
         <section class="faq-section card" id="faq">
           <h2 class="faq-title">JSON Formatter – Frequently Asked Questions</h2>
 
           <div class="faq-container">
             <!-- JSON Formatter FAQs -->
-            <div class="faq-item">
-              <button class="faq-question">
-                Is my JSON uploaded to a server?
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-answer">
-                <p>No. All processing happens locally in your browser.</p>
-              </div>
-            </div>
 
             <div class="faq-item">
-              <button class="faq-question">
-                Does it support Unicode/Bangla?
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-answer">
-                <p>Yes. It is Unicode-safe.</p>
+              <div class="faq-question">
+                <span
+                  >What is the primary difference between formatting and
+                  minifying JSON?</span
+                >
+                <span>+</span>
               </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-question">
-                How do I pretty print and validate?
-                <span class="faq-icon">+</span>
-              </button>
               <div class="faq-answer">
                 <p>
-                  Paste JSON, click <em>Format</em> to pretty print; click
-                  <em>Validate</em> to only check correctness.
+                  Formatting (or pretty printing) adds line breaks and
+                  indentation to make the data easy for humans to read and
+                  debug. Minifying removes all unnecessary whitespace and
+                  carriage returns to reduce file size, optimizing it for
+                  machine processing and faster transmission over networks.
                 </p>
               </div>
             </div>
 
             <div class="faq-item">
-              <button class="faq-question">
-                How do I minify or find related tools?
-                <span class="faq-icon">+</span>
-              </button>
+              <div class="faq-question">
+                <span
+                  >Is it safe to paste sensitive data into an online JSON
+                  formatter?</span
+                >
+                <span>+</span>
+              </div>
               <div class="faq-answer">
                 <p>
-                  Use the <em>Minify</em> button here. See
-                  <a href="#related">Related tools</a> below for URL/Base64
-                  utilities.
+                  Most reputable online JSON formatters process the data locally
+                  in your browser (client-side) and do not transmit it to a
+                  server. However, for highly sensitive or proprietary data,
+                  developers should use offline tools or IDE extensions for
+                  maximum security.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>What exactly does JSON validation check for?</span>
+                <span>+</span>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  JSON validation checks the data against strict JSON syntax
+                  rules, ensuring proper structure, correct use of double quotes
+                  for keys and string values, appropriate delimiters (colons,
+                  commas), and valid usage of primitive types (like null, true,
+                  and false).
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <span
+                  >How do I fix the common "Unexpected token" error in
+                  JSON?</span
+                >
+                <span>+</span>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  This error usually indicates a simple syntax mistake, such as
+                  an extra comma at the end of an object or array (a trailing
+                  comma), missing quotation marks around a key, or accidental
+                  use of single quotes instead of required double quotes. A
+                  validator tool can pinpoint the exact line causing the issue.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <span
+                  >Can a JSON formatter handle exceptionally large files?</span
+                >
+                <span>+</span>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  While most online formatters can handle moderate to large
+                  files, processing extremely large JSON files (over 50 MB) in a
+                  browser may cause performance issues or crashes due to memory
+                  limitations. In these cases, dedicated desktop or command-line
+                  tools are more effective.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <span
+                  >Why do developers choose JSON over XML for modern APIs?</span
+                >
+                <span>+</span>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  JSON is generally lighter, less verbose, and maps more closely
+                  to data structures natively used in JavaScript, making it
+                  faster to parse and work with in web applications. XML often
+                  requires more boilerplate and specialized parsing tools.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <span
+                  >Can I customize the indentation level of the formatted JSON
+                  output?</span
+                >
+                <span>+</span>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  Yes, the best JSON formatters offer advanced options that
+                  allow you to specify the number of spaces or tabs you want to
+                  use for indentation (e.g., 2 spaces, 4 spaces), ensuring the
+                  output matches your specific coding style guide.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <span>Does formatting JSON change the actual data values?</span>
+                <span>+</span>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  No, JSON formatting is purely cosmetic. It adds or removes
+                  whitespace and line breaks without altering the data
+                  integrity, the keys, or the values contained within the JSON
+                  object.
                 </p>
               </div>
             </div>

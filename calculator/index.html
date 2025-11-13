@@ -16,7 +16,16 @@
     <link rel="canonical" href="https://utilityera.com/calculator/" />
     <link rel="stylesheet" href="/assets/style.css" />
     <meta name="theme-color" content="#1E1E2F" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
 
+    <!-- Improved font selection -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <!-- Hreflang alternates -->
     <link
       rel="alternate"
@@ -305,317 +314,319 @@
         margin: 0;
         padding: 0;
       }
+      :root {
+        /* Updated color scheme with gradients */
+        --phone-bg: linear-gradient(135deg, #ff00b8 0%, #d4009a 100%);
+        --panel-bg: linear-gradient(145deg, #1a1a1a, #000000);
+        --key-bg: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+        --key-hover: linear-gradient(145deg, #3a3a3a, #2a2a2a);
+        --key-active: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+        --key-color: #ffffff;
+        --op-key-bg: linear-gradient(145deg, #3a3a3a, #2a2a2a);
+        --op-key-hover: linear-gradient(145deg, #4a4a4a, #3a3a3a);
+        --eq-bg: linear-gradient(145deg, #ffef00, #e6d700);
+        --eq-hover: linear-gradient(145deg, #ffff20, #f5e600);
+        --shadow: rgba(0, 0, 0, 0.45);
+        --display-radius: 24px;
+        --phone-radius: 32px;
+        --gap: 28px;
+        --phone-width: 380px;
+        --phone-height: 720px;
 
-      /* ---- layout shell ---- */
-      .calculator-card {
-        max-width: 600px;
-        margin: 0 auto;
+        /* Animation variables */
+        --transition-speed: 0.15s;
+        --hover-scale: 1.05;
+        --active-scale: 0.95;
       }
 
-      .calculator {
+      html,
+      body {
+        font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* Phone shell with improved styling */
+      .phone {
+        width: var(--phone-width);
+        height: var(--phone-height);
+        background: var(--phone-bg);
+        border-radius: var(--phone-radius);
+        padding: 28px;
+        box-sizing: border-box;
         display: flex;
         flex-direction: column;
-        gap: 16px;
-      }
+        gap: 28px;
 
-      /* ---- display ---- */
-      .display {
-        background-color: var(--surface-light);
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        padding: 16px 18px;
-        text-align: right;
-        min-height: 88px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        box-shadow: var(--shadow);
-      }
-
-      .previous-operand {
-        color: var(--text-muted);
-        font-size: 0.92rem;
-        min-height: 1.2em;
-        word-break: break-all;
-      }
-
-      .current-operand {
-        font-size: clamp(1.4rem, 4.5vw, 2rem); /* fluid on small screens */
-        font-weight: 600;
-        line-height: 1.2;
-        word-break: break-all;
-      }
-
-      /* ---- keypad ---- */
-      .buttons-grid {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 10px;
-      }
-
-      /* base button (was missing) */
-      .btn1 {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-
-        padding: 14px 12px;
-        border-radius: 10px;
-        border: 1px solid var(--border);
-        background: var(--surface);
-        color: var(--text);
-        font-size: 1.05rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: transform 120ms ease, background-color 120ms ease,
-          box-shadow 120ms ease;
-        touch-action: manipulation;
-        user-select: none;
-      }
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        width: 100%;
-        padding: 14px 12px;
-        border-radius: 10px;
-        border: 1px solid var(--border);
-        background: var(--surface);
-        color: var(--text);
-        font-size: 1.05rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: transform 120ms ease, background-color 120ms ease,
-          box-shadow 120ms ease;
-        touch-action: manipulation;
-        user-select: none;
-      }
-
-      .btn:active {
-        transform: translateY(1px);
-      }
-
-      .btn-number {
-        background-color: var(--surface-light);
-      }
-      .btn-number:hover {
-        background-color: var(--border);
-      }
-
-      .btn-operator {
-        background-color: var(--primary);
-        color: #fff;
-        border-color: transparent;
-      }
-      .btn-operator:hover {
-        background-color: var(--primary-hover);
-      }
-
-      .btn-equals {
-        background: var(--gradient);
-        color: #fff;
-        grid-column: span 2;
-        border-color: transparent;
-      }
-      .btn-equals:hover {
-        box-shadow: 0 5px 15px rgba(59, 130, 246, 0.35);
-      }
-
-      .btn-clear {
-        background-color: var(--danger);
-        color: #ffecec;
-        border-color: transparent;
-      }
-      .btn-clear:hover {
-        background-color: #dc2626;
-      }
-
-      .btn-function {
-        background-color: var(--secondary);
-        color: #fff;
-        border-color: transparent;
-      }
-      .btn-function:hover {
-        background-color: #475569;
-      }
-
-      /* ---- history ---- */
-      .history-panel {
-        margin-top: 12px;
-        padding: 14px;
-        background-color: var(--surface-light);
-        border-radius: 10px;
-        border: 1px solid var(--border);
-        max-height: 220px;
-        overflow-y: auto;
-      }
-
-      .history-title {
-        color: var(--text-muted);
-        font-size: 0.92rem;
-        margin-bottom: 8px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .history-list {
-        list-style: none;
-      }
-      .history-item {
-        padding: 8px 0;
-        border-bottom: 1px solid var(--border);
-        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-          "Liberation Mono", "Courier New", monospace;
-        display: flex;
-        justify-content: space-between;
-        gap: 12px;
-      }
-      .history-expression {
-        color: var(--text-muted);
-      }
-      .history-result {
-        font-weight: 700;
-        color: var(--success);
-      }
-
-      .clear-history {
-        background: none;
-        border: none;
-        color: var(--text-muted);
-        cursor: pointer;
-        font-size: 0.85rem;
-        text-decoration: underline;
-      }
-      .clear-history:hover {
-        color: var(--danger);
-      }
-
-      /* ---- responsiveness ---- */
-
-      /* tablets */
-      @media (max-width: 900px) {
-        .calculator-card {
-          padding: 0 16px;
-        }
-        .buttons-grid {
-          gap: 8px;
-        }
-        .btn {
-          padding: 13px 10px;
-          font-size: 1rem;
-        }
-      }
-
-      /* phones */
-      @media (max-width: 680px) {
-        .card {
-          padding: 14px;
-        }
-        .buttons-grid {
-          gap: 8px;
-        }
-        .current-operand {
-          font-size: clamp(1.25rem, 6vw, 1.6rem);
-        }
-        .btn {
-          padding: 12px 10px;
-          border-radius: 10px;
-        }
-        .history-panel {
-          max-height: 180px;
-        }
-      }
-
-      /* narrow phones */
-      @media (max-width: 420px) {
-        .buttons-grid {
-          grid-template-columns: repeat(4, 1fr);
-          gap: 6px;
-        }
-        .btn {
-          padding: 12px 8px;
-          font-size: 0.98rem;
-        }
-        .btn-equals {
-          grid-column: span 2;
-        }
-        .display {
-          padding: 14px 14px;
-          min-height: 78px;
-        }
-      }
-
-      /* ultra-narrow & landscape helpers */
-      @media (max-width: 360px),
-        (max-height: 420px) and (orientation: landscape) {
-        .btn {
-          padding: 10px 6px;
-          font-size: 0.92rem;
-        }
-        .current-operand {
-          font-size: 1.2rem;
-        }
-        .history-panel {
-          max-height: 140px;
-        }
-      }
-
-      /* reduce motion preference */
-      @media (prefers-reduced-motion: reduce) {
-        .btn {
-          transition: none;
-        }
-      }
-
-      /* iOS safe areas */
-      .calculator-card {
-        padding-bottom: env(safe-area-inset-bottom);
-      } /* --- Overlap fixes --- */
-      .display {
-        /* guarantee visual separation even if flex-gap fails */
-        margin-bottom: 10px;
         position: relative;
+        overflow: hidden;
+      }
+
+      /* Subtle pattern overlay for phone */
+      .phone::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+            circle at 20% 80%,
+            rgba(255, 255, 255, 0.05) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 20%,
+            rgba(255, 255, 255, 0.03) 0%,
+            transparent 50%
+          );
+        pointer-events: none;
         z-index: 1;
       }
 
-      /* give every grid row a minimum height so rows can't collapse */
-      .buttons-grid {
-        grid-auto-rows: minmax(56px, auto);
+      /* Display / top panel with improved styling */
+      .display {
+        background: var(--panel-bg);
+        color: var(--key-color);
+        border-radius: var(--display-radius);
+        padding: 24px;
+        height: 170px;
+        position: relative;
+        box-shadow: inset 0 -6px 14px rgba(255, 255, 255, 0.02),
+          0 8px 24px rgba(0, 0, 0, 0.4);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow: hidden;
+        z-index: 2;
       }
 
-      /* ensure buttons are tall enough to keep the grid row open */
-      .btn {
-        min-height: 48px; /* touch target + prevents collapse */
-        min-width: 0; /* avoid overflow in narrow view */
-        line-height: 1.1; /* prevent tall text from stretching */
+      /* Subtle gradient overlay for display */
+      .display::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.02) 0%,
+          transparent 30%
+        );
+        pointer-events: none;
+        z-index: -1;
       }
 
-      /* equals still spans two cells but obeys row height */
-      .btn-equals {
-        grid-column: span 2;
+      /* Left-side small icons stacked */
+      .display .left-icons {
+        position: absolute;
+        left: 18px;
+        top: 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 26px;
+        z-index: 1;
       }
 
-      /* tighter but still safe on narrow phones */
-      @media (max-width: 680px) {
-        .buttons-grid {
-          grid-auto-rows: minmax(50px, auto);
+      /* Small top formula (faint, right-aligned) */
+      .display .formula {
+        align-self: flex-end;
+        color: rgba(255, 255, 255, 0.3);
+        font-weight: 400;
+        font-size: 18px;
+        margin-right: 20px;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        letter-spacing: 0.5px;
+      }
+
+      /* Large calc-result at bottom-right */
+      .display .calc-result {
+        align-self: flex-end;
+        font-size: 48px;
+        font-weight: 600;
+        margin-right: 18px;
+        color: #fff;
+        letter-spacing: 1px;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Buttons grid area */
+      .keys {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: 74px;
+        gap: 22px;
+        align-content: start;
+        z-index: 2;
+      }
+
+      /* Standard circular key with improved styling */
+      .key {
+        width: 100%;
+        height: 100%;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        background: var(--key-bg);
+        color: var(--key-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 26px;
+        box-shadow: 0 8px 16px var(--shadow),
+          0 0 0 1px rgba(255, 255, 255, 0.05);
+        user-select: none;
+        cursor: pointer;
+        transition: all var(--transition-speed) ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Subtle gradient overlay for keys */
+      .key::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.05) 0%,
+          transparent 50%
+        );
+        border-radius: 50%;
+        opacity: 0;
+        transition: opacity var(--transition-speed) ease;
+      }
+
+      .key:hover {
+        transform: scale(var(--hover-scale));
+        box-shadow: 0 12px 20px var(--shadow),
+          0 0 0 1px rgba(255, 255, 255, 0.08);
+      }
+
+      .key:hover::before {
+        opacity: 1;
+      }
+
+      .key:active {
+        transform: scale(var(--active-scale));
+        box-shadow: 0 4px 8px var(--shadow), 0 0 0 1px rgba(255, 255, 255, 0.05);
+      }
+
+      /* Operator keys with distinct styling */
+      .key.op {
+        background: var(--op-key-bg);
+        font-size: 28px;
+        font-weight: 500;
+      }
+
+      .key.op:hover {
+        background: var(--op-key-hover);
+      }
+
+      /* Number keys with improved typography */
+      .key.number {
+        font-size: 32px;
+        font-weight: 500;
+      }
+
+      /* Clear key styling */
+      .key.clear {
+        font-size: 34px;
+        font-weight: 600;
+        background: linear-gradient(145deg, #3a3a3a, #2a2a2a);
+      }
+
+      .key.clear:hover {
+        background: linear-gradient(145deg, #4a4a4a, #3a3a3a);
+      }
+
+      /* the equals pill - tall and rounded (spans two rows) */
+      .key.eq {
+        background: var(--eq-bg);
+        color: #111;
+        border-radius: 34px;
+        grid-row: span 2;
+        align-self: center;
+        justify-self: center;
+        width: 82%;
+        min-width: 62px;
+        max-height: calc(74px * 2 + 22px);
+        box-shadow: 0 12px 22px rgba(0, 0, 0, 0.25),
+          0 0 0 1px rgba(255, 255, 255, 0.1);
+        font-size: 40px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .key.eq:hover {
+        background: var(--eq-hover);
+        transform: scale(var(--hover-scale));
+        box-shadow: 0 16px 28px rgba(0, 0, 0, 0.3),
+          0 0 0 1px rgba(255, 255, 255, 0.15);
+      }
+
+      .key.eq:active {
+        transform: scale(var(--active-scale));
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25),
+          0 0 0 1px rgba(255, 255, 255, 0.1);
+      }
+
+      /* last row special: bottom-left composite icon style */
+      .key.icon-blue {
+        color: #4d7cff;
+        font-size: 26px;
+        transform: translateY(1px);
+      }
+
+      /* backspace icon button */
+      .key.back {
+        font-size: 20px;
+      }
+
+      /* responsive tiny screens reduce size */
+      @media (max-width: 420px) {
+        :root {
+          --phone-width: 320px;
+          --phone-height: 740px;
+          --gap: 20px;
         }
-        .btn {
-          min-height: 44px;
+        .display {
+          height: 150px;
+        }
+        .keys {
+          grid-auto-rows: 64px;
+          gap: 18px;
         }
       }
 
-      @media (max-width: 420px),
-        (max-height: 420px) and (orientation: landscape) {
-        .buttons-grid {
-          grid-auto-rows: minmax(44px, auto);
+      /* Animation for display updates */
+      @keyframes pulse {
+        0% {
+          opacity: 1;
         }
-        .btn {
-          min-height: 40px;
+        50% {
+          opacity: 0.7;
         }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      .display-update {
+        animation: pulse 0.3s ease;
       }
     </style>
   </head>
@@ -663,58 +674,220 @@
         <a href="#related">Related tools</a>
       </p>
       <main class="wrap">
-        <!-- Calculator -->
-        <section class="card tool-card" id="calculator">
-          <div class="calculator-card">
-            <h3>Calculator</h3>
+        <div class="top-card">
+          <div class="content-section">
+            <div
+              class="phone"
+              role="application"
+              aria-label="Calculator replica"
+            >
+              <!-- Display -->
+              <div class="display" aria-hidden="false">
+                <div class="left-icons" aria-hidden="true">
+                  <!-- small stacked icons like the screenshot -->
+                  <i class="ri-history-line" title="history"></i>
+                  <i class="ri-magic-line" title="modes"></i>
+                </div>
 
-            <div class="calculator">
-              <div class="display">
-                <div class="previous-operand" id="previousOperand"></div>
-                <div class="current-operand" id="currentOperand">0</div>
+                <div class="formula" id="formula"></div>
+                <div class="calc-result" id="calc-result">0</div>
               </div>
 
-              <div class="buttons-grid">
-                <button class="btn btn-clear" data-action="clear">C</button>
-                <button class="btn btn-function" data-action="backspace">
-                  ⌫
-                </button>
-                <button class="btn btn-function" data-action="percentage">
-                  %
-                </button>
-                <button class="btn btn-operator" data-operator="÷">÷</button>
+              <!-- Keys grid
+         Layout mirrors screenshot:
+         Row 1: C  ÷  ×  +
+         Row 2: 1  2  3  -
+         Row 3: 4  5  6  .
+         Row 4: 7  8  9  (equals spans row4 & row5)
+         Row 5: stack 0 backspace  (equals continues)
+      -->
+              <div class="keys" role="grid" aria-label="calculator keys">
+                <!-- Row 1 -->
+                <div
+                  class="key clear"
+                  role="button"
+                  aria-label="clear"
+                  id="clear"
+                >
+                  C
+                </div>
+                <div
+                  class="key op"
+                  role="button"
+                  aria-label="divide"
+                  data-op="÷"
+                >
+                  ÷
+                </div>
+                <div
+                  class="key op"
+                  role="button"
+                  aria-label="multiply"
+                  data-op="×"
+                >
+                  ×
+                </div>
+                <div class="key op" role="button" aria-label="add" data-op="+">
+                  +
+                </div>
 
-                <button class="btn btn-number" data-number="7">7</button>
-                <button class="btn btn-number" data-number="8">8</button>
-                <button class="btn btn-number" data-number="9">9</button>
-                <button class="btn btn-operator" data-operator="×">×</button>
+                <!-- Row 2 -->
+                <div
+                  class="key number"
+                  role="button"
+                  aria-label="one"
+                  data-number="1"
+                >
+                  1
+                </div>
+                <div
+                  class="key number"
+                  role="button"
+                  aria-label="two"
+                  data-number="2"
+                >
+                  2
+                </div>
+                <div
+                  class="key number"
+                  role="button"
+                  aria-label="three"
+                  data-number="3"
+                >
+                  3
+                </div>
+                <div
+                  class="key op"
+                  role="button"
+                  aria-label="subtract"
+                  data-op="−"
+                >
+                  −
+                </div>
 
-                <button class="btn btn-number" data-number="4">4</button>
-                <button class="btn btn-number" data-number="5">5</button>
-                <button class="btn btn-number" data-number="6">6</button>
-                <button class="btn btn-operator" data-operator="-">-</button>
+                <!-- Row 3 -->
+                <div
+                  class="key number"
+                  role="button"
+                  aria-label="four"
+                  data-number="4"
+                >
+                  4
+                </div>
+                <div
+                  class="key number"
+                  role="button"
+                  aria-label="five"
+                  data-number="5"
+                >
+                  5
+                </div>
+                <div
+                  class="key number"
+                  role="button"
+                  aria-label="six"
+                  data-number="6"
+                >
+                  6
+                </div>
+                <div
+                  class="key op"
+                  role="button"
+                  aria-label="decimal"
+                  data-decimal="."
+                >
+                  .
+                </div>
 
-                <button class="btn btn-number" data-number="1">1</button>
-                <button class="btn btn-number" data-number="2">2</button>
-                <button class="btn btn-number" data-number="3">3</button>
-                <button class="btn btn-operator" data-operator="+">+</button>
+                <!-- Row 4 -->
+                <div
+                  class="key number"
+                  role="button"
+                  aria-label="seven"
+                  data-number="7"
+                >
+                  7
+                </div>
+                <div
+                  class="key number"
+                  role="button"
+                  aria-label="eight"
+                  data-number="8"
+                >
+                  8
+                </div>
+                <div
+                  class="key number"
+                  role="button"
+                  aria-label="nine"
+                  data-number="9"
+                >
+                  9
+                </div>
 
-                <button class="btn btn-number" data-number="0">0</button>
-                <button class="btn btn-number" data-number=".">.</button>
-                <button class="btn btn-equals" data-action="equals">=</button>
+                <!-- Tall equals pill placed in the last column and spanning two rows -->
+                <div
+                  class="key eq"
+                  role="button"
+                  aria-label="equals"
+                  id="equals"
+                >
+                  =
+                </div>
+
+                <!-- Row 5 -->
+                <div class="key icon-blue" role="button" aria-label="layers">
+                  <i
+                    class="ri-stack-line"
+                    aria-hidden="true"
+                    style="font-size: 28px"
+                  ></i>
+                </div>
+                <div
+                  class="key number"
+                  role="button"
+                  aria-label="zero"
+                  data-number="0"
+                >
+                  0
+                </div>
+                <div
+                  class="key back"
+                  role="button"
+                  aria-label="backspace"
+                  id="backspace"
+                >
+                  <i
+                    class="ri-delete-back-2-line"
+                    aria-hidden="true"
+                    style="font-size: 20px"
+                  ></i>
+                </div>
               </div>
-            </div>
-
-            <div class="history-panel">
-              <div class="history-title">
-                <span>History</span>
-                <button class="clear-history" id="clearHistory">Clear</button>
-              </div>
-              <ul class="history-list" id="historyList"></ul>
             </div>
           </div>
-        </section>
-
+          <article class="card" id="related">
+            <h2>Related tools</h2>
+            <p class="muted">More math &amp; number utilities:</p>
+            <p>
+              <a class="btn" href="/percent-calculator/">Percent Calculator</a>
+              <a class="btn" href="/unit-converter/">Unit Converter</a>
+              <a class="btn" href="/age-calculator/">Age Calculator</a>
+              <a class="btn" href="/text-utilities/">Text Utilities</a>
+            </p>
+            <p class="small">
+              <span lang="bn">Prefer বাংলা?</span> Try the
+              <a
+                class="text-link"
+                href="/bn/calculator/"
+                hreflang="bn"
+                lang="bn"
+                aria-label="বাংলা সংস্করণ"
+                >বাংলা সংস্করণ</a
+              >.
+            </p>
+          </article>
+        </div>
         <div class="content-section">
           <p class="subtitle">
             It supports the core operations—addition, subtraction,
@@ -824,27 +997,6 @@
         </section>
 
         <!-- Related tools -->
-        <article class="card" id="related">
-          <h2>Related tools</h2>
-          <p class="muted">More math &amp; number utilities:</p>
-          <p>
-            <a class="btn1" href="/percent-calculator/">Percent Calculator</a>
-            <a class="btn1" href="/unit-converter/">Unit Converter</a>
-            <a class="btn1" href="/age-calculator/">Age Calculator</a>
-            <a class="btn1" href="/text-utilities/">Text Utilities</a>
-          </p>
-          <p class="small">
-            <span lang="bn">Prefer বাংলা?</span> Try the
-            <a
-              class="text-link"
-              href="/bn/calculator/"
-              hreflang="bn"
-              lang="bn"
-              aria-label="বাংলা সংস্করণ"
-              >বাংলা সংস্করণ</a
-            >.
-          </p>
-        </article>
       </main>
 
       <footer>
@@ -861,268 +1013,167 @@
       </footer>
     </div>
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // Calculator state
-        const calculator = {
-          currentOperand: "0",
-          previousOperand: "",
-          operator: null,
-          waitingForNewOperand: false,
-          history: [],
-        };
+      // Calculator state
+      let currentInput = "0";
+      let previousInput = "";
+      let operation = null;
+      let shouldResetScreen = false;
 
-        // DOM elements
-        const currentOperandElement = document.getElementById("currentOperand");
-        const previousOperandElement =
-          document.getElementById("previousOperand");
-        const historyList = document.getElementById("historyList");
-        const clearHistoryButton = document.getElementById("clearHistory");
+      // DOM elements
+      const calcresultDisplay = document.getElementById("calc-result");
+      const formulaDisplay = document.getElementById("formula");
+      const clearButton = document.getElementById("clear");
+      const equalsButton = document.getElementById("equals");
+      const backspaceButton = document.getElementById("backspace");
+      const numberButtons = document.querySelectorAll("[data-number]");
+      const operatorButtons = document.querySelectorAll("[data-op]");
+      const decimalButton = document.querySelector("[data-decimal]");
 
-        // Update display
-        function updateDisplay() {
-          currentOperandElement.textContent = calculator.currentOperand;
-          previousOperandElement.textContent = calculator.previousOperand;
-        }
+      // Event listeners
+      clearButton.addEventListener("click", clear);
+      equalsButton.addEventListener("click", evaluate);
+      backspaceButton.addEventListener("click", backspace);
+      decimalButton.addEventListener("click", appendDecimal);
 
-        // Add to history
-        function addToHistory(expression, result) {
-          calculator.history.unshift({ expression, result });
-          if (calculator.history.length > 5) {
-            calculator.history.pop();
-          }
-          renderHistory();
-        }
-
-        // Render history
-        function renderHistory() {
-          historyList.innerHTML = "";
-          calculator.history.forEach((item) => {
-            const li = document.createElement("li");
-            li.className = "history-item";
-            li.innerHTML = `
-                        <span class="history-expression">${item.expression}</span>
-                        <span class="history-result">${item.result}</span>
-                    `;
-            historyList.appendChild(li);
-          });
-        }
-
-        // Input digit
-        function inputDigit(digit) {
-          if (calculator.waitingForNewOperand) {
-            calculator.currentOperand = digit;
-            calculator.waitingForNewOperand = false;
-          } else {
-            calculator.currentOperand =
-              calculator.currentOperand === "0"
-                ? digit
-                : calculator.currentOperand + digit;
-          }
-        }
-
-        // Input decimal
-        function inputDecimal() {
-          if (calculator.waitingForNewOperand) {
-            calculator.currentOperand = "0.";
-            calculator.waitingForNewOperand = false;
-            return;
-          }
-
-          if (!calculator.currentOperand.includes(".")) {
-            calculator.currentOperand += ".";
-          }
-        }
-
-        // Handle operator
-        function handleOperator(nextOperator) {
-          const inputValue = parseFloat(calculator.currentOperand);
-
-          if (calculator.operator && calculator.waitingForNewOperand) {
-            calculator.operator = nextOperator;
-            calculator.previousOperand =
-              calculator.previousOperand.split(" ")[0] + " " + nextOperator;
-            return;
-          }
-
-          if (calculator.previousOperand === "") {
-            calculator.previousOperand =
-              calculator.currentOperand + " " + nextOperator;
-          } else if (calculator.operator) {
-            const result = calculate();
-
-            calculator.currentOperand = `${parseFloat(result.toFixed(7))}`;
-            calculator.previousOperand =
-              calculator.currentOperand + " " + nextOperator;
-          }
-
-          calculator.operator = nextOperator;
-          calculator.waitingForNewOperand = true;
-        }
-
-        // Calculate
-        function calculate() {
-          const prevValue = parseFloat(calculator.previousOperand);
-          const currentValue = parseFloat(calculator.currentOperand);
-
-          if (isNaN(prevValue) || isNaN(currentValue)) return currentValue;
-
-          let computation;
-          switch (calculator.operator) {
-            case "+":
-              computation = prevValue + currentValue;
-              break;
-            case "-":
-              computation = prevValue - currentValue;
-              break;
-            case "×":
-              computation = prevValue * currentValue;
-              break;
-            case "÷":
-              if (currentValue === 0) {
-                alert("Cannot divide by zero");
-                return 0;
-              }
-              computation = prevValue / currentValue;
-              break;
-            default:
-              return currentValue;
-          }
-
-          return computation;
-        }
-
-        // Perform calculation
-        function performCalculation() {
-          if (!calculator.operator || calculator.waitingForNewOperand) return;
-
-          const expression =
-            calculator.previousOperand + " " + calculator.currentOperand;
-          const result = calculate();
-
-          calculator.currentOperand = `${parseFloat(result.toFixed(7))}`;
-          calculator.previousOperand = "";
-          calculator.operator = null;
-          calculator.waitingForNewOperand = true;
-
-          addToHistory(expression, calculator.currentOperand);
-        }
-
-        // Clear calculator
-        function clearCalculator() {
-          calculator.currentOperand = "0";
-          calculator.previousOperand = "";
-          calculator.operator = null;
-          calculator.waitingForNewOperand = false;
-        }
-
-        // Backspace
-        function backspace() {
-          if (calculator.waitingForNewOperand) return;
-
-          if (calculator.currentOperand.length > 1) {
-            calculator.currentOperand = calculator.currentOperand.slice(0, -1);
-          } else {
-            calculator.currentOperand = "0";
-          }
-        }
-
-        // Percentage
-        function percentage() {
-          const currentValue = parseFloat(calculator.currentOperand);
-          calculator.currentOperand = (currentValue / 100).toString();
-        }
-
-        // Event listeners for buttons
-        document.querySelectorAll(".btn").forEach((button) => {
-          button.addEventListener("click", () => {
-            if (button.dataset.number) {
-              if (button.dataset.number === ".") {
-                inputDecimal();
-              } else {
-                inputDigit(button.dataset.number);
-              }
-              updateDisplay();
-            } else if (button.dataset.operator) {
-              handleOperator(button.dataset.operator);
-              updateDisplay();
-            } else if (button.dataset.action) {
-              switch (button.dataset.action) {
-                case "clear":
-                  clearCalculator();
-                  updateDisplay();
-                  break;
-                case "equals":
-                  performCalculation();
-                  updateDisplay();
-                  break;
-                case "backspace":
-                  backspace();
-                  updateDisplay();
-                  break;
-                case "percentage":
-                  percentage();
-                  updateDisplay();
-                  break;
-              }
-            }
-          });
-        });
-
-        // Clear history
-        clearHistoryButton.addEventListener("click", () => {
-          calculator.history = [];
-          renderHistory();
-        });
-
-        // Keyboard support
-        document.addEventListener("keydown", (event) => {
-          if (event.key >= "0" && event.key <= "9") {
-            inputDigit(event.key);
-            updateDisplay();
-          } else if (event.key === ".") {
-            inputDecimal();
-            updateDisplay();
-          } else if (
-            event.key === "+" ||
-            event.key === "-" ||
-            event.key === "*" ||
-            event.key === "/"
-          ) {
-            let operator;
-            switch (event.key) {
-              case "+":
-                operator = "+";
-                break;
-              case "-":
-                operator = "-";
-                break;
-              case "*":
-                operator = "×";
-                break;
-              case "/":
-                operator = "÷";
-                break;
-            }
-            handleOperator(operator);
-            updateDisplay();
-          } else if (event.key === "Enter" || event.key === "=") {
-            performCalculation();
-            updateDisplay();
-          } else if (event.key === "Escape" || event.key === "Delete") {
-            clearCalculator();
-            updateDisplay();
-          } else if (event.key === "Backspace") {
-            backspace();
-            updateDisplay();
-          } else if (event.key === "%") {
-            percentage();
-            updateDisplay();
-          }
-        });
-
-        // Initialize display
-        updateDisplay();
+      numberButtons.forEach((button) => {
+        button.addEventListener("click", () =>
+          appendNumber(button.dataset.number)
+        );
       });
+
+      operatorButtons.forEach((button) => {
+        button.addEventListener("click", () => setOperation(button.dataset.op));
+      });
+
+      // Keyboard support
+      document.addEventListener("keydown", handleKeyboardInput);
+
+      // Update display with animation
+      function updateDisplay() {
+        calcresultDisplay.textContent = currentInput;
+        formulaDisplay.textContent =
+          previousInput + (operation ? " " + operation : "");
+
+        // Add animation to display
+        calcresultDisplay.classList.add("display-update");
+        setTimeout(() => {
+          calcresultDisplay.classList.remove("display-update");
+        }, 300);
+      }
+
+      // Append number to current input
+      function appendNumber(number) {
+        if (currentInput === "0" || shouldResetScreen) {
+          currentInput = number;
+          shouldResetScreen = false;
+        } else {
+          currentInput += number;
+        }
+        updateDisplay();
+      }
+
+      // Append decimal point
+      function appendDecimal() {
+        if (shouldResetScreen) {
+          currentInput = "0.";
+          shouldResetScreen = false;
+        } else if (!currentInput.includes(".")) {
+          currentInput += ".";
+        }
+        updateDisplay();
+      }
+
+      // Set operation
+      function setOperation(op) {
+        if (operation !== null) evaluate();
+        previousInput = currentInput;
+        operation = op;
+        shouldResetScreen = true;
+        updateDisplay();
+      }
+
+      // Evaluate expression
+      function evaluate() {
+        if (operation === null || shouldResetScreen) return;
+
+        let computation;
+        const prev = parseFloat(previousInput);
+        const current = parseFloat(currentInput);
+
+        if (isNaN(prev) || isNaN(current)) return;
+
+        switch (operation) {
+          case "+":
+            computation = prev + current;
+            break;
+          case "−":
+            computation = prev - current;
+            break;
+          case "×":
+            computation = prev * current;
+            break;
+          case "÷":
+            if (current === 0) {
+              alert("Cannot divide by zero!");
+              return;
+            }
+            computation = prev / current;
+            break;
+          default:
+            return;
+        }
+
+        // Format result to avoid long decimal numbers
+        currentInput = formatResult(computation);
+        operation = null;
+        previousInput = "";
+        shouldResetScreen = true;
+        updateDisplay();
+      }
+
+      // Format result to avoid too many decimal places
+      function formatResult(num) {
+        // If it's an integer, return as is
+        if (Number.isInteger(num)) {
+          return num.toString();
+        }
+
+        // Otherwise, limit to 8 decimal places
+        return parseFloat(num.toFixed(8)).toString();
+      }
+
+      // Clear calculator
+      function clear() {
+        currentInput = "0";
+        previousInput = "";
+        operation = null;
+        updateDisplay();
+      }
+
+      // Backspace function
+      function backspace() {
+        if (currentInput.length === 1) {
+          currentInput = "0";
+        } else {
+          currentInput = currentInput.slice(0, -1);
+        }
+        updateDisplay();
+      }
+
+      // Keyboard input handler
+      function handleKeyboardInput(e) {
+        if (e.key >= "0" && e.key <= "9") appendNumber(e.key);
+        if (e.key === ".") appendDecimal();
+        if (e.key === "=" || e.key === "Enter") evaluate();
+        if (e.key === "Backspace") backspace();
+        if (e.key === "Escape") clear();
+        if (e.key === "+" || e.key === "-") setOperation(e.key);
+        if (e.key === "*") setOperation("×");
+        if (e.key === "/") setOperation("÷");
+      }
+
+      // Initialize display
+      updateDisplay();
     </script>
 
     <script src="/assets/script.js" defer></script>

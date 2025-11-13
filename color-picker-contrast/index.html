@@ -147,58 +147,66 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "What contrast ratio is required for WCAG AA and AAA?",
+            "name": "What is the minimum contrast ratio required for normal text under WCAG AA?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "WCAG AA requires at least 4.5:1 for normal text and 3:1 for large text (≥18pt regular or ≥14pt bold). AAA requires 7:1 for normal text and 4.5:1 for large text."
+              "text": "For standard WCAG AA conformance the contrast ratio between text and its background must be at least 4.5:1."
             }
           },
           {
             "@type": "Question",
-            "name": "Does this tool send my colors to a server?",
+            "name": "What is a contrast ratio, and how is it calculated?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No. All calculations run locally in your browser; nothing is uploaded."
+              "text": "A contrast ratio is a numerical value representing the difference in perceived luminance between the foreground (for example text) and the background color. It ranges from 1:1 (no contrast) to 21:1 (maximum contrast, such as black on white)."
             }
           },
           {
             "@type": "Question",
-            "name": "Does it support 3-digit hex like #abc?",
+            "name": "Does \"large text\" require the same contrast ratio as normal text?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. #abc is normalized to #aabbcc automatically."
+              "text": "No. For large text (typically 18pt regular or 14pt bold) WCAG AA requires a lower minimum contrast ratio of 3:1."
             }
           },
           {
             "@type": "Question",
-            "name": "Does the tool support transparency or gradients?",
+            "name": "Are contrast rules applied to graphical objects or icons?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No. Contrast is computed for solid colors only (#RRGGBB or #RGB). For semi-transparent overlays, compute the flattened color against the background first."
+              "text": "Yes. WCAG 2.1 (Success Criterion 1.4.11) requires that graphical objects and user interface components meet a contrast ratio of at least 3:1 against adjacent colors."
             }
           },
           {
             "@type": "Question",
-            "name": "What about users with color blindness?",
+            "name": "What is the primary difference between WCAG AA and AAA conformance?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Good contrast ratios help, but also ensure information isn't conveyed by color alone. Use patterns, labels, or icons as additional indicators."
+              "text": "WCAG AA is the commonly targeted level and requires 4.5:1 for normal text (3:1 for large text). AAA is stricter and requires 7:1 for normal text (4.5:1 for large text)."
             }
           },
           {
             "@type": "Question",
-            "name": "How often should I check contrast ratios?",
+            "name": "If my contrast checker says a color combination \"fails,\" what should I do?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Check during design, development, and whenever making color changes. Also test final designs in different lighting conditions."
+              "text": "Adjust either the foreground or background color until the checker reports a passing ratio (for AA at least 4.5:1 for normal text). Small changes to brightness or saturation are often enough."
             }
           },
           {
             "@type": "Question",
-            "name": "Are there exceptions to these ratios?",
+            "name": "What are the best tools for checking color contrast?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes: logos, incidental text, and inactive UI elements have no contrast requirements. Text over images may use different techniques."
+              "text": "Reliable online contrast checkers are available from Level Access, Deque University, TPGi, WebAIM, and Siteimprove."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is APCA and how does it relate to contrast checking?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "APCA stands for Accessible Perceptual Contrast Algorithm. It is a newer, more perceptually accurate method for measuring color contrast and is intended as the contrast approach for the upcoming WCAG 3 standards."
             }
           }
         ]
@@ -744,12 +752,13 @@
 
       <header class="top-header">
         <h1>
-          Color Picker & Contrast <br />
-          Checker
+          The Ultimate Color Contrast Checker: Ensuring WCAG Accessibility and
+          Compliance
         </h1>
         <p class="tagline">
-          Ensure your color combinations meet
-          <strong>WCAG 2.1 accessibility standards</strong>.
+          Test and confirm that your color combinations meet established web
+          accessibility standards, particularly the<strong>WCAG 2.1 </strong>.
+          requirements.
         </p>
       </header>
 
@@ -916,193 +925,65 @@
           </article>
         </div>
 
-        <!-- Examples -->
-        <div class="card" id="where">
-          <h2>Where to Apply Contrast Ratios</h2>
-          <div class="examples">
-            <div class="example">
-              <div class="example-title">📝 Body Text</div>
-              <div class="example-content">Main content reading experience</div>
-              <span class="badge">AA: 4.5:1</span>
-            </div>
-
-            <div class="example">
-              <div class="example-title">🎯 Headings & Titles</div>
-              <div class="example-content">Section headers and page titles</div>
-              <span class="badge">AA: 3:1</span>
-            </div>
-
-            <div class="example">
-              <div class="example-title">🔘 Buttons & Forms</div>
-              <div class="example-content">Interactive elements and inputs</div>
-              <span class="badge">AA: 3:1</span>
-            </div>
-
-            <div class="example">
-              <div class="example-title">📊 Data Visualization</div>
-              <div class="example-content">Charts, graphs, and data points</div>
-              <span class="badge">AA: 3:1</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="content-section">
-          <p class="subtitle">
-            This tool helps designers, developers, and content creators test
-            color contrast ratios for normal text (AA: 4.5:1, AAA: 7:1) and
-            large text (AA: 3:1, AAA: 4.5:1). All processing happens locally in
-            your browser — your colors never leave your device. WCAG&nbsp;2.1
-            Compliant
+        <section class="content-section">
+          <h2>Decoding WCAG 2.1/2.2 Success Criteria</h2>
+          <p>
+            Understanding the Web Content Accessibility Guidelines (WCAG) is
+            essential for creating inclusive digital experiences.
           </p>
-        </div>
-        <!-- Tips -->
-        <div class="card" id="best-practices">
-          <h2>Color Accessibility Best Practices</h2>
-          <div class="examples">
-            <div class="example">
-              <div class="example-title">🎨 Don't Rely on Color Alone</div>
-              <div class="example-content">
-                Use additional indicators like patterns, text labels, or icons
-                to convey meaning beyond color differences.
-              </div>
-            </div>
 
-            <div class="example">
-              <div class="example-title">
-                👁️ Test with Color Blindness Simulators
-              </div>
-              <div class="example-content">
-                Check how your colors appear to users with various types of
-                color vision deficiency.
-              </div>
-            </div>
+          <h3>WCAG AA vs. AAA: Required Contrast Levels for Text</h3>
+          <p>
+            WCAG defines two levels of conformance: AA (standard) and AAA
+            (enhanced). For most organizations, AA compliance is the target.
+          </p>
 
-            <div class="example">
-              <div class="example-title">
-                📱 Consider Different Lighting Conditions
-              </div>
-              <div class="example-content">
-                Test your colors in bright sunlight, dim lighting, and various
-                screen brightness levels.
-              </div>
-            </div>
+          <h3>Graphical Objects and UI Components: The 3:1 Standard</h3>
+          <p>
+            Non-text elements like icons, buttons, and form controls must have a
+            contrast ratio of at least 3:1 against adjacent colors.
+          </p>
+        </section>
 
-            <div class="example">
-              <div class="example-title">
-                🔄 Provide Alternative Contrast Options
-              </div>
-              <div class="example-content">
-                Offer high contrast modes or allow users to customize color
-                schemes.
-              </div>
-            </div>
-          </div>
-        </div>
+        <section class="content-section">
+          <h2>Beyond WCAG 2: Exploring the APCA Contrast Model</h2>
+          <p>
+            The Accessible Perceptual Contrast Algorithm (APCA) is the proposed
+            replacement for the current WCAG 2.x contrast formula.
+          </p>
 
-        <!-- Technical -->
-        <div class="card">
-          <h2>Technical Implementation</h2>
-          <div class="example">
-            <div class="example-title">💻 CSS Custom Properties Example</div>
-            <div class="example-content">
-              Use CSS variables to define text and background colors, making it
-              easy to adjust contrast globally or in high-contrast modes.
-            </div>
-          </div>
-        </div>
-        <!-- Information Grid -->
-        <div class="info-grid" id="details">
-          <!-- WCAG Compliance -->
-          <div class="card">
-            <div class="info-section">
-              <h3>WCAG 2.1 Compliance Levels</h3>
-              <h4>Level AA (Minimum)</h4>
-              <ul>
-                <li><strong>Normal text:</strong> ≥4.5:1 contrast ratio</li>
-                <li>
-                  <strong>Large text (18pt+):</strong> ≥3:1 contrast ratio
-                </li>
-                <li><strong>UI components:</strong> ≥3:1 contrast ratio</li>
-              </ul>
-              <p class="small muted">
-                Required for most accessibility regulations.
-              </p>
+          <h3>Limitations of the Current Luminosity Formula</h3>
+          <p>
+            The current WCAG 2 formula sometimes fails to accurately reflect
+            human perception of contrast.
+          </p>
 
-              <h4>Level AAA (Enhanced)</h4>
-              <ul>
-                <li><strong>Normal text:</strong> ≥7:1 contrast ratio</li>
-                <li>
-                  <strong>Large text (18pt+):</strong> ≥4.5:1 contrast ratio
-                </li>
-              </ul>
-              <p class="small muted">Recommended for highest accessibility.</p>
-            </div>
-          </div>
+          <h3>How APCA Calculates Perceived Contrast and Why It Matters</h3>
+          <p>
+            APCA considers spatial properties, text weight, and context to
+            provide a more accurate measure of perceived contrast.
+          </p>
+        </section>
 
-          <!-- Large Text Definition -->
-          <div class="card">
-            <div class="info-section">
-              <h3>What counts as "large text"?</h3>
-              <ul>
-                <li>18 points regular weight (≈ 24px)</li>
-                <li>14 points bold weight (≈ 18.67px)</li>
-                <li>Icons and graphical objects require 3:1 contrast</li>
-              </ul>
-            </div>
-          </div>
+        <section class="content-section">
+          <h2>Remediation: Practical Steps to Fix Contrast Failures</h2>
+          <p>
+            When your color combinations fail contrast checks, here's how to fix
+            them.
+          </p>
 
-          <!-- How to Use -->
-          <div class="card">
-            <div class="info-section">
-              <h3>How to Use</h3>
-              <ol>
-                <li>
-                  Pick a <strong>Text</strong> and
-                  <strong>Background</strong> color using the color inputs or
-                  paste a hex value (e.g., <code>#1a73e8</code> or
-                  <code>#abc</code>).
-                </li>
-                <li>
-                  The tool instantly shows the
-                  <strong>contrast ratio</strong> and pass/fail badges for
-                  <strong>AA (normal/large)</strong> and
-                  <strong>AAA (normal)</strong>.
-                </li>
-                <li>
-                  Preview how the pair looks on <em>Normal</em> and
-                  <em>Large</em> text. "Large" means ≥18pt normal or ≥14pt bold.
-                </li>
-                <li>
-                  Click <strong>Copy</strong> to copy the hex for either color.
-                </li>
-                <li>
-                  All calculations run locally—nothing leaves your browser.
-                </li>
-              </ol>
-            </div>
-          </div>
+          <h3>Adjusting Color Properties: HSL and Saturation Optimization</h3>
+          <p>
+            Using HSL (Hue, Saturation, Lightness) values can help you
+            systematically adjust colors to meet contrast requirements.
+          </p>
 
-          <!-- Tips -->
-          <div class="card">
-            <div class="info-section">
-              <h3>Tips</h3>
-              <ul>
-                <li>
-                  Only solid colors are supported. For semi-transparent
-                  overlays, first compute the flattened color against the
-                  background.
-                </li>
-                <li>
-                  <code>#RGB</code> is auto-expanded to <code>#RRGGBB</code>.
-                </li>
-                <li>
-                  For non-text UI (icons, borders), WCAG suggests ≥3:1 against
-                  the adjacent color.
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
+          <h3>Creating an Accessible Color Palette from Scratch</h3>
+          <p>
+            Start with accessibility in mind by choosing colors that naturally
+            provide sufficient contrast.
+          </p>
+        </section>
 
         <!-- FAQ Section -->
         <section class="faq-section card" id="faq">
@@ -1113,101 +994,138 @@
           <div class="faq-container">
             <!-- Color Contrast Checker FAQs -->
             <div class="faq-item">
-              <button class="faq-question">
-                What are AA vs AAA requirements?
-                <span class="faq-icon">+</span>
-              </button>
+              <div class="faq-question">
+                <span
+                  >What is the minimum contrast ratio required for normal text
+                  under WCAG AA?</span
+                >
+                <span>+</span>
+              </div>
               <div class="faq-answer">
                 <p>
-                  AA: ≥4.5:1 for normal text, ≥3:1 for large text. AAA: ≥7:1 for
-                  normal text, ≥4.5:1 for large text.
+                  For standard WCAG AA conformance, the contrast ratio between
+                  text and its background must be at least 4.5:1.
                 </p>
               </div>
             </div>
 
             <div class="faq-item">
-              <button class="faq-question">
-                What counts as "large" text?
-                <span class="faq-icon">+</span>
-              </button>
+              <div class="faq-question">
+                <span>What is a contrast ratio, and how is it calculated?</span>
+                <span>+</span>
+              </div>
               <div class="faq-answer">
                 <p>
-                  At least 18pt (≈24px) normal weight, or 14pt (≈18.67px) bold.
+                  The contrast ratio is a numerical value representing the
+                  difference in perceived luminance between the foreground
+                  (e.g., text) and the background color. It ranges from 1:1 (no
+                  contrast) to 21:1 (maximum contrast, like black on white).
                 </p>
               </div>
             </div>
 
             <div class="faq-item">
-              <button class="faq-question">
-                Can I enter RGB or HSL?
-                <span class="faq-icon">+</span>
-              </button>
+              <div class="faq-question">
+                <span
+                  >Does "large text" require the same contrast ratio as normal
+                  text?</span
+                >
+                <span>+</span>
+              </div>
               <div class="faq-answer">
                 <p>
-                  This tool accepts hex (<code>#RRGGBB</code> or
-                  <code>#RGB</code>) for accuracy and simplicity.
+                  No. For "large text" (which is typically 18pt regular or 14pt
+                  bold), the required contrast ratio for WCAG AA conformance is
+                  lower, requiring a minimum of 3:1.
                 </p>
               </div>
             </div>
 
             <div class="faq-item">
-              <button class="faq-question">
-                Does it work offline?
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-answer">
-                <p>Yes—after the first load, it works without internet.</p>
+              <div class="faq-question">
+                <span
+                  >Are contrast rules applied to graphical objects or
+                  icons?</span
+                >
+                <span>+</span>
               </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-question">
-                Is my data sent anywhere?
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-answer">
-                <p>No. Everything runs locally in your browser.</p>
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-question">
-                What about users with color blindness?
-                <span class="faq-icon">+</span>
-              </button>
               <div class="faq-answer">
                 <p>
-                  Good contrast ratios help, but also ensure information isn't
-                  conveyed by color alone. Use patterns, labels, or icons as
-                  additional indicators.
+                  Yes. WCAG 2.1 includes Success Criterion 1.4.11, which
+                  mandates that graphical objects and user interface components
+                  must have a contrast ratio of at least 3:1 against adjacent
+                  colors.
                 </p>
               </div>
             </div>
 
             <div class="faq-item">
-              <button class="faq-question">
-                How often should I check contrast ratios?
-                <span class="faq-icon">+</span>
-              </button>
+              <div class="faq-question">
+                <span
+                  >What is the primary difference between WCAG AA and AAA
+                  conformance?</span
+                >
+                <span>+</span>
+              </div>
               <div class="faq-answer">
                 <p>
-                  Check during design, development, and whenever making color
-                  changes. Also test final designs in different lighting
-                  conditions.
+                  WCAG AA is the standard level generally targeted for
+                  compliance, requiring 4.5:1 contrast for normal text. AAA
+                  requires an enhanced level of accessibility, demanding a
+                  higher 7:1 contrast ratio for normal text.
                 </p>
               </div>
             </div>
 
             <div class="faq-item">
-              <button class="faq-question">
-                Are there exceptions to these ratios?
-                <span class="faq-icon">+</span>
-              </button>
+              <div class="faq-question">
+                <span
+                  >If my contrast checker says a color combination "fails," what
+                  should I do?</span
+                >
+                <span>+</span>
+              </div>
               <div class="faq-answer">
                 <p>
-                  Yes: logos, incidental text, and inactive UI elements have no
-                  contrast requirements. Text over images may use different
-                  techniques.
+                  You must adjust either the foreground or background color
+                  until the checker indicates a passing ratio (4.5:1 or better
+                  for AA). Often, slight adjustments to the brightness or
+                  saturation of one color are enough.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <span
+                  >What are the best tools for checking color contrast?</span
+                >
+                <span>+</span>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  Many reliable online contrast checkers are available from
+                  leading accessibility organizations, including tools provided
+                  by Level Access, Deque University, TPGi, WebAIM, and
+                  Siteimprove.
+                </p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-question">
+                <span
+                  >What is APCA and how does it relate to contrast
+                  checking?</span
+                >
+                <span>+</span>
+              </div>
+              <div class="faq-answer">
+                <p>
+                  APCA stands for Accessible Perceptual Contrast Algorithm. It
+                  is the proposed replacement calculation method for luminosity
+                  ratios in the upcoming WCAG 3 standards, aiming to provide a
+                  more perceptually accurate measure of color contrast.
                 </p>
               </div>
             </div>
