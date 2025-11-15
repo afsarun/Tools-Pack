@@ -174,7 +174,6 @@ header.top-header {
   line-height: 1;
 }
 
-#result,
 .contrast-result {
   display: block !important;
   position: static !important;
@@ -770,145 +769,12 @@ header.sticky {
   transform: translateY(1px);
 }
 
-/* 2) Intro */
-.intro {
-  margin: 24px 0 8px;
-  padding: 16px 20px;
-  background: color-mix(in oklab, var(--surface) 80%, transparent);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  color: var(--text);
-}
-
-/* 3) Category nav pills */
-.category-nav {
-  margin: 16px 0 24px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  color: var(--text-muted);
-}
-.category-nav a {
-  color: var(--text-muted);
-  text-decoration: none;
-  font-weight: 600;
-  padding: 8px 12px;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: var(--background);
-  transition: background 0.2s, color 0.2s, border-color 0.2s;
-}
-.category-nav a:hover,
-.category-nav a:focus-visible {
-  color: var(--text);
-  background: color-mix(in oklab, var(--surface) 65%, transparent);
-  border-color: var(--surface-light);
-}
-
-/* 4) Search box */
-.search-box {
-  margin: 0 0 24px;
-}
-#toolSearch {
-  width: 100%;
-  border: 2px solid var(--border);
-  background: var(--background);
-  color: var(--text);
-  border-radius: 12px;
-  padding: 14px 16px;
-  font-size: 1rem;
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-#toolSearch::placeholder {
-  color: var(--text-muted);
-}
-#toolSearch:focus {
-  outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.12);
-}
-
-/* 5) Grid of tool cards */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-}
-
-/* Card ('.carda' to avoid conflict with .card you already use) */
-.carda.tool-card {
-  display: flex;
-  gap: 14px;
-  padding: 18px;
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  background: linear-gradient(
-        135deg,
-        rgba(59, 130, 246, 0.06),
-        rgba(139, 92, 246, 0.06)
-      )
-      border-box,
-    var(--surface);
-  background-blend-mode: overlay, normal;
-  box-shadow: var(--shadow);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-}
-.carda.tool-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-  border-color: color-mix(in oklab, var(--primary) 35%, var(--border));
-}
-
-/* Icon blob */
-.tool-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  display: grid;
-  place-items: center;
-  background: color-mix(in oklab, var(--surface-light) 70%, transparent);
-  color: var(--text);
-  flex-shrink: 0;
-}
-
-/* Content */
-.tool-content {
-  display: grid;
-  gap: 8px;
-}
-.carda .tool-title {
-  font-size: 1.05rem;
-  font-weight: 800;
-  color: var(--text);
-}
-.tool-content .muted {
-  color: var(--text-muted);
-}
-
 .actions {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   align-items: center;
   margin-top: 4px;
-}
-
-/* Secondary link next to primary button */
-.tool-link {
-  color: var(--text-muted);
-  text-decoration: none;
-  font-weight: 700;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 10px;
-  border-radius: 10px;
-  transition: color 0.2s, background 0.2s;
-}
-.tool-link:hover,
-.tool-link:focus-visible {
-  color: var(--text);
-  background: color-mix(in oklab, var(--surface) 65%, transparent);
 }
 
 /* 7) Footer */
