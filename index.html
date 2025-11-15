@@ -10,25 +10,29 @@
     </title>
 
     <!-- Font Awesome (normal load) -->
+    <!-- Fast, non-blocking Font Awesome load -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
     <link
-      rel="preconnect"
-      href="https://cdnjs.cloudflare.com"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      crossorigin
-      referrerpolicy="no-referrer"
-    />
-
-    <!-- <link
       rel="preload"
-      href="/assets/style.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
       as="style"
-      onload="this.rel='stylesheet' "
+      onload="this.onload=null;this.rel='stylesheet'"
     />
-    <noscript><link rel="stylesheet" href="/assets/style.css" /></noscript> -->
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      />
+    </noscript>
+
+    <!-- Preload the actual Font Awesome woff2 that would otherwise be chained -->
+    <link
+      rel="preload"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
 
     <meta
       name="description"
@@ -55,6 +59,15 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
       />
     </noscript>
+
+    <link
+      rel="preload"
+      href="/assets/style.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript><link rel="stylesheet" href="/assets/style.css" /></noscript>
+
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Utilityera" />
