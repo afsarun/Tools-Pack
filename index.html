@@ -22,13 +22,13 @@
       referrerpolicy="no-referrer"
     />
 
-    <link
+    <!-- <link
       rel="preload"
       href="/assets/style.css"
       as="style"
       onload="this.rel='stylesheet' "
     />
-    <noscript><link rel="stylesheet" href="/assets/style.css" /></noscript>
+    <noscript><link rel="stylesheet" href="/assets/style.css" /></noscript> -->
 
     <meta
       name="description"
@@ -337,497 +337,351 @@
     </script>
 
     <style>
-      /* ============================
-   utilityera — Improved Global Styles
-   ============================ */
+      :root {
+        --page-bg: #f8fafc;
+        --card-bg: #ffffff;
+        --muted: #64748b;
+        --accent: #0f172a;
+        --primary: #4f46e5;
+        --primary-light: #818cf8;
+        --radius: 12px;
+        --gap: 24px;
+        --maxw: 1200px;
+        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        --transition: all 0.2s ease-in-out;
+        --header-height: 80px;
+      }
 
-      /* 1) Enhanced Base Styles */
       * {
-        margin: 0;
-        padding: 0;
         box-sizing: border-box;
       }
 
-      html {
-        scroll-behavior: smooth;
-      }
-
+      html,
       body {
-        font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI",
-          Roboto, sans-serif;
-        line-height: 1.6;
-        min-height: 100vh;
-        background: var(--background);
-        color: var(--text);
-        background-image: radial-gradient(
-            circle at 20% 20%,
-            rgba(59, 130, 246, 0.08) 0%,
-            transparent 50%
-          ),
-          radial-gradient(
-            circle at 80% 80%,
-            rgba(139, 92, 246, 0.08) 0%,
-            transparent 50%
-          );
-        background-attachment: scroll;
+        height: 100%;
+        margin: 0;
+        background: var(--page-bg);
+        font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial;
+        color: var(--accent);
+        line-height: 1.5;
+        scroll-padding-top: var(--header-height);
       }
 
-      /* 2) Enhanced Design Tokens */
-      :root {
-        /* Primary Colors */
-        --primary: #4a6fa5;
-        --primary-hover: #2563eb;
-        --primary-light: rgba(59, 130, 246, 0.1);
-        --secondary: #6b8cbc;
-        --accent: #ff7e5f;
-
-        /* Status Colors */
-        --success: #10b981;
-        --success-light: rgba(16, 185, 129, 0.1);
-        --danger: #ef4444;
-        --danger-light: rgba(239, 68, 68, 0.1);
-        --warning: #f59e0b;
-        --warning-light: rgba(245, 158, 11, 0.1);
-
-        /* Light Theme */
-        --background: #ffffff;
-        --surface: #f8fafc;
-        --surface-light: #f1f5f9;
-        --surface-dark: #e2e8f0;
-        --text: #0f172a;
-        --text-muted: #475569;
-        --text-light: #64748b;
-        --border: #e2e8f0;
-        --border-light: #f1f5f9;
-        --border-dark: #cbd5e1;
-
-        /* Link Colors */
-        --link: #2563eb;
-        --link-hover: #3b82f6;
-        --link-visited: #7c3aed;
-
-        /* Gradients */
-        --gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-        --gradient-light: linear-gradient(
-          135deg,
-          rgba(59, 130, 246, 0.1) 0%,
-          rgba(139, 92, 246, 0.1) 100%
-        );
-
-        /* Shadows */
-        --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-        --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1),
-          0 2px 4px -2px rgb(0 0 0 / 0.1);
-        --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.1),
-          0 4px 6px -4px rgb(0 0 0 / 0.1);
-        --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1),
-          0 8px 10px -6px rgb(0 0 0 / 0.1);
-
-        /* Border Radius */
-        --radius-sm: 0.375rem;
-        --radius: 0.5rem;
-        --radius-md: 0.75rem;
-        --radius-lg: 1rem;
-        --radius-xl: 1.5rem;
-
-        /* Spacing */
-        --space-xs: 0.5rem;
-        --space-sm: 0.75rem;
-        --space: 1rem;
-        --space-md: 1.5rem;
-        --space-lg: 2rem;
-        --space-xl: 3rem;
-      }
-
-      /* Dark Theme */
-      [data-theme="dark"] {
-        --background: #0f172a;
-        --surface: #1e293b;
-        --surface-light: #334155;
-        --surface-dark: #475569;
-        --text: #f1f5f9;
-        --text-muted: #cbd5e1;
-        --text-light: #94a3b8;
-        --border: #475569;
-        --border-light: #334155;
-        --border-dark: #64748b;
-        --link: #60a5fa;
-        --link-hover: #93c5fd;
-        --link-visited: #a78bfa;
-      }
-
-      /* 3) Enhanced Typography */
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        font-weight: 700;
-        line-height: 1.2;
-        margin-bottom: var(--space);
-      }
-
-      h1 {
-        font-size: clamp(2.25rem, 5vw, 3.5rem);
-      }
-
-      h2 {
-        font-size: clamp(1.875rem, 4vw, 2.5rem);
-      }
-
-      h3 {
-        font-size: clamp(1.5rem, 3vw, 2rem);
-      }
-
-      h4 {
-        font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-      }
-
-      p {
-        margin-bottom: var(--space);
-        line-height: 1.6;
-      }
-
-      /* 4) Enhanced Header */
-      header.sticky {
+      /* Sticky Header */
+      .sticky {
         position: sticky;
         top: 0;
-        z-index: 50;
-        background: color-mix(in oklab, var(--surface) 92%, transparent);
-        backdrop-filter: blur(12px);
-        border-bottom: 1px solid var(--border);
-        transition: all 0.3s ease;
+        z-index: 100;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        box-shadow: var(--shadow-sm);
+        height: var(--header-height);
       }
 
-      .wrap.brand {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: var(--space) var(--space-md);
+      .brand {
         display: flex;
         align-items: center;
-        gap: var(--space);
+        gap: 16px;
+        padding: 12px 0;
       }
 
-      .logo {
-        width: 48px;
-        height: 48px;
-        border-radius: var(--radius-md);
-        background: var(--gradient);
+      .brand a {
         display: flex;
         align-items: center;
-        justify-content: center;
-        box-shadow: var(--shadow);
-        transition: transform 0.3s ease;
+        text-decoration: none;
       }
 
-      .logo:hover {
+      .brand img {
+        border-radius: 8px;
+        transition: var(--transition);
+      }
+
+      .brand img:hover {
         transform: scale(1.05);
       }
 
       .site-title {
-        font-size: 1.375rem;
-        font-weight: 800;
-        color: var(--text);
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--accent);
+        margin: 0;
         letter-spacing: -0.025em;
       }
 
-      .sub {
-        font-size: 0.875rem;
-        color: var(--text-muted);
-        font-weight: 500;
-      }
-
-      /* Header Navigation */
-      .wrap.brand nav {
+      nav {
         margin-left: auto;
         display: flex;
-        gap: var(--space-sm);
+        gap: 20px;
         align-items: center;
       }
 
-      .wrap.brand nav a {
-        color: var(--text-muted);
+      nav a {
         text-decoration: none;
-        font-weight: 600;
-        font-size: 0.875rem;
-        padding: var(--space-xs) var(--space-sm);
-        border-radius: var(--radius);
-        transition: all 0.2s ease;
-      }
-
-      .wrap.brand nav a:hover,
-      .wrap.brand nav a:focus-visible {
-        color: var(--text);
-        background: var(--surface-light);
-        transform: translateY(-1px);
-      }
-
-      /* 5) Enhanced Main Content */
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: var(--space-lg);
-      }
-
-      /* 6) Enhanced Intro Section */
-      .intro {
-        margin: var(--space-lg) 0 var(--space);
-        padding: var(--space-lg);
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: var(--radius-xl);
-        text-align: center;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .intro::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: var(--gradient);
-      }
-
-      .intro p {
-        font-size: 1.125rem;
-        color: var(--text);
-        max-width: 800px;
-        margin: 0 auto;
-        line-height: 1.7;
-      }
-
-      .intro strong {
-        background: var(--gradient);
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-        font-weight: 700;
-      }
-
-      /* 7) Enhanced Category Navigation */
-      .category-nav {
-        margin: var(--space-lg) 0;
-        display: flex;
-        flex-wrap: wrap;
-        gap: var(--space-sm);
-        justify-content: center;
-      }
-
-      .category-nav a {
-        color: var(--text);
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 0.875rem;
-        padding: var(--space-xs) var(--space-sm);
-        border: 1px solid var(--border);
-        border-radius: var(--radius-lg);
-        background: var(--surface);
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .category-nav a::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: var(--gradient);
-        transition: left 0.3s ease;
-        z-index: -1;
-      }
-
-      .category-nav a:hover,
-      .category-nav a:focus-visible {
-        color: white;
-        border-color: transparent;
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-md);
-      }
-
-      .category-nav a:hover::before,
-      .category-nav a:focus-visible::before {
-        left: 0;
-      }
-
-      /* 8) Enhanced Search Box */
-      .search-box {
-        margin: 0 0 var(--space-lg);
-        position: relative;
-      }
-
-      .search-box::before {
-        content: "🔍";
-        position: absolute;
-        left: var(--space);
-        top: 50%;
-        transform: translateY(-50%);
-        color: var(--text-muted);
-        z-index: 1;
-      }
-
-      #toolSearch {
-        width: 100%;
-        border: 2px solid var(--border);
-        background: var(--surface);
-        color: var(--text);
-        border-radius: var(--radius-lg);
-        padding: var(--space) var(--space) var(--space) calc(var(--space) * 2.5);
-        font-size: 1rem;
+        color: var(--muted);
         font-weight: 500;
-        transition: all 0.3s ease;
-        position: relative;
+        font-size: 14px;
+        transition: var(--transition);
+        padding: 8px 12px;
+        border-radius: 6px;
       }
 
-      #toolSearch::placeholder {
-        color: var(--text-muted);
+      nav a:hover {
+        color: var(--primary);
+        background: rgba(79, 70, 229, 0.05);
+      }
+
+      nav a:focus {
+        outline: 2px solid rgba(79, 70, 229, 0.4);
+        outline-offset: 2px;
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+
+      .wrap {
+        max-width: var(--maxw);
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* Main Content */
+      .main-content {
+        padding: 40px 0;
+      }
+
+      /* Header */
+      .page-header {
+        margin-bottom: 32px;
+        text-align: center;
+      }
+
+      .page-title {
+        font-size: 28px;
+        font-weight: 700;
+        margin: 0 0 8px 0;
+        color: var(--accent);
+        letter-spacing: -0.025em;
+      }
+
+      .page-subtitle {
+        font-size: 16px;
+        color: var(--muted);
+        margin: 0;
         font-weight: 400;
       }
 
-      #toolSearch:focus {
-        outline: none;
-        border-color: var(--primary);
-        background: var(--background);
-        box-shadow: 0 0 0 4px var(--primary-light);
-        transform: translateY(-2px);
-      }
-
-      /* 9) Enhanced Tool Cards Grid */
+      /* Grid */
       .grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-        gap: var(--space-lg);
-        margin-bottom: var(--space-xl);
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--gap);
+        align-items: stretch;
       }
 
-      .carda.tool-card {
+      @media (max-width: 1100px) {
+        .grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      @media (max-width: 780px) {
+        .grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        nav {
+          gap: 12px;
+        }
+
+        nav a {
+          font-size: 13px;
+          padding: 6px 10px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .brand {
+          flex-wrap: wrap;
+          gap: 12px;
+        }
+
+        .site-title {
+          font-size: 20px;
+        }
+
+        nav {
+          order: 3;
+          width: 100%;
+          justify-content: center;
+          margin-left: 0;
+          margin-top: 8px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+
+        nav {
+          gap: 8px;
+        }
+
+        nav a {
+          font-size: 12px;
+          padding: 6px 8px;
+        }
+      }
+
+      /* Card */
+      .card-home {
+        background: var(--card-bg);
+        border: 1px solid rgba(226, 232, 240, 0.8);
+        padding: 28px 24px;
+        border-radius: var(--radius);
         display: flex;
         flex-direction: column;
-        gap: var(--space);
-        padding: var(--space-lg);
-        border: 1px solid var(--border);
-        border-radius: var(--radius-xl);
-        background: var(--surface);
-        box-shadow: var(--shadow);
-        transition: all 0.3s ease;
+        align-items: center;
+        gap: 16px;
+        min-height: 180px;
+        box-shadow: var(--shadow-sm);
+        text-align: center;
+        transition: var(--transition);
         position: relative;
         overflow: hidden;
-        animation: fadeInUp 0.6s ease-out forwards;
-        opacity: 0;
-        transform: translateY(20px);
       }
 
-      .carda.tool-card::before {
+      .card-home::before {
         content: "";
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         height: 4px;
-        background: var(--gradient);
+        background: linear-gradient(
+          90deg,
+          var(--primary),
+          var(--primary-light)
+        );
         transform: scaleX(0);
         transition: transform 0.3s ease;
       }
 
-      .carda.tool-card:hover {
-        transform: translateY(-8px);
+      .card-home:focus-within,
+      .card-home:hover {
+        transform: translateY(-6px);
         box-shadow: var(--shadow-lg);
-        border-color: var(--primary);
+        border-color: rgba(99, 102, 241, 0.2);
       }
 
-      .carda.tool-card:hover::before {
+      .card-home:focus-within::before,
+      .card-home:hover::before {
         transform: scaleX(1);
       }
 
-      /* Stagger animations for cards */
-      .carda.tool-card:nth-child(odd) {
-        animation-delay: 0.1s;
-      }
-
-      .carda.tool-card:nth-child(even) {
-        animation-delay: 0.2s;
-      }
-
-      /* 10) Enhanced Tool Card Content */
-      .tool-header {
-        display: flex;
-        align-items: flex-start;
-        gap: var(--space);
-      }
-
+      /* Icon square */
       .tool-icon {
-        width: 56px;
-        height: 56px;
-        border-radius: var(--radius-lg);
+        width: 72px;
+        height: 72px;
+        border-radius: 16px;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: var(--gradient-light);
-        color: var(--primary);
-        flex-shrink: 0;
-        font-size: 1.5rem;
-        transition: all 0.3s ease;
+        transition: var(--transition);
       }
 
-      .carda.tool-card:hover .tool-icon {
-        background: var(--gradient);
-        color: white;
-        transform: scale(1.1) rotate(5deg);
+      .tool-icon i {
+        font-size: 24px;
+      }
+
+      .card-home:focus-within .tool-icon,
+      .card-home:hover .tool-icon {
+        transform: scale(1.05);
+      }
+
+      /* Color variations */
+      .card-home:nth-child(6n + 1) .tool-icon {
+        background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+        color: #4f46e5;
+      }
+
+      .card-home:nth-child(6n + 2) .tool-icon {
+        background: linear-gradient(135deg, #fce7f3, #fbcfe8);
+        color: #db2777;
+      }
+
+      .card-home:nth-child(6n + 3) .tool-icon {
+        background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+        color: #059669;
+      }
+
+      .card-home:nth-child(6n + 4) .tool-icon {
+        background: linear-gradient(135deg, #fef3c7, #fde68a);
+        color: #d97706;
+      }
+
+      .card-home:nth-child(6n + 5) .tool-icon {
+        background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+        color: #0284c7;
+      }
+
+      .card-home:nth-child(6n + 6) .tool-icon {
+        background: linear-gradient(135deg, #f3e8ff, #e9d5ff);
+        color: #7c3aed;
       }
 
       .tool-content {
-        flex: 1;
         display: flex;
         flex-direction: column;
-        gap: var(--space-sm);
+        align-items: center;
+        text-align: center;
+        gap: 12px;
+        width: 100%;
       }
 
       .tool-title {
-        font-size: 1.25rem;
-        font-weight: 700;
-        color: var(--text);
-        line-height: 1.3;
+        font-size: 16px;
+        margin: 0;
+        color: var(--accent);
+        font-weight: 600;
+        letter-spacing: -0.01em;
       }
 
-      .tool-content .muted {
-        color: var(--text-muted);
-        font-size: 0.875rem;
-        line-height: 1.5;
-        flex: 1;
-      }
-
-      /* 11) Enhanced Actions */
+      /* button-style link */
       .actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: var(--space-sm);
-        align-items: center;
-        margin-top: var(--space);
+        margin-top: 4px;
       }
 
-      .btn {
+      .tool-link {
         display: inline-flex;
         align-items: center;
-        gap: var(--space-xs);
-        padding: var(--space-sm) var(--space-md);
-        border: none;
-        border-radius: var(--radius-lg);
-        font-size: 0.875rem;
-        font-weight: 600;
+        justify-content: center;
+        padding: 10px 20px;
+        border-radius: 8px;
         text-decoration: none;
-        cursor: pointer;
-        transition: all 0.3s ease;
+        font-weight: 500;
+        font-size: 14px;
+        background: linear-gradient(
+          90deg,
+          var(--primary),
+          var(--primary-light)
+        );
+        color: #fff;
+        box-shadow: 0 2px 4px rgba(79, 70, 229, 0.2);
+        transition: var(--transition);
+        min-width: 140px;
         position: relative;
         overflow: hidden;
       }
 
-      .btn::before {
+      .tool-link::before {
         content: "";
         position: absolute;
         top: 0;
@@ -840,368 +694,403 @@
           rgba(255, 255, 255, 0.2),
           transparent
         );
-        transition: left 0.5s ease;
-      }
-
-      .btn:hover::before {
-        left: 100%;
-      }
-
-      .btn-primary {
-        background: var(--gradient);
-        color: white;
-        box-shadow: var(--shadow);
-      }
-
-      .btn-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-lg);
-      }
-
-      .tool-link {
-        color: var(--text-muted);
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 0.875rem;
-        display: inline-flex;
-        align-items: center;
-        gap: var(--space-xs);
-        padding: var(--space-xs) var(--space-sm);
-        border-radius: var(--radius);
-        transition: all 0.2s ease;
+        transition: left 0.5s;
       }
 
       .tool-link:hover {
-        color: var(--text);
-        background: var(--surface-light);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
       }
 
-      /* 12) Enhanced FAQ Section */
+      .tool-link:hover::before {
+        left: 100%;
+      }
+
+      .tool-link:focus {
+        outline: 2px solid rgba(79, 70, 229, 0.4);
+        outline-offset: 2px;
+      }
+
+      /* Keep titles from overflowing */
+      .tool-title {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 180px;
+      }
+
+      @media (min-width: 1200px) {
+        .tool-title {
+          max-width: 220px;
+        }
+      }
+
+      /* Focus management */
+      .card:focus-within {
+        outline: 2px solid rgba(79, 70, 229, 0.4);
+        outline-offset: 2px;
+      }
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      /* Introduction section */
+      .intro {
+        background: var(--card-bg);
+        border-radius: var(--radius);
+        padding: 32px;
+        margin-bottom: 32px;
+        box-shadow: var(--shadow-sm);
+        border: 1px solid rgba(226, 232, 240, 0.8);
+        text-align: center;
+        transition: var(--transition);
+      }
+
+      .intro:hover {
+        box-shadow: var(--shadow-md);
+        transform: translateY(-2px);
+      }
+
+      .intro p {
+        margin: 0;
+        font-size: 18px;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+        color: var(--accent);
+      }
+
+      .intro strong {
+        color: var(--primary);
+        font-weight: 600;
+        background: linear-gradient(
+          135deg,
+          var(--primary),
+          var(--primary-light)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      /* Category navigation */
+      .category-nav {
+        text-align: center;
+        margin-bottom: 32px;
+        padding: 20px 0;
+        border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        border-top: 1px solid rgba(226, 232, 240, 0.8);
+      }
+
+      .category-nav a {
+        color: var(--muted);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 16px;
+        transition: var(--transition);
+        padding: 8px 16px;
+        border-radius: var(--radius);
+        position: relative;
+      }
+
+      .category-nav a:hover {
+        color: var(--primary);
+        background: rgba(79, 70, 229, 0.05);
+        transform: translateY(-1px);
+      }
+
+      .category-nav a:focus {
+        outline: 2px solid rgba(79, 70, 229, 0.4);
+        outline-offset: 2px;
+      }
+
+      .category-nav a::after {
+        content: "•";
+        color: var(--muted);
+        margin: 0 8px;
+        opacity: 0.5;
+      }
+
+      .category-nav a:last-child::after {
+        content: none;
+      }
+
+      /* Search box */
+      .search-box {
+        max-width: 500px;
+        margin: 0 auto 40px;
+        position: relative;
+      }
+
+      .search-box::before {
+        content: "🔍";
+        position: absolute;
+        left: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 16px;
+        color: var(--muted);
+        z-index: 2;
+      }
+
+      .search-box input {
+        width: 100%;
+        padding: 14px 16px 14px 44px;
+        border: 1px solid rgba(226, 232, 240, 0.8);
+        border-radius: var(--radius);
+        font-size: 16px;
+        transition: var(--transition);
+        background: var(--card-bg);
+        box-shadow: var(--shadow-sm);
+        color: var(--accent);
+        font-family: inherit;
+      }
+
+      .search-box input:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1), var(--shadow-md);
+        transform: translateY(-2px);
+      }
+
+      .search-box input::placeholder {
+        color: var(--muted);
+        opacity: 0.7;
+      }
+      .hidden {
+        display: none;
+      }
+      .search-results {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #7f8c8d;
+        font-style: italic;
+      }
+
+      /* Responsive design */
+      @media (max-width: 768px) {
+        .intro {
+          padding: 24px 20px;
+          margin-bottom: 24px;
+        }
+
+        .intro p {
+          font-size: 16px;
+        }
+
+        .category-nav {
+          margin-bottom: 24px;
+          padding: 16px 0;
+        }
+
+        .category-nav a {
+          font-size: 14px;
+          padding: 6px 12px;
+          display: inline-block;
+          margin: 4px 2px;
+        }
+
+        .search-box {
+          margin-bottom: 32px;
+          max-width: 100%;
+        }
+
+        .search-box input {
+          padding: 12px 16px 12px 40px;
+          font-size: 15px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .category-nav a {
+          display: block;
+          margin: 8px 0;
+        }
+
+        .category-nav a::after {
+          content: none;
+        }
+      } /* FAQ Section */
       .faq-section {
-        margin-top: var(--space-xl);
-        padding: var(--space-lg);
-        background: var(--surface);
-        border-radius: var(--radius-xl);
-        border: 1px solid var(--border);
+        margin-top: 80px;
+        padding: 60px 0;
+        background: var(--card-bg);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-sm);
+        border: 1px solid rgba(226, 232, 240, 0.8);
       }
 
       .faq-title {
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 48px;
         text-align: center;
-        margin-bottom: var(--space-lg);
-        font-size: 1.75rem;
-        background: var(--gradient);
+        color: var(--accent);
+        letter-spacing: -0.025em;
+        background: linear-gradient(
+          135deg,
+          var(--primary),
+          var(--primary-light)
+        );
         -webkit-background-clip: text;
-        background-clip: text;
         -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .faq-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 24px;
       }
 
       .faq-item {
-        border-bottom: 1px solid var(--border-light);
-        transition: all 0.3s ease;
+        border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        transition: var(--transition);
       }
 
-      .faq-item:last-child {
-        border-bottom: none;
+      .faq-item:first-child {
+        border-top: 1px solid rgba(226, 232, 240, 0.8);
+      }
+
+      .faq-item:hover {
+        background: rgba(248, 250, 252, 0.5);
       }
 
       .faq-question {
-        background: none;
-        border: none;
-        color: var(--text);
-        font-size: 1.125rem;
+        padding: 24px 0;
         font-weight: 600;
+        font-size: 18px;
         cursor: pointer;
         display: flex;
-        align-items: center;
         justify-content: space-between;
-        width: 100%;
-        padding: var(--space-md) 0;
-        transition: color 0.3s ease;
-        text-align: left;
+        align-items: center;
+        transition: var(--transition);
+        color: var(--accent);
+        line-height: 1.4;
       }
 
       .faq-question:hover {
         color: var(--primary);
       }
 
+      .faq-icon {
+        font-size: 20px;
+        font-weight: 300;
+        transition: var(--transition);
+        color: var(--muted);
+        min-width: 20px;
+        text-align: center;
+        margin-left: 16px;
+      }
+
+      .faq-question:hover .faq-icon {
+        color: var(--primary);
+      }
+
       .faq-answer {
         max-height: 0;
         overflow: hidden;
-        transition: all 0.4s ease;
-        color: var(--text-muted);
+        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       }
-
       .faq-answer.shows {
         max-height: 500px;
         padding-bottom: var(--space-md);
       }
+      .faq-answer p {
+        margin: 0 0 32px 0;
+        font-size: 16px;
+        line-height: 1.6;
+        color: var(--muted);
+        padding-right: 36px;
+      }
 
-      .faq-icon {
-        font-size: 1.25rem;
-        transition: transform 0.3s ease;
+      /* Active state */
+      .faq-item.active {
+        background: rgba(79, 70, 229, 0.02);
+      }
+
+      .faq-item.active .faq-question {
         color: var(--primary);
-        font-weight: 300;
       }
 
-      .faq-icon.rotate {
+      .faq-item.active .faq-icon {
         transform: rotate(45deg);
+        color: var(--primary);
       }
 
-      /* 13) Enhanced Footer */
-      footer.wrap {
-        margin-top: var(--space-xl);
-        padding: var(--space-xl) var(--space-md);
-        border-top: 1px solid var(--border);
-        color: var(--text-muted);
-        text-align: center;
-        background: var(--surface);
-        border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+      .faq-item.active .faq-answer {
+        max-height: 500px;
       }
 
-      footer.wrap p {
-        margin-bottom: var(--space-sm);
-        font-size: 0.875rem;
+      /* Focus states for accessibility */
+      .faq-question:focus {
+        outline: 2px solid rgba(79, 70, 229, 0.4);
+        outline-offset: 2px;
+        border-radius: 4px;
       }
 
-      footer.wrap nav {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: var(--space-sm);
-        margin-top: var(--space);
-      }
-
-      footer.wrap nav a {
-        color: var(--text-muted);
-        text-decoration: none;
-        font-size: 0.875rem;
-        font-weight: 500;
-        padding: var(--space-xs) var(--space-sm);
-        border-radius: var(--radius);
-        transition: all 0.2s ease;
-      }
-
-      footer.wrap nav a:hover {
-        color: var(--text);
-        background: var(--surface-light);
-      }
-
-      /* 14) Enhanced Animations */
-      @keyframes fadeInUp {
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes slideIn {
-        from {
-          opacity: 0;
-          transform: translateX(-20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-
-      @keyframes pulse {
-        0%,
-        100% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.05);
-        }
-      }
-
-      /* 15) Enhanced Form Elements */
-      .form-group {
-        margin-bottom: var(--space-lg);
-      }
-
-      .form-label {
-        display: block;
-        color: var(--text);
-        font-size: 0.875rem;
-        font-weight: 600;
-        margin-bottom: var(--space-xs);
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-      }
-
-      .form-input,
-      .form-textarea,
-      .form-select {
-        width: 100%;
-        background: var(--surface);
-        border: 2px solid var(--border);
-        border-radius: var(--radius-lg);
-        padding: var(--space-sm) var(--space);
-        color: var(--text);
-        font-family: inherit;
-        font-size: 1rem;
-        transition: all 0.3s ease;
-      }
-
-      .form-input:focus,
-      .form-textarea:focus,
-      .form-select:focus {
-        outline: none;
-        border-color: var(--primary);
-        background: var(--background);
-        box-shadow: 0 0 0 4px var(--primary-light);
-        transform: translateY(-2px);
-      }
-
-      .form-textarea {
-        min-height: 120px;
-        resize: vertical;
-        line-height: 1.5;
-      }
-
-      .form-textarea.output {
-        background: var(--success-light);
-        border-color: var(--success);
-      }
-
-      /* 16) Enhanced Utility Classes */
-      .sr-only {
-        position: absolute !important;
-        width: 1px !important;
-        height: 1px !important;
-        padding: 0 !important;
-        margin: -1px !important;
-        overflow: hidden !important;
-        clip: rect(0, 0, 0, 0) !important;
-        white-space: nowrap !important;
-        border: 0 !important;
-      }
-
-      .text-link {
-        color: var(--link);
-        text-decoration: underline;
-        text-decoration-thickness: 2px;
-        text-underline-offset: 3px;
-        font-weight: 600;
-        transition: all 0.2s ease;
-      }
-
-      .text-link:hover,
-      .text-link:focus-visible {
-        color: var(--link-hover);
-        text-decoration-thickness: 3px;
-      }
-
-      .text-link:visited {
-        color: var(--link-visited);
-      }
-
-      /* 17) Enhanced Responsive Design */
+      /* Responsive design */
       @media (max-width: 768px) {
-        .container {
-          padding: var(--space);
+        .faq-section {
+          margin-top: 60px;
+          padding: 40px 0;
         }
 
-        .wrap.brand {
-          flex-direction: column;
-          text-align: center;
-          gap: var(--space-sm);
+        .faq-title {
+          font-size: 28px;
+          margin-bottom: 32px;
+          padding: 0 20px;
         }
 
-        .wrap.brand nav {
-          margin-left: 0;
-          justify-content: center;
-          flex-wrap: wrap;
+        .faq-container {
+          padding: 0 20px;
         }
 
-        .grid {
-          grid-template-columns: 1fr;
-          gap: var(--space);
+        .faq-question {
+          padding: 20px 0;
+          font-size: 16px;
         }
 
-        .intro {
-          padding: var(--space);
-          margin: var(--space) 0;
+        .faq-answer p {
+          font-size: 15px;
+          padding-right: 20px;
+          margin-bottom: 24px;
         }
 
-        .category-nav {
-          gap: var(--space-xs);
-        }
-
-        .category-nav a {
-          font-size: 0.75rem;
-          padding: var(--space-xs) var(--space-sm);
-        }
-
-        .actions {
-          flex-direction: column;
-          align-items: stretch;
-        }
-
-        .btn {
-          justify-content: center;
-        }
-
-        footer.wrap nav {
-          flex-direction: column;
-          align-items: center;
-          gap: var(--space-xs);
+        .faq-icon {
+          font-size: 18px;
+          margin-left: 12px;
         }
       }
 
       @media (max-width: 480px) {
-        .container {
-          padding: var(--space-sm);
+        .faq-section {
+          margin-top: 40px;
+          padding: 32px 0;
         }
 
-        .carda.tool-card {
-          padding: var(--space);
+        .faq-title {
+          font-size: 24px;
+          margin-bottom: 24px;
         }
 
-        .tool-header {
-          flex-direction: column;
-          text-align: center;
-          gap: var(--space-sm);
+        .faq-question {
+          padding: 16px 0;
+          font-size: 15px;
         }
 
-        .tool-icon {
-          align-self: center;
-        }
-      }
-
-      /* 18) Motion Preference */
-      @media (prefers-reduced-motion: reduce) {
-        *,
-        *::before,
-        *::after {
-          animation-duration: 0.01ms !important;
-          animation-iteration-count: 1 !important;
-          transition-duration: 0.01ms !important;
-          scroll-behavior: auto !important;
-        }
-      }
-
-      /* 19) Focus Management */
-      :focus-visible {
-        outline: 2px solid var(--primary);
-        outline-offset: 2px;
-        border-radius: var(--radius-sm);
-      }
-
-      /* 20) Print Styles */
-      @media print {
-        .category-nav,
-        .search-box,
-        .actions .tool-link,
-        footer.wrap nav {
-          display: none;
-        }
-
-        .carda.tool-card {
-          break-inside: avoid;
-          border: 1px solid #ccc;
-          box-shadow: none;
+        .faq-answer p {
+          font-size: 14px;
+          padding-right: 0;
+          margin-bottom: 20px;
         }
       }
     </style>
@@ -1224,7 +1113,6 @@
     >
       Skip to main content
     </a>
-
     <header class="sticky" role="banner">
       <div class="wrap brand">
         <a href="/" class="" aria-label="utilityera Home">
@@ -1239,14 +1127,7 @@
           <h1 class="site-title" style="margin: 0">Utilityera</h1>
         </div>
 
-        <nav
-          style="
-            margin-left: auto;
-            display: flex;
-            gap: 16px;
-            align-items: center;
-          "
-        >
+        <nav>
           <a
             class="muted"
             href="/bn/"
@@ -1263,9 +1144,8 @@
       </div>
     </header>
 
-    <div class="container">
-      <main class="wrap" role="main" id="main-content">
-        <!-- Hidden H1 for main content -->
+    <main class="main-content">
+      <div class="wrap">
         <h1 class="sr-only">Utilityera - Free Online Utilities</h1>
 
         <!-- Introductory content -->
@@ -1281,9 +1161,9 @@
 
         <!-- Category navigation -->
         <div class="category-nav">
-          <a href="#calculators">Calculators</a> •
-          <a href="#text-tools">Text Tools</a> •
-          <a href="#developers">Developer Tools</a> •
+          <a href="#calculators">Calculators</a>
+          <a href="#text-tools">Text Tools</a>
+          <a href="#developers">Developer Tools</a>
           <a href="#productivity">Productivity</a>
         </div>
 
@@ -1296,571 +1176,436 @@
             aria-label="Search tools"
           />
         </div>
-        <section class="grid" aria-label="Tools">
+        <div class="search-results" id="searchResults">Showing all tools</div>
+        <section class="grid" aria-label="Tools" id="toolsGrid">
           <!-- Percent Calculator -->
           <article
-            class="carda tool-card"
+            class="card-home tool-card"
             data-category="calculators"
             role="article"
+            tabindex="0"
           >
             <div class="tool-icon" aria-hidden="true">
-              <i class="fas fa-percent" aria-hidden="true"></i>
+              <i class="fas fa-percent"></i>
             </div>
             <div class="tool-content">
-              <h2 class="tool-title">Percent Calculator</h2>
-              <p class="muted">
-                Calculate percentages, percentage increase/decrease, and find
-                what percent one number is of another. Works entirely in your
-                browser.
-              </p>
-              <p class="actions">
+              <h3 class="tool-title">Percent Calculator</h3>
+              <div class="actions">
                 <a
-                  class="btn btn-primary"
+                  class="tool-link"
                   href="/percent-calculator/"
                   aria-label="Open Percent Calculator"
-                  >Open Percent Calculator</a
+                  >Open Calculator</a
                 >
-                <a class="tool-link" href="/percent-calculator/"
-                  >Percent Calculator
-                  <i class="fas fa-arrow-right" aria-hidden="true"></i
-                ></a>
-              </p>
+              </div>
             </div>
           </article>
 
           <!-- Age Calculator -->
           <article
-            class="carda tool-card"
+            class="card-home tool-card"
             data-category="calculators"
             role="article"
+            tabindex="0"
           >
             <div class="tool-icon" aria-hidden="true">
-              <i class="fas fa-user-clock" aria-hidden="true"></i>
+              <i class="fas fa-user-clock"></i>
             </div>
             <div class="tool-content">
-              <h2 class="tool-title">Age Calculator</h2>
-              <p class="muted">
-                Find your exact age in years, months, and days. Accurate age
-                calculator that works entirely in your browser.
-              </p>
-              <p class="actions">
+              <h3 class="tool-title">Age Calculator</h3>
+              <div class="actions">
                 <a
-                  class="btn btn-primary"
+                  class="tool-link"
                   href="/age-calculator/"
                   aria-label="Open Age Calculator"
-                  >Open Age Calculator</a
+                  >Open Calculator</a
                 >
-                <a class="tool-link" href="/age-calculator/"
-                  >Age Calculator
-                  <i class="fas fa-arrow-right" aria-hidden="true"></i
-                ></a>
-              </p>
+              </div>
             </div>
           </article>
 
           <!-- Date Calculator -->
           <article
-            class="carda tool-card"
+            class="card-home tool-card"
             data-category="calculators"
             role="article"
+            tabindex="0"
           >
             <div class="tool-icon" aria-hidden="true">
-              <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+              <i class="fas fa-calendar-alt"></i>
             </div>
             <div class="tool-content">
-              <h2 class="tool-title">Date Calculator</h2>
-              <p class="muted">
-                Calculate the difference between dates or add/subtract days from
-                a date. Free date calculator tool.
-              </p>
-              <p class="actions">
+              <h3 class="tool-title">Date Calculator</h3>
+              <div class="actions">
                 <a
-                  class="btn btn-primary"
+                  class="tool-link"
                   href="/date-calculator/"
                   aria-label="Open Date Calculator"
-                  >Open Date Calculator</a
+                  >Open Calculator</a
                 >
-                <a class="tool-link" href="/date-calculator/"
-                  >Date Calculator
-                  <i class="fas fa-arrow-right" aria-hidden="true"></i
-                ></a>
-              </p>
+              </div>
             </div>
           </article>
 
           <!-- Calculator -->
           <article
-            class="carda tool-card"
+            class="card-home tool-card"
             data-category="calculators"
             role="article"
+            tabindex="0"
           >
             <div class="tool-icon" aria-hidden="true">
-              <i class="fas fa-calculator" aria-hidden="true"></i>
+              <i class="fas fa-calculator"></i>
             </div>
             <div class="tool-content">
-              <h2 class="tool-title">Calculator</h2>
-              <p class="muted">
-                Add, subtract, multiply, divide and calculate percentages.
-                Full-featured online calculator.
-              </p>
-              <p class="actions">
+              <h3 class="tool-title">Calculator</h3>
+              <div class="actions">
                 <a
-                  class="btn btn-primary"
+                  class="tool-link"
                   href="/calculator/"
                   aria-label="Open Calculator"
                   >Open Calculator</a
                 >
-                <a class="tool-link" href="/calculator/"
-                  >Calculator
-                  <i class="fas fa-arrow-right" aria-hidden="true"></i
-                ></a>
-              </p>
+              </div>
             </div>
           </article>
 
           <!-- Unit Converter -->
           <article
-            class="carda tool-card"
+            class="card-home tool-card"
             data-category="calculators"
             role="article"
+            tabindex="0"
           >
             <div class="tool-icon" aria-hidden="true">
-              <i class="fas fa-ruler-combined" aria-hidden="true"></i>
+              <i class="fas fa-ruler-combined"></i>
             </div>
             <div class="tool-content">
-              <h2 class="tool-title">Unit Converter</h2>
-              <p class="muted">
-                Convert length, weight, temperature, and other units. Free
-                online unit conversion tool.
-              </p>
-              <p class="actions">
+              <h3 class="tool-title">Unit Converter</h3>
+              <div class="actions">
                 <a
-                  class="btn btn-primary"
+                  class="tool-link"
                   href="/unit-converter/"
                   aria-label="Open Unit Converter"
-                  >Open Unit Converter</a
+                  >Open Converter</a
                 >
-                <a class="tool-link" href="/unit-converter/"
-                  >Unit Converter
-                  <i class="fas fa-arrow-right" aria-hidden="true"></i
-                ></a>
-              </p>
+              </div>
             </div>
           </article>
 
           <!-- Text → PDF -->
           <article
-            class="carda tool-card"
+            class="card-home tool-card"
             data-category="text-tools"
             role="article"
+            tabindex="0"
           >
             <div class="tool-icon" aria-hidden="true">
-              <i class="fas fa-file-pdf" aria-hidden="true"></i>
+              <i class="fas fa-file-pdf"></i>
             </div>
             <div class="tool-content">
-              <h2 class="tool-title">Text → PDF</h2>
-              <p class="muted">
-                Convert plain text to PDF instantly. Free text to PDF converter
-                that works in your browser.
-              </p>
-              <p class="actions">
+              <h3 class="tool-title">Text → PDF</h3>
+              <div class="actions">
                 <a
-                  class="btn btn-primary"
+                  class="tool-link"
                   href="/text-to-pdf/"
                   aria-label="Open Text to PDF"
-                  >Open Text → PDF</a
+                  >Convert Text</a
                 >
-                <a class="tool-link" href="/text-to-pdf/"
-                  >Text → PDF
-                  <i class="fas fa-arrow-right" aria-hidden="true"></i
-                ></a>
-              </p>
+              </div>
             </div>
           </article>
 
           <!-- Text Utilities -->
           <article
-            class="carda tool-card"
+            class="card-home tool-card"
             data-category="text-tools"
             role="article"
+            tabindex="0"
           >
             <div class="tool-icon" aria-hidden="true">
-              <i class="fas fa-i-cursor" aria-hidden="true"></i>
+              <i class="fas fa-i-cursor"></i>
             </div>
             <div class="tool-content">
-              <h2 class="tool-title">Text Utilities</h2>
-              <p class="muted">
-                Convert text to uppercase/lowercase, count words and characters,
-                remove extra spaces. Free text tools.
-              </p>
-              <p class="actions">
+              <h3 class="tool-title">Text Utilities</h3>
+              <div class="actions">
                 <a
-                  class="btn btn-primary"
+                  class="tool-link"
                   href="/text-utilities/"
                   aria-label="Open Text Utilities"
-                  >Open Text Utilities</a
+                  >Open Utilities</a
                 >
-                <a class="tool-link" href="/text-utilities/"
-                  >Text Utilities
-                  <i class="fas fa-arrow-right" aria-hidden="true"></i
-                ></a>
-              </p>
+              </div>
             </div>
           </article>
 
           <!-- Base64 Tools -->
           <article
-            class="carda tool-card"
+            class="card-home tool-card"
             data-category="developers"
             role="article"
+            tabindex="0"
           >
             <div class="tool-icon" aria-hidden="true">
-              <i class="fas fa-code" aria-hidden="true"></i>
+              <i class="fas fa-code"></i>
             </div>
             <div class="tool-content">
-              <h2 class="tool-title">Base64 Tools</h2>
-              <p class="muted">
-                Encode or decode Base64 safely online. Free Base64 encoder and
-                decoder for developers.
-              </p>
-              <p class="actions">
+              <h3 class="tool-title">Base64 Tools</h3>
+              <div class="actions">
                 <a
-                  class="btn btn-primary"
+                  class="tool-link"
                   href="/base64/"
                   aria-label="Open Base64 Tools"
-                  >Open Base64 Tools</a
+                  >Open Tools</a
                 >
-                <a class="tool-link" href="/base64/"
-                  >Base64 Tools
-                  <i class="fas fa-arrow-right" aria-hidden="true"></i
-                ></a>
-              </p>
+              </div>
             </div>
           </article>
 
           <!-- URL Tools -->
           <article
-            class="carda tool-card"
+            class="card-home tool-card"
             data-category="developers"
             role="article"
+            tabindex="0"
           >
             <div class="tool-icon" aria-hidden="true">
-              <i class="fas fa-link" aria-hidden="true"></i>
+              <i class="fas fa-link"></i>
             </div>
             <div class="tool-content">
-              <h2 class="tool-title">URL Tools</h2>
-              <p class="muted">
-                Encode or decode URLs safely. Free URL encoder and decoder for
-                web developers.
-              </p>
-              <p class="actions">
+              <h3 class="tool-title">URL Tools</h3>
+              <div class="actions">
                 <a
-                  class="btn btn-primary"
+                  class="tool-link"
                   href="/url-tools/"
                   aria-label="Open URL Tools"
-                  >Open URL Tools</a
+                  >Open Tools</a
                 >
-                <a class="tool-link" href="/url-tools/"
-                  >URL Tools
-                  <i class="fas fa-arrow-right" aria-hidden="true"></i
-                ></a>
-              </p>
+              </div>
             </div>
           </article>
 
           <!-- Password & UUID Generator -->
           <article
-            class="carda tool-card"
+            class="card-home tool-card"
             data-category="developers"
             role="article"
+            tabindex="0"
           >
             <div class="tool-icon" aria-hidden="true">
-              <i class="fas fa-key" aria-hidden="true"></i>
+              <i class="fas fa-key"></i>
             </div>
             <div class="tool-content">
-              <h2 class="tool-title">Password Generator</h2>
-              <p class="muted">
-                Generate secure passwords and UUID v4. Free password generator
-                for security and development.
-              </p>
-              <p class="actions">
+              <h3 class="tool-title">Password Generator</h3>
+              <div class="actions">
                 <a
-                  class="btn btn-primary"
+                  class="tool-link"
                   href="/password-uuid/"
-                  aria-label="Open Password and UUID Generator"
-                  >Open Generator</a
+                  aria-label="Open Password Generator"
+                  >Generate</a
                 >
-                <a class="tool-link" href="/password-uuid/"
-                  >Password Generator
-                  <i class="fas fa-arrow-right" aria-hidden="true"></i
-                ></a>
-              </p>
+              </div>
             </div>
           </article>
 
           <!-- UUID v4 -->
           <article
-            class="carda tool-card"
+            class="card-home tool-card"
             data-category="developers"
             role="article"
+            tabindex="0"
           >
             <div class="tool-icon" aria-hidden="true">
-              <i class="fas fa-qrcode" aria-hidden="true"></i>
+              <i class="fas fa-qrcode"></i>
             </div>
             <div class="tool-content">
-              <h2 class="tool-title">UUID v4</h2>
-              <p class="muted">
-                Generate RFC 4122 version-4 UUIDs. Free UUID generator for
-                developers and applications.
-              </p>
-              <p class="actions">
-                <a
-                  class="btn btn-primary"
-                  href="/uuid-v4/"
-                  aria-label="Open UUID v4"
-                  >Open UUID v4</a
+              <h3 class="tool-title">UUID v4</h3>
+              <div class="actions">
+                <a class="tool-link" href="/uuid-v4/" aria-label="Open UUID v4"
+                  >Generate UUID</a
                 >
-                <a class="tool-link" href="/uuid-v4/"
-                  >UUID v4 <i class="fas fa-arrow-right" aria-hidden="true"></i
-                ></a>
-              </p>
+              </div>
             </div>
           </article>
 
           <!-- SHA-256 Hash -->
           <article
-            class="carda tool-card"
+            class="card-home tool-card"
             data-category="developers"
             role="article"
+            tabindex="0"
           >
             <div class="tool-icon" aria-hidden="true">
-              <i class="fas fa-shield-alt" aria-hidden="true"></i>
+              <i class="fas fa-shield-alt"></i>
             </div>
             <div class="tool-content">
-              <h2 class="tool-title">SHA-256 Hash</h2>
-              <p class="muted">
-                Hash any text or string using SHA-256. Free SHA-256 hash
-                generator for security and development.
-              </p>
-              <p class="actions">
-                <a
-                  class="btn btn-primary"
-                  href="/sha256/"
-                  aria-label="Open SHA-256 Tool"
-                  >Open SHA-256 Tool</a
+              <h3 class="tool-title">SHA-256 Hash</h3>
+              <div class="actions">
+                <a class="tool-link" href="/sha256/" aria-label="Open SHA-256"
+                  >Generate Hash</a
                 >
-                <a class="tool-link" href="/sha256/"
-                  >SHA-256 Hash
-                  <i class="fas fa-arrow-right" aria-hidden="true"></i
-                ></a>
-              </p>
-            </div>
-          </article>
-
-          <!-- Image Resizer & Compressor -->
-          <article
-            class="carda tool-card"
-            data-category="productivity"
-            role="article"
-          >
-            <div class="tool-icon" aria-hidden="true">
-              <i class="fas fa-image" aria-hidden="true"></i>
-            </div>
-            <div class="tool-content">
-              <h2 class="tool-title">Image Resizer &amp; Compressor</h2>
-              <p class="muted">
-                Resize and compress images (JPG/PNG/WebP). Free online image
-                optimization tool.
-              </p>
-              <p class="actions">
-                <a
-                  class="btn btn-primary"
-                  href="/image-resizer-compressor/"
-                  aria-label="Open Image Resizer and Compressor"
-                  >Open Image Resizer</a
-                >
-                <a class="tool-link" href="/image-resizer-compressor/"
-                  >Image Resizer
-                  <i class="fas fa-arrow-right" aria-hidden="true"></i
-                ></a>
-              </p>
-            </div>
-          </article>
-
-          <!-- Color Picker & Contrast -->
-          <article
-            class="carda tool-card"
-            data-category="productivity"
-            role="article"
-          >
-            <div class="tool-icon" aria-hidden="true">
-              <i class="fas fa-eye-dropper" aria-hidden="true"></i>
-            </div>
-            <div class="tool-content">
-              <h2 class="tool-title">Color Picker &amp; Contrast</h2>
-              <p class="muted">
-                Check WCAG contrast between colors. Free color picker and
-                accessibility contrast checker.
-              </p>
-              <p class="actions">
-                <a
-                  class="btn btn-primary"
-                  href="/color-picker-contrast/"
-                  aria-label="Open Color Picker and Contrast Checker"
-                  >Open Contrast Checker</a
-                >
-                <a class="tool-link" href="/color-picker-contrast/"
-                  >Color Picker &amp; Contrast
-                  <i class="fas fa-arrow-right" aria-hidden="true"></i
-                ></a>
-              </p>
-            </div>
-          </article>
-
-          <!-- Stopwatch & Countdown -->
-          <article
-            class="carda tool-card"
-            data-category="productivity"
-            role="article"
-          >
-            <div class="tool-icon" aria-hidden="true">
-              <i class="fas fa-stopwatch" aria-hidden="true"></i>
-            </div>
-            <div class="tool-content">
-              <h2 class="tool-title">Stopwatch &amp; Countdown</h2>
-              <p class="muted">
-                Track time with stopwatch or countdown. Free online timer tools
-                for productivity.
-              </p>
-              <p class="actions">
-                <a
-                  class="btn btn-primary"
-                  href="/stopwatch-countdown/"
-                  aria-label="Open Stopwatch and Countdown"
-                  >Open Stopwatch</a
-                >
-                <a class="tool-link" href="/stopwatch-countdown/"
-                  >Stopwatch &amp; Countdown
-                  <i class="fas fa-arrow-right" aria-hidden="true"></i
-                ></a>
-              </p>
-            </div>
-          </article>
-
-          <!-- Quick Notes -->
-          <article
-            class="carda tool-card"
-            data-category="productivity"
-            role="article"
-          >
-            <div class="tool-icon" aria-hidden="true">
-              <i class="fas fa-sticky-note" aria-hidden="true"></i>
-            </div>
-            <div class="tool-content">
-              <h2 class="tool-title">Quick Notes</h2>
-              <p class="muted">
-                Save notes in your browser (localStorage). Free online notepad
-                for quick notes.
-              </p>
-              <p class="actions">
-                <a
-                  class="btn btn-primary"
-                  href="/quick-notes/"
-                  aria-label="Open Quick Notes"
-                  >Open Notes</a
-                >
-                <a class="tool-link" href="/quick-notes/"
-                  >Quick Notes
-                  <i class="fas fa-arrow-right" aria-hidden="true"></i
-                ></a>
-              </p>
+              </div>
             </div>
           </article>
 
           <!-- JSON Formatter -->
           <article
-            class="carda tool-card"
+            class="card-home tool-card"
             data-category="developers"
             role="article"
+            tabindex="0"
           >
             <div class="tool-icon" aria-hidden="true">
-              <i class="fas fa-file-code" aria-hidden="true"></i>
+              <i class="fas fa-file-code"></i>
             </div>
             <div class="tool-content">
-              <h2 class="tool-title">JSON Formatter</h2>
-              <p class="muted">
-                Format, minify, and validate JSON. Free JSON formatter and
-                validator for developers.
-              </p>
-              <p class="actions">
+              <h3 class="tool-title">JSON Formatter</h3>
+              <div class="actions">
                 <a
-                  class="btn btn-primary"
+                  class="tool-link"
                   href="/json-formatter/"
                   aria-label="Open JSON Formatter"
-                  >Open JSON Formatter</a
+                  >Format JSON</a
                 >
-                <a class="tool-link" href="/json-formatter/"
-                  >JSON Formatter
-                  <i class="fas fa-arrow-right" aria-hidden="true"></i
-                ></a>
-              </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Image Resizer & Compressor -->
+          <article
+            class="card-home tool-card"
+            data-category="productivity"
+            role="article"
+            tabindex="0"
+          >
+            <div class="tool-icon" aria-hidden="true">
+              <i class="fas fa-image"></i>
+            </div>
+            <div class="tool-content">
+              <h3 class="tool-title">Image Resizer & Compressor</h3>
+              <div class="actions">
+                <a
+                  class="tool-link"
+                  href="/image-resizer-compressor/"
+                  aria-label="Open Image Resizer"
+                  >Resize Image</a
+                >
+              </div>
+            </div>
+          </article>
+
+          <!-- Color Picker & Contrast -->
+          <article
+            class="card-home tool-card"
+            data-category="productivity"
+            role="article"
+            tabindex="0"
+          >
+            <div class="tool-icon" aria-hidden="true">
+              <i class="fas fa-eye-dropper"></i>
+            </div>
+            <div class="tool-content">
+              <h3 class="tool-title">Color Picker & Contrast</h3>
+              <div class="actions">
+                <a
+                  class="tool-link"
+                  href="/color-picker-contrast/"
+                  aria-label="Open Contrast Checker"
+                  >Pick Colors</a
+                >
+              </div>
+            </div>
+          </article>
+
+          <!-- Stopwatch & Countdown -->
+          <article
+            class="card-home tool-card"
+            data-category="productivity"
+            role="article"
+            tabindex="0"
+          >
+            <div class="tool-icon" aria-hidden="true">
+              <i class="fas fa-stopwatch"></i>
+            </div>
+            <div class="tool-content">
+              <h3 class="tool-title">Stopwatch & Countdown</h3>
+              <div class="actions">
+                <a
+                  class="tool-link"
+                  href="/stopwatch-countdown/"
+                  aria-label="Open Stopwatch"
+                  >Start Timer</a
+                >
+              </div>
+            </div>
+          </article>
+
+          <!-- Quick Notes -->
+          <article
+            class="card-home tool-card"
+            data-category="productivity"
+            role="article"
+            tabindex="0"
+          >
+            <div class="tool-icon" aria-hidden="true">
+              <i class="fas fa-sticky-note"></i>
+            </div>
+            <div class="tool-content">
+              <h3 class="tool-title">Quick Notes</h3>
+              <div class="actions">
+                <a
+                  class="tool-link"
+                  href="/quick-notes/"
+                  aria-label="Open Quick Notes"
+                  >Take Notes</a
+                >
+              </div>
             </div>
           </article>
 
           <!-- Compress PDF -->
           <article
-            class="carda tool-card"
+            class="card-home tool-card"
             data-category="documents"
             role="article"
+            tabindex="0"
           >
             <div class="tool-icon" aria-hidden="true">
-              <i class="fas fa-file-pdf" aria-hidden="true"></i>
+              <i class="fas fa-file-pdf"></i>
             </div>
             <div class="tool-content">
-              <h2 class="tool-title">Compress PDF</h2>
-              <p class="muted">
-                Reduce PDF file size without losing visible quality. Fast,
-                secure, and works entirely in your browser.
-              </p>
-              <p class="actions">
+              <h3 class="tool-title">Compress PDF</h3>
+              <div class="actions">
                 <a
-                  class="btn btn-primary"
+                  class="tool-link"
                   href="/compress-pdf/"
-                  aria-label="Open Compress PDF tool"
-                  >Open Compress PDF</a
+                  aria-label="Open Compress PDF"
+                  >Compress PDF</a
                 >
-                <a class="tool-link" href="/compress-pdf/"
-                  >Compress PDF
-                  <i class="fas fa-arrow-right" aria-hidden="true"></i
-                ></a>
-              </p>
+              </div>
             </div>
           </article>
 
           <!-- Learning English -->
           <article
-            class="carda tool-card"
+            class="card-home tool-card"
             data-category="documents"
             role="article"
+            tabindex="0"
           >
             <div class="tool-icon" aria-hidden="true">
-              <i class="fas fa-file-pdf" aria-hidden="true"></i>
+              <i class="fas fa-book"></i>
             </div>
             <div class="tool-content">
-              <h2 class="tool-title">Learning English</h2>
-              <p class="muted">Learn English for question</p>
-              <p class="actions">
+              <h3 class="tool-title">Learning English</h3>
+              <div class="actions">
                 <a
-                  class="btn btn-primary"
+                  class="tool-link"
                   href="/learning-english/"
                   aria-label="Open Learning English"
                   >Learn English</a
                 >
-                <a class="tool-link" href="/learning-english/"
-                  >Learning English
-                  <i class="fas fa-arrow-right" aria-hidden="true"></i
-                ></a>
-              </p>
+              </div>
             </div>
           </article>
         </section>
@@ -1952,41 +1697,73 @@
             </div>
           </div>
         </section>
-      </main>
-
-      <footer class="wrap">
-        <p>
-          © <span id="y"></span> Utilityera • Free Online Utilities & Web Tools
-        </p>
-        <p>
-          100% client-side tools: Calculator, Unit Converter, JSON Formatter,
-          Image Compressor, Text Utilities
-        </p>
-        <nav>
-          <a href="/privacy/">Privacy Policy</a> ·
-          <a href="/terms/">Terms of Service</a> ·
-          <a href="/about/">About Us</a> · <a href="/contact/">Contact</a> ·
-          <a href="/sitemap.xml">Sitemap</a>
-        </nav>
-      </footer>
-    </div>
+      </div>
+    </main>
+    <script src="/assets/script.js" defer data-trk-site="Utilityera"></script>
     <script>
-      document.getElementById("y").textContent = new Date().getFullYear();
+      document.addEventListener("DOMContentLoaded", function () {
+        const searchInput = document.getElementById("toolSearch");
+        const toolCards = document.querySelectorAll(".tool-card");
+        const searchResults = document.getElementById("searchResults");
+        const toolsGrid = document.getElementById("toolsGrid");
 
-      // Search functionality
+        // Create no results message element
+        const noResultsMessage = document.createElement("div");
+        noResultsMessage.className = "no-results hidden";
+        noResultsMessage.textContent = "No tools found matching your search.";
+        toolsGrid.appendChild(noResultsMessage);
 
-      const q = document.getElementById("toolSearch");
-      const cards = Array.from(document.querySelectorAll(".carda.tool-card"));
-      q?.addEventListener("input", () => {
-        const term = q.value.trim().toLowerCase();
-        cards.forEach((c) => {
-          const text = c.textContent.toLowerCase();
-          c.style.display = text.includes(term) ? "" : "none";
+        // Add event listener for search input
+        searchInput.addEventListener("input", function () {
+          const searchTerm = this.value.toLowerCase().trim();
+          let visibleCount = 0;
+
+          // Filter tools based on search term
+          toolCards.forEach((card) => {
+            const toolTitle = card
+              .querySelector(".tool-title")
+              .textContent.toLowerCase();
+            const toolCategory = card
+              .getAttribute("data-category")
+              .toLowerCase();
+
+            // Show card if title or category matches search term
+            if (
+              toolTitle.includes(searchTerm) ||
+              toolCategory.includes(searchTerm)
+            ) {
+              card.classList.remove("hidden");
+              visibleCount++;
+            } else {
+              card.classList.add("hidden");
+            }
+          });
+
+          // Update search results message
+          if (searchTerm === "") {
+            searchResults.textContent = "Showing all tools";
+          } else {
+            searchResults.textContent = `Found ${visibleCount} tool${
+              visibleCount !== 1 ? "s" : ""
+            } for "${searchTerm}"`;
+          }
+
+          // Show/hide no results message
+          if (visibleCount === 0 && searchTerm !== "") {
+            noResultsMessage.classList.remove("hidden");
+          } else {
+            noResultsMessage.classList.add("hidden");
+          }
+        });
+
+        // Add keyboard navigation for accessibility
+        searchInput.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") {
+            this.value = "";
+            this.dispatchEvent(new Event("input"));
+          }
         });
       });
     </script>
-
-    <script src="/assets/tracker.js" defer data-trk-site="Utilityera"></script>
-    <script src="/assets/script.js" defer data-trk-site="Utilityera"></script>
   </body>
 </html>
