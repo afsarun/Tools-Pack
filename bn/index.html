@@ -28,7 +28,7 @@
     <link rel="alternate" hreflang="x-default" href="https://utilityera.com/" />
 
     <!-- Styles (root-relative so it works from any depth) -->
-    <link rel="stylesheet" href="/assets/style.css" />
+    <!-- <link rel="stylesheet" href="/assets/style.css" /> -->
 
     <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
@@ -230,6 +230,764 @@
         ]
       }
     </script>
+    <style>
+      :root {
+        --page-bg: #f8fafc;
+        --card-bg: #ffffff;
+        --muted: #64748b;
+        --accent: #0f172a;
+        --primary: #4f46e5;
+        --primary-light: #818cf8;
+        --radius: 12px;
+        --gap: 24px;
+        --maxw: 1200px;
+        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        --transition: all 0.2s ease-in-out;
+        --header-height: 80px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        background: var(--page-bg);
+        font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial;
+        color: var(--accent);
+        line-height: 1.5;
+        scroll-padding-top: var(--header-height);
+      }
+
+      /* Sticky Header */
+      .sticky {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        box-shadow: var(--shadow-sm);
+        height: var(--header-height);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 12px 0;
+      }
+
+      .brand a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+      }
+
+      .brand img {
+        border-radius: 8px;
+        transition: var(--transition);
+      }
+
+      .brand img:hover {
+        transform: scale(1.05);
+      }
+
+      .site-title {
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--accent);
+        margin: 0;
+        letter-spacing: -0.025em;
+      }
+
+      nav {
+        margin-left: auto;
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: var(--muted);
+        font-weight: 500;
+        font-size: 14px;
+        transition: var(--transition);
+        padding: 8px 12px;
+        border-radius: 6px;
+      }
+
+      nav a:hover {
+        color: var(--primary);
+        background: rgba(79, 70, 229, 0.05);
+      }
+
+      nav a:focus {
+        outline: 2px solid rgba(79, 70, 229, 0.4);
+        outline-offset: 2px;
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+
+      .wrap {
+        max-width: var(--maxw);
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* Main Content */
+      .main-content {
+        padding: 40px 0;
+      }
+
+      /* Header */
+      .page-header {
+        margin-bottom: 32px;
+        text-align: center;
+      }
+
+      .page-title {
+        font-size: 28px;
+        font-weight: 700;
+        margin: 0 0 8px 0;
+        color: var(--accent);
+        letter-spacing: -0.025em;
+      }
+
+      .page-subtitle {
+        font-size: 16px;
+        color: var(--muted);
+        margin: 0;
+        font-weight: 400;
+      }
+
+      /* Grid */
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--gap);
+        align-items: stretch;
+      }
+
+      @media (max-width: 1100px) {
+        .grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      @media (max-width: 780px) {
+        .grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        nav {
+          gap: 12px;
+        }
+
+        nav a {
+          font-size: 13px;
+          padding: 6px 10px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .brand {
+          flex-wrap: wrap;
+          gap: 12px;
+        }
+
+        .site-title {
+          font-size: 20px;
+        }
+
+        nav {
+          order: 3;
+          width: 100%;
+          justify-content: center;
+          margin-left: 0;
+          margin-top: 8px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+
+        nav {
+          gap: 8px;
+        }
+
+        nav a {
+          font-size: 12px;
+          padding: 6px 8px;
+        }
+      }
+
+      /* Card */
+      .card-home {
+        background: var(--card-bg);
+        border: 1px solid rgba(226, 232, 240, 0.8);
+        padding: 28px 24px;
+        border-radius: var(--radius);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        min-height: 180px;
+        box-shadow: var(--shadow-sm);
+        text-align: center;
+        transition: var(--transition);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .card-home::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          var(--primary),
+          var(--primary-light)
+        );
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+      }
+
+      .card-home:focus-within,
+      .card-home:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--shadow-lg);
+        border-color: rgba(99, 102, 241, 0.2);
+      }
+
+      .card-home:focus-within::before,
+      .card-home:hover::before {
+        transform: scaleX(1);
+      }
+
+      /* Icon square */
+      .tool-icon {
+        width: 72px;
+        height: 72px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+      }
+
+      .tool-icon i {
+        font-size: 24px;
+      }
+
+      .card-home:focus-within .tool-icon,
+      .card-home:hover .tool-icon {
+        transform: scale(1.05);
+      }
+
+      /* Color variations */
+      .card-home:nth-child(6n + 1) .tool-icon {
+        background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+        color: #4f46e5;
+      }
+
+      .card-home:nth-child(6n + 2) .tool-icon {
+        background: linear-gradient(135deg, #fce7f3, #fbcfe8);
+        color: #db2777;
+      }
+
+      .card-home:nth-child(6n + 3) .tool-icon {
+        background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+        color: #059669;
+      }
+
+      .card-home:nth-child(6n + 4) .tool-icon {
+        background: linear-gradient(135deg, #fef3c7, #fde68a);
+        color: #d97706;
+      }
+
+      .card-home:nth-child(6n + 5) .tool-icon {
+        background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+        color: #0284c7;
+      }
+
+      .card-home:nth-child(6n + 6) .tool-icon {
+        background: linear-gradient(135deg, #f3e8ff, #e9d5ff);
+        color: #7c3aed;
+      }
+
+      .tool-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 12px;
+        width: 100%;
+      }
+
+      .tool-title {
+        font-size: 16px;
+        margin: 0;
+        color: var(--accent);
+        font-weight: 600;
+        letter-spacing: -0.01em;
+      }
+
+      /* button-style link */
+      .actions {
+        margin-top: 4px;
+      }
+
+      .tool-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 14px;
+        background: linear-gradient(
+          90deg,
+          var(--primary),
+          var(--primary-light)
+        );
+        color: #fff;
+        box-shadow: 0 2px 4px rgba(79, 70, 229, 0.2);
+        transition: var(--transition);
+        min-width: 140px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .tool-link::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+
+      .tool-link:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+      }
+
+      .tool-link:hover::before {
+        left: 100%;
+      }
+
+      .tool-link:focus {
+        outline: 2px solid rgba(79, 70, 229, 0.4);
+        outline-offset: 2px;
+      }
+
+      /* Keep titles from overflowing */
+      .tool-title {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 180px;
+      }
+
+      @media (min-width: 1200px) {
+        .tool-title {
+          max-width: 220px;
+        }
+      }
+
+      /* Focus management */
+      .card:focus-within {
+        outline: 2px solid rgba(79, 70, 229, 0.4);
+        outline-offset: 2px;
+      }
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      /* Introduction section */
+      .intro {
+        background: var(--card-bg);
+        border-radius: var(--radius);
+        padding: 32px;
+        margin-bottom: 32px;
+        box-shadow: var(--shadow-sm);
+        border: 1px solid rgba(226, 232, 240, 0.8);
+        text-align: center;
+        transition: var(--transition);
+      }
+
+      .intro:hover {
+        box-shadow: var(--shadow-md);
+        transform: translateY(-2px);
+      }
+
+      .intro p {
+        margin: 0;
+        font-size: 18px;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto;
+        color: var(--accent);
+      }
+
+      .intro strong {
+        color: var(--primary);
+        font-weight: 600;
+        background: linear-gradient(
+          135deg,
+          var(--primary),
+          var(--primary-light)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      /* Category navigation */
+      .category-nav {
+        text-align: center;
+        margin-bottom: 32px;
+        padding: 20px 0;
+        border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        border-top: 1px solid rgba(226, 232, 240, 0.8);
+      }
+
+      .category-nav a {
+        color: var(--muted);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 16px;
+        transition: var(--transition);
+        padding: 8px 16px;
+        border-radius: var(--radius);
+        position: relative;
+      }
+
+      .category-nav a:hover {
+        color: var(--primary);
+        background: rgba(79, 70, 229, 0.05);
+        transform: translateY(-1px);
+      }
+
+      .category-nav a:focus {
+        outline: 2px solid rgba(79, 70, 229, 0.4);
+        outline-offset: 2px;
+      }
+
+      .category-nav a::after {
+        content: "•";
+        color: var(--muted);
+        margin: 0 8px;
+        opacity: 0.5;
+      }
+
+      .category-nav a:last-child::after {
+        content: none;
+      }
+
+      /* Search box */
+      .search-box {
+        max-width: 500px;
+        margin: 0 auto 40px;
+        position: relative;
+      }
+
+      .search-box::before {
+        content: "🔍";
+        position: absolute;
+        left: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 16px;
+        color: var(--muted);
+        z-index: 2;
+      }
+
+      .search-box input {
+        width: 100%;
+        padding: 14px 16px 14px 44px;
+        border: 1px solid rgba(226, 232, 240, 0.8);
+        border-radius: var(--radius);
+        font-size: 16px;
+        transition: var(--transition);
+        background: var(--card-bg);
+        box-shadow: var(--shadow-sm);
+        color: var(--accent);
+        font-family: inherit;
+      }
+
+      .search-box input:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1), var(--shadow-md);
+        transform: translateY(-2px);
+      }
+
+      .search-box input::placeholder {
+        color: var(--muted);
+        opacity: 0.7;
+      }
+      .hidden {
+        display: none;
+      }
+      .search-results {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #0c0d0e;
+        font-style: italic;
+      }
+
+      /* Responsive design */
+      @media (max-width: 768px) {
+        .intro {
+          padding: 24px 20px;
+          margin-bottom: 24px;
+        }
+
+        .intro p {
+          font-size: 16px;
+        }
+
+        .category-nav {
+          margin-bottom: 24px;
+          padding: 16px 0;
+        }
+
+        .category-nav a {
+          font-size: 14px;
+          padding: 6px 12px;
+          display: inline-block;
+          margin: 4px 2px;
+        }
+
+        .search-box {
+          margin-bottom: 32px;
+          max-width: 100%;
+        }
+
+        .search-box input {
+          padding: 12px 16px 12px 40px;
+          font-size: 15px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .category-nav a {
+          display: block;
+          margin: 8px 0;
+        }
+
+        .category-nav a::after {
+          content: none;
+        }
+      } /* FAQ Section */
+      .faq-section {
+        margin-top: 80px;
+        padding: 60px 0;
+        background: var(--card-bg);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-sm);
+        border: 1px solid rgba(226, 232, 240, 0.8);
+      }
+
+      .faq-title {
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 48px;
+        text-align: center;
+        color: var(--accent);
+        letter-spacing: -0.025em;
+        background: linear-gradient(
+          135deg,
+          var(--primary),
+          var(--primary-light)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .faq-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      .faq-item {
+        border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        transition: var(--transition);
+      }
+
+      .faq-item:first-child {
+        border-top: 1px solid rgba(226, 232, 240, 0.8);
+      }
+
+      .faq-item:hover {
+        background: rgba(248, 250, 252, 0.5);
+      }
+
+      .faq-question {
+        padding: 24px 0;
+        font-weight: 600;
+        font-size: 18px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: var(--transition);
+        color: var(--accent);
+        line-height: 1.4;
+      }
+
+      .faq-question:hover {
+        color: var(--primary);
+      }
+
+      .faq-icon {
+        font-size: 20px;
+        font-weight: 300;
+        transition: var(--transition);
+        color: var(--muted);
+        min-width: 20px;
+        text-align: center;
+        margin-left: 16px;
+      }
+
+      .faq-question:hover .faq-icon {
+        color: var(--primary);
+      }
+
+      .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .faq-answer.shows {
+        max-height: 500px;
+        padding-bottom: var(--space-md);
+      }
+      .faq-answer p {
+        margin: 0 0 32px 0;
+        font-size: 16px;
+        line-height: 1.6;
+        color: var(--muted);
+        padding-right: 36px;
+      }
+
+      /* Active state */
+      .faq-item.active {
+        background: rgba(79, 70, 229, 0.02);
+      }
+
+      .faq-item.active .faq-question {
+        color: var(--primary);
+      }
+
+      .faq-item.active .faq-icon {
+        transform: rotate(45deg);
+        color: var(--primary);
+      }
+
+      .faq-item.active .faq-answer {
+        max-height: 500px;
+      }
+
+      /* Focus states for accessibility */
+      .faq-question:focus {
+        outline: 2px solid rgba(79, 70, 229, 0.4);
+        outline-offset: 2px;
+        border-radius: 4px;
+      }
+
+      /* Responsive design */
+      @media (max-width: 768px) {
+        .faq-section {
+          margin-top: 60px;
+          padding: 40px 0;
+        }
+
+        .faq-title {
+          font-size: 28px;
+          margin-bottom: 32px;
+          padding: 0 20px;
+        }
+
+        .faq-container {
+          padding: 0 20px;
+        }
+
+        .faq-question {
+          padding: 20px 0;
+          font-size: 16px;
+        }
+
+        .faq-answer p {
+          font-size: 15px;
+          padding-right: 20px;
+          margin-bottom: 24px;
+        }
+
+        .faq-icon {
+          font-size: 18px;
+          margin-left: 12px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .faq-section {
+          margin-top: 40px;
+          padding: 32px 0;
+        }
+
+        .faq-title {
+          font-size: 24px;
+          margin-bottom: 24px;
+        }
+
+        .faq-question {
+          padding: 16px 0;
+          font-size: 15px;
+        }
+
+        .faq-answer p {
+          font-size: 14px;
+          padding-right: 0;
+          margin-bottom: 20px;
+        }
+      }
+    </style>
   </head>
 
   <body>
@@ -273,12 +1031,6 @@
       </div>
     </header>
     <div class="container">
-      <div class="ad-wrap ad-article" aria-label="Advertisement">
-        <span class="ad-label">Ad</span>
-        <div class="ad-content">
-          Upgrade to Base64 Pro for unlimited conversions and advanced features!
-        </div>
-      </div>
       <main class="wrap" role="main" aria-label="মূল কন্টেন্ট">
         <!-- Hidden H1 for main content -->
         <h1 class="sr-only">utilityera - ফ্রি অনলাইন ইউটিলিটি</h1>
@@ -312,488 +1064,442 @@
           />
         </div>
 
-        <section class="grid" aria-label="টুলস" id="toolGrid">
-          <!-- Calculators -->
+        <div class="search-results" id="searchResults">Showing all tools</div>
+        <section class="grid" aria-label="Tools" id="toolsGrid">
+          <!-- Percent Calculator -->
           <article
-            class="carda tool-card"
+            class="card-home tool-card"
             data-category="calculators"
             role="article"
+            tabindex="0"
           >
             <div class="tool-icon" aria-hidden="true">
-              <i class="fas fa-percent" aria-hidden="true"></i>
+              <i class="fas fa-percent"></i>
             </div>
             <div class="tool-content">
-              <h3 class="tool-title" id="calculators">
-                শতকরা হিসাব ক্যালকুলেটর
-              </h3>
-              <p class="muted">
-                A% of B, A — B-এর কত শতাংশ, শতকরা পরিবর্তন, এবং % বাড়লে/কমলে
-                মান।
-              </p>
-              <p class="actions">
+              <h3 class="tool-title">শতকরা হিসাব ক্যালকুলেটর</h3>
+              <div class="actions">
                 <a
-                  class="btn btn-primary"
+                  class="tool-link"
                   href="/bn/percent-calculator/"
-                  aria-label="খুলুন শতকরা হিসাব ক্যালকুলেটর"
+                  aria-label="Open Percent Calculator"
+                  >Open Calculator</a
                 >
-                  খুলুন শতকরা হিসাব
-                </a>
-                <a class="tool-link" href="/bn/percent-calculator/">
-                  আরও জানুন
-                  <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                </a>
-              </p>
+              </div>
             </div>
           </article>
 
+          <!-- Age Calculator -->
           <article
-            class="carda tool-card"
+            class="card-home tool-card"
             data-category="calculators"
             role="article"
+            tabindex="0"
           >
             <div class="tool-icon" aria-hidden="true">
-              <i class="fas fa-calendar-days" aria-hidden="true"></i>
-            </div>
-            <div class="tool-content">
-              <h3 class="tool-title">তারিখ ক্যালকুলেটর</h3>
-              <p class="muted">
-                কতদিন বাকি/আগে, দিন যোগ/বিয়োগ, কত বছর হলো—সব এক জায়গায়।
-              </p>
-              <p class="actions">
-                <a
-                  class="btn btn-primary"
-                  href="/bn/date-calculator/"
-                  aria-label="খুলুন তারিখ ক্যালকুলেটর"
-                >
-                  খুলুন তারিখ ক্যালকুলেটর
-                </a>
-                <a class="tool-link" href="/bn/date-calculator/">
-                  আরও জানুন
-                  <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                </a>
-              </p>
-            </div>
-          </article>
-
-          <article
-            class="carda tool-card"
-            data-category="calculators"
-            role="article"
-          >
-            <div class="tool-icon" aria-hidden="true">
-              <i class="fas fa-baby" aria-hidden="true"></i>
+              <i class="fas fa-user-clock"></i>
             </div>
             <div class="tool-content">
               <h3 class="tool-title">বয়স ক্যালকুলেটর</h3>
-              <p class="muted">জন্মতারিখ দিয়ে বয়স বের করুন—বছর, মাস, দিনে।</p>
-              <p class="actions">
+              <div class="actions">
                 <a
-                  class="btn btn-primary"
+                  class="tool-link"
                   href="/bn/age-calculator/"
-                  aria-label="খুলুন বয়স ক্যালকুলেটর"
+                  aria-label="Open Age Calculator"
+                  >Open Calculator</a
                 >
-                  খুলুন বয়স ক্যালকুলেটর
-                </a>
-                <a class="tool-link" href="/bn/age-calculator/">
-                  আরও জানুন
-                  <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                </a>
-              </p>
+              </div>
             </div>
           </article>
 
+          <!-- Date Calculator -->
           <article
-            class="carda tool-card"
+            class="card-home tool-card"
             data-category="calculators"
             role="article"
+            tabindex="0"
           >
             <div class="tool-icon" aria-hidden="true">
-              <i class="fas fa-calculator" aria-hidden="true"></i>
+              <i class="fas fa-calendar-alt"></i>
+            </div>
+            <div class="tool-content">
+              <h3 class="tool-title">তারিখ ক্যালকুলেটর</h3>
+              <div class="actions">
+                <a
+                  class="tool-link"
+                  href="/bn/date-calculator/"
+                  aria-label="Open Date Calculator"
+                  >Open Calculator</a
+                >
+              </div>
+            </div>
+          </article>
+
+          <!-- Calculator -->
+          <article
+            class="card-home tool-card"
+            data-category="calculators"
+            role="article"
+            tabindex="0"
+          >
+            <div class="tool-icon" aria-hidden="true">
+              <i class="fas fa-calculator"></i>
             </div>
             <div class="tool-content">
               <h3 class="tool-title">ক্যালকুলেটর</h3>
-              <p class="muted">যোগ, বিয়োগ, গুণ, ভাগ ও শতকরা।</p>
-              <p class="actions">
+              <div class="actions">
                 <a
-                  class="btn btn-primary"
+                  class="tool-link"
                   href="/bn/calculator/"
-                  aria-label="খুলুন ক্যালকুলেটর"
+                  aria-label="Open Calculator"
+                  >Open Calculator</a
                 >
-                  খুলুন ক্যালকুলেটর
-                </a>
-                <a class="tool-link" href="/bn/calculator/">
-                  আরও জানুন
-                  <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                </a>
-              </p>
+              </div>
             </div>
           </article>
 
+          <!-- Unit Converter -->
           <article
-            class="carda tool-card"
+            class="card-home tool-card"
             data-category="calculators"
             role="article"
+            tabindex="0"
           >
             <div class="tool-icon" aria-hidden="true">
-              <i class="fas fa-ruler-combined" aria-hidden="true"></i>
+              <i class="fas fa-ruler-combined"></i>
             </div>
             <div class="tool-content">
               <h3 class="tool-title">ইউনিট কনভার্টার</h3>
-              <p class="muted">দৈর্ঘ্য, ওজন, তাপমাত্রা—দ্রুত রূপান্তর।</p>
-              <p class="actions">
+              <div class="actions">
                 <a
-                  class="btn btn-primary"
+                  class="tool-link"
                   href="/bn/unit-converter/"
-                  aria-label="খুলুন ইউনিট কনভার্টার"
+                  aria-label="Open Unit Converter"
+                  >Open Converter</a
                 >
-                  খুলুন ইউনিট কনভার্টার
-                </a>
-                <a class="tool-link" href="/bn/unit-converter/">
-                  আরও জানুন
-                  <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                </a>
-              </p>
+              </div>
             </div>
           </article>
 
-          <!-- Text tools -->
+          <!-- Text → PDF -->
           <article
-            class="carda tool-card"
+            class="card-home tool-card"
             data-category="text-tools"
             role="article"
+            tabindex="0"
           >
             <div class="tool-icon" aria-hidden="true">
-              <i class="fas fa-file-pdf" aria-hidden="true"></i>
+              <i class="fas fa-file-pdf"></i>
             </div>
             <div class="tool-content">
-              <h3 class="tool-title" id="text-tools">টেক্সট → PDF</h3>
-              <p class="muted">
-                যেকোনো টেক্সটকে ইউনিকোড-সেফ PDF-এ রূপান্তর করুন।
-              </p>
-              <p class="actions">
+              <h3 class="tool-title">টেক্সট → PDF</h3>
+              <div class="actions">
                 <a
-                  class="btn btn-primary"
+                  class="tool-link"
                   href="/bn/text-to-pdf/"
-                  aria-label="খুলুন টেক্সট টু পিডিএফ"
+                  aria-label="Open Text to PDF"
+                  >Convert Text</a
                 >
-                  খুলুন টেক্সট → PDF
-                </a>
-                <a class="tool-link" href="/bn/text-to-pdf/">
-                  আরও জানুন
-                  <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                </a>
-              </p>
+              </div>
             </div>
           </article>
 
+          <!-- Text Utilities -->
           <article
-            class="carda tool-card"
+            class="card-home tool-card"
             data-category="text-tools"
             role="article"
+            tabindex="0"
           >
             <div class="tool-icon" aria-hidden="true">
-              <i class="fas fa-text-width" aria-hidden="true"></i>
+              <i class="fas fa-i-cursor"></i>
             </div>
             <div class="tool-content">
               <h3 class="tool-title">টেক্সট ইউটিলিটি</h3>
-              <p class="muted">
-                uppercase/lowercase, শব্দ গণনা, স্পেস রিমুভ—সব একসাথে।
-              </p>
-              <p class="actions">
+              <div class="actions">
                 <a
-                  class="btn btn-primary"
+                  class="tool-link"
                   href="/bn/text-utilities/"
-                  aria-label="খুলুন টেক্সট ইউটিলিটি"
+                  aria-label="Open Text Utilities"
+                  >Open Utilities</a
                 >
-                  খুলুন টেক্সট ইউটিলিটি
-                </a>
-                <a class="tool-link" href="/bn/text-utilities/">
-                  আরও জানুন
-                  <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                </a>
-              </p>
+              </div>
             </div>
           </article>
 
-          <!-- Productivity -->
+          <!-- Base64 Tools -->
           <article
-            class="carda tool-card"
-            data-category="productivity"
-            role="article"
-          >
-            <div class="tool-icon" aria-hidden="true">
-              <i class="fas fa-stopwatch" aria-hidden="true"></i>
-            </div>
-            <div class="tool-content">
-              <h3 class="tool-title" id="productivity">
-                স্টপওয়াচ ও কাউন্টডাউন
-              </h3>
-              <p class="muted">সময় মাপুন বা টাইমার সেট করুন।</p>
-              <p class="actions">
-                <a
-                  class="btn btn-primary"
-                  href="/bn/stopwatch-countdown/"
-                  aria-label="খুলুন স্টপওয়াচ ও কাউন্টডাউন"
-                >
-                  খুলুন স্টপওয়াচ ও কাউন্টডাউন
-                </a>
-                <a class="tool-link" href="/bn/stopwatch-countdown/">
-                  আরও জানুন
-                  <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                </a>
-              </p>
-            </div>
-          </article>
-
-          <article
-            class="carda tool-card"
-            data-category="productivity"
-            role="article"
-          >
-            <div class="tool-icon" aria-hidden="true">
-              <i class="fas fa-note-sticky" aria-hidden="true"></i>
-            </div>
-            <div class="tool-content">
-              <h3 class="tool-title">কুইক নোটস</h3>
-              <p class="muted">তাৎক্ষণিক নোট লিখুন (localStorage-এ সেভ হয়)।</p>
-              <p class="actions">
-                <a
-                  class="btn btn-primary"
-                  href="/bn/quick-notes/"
-                  aria-label="খুলুন কুইক নোটস"
-                >
-                  খুলুন কুইক নোটস
-                </a>
-                <a class="tool-link" href="/bn/quick-notes/">
-                  আরও জানুন
-                  <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                </a>
-              </p>
-            </div>
-          </article>
-
-          <article
-            class="carda tool-card"
-            data-category="productivity"
-            role="article"
-          >
-            <div class="tool-icon" aria-hidden="true">
-              <i class="fas fa-image" aria-hidden="true"></i>
-            </div>
-            <div class="tool-content">
-              <h3 class="tool-title">ইমেজ রিসাইজার/কমপ্রেসর</h3>
-              <p class="muted">
-                ছবি ছোট-বড় করুন বা কমপ্রেস করুন—JPEG/PNG/WebP এক্সপোর্ট।
-              </p>
-              <p class="actions">
-                <a
-                  class="btn btn-primary"
-                  href="/bn/image-resizer-compressor/"
-                  aria-label="খুলুন ইমেজ রিসাইজার/কমপ্রেসর"
-                >
-                  খুলুন ইমেজ রিসাইজার/কমপ্রেসর
-                </a>
-                <a class="tool-link" href="/bn/image-resizer-compressor/">
-                  আরও জানুন
-                  <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                </a>
-              </p>
-            </div>
-          </article>
-
-          <article
-            class="carda tool-card"
-            data-category="productivity"
-            role="article"
-          >
-            <div class="tool-icon" aria-hidden="true">
-              <i class="fas fa-palette" aria-hidden="true"></i>
-            </div>
-            <div class="tool-content">
-              <h3 class="tool-title">কালার পিকার ও কনট্রাস্ট</h3>
-              <p class="muted">রঙ বাছাই করুন এবং WCAG কনট্রাস্ট যাচাই করুন।</p>
-              <p class="actions">
-                <a
-                  class="btn btn-primary"
-                  href="/bn/color-picker-contrast/"
-                  aria-label="খুলুন কালার পিকার ও কনট্রাস্ট"
-                >
-                  খুলুন কালার পিকার ও কনট্রাস্ট
-                </a>
-                <a class="tool-link" href="/bn/color-picker-contrast/">
-                  আরও জানুন
-                  <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                </a>
-              </p>
-            </div>
-          </article>
-
-          <!-- Developer tools -->
-          <article
-            class="carda tool-card"
+            class="card-home tool-card"
             data-category="developers"
             role="article"
+            tabindex="0"
           >
             <div class="tool-icon" aria-hidden="true">
-              <i class="fas fa-key" aria-hidden="true"></i>
-            </div>
-            <div class="tool-content">
-              <h3 class="tool-title" id="developers">পাসওয়ার্ড জেনারেটর</h3>
-              <p class="muted">শক্তিশালী ও র‍্যান্ডম পাসওয়ার্ড তৈরি করুন।</p>
-              <p class="actions">
-                <a
-                  class="btn btn-primary"
-                  href="/bn/password-uuid/"
-                  aria-label="খুলুন পাসওয়ার্ড জেনারেটর"
-                >
-                  খুলুন পাসওয়ার্ড জেনারেটর
-                </a>
-                <a class="tool-link" href="/bn/password-uuid/">
-                  আরও জানুন
-                  <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                </a>
-              </p>
-            </div>
-          </article>
-
-          <article
-            class="carda tool-card"
-            data-category="developers"
-            role="article"
-          >
-            <div class="tool-icon" aria-hidden="true">
-              <i class="fas fa-dna" aria-hidden="true"></i>
+              <i class="fas fa-code"></i>
             </div>
             <div class="tool-content">
               <h3 class="tool-title">Base64 টুল</h3>
-              <p class="muted">Base64 এনকোড ও ডিকোড করুন সহজেই।</p>
-              <p class="actions">
+              <div class="actions">
                 <a
-                  class="btn btn-primary"
+                  class="tool-link"
                   href="/bn/base64/"
-                  aria-label="খুলুন বেস৬৪ টুল"
+                  aria-label="Open Base64 Tools"
+                  >Open Tools</a
                 >
-                  খুলুন Base64 টুল
-                </a>
-                <a class="tool-link" href="/bn/base64/">
-                  আরও জানুন
-                  <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                </a>
-              </p>
+              </div>
             </div>
           </article>
 
+          <!-- URL Tools -->
           <article
-            class="carda tool-card"
+            class="card-home tool-card"
             data-category="developers"
             role="article"
+            tabindex="0"
           >
             <div class="tool-icon" aria-hidden="true">
-              <i class="fas fa-link" aria-hidden="true"></i>
+              <i class="fas fa-link"></i>
             </div>
             <div class="tool-content">
               <h3 class="tool-title">URL টুলস</h3>
-              <p class="muted">URL এনকোড/ডিকোড ও কুইক টেস্ট।</p>
-              <p class="actions">
+              <div class="actions">
                 <a
-                  class="btn btn-primary"
+                  class="tool-link"
                   href="/bn/url-tools/"
-                  aria-label="খুলুন ইউআরএল টুলস"
+                  aria-label="Open URL Tools"
+                  >Open Tools</a
                 >
-                  খুলুন URL টুলস
-                </a>
-                <a class="tool-link" href="/bn/url-tools/">
-                  আরও জানুন
-                  <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                </a>
-              </p>
+              </div>
             </div>
           </article>
 
+          <!-- Password & UUID Generator -->
           <article
-            class="carda tool-card"
+            class="card-home tool-card"
             data-category="developers"
             role="article"
+            tabindex="0"
           >
             <div class="tool-icon" aria-hidden="true">
-              <i class="fas fa-id-badge" aria-hidden="true"></i>
+              <i class="fas fa-key"></i>
             </div>
             <div class="tool-content">
-              <h3 class="tool-title">UUID জেনারেটর</h3>
-              <p class="muted">v4 UUID অনন্য আইডি জেনারেট করুন।</p>
-              <p class="actions">
+              <h3 class="tool-title">পাসওয়ার্ড জেনারেটর</h3>
+              <div class="actions">
                 <a
-                  class="btn btn-primary"
-                  href="/bn/uuid4/"
-                  aria-label="খুলুন ইউইউআইডি জেনারেটর"
+                  class="tool-link"
+                  href="/bn/password-uuid/"
+                  aria-label="Open Password Generator"
+                  >Generate</a
                 >
-                  খুলুন UUID জেনারেটর
-                </a>
-                <a class="tool-link" href="/bn/uuid4/">
-                  আরও জানুন
-                  <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                </a>
-              </p>
+              </div>
             </div>
           </article>
 
+          <!-- UUID v4 -->
           <article
-            class="carda tool-card"
+            class="card-home tool-card"
             data-category="developers"
             role="article"
+            tabindex="0"
           >
             <div class="tool-icon" aria-hidden="true">
-              <i class="fas fa-shield-halved" aria-hidden="true"></i>
+              <i class="fas fa-qrcode"></i>
+            </div>
+            <div class="tool-content">
+              <h3 class="tool-title">UUID জেনারেটর v4</h3>
+              <div class="actions">
+                <a class="tool-link" href="/bn/uuid4/" aria-label="Open UUID v4"
+                  >Generate UUID</a
+                >
+              </div>
+            </div>
+          </article>
+
+          <!-- SHA-256 Hash -->
+          <article
+            class="card-home tool-card"
+            data-category="developers"
+            role="article"
+            tabindex="0"
+          >
+            <div class="tool-icon" aria-hidden="true">
+              <i class="fas fa-shield-alt"></i>
             </div>
             <div class="tool-content">
               <h3 class="tool-title">SHA-256 হ্যাশ</h3>
-              <p class="muted">টেক্সট থেকে SHA-256 হ্যাশ বের করুন।</p>
-              <p class="actions">
+              <div class="actions">
                 <a
-                  class="btn btn-primary"
+                  class="tool-link"
                   href="/bn/sha256/"
-                  aria-label="খুলুন এসএইচএ-২৫৬ হ্যাশ"
+                  aria-label="Open SHA-256"
+                  >Generate Hash</a
                 >
-                  খুলুন SHA-256 হ্যাশ
-                </a>
-                <a class="tool-link" href="/bn/sha256/">
-                  আরও জানুন
-                  <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                </a>
-              </p>
+              </div>
             </div>
           </article>
 
+          <!-- JSON Formatter -->
           <article
-            class="carda tool-card"
+            class="card-home tool-card"
             data-category="developers"
             role="article"
+            tabindex="0"
           >
             <div class="tool-icon" aria-hidden="true">
-              <i class="fas fa-puzzle-piece" aria-hidden="true"></i>
+              <i class="fas fa-file-code"></i>
             </div>
             <div class="tool-content">
               <h3 class="tool-title">JSON ফরম্যাটার</h3>
-              <p class="muted">
-                JSON সুন্দরভাবে ফরম্যাট, মিনিফাই ও ভ্যালিডেট করুন।
-              </p>
-              <p class="actions">
+              <div class="actions">
                 <a
-                  class="btn btn-primary"
+                  class="tool-link"
                   href="/bn/json-formatter/"
-                  aria-label="খুলুন জেসন ফরম্যাটার"
+                  aria-label="Open JSON Formatter"
+                  >Format JSON</a
                 >
-                  খুলুন JSON ফরম্যাটার
-                </a>
-                <a class="tool-link" href="/bn/json-formatter/">
-                  আরও জানুন
-                  <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                </a>
-              </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Image Resizer & Compressor -->
+          <article
+            class="card-home tool-card"
+            data-category="productivity"
+            role="article"
+            tabindex="0"
+          >
+            <div class="tool-icon" aria-hidden="true">
+              <i class="fas fa-image"></i>
+            </div>
+            <div class="tool-content">
+              <h3 class="tool-title">ইমেজ রিসাইজার/কমপ্রেসর</h3>
+              <div class="actions">
+                <a
+                  class="tool-link"
+                  href="/bn/image-resizer-compressor/"
+                  aria-label="Open Image Resizer"
+                  >Resize Image</a
+                >
+              </div>
+            </div>
+          </article>
+
+          <!-- Color Picker & Contrast -->
+          <article
+            class="card-home tool-card"
+            data-category="productivity"
+            role="article"
+            tabindex="0"
+          >
+            <div class="tool-icon" aria-hidden="true">
+              <i class="fas fa-eye-dropper"></i>
+            </div>
+            <div class="tool-content">
+              <h3 class="tool-title">কালার কনট্রাস্ট</h3>
+              <div class="actions">
+                <a
+                  class="tool-link"
+                  href="/bn/color-picker-contrast/"
+                  aria-label="Open Contrast Checker"
+                  >Pick Colors</a
+                >
+              </div>
+            </div>
+          </article>
+
+          <!-- Stopwatch & Countdown -->
+          <article
+            class="card-home tool-card"
+            data-category="productivity"
+            role="article"
+            tabindex="0"
+          >
+            <div class="tool-icon" aria-hidden="true">
+              <i class="fas fa-stopwatch"></i>
+            </div>
+            <div class="tool-content">
+              <h3 class="tool-title">স্টপওয়াচ ও কাউন্টডাউন</h3>
+              <div class="actions">
+                <a
+                  class="tool-link"
+                  href="/bn/stopwatch-countdown/"
+                  aria-label="Open Stopwatch"
+                  >Start Timer</a
+                >
+              </div>
+            </div>
+          </article>
+
+          <!-- Quick Notes -->
+          <article
+            class="card-home tool-card"
+            data-category="productivity"
+            role="article"
+            tabindex="0"
+          >
+            <div class="tool-icon" aria-hidden="true">
+              <i class="fas fa-sticky-note"></i>
+            </div>
+            <div class="tool-content">
+              <h3 class="tool-title">কুইক নোটস</h3>
+              <div class="actions">
+                <a
+                  class="tool-link"
+                  href="/bn/quick-notes/"
+                  aria-label="Open Quick Notes"
+                  >Take Notes</a
+                >
+              </div>
+            </div>
+          </article>
+
+          <!-- Compress PDF -->
+          <article
+            class="card-home tool-card"
+            data-category="documents"
+            role="article"
+            tabindex="0"
+          >
+            <div class="tool-icon" aria-hidden="true">
+              <i class="fas fa-file-pdf"></i>
+            </div>
+            <div class="tool-content">
+              <h3 class="tool-title">Compress PDF</h3>
+              <div class="actions">
+                <a
+                  class="tool-link"
+                  href="/compress-pdf/"
+                  aria-label="Open Compress PDF"
+                  >Compress PDF</a
+                >
+              </div>
+            </div>
+          </article>
+
+          <!-- Learning English -->
+          <article
+            class="card-home tool-card"
+            data-category="documents"
+            role="article"
+            tabindex="0"
+          >
+            <div class="tool-icon" aria-hidden="true">
+              <i class="fas fa-book"></i>
+            </div>
+            <div class="tool-content">
+              <h3 class="tool-title">Learning English</h3>
+              <div class="actions">
+                <a
+                  class="tool-link"
+                  href="/learning-english/"
+                  aria-label="Open Learning English"
+                  >Learn English</a
+                >
+              </div>
             </div>
           </article>
         </section>
-
         <section class="faq-section">
           <h2 class="faq-title">প্রশ্নোত্তর</h2>
 
