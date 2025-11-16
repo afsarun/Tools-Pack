@@ -777,6 +777,135 @@
           </div>
         </section>
         <!-- Examples -->
+
+        <!-- Long-form SEO content (SEMrush fixes applied) -->
+        <section class="card" id="seo-content">
+          <h2>What this page does</h2>
+          <p>
+            This page hosts five practical date utilities in one place: count
+            days until a target, calculate how many days have passed since a
+            past date, compute a date N days ago, add or subtract days from a
+            base date, and return a calendar-accurate years/months/days
+            breakdown. Each tool runs locally in your browser for privacy and
+            speed.
+          </p>
+
+          <h2>How each calculator works</h2>
+
+          <h3>Days Until a Date — count forward</h3>
+          <p>
+            Inputs: <strong>End date</strong> (required),
+            <strong>Start date</strong> (defaults to today). Output: total days
+            between start and end and a short line that shows Start → End.
+            Positive value = days remaining; negative value = date already
+            passed (shows how many days ago).
+          </p>
+
+          <h3>Days Since a Date — how long ago</h3>
+          <p>
+            Inputs: <strong>Past date</strong> (required),
+            <strong>As of</strong> (defaults to today). Output: total days
+            elapsed from the past date to the As-of date. If the selected “past”
+            date is actually in the future relative to As-of, the tool warns
+            that the date is ahead.
+          </p>
+
+          <h3>Days Ago (N days) — find the date N days back</h3>
+          <p>
+            Inputs: integer <strong>N</strong> (non-negative) and optional
+            <strong>As-of</strong> (defaults to today). Output: exact calendar
+            date that was N days before As-of. This is handy for compliance
+            lookbacks and queries like “2015 days ago”.
+          </p>
+
+          <h3>Add / Subtract Days — jump a base date by ±N</h3>
+          <p>
+            Inputs: <strong>Base date</strong> (defaults to today) and integer
+            <strong>N</strong> (positive to add, negative to subtract). Output:
+            resulting date and a plain-language summary (for example: “20 day(s)
+            after 2025-11-16 is 2025-12-06”).
+          </p>
+
+          <h3>Years / Months / Days Since — calendar Y/M/D breakdown</h3>
+          <p>
+            Inputs: <strong>Start date</strong> (required) and
+            <strong>As-of</strong> (defaults to today). Output: X year(s), Y
+            month(s), Z day(s) plus a total-day count. This mode uses calendar
+            borrowing rules (not days ÷ 365) so results are human-friendly and
+            legally defensible.
+          </p>
+
+          <h2>Examples (copy & paste)</h2>
+          <ul>
+            <li>
+              <code>Add/Subtract: Base = today, N = 20</code> → “20 days from
+              today.”
+            </li>
+            <li>
+              <code>Days Ago: N = 2015, As of = today</code> → returns the date
+              2015 days ago.
+            </li>
+            <li>
+              <code>Days Until: End date = 2026-09-17</code> → “X days until
+              2026-09-17.”
+            </li>
+            <li>
+              <code>Y/M/D: Start = 2018-01-01, As of = today</code> → returns
+              years, months, days and total days.
+            </li>
+            <li>
+              <code
+                >Business days: 2025-11-01 → 2025-11-30, skip weekends +
+                holidays</code
+              >
+              → returns business-day count.
+            </li>
+          </ul>
+
+          <h2>Business days, holidays and edge cases</h2>
+          <p>
+            <strong>Business-day mode</strong> excludes weekends (Sat/Sun) and
+            can skip holidays you provide. This mode is essential for SLA,
+            lead-time and legal window calculations. The engine also correctly
+            handles:
+          </p>
+          <ul>
+            <li>Leap years (Feb 29),</li>
+            <li>End-of-month transitions (e.g., Jan 31 → Feb 28/29),</li>
+            <li>
+              Time-zone safe date-only math (the scripts use UTC-safe day
+              arithmetic to avoid DST/offset errors).
+            </li>
+          </ul>
+
+          <h2>Implementation & privacy</h2>
+          <p>
+            All calculations run client-side. Date inputs don’t leave the
+            browser. The code uses UTC-safe date math and calendar-aware
+            routines for Y/M/D differences. Client-side math keeps latency
+            near-zero and protects private workflow data. If you later add
+            server-side features, keep the client version as the default for
+            most users.
+          </p>
+
+          <h2>Quick tips & copyable microcopy</h2>
+          <ul>
+            <li>
+              Prefer ISO format <code>YYYY-MM-DD</code> to avoid locale
+              confusion.
+            </li>
+            <li>
+              Show both Y/M/D and total days on legal or audit pages to serve
+              both readers and machines.
+            </li>
+            <li>
+              For recurring deadlines, test with business-day mode and custom
+              holiday lists.
+            </li>
+          </ul>
+        </section>
+
+        <!-- Examples / Where to use -->
         <div class="card" id="where">
           <h2>Where to Use Date Calculations</h2>
           <div class="examples">
@@ -905,10 +1034,6 @@
                 <li>No data leaves your browser (local-only)</li>
               </ul>
             </div>
-          </div>
-
-          <!-- Difference Mode -->
-          <div class="card">
             <div class="info-section">
               <h3>🎯 Difference “in Y/M/D” vs “total days”</h3>
               <ul>
@@ -918,6 +1043,23 @@
                 <li>
                   <strong>Y/M/D:</strong> calendar-accurate years → months →
                   days, not just days ÷ 365
+                </li>
+              </ul>
+            </div>
+            <div class="info-section">
+              <h3>💡 Tips</h3>
+              <ul>
+                <li>
+                  Prefer ISO format (<code>YYYY-MM-DD</code>) to avoid locale
+                  confusion.\li>
+                </li>
+
+                <li>
+                  Business days mode excludes Sat/Sun; you can add holiday dates
+                  to exclude them too.
+                </li>
+                <li>
+                  Time-of-day is ignored; calculations use local midnight.
                 </li>
               </ul>
             </div>
@@ -951,24 +1093,6 @@
           </div>
 
           <!-- Tips -->
-          <div class="card">
-            <div class="info-section">
-              <h3>💡 Tips</h3>
-              <ul>
-                <li>
-                  Prefer ISO format (<code>YYYY-MM-DD</code>) to avoid locale
-                  confusion.
-                </li>
-                <li>
-                  Business days mode excludes Sat/Sun; you can add holiday dates
-                  to exclude them too.
-                </li>
-                <li>
-                  Time-of-day is ignored; calculations use local midnight.
-                </li>
-              </ul>
-            </div>
-          </div>
         </div>
 
         <section class="faq-section card" id="faq">
