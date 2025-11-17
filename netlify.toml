@@ -2,7 +2,7 @@
   node_bundler = "esbuild"
 
 [[redirects]]
-  from = "/*"
+  from = "https://tools-pack.netlify.app/*"
   to = "https://utilityera.com/:splat"
   status = 301
   force = true
