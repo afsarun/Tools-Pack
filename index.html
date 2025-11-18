@@ -342,22 +342,64 @@
 
     <style>
       :root {
+        /* Color Variables */
         --page-bg: #f8fafc;
         --card-bg: #ffffff;
         --muted: #64748b;
         --accent: #0f172a;
         --primary: #4f46e5;
         --primary-light: #818cf8;
+
+        /* Gradient Colors */
+        --gradient-primary: linear-gradient(
+          135deg,
+          var(--primary),
+          var(--primary-light)
+        );
+        --gradient-indigo: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+        --gradient-pink: linear-gradient(135deg, #fce7f3, #fbcfe8);
+        --gradient-green: linear-gradient(135deg, #d1fae5, #a7f3d0);
+        --gradient-yellow: linear-gradient(135deg, #fef3c7, #fde68a);
+        --gradient-blue: linear-gradient(135deg, #e0f2fe, #bae6fd);
+        --gradient-purple: linear-gradient(135deg, #f3e8ff, #e9d5ff);
+
+        /* Icon Colors */
+        --icon-indigo: #4f46e5;
+        --icon-pink: #db2777;
+        --icon-green: #059669;
+        --icon-yellow: #d97706;
+        --icon-blue: #0284c7;
+        --icon-purple: #7c3aed;
+
+        /* Border & Shadow Colors */
+        --border-color: rgba(226, 232, 240, 0.8);
+        --shadow-color: rgba(0, 0, 0, 0.05);
+        --shadow-color-light: rgba(0, 0, 0, 0.1);
+        --shadow-primary: rgba(79, 70, 229, 0.2);
+
+        /* Background Overlays */
+        --overlay-light: rgba(79, 70, 229, 0.05);
+        --overlay-medium: rgba(79, 70, 229, 0.02);
+        --overlay-white: rgba(255, 255, 255, 0.2);
+
+        /* Focus States */
+        --focus-outline: rgba(79, 70, 229, 0.4);
+
+        /* Layout Variables */
         --radius: 12px;
         --gap: 24px;
         --maxw: 1200px;
-        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-          0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-          0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        --transition: all 0.2s ease-in-out;
         --header-height: 80px;
+
+        /* Shadow Variables */
+        --shadow-sm: 0 1px 2px 0 var(--shadow-color);
+        --shadow-md: 0 4px 6px -1px var(--shadow-color-light),
+          0 2px 4px -1px var(--shadow-color);
+        --shadow-lg: 0 10px 15px -3px var(--shadow-color-light),
+          0 4px 6px -2px var(--shadow-color);
+
+        /* Transition */
+        --transition: all 0.2s ease-in-out;
       }
 
       * {
@@ -383,7 +425,7 @@
         z-index: 100;
         background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(10px);
-        border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        border-bottom: 1px solid var(--border-color);
         box-shadow: var(--shadow-sm);
         height: var(--header-height);
       }
@@ -437,11 +479,11 @@
 
       nav a:hover {
         color: var(--primary);
-        background: rgba(79, 70, 229, 0.05);
+        background: var(--overlay-light);
       }
 
       nav a:focus {
-        outline: 2px solid rgba(79, 70, 229, 0.4);
+        outline: 2px solid var(--focus-outline);
         outline-offset: 2px;
       }
 
@@ -547,7 +589,7 @@
       /* Card */
       .card-home {
         background: var(--card-bg);
-        border: 1px solid rgba(226, 232, 240, 0.8);
+        border: 1px solid var(--border-color);
         padding: 28px 24px;
         border-radius: var(--radius);
         display: flex;
@@ -569,11 +611,7 @@
         left: 0;
         right: 0;
         height: 4px;
-        background: linear-gradient(
-          90deg,
-          var(--primary),
-          var(--primary-light)
-        );
+        background: var(--gradient-primary);
         transform: scaleX(0);
         transition: transform 0.3s ease;
       }
@@ -610,35 +648,35 @@
         transform: scale(1.05);
       }
 
-      /* Color variations */
+      /* Color variations using variables */
       .card-home:nth-child(6n + 1) .tool-icon {
-        background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
-        color: #4f46e5;
+        background: var(--gradient-indigo);
+        color: var(--icon-indigo);
       }
 
       .card-home:nth-child(6n + 2) .tool-icon {
-        background: linear-gradient(135deg, #fce7f3, #fbcfe8);
-        color: #db2777;
+        background: var(--gradient-pink);
+        color: var(--icon-pink);
       }
 
       .card-home:nth-child(6n + 3) .tool-icon {
-        background: linear-gradient(135deg, #d1fae5, #a7f3d0);
-        color: #059669;
+        background: var(--gradient-green);
+        color: var(--icon-green);
       }
 
       .card-home:nth-child(6n + 4) .tool-icon {
-        background: linear-gradient(135deg, #fef3c7, #fde68a);
-        color: #d97706;
+        background: var(--gradient-yellow);
+        color: var(--icon-yellow);
       }
 
       .card-home:nth-child(6n + 5) .tool-icon {
-        background: linear-gradient(135deg, #e0f2fe, #bae6fd);
-        color: #0284c7;
+        background: var(--gradient-blue);
+        color: var(--icon-blue);
       }
 
       .card-home:nth-child(6n + 6) .tool-icon {
-        background: linear-gradient(135deg, #f3e8ff, #e9d5ff);
-        color: #7c3aed;
+        background: var(--gradient-purple);
+        color: var(--icon-purple);
       }
 
       .tool-content {
@@ -672,13 +710,9 @@
         text-decoration: none;
         font-weight: 500;
         font-size: 14px;
-        background: linear-gradient(
-          90deg,
-          var(--primary),
-          var(--primary-light)
-        );
+        background: var(--gradient-primary);
         color: #fff;
-        box-shadow: 0 2px 4px rgba(79, 70, 229, 0.2);
+        box-shadow: 0 2px 4px var(--shadow-primary);
         transition: var(--transition);
         min-width: 140px;
         position: relative;
@@ -695,7 +729,7 @@
         background: linear-gradient(
           90deg,
           transparent,
-          rgba(255, 255, 255, 0.2),
+          var(--overlay-white),
           transparent
         );
         transition: left 0.5s;
@@ -711,7 +745,7 @@
       }
 
       .tool-link:focus {
-        outline: 2px solid rgba(79, 70, 229, 0.4);
+        outline: 2px solid var(--focus-outline);
         outline-offset: 2px;
       }
 
@@ -731,7 +765,7 @@
 
       /* Focus management */
       .card:focus-within {
-        outline: 2px solid rgba(79, 70, 229, 0.4);
+        outline: 2px solid var(--focus-outline);
         outline-offset: 2px;
       }
       .sr-only {
@@ -753,7 +787,7 @@
         padding: 32px;
         margin-bottom: 32px;
         box-shadow: var(--shadow-sm);
-        border: 1px solid rgba(226, 232, 240, 0.8);
+        border: 1px solid var(--border-color);
         text-align: center;
         transition: var(--transition);
       }
@@ -775,11 +809,7 @@
       .intro strong {
         color: var(--primary);
         font-weight: 600;
-        background: linear-gradient(
-          135deg,
-          var(--primary),
-          var(--primary-light)
-        );
+        background: var(--gradient-primary);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -790,8 +820,8 @@
         text-align: center;
         margin-bottom: 32px;
         padding: 20px 0;
-        border-bottom: 1px solid rgba(226, 232, 240, 0.8);
-        border-top: 1px solid rgba(226, 232, 240, 0.8);
+        border-bottom: 1px solid var(--border-color);
+        border-top: 1px solid var(--border-color);
       }
 
       .category-nav a {
@@ -807,12 +837,12 @@
 
       .category-nav a:hover {
         color: var(--primary);
-        background: rgba(79, 70, 229, 0.05);
+        background: var(--overlay-light);
         transform: translateY(-1px);
       }
 
       .category-nav a:focus {
-        outline: 2px solid rgba(79, 70, 229, 0.4);
+        outline: 2px solid var(--focus-outline);
         outline-offset: 2px;
       }
 
@@ -848,7 +878,7 @@
       .search-box input {
         width: 100%;
         padding: 14px 16px 14px 44px;
-        border: 1px solid rgba(226, 232, 240, 0.8);
+        border: 1px solid var(--border-color);
         border-radius: var(--radius);
         font-size: 16px;
         transition: var(--transition);
@@ -875,7 +905,7 @@
       .search-results {
         text-align: center;
         margin-bottom: 20px;
-        color: #0c0d0e;
+        color: var(--accent);
         font-style: italic;
       }
 
@@ -922,14 +952,16 @@
         .category-nav a::after {
           content: none;
         }
-      } /* FAQ Section */
+      }
+
+      /* FAQ Section */
       .faq-section {
         margin-top: 80px;
         padding: 60px 0;
         background: var(--card-bg);
         border-radius: var(--radius);
         box-shadow: var(--shadow-sm);
-        border: 1px solid rgba(226, 232, 240, 0.8);
+        border: 1px solid var(--border-color);
       }
 
       .faq-title {
@@ -939,11 +971,7 @@
         text-align: center;
         color: var(--accent);
         letter-spacing: -0.025em;
-        background: linear-gradient(
-          135deg,
-          var(--primary),
-          var(--primary-light)
-        );
+        background: var(--gradient-primary);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -956,12 +984,12 @@
       }
 
       .faq-item {
-        border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        border-bottom: 1px solid var(--border-color);
         transition: var(--transition);
       }
 
       .faq-item:first-child {
-        border-top: 1px solid rgba(226, 232, 240, 0.8);
+        border-top: 1px solid var(--border-color);
       }
 
       .faq-item:hover {
@@ -1006,7 +1034,7 @@
       }
       .faq-answer.shows {
         max-height: 500px;
-        padding-bottom: var(--space-md);
+        padding-bottom: var(--gap);
       }
       .faq-answer p {
         margin: 0 0 32px 0;
@@ -1018,7 +1046,7 @@
 
       /* Active state */
       .faq-item.active {
-        background: rgba(79, 70, 229, 0.02);
+        background: var(--overlay-medium);
       }
 
       .faq-item.active .faq-question {
@@ -1036,7 +1064,7 @@
 
       /* Focus states for accessibility */
       .faq-question:focus {
-        outline: 2px solid rgba(79, 70, 229, 0.4);
+        outline: 2px solid var(--focus-outline);
         outline-offset: 2px;
         border-radius: 4px;
       }

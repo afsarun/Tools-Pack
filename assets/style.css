@@ -206,7 +206,7 @@ header.top-header {
   margin-bottom: 2rem;
   border: 1px solid var(--border);
   backdrop-filter: blur(10px);
-  box-shadow: var(--shadow);
+
   transition: all 0.3s ease;
 }
 
