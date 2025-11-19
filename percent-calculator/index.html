@@ -92,7 +92,7 @@
       }
     </script>
 
-    <!-- ✅ Fixed Breadcrumbs JSON-LD (item is a URL string) -->
+    <!-- ✅ Fixed global-global-breadcrumbs JSON-LD (item is a URL string) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -406,17 +406,17 @@
         font-size: 13px;
         text-align: center;
       }
-      .breadcrumbs {
+      .global-breadcrumbs {
         font-size: 14px;
         margin: 8px 0 6px;
         color: var(--muted);
       }
-      .breadcrumbs a,
-      .toc a {
+      .global-breadcrumbs a,
+      .global-toc a {
         color: inherit;
         text-decoration: none;
       }
-      .toc {
+      .global-toc {
         font-size: 13px;
         color: var(--muted);
         margin-bottom: 14px;
@@ -449,12 +449,12 @@
     <!-- Ad #1 -->
 
     <div class="container">
-      <!-- Breadcrumbs (UI) -->
-      <nav class="breadcrumbs" aria-label="breadcrumb">
+      <!-- global-breadcrumbs (UI) -->
+      <nav class="global-breadcrumbs" aria-label="breadcrumb">
         <a href="/">Home</a> › <a href="/#math">Math Tools</a> ›
         <span>Percentage Calculator</span>
       </nav>
-      <header class="top-header">
+      <header class="global-top-header">
         <h1>Percentage Calculator Quick & Accurate</h1>
         <p class="tagline">
           Calculate percentages, percentage change, increase/decrease, and more
@@ -463,8 +463,8 @@
         </p>
       </header>
 
-      <!-- TOC -->
-      <p class="toc">
+      <!-- global-toc -->
+      <p class="global-toc">
         <a href="#t1">A% of B</a> · <a href="#t2">What % is A of B?</a> ·
         <a href="#t3">Percent Change</a> ·
         <a href="#t4">After % Increase/Decrease</a> ·
@@ -870,10 +870,12 @@
         <h2>Related tools</h2>
         <p class="muted">More calculators &amp; converters:</p>
         <p class="related">
-          <a class="btn" href="/calculator/">Basic Calculator</a>
-          <a class="btn" href="/unit-converter/">Unit Converter</a>
-          <a class="btn" href="/age-calculator/">Age Calculator</a>
-          <a class="btn" href="/percent-calculator/">Percentage Calculator</a>
+          <a class="global-btn" href="/calculator/">Basic Calculator</a>
+          <a class="global-btn" href="/unit-converter/">Unit Converter</a>
+          <a class="global-btn" href="/age-calculator/">Age Calculator</a>
+          <a class="global-btn" href="/percent-calculator/"
+            >Percentage Calculator</a
+          >
         </p>
         <p class="small">
           <span lang="bn">Prefer বাংলা?</span> Try the

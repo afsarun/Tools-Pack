@@ -88,7 +88,7 @@ body {
   --link: #60a5fa;
   --link-hover: #93c5fd;
 }
-header.top-header {
+header.global-top-header {
   text-align: center;
   margin-bottom: 40px;
   padding: 30px;
@@ -98,7 +98,7 @@ header.top-header {
   box-shadow: var(--shadow);
 }
 
-.top-header h1 {
+.global-top-header h1 {
   font-size: 2.5rem;
   margin-bottom: 10px;
 }
@@ -193,10 +193,10 @@ header.top-header {
     "Liberation Mono", monospace;
 }
 
-/* tock style  */
+/* global-tock style  */
 
-/* TOC styles */
-.toc {
+/* global-toc styles */
+.global-toc {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -210,7 +210,7 @@ header.top-header {
   transition: all 0.3s ease;
 }
 
-.toc a {
+.global-toc a {
   color: var(--text-muted); /* dark blue for links */
   text-decoration: none;
   font-weight: 500;
@@ -222,22 +222,22 @@ a {
   /* text-decoration: none; */
   color: white;
 }
-.toc a:hover,
-.toc a:focus {
+.global-toc a:hover,
+.global-toc a:focus {
   background: #242529;
   color: #888b91;
   outline: none;
 }
 
-.toc a:active {
+.global-toc a:active {
   background: #c7d2fe;
 }
 
-.toc a.current {
+.global-toc a.current {
   background: #1e40af;
   color: #fff;
 }
-.breadcrumbs {
+.global-breadcrumbs {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -249,13 +249,13 @@ a {
   border-radius: 0.75rem;
   border: 1px solid var(--border);
 }
-.breadcrumbs a {
+.global-breadcrumbs a {
   color: var(--text);
   text-decoration: none;
   transition: color 0.3s ease;
   font-size: 1rem;
 }
-.breadcrumbs a:hover {
+.global-breadcrumbs a:hover {
   color: var(--primary-hover);
 }
 /* 3) Layout */
@@ -265,7 +265,7 @@ a {
   padding: 2rem;
 }
 
-/* 4) Header + breadcrumbs */
+/* 4) Header + global-breadcrumbs */
 .header {
   text-align: center;
   margin-bottom: 3rem;
@@ -484,7 +484,7 @@ a {
   justify-content: center;
 }
 
-.btn {
+.global-btn {
   background: var(--primary);
   color: #fff;
   border: 0;
@@ -501,29 +501,29 @@ a {
   position: relative;
   overflow: hidden;
 }
-.btn:hover {
+.global-btn:hover {
   background: var(--primary-hover);
   transform: translateY(-2px);
   box-shadow: 0 10px 25px -5px var(--primary);
 }
-.btn:active {
+.global-btn:active {
   transform: translateY(0);
 }
 
-.btn-success {
+.global-btn-success {
   background: var(--success);
 }
-.btn-success:hover {
+.global-btn-success:hover {
   background: #059669;
   box-shadow: 0 10px 25px -5px var(--success);
 }
-.btn-danger {
+.global-btn-danger {
   background: var(--danger);
 }
-.btn-danger:hover {
+.global-btn-danger:hover {
   background: #dc2626;
 }
-.btn-small {
+.global-btn-small {
   padding: 0.5rem;
   min-width: auto;
   border-radius: 0.5rem;
@@ -690,7 +690,7 @@ a {
   .controls {
     flex-direction: column;
   }
-  .btn {
+  .global-btn {
     width: 100%;
     justify-content: center;
   }
@@ -799,7 +799,7 @@ footer.wrap nav a:focus-visible {
 }
 
 /* 8) Focus visibility for keyboard users */
-:where(a, button, [href], .tool-link, .btn):focus-visible {
+:where(a, button, [href], .tool-link, .global-btn):focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
   border-radius: 8px;
@@ -850,14 +850,14 @@ footer.wrap nav a:focus-visible {
   border-color: var(--primary);
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
 }
-.btn-group {
+.global-btn-group {
   margin-top: 15px;
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
 }
 
-.btn {
+.global-btn {
   padding: 12px 20px;
   border: none;
   border-radius: 8px;
@@ -871,17 +871,17 @@ footer.wrap nav a:focus-visible {
   color: var(--text);
 }
 
-.btn-primary {
+.global-btn-primary {
   background: var(--gradient);
   color: white;
 }
 
-.btn-primary:hover {
+.global-btn-primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-.btn:hover:not(.btn-primary) {
+.global-btn:hover:not(.global-btn-primary) {
   background-color: var(--border);
   transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
@@ -907,11 +907,11 @@ footer.wrap nav a:focus-visible {
 }
 
 @media (max-width: 600px) {
-  .btn-group {
+  .global-btn-group {
     flex-direction: column;
   }
 
-  .btn {
+  .global-btn {
     width: 100%;
   }
 }
@@ -920,7 +920,7 @@ footer.wrap nav a:focus-visible {
 /* style for add  */
 /* style for add  */
 
-.ad-wrap {
+.global-ad-wrap {
   background-color: var(--surface-light);
   border: 1px dashed var(--border);
   border-radius: 8px;
@@ -1064,7 +1064,7 @@ kbd {
     width: 100%;
   }
 }
-#related .btn {
+#related .global-btn {
   margin: 0.5rem 0;
 }
 #related .muted {

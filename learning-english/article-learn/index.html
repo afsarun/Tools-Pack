@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>English Articles Guide | A, An, The & Zero Article</title>
+    <style>
+      :root {
+        --primary-color: #3498db;
+        --secondary-color: #2c3e50;
+        --accent-color: #e74c3c;
+        --light-color: #ecf0f1;
+        --dark-color: #34495e;
+        --success-color: #2ecc71;
+        --warning-color: #f39c12;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background-color: #f9f9f9;
+      }
+
+      header {
+        background: linear-gradient(
+          135deg,
+          var(--secondary-color),
+          var(--primary-color)
+        );
+        color: white;
+        padding: 2rem 0;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .subtitle {
+        font-size: 1.2rem;
+        opacity: 0.9;
+      }
+
+      nav {
+        background-color: var(--dark-color);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-container {
+        display: flex;
+        justify-content: center;
+      }
+
+      .nav-link {
+        color: white;
+        text-decoration: none;
+        padding: 1rem 1.5rem;
+        transition: background-color 0.3s;
+      }
+
+      .nav-link:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      main {
+        padding: 2rem 0;
+      }
+
+      .section {
+        background-color: white;
+        border-radius: 8px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      h2 {
+        color: var(--secondary-color);
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--light-color);
+      }
+
+      h3 {
+        color: var(--primary-color);
+        margin: 1.5rem 0 1rem;
+      }
+
+      p {
+        margin-bottom: 1rem;
+      }
+
+      .example {
+        background-color: var(--light-color);
+        padding: 1rem;
+        border-left: 4px solid var(--primary-color);
+        margin: 1.5rem 0;
+        border-radius: 0 4px 4px 0;
+      }
+
+      .rule-list {
+        list-style-type: none;
+      }
+
+      .rule-item {
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        background-color: #f8f9fa;
+        border-radius: 6px;
+        border-left: 4px solid var(--warning-color);
+      }
+
+      .rule-number {
+        display: inline-block;
+        background-color: var(--warning-color);
+        color: white;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        border-radius: 50%;
+        margin-right: 10px;
+        font-weight: bold;
+      }
+
+      .interactive-section {
+        background-color: var(--light-color);
+        padding: 2rem;
+        border-radius: 8px;
+        margin: 2rem 0;
+      }
+
+      .quiz-container {
+        margin-top: 1.5rem;
+      }
+
+      .quiz-question {
+        margin-bottom: 1.5rem;
+      }
+
+      .options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 1rem 0;
+      }
+
+      .option {
+        padding: 0.5rem 1rem;
+        background-color: white;
+        border: 2px solid var(--primary-color);
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .option:hover {
+        background-color: var(--primary-color);
+        color: white;
+      }
+
+      .option.selected {
+        background-color: var(--primary-color);
+        color: white;
+      }
+
+      .option.correct {
+        background-color: var(--success-color);
+        border-color: var(--success-color);
+        color: white;
+      }
+
+      .option.incorrect {
+        background-color: var(--accent-color);
+        border-color: var(--accent-color);
+        color: white;
+      }
+
+      .btn {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background-color 0.3s;
+      }
+
+      .btn:hover {
+        background-color: var(--secondary-color);
+      }
+
+      .result {
+        margin-top: 1rem;
+        padding: 1rem;
+        border-radius: 4px;
+        display: none;
+      }
+
+      .result.correct {
+        background-color: rgba(46, 204, 113, 0.2);
+        border: 1px solid var(--success-color);
+        color: var(--success-color);
+      }
+
+      .result.incorrect {
+        background-color: rgba(231, 76, 60, 0.2);
+        border: 1px solid var(--accent-color);
+        color: var(--accent-color);
+      }
+
+      footer {
+        background-color: var(--secondary-color);
+        color: white;
+        text-align: center;
+        padding: 2rem 0;
+        margin-top: 2rem;
+      }
+
+      @media (max-width: 768px) {
+        .nav-container {
+          flex-direction: column;
+        }
+
+        .nav-link {
+          text-align: center;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1>English Articles Guide</h1>
+        <p class="subtitle">Mastering A, An, The & Zero Article Usage</p>
+      </div>
+    </header>
+
+    <nav>
+      <div class="container nav-container">
+        <a href="#introduction" class="nav-link">Introduction</a>
+        <a href="#a-an" class="nav-link">A vs. An</a>
+        <a href="#the" class="nav-link">The</a>
+        <a href="#zero-article" class="nav-link">Zero Article</a>
+        <a href="#rules" class="nav-link">18 Rules</a>
+        <a href="#practice" class="nav-link">Practice</a>
+      </div>
+    </nav>
+
+    <main class="container">
+      <section id="introduction" class="section">
+        <h2>Introduction to English Articles</h2>
+        <p>
+          In English, we have three articles: <strong>"a," "an,"</strong> and
+          <strong>"the."</strong> There's also one more that's important:
+          <strong>no article or zero article</strong>.
+        </p>
+        <p>
+          Articles are used to specify the grammatical definiteness of a noun.
+          They help clarify whether we're referring to something specific or
+          something general.
+        </p>
+
+        <div class="example">
+          <p>
+            <strong>Example:</strong> "Jack is <strong>a</strong> student." vs.
+            "Jack is <strong>the</strong> student who won the award."
+          </p>
+        </div>
+      </section>
+
+      <section id="a-an" class="section">
+        <h2>A vs. An: When to Use Each</h2>
+        <p>
+          We use <strong>"a"</strong> and <strong>"an"</strong> with singular
+          nouns when referring to something non-specific or mentioned for the
+          first time.
+        </p>
+
+        <h3>The Basic Rule</h3>
+        <ul>
+          <li>
+            Use <strong>"a"</strong> before words that begin with a
+            <strong>consonant sound</strong>
+          </li>
+          <li>
+            Use <strong>"an"</strong> before words that begin with a
+            <strong>vowel sound</strong>
+          </li>
+        </ul>
+
+        <div class="example">
+          <p><strong>Examples:</strong></p>
+          <ul>
+            <li>
+              "I took <strong>a</strong> picture of
+              <strong>an</strong> octopus."
+            </li>
+            <li>
+              "It was <strong>an</strong> honest answer." (honest begins with an
+              'o' sound)
+            </li>
+            <li>
+              "I got <strong>an</strong> X-ray." (X-ray begins with an 'e'
+              sound)
+            </li>
+          </ul>
+        </div>
+
+        <h3>Common Mistakes</h3>
+        <p>Remember: It's about the <strong>sound</strong>, not the letter!</p>
+        <div class="example">
+          <p>
+            <strong>Incorrect:</strong> "I need pen." "My daughter wants
+            axelottle for her birthday."
+          </p>
+          <p>
+            <strong>Correct:</strong> "I need <strong>a</strong> pen." "My
+            daughter wants <strong>an</strong> axelottle for her birthday."
+          </p>
+        </div>
+      </section>
+
+      <section id="the" class="section">
+        <h2>Using "The" Correctly</h2>
+        <p>
+          <strong>"The"</strong> is used when referring to something specific
+          that the listener already knows about.
+        </p>
+
+        <h3>Pronunciation</h3>
+        <p>"The" can be pronounced two ways:</p>
+        <ul>
+          <li>
+            <strong>"the"</strong> (with a soft 'e') before consonant sounds
+          </li>
+          <li><strong>"thee"</strong> (with a long 'e') before vowel sounds</li>
+        </ul>
+
+        <div class="example">
+          <p>
+            <strong>Examples:</strong> "the bank," "the person," "the envelope,"
+            "the otter"
+          </p>
+        </div>
+
+        <h3>Specific vs. General</h3>
+        <p>The key difference between "a/an" and "the" is specificity:</p>
+        <div class="example">
+          <p>
+            <strong>"I bought a gift for Rosie."</strong> - The listener doesn't
+            know what type of gift.
+          </p>
+          <p>
+            <strong>"I bought the gift for Rosie."</strong> - The listener
+            already knows which gift you're referring to.
+          </p>
+        </div>
+      </section>
+
+      <section id="zero-article" class="section">
+        <h2>Zero Article (No Article)</h2>
+        <p>
+          We use no article when referring to plural nouns or uncountable nouns
+          in a general sense.
+        </p>
+
+        <div class="example">
+          <p><strong>Examples:</strong></p>
+          <ul>
+            <li>"People enjoy spending time with their family."</li>
+            <li>"I love dogs." (dogs in general)</li>
+            <li>"Coffee or tea is always a great gift."</li>
+            <li>"Love is all you need."</li>
+          </ul>
+        </div>
+
+        <h3>Common Mistake</h3>
+        <div class="example">
+          <p>
+            <strong>Incorrect:</strong> "Most of the people like ice cream."
+          </p>
+          <p>
+            <strong>Correct:</strong> "Most people like ice cream." (referring
+            to people in general)
+          </p>
+        </div>
+      </section>
+
+      <section id="rules" class="section">
+        <h2>18 Rules for Using "The"</h2>
+        <p>
+          Here are specific situations where we use the definite article "the":
+        </p>
+
+        <ol class="rule-list">
+          <li class="rule-item">
+            <span class="rule-number">1</span>
+            <strong>When there is only one:</strong> "the government," "the
+            moon," "the CEO"
+          </li>
+          <li class="rule-item">
+            <span class="rule-number">2</span>
+            <strong>Places of service:</strong> "the post office," "the bank,"
+            "the gym"
+          </li>
+          <li class="rule-item">
+            <span class="rule-number">3</span>
+            <strong>Public transportation:</strong> "the bus," "the train," "the
+            subway"
+          </li>
+          <li class="rule-item">
+            <span class="rule-number">4</span>
+            <strong>Superlatives:</strong> "the best," "the worst," "the most
+            beautiful"
+          </li>
+          <li class="rule-item">
+            <span class="rule-number">5</span>
+            <strong>Scientific inventions or discoveries:</strong> "the
+            telephone," "the computer," "the internet"
+          </li>
+          <li class="rule-item">
+            <span class="rule-number">6</span>
+            <strong>Groups of people:</strong> "the rich," "the poor," "the
+            elderly"
+          </li>
+          <li class="rule-item">
+            <span class="rule-number">7</span>
+            <strong>Decades and centuries:</strong> "the 1990s," "the 18th
+            century"
+          </li>
+          <li class="rule-item">
+            <span class="rule-number">8</span>
+            <strong>Specific date structures:</strong> "the 4th of July," "the
+            22nd of March"
+          </li>
+          <li class="rule-item">
+            <span class="rule-number">9</span>
+            <strong>Seasons (optional):</strong> "in (the) spring," "in (the)
+            summer"
+          </li>
+          <li class="rule-item">
+            <span class="rule-number">10</span>
+            <strong>Musical instruments (optional):</strong> "play (the) piano,"
+            "play (the) guitar"
+          </li>
+          <li class="rule-item">
+            <span class="rule-number">11</span>
+            <strong>Time periods:</strong> "the week," "the weekend"
+          </li>
+          <li class="rule-item">
+            <span class="rule-number">12</span>
+            <strong>General geographical locations:</strong> "the desert," "the
+            country," "the city"
+          </li>
+          <li class="rule-item">
+            <span class="rule-number">13</span>
+            <strong>Specific seas and oceans:</strong> "the Pacific," "the
+            Mediterranean Sea"
+          </li>
+          <li class="rule-item">
+            <span class="rule-number">14</span>
+            <strong>Countries with plural or group names:</strong> "the United
+            States," "the Philippines"
+          </li>
+          <li class="rule-item">
+            <span class="rule-number">15</span>
+            <strong>Mountain ranges:</strong> "the Alps," "the Himalayas"
+          </li>
+          <li class="rule-item">
+            <span class="rule-number">16</span>
+            <strong>Rivers:</strong> "the Nile," "the Amazon," "the Thames"
+          </li>
+          <li class="rule-item">
+            <span class="rule-number">17</span>
+            <strong>Deserts:</strong> "the Sahara," "the Gobi"
+          </li>
+          <li class="rule-item">
+            <span class="rule-number">18</span>
+            <strong>Famous hotels and museums:</strong> "the Hilton," "the
+            Louvre"
+          </li>
+        </ol>
+      </section>
+
+      <section id="practice" class="section interactive-section">
+        <h2>Practice Your Knowledge</h2>
+        <p>
+          Test your understanding of English articles with these interactive
+          exercises:
+        </p>
+
+        <div class="quiz-container">
+          <div class="quiz-question">
+            <p>
+              <strong>Question 1:</strong> Choose the correct article for the
+              sentence:
+            </p>
+            <p>"I saw _____ interesting movie yesterday."</p>
+            <div class="options">
+              <div class="option" data-correct="true">an</div>
+              <div class="option">a</div>
+              <div class="option">the</div>
+              <div class="option">(no article)</div>
+            </div>
+            <div class="result"></div>
+          </div>
+
+          <div class="quiz-question">
+            <p>
+              <strong>Question 2:</strong> Choose the correct article for the
+              sentence:
+            </p>
+            <p>"She is _____ only person who can help us."</p>
+            <div class="options">
+              <div class="option">an</div>
+              <div class="option">a</div>
+              <div class="option" data-correct="true">the</div>
+              <div class="option">(no article)</div>
+            </div>
+            <div class="result"></div>
+          </div>
+
+          <div class="quiz-question">
+            <p>
+              <strong>Question 3:</strong> Choose the correct article for the
+              sentence:
+            </p>
+            <p>"We need to buy _____ milk and _____ bread."</p>
+            <div class="options">
+              <div class="option">a, a</div>
+              <div class="option">the, the</div>
+              <div class="option">an, a</div>
+              <div class="option" data-correct="true">
+                (no article), (no article)
+              </div>
+            </div>
+            <div class="result"></div>
+          </div>
+
+          <button id="check-answers" class="btn">Check Answers</button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>English Articles Guide &copy; 2023 | Based on the lesson by Arnel</p>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Quiz functionality
+        const options = document.querySelectorAll(".option");
+        const checkButton = document.getElementById("check-answers");
+        const results = document.querySelectorAll(".result");
+
+        // Add click event to options
+        options.forEach((option) => {
+          option.addEventListener("click", function () {
+            // Remove selected class from siblings
+            const siblings = this.parentElement.querySelectorAll(".option");
+            siblings.forEach((sibling) => {
+              sibling.classList.remove("selected");
+            });
+
+            // Add selected class to clicked option
+            this.classList.add("selected");
+          });
+        });
+
+        // Check answers
+        checkButton.addEventListener("click", function () {
+          const questions = document.querySelectorAll(".quiz-question");
+
+          questions.forEach((question, index) => {
+            const selectedOption = question.querySelector(".option.selected");
+            const result = question.querySelector(".result");
+
+            if (selectedOption) {
+              if (selectedOption.hasAttribute("data-correct")) {
+                selectedOption.classList.add("correct");
+                result.textContent = "Correct! Well done.";
+                result.className = "result correct";
+                result.style.display = "block";
+              } else {
+                selectedOption.classList.add("incorrect");
+
+                // Highlight correct answer
+                const correctOption = question.querySelector(
+                  '.option[data-correct="true"]'
+                );
+                correctOption.classList.add("correct");
+
+                result.textContent =
+                  "Incorrect. The right answer is highlighted.";
+                result.className = "result incorrect";
+                result.style.display = "block";
+              }
+            } else {
+              results[index].textContent = "Please select an answer.";
+              results[index].className = "result incorrect";
+              results[index].style.display = "block";
+            }
+          });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute("href");
+            const targetElement = document.querySelector(targetId);
+
+            if (targetElement) {
+              window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

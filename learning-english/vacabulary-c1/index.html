@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advanced Vocabulary Mastery | 100 Verbs with Synonyms</title>
+    <style>
+      :root {
+        --primary-color: #3498db;
+        --secondary-color: #2c3e50;
+        --accent-color: #e74c3c;
+        --light-color: #ecf0f1;
+        --dark-color: #2c3e50;
+        --success-color: #2ecc71;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        --border-radius: 8px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: #f5f7fa;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      header {
+        background: linear-gradient(
+          135deg,
+          var(--secondary-color),
+          var(--primary-color)
+        );
+        color: white;
+        padding: 2rem 1rem;
+        text-align: center;
+        box-shadow: var(--shadow);
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .subtitle {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .controls {
+        background-color: white;
+        padding: 1rem;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        box-shadow: var(--shadow);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .search-box {
+        padding: 0.5rem 1rem;
+        border: 1px solid #ddd;
+        border-radius: var(--border-radius);
+        width: 300px;
+        font-size: 1rem;
+      }
+
+      .filter-btn {
+        padding: 0.5rem 1rem;
+        background-color: var(--light-color);
+        border: 1px solid #ddd;
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .filter-btn:hover {
+        background-color: var(--primary-color);
+        color: white;
+      }
+
+      .filter-btn.active {
+        background-color: var(--primary-color);
+        color: white;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+      }
+
+      .stats {
+        text-align: center;
+        margin-bottom: 2rem;
+        color: var(--secondary-color);
+      }
+
+      .verbs-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .verb-card {
+        background-color: white;
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        box-shadow: var(--shadow);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .verb-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .verb-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 5px;
+        height: 100%;
+        background-color: var(--primary-color);
+      }
+
+      .verb-word {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--secondary-color);
+        margin-bottom: 0.5rem;
+      }
+
+      .meaning {
+        color: #555;
+        margin-bottom: 1rem;
+        font-style: italic;
+      }
+
+      .synonyms {
+        margin-top: 1rem;
+      }
+
+      .synonyms-title {
+        font-weight: bold;
+        color: var(--secondary-color);
+        margin-bottom: 0.5rem;
+      }
+
+      .synonym-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .synonym {
+        background-color: var(--light-color);
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        color: var(--dark-color);
+      }
+
+      .example {
+        margin-top: 1rem;
+        padding: 1rem;
+        background-color: #f8f9fa;
+        border-left: 3px solid var(--success-color);
+        border-radius: 0 var(--border-radius) var(--border-radius) 0;
+      }
+
+      .example-title {
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        color: var(--secondary-color);
+      }
+
+      footer {
+        background-color: var(--secondary-color);
+        color: white;
+        text-align: center;
+        padding: 2rem 1rem;
+        margin-top: 3rem;
+      }
+
+      .progress-bar {
+        height: 5px;
+        background-color: #ddd;
+        border-radius: 5px;
+        margin: 1rem 0;
+        overflow: hidden;
+      }
+
+      .progress {
+        height: 100%;
+        background-color: var(--success-color);
+        width: 0%;
+        transition: width 0.5s ease;
+      }
+
+      @media (max-width: 768px) {
+        .verbs-grid {
+          grid-template-columns: 1fr;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        .controls {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .search-box {
+          width: 100%;
+          max-width: 400px;
+        }
+      }
+
+      .bookmark-btn {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: none;
+        border: none;
+        font-size: 1.2rem;
+        cursor: pointer;
+        color: #ddd;
+        transition: color 0.3s ease;
+      }
+
+      .bookmark-btn.bookmarked {
+        color: var(--accent-color);
+      }
+
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Advanced Vocabulary Mastery</h1>
+      <p class="subtitle">
+        Learn 100 advanced verbs with their meanings, synonyms, and example
+        sentences to enhance your vocabulary
+      </p>
+    </header>
+
+    <div class="controls">
+      <input type="text" class="search-box" placeholder="Search verbs..." />
+      <button class="filter-btn active" data-filter="all">All Verbs</button>
+      <button class="filter-btn" data-filter="bookmarked">Bookmarked</button>
+    </div>
+
+    <div class="container">
+      <div class="stats">
+        <h2>Your Progress</h2>
+        <div class="progress-bar">
+          <div class="progress" id="progress-bar"></div>
+        </div>
+        <p id="progress-text">0/100 verbs learned</p>
+      </div>
+
+      <div class="verbs-grid" id="verbs-container">
+        <!-- Verb cards will be generated here by JavaScript -->
+      </div>
+    </div>
+
+    <footer>
+      <p>Master Vocabulary Fast | Advanced Verbs with Synonyms</p>
+      <p>Based on the YouTube video transcript</p>
+    </footer>
+
+    <script>
+      // Verb data from the transcript
+      const verbs = [
+        {
+          word: "Deter",
+          meaning: "To prevent someone from doing something",
+          synonyms: ["deny access", "discourage", "stop"],
+          examples: [
+            "Public awareness campaigns are designed to deter reckless driving on roads.",
+            "Harsh punishments deter criminals from committing serious violent offenses.",
+          ],
+        },
+        {
+          word: "Retain",
+          meaning: "To keep or continue to have something",
+          synonyms: ["maintain", "withhold", "keep up"],
+          examples: [
+            "Schools must retain talented teachers to ensure highquality education.",
+            "Individuals retain knowledge better through hands-on learning experiences.",
+          ],
+        },
+        {
+          word: "Concentrate",
+          meaning: "Focus all one's attention on a particular activity",
+          synonyms: ["pay attention", "observe", "give heed"],
+          examples: [
+            "Employees should concentrate on productivity to meet organizational goals.",
+            "Effective time management helps employees concentrate on important tasks.",
+          ],
+        },
+        {
+          word: "Utilize",
+          meaning: "To use something for a particular purpose",
+          synonyms: ["make use of", "harness", "implement"],
+          examples: [
+            "Students should utilize online resources to enhance their learning experience.",
+            "Efficient systems utilize renewable energy for powering modern infrastructure.",
+          ],
+        },
+        {
+          word: "Eliminate",
+          meaning: "Completely remove or get rid of something",
+          synonyms: ["evacuate", "expel", "exterminate"],
+          examples: [
+            "Advanced medicine can eliminate certain diseases from society altogether.",
+            "Proper waste management is crucial to eliminate environmental degradation.",
+          ],
+        },
+        {
+          word: "Allocate",
+          meaning: "Distribute resources or duties for a particular purpose",
+          synonyms: ["conserve", "hoarde", "reserve"],
+          examples: [
+            "The university must allocate more scholarships for underprivileged students.",
+            "Authorities should allocate land for sustainable urban development projects.",
+          ],
+        },
+        {
+          word: "Invigorate",
+          meaning: "To give life and energy to something",
+          synonyms: ["energize", "stimulate", "rejuvenate"],
+          examples: [
+            "Drinking fresh juice invigorates your senses and keeps you energized all day.",
+            "Vacations invigorate people, allowing them to return to work with new energy.",
+          ],
+        },
+        {
+          word: "Affiliate",
+          meaning: "To become part of a group or organization",
+          synonyms: ["associate", "combine", "amalgamate"],
+          examples: [
+            "Students are encouraged to affiliate with clubs to enhance their experience.",
+            "The university decided to affiliate itself with a prestigious global organization.",
+          ],
+        },
+        {
+          word: "Intimidate",
+          meaning: "Frighten someone to make them do something",
+          synonyms: ["scare", "terrorize", "threaten"],
+          examples: [
+            "Bullies often use physical strength to intimidate their weaker classmates.",
+            "The towering skyscrapers can intimidate visitors unfamiliar with urban life.",
+          ],
+        },
+        {
+          word: "Outlaw",
+          meaning: "Completely stop something by making it illegal",
+          synonyms: ["prohibit", "vanish", "exclude"],
+          examples: [
+            "Many countries outlaw smoking in public places to protect public health.",
+            "Some nations outlaw hunting endangered species to protect biodiversity.",
+          ],
+        },
+        {
+          word: "Anticipate",
+          meaning: "Think that something will probably happen",
+          synonyms: ["predict", "forecast", "apprehend"],
+          examples: [
+            "The team must anticipate challenges before implementing the new strategy.",
+            "Parents often anticipate potential challenges when their children begin school.",
+          ],
+        },
+        {
+          word: "Regulate",
+          meaning: "To govern or direct according to rule",
+          synonyms: ["manage", "arrange", "systematize"],
+          examples: [
+            "Hormones regulate various physiological processes within the human body.",
+            "Proper systems regulate the distribution of resources in large organizations.",
+          ],
+        },
+        {
+          word: "Unearth",
+          meaning: "Uncover or bring to light by search",
+          synonyms: ["discover", "disclose", "unmask"],
+          examples: [
+            "Scientists unearth fossils that provide insight into early human civilizations.",
+            "Archaeologists unearthed ancient artifacts during the excavation of the site.",
+          ],
+        },
+        {
+          word: "Proclaim",
+          meaning: "Announce something publicly or officially",
+          synonyms: ["declare", "announce", "indicate"],
+          examples: [
+            "The king decided to proclaim a national holiday to celebrate independence.",
+            "Protesters gathered to proclaim their dissatisfaction with government policies.",
+          ],
+        },
+        {
+          word: "Endeavor",
+          meaning: "Effort to do something new or difficult",
+          synonyms: ["exercise", "struggle", "labor"],
+          examples: [
+            "Every successful endeavor requires hard work, perseverance, and a clear vision.",
+            "The endeavor to reduce pollution requires both individual and collective efforts.",
+          ],
+        },
+        {
+          word: "Evolve",
+          meaning: "To develop by gradual changes",
+          synonyms: ["thrive", "emerge", "progress"],
+          examples: [
+            "Technology continues to evolve, transforming daily life and global industries.",
+            "Species evolve through natural selection, adapting to environmental changes.",
+          ],
+        },
+        {
+          word: "Embody",
+          meaning: "To represent a quality or an idea",
+          synonyms: ["epitomize", "symbolize", "express"],
+          examples: [
+            "Innovators embody creativity, pushing the boundaries of technology and science.",
+            "Effective teachers embody patience, understanding, and dedication in their work.",
+          ],
+        },
+        {
+          word: "Fabricate",
+          meaning: "Make up information that is not true",
+          synonyms: ["formulate", "compose", "put together"],
+          examples: [
+            "Some companies fabricate statistics to manipulate consumer perception.",
+            "Governments should penalize those who fabricate misleading advertisements.",
+          ],
+        },
+        {
+          word: "Inhibit",
+          meaning: "To prevent something from growing or developing",
+          synonyms: ["restrain", "regulate", "withhold"],
+          examples: [
+            "A lack of proper infrastructure inhibits economic development in rural areas.",
+            "Over reliance on technology may inhibit critical thinking in younger generations.",
+          ],
+        },
+        {
+          word: "Jeopardize",
+          meaning: "To put something or someone in danger",
+          synonyms: ["endanger", "imperil", "sabotage"],
+          examples: [
+            "Dishonest behavior can jeopardize trust within a professional relationship.",
+            "A lack of cooperation between nations can jeopardize global peace efforts.",
+          ],
+        },
+        {
+          word: "Renovate",
+          meaning: "To repair and improve something",
+          synonyms: ["repair", "refurbish", "recondition"],
+          examples: [
+            "Renovating historic buildings preserves cultural heritage for future generations.",
+            "Homeowners renovate old properties to increase their market value significantly.",
+          ],
+        },
+        {
+          word: "Manifest",
+          meaning: "The public display of emotion or feeling",
+          synonyms: ["demonstrate", "delineate", "present"],
+          examples: [
+            "Success often manifests through consistent effort and strong determination.",
+            "Social change will manifest through collective efforts and persistent advocacy.",
+          ],
+        },
+        {
+          word: "Adhere",
+          meaning: "To stick or be attached firmly to do something",
+          synonyms: ["follow", "comply with", "abide by"],
+          examples: [
+            "Adhering to a balanced diet promotes better physical and mental health.",
+            "Employees are required to adhere to the organization's code of conduct.",
+          ],
+        },
+        {
+          word: "Supervise",
+          meaning: "Observe and direct the work of someone",
+          synonyms: ["look after", "guard", "inspect"],
+          examples: [
+            "Supervising construction projects requires expertise and attention to detail.",
+            "Engineers supervise maintenance work to prevent potential equipment failures.",
+          ],
+        },
+        {
+          word: "Confine",
+          meaning: "To keep someone or something within limits",
+          synonyms: ["restrict", "limit", "circumscribe"],
+          examples: [
+            "Prolonged isolation can confine people's social and mental development.",
+            "Some traditions confine women's roles within household responsibilities.",
+          ],
+        },
+        {
+          word: "Eradicate",
+          meaning: "Get rid of something bad completely",
+          synonyms: ["remove", "expunge", "annihilate"],
+          examples: [
+            "Scientists are working to eradicate deadly diseases through advanced vaccines.",
+            "They implemented measures to eradicate invasive species from the ecosystem.",
+          ],
+        },
+        {
+          word: "Conceal",
+          meaning: "To withdraw or remove from observation",
+          synonyms: ["cover up", "control", "reserve"],
+          examples: [
+            "They conceal their emotions, making it difficult to understand their intentions.",
+            "The artist used shadowing techniques to conceal certain details in the painting.",
+          ],
+        },
+        {
+          word: "Manipulate",
+          meaning: "To manage or influence skillfully",
+          synonyms: ["negotiate", "deploy", "maneuver"],
+          examples: [
+            "Political campaigns often manipulate emotions to gain support from voters.",
+            "People with ulterior motives often manipulate others to achieve personal goals.",
+          ],
+        },
+        {
+          word: "Penetrate",
+          meaning: "To move into or through something",
+          synonyms: ["permeate", "access", "percolate"],
+          examples: [
+            "The market research helped the company penetrate international markets.",
+            "Her sharp intellect allowed her to penetrate the complex argument with ease.",
+          ],
+        },
+        {
+          word: "Hinder",
+          meaning: "Stop someone or something from making progress",
+          synonyms: ["hamper", "slow down", "constrain"],
+          examples: [
+            "Fear of failure can hinder personal and professional growth opportunities.",
+            "Poor time management can hinder academic and professional achievements.",
+          ],
+        },
+        {
+          word: "Emphasize",
+          meaning: "To give special importance to something",
+          synonyms: ["stress", "highlight", "underline"],
+          examples: [
+            "Health experts emphasize maintaining a balanced diet and regular exercise.",
+            "The advertisement emphasizes the benefits of the product over competitors.",
+          ],
+        },
+        {
+          word: "Accelerate",
+          meaning: "Make something happen faster or greater",
+          synonyms: ["quicken", "gain momentum", "boost"],
+          examples: [
+            "Innovation continues to accelerate advancements in various scientific fields.",
+            "Economic incentives can accelerate the adoption of renewable energy sources.",
+          ],
+        },
+        {
+          word: "Convey",
+          meaning: "To communicate ideas or feelings indirectly",
+          synonyms: ["make known", "get across", "proclaim"],
+          examples: [
+            "Billboards are designed to convey specific brand messages to audiences.",
+            "Visual presentations often convey complex data more effectively than text.",
+          ],
+        },
+        {
+          word: "Promote",
+          meaning: "To contribute to the growth or prosperity",
+          synonyms: ["upgrade", "stimulate", "trigger"],
+          examples: [
+            "Leaders should promote open communication to avoid misunderstandings.",
+            "Policies that promote environmental conservation benefit future generations.",
+          ],
+        },
+        {
+          word: "Exacerbate",
+          meaning: "To make a bad situation or a problem worse",
+          synonyms: ["provoke", "bother", "become worse"],
+          examples: [
+            "Economic crisis exacerbate unemployment rates in developing countries.",
+            "Climate change exacerbates natural disasters like hurricanes and droughts.",
+          ],
+        },
+        {
+          word: "Disclose",
+          meaning: "To make something publicly known",
+          synonyms: ["expose", "manifest", "display"],
+          examples: [
+            "Regulations require businesses to disclose potential risks to their customers.",
+            "Candidates must disclose any criminal records during the application process.",
+          ],
+        },
+        {
+          word: "Align",
+          meaning: "Arrange something in the correct position",
+          synonyms: ["coordinate", "order", "make parallel"],
+          examples: [
+            "Aligning resources properly ensures smooth project execution and success.",
+            "Educational reforms should align with modern technological advancements.",
+          ],
+        },
+        {
+          word: "Unleash",
+          meaning: "To let happen or begin something powerful",
+          synonyms: ["launch", "introduce", "unshackle"],
+          examples: [
+            "The new law could unleash widespread protests among dissatisfied citizens.",
+            "Technological advancements unleash new opportunities for economic growth.",
+          ],
+        },
+        {
+          word: "Safeguard",
+          meaning: "To protect someone or something from harm",
+          synonyms: ["defend", "secure", "keep safe"],
+          examples: [
+            "Safeguarding public health requires addressing global and local challenges.",
+            "Education plays a critical role in safeguarding democracy and social equality.",
+          ],
+        },
+        {
+          word: "Intensify",
+          meaning: "Make the best or most effective use of a situation",
+          synonyms: ["ameliorate", "modify", "upgrade"],
+          examples: [
+            "The company intensified its marketing efforts to attract more customers.",
+            "Climate change will intensify the frequency of natural disasters worldwide.",
+          ],
+        },
+        {
+          word: "Contribute",
+          meaning: "To give money or resources to something",
+          synonyms: ["donate", "volunteer", "cooperate"],
+          examples: [
+            "Strong leadership contributes to the success of organizations and businesses.",
+            "Education contributes significantly to economic growth and societal progress.",
+          ],
+        },
+        {
+          word: "Persuade",
+          meaning: "To make someone agree to do something",
+          synonyms: ["convince", "compel", "instigate"],
+          examples: [
+            "Advertisers persuade consumers through emotional and logical appeals.",
+            "The company persuades customers through strategic marketing campaigns.",
+          ],
+        },
+        {
+          word: "Articulate",
+          meaning: "The ability to speak fluently and coherently",
+          synonyms: ["fit together", "accentuate", "integrate"],
+          examples: [
+            "The spokesperson articulates the company's policies with clarity and confidence.",
+            "Good communication skills help students articulate their arguments persuasively.",
+          ],
+        },
+        {
+          word: "Dismantle",
+          meaning: "To take something apart or break down",
+          synonyms: ["deconstruct", "fragment", "separate"],
+          examples: [
+            "Engineers worked overnight to dismantle the old bridge for reconstruction.",
+            "The government decided to dismantle outdated laws restricting free speech.",
+          ],
+        },
+        {
+          word: "Conquer",
+          meaning: "To defeat someone or something",
+          synonyms: ["overcome", "subjugate", "beat"],
+          examples: [
+            "She conquered her fear of public speaking through wide-ranging practice.",
+            "Collaboration is necessary to conquer global challenges like climate change.",
+          ],
+        },
+        {
+          word: "Prioritize",
+          meaning: "Treat something as more important than others",
+          synonyms: ["highlight", "focus on", "rank fast"],
+          examples: [
+            "Learning to prioritize duties can reduce stress and increase efficiency.",
+            "It is essential to prioritize mental health over professional achievements.",
+          ],
+        },
+        {
+          word: "Reform",
+          meaning: "Make changes for improvement or development",
+          synonyms: ["amend", "reorganize", "regenerate"],
+          examples: [
+            "The organization aims to reform workplace policies for better efficiency.",
+            "Education systems require reform to meet modern technological demands.",
+          ],
+        },
+        {
+          word: "Combat",
+          meaning: "Fight or contest between individuals or groups",
+          synonyms: ["withstand", "cope with", "battle against"],
+          examples: [
+            "Vaccines combat the spread of life-threatening viruses within populations.",
+            "Public campaigns help combat misinformation and spread factual knowledge.",
+          ],
+        },
+        {
+          word: "Deal with",
+          meaning: "To take action in order to achieve something",
+          synonyms: ["address", "negotiate", "handle"],
+          examples: [
+            "Companies must deal with customer complaints professionally and promptly.",
+            "The authority implements policies to deal with economic recessions efficiently.",
+          ],
+        },
+        {
+          word: "Commence",
+          meaning: "To start happening or doing something",
+          synonyms: ["inaugurate", "begin", "initiate"],
+          examples: [
+            "The construction project will commence once all approvals are received.",
+            "Scientists will commence research on potential solutions for climate change.",
+          ],
+        },
+        {
+          word: "Procrastinate",
+          meaning: "To delay doing something that you should do",
+          synonyms: ["postpone", "adjourn", "delay"],
+          examples: [
+            "When people procrastinate, stress levels tend to increase as deadlines approach.",
+            "Procrastinate wisely by using the extra time for strategic planning and reflection.",
+          ],
+        },
+        {
+          word: "Contemplate",
+          meaning: "Look at or view with continued attention",
+          synonyms: ["ponder", "meditate", "envision"],
+          examples: [
+            "Students should contemplate their career choices before committing to a major.",
+            "It is essential to contemplate ethical concerns before pursuing a business venture.",
+          ],
+        },
+        {
+          word: "Outweigh",
+          meaning: "To be more significant in value or importance",
+          synonyms: ["supersede", "surpass", "be greater than"],
+          examples: [
+            "The rewards of hard work outweigh the initial struggles and sacrifices.",
+            "For many, the advantages of urban living outweigh its potential drawbacks.",
+          ],
+        },
+        {
+          word: "Challenge",
+          meaning: "To invite someone to take part in a competition",
+          synonyms: ["question", "oppose", "fight against"],
+          examples: [
+            "Students must embrace every challenge as an opportunity for growth.",
+            "Overcoming language barriers is a challenge for international students.",
+          ],
+        },
+        {
+          word: "Urge",
+          meaning: "To encourage someone or support earnestly",
+          synonyms: ["recommend", "suggest", "lobby"],
+          examples: [
+            "Many activists urge companies to adopt more sustainable business practices.",
+            "The report urges policymakers to address income inequality more effectively.",
+          ],
+        },
+        {
+          word: "Reinforce",
+          meaning: "To give strong support to an opinion or idea",
+          synonyms: ["strengthen", "underpin", "galvanize"],
+          examples: [
+            "Positive feedback reinforces an employees motivation and job performance.",
+            "Regular practice reinforces language learning and improves fluency over time.",
+          ],
+        },
+        {
+          word: "Shield",
+          meaning: "Protect from danger or unpleasant situations",
+          synonyms: ["defend", "guard", "protect"],
+          examples: [
+            "Laws are designed to shield citizens from unfair treatment or discrimination.",
+            "Security systems shield sensitive data from cyber attacks in modern businesses.",
+          ],
+        },
+        {
+          word: "Plummet",
+          meaning: "To fall very quickly and suddenly",
+          synonyms: ["plunge", "crash", "go down"],
+          examples: [
+            "Sales plummeted after the product received poor reviews from customers.",
+            "Stock prices can plummet dramatically during periods of economic instability.",
+          ],
+        },
+        {
+          word: "Accomplish",
+          meaning: "To do or finish something successfully",
+          synonyms: ["achieve", "fulfill", "attain"],
+          examples: [
+            "She managed to accomplish her goals through hard work and determination.",
+            "The marathon runners trained for months to accomplish their personal records.",
+          ],
+        },
+        {
+          word: "Generalize",
+          meaning: "Make general statements about people or things",
+          synonyms: ["oversimplify", "conclude", "summize"],
+          examples: [
+            "Generalizing individual experiences often leads to misleading assumptions.",
+            "Scientists should generalize findings only with sufficient supporting evidence.",
+          ],
+        },
+        {
+          word: "Optimize",
+          meaning: "To make the best possible use of something",
+          synonyms: ["augment", "heighten", "elevate"],
+          examples: [
+            "Engineers continuously optimize systems to improve overall performance.",
+            "Companies must optimize resources to achieve long-term sustainability goals.",
+          ],
+        },
+        {
+          word: "Empower",
+          meaning: "To give official authority or legal power",
+          synonyms: ["sanction", "authorize", "legitimize"],
+          examples: [
+            "Education empowers individuals to contribute meaningfully to society.",
+            "Social movements empower marginalized groups to fight for their rights.",
+          ],
+        },
+        {
+          word: "Ascend",
+          meaning: "To move up or climb something",
+          synonyms: ["climb", "conquer", "reach high"],
+          examples: [
+            "He hoped to ascend the corporate ladder through hard work and dedication.",
+            "The hiker was determined to ascend despite the challenging weather conditions.",
+          ],
+        },
+        {
+          word: "Concur",
+          meaning: "Agree with someone or something",
+          synonyms: ["unite", "come together", "accord"],
+          examples: [
+            "Most experts concur that climate change requires immediate global attention.",
+            "The board members seem to concur on the importance of the proposed reforms.",
+          ],
+        },
+        {
+          word: "Traverse",
+          meaning: "To move or travel through an area",
+          synonyms: ["navigate", "follow", "pass over"],
+          examples: [
+            "Ancient traders used to traverse the Silk Road to exchange valuable goods.",
+            "The adventurers aim to traverse the icy terrain despite the harsh conditions.",
+          ],
+        },
+        {
+          word: "Govern",
+          meaning: "To rule over something with authority",
+          synonyms: ["control", "administer", "regulate"],
+          examples: [
+            "Economic factors govern market trends and business growth opportunities.",
+            "Democratic principles govern the functioning of most modern societies today.",
+          ],
+        },
+        {
+          word: "Acknowledge",
+          meaning: "To accept or admit that something exists",
+          synonyms: ["recognize", "admit", "concede"],
+          examples: [
+            "The student acknowledged the teacher's guidance in her academic success.",
+            "She acknowledged her mistake and apologized for the inconvenience caused.",
+          ],
+        },
+        {
+          word: "Assemble",
+          meaning: "To bring together or gather into one place",
+          synonyms: ["accumulate", "congregate", "amass"],
+          examples: [
+            "The students assembled in the auditorium for an important announcement.",
+            "Engineers assemble complex machines with precision and technical expertise.",
+          ],
+        },
+        {
+          word: "Collapse",
+          meaning: "Shrink together abruptly and completely",
+          synonyms: ["subside", "crumble", "break down"],
+          examples: [
+            "The poorly constructed building was likely to collapse during the earthquake.",
+            "The ancient civilization eventually collapsed due to internal strife and invasion.",
+          ],
+        },
+        {
+          word: "Venture",
+          meaning: "To expose to a difficult situation or risk",
+          synonyms: ["journey", "proceed", "invest"],
+          examples: [
+            "Exploring unknown territories requires courage and a willingness to venture.",
+            "The young entrepreneur decided to venture into the competitive tech industry.",
+          ],
+        },
+        {
+          word: "Fluctuate",
+          meaning: "Continually change or shift back and forth",
+          synonyms: ["vacillate", "oscillate", "alter"],
+          examples: [
+            "The stock market will always fluctuate due to unpredictable external factors.",
+            "Energy consumption levels fluctuate significantly during peak winter months.",
+          ],
+        },
+        {
+          word: "Orchestrate",
+          meaning: "To design or organize something",
+          synonyms: ["organize", "mastermind", "harmonize"],
+          examples: [
+            "The manager skillfully orchestrates diverse teams for maximum productivity.",
+            "Universities often orchestrate programs to foster innovative student research.",
+          ],
+        },
+        {
+          word: "Halt",
+          meaning: "To stop from happening or developing",
+          synonyms: ["terminate", "suppress", "discontinue"],
+          examples: [
+            "The administration decided to halt construction due to ecological concerns.",
+            "The government decided to halt deforestation to protect the environment.",
+          ],
+        },
+        {
+          word: "Disguise",
+          meaning: "To change the usual appearance, sound, or taste",
+          synonyms: ["misrepresent", "pretend", "deceive"],
+          examples: [
+            "The spy disguised his intentions to avoid drawing unnecessary attention.",
+            "People disguise their emotions to appear composed in stressful situations.",
+          ],
+        },
+        {
+          word: "Advocate",
+          meaning: "Giving public support speaks in favor of something",
+          synonyms: ["endorse", "recommend", "suggest"],
+          examples: [
+            "The study advocates the implementation of green technology in industries.",
+            "Some educators advocate a student-centered approach to classroom learning.",
+          ],
+        },
+        {
+          word: "Overwhelm",
+          meaning: "Affect someone's emotions in a powerful way",
+          synonyms: ["deluge", "devastate", "bewilder"],
+          examples: [
+            "The floodwaters overwhelmed the small town, causing massive destruction.",
+            "The army's superior strength overwhelmed the opposition, ensuring victory.",
+          ],
+        },
+        {
+          word: "Undertake",
+          meaning: "To promise that you will do something",
+          synonyms: ["initiate", "execute", "perform"],
+          examples: [
+            "The organization decided to undertake a detailed investigation into the matter.",
+            "To succeed, they must undertake all necessary precautions during the mission.",
+          ],
+        },
+        {
+          word: "Camouflage",
+          meaning: "Disguise the presence of a person or object",
+          synonyms: ["disguise", "mask", "obfuscate"],
+          examples: [
+            "Wildlife photographers use camouflage to capture animals in natural habitats.",
+            "Marketing strategies can camouflage weaknesses to highlight product strengths.",
+          ],
+        },
+        {
+          word: "Summon",
+          meaning: "Formally call for the presence of someone",
+          synonyms: ["ask for", "request", "invite"],
+          examples: [
+            "Public figures often summon media attention during significant announcements.",
+            "Scientists summon expertise to address complex global problems collaboratively.",
+          ],
+        },
+        {
+          word: "Mitigate",
+          meaning: "To make a bad situation less severe",
+          synonyms: ["downplay", "lesson", "relieve"],
+          examples: [
+            "Effective measures are needed to mitigate the effects of climate change.",
+            "Advanced technology can mitigate the damage caused by natural disasters.",
+          ],
+        },
+        {
+          word: "Advance",
+          meaning: "To go or move something forward",
+          synonyms: ["push forward", "proceed", "progress"],
+          examples: [
+            "Scientific research aims to advance medical treatments for rare diseases.",
+            "Advancing renewable energy technologies is vital for a sustainable future.",
+          ],
+        },
+        {
+          word: "Materialize",
+          meaning: "To come into perceptible existence",
+          synonyms: ["occur", "take place", "come about"],
+          examples: [
+            "New technologies may materialize in the coming years, benefiting the economy.",
+            "A solution to the issue could materialize if cooperation increases among leaders.",
+          ],
+        },
+        {
+          word: "Replenish",
+          meaning: "To make full or complete again",
+          synonyms: ["refill", "resupply", "restore"],
+          examples: [
+            "Drinking water frequently helps replenish the body during intense workouts.",
+            "Rainfall is necessary to replenish the region's rapidly depleting water resources.",
+          ],
+        },
+        {
+          word: "Ambush",
+          meaning: "Attack someone after hiding and waiting",
+          synonyms: ["strike", "entrap", "capture"],
+          examples: [
+            "The soldiers set an ambush along the narrow mountain pass for the enemy.",
+            "Ambushing the enemy forces has been a common strategy in historical battles.",
+          ],
+        },
+        {
+          word: "Maximize",
+          meaning: "Make as great as possible",
+          synonyms: ["increase", "escalate", "amplify"],
+          examples: [
+            "Effective study techniques help students maximize their learning potential.",
+            "Businesses implement technology to maximize productivity in the workplace.",
+          ],
+        },
+        {
+          word: "Standardize",
+          meaning: "To make all the things of one particular type",
+          synonyms: ["systematize", "classify", "make equal"],
+          examples: [
+            "Standardized labeling helps consumers make informed purchasing decisions.",
+            "Standardized tests assess students academic abilities across various regions.",
+          ],
+        },
+        {
+          word: "Resolve",
+          meaning: "To solve or end a problem or difficulty",
+          synonyms: ["sort out", "settle", "alleviate"],
+          examples: [
+            "New strategies are essential to resolve the ongoing environmental crisis.",
+            "Negotiations aim to resolve conflicts between labor unions and employers.",
+          ],
+        },
+        {
+          word: "Invade",
+          meaning: "Enter a territory forcefully as an enemy",
+          synonyms: ["occupy", "trespass", "encroach"],
+          examples: [
+            "The invasive species began to invade local ecosystems, causing imbalances.",
+            "Ancient armies would invade neighboring territories to expand their empires.",
+          ],
+        },
+        {
+          word: "Revitalize",
+          meaning: "To make something grow and develop",
+          synonyms: ["refresh", "strengthen", "escalate"],
+          examples: [
+            "Community engagement can revitalize local traditions and cultural practices.",
+            "Investment in renewable energy will revitalize the power sector significantly.",
+          ],
+        },
+        {
+          word: "Consent",
+          meaning: "Give permission for something to happen",
+          synonyms: ["approve", "sanction", "allow"],
+          examples: [
+            "He gave his consent for the medical procedure after a thorough explanation.",
+            "They need official consent before proceeding with the construction project.",
+          ],
+        },
+        {
+          word: "Dwindle",
+          meaning: "Reduce gradually in size, amount or strength",
+          synonyms: ["diminish", "decline", "lessen"],
+          examples: [
+            "Energy supplies dwindle quickly during prolonged cold weather conditions.",
+            "Forest cover continues to dwindle due to unchecked deforestation activities.",
+          ],
+        },
+        {
+          word: "Execute",
+          meaning: "To carry out fully put completely into effect",
+          synonyms: ["implement", "govern", "administer"],
+          examples: [
+            "Skilled programmers execute code to create innovative software applications.",
+            "Engineers execute complex designs to build safe and sustainable infrastructure.",
+          ],
+        },
+        {
+          word: "Abolish",
+          meaning: "Officially get rid of a law or system",
+          synonyms: ["obliterate", "eliminate", "nullify"],
+          examples: [
+            "Educational reforms should aim to abolish rote learning and foster creativity.",
+            "Efforts to abolish poverty require strong policies and international cooperation.",
+          ],
+        },
+        {
+          word: "Leverage",
+          meaning: "Power used to achieve a desired result",
+          synonyms: ["support", "utilize", "force"],
+          examples: [
+            "Entrepreneurs leverage market trends to develop innovative business strategies.",
+            "Leveraging data analytics can help companies make informed strategic decisions.",
+          ],
+        },
+        {
+          word: "Decipher",
+          meaning: "Solve a complicated situation or problem",
+          synonyms: ["unravel", "elucidate", "resolve"],
+          examples: [
+            "Detectives decipher clues to solve challenging and high-profile criminal cases.",
+            "Students must decipher complex theories to understand scientific concepts fully.",
+          ],
+        },
+        {
+          word: "Illuminate",
+          meaning: "To light something and make it brighter",
+          synonyms: ["highlight", "enlighten", "elucidate"],
+          examples: [
+            "Smart lighting systems illuminate rooms based on occupancy and preferences.",
+            "Discussions illuminate diverse perspectives, enriching collective understanding.",
+          ],
+        },
+        {
+          word: "Hypnotize",
+          meaning: "Capture the whole attention of someone",
+          synonyms: ["mesmerize", "enchant", "captivate"],
+          examples: [
+            "Certain visual patterns can hypnotize viewers through their intricate designs.",
+            "The scientists groundbreaking ideas seemed to hypnotize his enthusiastic peers.",
+          ],
+        },
+        {
+          word: "Evaluate",
+          meaning: "To judge something with respect and value",
+          synonyms: ["weigh", "appraise", "measure"],
+          examples: [
+            "Researchers evaluate experimental results to confirm the hypothesis's validity.",
+            "Evaluating environmental impact is crucial for sustainable development projects.",
+          ],
+        },
+        {
+          word: "Confront",
+          meaning: "Deal with a difficult situation or person",
+          synonyms: ["oppose", "challenge", "withstand"],
+          examples: [
+            "Confronting problems directly leads to quicker solutions and better outcomes.",
+            "Employees sometimes confront unfair treatment within workplace environments.",
+          ],
+        },
+        {
+          word: "Retrieve",
+          meaning: "To find and bring back something",
+          synonyms: ["reclaim", "regain", "take back"],
+          examples: [
+            "Students use libraries to retrieve information for academic research projects.",
+            "Astronauts retrieve samples from space to analyze extraterrestrial environments.",
+          ],
+        },
+      ];
+
+      // Initialize the application
+      document.addEventListener("DOMContentLoaded", function () {
+        const verbsContainer = document.getElementById("verbs-container");
+        const searchBox = document.querySelector(".search-box");
+        const filterButtons = document.querySelectorAll(".filter-btn");
+        const progressBar = document.getElementById("progress-bar");
+        const progressText = document.getElementById("progress-text");
+
+        let bookmarkedVerbs =
+          JSON.parse(localStorage.getItem("bookmarkedVerbs")) || [];
+        let learnedVerbs =
+          JSON.parse(localStorage.getItem("learnedVerbs")) || [];
+        let currentFilter = "all";
+
+        // Render all verbs initially
+        renderVerbs(verbs);
+        updateProgress();
+
+        // Search functionality
+        searchBox.addEventListener("input", function () {
+          const searchTerm = this.value.toLowerCase();
+          const filteredVerbs = verbs.filter(
+            (verb) =>
+              verb.word.toLowerCase().includes(searchTerm) ||
+              verb.meaning.toLowerCase().includes(searchTerm) ||
+              verb.synonyms.some((synonym) =>
+                synonym.toLowerCase().includes(searchTerm)
+              )
+          );
+          renderVerbs(filteredVerbs);
+        });
+
+        // Filter functionality
+        filterButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+            // Update active button
+            filterButtons.forEach((btn) => btn.classList.remove("active"));
+            this.classList.add("active");
+
+            currentFilter = this.getAttribute("data-filter");
+
+            if (currentFilter === "all") {
+              renderVerbs(verbs);
+            } else if (currentFilter === "bookmarked") {
+              const bookmarked = verbs.filter((verb) =>
+                bookmarkedVerbs.includes(verb.word)
+              );
+              renderVerbs(bookmarked);
+            }
+          });
+        });
+
+        // Render verbs function
+        function renderVerbs(verbsToRender) {
+          verbsContainer.innerHTML = "";
+
+          if (verbsToRender.length === 0) {
+            verbsContainer.innerHTML =
+              '<p style="grid-column: 1 / -1; text-align: center; padding: 2rem;">No verbs found matching your criteria.</p>';
+            return;
+          }
+
+          verbsToRender.forEach((verb) => {
+            const isBookmarked = bookmarkedVerbs.includes(verb.word);
+            const isLearned = learnedVerbs.includes(verb.word);
+
+            const verbCard = document.createElement("div");
+            verbCard.className = "verb-card";
+            if (isLearned) {
+              verbCard.style.borderLeft = "5px solid var(--success-color)";
+            }
+
+            verbCard.innerHTML = `
+                        <button class="bookmark-btn ${
+                          isBookmarked ? "bookmarked" : ""
+                        }" data-verb="${verb.word}">
+                            ${isBookmarked ? "★" : "☆"}
+                        </button>
+                        <div class="verb-word">${verb.word}</div>
+                        <div class="meaning">${verb.meaning}</div>
+                        <div class="synonyms">
+                            <div class="synonyms-title">Synonyms:</div>
+                            <div class="synonym-list">
+                                ${verb.synonyms
+                                  .map(
+                                    (synonym) =>
+                                      `<span class="synonym">${synonym}</span>`
+                                  )
+                                  .join("")}
+                            </div>
+                        </div>
+                        <div class="example">
+                            <div class="example-title">Examples:</div>
+                            <ul>
+                                ${verb.examples
+                                  .map((example) => `<li>${example}</li>`)
+                                  .join("")}
+                            </ul>
+                        </div>
+                        <div class="learn-controls" style="margin-top: 1rem;">
+                            <button class="filter-btn ${
+                              isLearned ? "active" : ""
+                            }" data-verb="${verb.word}" data-action="learn">
+                                ${isLearned ? "Learned" : "Mark as Learned"}
+                            </button>
+                        </div>
+                    `;
+
+            verbsContainer.appendChild(verbCard);
+          });
+
+          // Add event listeners to bookmark buttons
+          document.querySelectorAll(".bookmark-btn").forEach((button) => {
+            button.addEventListener("click", function () {
+              const verb = this.getAttribute("data-verb");
+              toggleBookmark(verb);
+            });
+          });
+
+          // Add event listeners to learn buttons
+          document
+            .querySelectorAll(".learn-controls .filter-btn")
+            .forEach((button) => {
+              button.addEventListener("click", function () {
+                const verb = this.getAttribute("data-verb");
+                toggleLearned(verb);
+              });
+            });
+        }
+
+        // Toggle bookmark function
+        function toggleBookmark(verb) {
+          const index = bookmarkedVerbs.indexOf(verb);
+
+          if (index === -1) {
+            bookmarkedVerbs.push(verb);
+          } else {
+            bookmarkedVerbs.splice(index, 1);
+          }
+
+          localStorage.setItem(
+            "bookmarkedVerbs",
+            JSON.stringify(bookmarkedVerbs)
+          );
+
+          // Re-render if we're on the bookmarked filter
+          if (currentFilter === "bookmarked") {
+            const bookmarked = verbs.filter((v) =>
+              bookmarkedVerbs.includes(v.word)
+            );
+            renderVerbs(bookmarked);
+          } else {
+            // Just update the bookmark button
+            const bookmarkBtn = document.querySelector(
+              `.bookmark-btn[data-verb="${verb}"]`
+            );
+            if (bookmarkBtn) {
+              bookmarkBtn.classList.toggle("bookmarked");
+              bookmarkBtn.innerHTML = bookmarkBtn.classList.contains(
+                "bookmarked"
+              )
+                ? "★"
+                : "☆";
+            }
+          }
+        }
+
+        // Toggle learned function
+        function toggleLearned(verb) {
+          const index = learnedVerbs.indexOf(verb);
+
+          if (index === -1) {
+            learnedVerbs.push(verb);
+          } else {
+            learnedVerbs.splice(index, 1);
+          }
+
+          localStorage.setItem("learnedVerbs", JSON.stringify(learnedVerbs));
+          updateProgress();
+
+          // Update the button and card styling
+          const learnBtn = document.querySelector(
+            `.learn-controls .filter-btn[data-verb="${verb}"]`
+          );
+          const verbCard = learnBtn.closest(".verb-card");
+
+          if (learnBtn) {
+            learnBtn.classList.toggle("active");
+            learnBtn.textContent = learnBtn.classList.contains("active")
+              ? "Learned"
+              : "Mark as Learned";
+          }
+
+          if (verbCard) {
+            verbCard.style.borderLeft = learnBtn.classList.contains("active")
+              ? "5px solid var(--success-color)"
+              : "5px solid var(--primary-color)";
+          }
+        }
+
+        // Update progress function
+        function updateProgress() {
+          const progress = (learnedVerbs.length / verbs.length) * 100;
+          progressBar.style.width = `${progress}%`;
+          progressText.textContent = `${learnedVerbs.length}/${verbs.length} verbs learned`;
+        }
+      });
+    </script>
+  </body>
+</html>

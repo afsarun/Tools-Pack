@@ -65,7 +65,7 @@
       }
     </script>
 
-    <!-- ✅ Fixed Breadcrumbs JSON-LD (item is a URL string) -->
+    <!-- ✅ Fixed global-breadcrumbs JSON-LD (item is a URL string) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -412,17 +412,17 @@
         font-size: 13px;
         text-align: center;
       }
-      .breadcrumbs {
+      .global-breadcrumbs {
         font-size: 14px;
         margin: 8px 0 6px;
         color: var(--muted);
       }
-      .breadcrumbs a,
-      .toc a {
+      .global-breadcrumbs a,
+      .global-toc a {
         color: inherit;
         text-decoration: none;
       }
-      .toc {
+      .global-toc {
         font-size: 13px;
         color: var(--muted);
         margin-bottom: 14px;
@@ -450,12 +450,12 @@
     </header>
 
     <div class="container">
-      <!-- Breadcrumbs (UI) -->
-      <nav class="breadcrumbs" aria-label="breadcrumb">
+      <!-- global-breadcrumbs (UI) -->
+      <nav class="global-breadcrumbs" aria-label="breadcrumb">
         <a href="/bn/">হোম</a> › <a href="/bn/#math">গণিত টুলস</a> ›
         <span>শতকরা ক্যালকুলেটর</span>
       </nav>
-      <header class="top-header">
+      <header class="global-top-header">
         <h1>শতকরা হিসাব — দ্রুত ও নির্ভুল</h1>
         <p class="tagline">
           সহজেই বের করুন <em>কোনো সংখ্যার শতকরা মান</em>,
@@ -464,8 +464,8 @@
         </p>
       </header>
 
-      <!-- TOC -->
-      <p class="toc">
+      <!-- global-toc -->
+      <p class="global-toc">
         <a href="#t1">A% of B</a> · <a href="#t2">A, B-এর কত শতাংশ?</a> ·
         <a href="#t3">শতকরা পরিবর্তন</a> · <a href="#t4">% বাড়লে/কমলে মান</a> ·
         <a href="#how-to-use">কীভাবে ব্যবহার করবেন</a> ·
@@ -721,9 +721,9 @@
         <h2>সম্পর্কিত টুলস</h2>
         <p class="muted">আরও গণিত/সংখ্যা বিষয়ক টুলস:</p>
         <p>
-          <a class="btn" href="/bn/calculator/">ক্যালকুলেটর</a>
-          <a class="btn" href="/bn/unit-converter/">ইউনিট কনভার্টার</a>
-          <a class="btn" href="/bn/age-calculator/">বয়স ক্যালকুলেটর</a>
+          <a class="global-btn" href="/bn/calculator/">ক্যালকুলেটর</a>
+          <a class="global-btn" href="/bn/unit-converter/">ইউনিট কনভার্টার</a>
+          <a class="global-btn" href="/bn/age-calculator/">বয়স ক্যালকুলেটর</a>
         </p>
         <p class="small">
           English preferred? See the
