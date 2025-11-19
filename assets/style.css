@@ -768,7 +768,9 @@ header.sticky {
 .wrap.brand nav a:active {
   transform: translateY(1px);
 }
-
+header a {
+  color: var(--text);
+}
 .actions {
   display: flex;
   flex-wrap: wrap;
