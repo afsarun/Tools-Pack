@@ -314,7 +314,25 @@
       body {
         height: 100%;
       }
-
+      .btn {
+        padding: 12px 20px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        flex-grow: 1;
+        min-width: 120px;
+        background-color: var(--ring);
+        color: var(--text);
+      }
+      .primary {
+        background-color: var(--accent);
+      }
+      .secondary {
+        background-color: var(--accent-2);
+      }
       .title {
         font-size: clamp(22px, 3.6vw, 36px);
         font-weight: 800;
@@ -456,11 +474,7 @@
       </nav>
       <header class="global-top-header">
         <h1>Percentage Calculator Quick & Accurate</h1>
-        <p class="tagline">
-          Calculate percentages, percentage change, increase/decrease, and more
-          with our free online tool. Includes step-by-step explanations and
-          formulas.
-        </p>
+        <p class="tagline"></p>
       </header>
 
       <!-- global-toc -->
@@ -645,6 +659,11 @@
           Our percentage calculator offers five different calculation modes to
           handle various percentage-related problems. Simply select the tab that
           matches your calculation needs and enter the required values.
+        </p>
+        <p>
+          Calculate percentages, percentage change, increase/decrease, and more
+          with our free online tool. Includes step-by-step explanations and
+          formulas.
         </p>
 
         <h3>Three Simple Calculation Modes</h3>

@@ -916,6 +916,9 @@ footer.wrap nav a:focus-visible {
   .global-btn {
     width: 100%;
   }
+  .site-title {
+    display: none;
+  }
 }
 
 /* style for add  */
