@@ -227,7 +227,7 @@ a {
 }
 .global-toc a:hover,
 .global-toc a:focus {
-  background: #242529;
+  background: none;
   color: #888b91;
   outline: none;
 }
