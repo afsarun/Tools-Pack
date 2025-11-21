@@ -840,13 +840,13 @@ header {
 /* --- MOBILE STYLES (Media Query) --- */
 @media (max-width: 768px) {
   /* Show the toggle button */
-  .nav-toggle {
+  .header-content .nav-toggle {
     display: block;
     z-index: 100;
   }
 
   /* Transform Navigation into a Dropdown */
-  .nav-menu {
+  .header-content .nav-menu {
     position: absolute;
     top: 100%; /* Pushes it right below the header */
     left: 0;
@@ -862,8 +862,9 @@ header {
   }
 
   /* When class 'active' is added via JS */
-  .nav-menu.active {
+  .header-content .nav-menu.active {
     max-height: 300px; /* Large enough to fit content */
+    color: #111827;
   }
 
   .nav-menu ul {

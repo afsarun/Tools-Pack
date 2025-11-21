@@ -113,3 +113,21 @@ document.querySelectorAll(".faq-item .faq-question").forEach((btn) => {
     });
   });
 })();
+const navToggle = document.querySelector(".nav-toggle");
+const navMenu = document.querySelector(".nav-menu");
+
+navToggle.addEventListener("click", () => {
+  // Toggle the menu visibility
+  navMenu.classList.toggle("active");
+
+  // Toggle the hamburger animation
+  navToggle.classList.toggle("active");
+});
+
+// Optional: Close menu when a link is clicked (Better UX)
+document.querySelectorAll(".nav-menu a").forEach((link) => {
+  link.addEventListener("click", () => {
+    navMenu.classList.remove("active");
+    navToggle.classList.remove("active");
+  });
+});
