@@ -195,244 +195,324 @@
     </script>
 
     <style>
-      /* THEME: light defaults + your provided dark tokens */
-
-      /* Light theme defaults (site default) */
       :root {
-        --bg: #ffffff;
-        --card: #f6f7fb;
-        --muted: #6b7280;
-        --text: #0f172a;
-        --accent: #2563eb;
-        --accent-2: #06b6d4;
-        --border: #e6eaf2;
-        --ring: rgba(37, 99, 235, 0.3);
-        --radius: 12px;
-        --bs: 14px;
-        --hs: 20px;
-        --ms: 10px;
-        --shadow: 0 8px 20px rgba(2, 6, 23, 0.06);
+        /* Primary Colors */
+        --primary-50: #f8fafc;
+        --primary-100: #f1f5f9;
+        --primary-200: #e2e8f0;
+        --primary-300: #cbd5e1;
+        --primary-400: #94a3b8;
+        --primary-500: #64748b;
+        --primary-600: #475569;
+        --primary-700: #334155;
+        --primary-800: #1e293b;
+        --primary-900: #0f172a;
 
-        /* helper tokens common site uses */
-        --background: var(--bg);
-        --surface: var(--card);
-        --surface-light: color-mix(in srgb, var(--card) 90%, white 10%);
-        --text-muted: var(--muted);
-        --border-color: var(--border);
-        --primary: var(--accent);
-        --primary-hover: color-mix(in srgb, var(--accent) 80%, black 20%);
-        --link: var(--accent);
-      }
+        /* Semantic Colors */
+        --text-primary: #111827;
+        --text-secondary: #6b7280;
+        --text-muted: #94a3b8;
 
-      /* Dark theme — your exact token set */
-      html[data-theme="dark"] {
-        --bg: #1e1e2f;
-        --card: #23233a;
-        --muted: #a5a7c0;
-        --text: #e9eaf6;
-        --accent: #7c3aed;
-        --accent-2: #22d3ee;
-        --border: #2f3152;
-        --ring: #3b3f72;
-        --radius: 14px;
-        --bs: 22px;
-        --hs: 32px;
-        --ms: 15px;
-        --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        --bg-primary: #ffffff;
+        --bg-secondary: #f8fafc;
+        --bg-tertiary: #f1f5f9;
 
-        /* map convenience names used by site styles */
-        --background: var(--bg);
-        --surface: var(--card);
-        --surface-light: color-mix(in srgb, var(--card) 80%, black 10%);
-        --text-muted: var(--muted);
-        --border-color: var(--border);
-        --primary: var(--accent);
-        --primary-hover: color-mix(in srgb, var(--accent) 80%, black 20%);
-        --link: var(--accent-2);
-      }
-      .formula-box {
-        background-color: var(--bg);
-        padding: 1rem;
-        border-radius: 5px;
-        margin: 1rem 0;
-        font-family: monospace;
-        font-size: 1.1rem;
-        border: 1px dashed var(--primary);
-      }
-      /* Theme toggle button visuals */
-      #theme-toggle {
-        background: none;
-        color: var(--text);
-        border: 1px solid var(--border-color);
-        padding: 8px 10px;
-        border-radius: 8px;
-        font-size: 14px;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        cursor: pointer;
-        transition: background 0.12s ease, transform 0.12s ease,
-          border-color 0.12s ease;
-        -webkit-tap-highlight-color: transparent;
-      }
-      #theme-toggle:hover {
-        background: var(--surface-light);
-        transform: translateY(-2px);
-      }
-      #theme-toggle:active {
-        transform: translateY(0);
-      }
-      #theme-toggle[aria-pressed="true"] {
-        border-color: var(--primary);
-        background: linear-gradient(
-          90deg,
-          color-mix(in srgb, var(--primary) 6%, transparent),
-          color-mix(in srgb, var(--primary) 2%, transparent)
-        );
-      }
-      #theme-toggle-icon {
-        font-size: 16px;
-        line-height: 1;
-        display: inline-block;
-      }
-      .sr-only {
-        position: absolute !important;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 1px, 1px);
-        white-space: nowrap;
-        border: 0;
+        --border-light: #e5e7eb;
+        --border-medium: #cbd5e1;
+
+        /* Brand Colors */
+        --brand-primary: #4f46e5;
+        --brand-secondary: #6366f1;
+        --brand-accent: #8b5cf6;
+
+        /* Status Colors */
+        --success: #10b981;
+        --success-light: #22c55e;
+        --error: #ef4444;
+        --warning: #f59e0b;
+        --info: #3b82f6;
+
+        /* Tool Colors */
+        --tool-uppercase: #8b5cf6;
+        --tool-lowercase: #3b82f6;
+        --tool-titlecase: #10b981;
+        --tool-sentencecase: #f59e0b;
+        --tool-capitalizewords: #ec4899;
+        --tool-togglecase: #f43f5e;
+
+        /* Spacing */
+        --spacing-xs: 4px;
+        --spacing-sm: 8px;
+        --spacing-md: 12px;
+        --spacing-lg: 16px;
+        --spacing-xl: 20px;
+        --spacing-2xl: 24px;
+
+        /* Border Radius */
+        --radius-sm: 6px;
+        --radius-md: 8px;
+        --radius-lg: 12px;
+
+        /* Shadows */
+        --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06);
+        --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.06);
+        --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+        /* Transitions */
+        --transition-fast: 0.2s;
+        --transition-normal: 0.3s;
       }
 
       * {
+        margin: 0;
+        padding: 0;
         box-sizing: border-box;
       }
-      html,
-      body {
-        height: 100%;
-      }
-      .btn {
-        padding: 12px 20px;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 16px;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        flex-grow: 1;
-        min-width: 120px;
-        background-color: var(--ring);
-        color: var(--text);
-      }
-      .primary {
-        background-color: var(--accent);
-      }
-      .secondary {
-        background-color: var(--accent-2);
-      }
-      .title {
-        font-size: clamp(22px, 3.6vw, 36px);
-        font-weight: 800;
-        letter-spacing: 0.2px;
-      }
-      .muted {
-        color: var(--muted);
-      }
-      .tabs {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin: 12px 0 18px;
-      }
-      .tab-btn {
-        background: var(--card);
-        border: 1px solid var(--border);
-        color: var(--text);
-        padding: 10px 14px;
-        border-radius: 12px;
-        cursor: pointer;
-      }
-      .tab-btn[aria-selected="true"] {
-        outline: 2px solid var(--ring);
-        box-shadow: inset 0 0 0 1px var(--accent);
-      }
 
-      .card h2 {
-        margin: 0 0 12px;
-        font-size: 18px;
-      }
-      .row {
-        display: flex;
-        gap: 12px;
-        align-items: center;
-        margin: 10px 0;
-      }
-      label {
-        min-width: 140px;
-        color: var(--muted);
-      }
-      input[type="number"] {
-        width: 100%;
-        background: var(--bg);
-        color: var(--text);
-        border: 1px solid var(--border);
-        border-radius: 10px;
-        padding: 10px 12px;
-        font-size: 28px;
-        box-shadow: inset 0 0 0 1px transparent;
-        -moz-appearance: textfield;
-      }
-      input[type="number"]:focus {
-        outline: none;
-        box-shadow: inset 0 0 0 1px var(--accent);
-      }
-      input::-webkit-outer-spin-button,
-      input::-webkit-inner-spin-button {
-        -webkit-appearance: none;
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        line-height: 1.6;
+        color: var(--text-primary);
+        background-color: var(--bg-primary);
+        padding: 0;
         margin: 0;
       }
 
-      .result {
-        background: var(--bg);
-        border: 1px dashed var(--ring);
-        border-radius: 12px;
-        padding: 14px;
-        font-size: 28px;
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: var(--spacing-lg);
       }
-      .formula {
-        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-          "Liberation Mono", monospace;
-        color: var(--muted);
-        font-size: 13px;
+
+      .calculator-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
       }
-      .small {
-        font-size: 12px;
+
+      @media (min-width: 768px) {
+        .calculator-container {
+          grid-template-columns: 1fr 1fr;
+        }
       }
-      .help {
-        margin-top: 6px;
-        color: var(--muted);
+
+      .calculator-card {
+        background: var(--bg-primary);
+        border-radius: var(--radius-lg);
+        padding: var(--spacing-xl);
+        box-shadow: var(--shadow-sm);
+        border: 1px solid var(--border-light);
+        transition: transform var(--transition-normal),
+          box-shadow var(--transition-normal);
       }
-      .hidden {
+
+      .calculator-card:hover {
+        box-shadow: var(--shadow-md);
+      }
+
+      .calculator-title {
+        display: flex;
+        align-items: center;
+        margin-bottom: var(--spacing-lg);
+        color: var(--primary-700);
+        font-size: 1.3rem;
+      }
+
+      .calculator-icon {
+        margin-right: var(--spacing-md);
+        font-size: 1.5rem;
+        color: var(--brand-primary);
+      }
+
+      .input-group {
+        margin-bottom: var(--spacing-lg);
+        position: relative;
+      }
+
+      label {
+        display: block;
+        margin-bottom: var(--spacing-sm);
+        color: var(--text-secondary);
+        font-weight: 500;
+      }
+
+      input[type="number"] {
+        width: 100%;
+        padding: var(--spacing-md);
+        border: 1px solid var(--border-medium);
+        border-radius: var(--radius-md);
+        font-size: 1rem;
+        transition: border-color var(--transition-fast),
+          box-shadow var(--transition-fast);
+      }
+
+      input[type="number"]:focus {
+        outline: none;
+        border-color: var(--brand-primary);
+        box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+      }
+
+      input[type="number"].error {
+        border-color: var(--error);
+        box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+      }
+
+      .error-message {
+        color: var(--error);
+        font-size: 0.85rem;
+        margin-top: var(--spacing-xs);
         display: none;
       }
 
-      .global-breadcrumbs {
-        font-size: 14px;
-        margin: 8px 0 6px;
-        color: var(--muted);
+      .btn {
+        background-color: var(--brand-primary);
+        color: white;
+        border: none;
+        padding: var(--spacing-md) var(--spacing-xl);
+        border-radius: var(--radius-md);
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color var(--transition-fast);
+        width: 100%;
       }
-      .global-breadcrumbs a,
-      .global-toc a {
-        color: inherit;
-        text-decoration: none;
+
+      .btn:hover {
+        background-color: var(--brand-secondary);
       }
-      .global-toc {
-        font-size: 13px;
-        color: var(--muted);
-        margin-bottom: 14px;
+
+      .btn:disabled {
+        background-color: var(--primary-300);
+        cursor: not-allowed;
+      }
+
+      .result {
+        margin-top: var(--spacing-lg);
+        padding: var(--spacing-lg);
+        background-color: var(--bg-secondary);
+        border-radius: var(--radius-md);
+        border-left: 4px solid var(--brand-primary);
+        display: none;
+      }
+
+      .result.show {
+        display: block;
+      }
+
+      .result-title {
+        font-weight: 600;
+        margin-bottom: var(--spacing-sm);
+        color: var(--primary-700);
+      }
+
+      .result-value {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--brand-primary);
+      }
+
+      .explanation {
+        margin-top: var(--spacing-md);
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+      }
+
+      .tabs {
+        display: flex;
+        margin-bottom: var(--spacing-lg);
+        border-bottom: 1px solid var(--border-light);
+      }
+
+      .tab {
+        padding: var(--spacing-md) var(--spacing-lg);
+        cursor: pointer;
+        border-bottom: 3px solid transparent;
+        transition: all var(--transition-fast);
+      }
+
+      .tab.active {
+        border-bottom-color: var(--brand-primary);
+        color: var(--brand-primary);
+        font-weight: 600;
+      }
+
+      .tab-content {
+        display: none;
+      }
+
+      .tab-content.active {
+        display: block;
+      }
+
+      .info-section {
+        background-color: var(--bg-secondary);
+        padding: var(--spacing-xl);
+        border-radius: var(--radius-lg);
+        margin-top: var(--spacing-2xl);
+      }
+
+      .info-title {
+        font-size: 1.5rem;
+        margin-bottom: var(--spacing-lg);
+        color: var(--primary-700);
+      }
+
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: var(--spacing-lg);
+      }
+
+      .info-card {
+        padding: var(--spacing-lg);
+        background-color: var(--bg-primary);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .info-card h3 {
+        color: var(--brand-primary);
+        margin-bottom: var(--spacing-sm);
+      }
+
+      .notification {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: var(--spacing-md) var(--spacing-lg);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-lg);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-md);
+        max-width: 400px;
+        transform: translateX(150%);
+        transition: transform var(--transition-normal);
+      }
+
+      .notification.show {
+        transform: translateX(0);
+      }
+
+      .notification.error {
+        background-color: var(--error);
+        color: white;
+      }
+
+      .notification.success {
+        background-color: var(--success);
+        color: white;
+      }
+
+      .notification.warning {
+        background-color: var(--warning);
+        color: white;
+      }
+
+      .notification i {
+        font-size: 1.2rem;
       }
     </style>
   </head>
@@ -510,172 +590,198 @@
       </p>
 
       <!-- Title -->
-      <header>
-        <div>
-          <div class="title">Percentage Calculator</div>
-          <div class="muted">
-            A% of B, what percent is A of B, percent change, and after %
-            increase/decrease.
+      <div id="notification" class="notification">
+        <i class="fas fa-exclamation-circle"></i>
+        <span id="notification-message"></span>
+      </div>
+
+      <main class="container">
+        <div class="tabs">
+          <div class="tab active" data-tab="basic">Basic Calculations</div>
+          <div class="tab" data-tab="advanced">Advanced Calculations</div>
+        </div>
+
+        <div class="calculator-container">
+          <!-- A% of B -->
+          <div class="calculator-card tab-content active" id="basic">
+            <div class="calculator-title">
+              <i class="fas fa-calculator calculator-icon"></i>
+              <h2>A% of B</h2>
+            </div>
+            <p>Calculate what percentage A is of value B.</p>
+
+            <div class="input-group">
+              <label for="a-of-b-percent">Percentage (A)</label>
+              <input
+                type="number"
+                id="a-of-b-percent"
+                placeholder="Enter percentage"
+              />
+              <div class="error-message" id="a-of-b-percent-error"></div>
+            </div>
+
+            <div class="input-group">
+              <label for="a-of-b-value">Value (B)</label>
+              <input
+                type="number"
+                id="a-of-b-value"
+                placeholder="Enter value"
+              />
+              <div class="error-message" id="a-of-b-value-error"></div>
+            </div>
+
+            <button class="btn" id="calculate-a-of-b">Calculate</button>
+
+            <div class="result" id="a-of-b-result">
+              <div class="result-title">Result:</div>
+              <div class="result-value" id="a-of-b-result-value"></div>
+              <div class="explanation" id="a-of-b-explanation"></div>
+            </div>
+          </div>
+
+          <!-- What % is A of B -->
+          <div class="calculator-card tab-content active" id="basic">
+            <div class="calculator-title">
+              <i class="fas fa-question-circle calculator-icon"></i>
+              <h2>What % is A of B?</h2>
+            </div>
+            <p>Calculate what percentage value A is of value B.</p>
+
+            <div class="input-group">
+              <label for="what-percent-a">Value (A)</label>
+              <input
+                type="number"
+                id="what-percent-a"
+                placeholder="Enter value A"
+              />
+              <div class="error-message" id="what-percent-a-error"></div>
+            </div>
+
+            <div class="input-group">
+              <label for="what-percent-b">Value (B)</label>
+              <input
+                type="number"
+                id="what-percent-b"
+                placeholder="Enter value B"
+              />
+              <div class="error-message" id="what-percent-b-error"></div>
+            </div>
+
+            <button class="btn" id="calculate-what-percent">Calculate</button>
+
+            <div class="result" id="what-percent-result">
+              <div class="result-title">Result:</div>
+              <div class="result-value" id="what-percent-result-value"></div>
+              <div class="explanation" id="what-percent-explanation"></div>
+            </div>
+          </div>
+
+          <!-- Percent Change -->
+          <div class="calculator-card tab-content" id="advanced">
+            <div class="calculator-title">
+              <i class="fas fa-exchange-alt calculator-icon"></i>
+              <h2>Percent Change</h2>
+            </div>
+            <p>Calculate the percentage change from old value to new value.</p>
+
+            <div class="input-group">
+              <label for="change-old">Old Value</label>
+              <input
+                type="number"
+                id="change-old"
+                placeholder="Enter old value"
+              />
+              <div class="error-message" id="change-old-error"></div>
+            </div>
+
+            <div class="input-group">
+              <label for="change-new">New Value</label>
+              <input
+                type="number"
+                id="change-new"
+                placeholder="Enter new value"
+              />
+              <div class="error-message" id="change-new-error"></div>
+            </div>
+
+            <button class="btn" id="calculate-change">Calculate</button>
+
+            <div class="result" id="change-result">
+              <div class="result-title">Result:</div>
+              <div class="result-value" id="change-result-value"></div>
+              <div class="explanation" id="change-explanation"></div>
+            </div>
+          </div>
+
+          <!-- After % Increase/Decrease -->
+          <div class="calculator-card tab-content" id="advanced">
+            <div class="calculator-title">
+              <i class="fas fa-chart-line calculator-icon"></i>
+              <h2>After % Increase/Decrease</h2>
+            </div>
+            <p>Calculate the value after a percentage increase or decrease.</p>
+
+            <div class="input-group">
+              <label for="after-change-original">Original Value</label>
+              <input
+                type="number"
+                id="after-change-original"
+                placeholder="Enter original value"
+              />
+              <div class="error-message" id="after-change-original-error"></div>
+            </div>
+
+            <div class="input-group">
+              <label for="after-change-percent">Percentage Change</label>
+              <input
+                type="number"
+                id="after-change-percent"
+                placeholder="Enter percentage"
+              />
+              <div class="error-message" id="after-change-percent-error"></div>
+            </div>
+
+            <div class="input-group">
+              <label>Change Type</label>
+              <div style="display: flex; gap: var(--spacing-md)">
+                <label style="display: flex; align-items: center">
+                  <input
+                    type="radio"
+                    name="change-type"
+                    value="increase"
+                    checked
+                  />
+                  Increase
+                </label>
+                <label style="display: flex; align-items: center">
+                  <input type="radio" name="change-type" value="decrease" />
+                  Decrease
+                </label>
+              </div>
+            </div>
+
+            <button class="btn" id="calculate-after-change">Calculate</button>
+
+            <div class="result" id="after-change-result">
+              <div class="result-title">Result:</div>
+              <div class="result-value" id="after-change-result-value"></div>
+              <div class="explanation" id="after-change-explanation"></div>
+            </div>
           </div>
         </div>
-      </header>
-
-      <!-- Tabs -->
-      <nav class="tabs" role="tablist" aria-label="Calculator types">
-        <button class="tab-btn" role="tab" aria-selected="true" data-tab="t1">
-          A% of B
-        </button>
-        <button class="tab-btn" role="tab" aria-selected="false" data-tab="t2">
-          What % is A of B?
-        </button>
-        <button class="tab-btn" role="tab" aria-selected="false" data-tab="t3">
-          Percent Change
-        </button>
-        <button class="tab-btn" role="tab" aria-selected="false" data-tab="t4">
-          After % Increase/Decrease
-        </button>
-      </nav>
-
-      <!-- A% of B -->
-      <section id="t1" class="card" role="tabpanel">
-        <h2>A% of B</h2>
-        <div class="row">
-          <label for="t1_a">Percent (A)</label>
-          <input
-            id="t1_a"
-            type="number"
-            step="any"
-            inputmode="decimal"
-            placeholder="e.g., 15"
-            aria-describedby="t1_hint"
-          />
-        </div>
-        <div class="row">
-          <label for="t1_b">Value (B)</label>
-          <input
-            id="t1_b"
-            type="number"
-            step="any"
-            inputmode="decimal"
-            placeholder="e.g., 200"
-          />
-        </div>
-        <div class="row">
-          <button class="btn" id="t1_calc">Calculate</button>
-          <button class="btn secondary" id="t1_clear">Clear</button>
-          <button class="btn secondary" id="t1_copy">Copy</button>
-        </div>
-        <div class="result" id="t1_out" aria-live="polite"></div>
-        <div id="t1_hint" class="help formula small">
-          Formula: (A ÷ 100) × B
-        </div>
-      </section>
-
-      <!-- What percent is A of B -->
-      <section id="t2" class="card hidden" role="tabpanel" aria-hidden="true">
-        <h2>What percent is A of B?</h2>
-        <div class="row">
-          <label for="t2_a">Part (A)</label>
-          <input
-            id="t2_a"
-            type="number"
-            step="any"
-            inputmode="decimal"
-            placeholder="e.g., 30"
-          />
-        </div>
-        <div class="row">
-          <label for="t2_b">Whole (B)</label>
-          <input
-            id="t2_b"
-            type="number"
-            step="any"
-            inputmode="decimal"
-            placeholder="e.g., 200"
-          />
-        </div>
-        <div class="row">
-          <button class="btn" id="t2_calc">Calculate</button>
-          <button class="btn secondary" id="t2_clear">Clear</button>
-          <button class="btn secondary" id="t2_copy">Copy</button>
-        </div>
-        <div class="result" id="t2_out" aria-live="polite"></div>
-        <div class="help formula small">Formula: (A ÷ B) × 100</div>
-      </section>
-
-      <!-- Percent change -->
-      <section id="t3" class="card hidden" role="tabpanel" aria-hidden="true">
-        <h2>Percent Change</h2>
-        <div class="row">
-          <label for="t3_old">Old value</label>
-          <input
-            id="t3_old"
-            type="number"
-            step="any"
-            inputmode="decimal"
-            placeholder="e.g., 80"
-          />
-        </div>
-        <div class="row">
-          <label for="t3_new">New value</label>
-          <input
-            id="t3_new"
-            type="number"
-            step="any"
-            inputmode="decimal"
-            placeholder="e.g., 100"
-          />
-        </div>
-        <div class="row">
-          <button class="btn" id="t3_calc">Calculate</button>
-          <button class="btn secondary" id="t3_clear">Clear</button>
-          <button class="btn secondary" id="t3_copy">Copy</button>
-        </div>
-        <div class="result" id="t3_out" aria-live="polite"></div>
-        <div class="help formula small">Formula: ((New − Old) ÷ Old) × 100</div>
-      </section>
-
-      <!-- After % increase/decrease -->
-      <section id="t4" class="card hidden" role="tabpanel" aria-hidden="true">
-        <h2>After % Increase/Decrease</h2>
-        <div class="row">
-          <label for="t4_b">Value (B)</label>
-          <input
-            id="t4_b"
-            type="number"
-            step="any"
-            inputmode="decimal"
-            placeholder="e.g., 250"
-          />
-        </div>
-        <div class="row">
-          <label for="t4_a">Percent (A)</label>
-          <input
-            id="t4_a"
-            type="number"
-            step="any"
-            inputmode="decimal"
-            placeholder="e.g., 12.5"
-          />
-        </div>
-        <div class="row" role="group" aria-label="Change type">
-          <label class="small" style="min-width: auto"
-            ><input type="radio" name="t4_dir" value="up" checked />
-            Increase</label
+      </main>
+      <article class="content-section" id="related">
+        <h2>Related tools</h2>
+        <p class="muted">More calculators &amp; converters:</p>
+        <p class="related">
+          <a class="global-btn" href="/calculator/">Basic Calculator</a>
+          <a class="global-btn" href="/unit-converter/">Unit Converter</a>
+          <a class="global-btn" href="/age-calculator/">Age Calculator</a>
+          <a class="global-btn" href="/percent-calculator/"
+            >Percentage Calculator</a
           >
-          <label class="small" style="min-width: auto"
-            ><input type="radio" name="t4_dir" value="down" /> Decrease</label
-          >
-        </div>
-        <div class="row">
-          <button class="btn" id="t4_calc">Calculate</button>
-          <button class="btn secondary" id="t4_clear">Clear</button>
-          <button class="btn secondary" id="t4_copy">Copy</button>
-        </div>
-        <div class="result" id="t4_out" aria-live="polite"></div>
-        <div class="help formula small">Formula: B × (1 ± A ÷ 100)</div>
-      </section>
-
+        </p>
+      </article>
       <section class="content-section">
         <h2>How to Use the Percentage Calculator</h2>
         <p>
@@ -908,29 +1014,6 @@
         </div>
       </section>
       <!-- Related tools -->
-      <article class="content-section" id="related">
-        <h2>Related tools</h2>
-        <p class="muted">More calculators &amp; converters:</p>
-        <p class="related">
-          <a class="global-btn" href="/calculator/">Basic Calculator</a>
-          <a class="global-btn" href="/unit-converter/">Unit Converter</a>
-          <a class="global-btn" href="/age-calculator/">Age Calculator</a>
-          <a class="global-btn" href="/percent-calculator/"
-            >Percentage Calculator</a
-          >
-        </p>
-        <p class="small">
-          <span lang="bn">Prefer বাংলা?</span> Try the
-          <a
-            class="text-link"
-            href="/bn/percent-calculator/"
-            hreflang="bn"
-            lang="bn"
-            aria-label="বাংলা সংস্করণ"
-            >বাংলা সংস্করণ</a
-          >.
-        </p>
-      </article>
     </div>
     <footer role="contentinfo">
       <div class="container">
@@ -1193,163 +1276,326 @@
       </div>
     </footer>
     <script>
-      // Utilities
-      const $ = (s, c = document) => c.querySelector(s);
-      const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
-      const LABEL_RESULT = "Result";
-      const ERR_DIV0 = "Undefined: division by 0";
+      // Utility functions
+      function showNotification(message, type = "error") {
+        const notification = document.getElementById("notification");
+        const messageElement = document.getElementById("notification-message");
 
-      // Tab switching
-      $$(".tab-btn").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const id = btn.dataset.tab;
-          $$(".tab-btn").forEach((b) =>
-            b.setAttribute("aria-selected", b === btn ? "true" : "false")
-          );
-          $$('section[role="tabpanel"]').forEach((p) => {
-            const show = p.id === id;
-            p.classList.toggle("hidden", !show);
-            p.setAttribute("aria-hidden", show ? "false" : "true");
-          });
-        });
-      });
+        messageElement.textContent = message;
+        notification.className = `notification ${type} show`;
 
-      // Helpers
-      function fmt(n) {
-        if (!isFinite(n)) return "";
-        return Number(n).toLocaleString(undefined, {
-          maximumFractionDigits: 8,
-        });
-      }
-      function val(sel) {
-        const v = parseFloat($(sel).value);
-        return isNaN(v) ? null : v;
-      }
-      async function copyText(t) {
-        try {
-          await navigator.clipboard.writeText(t);
-        } catch {}
+        setTimeout(() => {
+          notification.classList.remove("show");
+        }, 5000);
       }
 
-      // Calculators
-      function t1_calc() {
-        const A = val("#t1_a"),
-          B = val("#t1_b");
-        if (A === null || B === null)
-          return ($("#t1_out").textContent = `${LABEL_RESULT}: –`);
-        const out = (A / 100) * B;
-        $("#t1_out").textContent = `${LABEL_RESULT}: ${fmt(out)}`;
-        return out;
-      }
-      function t2_calc() {
-        const A = val("#t2_a"),
-          B = val("#t2_b");
-        if (A === null || B === null)
-          return ($("#t2_out").textContent = `${LABEL_RESULT}: –`);
-        if (B === 0) return ($("#t2_out").textContent = ERR_DIV0);
-        const pct = (A / B) * 100;
-        $("#t2_out").textContent = `${LABEL_RESULT}: ${fmt(pct)}%`;
-        return pct;
-      }
-      function t3_calc() {
-        const O = val("#t3_old"),
-          N = val("#t3_new");
-        if (O === null || N === null)
-          return ($("#t3_out").textContent = `${LABEL_RESULT}: –`);
-        if (O === 0) return ($("#t3_out").textContent = ERR_DIV0);
-        const pct = ((N - O) / O) * 100;
-        $("#t3_out").textContent = `${LABEL_RESULT}: ${
-          pct >= 0 ? "+" : ""
-        }${fmt(pct)}%`;
-        return pct;
-      }
-      function t4_calc() {
-        const B = val("#t4_b"),
-          A = val("#t4_a");
-        const dir =
-          document.querySelector('input[name="t4_dir"]:checked')?.value || "up";
-        if (A === null || B === null)
-          return ($("#t4_out").textContent = `${LABEL_RESULT}: –`);
-        const delta = (A / 100) * B;
-        const valOut = dir === "up" ? B + delta : B - delta;
-        const sign = dir === "up" ? "+" : "−";
-        $("#t4_out").textContent = `${LABEL_RESULT}: ${fmt(
-          valOut
-        )} (Δ ${sign}${fmt(delta)})`;
-        return valOut;
-      }
+      function validateInput(inputId, errorId, fieldName) {
+        const input = document.getElementById(inputId);
+        const errorElement = document.getElementById(errorId);
+        const value = input.value.trim();
 
-      // Wire buttons & live update
-      $("#t1_calc").addEventListener("click", t1_calc);
-      $("#t2_calc").addEventListener("click", t2_calc);
-      $("#t3_calc").addEventListener("click", t3_calc);
-      $("#t4_calc").addEventListener("click", t4_calc);
+        // Clear previous errors
+        input.classList.remove("error");
+        errorElement.style.display = "none";
 
-      $("#t1_clear").addEventListener("click", () => {
-        $("#t1_a").value = "";
-        $("#t1_b").value = "";
-        $("#t1_out").textContent = "";
-        $("#t1_a").focus();
-      });
-      $("#t2_clear").addEventListener("click", () => {
-        $("#t2_a").value = "";
-        $("#t2_b").value = "";
-        $("#t2_out").textContent = "";
-        $("#t2_a").focus();
-      });
-      $("#t3_clear").addEventListener("click", () => {
-        $("#t3_old").value = "";
-        $("#t3_new").value = "";
-        $("#t3_out").textContent = "";
-        $("#t3_old").focus();
-      });
-      $("#t4_clear").addEventListener("click", () => {
-        $("#t4_a").value = "";
-        $("#t4_b").value = "";
-        $("#t4_out").textContent = "";
-        $("#t4_b").focus();
-      });
-
-      $("#t1_copy").addEventListener("click", () =>
-        copyText($("#t1_out").textContent)
-      );
-      $("#t2_copy").addEventListener("click", () =>
-        copyText($("#t2_out").textContent)
-      );
-      $("#t3_copy").addEventListener("click", () =>
-        copyText($("#t3_out").textContent)
-      );
-      $("#t4_copy").addEventListener("click", () =>
-        copyText($("#t4_out").textContent)
-      );
-
-      ["#t1_a", "#t1_b"].forEach((s) =>
-        $(s).addEventListener("input", t1_calc)
-      );
-      ["#t2_a", "#t2_b"].forEach((s) =>
-        $(s).addEventListener("input", t2_calc)
-      );
-      ["#t3_old", "#t3_new"].forEach((s) =>
-        $(s).addEventListener("input", t3_calc)
-      );
-      ["#t4_a", "#t4_b"].forEach((s) =>
-        $(s).addEventListener("input", t4_calc)
-      );
-      Array.from(document.querySelectorAll('input[name="t4_dir"]')).forEach(
-        (r) => r.addEventListener("change", t4_calc)
-      );
-
-      // Enter key triggers current panel
-      Array.from(document.querySelectorAll('input[type="number"]')).forEach(
-        (inp) => {
-          inp.addEventListener("keydown", (e) => {
-            if (e.key === "Enter") {
-              const id = e.target.closest("section")?.id;
-              ({ t1: t1_calc, t2: t2_calc, t3: t3_calc, t4: t4_calc })[id]?.();
-            }
-          });
+        // Check if empty
+        if (value === "") {
+          input.classList.add("error");
+          errorElement.textContent = `${fieldName} is required`;
+          errorElement.style.display = "block";
+          return false;
         }
-      );
+
+        // Check if valid number
+        if (isNaN(parseFloat(value))) {
+          input.classList.add("error");
+          errorElement.textContent = `${fieldName} must be a valid number`;
+          errorElement.style.display = "block";
+          return false;
+        }
+
+        return true;
+      }
+
+      function clearErrors() {
+        document.querySelectorAll(".error-message").forEach((error) => {
+          error.style.display = "none";
+        });
+        document.querySelectorAll("input").forEach((input) => {
+          input.classList.remove("error");
+        });
+      }
+
+      // Tab functionality
+      document.querySelectorAll(".tab").forEach((tab) => {
+        tab.addEventListener("click", () => {
+          // Remove active class from all tabs
+          document
+            .querySelectorAll(".tab")
+            .forEach((t) => t.classList.remove("active"));
+          // Add active class to clicked tab
+          tab.classList.add("active");
+
+          // Hide all tab content
+          document.querySelectorAll(".tab-content").forEach((content) => {
+            content.classList.remove("active");
+          });
+
+          // Show content for selected tab
+          const tabId = tab.getAttribute("data-tab");
+          document
+            .querySelectorAll(`.tab-content#${tabId}`)
+            .forEach((content) => {
+              content.classList.add("active");
+            });
+
+          // Clear any errors when switching tabs
+          clearErrors();
+        });
+      });
+
+      // A% of B calculation
+      document
+        .getElementById("calculate-a-of-b")
+        .addEventListener("click", () => {
+          // Validate inputs
+          const isPercentValid = validateInput(
+            "a-of-b-percent",
+            "a-of-b-percent-error",
+            "Percentage"
+          );
+          const isValueValid = validateInput(
+            "a-of-b-value",
+            "a-of-b-value-error",
+            "Value"
+          );
+
+          if (!isPercentValid || !isValueValid) {
+            showNotification(
+              "Please fix the errors in the form before calculating."
+            );
+            return;
+          }
+
+          const percent = parseFloat(
+            document.getElementById("a-of-b-percent").value
+          );
+          const value = parseFloat(
+            document.getElementById("a-of-b-value").value
+          );
+
+          const result = (percent / 100) * value;
+          document.getElementById(
+            "a-of-b-result-value"
+          ).textContent = `${result.toFixed(2)}`;
+          document.getElementById(
+            "a-of-b-explanation"
+          ).textContent = `${percent}% of ${value} is ${result.toFixed(
+            2
+          )}. Calculation: (${percent} / 100) × ${value} = ${result.toFixed(
+            2
+          )}`;
+          document.getElementById("a-of-b-result").classList.add("show");
+
+          showNotification("Calculation completed successfully!", "success");
+        });
+
+      // What % is A of B calculation
+      document
+        .getElementById("calculate-what-percent")
+        .addEventListener("click", () => {
+          // Validate inputs
+          const isAValid = validateInput(
+            "what-percent-a",
+            "what-percent-a-error",
+            "Value A"
+          );
+          const isBValid = validateInput(
+            "what-percent-b",
+            "what-percent-b-error",
+            "Value B"
+          );
+
+          if (!isAValid || !isBValid) {
+            showNotification(
+              "Please fix the errors in the form before calculating."
+            );
+            return;
+          }
+
+          const a = parseFloat(document.getElementById("what-percent-a").value);
+          const b = parseFloat(document.getElementById("what-percent-b").value);
+
+          if (b === 0) {
+            document.getElementById("what-percent-b").classList.add("error");
+            document.getElementById("what-percent-b-error").textContent =
+              "Value B cannot be zero";
+            document.getElementById("what-percent-b-error").style.display =
+              "block";
+            showNotification(
+              "Value B cannot be zero in percentage calculations."
+            );
+            return;
+          }
+
+          const result = (a / b) * 100;
+          document.getElementById(
+            "what-percent-result-value"
+          ).textContent = `${result.toFixed(2)}%`;
+          document.getElementById(
+            "what-percent-explanation"
+          ).textContent = `${a} is ${result.toFixed(
+            2
+          )}% of ${b}. Calculation: (${a} / ${b}) × 100 = ${result.toFixed(
+            2
+          )}%`;
+          document.getElementById("what-percent-result").classList.add("show");
+
+          showNotification("Calculation completed successfully!", "success");
+        });
+
+      // Percent Change calculation
+      document
+        .getElementById("calculate-change")
+        .addEventListener("click", () => {
+          // Validate inputs
+          const isOldValid = validateInput(
+            "change-old",
+            "change-old-error",
+            "Old value"
+          );
+          const isNewValid = validateInput(
+            "change-new",
+            "change-new-error",
+            "New value"
+          );
+
+          if (!isOldValid || !isNewValid) {
+            showNotification(
+              "Please fix the errors in the form before calculating."
+            );
+            return;
+          }
+
+          const oldValue = parseFloat(
+            document.getElementById("change-old").value
+          );
+          const newValue = parseFloat(
+            document.getElementById("change-new").value
+          );
+
+          if (oldValue === 0) {
+            document.getElementById("change-old").classList.add("error");
+            document.getElementById("change-old-error").textContent =
+              "Old value cannot be zero";
+            document.getElementById("change-old-error").style.display = "block";
+            showNotification(
+              "Old value cannot be zero in percentage change calculations."
+            );
+            return;
+          }
+
+          const result = ((newValue - oldValue) / oldValue) * 100;
+          const changeType = result >= 0 ? "increase" : "decrease";
+          const absResult = Math.abs(result);
+
+          document.getElementById(
+            "change-result-value"
+          ).textContent = `${result.toFixed(2)}%`;
+          document.getElementById(
+            "change-explanation"
+          ).textContent = `From ${oldValue} to ${newValue} is a ${absResult.toFixed(
+            2
+          )}% ${changeType}. Calculation: ((${newValue} - ${oldValue}) / ${oldValue}) × 100 = ${result.toFixed(
+            2
+          )}%`;
+          document.getElementById("change-result").classList.add("show");
+
+          showNotification("Calculation completed successfully!", "success");
+        });
+
+      // After % Increase/Decrease calculation
+      document
+        .getElementById("calculate-after-change")
+        .addEventListener("click", () => {
+          // Validate inputs
+          const isOriginalValid = validateInput(
+            "after-change-original",
+            "after-change-original-error",
+            "Original value"
+          );
+          const isPercentValid = validateInput(
+            "after-change-percent",
+            "after-change-percent-error",
+            "Percentage"
+          );
+
+          if (!isOriginalValid || !isPercentValid) {
+            showNotification(
+              "Please fix the errors in the form before calculating."
+            );
+            return;
+          }
+
+          const original = parseFloat(
+            document.getElementById("after-change-original").value
+          );
+          const percent = parseFloat(
+            document.getElementById("after-change-percent").value
+          );
+          const changeType = document.querySelector(
+            'input[name="change-type"]:checked'
+          ).value;
+
+          let result;
+          let explanation;
+
+          if (changeType === "increase") {
+            result = original * (1 + percent / 100);
+            explanation = `${original} increased by ${percent}% is ${result.toFixed(
+              2
+            )}. Calculation: ${original} × (1 + ${percent}/100) = ${result.toFixed(
+              2
+            )}`;
+          } else {
+            result = original * (1 - percent / 100);
+            explanation = `${original} decreased by ${percent}% is ${result.toFixed(
+              2
+            )}. Calculation: ${original} × (1 - ${percent}/100) = ${result.toFixed(
+              2
+            )}`;
+          }
+
+          document.getElementById(
+            "after-change-result-value"
+          ).textContent = `${result.toFixed(2)}`;
+          document.getElementById("after-change-explanation").textContent =
+            explanation;
+          document.getElementById("after-change-result").classList.add("show");
+
+          showNotification("Calculation completed successfully!", "success");
+        });
+
+      // Allow Enter key to trigger calculations
+      document.querySelectorAll('input[type="number"]').forEach((input) => {
+        input.addEventListener("keypress", (e) => {
+          if (e.key === "Enter") {
+            // Find the closest calculator card and trigger its calculate button
+            const card = input.closest(".calculator-card");
+            const calculateBtn = card.querySelector(".btn");
+            calculateBtn.click();
+          }
+        });
+      });
+
+      // Real-time validation for inputs
+      document.querySelectorAll('input[type="number"]').forEach((input) => {
+        input.addEventListener("blur", () => {
+          const fieldName = input.previousElementSibling.textContent;
+          const errorId = input.id + "-error";
+          validateInput(input.id, errorId, fieldName);
+        });
+      });
     </script>
 
     <script src="/assets/script.js" defer></script>
