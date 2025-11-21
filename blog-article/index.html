@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Utilityera: Your Ultimate Collection of Free Online Tools</title>
+    <style>
+      :root {
+        /* Primary Colors */
+        --primary-50: #f8fafc;
+        --primary-100: #f1f5f9;
+        --primary-200: #e2e8f0;
+        --primary-300: #cbd5e1;
+        --primary-400: #94a3b8;
+        --primary-500: #64748b;
+        --primary-600: #475569;
+        --primary-700: #334155;
+        --primary-800: #1e293b;
+        --primary-900: #0f172a;
+
+        /* Semantic Colors */
+        --text-primary: #111827;
+        --text-secondary: #6b7280;
+        --text-muted: #94a3b8;
+
+        --bg-primary: #ffffff;
+        --bg-secondary: #f8fafc;
+        --bg-tertiary: #f1f5f9;
+
+        --border-light: #e5e7eb;
+        --border-medium: #cbd5e1;
+
+        /* Brand Colors */
+        --brand-primary: #4f46e5;
+        --brand-secondary: #6366f1;
+        --brand-accent: #8b5cf6;
+
+        /* Status Colors */
+        --success: #10b981;
+        --success-light: #22c55e;
+        --error: #ef4444;
+        --warning: #f59e0b;
+        --info: #3b82f6;
+
+        /* Tool Colors */
+        --tool-uppercase: #8b5cf6;
+        --tool-lowercase: #3b82f6;
+        --tool-titlecase: #10b981;
+        --tool-sentencecase: #f59e0b;
+        --tool-capitalizewords: #ec4899;
+        --tool-togglecase: #f43f5e;
+
+        /* Spacing */
+        --spacing-xs: 4px;
+        --spacing-sm: 8px;
+        --spacing-md: 12px;
+        --spacing-lg: 16px;
+        --spacing-xl: 20px;
+        --spacing-2xl: 24px;
+
+        /* Border Radius */
+        --radius-sm: 6px;
+        --radius-md: 8px;
+        --radius-lg: 12px;
+
+        /* Shadows */
+        --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06);
+        --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.06);
+        --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+        /* Transitions */
+        --transition-fast: 0.2s;
+        --transition-normal: 0.3s;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        line-height: 1.6;
+        color: var(--text-primary);
+        background-color: var(--bg-primary);
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-lg);
+      }
+
+      header {
+        background: linear-gradient(
+          135deg,
+          var(--brand-primary),
+          var(--brand-accent)
+        );
+        color: white;
+        padding: var(--spacing-2xl) 0;
+        text-align: center;
+        margin-bottom: var(--spacing-2xl);
+        box-shadow: var(--shadow-md);
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: var(--spacing-md);
+      }
+
+      .subtitle {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      h2 {
+        font-size: 1.8rem;
+        margin: var(--spacing-2xl) 0 var(--spacing-lg);
+        color: var(--primary-800);
+        border-bottom: 2px solid var(--border-light);
+        padding-bottom: var(--spacing-sm);
+      }
+
+      h3 {
+        font-size: 1.4rem;
+        margin: var(--spacing-xl) 0 var(--spacing-md);
+        color: var(--primary-700);
+      }
+
+      p {
+        margin-bottom: var(--spacing-lg);
+        color: var(--text-secondary);
+      }
+
+      .highlight {
+        background-color: var(--bg-secondary);
+        border-left: 4px solid var(--brand-primary);
+        padding: var(--spacing-lg);
+        margin: var(--spacing-lg) 0;
+        border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--spacing-lg);
+        margin: var(--spacing-xl) 0;
+      }
+
+      .feature-card {
+        background: var(--bg-primary);
+        border-radius: var(--radius-lg);
+        padding: var(--spacing-xl);
+        box-shadow: var(--shadow-sm);
+        border: 1px solid var(--border-light);
+        transition: transform var(--transition-normal),
+          box-shadow var(--transition-normal);
+      }
+
+      .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .feature-icon {
+        font-size: 2rem;
+        margin-bottom: var(--spacing-md);
+        color: var(--brand-primary);
+      }
+
+      .tool-categories {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: var(--spacing-lg);
+        margin: var(--spacing-xl) 0;
+      }
+
+      .category-card {
+        background: var(--bg-secondary);
+        border-radius: var(--radius-lg);
+        padding: var(--spacing-xl);
+        border: 1px solid var(--border-light);
+      }
+
+      .category-title {
+        display: flex;
+        align-items: center;
+        margin-bottom: var(--spacing-md);
+      }
+
+      .category-icon {
+        margin-right: var(--spacing-md);
+        font-size: 1.5rem;
+        color: var(--brand-primary);
+      }
+
+      .tool-list {
+        list-style-type: none;
+      }
+
+      .tool-list li {
+        padding: var(--spacing-sm) 0;
+        border-bottom: 1px solid var(--border-light);
+      }
+
+      .tool-list li:last-child {
+        border-bottom: none;
+      }
+
+      .benefits {
+        background-color: var(--bg-secondary);
+        padding: var(--spacing-2xl);
+        border-radius: var(--radius-lg);
+        margin: var(--spacing-2xl) 0;
+      }
+
+      .benefit-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: var(--spacing-lg);
+      }
+
+      .benefit-icon {
+        background-color: var(--brand-primary);
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: var(--spacing-lg);
+        flex-shrink: 0;
+      }
+
+      .cta-section {
+        text-align: center;
+        padding: var(--spacing-2xl);
+        background: linear-gradient(
+          135deg,
+          var(--primary-50),
+          var(--primary-100)
+        );
+        border-radius: var(--radius-lg);
+        margin: var(--spacing-2xl) 0;
+      }
+
+      .btn {
+        display: inline-block;
+        background-color: var(--brand-primary);
+        color: white;
+        padding: var(--spacing-md) var(--spacing-xl);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        font-weight: 600;
+        transition: background-color var(--transition-fast);
+        margin-top: var(--spacing-md);
+      }
+
+      .btn:hover {
+        background-color: var(--brand-secondary);
+      }
+
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2rem;
+        }
+
+        .features-grid,
+        .tool-categories {
+          grid-template-columns: 1fr;
+        }
+
+        .benefit-item {
+          flex-direction: column;
+        }
+
+        .benefit-icon {
+          margin-bottom: var(--spacing-md);
+        }
+      }
+      footer {
+        background-color: #1a2b3c;
+        color: #f0f4f8;
+        padding: 3rem 0 1rem;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .footer-column h4 {
+        color: #ffffff;
+        margin-bottom: 1.2rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        position: relative;
+      }
+
+      .footer-column h4::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 30px;
+        height: 2px;
+        background-color: #4a9eff;
+      }
+
+      .footer-column ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .footer-column ul li {
+        margin-bottom: 0.7rem;
+      }
+
+      .footer-column ul li a {
+        color: #cbd5e1;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .footer-column ul li a:hover,
+      .footer-column ul li a:focus {
+        color: #ffffff;
+        text-decoration: underline;
+      }
+
+      /* Social Links */
+      .social-links li a {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      /* Newsletter */
+      .newsletter {
+        margin-top: 1.5rem;
+      }
+
+      .newsletter h5 {
+        margin-bottom: 0.8rem;
+        font-size: 1rem;
+        color: #ffffff;
+      }
+
+      .newsletter-form {
+        display: flex;
+        /* flex-wrap: wrap; */
+        gap: 0.5rem;
+      }
+
+      .newsletter-form input {
+        flex: 1;
+        min-width: 150px;
+        padding: 0.6rem 0.8rem;
+        border: 1px solid #4a5568;
+        border-radius: 4px;
+        background-color: #2d3748;
+        color: #ffffff;
+      }
+
+      .newsletter-form input::placeholder {
+        color: #a0aec0;
+      }
+
+      .newsletter-form button {
+        padding: 0.6rem 1.2rem;
+        background-color: #4a9eff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .newsletter-form button:hover,
+      .newsletter-form button:focus {
+        background-color: #3182ce;
+      }
+
+      /* Footer Bottom */
+      .footer-bottom {
+        border-top: 1px solid #2d3748;
+        padding-top: 1.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .copyright p {
+        margin: 0.3rem 0;
+        font-size: 0.9rem;
+        color: #a0aec0;
+      }
+
+      .legal-links {
+        display: flex;
+        gap: 1.5rem;
+      }
+
+      .legal-links a {
+        color: #a0aec0;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.3s ease;
+      }
+
+      .legal-links a:hover,
+      .legal-links a:focus {
+        color: #ffffff;
+        text-decoration: underline;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .footer-content {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .footer-bottom {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .legal-links {
+          justify-content: center;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .footer-content {
+          grid-template-columns: 1fr;
+        }
+
+        .newsletter-form {
+          flex-direction: column;
+        }
+
+        .newsletter-form input,
+        .newsletter-form button {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1>Utilityera: Your Ultimate Collection of Free Online Tools</h1>
+        <p class="subtitle">
+          Discover how Utilityera provides privacy-first, browser-based
+          utilities that work entirely on your device - no data leaves your
+          computer.
+        </p>
+      </div>
+    </header>
+
+    <main class="container">
+      <article>
+        <section>
+          <h2>What is Utilityera?</h2>
+          <p>
+            Utilityera is a comprehensive collection of free online utilities
+            designed to simplify your daily tasks without compromising your
+            privacy. Unlike many online tools that require uploading your data
+            to remote servers, Utilityera's tools run entirely in your browser,
+            ensuring your information never leaves your device.
+          </p>
+
+          <div class="highlight">
+            <p>
+              <strong>Core Philosophy:</strong> Utilityera believes in providing
+              accessible, privacy-focused tools that anyone can use without
+              registration, fees, or data concerns.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <h2>Key Features of Utilityera</h2>
+          <div class="features-grid">
+            <div class="feature-card">
+              <div class="feature-icon">🔒</div>
+              <h3>Privacy-First Approach</h3>
+              <p>
+                All tools run locally in your browser, ensuring your data never
+                leaves your computer. No server processing means complete
+                privacy protection.
+              </p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">💯</div>
+              <h3>Completely Free</h3>
+              <p>
+                Access all utilities without any cost or hidden fees. No premium
+                tiers, no subscription models - just free tools for everyone.
+              </p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">🚀</div>
+              <h3>No Registration Required</h3>
+              <p>
+                Start using tools immediately without creating an account. No
+                email verification, no password to remember.
+              </p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">📱</div>
+              <h3>Mobile-Friendly</h3>
+              <p>
+                All tools are fully responsive and work seamlessly across
+                devices - desktops, tablets, and smartphones.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Comprehensive Tool Categories</h2>
+          <div class="tool-categories">
+            <div class="category-card">
+              <div class="category-title">
+                <div class="category-icon">🧮</div>
+                <h3>Calculators</h3>
+              </div>
+              <ul class="tool-list">
+                <li>Percent Calculator</li>
+                <li>Age Calculator</li>
+                <li>Date Calculator</li>
+                <li>Standard Calculator</li>
+                <li>Unit Converter</li>
+              </ul>
+            </div>
+            <div class="category-card">
+              <div class="category-title">
+                <div class="category-icon">📝</div>
+                <h3>Text Tools</h3>
+              </div>
+              <ul class="tool-list">
+                <li>Text → PDF Converter</li>
+                <li>Text Utilities (case conversion, etc.)</li>
+              </ul>
+            </div>
+            <div class="category-card">
+              <div class="category-title">
+                <div class="category-icon">💻</div>
+                <h3>Developer Tools</h3>
+              </div>
+              <ul class="tool-list">
+                <li>Base64 Encoding/Decoding</li>
+                <li>URL Encoding/Decoding</li>
+                <li>Password Generator</li>
+                <li>UUID v4 Generator</li>
+                <li>SHA-256 Hash Generator</li>
+                <li>JSON Formatter</li>
+              </ul>
+            </div>
+            <div class="category-card">
+              <div class="category-title">
+                <div class="category-icon">⚡</div>
+                <h3>Productivity Tools</h3>
+              </div>
+              <ul class="tool-list">
+                <li>Image Resizer & Compressor</li>
+                <li>Color Picker & Contrast Checker</li>
+                <li>Stopwatch & Countdown Timer</li>
+                <li>Quick Notes</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="benefits">
+          <h2>Why Choose Utilityera?</h2>
+
+          <div class="benefit-item">
+            <div class="benefit-icon">✓</div>
+            <div>
+              <h3>Enhanced Privacy</h3>
+              <p>
+                In an era of increasing data concerns, Utilityera offers peace
+                of mind by processing everything locally on your device. Your
+                sensitive documents, personal information, and calculations
+                remain private.
+              </p>
+            </div>
+          </div>
+
+          <div class="benefit-item">
+            <div class="benefit-icon">⚡</div>
+            <div>
+              <h3>Instant Access</h3>
+              <p>
+                No downloads, no installations, no registrations. Just visit the
+                website and start using the tools immediately. The intuitive
+                interface makes every tool easy to use regardless of technical
+                expertise.
+              </p>
+            </div>
+          </div>
+
+          <div class="benefit-item">
+            <div class="benefit-icon">💾</div>
+            <div>
+              <h3>Works Offline</h3>
+              <p>
+                Once loaded, most tools continue to work even without an
+                internet connection, making Utilityera reliable in various
+                situations, including travel or areas with poor connectivity.
+              </p>
+            </div>
+          </div>
+
+          <div class="benefit-item">
+            <div class="benefit-icon">🔄</div>
+            <div>
+              <h3>Regular Updates</h3>
+              <p>
+                The tool collection is continuously expanding based on user
+                feedback and emerging needs. New utilities are added regularly
+                to ensure Utilityera remains a comprehensive solution.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>How Utilityera Works</h2>
+          <p>
+            Utilityera leverages modern web technologies to provide powerful
+            tools that run entirely in your browser:
+          </p>
+
+          <h3>Client-Side Processing</h3>
+          <p>
+            All computations, conversions, and processing happen directly in
+            your browser using JavaScript. This approach eliminates the need to
+            send data to external servers, ensuring both privacy and speed.
+          </p>
+
+          <h3>Modern Web Standards</h3>
+          <p>
+            The platform utilizes HTML5, CSS3, and JavaScript ES6+ features to
+            deliver a smooth, responsive experience across all devices and
+            browsers.
+          </p>
+
+          <h3>Progressive Web App Capabilities</h3>
+          <p>
+            Utilityera is designed with PWA principles, offering app-like
+            functionality including offline capability and fast loading times.
+          </p>
+        </section>
+
+        <section>
+          <h2>Use Cases for Utilityera</h2>
+
+          <h3>For Students</h3>
+          <p>
+            Quick calculations, unit conversions, and text formatting tools help
+            students complete assignments efficiently without installing
+            multiple applications.
+          </p>
+
+          <h3>For Professionals</h3>
+          <p>
+            Developers, designers, and office workers can access specialized
+            tools like JSON formatters, color pickers, and PDF utilities without
+            compromising corporate data security.
+          </p>
+
+          <h3>For Everyday Users</h3>
+          <p>
+            From calculating tips to resizing images for social media,
+            Utilityera provides practical solutions for common tasks that people
+            encounter in their daily digital lives.
+          </p>
+        </section>
+
+        <section class="cta-section">
+          <h2>Ready to Simplify Your Digital Life?</h2>
+          <p>
+            Experience the convenience of privacy-focused, free online tools
+            that work entirely in your browser.
+          </p>
+          <a href="#" class="btn">Explore Utilityera Tools</a>
+        </section>
+      </article>
+    </main>
+
+    <footer role="contentinfo">
+      <div class="container">
+        <div class="footer-content">
+          <!-- Financial Calculators Section -->
+          <div class="footer-column">
+            <h4>Financial Calculators</h4>
+            <ul>
+              <li>
+                <a href="/calculator/" aria-label="Calculate mortgage payments">
+                  Calculator</a
+                >
+              </li>
+              <li>
+                <a href="/date-calculator/" aria-label="Calculate loan payments"
+                  >Date Calculator</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/percent-calculator/"
+                  aria-label="Calculate investment returns"
+                  >Percent Calculator</a
+                >
+              </li>
+              <li>
+                <a href="/url-tools/" aria-label="Plan for retirement"
+                  >Url Encoder
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/bmi-calculator/"
+                  aria-label="Calculate tax obligations"
+                  >BMI Calculator</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Resources Section -->
+          <div class="footer-column">
+            <h4>Resources</h4>
+            <ul>
+              <li>
+                <a
+                  href="/blog-article/"
+                  aria-label="Financial blog and articles"
+                  >Financial Glossary</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/blog-article/"
+                  aria-label="Financial blog and articles"
+                  >Blog & Articles</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/blog-article/"
+                  aria-label="Financial blog and articles"
+                  >Financial Planning Guide</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/blog-article/"
+                  aria-label="Financial blog and articles"
+                  >Investment Strategies</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/blog-article/"
+                  aria-label="Financial blog and articles"
+                  >Mortgage Tips</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Company Section -->
+          <div class="footer-column">
+            <h4>Company</h4>
+            <ul>
+              <li>
+                <a href="/about/" aria-label="About FinanceCalc Pro"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a href="/contact/" aria-label="Contact FinanceCalc Pro"
+                  >Contact</a
+                >
+              </li>
+              <li>
+                <a href="/privacy/" aria-label="Privacy policy"
+                  >Privacy Policy</a
+                >
+              </li>
+              <li>
+                <a href="/terms/" aria-label="Terms of service"
+                  >Terms of Service</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Social Media Section -->
+          <div class="footer-column">
+            <h4>Connect With Us</h4>
+            <ul class="social-links">
+              <li>
+                <a
+                  href="https://twitter.com/financecalcpro"
+                  aria-label="Follow us on Twitter"
+                  rel="noopener noreferrer"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"
+                    />
+                  </svg>
+                  Twitter
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://facebook.com/financecalcpro"
+                  aria-label="Follow us on Facebook"
+                  rel="noopener noreferrer"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+                    />
+                  </svg>
+                  Facebook
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://linkedin.com/company/financecalcpro"
+                  aria-label="Follow us on LinkedIn"
+                  rel="noopener noreferrer"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                    />
+                  </svg>
+                  LinkedIn
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://instagram.com/financecalcpro"
+                  aria-label="Follow us on Instagram"
+                  rel="noopener noreferrer"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                    />
+                  </svg>
+                  Instagram
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://youtube.com/financecalcpro"
+                  aria-label="Subscribe to our YouTube channel"
+                  rel="noopener noreferrer"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+                    />
+                  </svg>
+                  YouTube
+                </a>
+              </li>
+            </ul>
+
+            <!-- Newsletter Signup -->
+            <div class="newsletter">
+              <h5>Stay Updated</h5>
+              <form
+                action="/newsletter-signup"
+                method="post"
+                class="newsletter-form"
+              >
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Your email address"
+                  aria-label="Email for newsletter"
+                  required
+                />
+                <button type="submit" aria-label="Subscribe to newsletter">
+                  Subscribe
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Copyright and Legal -->
+        <div class="footer-bottom">
+          <div class="copyright">
+            <p>&copy; 2025 FinanceCalc Pro. All rights reserved.</p>
+            <p>
+              This calculator provides estimates for informational purposes
+              only. Results are not financial advice.
+            </p>
+          </div>
+
+          <!-- Additional Legal Links -->
+          <div class="legal-links">
+            <a href="/privacy/" aria-label="Cookie policy">Cookie Policy</a>
+            <a href="/privacy/" aria-label="Accessibility statement"
+              >Accessibility</a
+            >
+            <a href="/terms/" aria-label="Website disclaimer">Disclaimer</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
