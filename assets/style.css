@@ -769,6 +769,8 @@ header {
 
 .header-content .logo span {
   color: var(--brand-primary);
+  display: inline-block;
+  margin-left: 10px;
 }
 
 .header-content nav ul {
