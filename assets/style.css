@@ -691,7 +691,8 @@ a {
   --border-medium: #cbd5e1;
 
   /* Brand Colors */
-  --brand-primary: #4f46e5;
+  --brand-primary: #4a6fa5;
+  --brand-primary-hover: #2563eb;
   --brand-secondary: #6366f1;
   --brand-accent: #8b5cf6;
 
