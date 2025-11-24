@@ -134,7 +134,9 @@ body {
 .content-section p {
   margin-bottom: 1rem;
 }
-
+.content-section li {
+  margin: 1.5rem 1rem 1rem;
+}
 .top-card {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
