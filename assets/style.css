@@ -235,7 +235,7 @@ a {
 }
 
 .global-toc a:active {
-  background: #c7d2fe;
+  background: #101113;
 }
 
 .global-toc a.current {
@@ -1013,7 +1013,7 @@ footer {
 .newsletter-form button {
   padding: 0.6rem 1.2rem;
   background-color: #4a9eff;
-  color: white;
+  color: #000000;
   border: none;
   border-radius: 4px;
   cursor: pointer;
