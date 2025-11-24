@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Primary SEO -->
-    <title>Fee Percentage Calculator - Calculate Percentages Easily</title>
+    <title>Percentage Calculator: Find X% of Y Online | Fast & Free Tool</title>
 
     <meta
       name="description"
-      content="Fee Percentage Calculator to find percentages, increases, decreases, and reverse values. Learn how to calculate percent on a calculator in seconds with accurate results."
+      content="Calculate percentages instantly with our free online percentage calculator. Find X% of any number, what percentage A is of B . No signup required — works offline!"
     />
     <link rel="icon" href="/assets/favicon.ico" sizes="any" />
     <link
@@ -27,6 +27,7 @@
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
     <link rel="manifest" href="/assets/site.webmanifest" />
     <link rel="stylesheet" href="/assets/style.css" />
+    <link rel="stylesheet" href="/percent-calculator/main.css" />
 
     <meta name="theme-color" content="#1E1E2F" />
 
@@ -252,291 +253,6 @@
         ]
       }
     </script>
-
-    <style>
-      /* ---------- Basic variables & reset ---------- */
-      :root {
-        --bg: #e1e3e6;
-        --card: #ffffff;
-        --text: #0f1720;
-        --muted: #444953;
-        --accent: #0ea5a4; /* teal-ish */
-        --accent-contrast: #ffffff;
-        --danger: #ef4444;
-        --radius: 12px;
-        --max-width: 1000px;
-        --gap: 16px;
-        --shadow: 0 6px 24px rgba(15, 23, 40, 0.06);
-        font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
-          "Helvetica Neue", Arial;
-      }
-      * {
-        box-sizing: border-box;
-      }
-      html,
-      body {
-        height: 100%;
-      }
-      body {
-        margin: 0;
-
-        color: var(--text);
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        /* display: flex;
-        align-items: center;
-        justify-content: center; */
-      }
-
-      /* ---------- Layout ---------- */
-      .calculator {
-        width: 100%;
-        max-width: var(--max-width);
-        background: var(--card);
-        border-radius: var(--radius);
-        box-shadow: var(--shadow);
-        padding: 28px;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: var(--gap);
-        align-items: start;
-      }
-
-      @media (max-width: 880px) {
-        .calculator {
-          grid-template-columns: 1fr;
-          padding: 20px;
-        }
-        .result {
-          min-height: 140px;
-        }
-      }
-
-      .calculator-header {
-        grid-column: 1 / -1;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 12px;
-        margin-bottom: 6px;
-      }
-      .calculator-header h1 {
-        font-size: 32px;
-        margin: 0.5rem 0;
-        letter-spacing: -0.01em;
-      }
-      .calculator-header p {
-        margin: 0;
-        color: var(--muted);
-        font-size: 16px;
-      }
-
-      .calculator-section {
-        background: #fafbfc;
-        border-radius: 12px;
-        padding: 20px;
-        border: 1px solid #eef2f6;
-      }
-
-      .calculator-title {
-        font-size: 18px;
-        font-weight: 600;
-        margin-bottom: 16px;
-        color: var(--text);
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-
-      .calculator-title::before {
-        content: "•";
-        color: var(--accent);
-        font-size: 24px;
-      }
-
-      .form {
-        display: flex;
-        flex-direction: column;
-        gap: 14px;
-      }
-
-      label {
-        font-size: 14px;
-        color: var(--muted);
-        display: block;
-        margin-bottom: 6px;
-        font-weight: 500;
-      }
-      .field {
-        display: flex;
-        gap: 8px;
-        align-items: center;
-      }
-      input[type="number"] {
-        -moz-appearance: textfield;
-      }
-      input[type="number"]::-webkit-outer-spin-button,
-      input[type="number"]::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-      }
-
-      .control {
-        background: #ffffff;
-        border: 1px solid #e6eef6;
-        padding: 10px 12px;
-        border-radius: 10px;
-        font-size: 16px;
-        width: 100%;
-        outline: none;
-        transition: box-shadow 0.12s, border-color 0.12s;
-      }
-      .control:focus {
-        box-shadow: 0 0 0 4px rgba(14, 165, 164, 0.08);
-        border-color: var(--accent);
-      }
-
-      .percent-suffix {
-        min-width: 15px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-      }
-
-      .actions {
-        display: flex;
-        gap: 10px;
-        margin-top: 6px;
-        flex-wrap: wrap;
-      }
-      button {
-        cursor: pointer;
-        border: 0;
-        padding: 10px 14px;
-        border-radius: 10px;
-        font-weight: 600;
-        font-size: 14px;
-        transition: all 0.15s ease;
-      }
-      button:hover {
-        transform: translateY(-1px);
-      }
-      .btn-primary {
-        background: var(--accent);
-        color: var(--accent-contrast);
-        box-shadow: 0 6px 18px rgba(14, 165, 164, 0.12);
-      }
-      .btn-primary:hover {
-        box-shadow: 0 8px 22px rgba(14, 165, 164, 0.18);
-      }
-      .btn-ghost {
-        background: transparent;
-        border: 1px solid #e6eef6;
-        color: var(--text);
-      }
-      .btn-ghost:hover {
-        border-color: var(--accent);
-        background: rgba(14, 165, 164, 0.04);
-      }
-      .btn-danger {
-        background: var(--danger);
-        color: white;
-      }
-
-      /* ---------- Result card ---------- */
-      .result {
-        background: linear-gradient(180deg, #ffffff, #fbfeff);
-        border-radius: 12px;
-        padding: 18px;
-        border: 1px solid #e9f3f4;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        align-items: stretch;
-        margin-top: 6px;
-      }
-      .result .label {
-        font-size: 13px;
-        color: var(--muted);
-      }
-      .result .value {
-        font-size: 24px;
-        font-weight: 700;
-        color: var(--text);
-        word-break: break-word;
-      }
-      .small {
-        font-size: 16px;
-        color: var(--muted);
-      }
-
-      .note {
-        margin-top: 8px;
-        font-size: 12px;
-        color: var(--muted);
-      }
-
-      /* accessibility focus */
-      button:focus,
-      .control:focus {
-        outline-offset: 2px;
-      }
-
-      /* tiny helpers */
-      .row {
-        display: flex;
-        gap: 8px;
-        align-items: center;
-      }
-      .muted {
-        color: var(--muted);
-        font-size: 13px;
-      }
-
-      /* Keyboard shortcut hint */
-      .keyboard-hint {
-        font-size: 11px;
-        color: var(--muted);
-        margin-left: 4px;
-      }
-      kbd {
-        background: #f1f5f9;
-        border: 1px solid #e2e8f0;
-        border-radius: 4px;
-        padding: 2px 6px;
-        font-size: 10px;
-        font-family: inherit;
-      }
-
-      .mode-toggle {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        margin-bottom: 16px;
-        padding: 12px;
-        background: #f8fafc;
-        border-radius: 8px;
-        border: 1px solid #e2e8f0;
-      }
-      .mode-toggle input[type="checkbox"] {
-        margin: 0;
-        transform: scale(1.2);
-      }
-      .mode-toggle label {
-        margin: 0;
-        font-size: 14px;
-        cursor: pointer;
-        font-weight: 500;
-      }
-
-      .input-form {
-        display: flex;
-        justify-content: flex-start;
-        align-items: flex-start;
-        gap: 1rem;
-      }
-    </style>
   </head>
   <body>
     <!-- Global header -->
@@ -605,9 +321,8 @@
 
       <!-- global-toc -->
       <p class="global-toc">
-        <a href="#t1">A% of B</a> · <a href="#t2">What % is A of B?</a> ·
-        <a href="#t3">Percent Change</a> ·
-        <a href="#t4">After % Increase/Decrease</a> ·
+        <a href="#t1">X% of Y </a> · <a href="#t2">What % is A of B?</a> ·
+
         <a href="#how-to-use">How to use</a> · <a href="#faq">FAQ</a> ·
         <a href="#related">Related tools</a>
       </p>
@@ -626,7 +341,7 @@
 
           <div class="form">
             <div class="input-form">
-              <div>
+              <div id="t1">
                 <label for="base">Number (Y)</label>
                 <input
                   id="base"
@@ -637,7 +352,7 @@
                   aria-describedby="base-help"
                 />
                 <div id="base-help" class="muted" style="margin-top: 6px">
-                  Enter the number you want to calculate a percentage of.
+                  Enter the number
                 </div>
               </div>
 
@@ -654,23 +369,6 @@
                   <div class="percent-suffix muted">%</div>
                 </div>
               </div>
-            </div>
-            <div
-              class="row"
-              role="group"
-              aria-label="Rounding options"
-              style="margin-top: 6px"
-            >
-              <label for="round" class="muted" style="min-width: 120px"
-                >Round to</label
-              >
-              <select id="round" class="control" style="width: 160px">
-                <option value="auto" selected>Auto (no forced rounding)</option>
-                <option value="0">0 decimals</option>
-                <option value="1">1 decimal</option>
-                <option value="2">2 decimals</option>
-                <option value="3">3 decimals</option>
-              </select>
             </div>
 
             <div class="actions" aria-hidden="false">
@@ -708,7 +406,7 @@
 
           <!-- Result for Calculator 1 -->
           <aside class="result" aria-labelledby="result1-title">
-            <div>
+            <div class="result-bottom">
               <div class="label" id="result1-title">X% of Y Result</div>
               <div id="resultValue" class="value">—</div>
               <div id="resultDetails" class="small muted">
@@ -738,6 +436,7 @@
         <!-- Calculator 2: What % is A of B -->
         <section
           class="calculator-section"
+          id="t2"
           aria-label="What % is A of B calculator"
         >
           <div class="calculator-title">What % is A of B?</div>
@@ -773,23 +472,6 @@
                   Enter the total or whole amount.
                 </div>
               </div>
-            </div>
-            <div
-              class="row"
-              role="group"
-              aria-label="Rounding options"
-              style="margin-top: 6px"
-            >
-              <label for="round2" class="muted" style="min-width: 120px"
-                >Round to</label
-              >
-              <select id="round2" class="control" style="width: 160px">
-                <option value="auto" selected>Auto (no forced rounding)</option>
-                <option value="0">0 decimals</option>
-                <option value="1">1 decimal</option>
-                <option value="2">2 decimals</option>
-                <option value="3">3 decimals</option>
-              </select>
             </div>
 
             <div class="actions" aria-hidden="false">
@@ -827,7 +509,7 @@
 
           <!-- Result for Calculator 2 -->
           <aside class="result" aria-labelledby="result2-title">
-            <div>
+            <div class="result-bottom">
               <div class="label" id="result2-title">Percentage Result</div>
               <div id="resultValue2" class="value">—</div>
               <div id="resultDetails2" class="small muted">
@@ -854,13 +536,13 @@
           </aside>
         </section>
 
-        <dvi
+        <div
           class="note"
           style="grid-column: 1 / -1; margin-top: 20px; text-align: center"
         >
           Tip: Press Enter in any input to calculate. Use Ctrl+S to swap values
           in the first calculator.
-        </dvi>
+        </div>
       </main>
 
       <article class="content-section" id="related">
@@ -897,7 +579,7 @@
         </p>
       </section>
 
-      <section class="content-section">
+      <section class="content-section" id="how-to-use">
         <h2>How to Use the Percentage Calculator</h2>
         <p>
           Our percentage calculator offers five different calculation modes to
@@ -1395,322 +1077,8 @@
         </div>
       </div>
     </footer>
-    <script>
-      // ---------- Utility helpers ----------
-      const $ = (id) => document.getElementById(id);
-
-      // Parse numbers with comma support
-      function parseNumber(str) {
-        if (!str) return NaN;
-        const cleaned = str.trim().replace(/,/g, ".");
-        return parseFloat(cleaned);
-      }
-
-      // Clean input for thousands separators
-      function cleanInput(str) {
-        return str.replace(/[^\d.,-]/g, "").replace(/,/g, ".");
-      }
-
-      const formatNumber = (v, decimals) => {
-        if (!isFinite(v)) return "—";
-        if (decimals === "auto") {
-          return parseFloat(parseFloat(v.toFixed(6))).toString();
-        }
-        const n = Number(v);
-        return n.toLocaleString(undefined, {
-          minimumFractionDigits: Number(decimals),
-          maximumFractionDigits: Number(decimals),
-        });
-      };
-
-      // ========== CALCULATOR 1: X% of Y ==========
-      const baseInput = $("base");
-      const percentInput = $("percent");
-      const roundSelect = $("round");
-      const calcBtn = $("calcBtn");
-      const clearBtn = $("clearBtn");
-      const copyBtn = $("copyBtn");
-      const swapBtn = $("swapBtn");
-      const errorEl = $("error");
-      const resultValue = $("resultValue");
-      const resultDetails = $("resultDetails");
-      const increaseBtn = $("increaseBtn");
-      const decreaseBtn = $("decreaseBtn");
-
-      // Calculator 1 functionality
-      function calculateXofY() {
-        errorEl.textContent = "";
-
-        const baseStr = cleanInput(baseInput.value);
-        const pctStr = cleanInput(percentInput.value);
-
-        if (!baseStr && !pctStr) {
-          resultValue.textContent = "—";
-          resultDetails.textContent = "Enter values and click Calculate.";
-          return;
-        }
-
-        const base = parseNumber(baseStr);
-        const pct = parseNumber(pctStr);
-
-        if (!baseStr || isNaN(base)) {
-          errorEl.textContent = "Please enter a valid number.";
-          baseInput.focus();
-          return;
-        }
-
-        if (!pctStr || isNaN(pct)) {
-          errorEl.textContent = "Please enter a valid percentage.";
-          percentInput.focus();
-          return;
-        }
-
-        const raw = (base * pct) / 100;
-        const resultText = formatNumber(raw, roundSelect.value);
-
-        resultValue.textContent = resultText;
-        resultDetails.textContent = `${pct}% of ${base.toLocaleString()} = ${resultText}`;
-        resultValue.setAttribute("aria-live", "polite");
-      }
-
-      // Calculator 1 event handlers
-      calcBtn.addEventListener("click", calculateXofY);
-
-      [baseInput, percentInput].forEach((el) => {
-        el.addEventListener("keydown", (e) => {
-          if (e.key === "Enter") {
-            e.preventDefault();
-            calculateXofY();
-          }
-        });
-
-        el.addEventListener("input", (e) => {
-          const cursorPos = e.target.selectionStart;
-          const originalLength = e.target.value.length;
-          e.target.value = cleanInput(e.target.value);
-          const newLength = e.target.value.length;
-          const lengthDiff = newLength - originalLength;
-          e.target.setSelectionRange(
-            cursorPos + lengthDiff,
-            cursorPos + lengthDiff
-          );
-
-          errorEl.textContent = "";
-          clearTimeout(typingTimer1);
-          typingTimer1 = setTimeout(calculateXofY, 700);
-        });
-      });
-
-      clearBtn.addEventListener("click", () => {
-        baseInput.value = "";
-        percentInput.value = "";
-        resultValue.textContent = "—";
-        resultDetails.textContent = "Enter values and click Calculate.";
-        errorEl.textContent = "";
-        baseInput.focus();
-      });
-
-      copyBtn.addEventListener("click", async () => {
-        const text = resultValue.textContent;
-        const details = resultDetails.textContent;
-        if (!text || text === "—") {
-          errorEl.textContent = "Nothing to copy.";
-          return;
-        }
-        const fullText = `${text}\n${details}`;
-        try {
-          await navigator.clipboard.writeText(fullText);
-          copyBtn.textContent = "Copied!";
-          setTimeout(() => (copyBtn.textContent = "Copy Result"), 1200);
-        } catch (err) {
-          errorEl.textContent = "Copy failed. Select and copy manually.";
-          setTimeout(() => (copyBtn.textContent = "Copy Result"), 1200);
-        }
-      });
-
-      swapBtn.addEventListener("click", () => {
-        const a = baseInput.value;
-        const b = percentInput.value;
-        baseInput.value = b;
-        percentInput.value = a;
-        calculateXofY();
-      });
-
-      document.addEventListener("keydown", (e) => {
-        if (e.ctrlKey && e.key === "s") {
-          e.preventDefault();
-          swapBtn.click();
-        }
-      });
-
-      increaseBtn.addEventListener("click", () => {
-        const cur = parseNumber(percentInput.value) || 0;
-        percentInput.value = (cur + 1).toString();
-        calculateXofY();
-      });
-
-      decreaseBtn.addEventListener("click", () => {
-        const cur = parseNumber(percentInput.value) || 0;
-        percentInput.value = (cur - 1).toString();
-        calculateXofY();
-      });
-
-      let typingTimer1;
-
-      // ========== CALCULATOR 2: What % is A of B ==========
-      const partAInput = $("partA");
-      const wholeBInput = $("wholeB");
-      const roundSelect2 = $("round2");
-      const calcBtn2 = $("calcBtn2");
-      const clearBtn2 = $("clearBtn2");
-      const copyBtn2 = $("copyBtn2");
-      const swapBtn2 = $("swapBtn2");
-      const errorEl2 = $("error2");
-      const resultValue2 = $("resultValue2");
-      const resultDetails2 = $("resultDetails2");
-      const exampleBtn1 = $("exampleBtn1");
-      const exampleBtn2 = $("exampleBtn2");
-
-      // Calculator 2 functionality
-      function calculatePercentage() {
-        errorEl2.textContent = "";
-
-        const partStr = cleanInput(partAInput.value);
-        const wholeStr = cleanInput(wholeBInput.value);
-
-        if (!partStr && !wholeStr) {
-          resultValue2.textContent = "—";
-          resultDetails2.textContent =
-            "Enter part and whole to calculate percentage.";
-          return;
-        }
-
-        const part = parseNumber(partStr);
-        const whole = parseNumber(wholeStr);
-
-        if (!partStr || isNaN(part)) {
-          errorEl2.textContent = "Please enter a valid part (A).";
-          partAInput.focus();
-          return;
-        }
-
-        if (!wholeStr || isNaN(whole)) {
-          errorEl2.textContent = "Please enter a valid whole (B).";
-          wholeBInput.focus();
-          return;
-        }
-
-        if (whole === 0) {
-          errorEl2.textContent = "Whole (B) cannot be zero.";
-          wholeBInput.focus();
-          return;
-        }
-
-        const percentage = (part / whole) * 100;
-        const resultText = `${formatNumber(percentage, roundSelect2.value)}%`;
-
-        resultValue2.textContent = resultText;
-        resultDetails2.textContent = `${part.toLocaleString()} is ${formatNumber(
-          percentage,
-          roundSelect2.value
-        )}% of ${whole.toLocaleString()}`;
-        resultValue2.setAttribute("aria-live", "polite");
-      }
-
-      // Calculator 2 event handlers
-      calcBtn2.addEventListener("click", calculatePercentage);
-
-      [partAInput, wholeBInput].forEach((el) => {
-        el.addEventListener("keydown", (e) => {
-          if (e.key === "Enter") {
-            e.preventDefault();
-            calculatePercentage();
-          }
-        });
-
-        el.addEventListener("input", (e) => {
-          const cursorPos = e.target.selectionStart;
-          const originalLength = e.target.value.length;
-          e.target.value = cleanInput(e.target.value);
-          const newLength = e.target.value.length;
-          const lengthDiff = newLength - originalLength;
-          e.target.setSelectionRange(
-            cursorPos + lengthDiff,
-            cursorPos + lengthDiff
-          );
-
-          errorEl2.textContent = "";
-          clearTimeout(typingTimer2);
-          typingTimer2 = setTimeout(calculatePercentage, 700);
-        });
-      });
-
-      clearBtn2.addEventListener("click", () => {
-        partAInput.value = "";
-        wholeBInput.value = "";
-        resultValue2.textContent = "—";
-        resultDetails2.textContent =
-          "Enter part and whole to calculate percentage.";
-        errorEl2.textContent = "";
-        partAInput.focus();
-      });
-
-      copyBtn2.addEventListener("click", async () => {
-        const text = resultValue2.textContent;
-        const details = resultDetails2.textContent;
-        if (!text || text === "—") {
-          errorEl2.textContent = "Nothing to copy.";
-          return;
-        }
-        const fullText = `${text}\n${details}`;
-        try {
-          await navigator.clipboard.writeText(fullText);
-          copyBtn2.textContent = "Copied!";
-          setTimeout(() => (copyBtn2.textContent = "Copy Result"), 1200);
-        } catch (err) {
-          errorEl2.textContent = "Copy failed. Select and copy manually.";
-          setTimeout(() => (copyBtn2.textContent = "Copy Result"), 1200);
-        }
-      });
-
-      swapBtn2.addEventListener("click", () => {
-        const a = partAInput.value;
-        const b = wholeBInput.value;
-        partAInput.value = b;
-        wholeBInput.value = a;
-        calculatePercentage();
-      });
-
-      exampleBtn1.addEventListener("click", () => {
-        partAInput.value = "25";
-        wholeBInput.value = "100";
-        calculatePercentage();
-      });
-
-      exampleBtn2.addEventListener("click", () => {
-        partAInput.value = "75";
-        wholeBInput.value = "150";
-        calculatePercentage();
-      });
-
-      let typingTimer2;
-
-      // Initialize both calculators with examples
-      window.addEventListener("load", () => {
-        // Calculator 1 example
-        baseInput.value = "100";
-        percentInput.value = "12";
-        calculateXofY();
-
-        // Calculator 2 example
-        partAInput.value = "25";
-        wholeBInput.value = "100";
-        calculatePercentage();
-
-        baseInput.focus();
-      });
-    </script>
 
     <script src="/assets/script.js" defer></script>
+    <script src="/percent-calculator/main.js" defer></script>
   </body>
 </html>
