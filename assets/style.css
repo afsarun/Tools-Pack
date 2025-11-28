@@ -209,8 +209,8 @@ body {
   border-radius: 1.5rem;
   padding: 2rem;
   margin-bottom: 2rem;
-  border: 1px solid var(--border);
-  backdrop-filter: blur(10px);
+
+  /* backdrop-filter: blur(10px); */
 
   transition: all 0.3s ease;
 }
@@ -252,7 +252,6 @@ a {
   padding: 1rem;
   background: var(--surface);
   border-radius: 0.75rem;
-  border: 1px solid var(--border);
 }
 .global-breadcrumbs a {
   color: var(--text);
