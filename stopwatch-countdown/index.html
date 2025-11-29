@@ -222,31 +222,22 @@
         ]
       }
     </script>
+
     <style>
       :root {
-        --primary: #3b82f6;
-        --primary-hover: #2563eb;
-        --secondary: #64748b;
-        --success: #10b981;
-        --danger: #ff6262;
-        --warning: #f59e0b;
-
-        /* LIGHT palette (site default) */
-        --background: #ffffff;
-        --surface: #f8fafc;
-        --surface-light: #f1f5f9;
-        --text: #0f172a;
-        --text-muted: #475569;
-        --border: #e6edf6;
-
-        --gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-        --shadow: 0 20px 25px -5px rgba(2, 6, 23, 0.06),
-          0 10px 10px -5px rgba(2, 6, 23, 0.03);
-        --shadow-lg: 0 20px 40px rgba(2, 6, 23, 0.08);
-
-        --link: #2563eb;
-        --link-hover: #3b82f6;
-        --link-visited: #a78bfa;
+        --primary: #4361ee;
+        --primary-dark: #3a56d4;
+        --secondary: #7209b7;
+        --accent: #f72585;
+        --light: #f8f9fa;
+        --dark: #212529;
+        --gray: #6c757d;
+        --success: #4cc9f0;
+        --warning: #f8961e;
+        --danger: #f94144;
+        --border-radius: 12px;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
       }
 
       * {
@@ -256,315 +247,242 @@
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       }
 
-      body {
-        background: var(--background);
-        color: var(--text);
-        min-height: 100vh;
-
-        padding: 20px;
-        background-image: radial-gradient(
-          circle at 1px 1px,
-          rgba(0, 0, 0, 0.05) 1px,
-          transparent 0
-        );
-        background-size: 20px 20px;
-      }
-
-      .stopwatch-container {
-        max-width: 800px;
+      .container-stopwatch {
+        background-color: var(--light);
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
         width: 100%;
-        text-align: center;
-      }
-
-      .header {
-        margin-bottom: 2.5rem;
-      }
-
-      .title {
-        font-size: 2.8rem;
-        font-weight: 800;
-        background: var(--gradient);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        margin-bottom: 0.5rem;
-        letter-spacing: -0.5px;
-      }
-
-      .subtitle {
-        color: var(--text-muted);
-        font-size: 1.1rem;
-        font-weight: 500;
-      }
-
-      .stopwatch-container {
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-      }
-
-      .stopwatch {
-        background: var(--surface);
-        border-radius: 24px;
-        padding: 2.5rem;
-        box-shadow: var(--shadow-lg);
-        border: 1px solid var(--border);
-        position: relative;
+        /* max-width: 500px; */
         overflow: hidden;
       }
 
-      .stopwatch::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 6px;
-        background: var(--gradient);
+      .header {
+        background-color: var(--dark);
+        color: var(--light);
+        padding: 20px;
+        text-align: center;
+      }
+
+      .header h1 {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+      }
+
+      .tab-container {
+        display: flex;
+        background-color: var(--dark);
+        border-bottom: 1px solid var(--gray);
+      }
+
+      .tab {
+        flex: 1;
+        padding: 15px;
+        text-align: center;
+        background-color: transparent;
+        color: var(--light);
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 600;
+        transition: var(--transition);
+      }
+
+      .tab.active {
+        background-color: var(--light);
+        color: var(--dark);
+        border-top-left-radius: var(--border-radius);
+        border-top-right-radius: var(--border-radius);
+      }
+
+      .content {
+        padding: 30px;
+      }
+
+      .tab-content {
+        display: none;
+      }
+
+      .tab-content.active {
+        display: block;
       }
 
       .display {
-        font-size: 5rem;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .time-display {
+        font-size: 3.5rem;
         font-weight: 700;
-        margin-bottom: 2rem;
-        color: var(--text);
+        color: var(--dark);
+        margin: 20px 0;
         font-variant-numeric: tabular-nums;
-        letter-spacing: 2px;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      .micro-display {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--gray);
+        margin-top: -10px;
+        font-variant-numeric: tabular-nums;
       }
 
       .controls {
         display: flex;
         justify-content: center;
-        gap: 1rem;
-        margin-bottom: 1.5rem;
-        flex-wrap: wrap;
+        gap: 15px;
+        margin-bottom: 30px;
       }
 
       .btn {
-        padding: 0.85rem 1.75rem;
+        padding: 12px 24px;
         border: none;
-        border-radius: 12px;
-        font-weight: 600;
+        border-radius: var(--border-radius);
         font-size: 1rem;
+        font-weight: 600;
         cursor: pointer;
-        transition: all 0.2s ease;
+        transition: var(--transition);
         box-shadow: var(--shadow);
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        min-width: 120px;
-        justify-content: center;
       }
 
       .btn-primary {
-        background: var(--primary);
-        color: white;
+        background-color: var(--primary);
+        color: var(--light);
       }
 
       .btn-primary:hover {
-        background: var(--primary-hover);
-        transform: translateY(-2px);
-        box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+        background-color: var(--primary-dark);
       }
 
       .btn-secondary {
-        background: var(--secondary);
-        color: white;
+        background-color: var(--secondary);
+        color: var(--light);
       }
 
       .btn-secondary:hover {
-        background: #55657c;
-        transform: translateY(-2px);
-        box-shadow: 0 10px 20px rgba(100, 116, 139, 0.3);
+        background-color: #5e08a0;
       }
 
-      .btn-success {
-        background: var(--success);
-        color: white;
+      .btn-accent {
+        background-color: var(--accent);
+        color: var(--light);
       }
 
-      .btn-success:hover {
-        background: #0da271;
-        transform: translateY(-2px);
-        box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+      .btn-accent:hover {
+        background-color: #e01a6f;
       }
 
       .btn-danger {
-        background: var(--danger);
-        color: white;
+        background-color: var(--danger);
+        color: var(--light);
       }
 
       .btn-danger:hover {
-        background: #e74c4c;
-        transform: translateY(-2px);
-        box-shadow: 0 10px 20px rgba(255, 98, 98, 0.3);
+        background-color: #d32f2f;
       }
 
-      .btn:disabled {
-        opacity: 0.6;
-        cursor: not-allowed;
-        transform: none;
-        box-shadow: none;
+      .input-group {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 20px;
       }
 
-      .btn:disabled:hover {
-        transform: none;
-        box-shadow: none;
+      .time-input {
+        width: 80px;
+        padding: 10px;
+        border: 2px solid var(--gray);
+        border-radius: var(--border-radius);
+        text-align: center;
+        font-size: 1.2rem;
+        font-weight: 600;
       }
 
-      .laps-container {
-        background: var(--surface-light);
-        border-radius: 20px;
-        padding: 2rem;
-        box-shadow: var(--shadow);
-        border: 1px solid var(--border);
-        max-height: 350px;
+      .time-input:focus {
+        border-color: var(--primary);
+        outline: none;
+      }
+
+      .label {
+        display: block;
+        text-align: center;
+        margin-bottom: 5px;
+        color: var(--gray);
+        font-weight: 500;
+      }
+
+      .message {
+        text-align: center;
+        padding: 15px;
+        border-radius: var(--border-radius);
+        margin-top: 20px;
+        font-weight: 500;
+        display: none;
+      }
+
+      .message.success {
+        background-color: rgba(76, 201, 240, 0.2);
+        color: var(--success);
+        display: block;
+      }
+
+      .message.warning {
+        background-color: rgba(248, 150, 30, 0.2);
+        color: var(--warning);
+        display: block;
+      }
+
+      .message.danger {
+        background-color: rgba(249, 65, 68, 0.2);
+        color: var(--danger);
+        display: block;
+      }
+
+      .lap-times {
+        margin-top: 20px;
+        max-height: 200px;
         overflow-y: auto;
+        border: 1px solid var(--gray);
+        border-radius: var(--border-radius);
+        padding: 10px;
       }
 
-      .laps-header {
+      .lap-header {
         display: flex;
         justify-content: space-between;
-        align-items: center;
-        margin-bottom: 1.5rem;
-        padding-bottom: 0.75rem;
-        border-bottom: 1px solid var(--border);
-      }
-
-      .laps-title {
-        color: var(--text-muted);
+        padding: 5px 10px;
         font-weight: 600;
-        font-size: 1.25rem;
-      }
-
-      .laps-count {
-        background: var(--primary);
-        color: white;
-        border-radius: 50px;
-        padding: 0.25rem 0.75rem;
-        font-size: 0.85rem;
-        font-weight: 600;
-      }
-
-      .lap-list {
-        list-style: none;
-        text-align: left;
+        border-bottom: 1px solid var(--gray);
+        margin-bottom: 5px;
       }
 
       .lap-item {
-        padding: 1rem 1.25rem;
-        border-bottom: 1px solid var(--border);
         display: flex;
         justify-content: space-between;
-        align-items: center;
-        font-variant-numeric: tabular-nums;
-        transition: background 0.2s ease;
-      }
-
-      .lap-item:hover {
-        background: rgba(255, 255, 255, 0.5);
+        padding: 5px 10px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
       }
 
       .lap-item:last-child {
         border-bottom: none;
       }
 
-      .lap-number {
-        color: var(--text-muted);
-        font-weight: 600;
-        min-width: 80px;
-      }
-
-      .lap-time {
-        color: var(--text);
-        font-weight: 600;
-        font-size: 1.1rem;
-      }
-
-      .lap-difference {
-        font-size: 0.85rem;
-        color: var(--text-muted);
-        min-width: 100px;
-        text-align: right;
-      }
-
-      .fastest {
-        color: var(--success);
-        font-weight: 700;
-      }
-
-      .slowest {
-        color: var(--danger);
-        font-weight: 700;
-      }
-
-      .footer {
-        margin-top: 2.5rem;
-        color: var(--text-muted);
-        font-size: 0.9rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-      }
-
-      .keyboard-shortcuts {
-        margin-top: 1.5rem;
-        color: var(--text-muted);
-        font-size: 0.85rem;
-        display: flex;
-        justify-content: center;
-        gap: 1.5rem;
-        flex-wrap: wrap;
-      }
-
-      .shortcut {
-        display: flex;
-        align-items: center;
-        gap: 0.25rem;
-      }
-
-      .key {
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: 4px;
-        padding: 0.25rem 0.5rem;
-        font-size: 0.75rem;
-        font-weight: 600;
-      }
-
-      @media (max-width: 768px) {
-        .display {
-          font-size: 3.5rem;
-        }
-
-        .controls {
-          flex-direction: column;
-          align-items: center;
-        }
-
-        .btn {
-          width: 100%;
-          max-width: 250px;
-        }
-
-        .laps-container {
-          max-height: 300px;
-        }
-      }
-
       @media (max-width: 480px) {
-        .display {
+        .time-display {
           font-size: 2.8rem;
         }
 
-        .stopwatch {
-          padding: 1.5rem;
+        .micro-display {
+          font-size: 1.2rem;
         }
 
-        .title {
-          font-size: 2.2rem;
+        .controls {
+          flex-wrap: wrap;
+        }
+
+        .btn {
+          flex: 1;
+          min-width: 120px;
         }
       }
     </style>
@@ -572,126 +490,245 @@
 
   <body>
     <header>
-      <div class="head-container">
-        <div class="header-content">
-          <a href="/" class="logo">
-            <img src="/assets/logo.webp" alt="Utilityera Logo" />
-            Stopwatch &amp; <span>Countdown</span>
+      <div class="container">
+        <nav class="navbar">
+          <a class="logo" href="/" aria-label="utilityera home ">
+            <i>📅</i>
+            <span>AgeCalc</span>
           </a>
+          <button class="mobile-toggle" id="mobileToggle">☰</button>
+          <ul class="nav-links" id="navLinks">
+            <li><a href="/" aria-label="utilityera home ">Home</a></li>
+            <li class="dropdown">
+              <a href="#">Tools ▾</a>
+              <ul class="dropdown-menu">
+                <li><a href="/text-utilities/">Text Utilities</a></li>
+                <li><a href="/url-tools/">URL Tools</a></li>
+                <li><a href="/base64/">Base64 Tools</a></li>
+                <li><a href="/json-formatter/">JSON Formatter</a></li>
+                <li><a href="/sha256/">SHA-256 Hash</a></li>
+                <li><a href="/password-uuid/">Password Generator</a></li>
+                <li><a href="/uuid-v4/">UUID Generator</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#">Calculators ▾</a>
+              <ul class="dropdown-menu">
+                <li><a href="/age-calculator/">Age Calculator</a></li>
+                <li><a href="/date-calculator/">Date Calculator</a></li>
+                <li><a href="/percent-calculator/">Percent Calculator</a></li>
+                <li><a href="/calculator/">Basic Calculator</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#">Converters ▾</a>
+              <ul class="dropdown-menu">
+                <li><a href="/unit-converter/">Unit Converter</a></li>
+                <li><a href="/text-to-pdf/">Text to PDF</a></li>
+                <li><a href="/image-resizer-compressor/">Image Tools</a></li>
+                <li><a href="/compress-pdf/">PDF Compressor</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#">Productivity ▾</a>
+              <ul class="dropdown-menu">
+                <li><a href="/stopwatch-countdown/">Stopwatch & Timer</a></li>
+                <li><a href="/color-picker-contrast/">Color Picker</a></li>
+                <li><a href="/quick-notes/">Quick Notes</a></li>
+              </ul>
+            </li>
 
-          <button
-            class="nav-toggle"
-            aria-label="Toggle Navigation Menu"
-            aria-expanded="false"
-          >
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-          </button>
-
-          <nav class="nav-menu" aria-label="Main Navigation">
-            <ul>
-              <li>
-                <a href="/text-utilities/" aria-label="Go to text  utilities"
-                  >Text utilities
-                </a>
-              </li>
-              <li>
-                <a href="/uuid-v4/" aria-label="Learn about UUID definition">
-                  UUID v4
-                </a>
-              </li>
-              <li>
-                <a href="/date-calculator/" aria-label="Explore Date Calculator"
-                  >Date Calculator</a
-                >
-              </li>
-              <li>
-                <a href="/unit-converter/" aria-label="View Unit Converter"
-                  >Unit Converter
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
+            <li><a href="/blog-article/">Blog</a></li>
+            <li><a href="/contact/">Contact</a></li>
+          </ul>
+        </nav>
       </div>
     </header>
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb">
+      <div class="container">
+        <ul class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="/" aria-label="utilityera home ">Home</a>
+          </li>
+          <li class="breadcrumb-item"><a href="/#math">Math Tools</a></li>
+          <li class="breadcrumb-item active">Age Calculator</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Page Title -->
+    <section class="page-title">
+      <h1>Stopwatch &amp; Countdown</h1>
+      <p>
+        Calculate your exact age in years, months, weeks, days, hours, minutes
+        and seconds. Simple, accurate and fast.
+      </p>
+    </section>
 
     <!-- Ad #1: top banner (constrained, no full-width expansion) -->
 
     <div class="container">
-      <nav class="global-breadcrumbs" aria-label="breadcrumb">
-        <a href="/">Home</a> › <a href="/#time">Time Tools</a> ›
-        <span aria-current="page">Stopwatch &amp; Countdown</span>
-      </nav>
-      <div class="global-top-header">
-        <h1>Stopwatch &amp; Countdown</h1>
-        <p class="tagline"></p>
-      </div>
-
       <!-- global-toc (updated anchors & labels) -->
 
-      <p class="global-toc" aria-label="Table of Contents">
-        <a href="#tool-time">Stopwatch &amp; Countdown</a> ·
-        <a href="#where">Where to use </a> ·
-        <a href="#best-practices">Best Practices</a> ·
-        <a href="#details">Details</a> · <a href="#faq">FAQ</a> ·
-        <a href="#related">Related tools</a>
-      </p>
       <main class="wrap">
-        <!-- global-breadcrumbs (updated for this tool) -->
-
-        <div class="container">
-          <div class="stopwatch-container">
-            <div class="stopwatch">
-              <div class="display" id="display">00:00:00.00</div>
-
-              <div class="controls">
-                <button class="btn btn-primary" id="startBtn">
-                  <i class="fas fa-play"></i> Start
-                </button>
-                <button class="btn btn-secondary" id="lapBtn" disabled>
-                  <i class="fas fa-flag"></i> Lap
-                </button>
-                <button class="btn btn-danger" id="stopBtn" disabled>
-                  <i class="fas fa-stop"></i> Stop
-                </button>
-                <button class="btn btn-success" id="resetBtn">
-                  <i class="fas fa-redo"></i> Reset
-                </button>
-              </div>
+        <div class="calculator-container">
+          <div class="container-stopwatch">
+            <div class="header">
+              <p>Stopwatch with Microsecond Accuracy & Timer</p>
             </div>
 
-            <div class="laps-container">
-              <div class="laps-header">
-                <h3 class="laps-title">Lap Times</h3>
-                <span class="laps-count" id="lapCount">0 Laps</span>
+            <div class="tab-container">
+              <button class="tab active" data-tab="stopwatch">Stopwatch</button>
+              <button class="tab" data-tab="timer">Timer</button>
+            </div>
+
+            <div class="content">
+              <!-- Stopwatch Tab -->
+              <div id="stopwatch" class="tab-content active">
+                <div class="display">
+                  <div class="time-display" id="stopwatch-display">
+                    00:00:00
+                  </div>
+                  <div class="micro-display" id="stopwatch-micro">.000</div>
+                </div>
+
+                <div class="controls">
+                  <button class="btn btn-primary" id="start-stopwatch">
+                    Start
+                  </button>
+                  <button class="btn btn-accent" id="lap-stopwatch">Lap</button>
+                  <button class="btn btn-secondary" id="pause-stopwatch">
+                    Pause
+                  </button>
+                  <button class="btn btn-danger" id="reset-stopwatch">
+                    Reset
+                  </button>
+                </div>
+
+                <div class="lap-times" id="lap-times">
+                  <div class="lap-header">
+                    <span>Lap</span>
+                    <span>Time</span>
+                  </div>
+                </div>
+
+                <div class="message" id="stopwatch-message"></div>
               </div>
-              <ul class="lap-list" id="lapList">
-                <!-- Lap times will be added here -->
-                <li class="lap-item empty-laps">
-                  <span>No lap times recorded yet</span>
-                </li>
-              </ul>
+
+              <!-- Timer Tab -->
+              <div id="timer" class="tab-content">
+                <div class="input-group">
+                  <div>
+                    <span class="label">Hours</span>
+                    <input
+                      type="number"
+                      class="time-input"
+                      id="hours"
+                      min="0"
+                      max="23"
+                      value="0"
+                    />
+                  </div>
+                  <div>
+                    <span class="label">Minutes</span>
+                    <input
+                      type="number"
+                      class="time-input"
+                      id="minutes"
+                      min="0"
+                      max="59"
+                      value="5"
+                    />
+                  </div>
+                  <div>
+                    <span class="label">Seconds</span>
+                    <input
+                      type="number"
+                      class="time-input"
+                      id="seconds"
+                      min="0"
+                      max="59"
+                      value="0"
+                    />
+                  </div>
+                </div>
+
+                <div class="display">
+                  <div class="time-display" id="timer-display">05:00</div>
+                </div>
+
+                <div class="controls">
+                  <button class="btn btn-primary" id="start-timer">
+                    Start
+                  </button>
+                  <button class="btn btn-secondary" id="pause-timer">
+                    Pause
+                  </button>
+                  <button class="btn btn-danger" id="reset-timer">Reset</button>
+                </div>
+
+                <div class="message" id="timer-message"></div>
+              </div>
             </div>
           </div>
-
-          <div class="keyboard-shortcuts">
-            <div class="shortcut">
-              <span class="key">Space</span>
-              <span>Start/Stop</span>
-            </div>
-            <div class="shortcut">
-              <span class="key">L</span>
-              <span>Record Lap</span>
-            </div>
-            <div class="shortcut">
-              <span class="key">R</span>
-              <span>Reset</span>
-            </div>
+          <div class="related-tools-card">
+            <h2 class="card-title">
+              <i>🔧</i>
+              Related Tools
+            </h2>
+            <ul class="tools-list">
+              <li>
+                <a href="/date-calculator/">
+                  <div class="tool-icon">📅</div>
+                  <div class="tool-info">
+                    <h3>Date Calculator</h3>
+                    <p>Add or subtract days from any date</p>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="/age-calculator/">
+                  <div class="tool-icon">👤</div>
+                  <div class="tool-info">
+                    <h3>Age Calculator</h3>
+                    <p>Calculate exact age from birth date</p>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="/text-utilities/">
+                  <div class="tool-icon">📝</div>
+                  <div class="tool-info">
+                    <h3>Text Utilities</h3>
+                    <p>Various text manipulation tools</p>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="/url-tools/">
+                  <div class="tool-icon">🔗</div>
+                  <div class="tool-info">
+                    <h3>URL Tools</h3>
+                    <p>Encode, decode and analyze URLs</p>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="/password-uuid/">
+                  <div class="tool-icon">🔑</div>
+                  <div class="tool-info">
+                    <h3>Password Generator</h3>
+                    <p>Generate secure passwords</p>
+                  </div>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
-        <div class="card" id="where">
+
+        <div class="content-section" id="where">
           <h2>Common Use Cases &amp; Examples</h2>
           <div class="examples">
             <!-- Applications -->
@@ -760,7 +797,7 @@
           </div>
         </div>
 
-        <div class="info-grid" id="details">
+        <div class="content-section" id="details">
           <!-- Basics & Features -->
           <div class="card">
             <div class="info-section">
@@ -986,491 +1023,333 @@
         </article>
       </main>
     </div>
-    <footer role="contentinfo">
-      <div class="container">
-        <div class="footer-content">
-          <!-- Financial Calculators Section -->
-          <div class="footer-column">
-            <h4>Financial Calculators</h4>
-            <ul>
-              <li>
-                <a href="/calculator/" aria-label="Calculate mortgage payments">
-                  Calculator</a
-                >
-              </li>
-              <li>
-                <a href="/date-calculator/" aria-label="Calculate loan payments"
-                  >Date Calculator</a
-                >
-              </li>
-              <li>
-                <a
-                  href="/percent-calculator/"
-                  aria-label="Calculate investment returns"
-                  >Percent Calculator</a
-                >
-              </li>
-              <li>
-                <a href="/url-tools/" aria-label="Plan for retirement"
-                  >Url Encoder
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/bmi-calculator/"
-                  aria-label="Calculate tax obligations"
-                  >BMI Calculator</a
-                >
-              </li>
-            </ul>
-          </div>
-
-          <!-- Resources Section -->
-          <div class="footer-column">
-            <h4>Resources</h4>
-            <ul>
-              <li>
-                <a
-                  href="/blog-article/"
-                  aria-label="Financial blog and articles"
-                  >Financial Glossary</a
-                >
-              </li>
-              <li>
-                <a
-                  href="/blog-article/"
-                  aria-label="Financial blog and articles"
-                  >Blog & Articles</a
-                >
-              </li>
-              <li>
-                <a
-                  href="/blog-article/"
-                  aria-label="Financial blog and articles"
-                  >Financial Planning Guide</a
-                >
-              </li>
-              <li>
-                <a
-                  href="/blog-article/"
-                  aria-label="Financial blog and articles"
-                  >Investment Strategies</a
-                >
-              </li>
-              <li>
-                <a
-                  href="/blog-article/"
-                  aria-label="Financial blog and articles"
-                  >Mortgage Tips</a
-                >
-              </li>
-            </ul>
-          </div>
-
-          <!-- Company Section -->
-          <div class="footer-column">
-            <h4>Company</h4>
-            <ul>
-              <li>
-                <a href="/about/" aria-label="About FinanceCalc Pro"
-                  >About Us</a
-                >
-              </li>
-              <li>
-                <a href="/contact/" aria-label="Contact FinanceCalc Pro"
-                  >Contact</a
-                >
-              </li>
-              <li>
-                <a href="/privacy/" aria-label="Privacy policy"
-                  >Privacy Policy</a
-                >
-              </li>
-              <li>
-                <a href="/terms/" aria-label="Terms of service"
-                  >Terms of Service</a
-                >
-              </li>
-            </ul>
-          </div>
-
-          <!-- Social Media Section -->
-          <div class="footer-column">
-            <h4>Connect With Us</h4>
-            <ul class="social-links">
-              <li>
-                <a
-                  href="https://twitter.com/financecalcpro"
-                  aria-label="Follow us on Twitter"
-                  rel="noopener noreferrer"
-                >
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"
-                    />
-                  </svg>
-                  Twitter
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://facebook.com/financecalcpro"
-                  aria-label="Follow us on Facebook"
-                  rel="noopener noreferrer"
-                >
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
-                    />
-                  </svg>
-                  Facebook
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://linkedin.com/company/financecalcpro"
-                  aria-label="Follow us on LinkedIn"
-                  rel="noopener noreferrer"
-                >
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
-                    />
-                  </svg>
-                  LinkedIn
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://instagram.com/financecalcpro"
-                  aria-label="Follow us on Instagram"
-                  rel="noopener noreferrer"
-                >
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
-                    />
-                  </svg>
-                  Instagram
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://youtube.com/financecalcpro"
-                  aria-label="Subscribe to our YouTube channel"
-                  rel="noopener noreferrer"
-                >
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
-                    />
-                  </svg>
-                  YouTube
-                </a>
-              </li>
-            </ul>
-
-            <!-- Newsletter Signup -->
-            <div class="newsletter">
-              <h5>Stay Updated</h5>
-              <form
-                action="/newsletter-signup"
-                method="post"
-                class="newsletter-form"
-              >
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Your email address"
-                  aria-label="Email for newsletter"
-                  required
-                />
-                <button type="submit" aria-label="Subscribe to newsletter">
-                  Subscribe
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-
-        <!-- Copyright and Legal -->
-        <div class="footer-bottom">
-          <div class="copyright">
-            <p>&copy; Utilityera → © 2025 Utilityera.</p>
-            <p>
-              This calculator provides estimates for informational purposes
-              only. Results are not financial advice.
-            </p>
-          </div>
-
-          <!-- Additional Legal Links -->
-        </div>
-      </div>
-    </footer>
-    <script>
-      // DOM Elements
-      const display = document.getElementById("display");
-      const startBtn = document.getElementById("startBtn");
-      const lapBtn = document.getElementById("lapBtn");
-      const stopBtn = document.getElementById("stopBtn");
-      const resetBtn = document.getElementById("resetBtn");
-      const lapList = document.getElementById("lapList");
-      const lapCount = document.getElementById("lapCount");
-
-      // Stopwatch variables
-      let startTime = 0;
-      let elapsedTime = 0;
-      let timerInterval = null;
-      let isRunning = false;
-      let lapTimes = [];
-      let lapCounter = 1;
-
-      // Format time function
-      function formatTime(time) {
-        const hours = Math.floor(time / 3600000);
-        const minutes = Math.floor((time % 3600000) / 60000);
-        const seconds = Math.floor((time % 60000) / 1000);
-        const milliseconds = Math.floor((time % 1000) / 10);
-
-        return `${hours.toString().padStart(2, "0")}:${minutes
-          .toString()
-          .padStart(2, "0")}:${seconds
-          .toString()
-          .padStart(2, "0")}.${milliseconds.toString().padStart(2, "0")}`;
-      }
-
-      // Update display
-      function updateDisplay() {
-        const currentTime = Date.now();
-        elapsedTime = currentTime - startTime;
-        display.textContent = formatTime(elapsedTime);
-      }
-
-      // Start the stopwatch
-      function start() {
-        if (!isRunning) {
-          startTime = Date.now() - elapsedTime;
-          timerInterval = setInterval(updateDisplay, 10);
-          isRunning = true;
-
-          startBtn.disabled = true;
-          lapBtn.disabled = false;
-          stopBtn.disabled = false;
-          resetBtn.disabled = false;
-
-          startBtn.innerHTML = '<i class="fas fa-pause"></i> Pause';
-          startBtn.classList.remove("btn-primary");
-          startBtn.classList.add("btn-warning");
-        } else {
-          // Pause functionality
-          clearInterval(timerInterval);
-          isRunning = false;
-
-          startBtn.disabled = false;
-          lapBtn.disabled = true;
-          stopBtn.disabled = false;
-
-          startBtn.innerHTML = '<i class="fas fa-play"></i> Resume';
-          startBtn.classList.remove("btn-warning");
-          startBtn.classList.add("btn-primary");
-        }
-      }
-
-      // Stop the stopwatch
-      function stop() {
-        if (isRunning) {
-          clearInterval(timerInterval);
-          isRunning = false;
-
-          startBtn.disabled = false;
-          lapBtn.disabled = true;
-          stopBtn.disabled = true;
-
-          startBtn.innerHTML = '<i class="fas fa-play"></i> Start';
-          startBtn.classList.remove("btn-warning");
-          startBtn.classList.add("btn-primary");
-        }
-      }
-
-      // Reset the stopwatch
-      function reset() {
-        clearInterval(timerInterval);
-        isRunning = false;
-        elapsedTime = 0;
-        display.textContent = "00:00:00.00";
-        lapTimes = [];
-        lapCounter = 1;
-        updateLapList();
-
-        startBtn.disabled = false;
-        lapBtn.disabled = true;
-        stopBtn.disabled = true;
-
-        startBtn.innerHTML = '<i class="fas fa-play"></i> Start';
-        startBtn.classList.remove("btn-warning");
-        startBtn.classList.add("btn-primary");
-      }
-
-      // Record a lap time
-      function recordLap() {
-        if (isRunning) {
-          const currentLapTime = elapsedTime;
-          const previousLapTime =
-            lapTimes.length > 0 ? lapTimes[lapTimes.length - 1].time : 0;
-          const lapTime = currentLapTime - previousLapTime;
-
-          lapTimes.push({
-            number: lapCounter,
-            time: currentLapTime,
-            lapTime: lapTime,
-          });
-
-          updateLapList();
-          lapCounter++;
-        }
-      }
-
-      // Update lap list display
-      function updateLapList() {
-        // Clear current lap list
-        lapList.innerHTML = "";
-
-        // Update lap count
-        lapCount.textContent = `${lapTimes.length} ${
-          lapTimes.length === 1 ? "Lap" : "Laps"
-        }`;
-
-        // If no laps, show empty message
-        if (lapTimes.length === 0) {
-          const emptyItem = document.createElement("li");
-          emptyItem.className = "lap-item empty-laps";
-          emptyItem.innerHTML = "<span>No lap times recorded yet</span>";
-          lapList.appendChild(emptyItem);
-          return;
-        }
-
-        // Find fastest and slowest lap times
-        let fastestIndex = 0;
-        let slowestIndex = 0;
-
-        for (let i = 1; i < lapTimes.length; i++) {
-          if (lapTimes[i].lapTime < lapTimes[fastestIndex].lapTime) {
-            fastestIndex = i;
-          }
-          if (lapTimes[i].lapTime > lapTimes[slowestIndex].lapTime) {
-            slowestIndex = i;
-          }
-        }
-
-        // Create lap items
-        lapTimes.forEach((lap, index) => {
-          const lapItem = document.createElement("li");
-          lapItem.className = "lap-item";
-
-          // Add highlighting for fastest and slowest laps
-          if (index === fastestIndex) {
-            lapItem.classList.add("fastest");
-          } else if (index === slowestIndex) {
-            lapItem.classList.add("slowest");
-          }
-
-          const lapNumber = document.createElement("span");
-          lapNumber.className = "lap-number";
-          lapNumber.textContent = `Lap ${lap.number}`;
-
-          const lapTimeElement = document.createElement("span");
-          lapTimeElement.className = "lap-time";
-          lapTimeElement.textContent = formatTime(lap.lapTime);
-
-          const lapDifference = document.createElement("span");
-          lapDifference.className = "lap-difference";
-
-          // Calculate difference from previous lap (if applicable)
-          if (index > 0) {
-            const difference = lap.lapTime - lapTimes[index - 1].lapTime;
-            if (difference > 0) {
-              lapDifference.textContent = `+${formatTime(difference)}`;
-              lapDifference.style.color = "var(--danger)";
-            } else if (difference < 0) {
-              lapDifference.textContent = `${formatTime(difference)}`;
-              lapDifference.style.color = "var(--success)";
-            } else {
-              lapDifference.textContent = formatTime(difference);
-            }
-          } else {
-            lapDifference.textContent = formatTime(lap.lapTime);
-          }
-
-          lapItem.appendChild(lapNumber);
-          lapItem.appendChild(lapTimeElement);
-          lapItem.appendChild(lapDifference);
-
-          // Add to the beginning of the list (newest first)
-          lapList.prepend(lapItem);
-        });
-      }
-
-      // Event listeners
-      startBtn.addEventListener("click", start);
-      stopBtn.addEventListener("click", stop);
-      resetBtn.addEventListener("click", reset);
-      lapBtn.addEventListener("click", recordLap);
-
-      // Keyboard shortcuts
-      document.addEventListener("keydown", (e) => {
-        if (e.code === "Space") {
-          e.preventDefault();
-          if (isRunning) {
-            stop();
-          } else {
-            start();
-          }
-        } else if (e.code === "KeyL" && isRunning) {
-          recordLap();
-        } else if (e.code === "KeyR") {
-          reset();
-        }
-      });
-    </script>
 
     <!-- Use absolute path so it works from nested routes like /stopwatch/ -->
+    <script>
+      // Tab switching functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        const tabs = document.querySelectorAll(".tab");
 
+        tabs.forEach((tab) => {
+          tab.addEventListener("click", function () {
+            // Remove active class from all tabs and tab contents
+            document
+              .querySelectorAll(".tab")
+              .forEach((t) => t.classList.remove("active"));
+            document
+              .querySelectorAll(".tab-content")
+              .forEach((c) => c.classList.remove("active"));
+
+            // Add active class to clicked tab and corresponding content
+            this.classList.add("active");
+            const tabId = this.getAttribute("data-tab");
+            document.getElementById(tabId).classList.add("active");
+          });
+        });
+
+        // Initialize stopwatch and timer
+        initializeStopwatch();
+        initializeTimer();
+      });
+
+      // Stopwatch functionality with microsecond precision
+      function initializeStopwatch() {
+        let stopwatchInterval;
+        let stopwatchRunning = false;
+        let stopwatchTime = 0; // Time in milliseconds
+        let lapTimes = [];
+        let lapCount = 0;
+
+        const display = document.getElementById("stopwatch-display");
+        const microDisplay = document.getElementById("stopwatch-micro");
+        const startBtn = document.getElementById("start-stopwatch");
+        const lapBtn = document.getElementById("lap-stopwatch");
+        const pauseBtn = document.getElementById("pause-stopwatch");
+        const resetBtn = document.getElementById("reset-stopwatch");
+        const message = document.getElementById("stopwatch-message");
+        const lapTimesContainer = document.getElementById("lap-times");
+
+        // Format time for display
+        function formatTime(ms) {
+          const hours = Math.floor(ms / 3600000);
+          const minutes = Math.floor((ms % 3600000) / 60000);
+          const seconds = Math.floor((ms % 60000) / 1000);
+
+          return `${hours.toString().padStart(2, "0")}:${minutes
+            .toString()
+            .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+        }
+
+        // Format milliseconds for micro display
+        function formatMicroseconds(ms) {
+          const milliseconds = Math.floor(ms % 1000);
+          return `.${milliseconds.toString().padStart(3, "0")}`;
+        }
+
+        // Update display
+        function updateDisplay() {
+          display.textContent = formatTime(stopwatchTime);
+          microDisplay.textContent = formatMicroseconds(stopwatchTime);
+        }
+
+        // Start stopwatch
+        function startStopwatch() {
+          if (!stopwatchRunning) {
+            stopwatchRunning = true;
+            const startTime = Date.now() - stopwatchTime;
+
+            stopwatchInterval = setInterval(() => {
+              stopwatchTime = Date.now() - startTime;
+              updateDisplay();
+            }, 10); // Update every 10ms for smooth display
+
+            startBtn.textContent = "Resume";
+            lapBtn.disabled = false;
+            message.textContent = "Stopwatch is running";
+            message.className = "message success";
+          }
+        }
+
+        // Record lap time
+        function recordLap() {
+          if (stopwatchRunning) {
+            lapCount++;
+            const lapTime = stopwatchTime;
+            const previousLapTime =
+              lapTimes.length > 0 ? lapTimes[lapTimes.length - 1].time : 0;
+            const lapDifference = lapTime - previousLapTime;
+
+            lapTimes.push({
+              number: lapCount,
+              time: lapTime,
+              difference: lapDifference,
+            });
+
+            updateLapTimes();
+            message.textContent = `Lap ${lapCount} recorded`;
+            message.className = "message warning";
+          }
+        }
+
+        // Update lap times display
+        function updateLapTimes() {
+          // Clear existing lap items (except header)
+          const lapItems = lapTimesContainer.querySelectorAll(".lap-item");
+          lapItems.forEach((item) => item.remove());
+
+          // Add lap items in reverse order (newest first)
+          for (let i = lapTimes.length - 1; i >= 0; i--) {
+            const lap = lapTimes[i];
+            const lapItem = document.createElement("div");
+            lapItem.className = "lap-item";
+
+            const lapNumber = document.createElement("span");
+            lapNumber.textContent = `Lap ${lap.number}`;
+
+            const lapTime = document.createElement("span");
+            lapTime.textContent = `${formatTime(lap.time)}${formatMicroseconds(
+              lap.time
+            )}`;
+
+            lapItem.appendChild(lapNumber);
+            lapItem.appendChild(lapTime);
+            lapTimesContainer.appendChild(lapItem);
+          }
+        }
+
+        // Pause stopwatch
+        function pauseStopwatch() {
+          if (stopwatchRunning) {
+            stopwatchRunning = false;
+            clearInterval(stopwatchInterval);
+            message.textContent = "Stopwatch paused";
+            message.className = "message warning";
+          }
+        }
+
+        // Reset stopwatch
+        function resetStopwatch() {
+          stopwatchRunning = false;
+          clearInterval(stopwatchInterval);
+          stopwatchTime = 0;
+          lapTimes = [];
+          lapCount = 0;
+          updateDisplay();
+          updateLapTimes();
+          startBtn.textContent = "Start";
+          lapBtn.disabled = true;
+          message.textContent = "Stopwatch reset";
+          message.className = "message danger";
+        }
+
+        // Event listeners
+        startBtn.addEventListener("click", startStopwatch);
+        lapBtn.addEventListener("click", recordLap);
+        pauseBtn.addEventListener("click", pauseStopwatch);
+        resetBtn.addEventListener("click", resetStopwatch);
+
+        // Initial display update
+        updateDisplay();
+        lapBtn.disabled = true;
+      }
+
+      // Timer functionality
+      function initializeTimer() {
+        let timerInterval;
+        let timerRunning = false;
+        let timerTime = 0; // Time in milliseconds
+        let originalTime = 0;
+
+        const hoursInput = document.getElementById("hours");
+        const minutesInput = document.getElementById("minutes");
+        const secondsInput = document.getElementById("seconds");
+        const display = document.getElementById("timer-display");
+        const startBtn = document.getElementById("start-timer");
+        const pauseBtn = document.getElementById("pause-timer");
+        const resetBtn = document.getElementById("reset-timer");
+        const message = document.getElementById("timer-message");
+
+        // Format time for display
+        function formatTimerTime(ms) {
+          const hours = Math.floor(ms / 3600000);
+          const minutes = Math.floor((ms % 3600000) / 60000);
+          const seconds = Math.floor((ms % 60000) / 1000);
+
+          if (hours > 0) {
+            return `${hours.toString().padStart(2, "0")}:${minutes
+              .toString()
+              .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+          } else {
+            return `${minutes.toString().padStart(2, "0")}:${seconds
+              .toString()
+              .padStart(2, "0")}`;
+          }
+        }
+
+        // Update display
+        function updateTimerDisplay() {
+          display.textContent = formatTimerTime(timerTime);
+
+          // Change color when timer is running low
+          if (timerTime <= 10000 && timerTime > 0) {
+            display.style.color = "var(--warning)";
+          } else if (timerTime <= 0) {
+            display.style.color = "var(--danger)";
+          } else {
+            display.style.color = "var(--dark)";
+          }
+        }
+
+        // Set timer from inputs
+        function setTimerFromInputs() {
+          const hours = parseInt(hoursInput.value) || 0;
+          const minutes = parseInt(minutesInput.value) || 0;
+          const seconds = parseInt(secondsInput.value) || 0;
+
+          timerTime = (hours * 3600 + minutes * 60 + seconds) * 1000;
+          originalTime = timerTime;
+          updateTimerDisplay();
+        }
+
+        // Start timer
+        function startTimer() {
+          if (!timerRunning) {
+            // If timer is at 0, set from inputs
+            if (timerTime === 0) {
+              setTimerFromInputs();
+            }
+
+            // Don't start if time is 0
+            if (timerTime <= 0) {
+              message.textContent = "Please set a valid time";
+              message.className = "message danger";
+              return;
+            }
+
+            timerRunning = true;
+            const startTime = Date.now();
+
+            timerInterval = setInterval(() => {
+              const elapsed = Date.now() - startTime;
+              timerTime = Math.max(0, originalTime - elapsed);
+
+              updateTimerDisplay();
+
+              if (timerTime <= 0) {
+                clearInterval(timerInterval);
+                timerRunning = false;
+                message.textContent = "Time's up!";
+                message.className = "message danger";
+
+                // Play alert sound (browser beep)
+                try {
+                  const audioContext = new (window.AudioContext ||
+                    window.webkitAudioContext)();
+                  const oscillator = audioContext.createOscillator();
+                  const gainNode = audioContext.createGain();
+
+                  oscillator.connect(gainNode);
+                  gainNode.connect(audioContext.destination);
+
+                  oscillator.frequency.value = 800;
+                  oscillator.type = "sine";
+
+                  gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+                  gainNode.gain.exponentialRampToValueAtTime(
+                    0.01,
+                    audioContext.currentTime + 1
+                  );
+
+                  oscillator.start(audioContext.currentTime);
+                  oscillator.stop(audioContext.currentTime + 1);
+                } catch (e) {
+                  console.log("Audio context not supported");
+                }
+              }
+            }, 10); // Update every 10ms for smooth display
+
+            startBtn.textContent = "Resume";
+            message.textContent = "Timer is running";
+            message.className = "message success";
+          }
+        }
+
+        // Pause timer
+        function pauseTimer() {
+          if (timerRunning) {
+            timerRunning = false;
+            clearInterval(timerInterval);
+            originalTime = timerTime; // Update original time to current remaining time
+            message.textContent = "Timer paused";
+            message.className = "message warning";
+          }
+        }
+
+        // Reset timer
+        function resetTimer() {
+          timerRunning = false;
+          clearInterval(timerInterval);
+          setTimerFromInputs();
+          startBtn.textContent = "Start";
+          message.textContent = "Timer reset";
+          message.className = "message danger";
+          display.style.color = "var(--dark)";
+        }
+
+        // Event listeners
+        startBtn.addEventListener("click", startTimer);
+        pauseBtn.addEventListener("click", pauseTimer);
+        resetBtn.addEventListener("click", resetTimer);
+
+        // Update timer when inputs change
+        hoursInput.addEventListener("change", setTimerFromInputs);
+        minutesInput.addEventListener("change", setTimerFromInputs);
+        secondsInput.addEventListener("change", setTimerFromInputs);
+
+        // Initial display update
+        setTimerFromInputs();
+      }
+    </script>
     <script src="/assets/script.js" defer></script>
-
-    <noscript>
-      <div class="wrap card">
-        This page needs JavaScript for the timers and the ad slots.
-      </div>
-    </noscript>
   </body>
 </html>

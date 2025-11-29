@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PDF Compressor & Enhancer</title>
     <link rel="icon" href="/assets/favicon.ico" sizes="any" />
+    <link rel="stylesheet" href="/assets/style.css" />
     <link
       rel="icon"
       type="image/png"
@@ -27,33 +28,8 @@
       }
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        min-height: 100vh;
-        padding: 20px;
       }
-      .container {
-        max-width: 800px;
-        margin: 0 auto;
-        background: #fff;
-        border-radius: 15px;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-      }
-      header {
-        text-align: center;
-        padding: 40px 20px;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: #fff;
-      }
-      header h1 {
-        font-size: 2.5em;
-        margin-bottom: 10px;
-        font-weight: 300;
-      }
-      header p {
-        font-size: 1.1em;
-        opacity: 0.9;
-      }
+
       .upload-section,
       .controls-section,
       .progress-section,
@@ -257,32 +233,79 @@
   <body>
     <header>
       <div class="container">
-        <div class="header-content">
-          <div class="logo">UUID<span>Tool</span></div>
+        <nav class="navbar">
+          <a class="logo" href="/" aria-label="utilityera home ">
+            <i>📅</i>
+            <span>AgeCalc</span>
+          </a>
+          <button class="mobile-toggle" id="mobileToggle">☰</button>
+          <ul class="nav-links" id="navLinks">
+            <li><a href="/" aria-label="utilityera home ">Home</a></li>
+            <li class="dropdown">
+              <a href="#">Tools ▾</a>
+              <ul class="dropdown-menu">
+                <li><a href="/text-utilities/">Text Utilities</a></li>
+                <li><a href="/url-tools/">URL Tools</a></li>
+                <li><a href="/base64/">Base64 Tools</a></li>
+                <li><a href="/json-formatter/">JSON Formatter</a></li>
+                <li><a href="/sha256/">SHA-256 Hash</a></li>
+                <li><a href="/password-uuid/">Password Generator</a></li>
+                <li><a href="/uuid-v4/">UUID Generator</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#">Calculators ▾</a>
+              <ul class="dropdown-menu">
+                <li><a href="/age-calculator/">Age Calculator</a></li>
+                <li><a href="/date-calculator/">Date Calculator</a></li>
+                <li><a href="/percent-calculator/">Percent Calculator</a></li>
+                <li><a href="/calculator/">Basic Calculator</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#">Converters ▾</a>
+              <ul class="dropdown-menu">
+                <li><a href="/unit-converter/">Unit Converter</a></li>
+                <li><a href="/text-to-pdf/">Text to PDF</a></li>
+                <li><a href="/image-resizer-compressor/">Image Tools</a></li>
+                <li><a href="/compress-pdf/">PDF Compressor</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#">Productivity ▾</a>
+              <ul class="dropdown-menu">
+                <li><a href="/stopwatch-countdown/">Stopwatch & Timer</a></li>
+                <li><a href="/color-picker-contrast/">Color Picker</a></li>
+                <li><a href="/quick-notes/">Quick Notes</a></li>
+              </ul>
+            </li>
 
-          <button class="nav-toggle" aria-label="Toggle Navigation">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-          </button>
-
-          <nav class="nav-menu">
-            <ul>
-              <li><a href="#generator">Generator</a></li>
-              <li><a href="#what-is-uuid">What is UUID</a></li>
-              <li><a href="#use-cases">Use Cases</a></li>
-              <li><a href="#faq">FAQ</a></li>
-            </ul>
-          </nav>
-        </div>
+            <li><a href="/blog-article/">Blog</a></li>
+            <li><a href="/contact/">Contact</a></li>
+          </ul>
+        </nav>
       </div>
     </header>
-    <div class="container">
-      <header>
-        <h1>PDF Compressor & Enhancer</h1>
-        <p>Compress PDFs without quality loss and enhance document quality</p>
-      </header>
 
+    <!-- Breadcrumb -->
+    <section class="breadcrumb">
+      <div class="container">
+        <ul class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="/" aria-label="utilityera home ">Home</a>
+          </li>
+          <li class="breadcrumb-item"><a href="/#math">Math Tools</a></li>
+          <li class="breadcrumb-item active">Age Calculator</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Page Title -->
+    <section class="page-title">
+      <h1>PDF Compressor & Enhancer</h1>
+      <p>Compress PDFs without quality loss and enhance document quality</p>
+    </section>
+    <div class="container">
       <div class="upload-section">
         <div class="upload-area" id="uploadArea">
           <div class="upload-content">
@@ -381,7 +404,55 @@
         </div>
       </div>
     </div>
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>Utilityera</h3>
+            <p>
+              Utilityera is a comprehensive online platform offering a wide
+              range of free web tools and calculators designed to simplify
+              everyday tasks.
+            </p>
+          </div>
 
+          <div class="footer-column">
+            <h3>Popular Tools</h3>
+            <ul class="footer-links">
+              <li><a href="/age-calculator/">Age Calculator</a></li>
+              <li><a href="/date-calculator/">Date Calculator</a></li>
+              <li><a href="/percent-calculator/">Percent Calculator</a></li>
+              <li><a href="/unit-converter/">Unit Converter</a></li>
+              <li><a href="/text-utilities/">Text Utilities</a></li>
+              <li><a href="/base64/">Base64 Tools</a></li>
+              <li><a href="/password-uuid/">Password Generator</a></li>
+              <li><a href="/image-resizer-compressor/">Image Tools</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Tool Categories</h3>
+            <ul class="footer-links">
+              <li><a href="/calculator/">Calculators</a></li>
+              <li><a href="/url-tools/">Url Tools</a></li>
+              <li><a href="/sha256/">SHA-256 Hash</a></li>
+              <li><a href="/json-formatter/">Json formatter</a></li>
+              <li><a href="/quick-notes/">Quick Notes </a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="/">Home</a></li>
+              <li><a href="/about/">About Us</a></li>
+              <li><a href="/blog-article/">Blogs </a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2025 Utilityera . All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
     <!-- PDF.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
     <script>

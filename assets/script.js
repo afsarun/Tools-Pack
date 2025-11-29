@@ -1,22 +1,77 @@
 // FAQ toggles
-document.querySelectorAll(".faq-item .faq-question").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const ans = btn.nextElementSibling;
-    const icon = btn.querySelector(".faq-icon");
-    const shows = !ans.classList.contains("shows");
-    document
-      .querySelectorAll(".faq-answer")
-      .forEach((a) => a.classList.remove("shows"));
-    document
-      .querySelectorAll(".faq-icon")
-      .forEach((i) => i.classList.remove("rotate"));
-    if (shows) {
-      ans.classList.add("shows");
-      icon.classList.add("rotate");
+document.querySelectorAll(".faq-question").forEach((question) => {
+  question.addEventListener("click", () => {
+    const item = question.parentNode;
+    item.classList.toggle("active");
+  });
+});
+// Mobile Navigation Toggle
+// document.getElementById("mobileToggle").addEventListener("click", function () {
+//   document.getElementById("navLinks").classList.toggle("active");
+// });
+// Mobile dropdown functionality
+document.addEventListener("DOMContentLoaded", function () {
+  const mobileToggle = document.getElementById("mobileToggle");
+  const navLinks = document.getElementById("navLinks");
+  const dropdowns = document.querySelectorAll(".dropdown");
+
+  // Mobile menu toggle
+  mobileToggle.addEventListener("click", function () {
+    navLinks.classList.toggle("active");
+    // Close all dropdowns when closing mobile menu
+    if (!navLinks.classList.contains("active")) {
+      dropdowns.forEach((dropdown) => {
+        dropdown.classList.remove("active");
+      });
+    }
+  });
+
+  // Handle dropdown toggle for both desktop and mobile
+  dropdowns.forEach((dropdown) => {
+    const link = dropdown.querySelector("a");
+
+    link.addEventListener("click", function (e) {
+      // For mobile screens, prevent default and toggle dropdown
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        // Close other dropdowns
+        dropdowns.forEach((otherDropdown) => {
+          if (otherDropdown !== dropdown) {
+            otherDropdown.classList.remove("active");
+          }
+        });
+
+        // Toggle current dropdown
+        dropdown.classList.toggle("active");
+      }
+      // For desktop, allow normal hover behavior (no action needed)
+    });
+  });
+
+  // Close dropdowns when clicking outside
+  document.addEventListener("click", function (e) {
+    if (window.innerWidth <= 768 && navLinks.classList.contains("active")) {
+      if (!navLinks.contains(e.target) && !mobileToggle.contains(e.target)) {
+        dropdowns.forEach((dropdown) => {
+          dropdown.classList.remove("active");
+        });
+      }
+    }
+  });
+
+  // Handle window resize
+  window.addEventListener("resize", function () {
+    if (window.innerWidth > 768) {
+      // Close mobile menu and reset dropdowns on desktop
+      navLinks.classList.remove("active");
+      dropdowns.forEach((dropdown) => {
+        dropdown.classList.remove("active");
+      });
     }
   });
 });
-
 (function () {
   const searchInput = document.getElementById("toolSearch");
   const toolGrid = document.getElementById("toolGrid");
@@ -113,21 +168,3 @@ document.querySelectorAll(".faq-item .faq-question").forEach((btn) => {
     });
   });
 })();
-const navToggle = document.querySelector(".nav-toggle");
-const navMenu = document.querySelector(".nav-menu");
-
-navToggle.addEventListener("click", () => {
-  // Toggle the menu visibility
-  navMenu.classList.toggle("active");
-
-  // Toggle the hamburger animation
-  navToggle.classList.toggle("active");
-});
-
-// Optional: Close menu when a link is clicked (Better UX)
-document.querySelectorAll(".nav-menu a").forEach((link) => {
-  link.addEventListener("click", () => {
-    navMenu.classList.remove("active");
-    navToggle.classList.remove("active");
-  });
-});

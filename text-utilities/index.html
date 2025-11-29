@@ -34,7 +34,10 @@
     <link rel="stylesheet" href="/assets/style.css" />
 
     <meta name="theme-color" content="#1E1E2F" />
-
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
     <!-- Canonical & hreflang -->
     <link rel="canonical" href="https://utilityera.com/text-utilities/" />
     <link
@@ -320,47 +323,65 @@
       body {
         background-color: var(--bg-tertiary);
         color: var(--text-primary);
+        line-height: 1.5;
       }
 
       /* Layout Container */
+      .containers {
+        max-width: 1250px;
+        margin: 0 auto;
+        padding: var(--spacing-xl);
+      }
+
       .text-container {
         display: flex;
-        max-width: 1400px;
-        margin: 0 auto;
         gap: var(--spacing-2xl);
-        padding: var(--spacing-2xl);
+        margin-top: var(--spacing-xl);
       }
 
       /* Header Section */
       .header {
-        background-color: var(--bg-secondary);
+        background-color: var(--bg-primary);
         padding: var(--spacing-2xl);
         border-radius: var(--radius-lg);
         box-shadow: var(--shadow-md);
         margin-bottom: var(--spacing-2xl);
         position: relative;
+        border: 1px solid var(--border-light);
       }
 
       .header h1 {
-        font-size: 24px;
-        font-weight: 600;
-        margin-bottom: var(--spacing-xs);
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: var(--spacing-sm);
+        background: linear-gradient(
+          135deg,
+          var(--brand-primary),
+          var(--brand-accent)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
 
       .header p {
         color: var(--text-secondary);
         font-size: 16px;
         font-weight: 400;
+        max-width: 600px;
       }
 
       .favorite-icon {
         position: absolute;
         top: var(--spacing-2xl);
         right: var(--spacing-2xl);
-        font-size: 22px;
+        font-size: 24px;
         color: var(--text-muted);
         cursor: pointer;
         transition: color var(--transition-fast);
+      }
+
+      .favorite-icon:hover {
+        color: #fbbf24;
       }
 
       .favorite-icon.active {
@@ -370,7 +391,8 @@
 
       /* Stats Bar Section */
       .stats-bar {
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: var(--spacing-lg);
         margin-bottom: var(--spacing-2xl);
       }
@@ -380,9 +402,15 @@
         border: 1px solid var(--border-light);
         border-radius: var(--radius-lg);
         padding: var(--spacing-xl);
-        flex: 1;
         text-align: center;
         box-shadow: var(--shadow-md);
+        transition: transform var(--transition-fast),
+          box-shadow var(--transition-fast);
+      }
+
+      .stat-box:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
       }
 
       .stat-number {
@@ -399,16 +427,17 @@
         gap: var(--spacing-sm);
         color: var(--text-secondary);
         font-size: 14px;
+        font-weight: 500;
       }
 
       .stat-label i {
         font-size: 18px;
-        color: var(--text-muted);
+        color: var(--brand-primary);
       }
 
       /* Sidebar Section */
       .sidebar {
-        flex: 0 0 25%;
+        flex: 0 0 300px;
         display: flex;
         flex-direction: column;
         gap: var(--spacing-2xl);
@@ -419,6 +448,21 @@
         border-radius: var(--radius-lg);
         padding: var(--spacing-xl);
         box-shadow: var(--shadow-md);
+        border: 1px solid var(--border-light);
+      }
+
+      .sidebar-section h3 {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: var(--spacing-lg);
+        color: var(--text-primary);
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+      }
+
+      .sidebar-section h3 i {
+        color: var(--brand-primary);
       }
 
       .sidebar-item {
@@ -429,6 +473,7 @@
         border-radius: var(--radius-md);
         cursor: pointer;
         transition: all var(--transition-fast);
+        margin-bottom: var(--spacing-xs);
       }
 
       .sidebar-item:hover {
@@ -438,10 +483,13 @@
 
       .sidebar-item i {
         font-size: 18px;
+        width: 20px;
+        text-align: center;
       }
 
       .category-item {
         color: var(--text-primary);
+        font-weight: 500;
       }
 
       .category-item i {
@@ -450,6 +498,7 @@
 
       .tool-item {
         color: var(--text-primary);
+        font-weight: 500;
       }
 
       /* Tool-specific icon colors */
@@ -474,10 +523,11 @@
 
       /* Main Content Section */
       .main-content {
-        flex: 0 0 75%;
+        flex: 1;
         display: flex;
         flex-direction: column;
         gap: var(--spacing-2xl);
+        min-width: 0; /* Prevent flex overflow */
       }
 
       .panel {
@@ -487,6 +537,8 @@
         padding: var(--spacing-xl);
         box-shadow: var(--shadow-md);
         flex: 1;
+        display: flex;
+        flex-direction: column;
       }
 
       .panel-header {
@@ -494,6 +546,8 @@
         justify-content: space-between;
         align-items: center;
         margin-bottom: var(--spacing-lg);
+        flex-wrap: wrap;
+        gap: var(--spacing-md);
       }
 
       .panel-title {
@@ -517,6 +571,7 @@
       .button-group {
         display: flex;
         gap: var(--spacing-sm);
+        flex-wrap: wrap;
       }
 
       .btn {
@@ -527,8 +582,10 @@
         border: none;
         border-radius: var(--radius-sm);
         font-size: 14px;
+        font-weight: 500;
         cursor: pointer;
         transition: all var(--transition-fast);
+        white-space: nowrap;
       }
 
       .btn:hover {
@@ -567,7 +624,8 @@
 
       .text-area {
         width: 100%;
-        height: 300px;
+        flex: 1;
+        min-height: 200px;
         padding: var(--spacing-lg);
         border: 1px solid var(--border-light);
         border-radius: var(--radius-md);
@@ -576,58 +634,17 @@
         resize: vertical;
         color: var(--text-primary);
         font-family: inherit;
+        line-height: 1.6;
+      }
+
+      .text-area:focus {
+        outline: none;
+        border-color: var(--brand-primary);
+        box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
       }
 
       .text-area::placeholder {
         color: var(--text-muted);
-      }
-      .containers {
-        max-width: 1250px;
-        margin: 0 auto;
-      }
-      /* Responsive Design */
-      @media (max-width: 1024px) {
-        .container {
-          flex-direction: column;
-        }
-
-        .sidebar,
-        .main-content {
-          flex: 1;
-        }
-
-        .stats-bar {
-          flex-wrap: wrap;
-        }
-
-        .stat-box {
-          flex: 1 0 calc(50% - 8px);
-        }
-      }
-
-      @media (max-width: 768px) {
-        .container {
-          padding: var(--spacing-lg);
-        }
-
-        .stats-bar {
-          flex-direction: column;
-        }
-
-        .stat-box {
-          flex: 1;
-        }
-
-        .panel-header {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: var(--spacing-md);
-        }
-
-        .button-group {
-          width: 100%;
-          justify-content: flex-end;
-        }
       }
 
       /* Active State for Tools */
@@ -658,6 +675,7 @@
         transition: opacity var(--transition-normal),
           transform var(--transition-normal);
         z-index: 1000;
+        font-weight: 500;
       }
 
       .toast.show {
@@ -691,20 +709,28 @@
         display: flex;
         gap: var(--spacing-md);
         margin-bottom: var(--spacing-md);
+        flex-wrap: wrap;
       }
 
       .find-replace-inputs input {
         flex: 1;
+        min-width: 200px;
         padding: var(--spacing-sm) var(--spacing-md);
         border: 1px solid var(--border-light);
         border-radius: var(--radius-sm);
         font-size: 14px;
       }
 
+      .find-replace-inputs input:focus {
+        outline: none;
+        border-color: var(--brand-primary);
+      }
+
       .find-replace-options {
         display: flex;
         gap: var(--spacing-md);
         margin-bottom: var(--spacing-md);
+        flex-wrap: wrap;
       }
 
       .find-replace-options label {
@@ -713,11 +739,13 @@
         gap: var(--spacing-xs);
         font-size: 14px;
         color: var(--text-secondary);
+        cursor: pointer;
       }
 
       .find-replace-actions {
         display: flex;
         gap: var(--spacing-sm);
+        flex-wrap: wrap;
       }
 
       .btn-find {
@@ -734,364 +762,403 @@
         background-color: var(--success);
         color: white;
       }
+
+      /* Responsive Design */
+      @media (max-width: 1024px) {
+        .text-container {
+          flex-direction: column;
+        }
+
+        .sidebar {
+          flex: 1;
+          width: 100%;
+        }
+
+        .stats-bar {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .containers {
+          padding: var(--spacing-lg);
+        }
+
+        .stats-bar {
+          grid-template-columns: 1fr;
+        }
+
+        .panel-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: var(--spacing-md);
+        }
+
+        .button-group {
+          width: 100%;
+          justify-content: flex-start;
+        }
+
+        .find-replace-inputs {
+          flex-direction: column;
+        }
+
+        .find-replace-inputs input {
+          min-width: 100%;
+        }
+
+        .toast {
+          right: var(--spacing-lg);
+          left: var(--spacing-lg);
+          bottom: var(--spacing-lg);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .header {
+          padding: var(--spacing-lg);
+        }
+
+        .header h1 {
+          font-size: 24px;
+        }
+
+        .sidebar-section {
+          padding: var(--spacing-lg);
+        }
+
+        .panel {
+          padding: var(--spacing-lg);
+        }
+
+        .btn {
+          padding: var(--spacing-sm) var(--spacing-md);
+          font-size: 13px;
+        }
+
+        .stat-number {
+          font-size: 28px;
+        }
+      }
+
+      /* Scrollbar Styling */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--bg-secondary);
+        border-radius: 3px;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--primary-300);
+        border-radius: 3px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--primary-400);
+      }
+
+      /* Selection Styling */
+      ::selection {
+        background-color: rgba(79, 70, 229, 0.2);
+      }
     </style>
   </head>
   <body>
     <header>
-      <div class="head-container">
-        <div class="header-content">
-          <a href="/" class="logo">
-            <img src="/assets/logo.webp" alt="Utilityera Logo" />
-            Text <span>Utilities </span>
+      <div class="container">
+        <nav class="navbar">
+          <a class="logo" href="/" aria-label="utilityera home ">
+            <i>📅</i>
+            <span>Text Utilities</span>
           </a>
+          <button class="mobile-toggle" id="mobileToggle">☰</button>
+          <ul class="nav-links" id="navLinks">
+            <li><a href="/" aria-label="utilityera home ">Home</a></li>
+            <li class="dropdown">
+              <a href="#">Tools ▾</a>
+              <ul class="dropdown-menu">
+                <li><a href="/text-utilities/">Text Utilities</a></li>
+                <li><a href="/url-tools/">URL Tools</a></li>
+                <li><a href="/base64/">Base64 Tools</a></li>
+                <li><a href="/json-formatter/">JSON Formatter</a></li>
+                <li><a href="/sha256/">SHA-256 Hash</a></li>
+                <li><a href="/password-uuid/">Password Generator</a></li>
+                <li><a href="/uuid-v4/">UUID Generator</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#">Calculators ▾</a>
+              <ul class="dropdown-menu">
+                <li><a href="/age-calculator/">Age Calculator</a></li>
+                <li><a href="/date-calculator/">Date Calculator</a></li>
+                <li><a href="/percent-calculator/">Percent Calculator</a></li>
+                <li><a href="/calculator/">Basic Calculator</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#">Converters ▾</a>
+              <ul class="dropdown-menu">
+                <li><a href="/unit-converter/">Unit Converter</a></li>
+                <li><a href="/text-to-pdf/">Text to PDF</a></li>
+                <li><a href="/image-resizer-compressor/">Image Tools</a></li>
+                <li><a href="/compress-pdf/">PDF Compressor</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#">Productivity ▾</a>
+              <ul class="dropdown-menu">
+                <li><a href="/stopwatch-countdown/">Stopwatch & Timer</a></li>
+                <li><a href="/color-picker-contrast/">Color Picker</a></li>
+                <li><a href="/quick-notes/">Quick Notes</a></li>
+              </ul>
+            </li>
 
-          <button
-            class="nav-toggle"
-            aria-label="Toggle Navigation Menu"
-            aria-expanded="false"
-          >
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-          </button>
-
-          <nav class="nav-menu" aria-label="Main Navigation">
-            <ul>
-              <li>
-                <a href="/text-utilities/" aria-label="Go to text  utilities"
-                  >Text utilities
-                </a>
-              </li>
-              <li>
-                <a href="/uuid-v4/" aria-label="Learn about UUID definition">
-                  UUID v4
-                </a>
-              </li>
-              <li>
-                <a href="/date-calculator/" aria-label="Explore Date Calculator"
-                  >Date Calculator</a
-                >
-              </li>
-              <li>
-                <a href="/unit-converter/" aria-label="View Unit Converter"
-                  >Unit Converter
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
+            <li><a href="/blog-article/">Blog</a></li>
+            <li><a href="/contact/">Contact</a></li>
+          </ul>
+        </nav>
       </div>
     </header>
-    <!-- Ad #1: top banner (constrained, no full-width expansion) -->
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb">
+      <div class="container">
+        <ul class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="/" aria-label="utilityera home ">Home</a>
+          </li>
+          <li class="breadcrumb-item"><a href="/#math">Math Tools</a></li>
+          <li class="breadcrumb-item active">Text Utilities</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Page Title -->
+    <section class="page-title">
+      <h1>Text Utilities — Simple & <br />Handy Tools</h1>
+      <p>
+        Calculate your exact age in years, months, weeks, days, hours, minutes
+        and seconds. Simple, accurate and fast.
+      </p>
+    </section>
 
     <div class="containers">
-      <nav class="global-breadcrumbs" aria-label="breadcrumb">
-        <a href="/">Home</a> › <a href="/#text">Text Tools</a> ›
-        <span>Text Utilities</span>
-      </nav>
-      <div class="global-top-header">
-        <h1>Text Utilities — Simple & <br />Handy Tools</h1>
+      <!-- Header Section -->
+      <div class="header">
+        <p>Transform, clean, and analyze your text with 30+ powerful tools</p>
+        <i class="ri-star-line favorite-icon"></i>
       </div>
 
-      <!-- Quick global-toc -->
+      <div class="text-container">
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+          <!-- Categories Section -->
+          <div class="sidebar-section">
+            <h3><i class="ri-apps-line"></i> Categories</h3>
+            <div
+              class="sidebar-item category-item active"
+              data-category="case-transform"
+            >
+              <i class="ri-text"></i>
+              <span>Case Transform</span>
+            </div>
+            <div
+              class="sidebar-item category-item"
+              data-category="line-operations"
+            >
+              <i class="ri-list-check"></i>
+              <span>Line Operations</span>
+            </div>
+            <div
+              class="sidebar-item category-item"
+              data-category="clean-format"
+            >
+              <i class="ri-brush-line"></i>
+              <span>Clean & Format</span>
+            </div>
+            <div
+              class="sidebar-item category-item"
+              data-category="extract-find"
+            >
+              <i class="ri-search-line"></i>
+              <span>Extract & Find</span>
+            </div>
+            <div
+              class="sidebar-item category-item"
+              data-category="encode-decode"
+            >
+              <i class="ri-code-s-slash-line"></i>
+              <span>Encode & Decode</span>
+            </div>
+          </div>
 
-      <p class="global-toc" aria-label="Table of Contents">
-        <a href="#tool">Tool</a> · <a href="#where">Where to use </a> ·
-        <a href="#best-practices">Best Practices</a> ·
-        <a href="#details">Details</a> · <a href="#faq">FAQ</a> ·
-        <a href="#related">Related tools</a>
-      </p>
-      <main class="wrap">
-        <!-- global-breadcrumbs -->
+          <!-- Tools Section -->
+          <div class="sidebar-section">
+            <h3><i class="ri-tools-line"></i> Tools</h3>
 
-        <div class="text-container">
-          <!-- Left Sidebar -->
-          <aside class="sidebar">
-            <!-- Categories Section -->
-            <div class="sidebar-section">
-              <div
-                class="sidebar-item category-item"
-                data-category="case-transform"
-              >
+            <!-- Case Transform Tools -->
+            <div class="tool-section active" id="case-transform-tools">
+              <div class="sidebar-item tool-item active" data-tool="uppercase">
+                <i class="ri-arrow-up-line"></i>
+                <span>UPPERCASE</span>
+              </div>
+              <div class="sidebar-item tool-item" data-tool="lowercase">
+                <i class="ri-arrow-down-line"></i>
+                <span>lowercase</span>
+              </div>
+              <div class="sidebar-item tool-item" data-tool="titlecase">
+                <i class="ri-heading"></i>
+                <span>Title Case</span>
+              </div>
+              <div class="sidebar-item tool-item" data-tool="sentencecase">
                 <i class="ri-text"></i>
-                <span>Case Transform</span>
+                <span>Sentence case</span>
+              </div>
+              <div class="sidebar-item tool-item" data-tool="capitalizewords">
+                <i class="ri-font-size-2"></i>
+                <span>Capitalize Words</span>
+              </div>
+              <div class="sidebar-item tool-item" data-tool="togglecase">
+                <i class="ri-swap-line"></i>
+                <span>tOGGLE cASE</span>
+              </div>
+            </div>
+
+            <!-- Line Operations Tools -->
+            <div class="tool-section" id="line-operations-tools">
+              <div class="sidebar-item tool-item" data-tool="remove-duplicates">
+                <i class="ri-delete-bin-line"></i>
+                <span>Remove Duplicates</span>
+              </div>
+              <div class="sidebar-item tool-item" data-tool="sort-az">
+                <i class="ri-sort-asc"></i>
+                <span>Sort A–Z</span>
+              </div>
+              <div class="sidebar-item tool-item" data-tool="sort-za">
+                <i class="ri-sort-desc"></i>
+                <span>Sort Z–A</span>
+              </div>
+              <div class="sidebar-item tool-item" data-tool="reverse-lines">
+                <i class="ri-arrow-left-right-line"></i>
+                <span>Reverse Lines</span>
+              </div>
+            </div>
+
+            <!-- Clean & Format Tools -->
+            <div class="tool-section" id="clean-format-tools">
+              <div
+                class="sidebar-item tool-item"
+                data-tool="remove-empty-lines"
+              >
+                <i class="ri-delete-bin-line"></i>
+                <span>Remove Empty Lines</span>
+              </div>
+              <div class="sidebar-item tool-item" data-tool="trim-whitespace">
+                <i class="ri-scissors-line"></i>
+                <span>Trim Whitespace</span>
               </div>
               <div
-                class="sidebar-item category-item"
-                data-category="line-operations"
+                class="sidebar-item tool-item"
+                data-tool="remove-extra-spaces"
               >
-                <i class="ri-list-check"></i>
-                <span>Line Operations</span>
+                <i class="ri-space"></i>
+                <span>Remove Extra Spaces</span>
               </div>
-              <div
-                class="sidebar-item category-item"
-                data-category="clean-format"
-              >
-                <i class="ri-brush-line"></i>
-                <span>Clean & Format</span>
+            </div>
+
+            <!-- Extract & Find Tools -->
+            <div class="tool-section" id="extract-find-tools">
+              <div class="sidebar-item tool-item" data-tool="extract-emails">
+                <i class="ri-mail-line"></i>
+                <span>Extract Emails</span>
               </div>
-              <div
-                class="sidebar-item category-item"
-                data-category="extract-find"
-              >
+              <div class="sidebar-item tool-item" data-tool="extract-urls">
+                <i class="ri-links-line"></i>
+                <span>Extract URLs</span>
+              </div>
+              <div class="sidebar-item tool-item" data-tool="find-replace">
                 <i class="ri-search-line"></i>
-                <span>Extract & Find</span>
+                <span>Find & Replace</span>
               </div>
-              <div
-                class="sidebar-item category-item"
-                data-category="encode-decode"
-              >
+            </div>
+
+            <!-- Encode & Decode Tools -->
+            <div class="tool-section" id="encode-decode-tools">
+              <div class="sidebar-item tool-item" data-tool="reverse-text">
+                <i class="ri-arrow-left-right-line"></i>
+                <span>Reverse Text</span>
+              </div>
+              <div class="sidebar-item tool-item" data-tool="html-encode">
+                <i class="ri-code-line"></i>
+                <span>HTML Encode</span>
+              </div>
+              <div class="sidebar-item tool-item" data-tool="html-decode">
                 <i class="ri-code-s-slash-line"></i>
-                <span>Encode & Decode</span>
+                <span>HTML Decode</span>
               </div>
             </div>
+          </div>
+        </aside>
 
-            <!-- Tools Section -->
-            <div class="sidebar-section">
-              <!-- Case Transform Tools -->
-              <div class="tool-section active" id="case-transform-tools">
-                <div
-                  class="sidebar-item tool-item active"
-                  data-tool="uppercase"
-                >
-                  <i class="ri-arrow-up-line"></i>
-                  <span>UPPERCASE</span>
-                </div>
-                <div class="sidebar-item tool-item" data-tool="lowercase">
-                  <i class="ri-arrow-down-line"></i>
-                  <span>lowercase</span>
-                </div>
-                <div class="sidebar-item tool-item" data-tool="titlecase">
-                  <i class="ri-heading"></i>
-                  <span>Title Case</span>
-                </div>
-                <div class="sidebar-item tool-item" data-tool="sentencecase">
-                  <i class="ri-text"></i>
-                  <span>Sentence case</span>
-                </div>
-                <div class="sidebar-item tool-item" data-tool="capitalizewords">
-                  <i class="ri-font-size-2"></i>
-                  <span>Capitalize Words</span>
-                </div>
-                <div class="sidebar-item tool-item" data-tool="togglecase">
-                  <i class="ri-swap-line"></i>
-                  <span>tOGGLE cASE</span>
-                </div>
-              </div>
-
-              <!-- Line Operations Tools -->
-              <div class="tool-section" id="line-operations-tools">
-                <div
-                  class="sidebar-item tool-item"
-                  data-tool="remove-duplicates"
-                >
-                  <i class="ri-delete-bin-line"></i>
-                  <span>Remove Duplicates</span>
-                </div>
-                <div class="sidebar-item tool-item" data-tool="sort-az">
-                  <i class="ri-sort-asc"></i>
-                  <span>Sort A–Z</span>
-                </div>
-                <div class="sidebar-item tool-item" data-tool="sort-za">
-                  <i class="ri-sort-desc"></i>
-                  <span>Sort Z–A</span>
-                </div>
-                <div class="sidebar-item tool-item" data-tool="reverse-lines">
-                  <i class="ri-arrow-left-right-line"></i>
-                  <span>Reverse Lines</span>
-                </div>
-                <div class="sidebar-item tool-item" data-tool="shuffle-lines">
-                  <i class="ri-shuffle-line"></i>
-                  <span>Shuffle Lines</span>
-                </div>
-                <div
-                  class="sidebar-item tool-item"
-                  data-tool="add-line-numbers"
-                >
-                  <i class="ri-list-ordered"></i>
-                  <span>Add Line Numbers</span>
-                </div>
-                <div
-                  class="sidebar-item tool-item"
-                  data-tool="add-prefix-suffix"
-                >
-                  <i class="ri-text-wrap"></i>
-                  <span>Add Prefix/Suffix</span>
-                </div>
-                <div class="sidebar-item tool-item" data-tool="join-lines">
-                  <i class="ri-merge-cells-horizontal"></i>
-                  <span>Join Lines</span>
-                </div>
-                <div
-                  class="sidebar-item tool-item"
-                  data-tool="split-by-delimiter"
-                >
-                  <i class="ri-split-cells-horizontal"></i>
-                  <span>Split by Delimiter</span>
-                </div>
-              </div>
-
-              <!-- Clean & Format Tools -->
-              <div class="tool-section" id="clean-format-tools">
-                <div
-                  class="sidebar-item tool-item"
-                  data-tool="remove-empty-lines"
-                >
-                  <i class="ri-delete-bin-line"></i>
-                  <span>Remove Empty Lines</span>
-                </div>
-                <div class="sidebar-item tool-item" data-tool="trim-whitespace">
-                  <i class="ri-scissors-line"></i>
-                  <span>Trim Whitespace</span>
-                </div>
-                <div
-                  class="sidebar-item tool-item"
-                  data-tool="remove-extra-spaces"
-                >
-                  <i class="ri-space"></i>
-                  <span>Remove Extra Spaces</span>
-                </div>
-                <div
-                  class="sidebar-item tool-item"
-                  data-tool="remove-special-chars"
-                >
-                  <i class="ri-emotion-unhappy-line"></i>
-                  <span>Remove Special Chars</span>
-                </div>
-                <div class="sidebar-item tool-item" data-tool="remove-numbers">
-                  <i class="ri-number-1"></i>
-                  <span>Remove Numbers</span>
-                </div>
-                <div
-                  class="sidebar-item tool-item"
-                  data-tool="remove-punctuation"
-                >
-                  <i class="ri-comma"></i>
-                  <span>Remove Punctuation</span>
-                </div>
-                <div
-                  class="sidebar-item tool-item"
-                  data-tool="normalize-spaces"
-                >
-                  <i class="ri-align-justify"></i>
-                  <span>Normalize Spaces</span>
-                </div>
-              </div>
-
-              <!-- Extract & Find Tools -->
-              <div class="tool-section" id="extract-find-tools">
-                <div class="sidebar-item tool-item" data-tool="extract-emails">
-                  <i class="ri-mail-line"></i>
-                  <span>Extract Emails</span>
-                </div>
-                <div class="sidebar-item tool-item" data-tool="extract-urls">
-                  <i class="ri-links-line"></i>
-                  <span>Extract URLs</span>
-                </div>
-                <div class="sidebar-item tool-item" data-tool="extract-numbers">
-                  <i class="ri-number-1"></i>
-                  <span>Extract Numbers</span>
-                </div>
-                <div class="sidebar-item tool-item" data-tool="extract-phones">
-                  <i class="ri-phone-line"></i>
-                  <span>Extract Phones</span>
-                </div>
-                <div class="sidebar-item tool-item" data-tool="word-frequency">
-                  <i class="ri-bar-chart-2-line"></i>
-                  <span>Word Frequency</span>
-                </div>
-                <div class="sidebar-item tool-item" data-tool="find-replace">
-                  <i class="ri-search-line"></i>
-                  <span>Find & Replace</span>
-                </div>
-              </div>
-
-              <!-- Encode & Decode Tools -->
-              <div class="tool-section" id="encode-decode-tools">
-                <div class="sidebar-item tool-item" data-tool="reverse-text">
-                  <i class="ri-arrow-left-right-line"></i>
-                  <span>Reverse Text</span>
-                </div>
-                <div class="sidebar-item tool-item" data-tool="html-encode">
-                  <i class="ri-code-line"></i>
-                  <span>HTML Encode</span>
-                </div>
-                <div class="sidebar-item tool-item" data-tool="html-decode">
-                  <i class="ri-code-s-slash-line"></i>
-                  <span>HTML Decode</span>
-                </div>
-                <div class="sidebar-item tool-item" data-tool="slugify">
-                  <i class="ri-link"></i>
-                  <span>Slugify</span>
-                </div>
-                <div class="sidebar-item tool-item" data-tool="to-json-array">
-                  <i class="ri-braces-line"></i>
-                  <span>To JSON Array</span>
-                </div>
-                <div class="sidebar-item tool-item" data-tool="to-csv">
-                  <i class="ri-table-line"></i>
-                  <span>To CSV</span>
-                </div>
+        <!-- Main Content Area -->
+        <main class="main-content">
+          <!-- Stats Bar -->
+          <div class="stats-bar">
+            <div class="stat-box">
+              <div class="stat-number" id="char-count">0</div>
+              <div class="stat-label">
+                <i class="ri-text"></i>
+                <span>Characters</span>
               </div>
             </div>
-          </aside>
-
-          <!-- Main Content Area -->
-          <main class="main-content">
-            <!-- Stats Bar -->
-            <div class="stats-bar">
-              <div class="stat-box">
-                <div class="stat-number" id="char-count">0</div>
-                <div class="stat-label">
-                  <i class="ri-text"></i>
-                  <span>Characters</span>
-                </div>
-              </div>
-              <div class="stat-box">
-                <div class="stat-number" id="word-count">0</div>
-                <div class="stat-label">
-                  <i class="ri-align-justify"></i>
-                  <span>Words</span>
-                </div>
-              </div>
-              <div class="stat-box">
-                <div class="stat-number" id="line-count">0</div>
-                <div class="stat-label">
-                  <i class="ri-line-height"></i>
-                  <span>Lines</span>
-                </div>
-              </div>
-              <div class="stat-box">
-                <div class="stat-number" id="sentence-count">0</div>
-                <div class="stat-label">
-                  <i class="ri-file-text-line"></i>
-                  <span>Sentences</span>
-                </div>
+            <div class="stat-box">
+              <div class="stat-number" id="word-count">0</div>
+              <div class="stat-label">
+                <i class="ri-align-justify"></i>
+                <span>Words</span>
               </div>
             </div>
-
-            <!-- Input Panel -->
-            <div class="panel input-panel">
-              <div class="panel-header">
-                <div class="panel-title">
-                  <i class="ri-edit-2-line"></i>
-                  <span>Input Text</span>
-                </div>
-                <div class="button-group">
-                  <button class="btn btn-paste" id="paste-btn">
-                    <i class="ri-clipboard-line"></i>
-                    <span>Paste</span>
-                  </button>
-                  <button class="btn btn-clear" id="clear-btn">
-                    <i class="ri-close-line"></i>
-                    <span>Clear</span>
-                  </button>
-                </div>
+            <div class="stat-box">
+              <div class="stat-number" id="line-count">0</div>
+              <div class="stat-label">
+                <i class="ri-line-height"></i>
+                <span>Lines</span>
               </div>
-              <textarea
-                class="text-area"
-                id="input-text"
-                placeholder="Enter or paste your text here...
+            </div>
+            <div class="stat-box">
+              <div class="stat-number" id="sentence-count">0</div>
+              <div class="stat-label">
+                <i class="ri-file-text-line"></i>
+                <span>Sentences</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Input Panel -->
+          <div class="panel input-panel">
+            <div class="panel-header">
+              <div class="panel-title">
+                <i class="ri-edit-2-line"></i>
+                <span>Input Text</span>
+              </div>
+              <div class="button-group">
+                <button class="btn btn-paste" id="paste-btn">
+                  <i class="ri-clipboard-line"></i>
+                  <span>Paste</span>
+                </button>
+                <button class="btn btn-clear" id="clear-btn">
+                  <i class="ri-close-line"></i>
+                  <span>Clear</span>
+                </button>
+              </div>
+            </div>
+            <textarea
+              class="text-area"
+              id="input-text"
+              placeholder="Enter or paste your text here...
 
 Try these features:
 • Transform case (UPPER, lower, Title Case)
@@ -1100,281 +1167,90 @@ Try these features:
 • Find & replace text
 • Clean and format text
 • And 30+ more tools!"
-              ></textarea>
-            </div>
+            ></textarea>
+          </div>
 
-            <!-- Output Panel -->
-            <div class="panel output-panel">
-              <div class="panel-header">
-                <div class="panel-title">
-                  <i class="ri-checkbox-circle-line"></i>
-                  <span>Output</span>
-                </div>
-                <div class="button-group">
-                  <button class="btn btn-copy" id="copy-btn">
-                    <i class="ri-file-copy-line"></i>
-                    <span>Copy</span>
-                  </button>
-                  <button class="btn btn-download" id="download-btn">
-                    <i class="ri-download-line"></i>
-                    <span>Download</span>
-                  </button>
-                  <button class="btn btn-use-input" id="use-input-btn">
-                    <i class="ri-upload-2-line"></i>
-                    <span>Use as Input</span>
-                  </button>
-                </div>
+          <!-- Output Panel -->
+          <div class="panel output-panel">
+            <div class="panel-header">
+              <div class="panel-title">
+                <i class="ri-checkbox-circle-line"></i>
+                <span>Output</span>
               </div>
-              <textarea
-                class="text-area"
-                id="output-text"
-                placeholder="Processed text will appear here..."
-                readonly
-              ></textarea>
-
-              <!-- Find & Replace Panel (shown only when Find & Replace tool is active) -->
-              <div
-                class="find-replace-panel"
-                id="find-replace-panel"
-                style="display: none"
-              >
-                <div class="find-replace-inputs">
-                  <input type="text" id="find-input" placeholder="Find..." />
-                  <input
-                    type="text"
-                    id="replace-input"
-                    placeholder="Replace with..."
-                  />
-                </div>
-                <div class="find-replace-options">
-                  <label>
-                    <input type="checkbox" id="case-sensitive" />
-                    Case sensitive
-                  </label>
-                  <label>
-                    <input type="checkbox" id="whole-word" />
-                    Whole word
-                  </label>
-                </div>
-                <div class="find-replace-actions">
-                  <button class="btn btn-find" id="find-btn">
-                    <i class="ri-search-line"></i>
-                    <span>Find</span>
-                  </button>
-                  <button class="btn btn-replace" id="replace-btn">
-                    <i class="ri-refresh-line"></i>
-                    <span>Replace</span>
-                  </button>
-                  <button class="btn btn-replace-all" id="replace-all-btn">
-                    <i class="ri-refresh-line"></i>
-                    <span>Replace All</span>
-                  </button>
-                </div>
+              <div class="button-group">
+                <button class="btn btn-copy" id="copy-btn">
+                  <i class="ri-file-copy-line"></i>
+                  <span>Copy</span>
+                </button>
+                <button class="btn btn-download" id="download-btn">
+                  <i class="ri-download-line"></i>
+                  <span>Download</span>
+                </button>
+                <button class="btn btn-use-input" id="use-input-btn">
+                  <i class="ri-upload-2-line"></i>
+                  <span>Use as Input</span>
+                </button>
               </div>
             </div>
-          </main>
-        </div>
+            <textarea
+              class="text-area"
+              id="output-text"
+              placeholder="Processed text will appear here..."
+              readonly
+            ></textarea>
 
-        <!-- Notification Toast -->
-        <div class="toast" id="toast">
-          <i class="ri-check-line"></i>
-          <span id="toast-message">Operation completed successfully</span>
-        </div>
-
-        <!-- Examples -->
-        <div class="card" id="where">
-          <h2>Common Use Cases &amp; Examples</h2>
-          <div class="examples">
-            <!-- Applications -->
-            <div class="example">
-              <div class="example-title">✍️ Copywriting</div>
-              <div class="example-content">
-                Headlines, sentence-case paragraphs
+            <!-- Find & Replace Panel -->
+            <div
+              class="find-replace-panel"
+              id="find-replace-panel"
+              style="display: none"
+            >
+              <div class="find-replace-inputs">
+                <input type="text" id="find-input" placeholder="Find..." />
+                <input
+                  type="text"
+                  id="replace-input"
+                  placeholder="Replace with..."
+                />
               </div>
-              <span class="badge">title/sentence</span>
-            </div>
-
-            <div class="example">
-              <div class="example-title">🗂 Data cleanup</div>
-              <div class="example-content">Lists to unique/sorted sets</div>
-              <span class="badge">sort + unique</span>
-            </div>
-
-            <div class="example">
-              <div class="example-title">🌐 SEO</div>
-              <div class="example-content">Generate clean slugs for URLs</div>
-              <span class="badge">slugify</span>
-            </div>
-
-            <div class="example" id="best-practices">
-              <div class="example-title">🧪 QA</div>
-              <div class="example-content">
-                Normalize whitespace &amp; quotes
+              <div class="find-replace-options">
+                <label>
+                  <input type="checkbox" id="case-sensitive" />
+                  Case sensitive
+                </label>
+                <label>
+                  <input type="checkbox" id="whole-word" />
+                  Whole word
+                </label>
               </div>
-              <span class="badge">normalize</span>
-            </div>
-
-            <!-- Best Practices -->
-            <div class="example">
-              <div class="example-title">🔤 Respect proper nouns</div>
-              <div class="example-content">
-                Title Case shouldn’t upcase small words unless they start/end
-                the title.
-              </div>
-            </div>
-
-            <div class="example">
-              <div class="example-title">🧹 Normalize before compare</div>
-              <div class="example-content">
-                Trim + collapse spaces + case-fold before deduping to avoid
-                near-duplicates.
-              </div>
-            </div>
-
-            <div class="example">
-              <div class="example-title">🌍 Unicode-safe transforms</div>
-              <div class="example-content">
-                Use normalization and grapheme-aware operations for emoji and
-                accents.
-              </div>
-            </div>
-
-            <!-- Technical -->
-            <div class="example">
-              <div class="example-title">🧩 Technical Implementation</div>
-              <div class="example-content">
-                Case transforms, regex replace, Unicode handling
+              <div class="find-replace-actions">
+                <button class="btn btn-find" id="find-btn">
+                  <i class="ri-search-line"></i>
+                  <span>Find</span>
+                </button>
+                <button class="btn btn-replace" id="replace-btn">
+                  <i class="ri-refresh-line"></i>
+                  <span>Replace</span>
+                </button>
+                <button class="btn btn-replace-all" id="replace-all-btn">
+                  <i class="ri-refresh-line"></i>
+                  <span>Replace All</span>
+                </button>
               </div>
             </div>
           </div>
-        </div>
+        </main>
+      </div>
+    </div>
 
-        <div class="info-grid" id="details">
-          <!-- Basics & Features -->
-          <div class="card">
-            <div class="info-section">
-              <h3>📝 Text Utilities Basics</h3>
-              <ul>
-                <li>
-                  <strong>Change case:</strong> UPPER • lower • Title Case •
-                  Sentence case
-                </li>
-                <li>
-                  <strong>Clean text:</strong> trim, collapse spaces, remove
-                  extra blank lines
-                </li>
-                <li>
-                  <strong>Lines:</strong> sort (A→Z/Z→A), unique, dedupe,
-                  prefix/suffix, numbering
-                </li>
-                <li>
-                  <strong>Counts:</strong> characters, words, lines
-                  (Unicode-aware)
-                </li>
-                <li>
-                  <strong>Transform:</strong> slugify, remove diacritics,
-                  reverse text, smart quotes ←→ straight
-                </li>
-                <li><strong>Find &amp; replace:</strong> plain or regex</li>
-                <li>
-                  <strong>Copy/Download:</strong> results stay local in your
-                  browser
-                </li>
-                <li>Runs entirely in your browser — no uploads or tracking.</li>
-                <li>
-                  Perform quick text operations like
-                  <strong>case conversion</strong>,
-                  <strong>whitespace trimming</strong>,
-                  <strong>line sorting</strong>, and
-                  <strong>character/word counts</strong>.
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Inputs -->
-          <div class="card">
-            <div class="info-section">
-              <h3>⌨️ Inputs</h3>
-              <ul>
-                <li>
-                  <strong>Paste</strong> or <strong>type</strong> text (newlines
-                  preserved)
-                </li>
-                <li>
-                  <strong>Options:</strong> case mode, whitespace rules,
-                  sort/unique, regex flags
-                </li>
-                <li>
-                  <strong>Output:</strong> live preview with copy &amp; download
-                </li>
-              </ul>
-            </div>
-            <div class="info-section">
-              <h3>🌐 Unicode Support</h3>
-              <ul>
-                <li>Works with emoji and non-Latin scripts</li>
-                <li>
-                  Counts use Intl.Segmenter for better accuracy (when available)
-                </li>
-              </ul>
-            </div>
-            <div class="info-section">
-              <h3>📖 Common Recipes</h3>
-              <ul>
-                <li>
-                  <strong>Blog title</strong> Title Case + keep minor words
-                  lowercase (of, the, a…)
-                </li>
-                <li>
-                  <strong>CSV lists:</strong> one item per line → unique → sort
-                </li>
-                <li><strong>URLs:</strong> slugify + lowercase + hyphens</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Unicode -->
-          <div class="card">
-            <div class="info-section">
-              <h3>⚙️ How to Use</h3>
-              <ol>
-                <li>Paste text into the <strong>Input</strong> area.</li>
-                <li>
-                  Select a <strong>utility</strong> (e.g., Title Case, Slugify,
-                  Sort/Unique).
-                </li>
-                <li>
-                  Adjust <strong>options</strong> (ignore case, regex flags,
-                  etc.).
-                </li>
-                <li>Check <strong>Output</strong> and click</li>
-                <li><strong>Copy</strong> or <strong>Download</strong>.</li>
-              </ol>
-            </div>
-          </div>
-          <div class="card">
-            <div class="info-section">
-              <h3>💡 Tips</h3>
-              <ul>
-                <li>
-                  Enable “Collapse whitespace” to normalize spaces & blank
-                  lines.
-                </li>
-                <li>
-                  Use <strong>Regex replace</strong> for patterns (e.g., \\s+ →
-                  single space).
-                </li>
-                <li>
-                  For languages with diacritics, run
-                  <strong>Remove diacritics</strong> before
-                </li>
-                <li><strong>Slugify</strong>.</li>
-              </ul>
-            </div>
-          </div>
-          <!-- Recipes -->
-        </div>
+    <!-- Notification Toast -->
+    <div class="toast" id="toast">
+      <i class="ri-check-line"></i>
+      <span id="toast-message">Operation completed successfully</span>
+    </div>
+    <div class="container">
+      <main class="wrap">
+        <!-- global-breadcrumbs -->
 
         <section class="faq-section content-section" id="faq">
           <h2 class="faq-title">Frequently Asked Questions</h2>
@@ -1467,840 +1343,426 @@ Try these features:
         </section>
 
         <!-- Related tools -->
-        <article class="content-section" id="related">
-          <h2>Related tools</h2>
-          <p class="muted">More text &amp; encoding utilities:</p>
-          <p>
-            <a class="global-btn" href="/text-to-pdf/">Text → PDF</a>
-            <a class="global-btn" href="/json-formatter/">JSON Formatter</a>
-            <a class="global-btn" href="/base64/">Base64 Encode/Decode</a>
-            <a class="global-btn" href="/url-tools/">URL Tools</a>
-          </p>
-          <p class="small">
-            <span lang="bn">Prefer বাংলা?</span> Try the
-            <a
-              class="text-link"
-              href="/bn/text-utilities/"
-              hreflang="bn"
-              lang="bn"
-              aria-label="বাংলা সংস্করণ"
-              >বাংলা সংস্করণ</a
-            >.
-          </p>
-        </article>
       </main>
 
       <!-- Toast -->
-      <div class="toast" id="toast" role="status" aria-live="polite">
-        Copied ✅
-      </div>
     </div>
-    <footer role="contentinfo">
+    <footer>
       <div class="container">
         <div class="footer-content">
-          <!-- Financial Calculators Section -->
           <div class="footer-column">
-            <h4>Financial Calculators</h4>
-            <ul>
-              <li>
-                <a href="/calculator/" aria-label="Calculate mortgage payments">
-                  Calculator</a
-                >
-              </li>
-              <li>
-                <a href="/date-calculator/" aria-label="Calculate loan payments"
-                  >Date Calculator</a
-                >
-              </li>
-              <li>
-                <a
-                  href="/percent-calculator/"
-                  aria-label="Calculate investment returns"
-                  >Percent Calculator</a
-                >
-              </li>
-              <li>
-                <a href="/url-tools/" aria-label="Plan for retirement"
-                  >Url Encoder
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/bmi-calculator/"
-                  aria-label="Calculate tax obligations"
-                  >BMI Calculator</a
-                >
-              </li>
-            </ul>
-          </div>
-
-          <!-- Resources Section -->
-          <div class="footer-column">
-            <h4>Resources</h4>
-            <ul>
-              <li>
-                <a
-                  href="/blog-article/"
-                  aria-label="Financial blog and articles"
-                  >Financial Glossary</a
-                >
-              </li>
-              <li>
-                <a
-                  href="/blog-article/"
-                  aria-label="Financial blog and articles"
-                  >Blog & Articles</a
-                >
-              </li>
-              <li>
-                <a
-                  href="/blog-article/"
-                  aria-label="Financial blog and articles"
-                  >Financial Planning Guide</a
-                >
-              </li>
-              <li>
-                <a
-                  href="/blog-article/"
-                  aria-label="Financial blog and articles"
-                  >Investment Strategies</a
-                >
-              </li>
-              <li>
-                <a
-                  href="/blog-article/"
-                  aria-label="Financial blog and articles"
-                  >Mortgage Tips</a
-                >
-              </li>
-            </ul>
-          </div>
-
-          <!-- Company Section -->
-          <div class="footer-column">
-            <h4>Company</h4>
-            <ul>
-              <li>
-                <a href="/about/" aria-label="About FinanceCalc Pro"
-                  >About Us</a
-                >
-              </li>
-              <li>
-                <a href="/contact/" aria-label="Contact FinanceCalc Pro"
-                  >Contact</a
-                >
-              </li>
-              <li>
-                <a href="/privacy/" aria-label="Privacy policy"
-                  >Privacy Policy</a
-                >
-              </li>
-              <li>
-                <a href="/terms/" aria-label="Terms of service"
-                  >Terms of Service</a
-                >
-              </li>
-            </ul>
-          </div>
-
-          <!-- Social Media Section -->
-          <div class="footer-column">
-            <h4>Connect With Us</h4>
-            <ul class="social-links">
-              <li>
-                <a
-                  href="https://twitter.com/financecalcpro"
-                  aria-label="Follow us on Twitter"
-                  rel="noopener noreferrer"
-                >
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"
-                    />
-                  </svg>
-                  Twitter
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://facebook.com/financecalcpro"
-                  aria-label="Follow us on Facebook"
-                  rel="noopener noreferrer"
-                >
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
-                    />
-                  </svg>
-                  Facebook
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://linkedin.com/company/financecalcpro"
-                  aria-label="Follow us on LinkedIn"
-                  rel="noopener noreferrer"
-                >
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
-                    />
-                  </svg>
-                  LinkedIn
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://instagram.com/financecalcpro"
-                  aria-label="Follow us on Instagram"
-                  rel="noopener noreferrer"
-                >
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
-                    />
-                  </svg>
-                  Instagram
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://youtube.com/financecalcpro"
-                  aria-label="Subscribe to our YouTube channel"
-                  rel="noopener noreferrer"
-                >
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
-                    />
-                  </svg>
-                  YouTube
-                </a>
-              </li>
-            </ul>
-
-            <!-- Newsletter Signup -->
-            <div class="newsletter">
-              <h5>Stay Updated</h5>
-              <form
-                action="/newsletter-signup"
-                method="post"
-                class="newsletter-form"
-              >
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Your email address"
-                  aria-label="Email for newsletter"
-                  required
-                />
-                <button type="submit" aria-label="Subscribe to newsletter">
-                  Subscribe
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-
-        <!-- Copyright and Legal -->
-        <div class="footer-bottom">
-          <div class="copyright">
-            <p>&copy; Utilityera → © 2025 Utilityera.</p>
+            <h3>Utilityera</h3>
             <p>
-              This calculator provides estimates for informational purposes
-              only. Results are not financial advice.
+              Utilityera is a comprehensive online platform offering a wide
+              range of free web tools and calculators designed to simplify
+              everyday tasks.
             </p>
           </div>
 
-          <!-- Additional Legal Links -->
+          <div class="footer-column">
+            <h3>Popular Tools</h3>
+            <ul class="footer-links">
+              <li><a href="/age-calculator/">Age Calculator</a></li>
+              <li><a href="/date-calculator/">Date Calculator</a></li>
+              <li><a href="/percent-calculator/">Percent Calculator</a></li>
+              <li><a href="/unit-converter/">Unit Converter</a></li>
+              <li><a href="/text-utilities/">Text Utilities</a></li>
+              <li><a href="/base64/">Base64 Tools</a></li>
+              <li><a href="/password-uuid/">Password Generator</a></li>
+              <li><a href="/image-resizer-compressor/">Image Tools</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Tool Categories</h3>
+            <ul class="footer-links">
+              <li><a href="/calculator/">Calculators</a></li>
+              <li><a href="/url-tools/">Url Tools</a></li>
+              <li><a href="/sha256/">SHA-256 Hash</a></li>
+              <li><a href="/json-formatter/">Json formatter</a></li>
+              <li><a href="/quick-notes/">Quick Notes </a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="/">Home</a></li>
+              <li><a href="/about/">About Us</a></li>
+              <li><a href="/blog-article/">Blogs </a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2025 Utilityera . All rights reserved.</p>
         </div>
       </div>
     </footer>
 
     <script>
-      // DOM Elements
-      const inputText = document.getElementById("input-text");
-      const outputText = document.getElementById("output-text");
-      const charCount = document.getElementById("char-count");
-      const wordCount = document.getElementById("word-count");
-      const lineCount = document.getElementById("line-count");
-      const sentenceCount = document.getElementById("sentence-count");
-      const toolItems = document.querySelectorAll(".tool-item");
-      const categoryItems = document.querySelectorAll(".category-item");
-      const toolSections = document.querySelectorAll(".tool-section");
-      const pasteBtn = document.getElementById("paste-btn");
-      const clearBtn = document.getElementById("clear-btn");
-      const copyBtn = document.getElementById("copy-btn");
-      const downloadBtn = document.getElementById("download-btn");
-      const useInputBtn = document.getElementById("use-input-btn");
-      const favoriteIcon = document.getElementById("favorite-icon");
-      const toast = document.getElementById("toast");
-      const toastMessage = document.getElementById("toast-message");
-      const findReplacePanel = document.getElementById("find-replace-panel");
-      const findInput = document.getElementById("find-input");
-      const replaceInput = document.getElementById("replace-input");
-      const caseSensitive = document.getElementById("case-sensitive");
-      const wholeWord = document.getElementById("whole-word");
-      const findBtn = document.getElementById("find-btn");
-      const replaceBtn = document.getElementById("replace-btn");
-      const replaceAllBtn = document.getElementById("replace-all-btn");
+      document.addEventListener("DOMContentLoaded", function () {
+        // DOM Elements
+        const inputText = document.getElementById("input-text");
+        const outputText = document.getElementById("output-text");
+        const charCount = document.getElementById("char-count");
+        const wordCount = document.getElementById("word-count");
+        const lineCount = document.getElementById("line-count");
+        const sentenceCount = document.getElementById("sentence-count");
+        const toast = document.getElementById("toast");
+        const toastMessage = document.getElementById("toast-message");
+        const findReplacePanel = document.getElementById("find-replace-panel");
 
-      // Initialize with uppercase as active tool
-      let activeTool = "uppercase";
-      let activeCategory = "case-transform";
+        // Category and tool elements
+        const categoryItems = document.querySelectorAll(".category-item");
+        const toolItems = document.querySelectorAll(".tool-item");
+        const toolSections = document.querySelectorAll(".tool-section");
 
-      // Show notification toast
-      function showToast(message, isError = false) {
-        toastMessage.textContent = message;
-        toast.classList.toggle("error", isError);
-        toast.classList.add("show");
+        // Button elements
+        const pasteBtn = document.getElementById("paste-btn");
+        const clearBtn = document.getElementById("clear-btn");
+        const copyBtn = document.getElementById("copy-btn");
+        const downloadBtn = document.getElementById("download-btn");
+        const useInputBtn = document.getElementById("use-input-btn");
+        const findBtn = document.getElementById("find-btn");
+        const replaceBtn = document.getElementById("replace-btn");
+        const replaceAllBtn = document.getElementById("replace-all-btn");
 
-        setTimeout(() => {
-          toast.classList.remove("show");
-        }, 3000);
-      }
+        // Find & Replace elements
+        const findInput = document.getElementById("find-input");
+        const replaceInput = document.getElementById("replace-input");
+        const caseSensitive = document.getElementById("case-sensitive");
+        const wholeWord = document.getElementById("whole-word");
 
-      // Update statistics
-      function updateStats() {
-        const text = inputText.value;
+        // Current active tool
+        let activeTool = "uppercase";
 
-        // Character count
-        charCount.textContent = text.length;
-
-        // Word count (improved implementation)
-        const words = text.trim() ? text.trim().split(/\s+/) : [];
-        wordCount.textContent = words.length;
-
-        // Line count
-        const lines = text ? text.split("\n") : [];
-        lineCount.textContent = lines.length;
-
-        // Sentence count (improved implementation)
-        const sentences = text.trim() ? text.split(/[.!?]+/) : [];
-        sentenceCount.textContent = Math.max(0, sentences.length - 1);
-      }
-
-      // Text transformation functions
-      const textTransformations = {
-        // Case Transform
-        uppercase: (text) => text.toUpperCase(),
-        lowercase: (text) => text.toLowerCase(),
-        titlecase: (text) => {
-          return text
-            .toLowerCase()
-            .split(" ")
-            .map((word) => {
-              // Handle small words that should not be capitalized in title case
-              const smallWords = [
-                "a",
-                "an",
-                "and",
-                "as",
-                "at",
-                "but",
-                "by",
-                "for",
-                "in",
-                "nor",
-                "of",
-                "on",
-                "or",
-                "so",
-                "the",
-                "to",
-                "up",
-                "yet",
-              ];
-              if (smallWords.includes(word)) {
-                return word;
-              }
-              return word.charAt(0).toUpperCase() + word.slice(1);
-            })
-            .join(" ");
-        },
-        sentencecase: (text) => {
-          return text
-            .toLowerCase()
-            .replace(
-              /(^\s*|[.!?]\s+)(\w)/g,
-              (match, p1, p2) => p1 + p2.toUpperCase()
-            );
-        },
-        capitalizewords: (text) => {
-          return text.replace(/\b\w/g, (char) => char.toUpperCase());
-        },
-        togglecase: (text) => {
-          return text
-            .split("")
-            .map((char) => {
-              return char === char.toUpperCase()
-                ? char.toLowerCase()
-                : char.toUpperCase();
-            })
-            .join("");
-        },
-
-        // Line Operations
-        "remove-duplicates": (text) => {
-          const lines = text.split("\n");
-          const uniqueLines = [...new Set(lines)];
-          return uniqueLines.join("\n");
-        },
-        "sort-az": (text) => {
-          const lines = text.split("\n");
-          return lines.sort().join("\n");
-        },
-        "sort-za": (text) => {
-          const lines = text.split("\n");
-          return lines.sort().reverse().join("\n");
-        },
-        "reverse-lines": (text) => {
-          const lines = text.split("\n");
-          return lines.reverse().join("\n");
-        },
-        "shuffle-lines": (text) => {
-          const lines = text.split("\n");
-          for (let i = lines.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [lines[i], lines[j]] = [lines[j], lines[i]];
-          }
-          return lines.join("\n");
-        },
-        "add-line-numbers": (text) => {
-          const lines = text.split("\n");
-          return lines.map((line, index) => `${index + 1}. ${line}`).join("\n");
-        },
-        "add-prefix-suffix": (text) => {
-          const prefix = prompt("Enter prefix (leave empty for none):", "");
-          const suffix = prompt("Enter suffix (leave empty for none):", "");
-          const lines = text.split("\n");
-          return lines
-            .map((line) => `${prefix || ""}${line}${suffix || ""}`)
-            .join("\n");
-        },
-        "join-lines": (text) => {
-          const delimiter = prompt(
-            "Enter delimiter (leave empty for space):",
-            " "
-          );
-          const lines = text.split("\n");
-          return lines.join(delimiter || " ");
-        },
-        "split-by-delimiter": (text) => {
-          const delimiter = prompt("Enter delimiter to split by:", ",");
-          return text.split(delimiter).join("\n");
-        },
-
-        // Clean & Format
-        "remove-empty-lines": (text) => {
-          const lines = text.split("\n");
-          return lines.filter((line) => line.trim() !== "").join("\n");
-        },
-        "trim-whitespace": (text) => {
-          const lines = text.split("\n");
-          return lines.map((line) => line.trim()).join("\n");
-        },
-        "remove-extra-spaces": (text) => {
-          return text.replace(/\s+/g, " ");
-        },
-        "remove-special-chars": (text) => {
-          return text.replace(/[^\w\s]/g, "");
-        },
-        "remove-numbers": (text) => {
-          return text.replace(/\d/g, "");
-        },
-        "remove-punctuation": (text) => {
-          return text.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
-        },
-        "normalize-spaces": (text) => {
-          return text.replace(/\s+/g, " ").trim();
-        },
-
-        // Extract & Find
-        "extract-emails": (text) => {
-          const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g;
-          const emails = text.match(emailRegex);
-          return emails ? emails.join("\n") : "No emails found";
-        },
-        "extract-urls": (text) => {
-          const urlRegex = /(https?:\/\/[^\s]+)/g;
-          const urls = text.match(urlRegex);
-          return urls ? urls.join("\n") : "No URLs found";
-        },
-        "extract-numbers": (text) => {
-          const numberRegex = /\b\d+\b/g;
-          const numbers = text.match(numberRegex);
-          return numbers ? numbers.join("\n") : "No numbers found";
-        },
-        "extract-phones": (text) => {
-          const phoneRegex =
-            /(\+?\d{1,3}[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}/g;
-          const phones = text.match(phoneRegex);
-          return phones ? phones.join("\n") : "No phone numbers found";
-        },
-        "word-frequency": (text) => {
-          const words = text.toLowerCase().match(/\b\w+\b/g) || [];
-          const frequency = {};
-
-          words.forEach((word) => {
-            frequency[word] = (frequency[word] || 0) + 1;
-          });
-
-          const sorted = Object.entries(frequency)
-            .sort((a, b) => b[1] - a[1])
-            .map(([word, count]) => `${word}: ${count}`);
-
-          return sorted.join("\n");
-        },
-        "find-replace": (text) => {
-          // This tool shows the find/replace panel instead of transforming text
-          return text;
-        },
-
-        // Encode & Decode
-        "reverse-text": (text) => {
-          return text.split("").reverse().join("");
-        },
-        "html-encode": (text) => {
-          const div = document.createElement("div");
-          div.textContent = text;
-          return div.innerHTML;
-        },
-        "html-decode": (text) => {
-          const div = document.createElement("div");
-          div.innerHTML = text;
-          return div.textContent;
-        },
-        slugify: (text) => {
-          return text
-            .toLowerCase()
-            .replace(/\s+/g, "-")
-            .replace(/[^\w\-]+/g, "")
-            .replace(/\-\-+/g, "-")
-            .replace(/^-+/, "")
-            .replace(/-+$/, "");
-        },
-        "to-json-array": (text) => {
-          const lines = text.split("\n").filter((line) => line.trim() !== "");
-          return JSON.stringify(lines, null, 2);
-        },
-        "to-csv": (text) => {
-          const lines = text.split("\n");
-          return lines
-            .map((line) => `"${line.replace(/"/g, '""')}"`)
-            .join(",\n");
-        },
-      };
-
-      // Apply active transformation
-      function applyTransformation() {
-        const text = inputText.value;
-        if (text.trim() === "") {
-          outputText.value = "";
-          return;
-        }
-
-        try {
-          // Special handling for find-replace tool
-          if (activeTool === "find-replace") {
-            outputText.value = text;
-            return;
-          }
-
-          const transformedText = textTransformations[activeTool](text);
-          outputText.value = transformedText;
-        } catch (error) {
-          console.error("Transformation error:", error);
-          showToast("Error applying transformation", true);
-        }
-      }
-
-      // Set active tool
-      function setActiveTool(tool) {
-        activeTool = tool;
-
-        // Update UI
-        toolItems.forEach((item) => {
-          if (item.dataset.tool === tool) {
-            item.classList.add("active");
-          } else {
-            item.classList.remove("active");
-          }
-        });
-
-        // Show/hide find-replace panel
-        if (tool === "find-replace") {
-          findReplacePanel.style.display = "block";
-        } else {
-          findReplacePanel.style.display = "none";
-        }
-
-        // Apply transformation
-        applyTransformation();
-      }
-
-      // Set active category
-      function setActiveCategory(category) {
-        activeCategory = category;
-
-        // Update UI
-        categoryItems.forEach((item) => {
-          if (item.dataset.category === category) {
-            item.style.backgroundColor = "var(--bg-tertiary)";
-          } else {
-            item.style.backgroundColor = "";
-          }
-        });
-
-        // Show/hide tool sections
-        toolSections.forEach((section) => {
-          if (section.id === `${category}-tools`) {
-            section.classList.add("active");
-          } else {
-            section.classList.remove("active");
-          }
-        });
-
-        // Set first tool in category as active
-        const firstTool = document.querySelector(
-          `#${category}-tools .tool-item`
-        );
-        if (firstTool) {
-          setActiveTool(firstTool.dataset.tool);
-        }
-      }
-
-      // Find and replace functionality
-      function findText() {
-        const text = inputText.value;
-        const find = findInput.value;
-
-        if (!find) {
-          showToast("Please enter text to find", true);
-          return;
-        }
-
-        let regex;
-        try {
-          const flags = caseSensitive.checked ? "g" : "gi";
-          const pattern = wholeWord.checked ? `\\b${find}\\b` : find;
-          regex = new RegExp(pattern, flags);
-        } catch (e) {
-          showToast("Invalid search pattern", true);
-          return;
-        }
-
-        const matches = text.match(regex);
-        if (matches) {
-          showToast(`Found ${matches.length} matches`);
-
-          // Highlight matches in output
-          const highlighted = text.replace(regex, (match) => `[${match}]`);
-          outputText.value = highlighted;
-        } else {
-          showToast("No matches found", true);
-          outputText.value = text;
-        }
-      }
-
-      function replaceText() {
-        const text = inputText.value;
-        const find = findInput.value;
-        const replace = replaceInput.value;
-
-        if (!find) {
-          showToast("Please enter text to find", true);
-          return;
-        }
-
-        let regex;
-        try {
-          const flags = caseSensitive.checked ? "g" : "gi";
-          const pattern = wholeWord.checked ? `\\b${find}\\b` : find;
-          regex = new RegExp(pattern, flags);
-        } catch (e) {
-          showToast("Invalid search pattern", true);
-          return;
-        }
-
-        if (text.match(regex)) {
-          const replaced = text.replace(regex, replace);
-          outputText.value = replaced;
-          showToast("Text replaced");
-        } else {
-          showToast("No matches found", true);
-        }
-      }
-
-      function replaceAllText() {
-        const text = inputText.value;
-        const find = findInput.value;
-        const replace = replaceInput.value;
-
-        if (!find) {
-          showToast("Please enter text to find", true);
-          return;
-        }
-
-        let regex;
-        try {
-          const flags = caseSensitive.checked ? "g" : "gi";
-          const pattern = wholeWord.checked ? `\\b${find}\\b` : find;
-          regex = new RegExp(pattern, flags);
-        } catch (e) {
-          showToast("Invalid search pattern", true);
-          return;
-        }
-
-        if (text.match(regex)) {
-          const replaced = text.replace(regex, replace);
-          outputText.value = replaced;
-          showToast("All occurrences replaced");
-        } else {
-          showToast("No matches found", true);
-        }
-      }
-
-      // Event Listeners
-      inputText.addEventListener("input", () => {
+        // Initialize
         updateStats();
-        applyTransformation();
-      });
 
-      toolItems.forEach((item) => {
-        item.addEventListener("click", () => {
-          setActiveTool(item.dataset.tool);
-        });
-      });
-
-      categoryItems.forEach((item) => {
-        item.addEventListener("click", () => {
-          setActiveCategory(item.dataset.category);
-        });
-      });
-
-      pasteBtn.addEventListener("click", async () => {
-        try {
-          const text = await navigator.clipboard.readText();
-          inputText.value = text;
+        // Event Listeners
+        inputText.addEventListener("input", function () {
           updateStats();
-          applyTransformation();
-          showToast("Text pasted successfully");
-        } catch (err) {
-          console.error("Paste error:", err);
-          showToast("Failed to paste from clipboard", true);
+          processText();
+        });
+
+        // Category switching
+        categoryItems.forEach((item) => {
+          item.addEventListener("click", function () {
+            const category = this.getAttribute("data-category");
+
+            // Update active category
+            categoryItems.forEach((i) => i.classList.remove("active"));
+            this.classList.add("active");
+
+            // Show corresponding tools
+            toolSections.forEach((section) => {
+              section.classList.remove("active");
+            });
+            document
+              .getElementById(`${category}-tools`)
+              .classList.add("active");
+
+            // Reset active tool to first one in the category
+            const firstTool = document.querySelector(
+              `#${category}-tools .tool-item`
+            );
+            if (firstTool) {
+              toolItems.forEach((t) => t.classList.remove("active"));
+              firstTool.classList.add("active");
+              activeTool = firstTool.getAttribute("data-tool");
+              processText();
+            }
+
+            // Show/hide find-replace panel
+            if (category === "extract-find") {
+              findReplacePanel.style.display = "block";
+            } else {
+              findReplacePanel.style.display = "none";
+            }
+          });
+        });
+
+        // Tool selection
+        toolItems.forEach((item) => {
+          item.addEventListener("click", function () {
+            toolItems.forEach((i) => i.classList.remove("active"));
+            this.classList.add("active");
+            activeTool = this.getAttribute("data-tool");
+            processText();
+          });
+        });
+
+        // Button events
+        pasteBtn.addEventListener("click", async function () {
+          try {
+            const text = await navigator.clipboard.readText();
+            inputText.value = text;
+            updateStats();
+            processText();
+            showToast("Text pasted successfully");
+          } catch (err) {
+            showToast("Failed to paste text", true);
+          }
+        });
+
+        clearBtn.addEventListener("click", function () {
+          inputText.value = "";
+          outputText.value = "";
+          updateStats();
+          showToast("Text cleared");
+        });
+
+        copyBtn.addEventListener("click", function () {
+          if (outputText.value) {
+            navigator.clipboard
+              .writeText(outputText.value)
+              .then(() => showToast("Text copied to clipboard"))
+              .catch(() => showToast("Failed to copy text", true));
+          }
+        });
+
+        downloadBtn.addEventListener("click", function () {
+          if (outputText.value) {
+            const blob = new Blob([outputText.value], { type: "text/plain" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "processed-text.txt";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showToast("Text downloaded");
+          }
+        });
+
+        useInputBtn.addEventListener("click", function () {
+          if (outputText.value) {
+            inputText.value = outputText.value;
+            updateStats();
+            processText();
+            showToast("Output used as input");
+          }
+        });
+
+        // Find & Replace events
+        findBtn.addEventListener("click", findText);
+        replaceBtn.addEventListener("click", replaceText);
+        replaceAllBtn.addEventListener("click", replaceAllText);
+
+        // Text processing functions
+        function processText() {
+          const text = inputText.value;
+          let result = text;
+
+          switch (activeTool) {
+            case "uppercase":
+              result = text.toUpperCase();
+              break;
+            case "lowercase":
+              result = text.toLowerCase();
+              break;
+            case "titlecase":
+              result = text.replace(/\w\S*/g, function (txt) {
+                return (
+                  txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+                );
+              });
+              break;
+            case "sentencecase":
+              result = text
+                .toLowerCase()
+                .replace(/(^\s*|[.!?]\s+)(\w)/g, function (match, p1, p2) {
+                  return p1 + p2.toUpperCase();
+                });
+              break;
+            case "capitalizewords":
+              result = text.replace(/(^|\s)\S/g, function (firstLetter) {
+                return firstLetter.toUpperCase();
+              });
+              break;
+            case "togglecase":
+              result = text
+                .split("")
+                .map((char) =>
+                  char === char.toUpperCase()
+                    ? char.toLowerCase()
+                    : char.toUpperCase()
+                )
+                .join("");
+              break;
+            case "remove-duplicates":
+              result = [...new Set(text.split("\n"))].join("\n");
+              break;
+            case "sort-az":
+              result = text.split("\n").sort().join("\n");
+              break;
+            case "sort-za":
+              result = text.split("\n").sort().reverse().join("\n");
+              break;
+            case "reverse-lines":
+              result = text.split("\n").reverse().join("\n");
+              break;
+            case "remove-empty-lines":
+              result = text
+                .split("\n")
+                .filter((line) => line.trim() !== "")
+                .join("\n");
+              break;
+            case "trim-whitespace":
+              result = text
+                .split("\n")
+                .map((line) => line.trim())
+                .join("\n");
+              break;
+            case "remove-extra-spaces":
+              result = text.replace(/\s+/g, " ").trim();
+              break;
+            case "extract-emails":
+              const emailRegex =
+                /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g;
+              result = text.match(emailRegex)?.join("\n") || "";
+              break;
+            case "extract-urls":
+              const urlRegex = /https?:\/\/[^\s]+/g;
+              result = text.match(urlRegex)?.join("\n") || "";
+              break;
+            case "reverse-text":
+              result = text.split("").reverse().join("");
+              break;
+            case "html-encode":
+              result = text.replace(/[&<>"']/g, function (m) {
+                return {
+                  "&": "&amp;",
+                  "<": "&lt;",
+                  ">": "&gt;",
+                  '"': "&quot;",
+                  "'": "&#39;",
+                }[m];
+              });
+              break;
+            case "html-decode":
+              result = text.replace(
+                /&amp;|&lt;|&gt;|&quot;|&#39;/g,
+                function (m) {
+                  return {
+                    "&amp;": "&",
+                    "&lt;": "<",
+                    "&gt;": ">",
+                    "&quot;": '"',
+                    "&#39;": "'",
+                  }[m];
+                }
+              );
+              break;
+            default:
+              result = text;
+          }
+
+          outputText.value = result;
+        }
+
+        function findText() {
+          const find = findInput.value;
+          if (!find) return;
+
+          let flags = "g";
+          if (!caseSensitive.checked) flags += "i";
+
+          let pattern = find;
+          if (wholeWord.checked) {
+            pattern = `\\b${find}\\b`;
+          }
+
+          const regex = new RegExp(pattern, flags);
+          const matches = inputText.value.match(regex);
+
+          if (matches) {
+            showToast(`Found ${matches.length} occurrence(s)`);
+            // Highlight matches in output (simplified)
+            outputText.value = inputText.value.replace(
+              regex,
+              (match) => `[${match}]`
+            );
+          } else {
+            showToast("No matches found", true);
+          }
+        }
+
+        function replaceText() {
+          const find = findInput.value;
+          const replace = replaceInput.value;
+          if (!find) return;
+
+          let flags = "g";
+          if (!caseSensitive.checked) flags += "i";
+
+          let pattern = find;
+          if (wholeWord.checked) {
+            pattern = `\\b${find}\\b`;
+          }
+
+          const regex = new RegExp(pattern, flags);
+          outputText.value = inputText.value.replace(regex, replace);
+          showToast("Text replaced");
+        }
+
+        function replaceAllText() {
+          const find = findInput.value;
+          const replace = replaceInput.value;
+          if (!find) return;
+
+          let flags = "g";
+          if (!caseSensitive.checked) flags += "i";
+
+          let pattern = find;
+          if (wholeWord.checked) {
+            pattern = `\\b${find}\\b`;
+          }
+
+          const regex = new RegExp(pattern, flags);
+          const matches = inputText.value.match(regex);
+
+          if (matches) {
+            outputText.value = inputText.value.replace(regex, replace);
+            showToast(`Replaced ${matches.length} occurrence(s)`);
+          } else {
+            showToast("No matches found", true);
+          }
+        }
+
+        function updateStats() {
+          const text = inputText.value;
+
+          // Character count
+          charCount.textContent = text.length;
+
+          // Word count
+          const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+          wordCount.textContent = words;
+
+          // Line count
+          const lines = text ? text.split("\n").length : 0;
+          lineCount.textContent = lines;
+
+          // Sentence count (simplified)
+          const sentences = text
+            ? text.split(/[.!?]+/).filter((s) => s.trim()).length
+            : 0;
+          sentenceCount.textContent = sentences;
+        }
+
+        function showToast(message, isError = false) {
+          toastMessage.textContent = message;
+          toast.className = "toast";
+          if (isError) {
+            toast.classList.add("error");
+          }
+          toast.classList.add("show");
+
+          setTimeout(() => {
+            toast.classList.remove("show");
+          }, 3000);
         }
       });
-
-      clearBtn.addEventListener("click", () => {
-        inputText.value = "";
-        outputText.value = "";
-        updateStats();
-        showToast("Text cleared");
-      });
-
-      copyBtn.addEventListener("click", async () => {
-        if (!outputText.value) {
-          showToast("No text to copy", true);
-          return;
-        }
-
-        try {
-          await navigator.clipboard.writeText(outputText.value);
-          showToast("Text copied to clipboard");
-        } catch (err) {
-          console.error("Copy error:", err);
-          showToast("Failed to copy to clipboard", true);
-        }
-      });
-
-      downloadBtn.addEventListener("click", () => {
-        const text = outputText.value;
-        if (!text) {
-          showToast("No text to download", true);
-          return;
-        }
-
-        try {
-          const blob = new Blob([text], { type: "text/plain" });
-          const url = URL.createObjectURL(blob);
-          const a = document.createElement("a");
-          a.href = url;
-          a.download = "processed-text.txt";
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-          URL.revokeObjectURL(url);
-          showToast("Text downloaded successfully");
-        } catch (error) {
-          console.error("Download error:", error);
-          showToast("Failed to download text", true);
-        }
-      });
-
-      useInputBtn.addEventListener("click", () => {
-        if (!outputText.value) {
-          showToast("No text to use as input", true);
-          return;
-        }
-
-        inputText.value = outputText.value;
-        updateStats();
-        applyTransformation();
-        showToast("Output text used as input");
-      });
-
-      favoriteIcon.addEventListener("click", () => {
-        favoriteIcon.classList.toggle("active");
-        if (favoriteIcon.classList.contains("active")) {
-          favoriteIcon.classList.remove("ri-star-line");
-          favoriteIcon.classList.add("ri-star-fill");
-          showToast("Added to favorites");
-        } else {
-          favoriteIcon.classList.remove("ri-star-fill");
-          favoriteIcon.classList.add("ri-star-line");
-          showToast("Removed from favorites");
-        }
-      });
-
-      // Find/Replace event listeners
-      findBtn.addEventListener("click", findText);
-      replaceBtn.addEventListener("click", replaceText);
-      replaceAllBtn.addEventListener("click", replaceAllText);
-
-      // Initialize
-      updateStats();
-      applyTransformation();
     </script>
 
     <script src="/assets/script.js" defer></script>
