@@ -215,8 +215,9 @@ main {
 }
 
 .page-title p {
-  color: var(--gray);
+  color: var(--dark);
   max-width: 600px;
+  font-size: 1.1rem;
   margin: 0 auto;
 }
 
