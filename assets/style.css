@@ -7,7 +7,7 @@
   --accent: #f72585;
   --light: #f8f9fa;
   --dark: #212529;
-  --gray: #6c757d;
+  --gray: #2a3036;
   --success: #4cc9f0;
   --border-radius: 12px;
   --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -121,7 +121,7 @@ a.logo {
 }
 
 .nav-links li {
-  margin-left: 1.5rem;
+  margin-left: 1rem;
 }
 
 .nav-links a {
@@ -195,7 +195,7 @@ a.logo {
 }
 
 .breadcrumb-item.active {
-  color: var(--gray);
+  color: var(--dark);
 }
 
 /* ===== MAIN CONTENT STYLES ===== */
@@ -381,7 +381,7 @@ footer {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .mobile-toggle {
     display: block;
   }
@@ -456,7 +456,7 @@ footer {
 }
 
 /* Mobile responsiveness for dropdown */
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .dropdown-menu {
     position: static;
     box-shadow: none;
@@ -574,7 +574,7 @@ footer {
 }
 
 .content-section em {
-  color: var(--accent);
+  color: var(--dark);
   font-style: italic;
 }
 
@@ -684,195 +684,3 @@ footer {
 }
 
 /* ===== CALCULATOR CARD SPECIFIC STYLES ===== */
-/* Calculator Card Container */
-.calculator-card {
-  background: white;
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow);
-  padding: 2rem;
-  transition: var(--transition);
-}
-
-.calculator-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-/* Calculator Card Title */
-.calculator-card .card-title {
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
-  color: var(--primary);
-  display: flex;
-  align-items: center;
-}
-
-.calculator-card .card-title i {
-  margin-right: 10px;
-}
-
-/* Calculator Input Groups */
-.calculator-card .input-group {
-  margin-bottom: 1.5rem;
-}
-
-.calculator-card .input-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-  color: var(--dark);
-}
-
-.calculator-card .input-group input {
-  width: 100%;
-  padding: 1.05rem 1rem;
-  border: 1px solid #ddd;
-  border-radius: var(--border-radius);
-  font-size: 1.15rem;
-  transition: var(--transition);
-}
-
-.calculator-card .input-group input:focus {
-  outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
-}
-
-/* Quick Date Buttons - Calculator Specific */
-.calculator-card .quick-date-buttons {
-  display: flex;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-}
-
-/* Clear button - Calculator Specific */
-.calculator-card #clearDates {
-  background-color: var(--accent);
-  color: white;
-  border: 2px solid var(--accent);
-}
-
-.calculator-card #clearDates:hover {
-  background-color: #e01675;
-  border-color: #e01675;
-  transform: translateY(-2px);
-}
-
-/* Date format indicator - Calculator Specific */
-.calculator-card .date-format-indicator {
-  font-size: 0.8rem;
-  color: var(--gray);
-  margin-top: 0.25rem;
-}
-
-/* Real-time indicator - Calculator Specific */
-.calculator-card .real-time-indicator {
-  display: flex;
-  align-items: center;
-  margin-top: 1rem;
-  color: #2a6b87;
-  font-weight: 500;
-}
-
-.calculator-card .pulse {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--success);
-  margin-right: 8px;
-  animation: pulse 2s infinite;
-}
-
-/* Results Section - Calculator Specific */
-.calculator-card .results-text {
-  margin-top: 1.5rem;
-  padding: 1rem;
-  background: linear-gradient(135deg, #f8f9ff, #f0f2ff);
-  border-radius: var(--border-radius);
-  border-left: 4px solid var(--primary);
-  display: none; /* Hidden by default */
-}
-
-.calculator-card .results-text.visible {
-  display: block; /* Show when has class 'visible' */
-}
-
-.calculator-card .result-line {
-  font-size: 1rem;
-  color: var(--dark);
-  margin-bottom: 0.75rem;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-}
-
-.calculator-card .result-line:last-child {
-  margin-bottom: 0;
-}
-
-.calculator-card .result-value {
-  font-weight: 700;
-  font-size: clamp(1.1rem, 3.5vw + 0.5rem, 1.5rem);
-  color: var(--primary);
-  margin: 0 4px;
-}
-
-/* Copy result button - Calculator Specific */
-.calculator-card .copy-result-btn {
-  background: #4a5568;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  display: none; /* Hidden by default */
-}
-
-.calculator-card .copy-result-btn.visible {
-  display: flex; /* Show when has class 'visible' */
-}
-
-.calculator-card .copy-result-btn:hover {
-  background: #2d3748;
-}
-
-@media (max-width: 768px) {
-  /* Mobile button adjustments */
-  .quick-date-buttons {
-    gap: 0.375rem;
-    justify-content: center;
-  }
-
-  .quick-date-buttons .btn {
-    flex: 0 1 auto;
-    min-width: 110px;
-    font-size: 0.85rem;
-    padding: 0.5rem 0.75rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .quick-date-buttons {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .quick-date-buttons .btn {
-    min-width: auto;
-    white-space: normal;
-    padding: 0.6rem 0.75rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .results-text {
-    padding: 1.5rem;
-    margin-top: 2rem;
-  }
-  .result-line {
-    font-size: 1.2rem;
-  }
-}
