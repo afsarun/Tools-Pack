@@ -217,348 +217,314 @@
         ]
       }
     </script>
-
     <style>
-      /* ====== Theme tokens ====== */
-      /* Light defaults (you can tweak) */
-      :root {
-        --badge: #073c92;
-        --primary: #4a6fa5;
-        --secondary: #6b8cbc;
-        --primary-hover: #1e40af;
-        --secondary: #64748b;
-        --success: #10b981;
-        --danger: #ef4444;
-        --warning: #f59e0b;
-
-        --background: #ffffff;
-        --surface: #f8fafc;
-        --surface-light: #f1f5f9;
-        --text: #0f172a;
-        --text-muted: #475569;
-        --border: #e6edf6;
-        --gradient: linear-gradient(135deg, #2563eb 0%, #8b5cf6 100%);
-        --shadow: 0 10px 20px rgba(2, 6, 23, 0.06);
-        --shadow-lg: 0 20px 40px rgba(2, 6, 23, 0.08);
-
-        --link: #2563eb;
-        --link-hover: #3b82f6;
-        --link-visited: #8b5cf6;
-      }
-
-      /* Dark theme: EXACT tokens you provided */
-      html[data-theme="dark"] {
-        --badge: #073c92;
-        --primary: #4a6fa5;
-        --secondary: #6b8cbc;
-        --primary-hover: #2563eb;
-
-        --success: #10b981;
-        --danger: #ef4444;
-        --warning: #f59e0b;
-        --background: #0f172a;
-        --surface: #1e293b;
-        --surface-light: #334155;
-        --text: #f1f5f9;
-        --text-muted: #c4cdd6;
-        --border: #475569;
-        --gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-        --shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
-          0 10px 10px -5px rgb(0 0 0 / 0.04);
-        --shadow-lg: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-        --link: #60a5fa;
-        --link-hover: #93c5fd;
-        --link-visited: #a78bfa;
-      }
-
-      /* Apply tokens globally */
-
-      .card,
-      .tool-card {
-        background: var(--surface);
-        border: 1px solid var(--border);
-        box-shadow: var(--shadow-lg);
-        margin-bottom: 1rem;
-      }
-
-      /* Theme toggle UI (place in header) */
-      #theme-toggle {
-        background: none;
-        color: var(--text);
-        border: 1px solid var(--border);
-        padding: 8px 10px;
-        border-radius: 8px;
-        font-size: 14px;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        cursor: pointer;
-        transition: background 0.12s ease, transform 0.12s ease,
-          border-color 0.12s ease;
-      }
-      #theme-toggle:hover {
-        background: color-mix(in srgb, var(--surface-light) 8%, transparent);
-        transform: translateY(-2px);
-      }
-      #theme-toggle[aria-pressed="true"] {
-        border-color: var(--primary);
-        background: linear-gradient(
-          90deg,
-          rgba(59, 130, 246, 0.06),
-          rgba(16, 185, 129, 0.03)
-        );
-      }
-      #theme-toggle svg {
-        width: 18px;
-        height: 18px;
-        display: block;
-      }
-      .sr-only {
-        position: absolute !important;
-        width: 1px !important;
-        height: 1px !important;
-        padding: 0 !important;
-        margin: -1px !important;
-        overflow: hidden !important;
-        clip: rect(0, 0, 1px, 1px) !important;
-        white-space: nowrap !important;
-        border: 0 !important;
-      }
-
-      /* ===== Base ===== */
+      /* Base Styles */
       * {
+        margin: 0;
+        padding: 0;
         box-sizing: border-box;
       }
-      html {
-        scroll-behavior: smooth;
-      }
-      body {
-        margin: 0;
-        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial,
-          sans-serif;
-      }
 
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-      }
+      /* Header */
 
-      /* ===== Headings ===== */
-
-      .subtitle {
-        color: var(--text-muted);
-        font-size: 1.05rem;
-        margin-bottom: 22px;
+      .pill {
+        background: rgba(255, 255, 255, 0.2);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 50px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        backdrop-filter: blur(10px);
       }
 
-      h2 {
-        color: var(--text);
-        margin: 0 0 16px;
-        font-size: 1.35rem;
+      .pill:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: translateY(-2px);
+      }
+
+      /* Main Content */
+      .wrap {
+        padding: 30px;
+      }
+
+      /* Cards */
+      .card {
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 25px;
+        margin-bottom: 30px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .tool-card h3 {
+        color: var(--primary);
+        margin-bottom: 20px;
+        font-size: 1.4rem;
         display: flex;
         align-items: center;
         gap: 10px;
       }
 
-      /* ===== Cards ===== */
-      .card {
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        padding: 24px;
-        box-shadow: var(--shadow-lg);
+      .tool-card h3::before {
+        content: "📅";
+        font-size: 1.2rem;
       }
 
-      .cards-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-        gap: 24px;
-        margin-bottom: 28px;
-      }
-      @media (max-width: 600px) {
-        .cards-container {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      /* ===== Grid (12-col) ===== */
+      /* Grid System */
       .grid {
         display: grid;
         grid-template-columns: repeat(12, 1fr);
-        gap: 15px;
+        gap: 20px;
       }
+
       .span-6 {
         grid-column: span 6;
       }
       .span-12 {
         grid-column: span 12;
       }
+
       @media (max-width: 768px) {
         .span-6 {
           grid-column: span 12;
         }
+        .grid {
+          gap: 15px;
+        }
       }
 
-      /* ===== Form + Inputs ===== */
-      .field {
+      /* Form Elements */
+      .form-label {
         display: flex;
         flex-direction: column;
         gap: 8px;
       }
-      .form-label {
-        color: var(--text);
-        font-weight: 600;
-        font-size: 0.95rem;
-      }
+
       .muted {
-        color: var(--text-muted);
-        font-size: 0.85rem;
+        color: #6c757d;
+        font-size: 0.9rem;
       }
 
-      .form-input,
-      .textarea,
-      .form-textarea {
-        width: 100%;
-        background: var(--background);
-        color: var(--text);
-        border: 1px solid var(--border);
+      .form-input {
+        padding: 12px 15px;
+        border: 2px solid #e9ecef;
         border-radius: 8px;
-        padding: 10px 12px;
-        font-size: 0.95rem;
-        transition: border-color 0.2s, box-shadow 0.2s;
+        font-size: 1rem;
+        transition: var(--transition);
+        width: 100%;
       }
-      .form-input:focus,
-      .textarea:focus,
-      .form-textarea:focus {
+
+      .form-input:focus {
         outline: none;
         border-color: var(--primary);
-        box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.25);
+        box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
       }
 
-      /* Native date picker icon on dark */
-      input[type="date"] {
-        position: relative;
-      }
-      input[type="date"]::-webkit-calendar-picker-indicator {
-        filter: invert(0.8);
-        cursor: pointer;
+      .form-textarea {
+        padding: 15px;
+        border: 2px solid #e9ecef;
+        border-radius: 8px;
+        font-size: 1rem;
+        min-height: 100px;
+        resize: vertical;
+        font-family: "Courier New", monospace;
+        background: #f8f9fa;
+        width: 100%;
       }
 
-      /* ===== Buttons ===== */
+      /* Buttons */
       .btn-group {
         display: flex;
         gap: 10px;
-        flex-wrap: wrap;
       }
+
       .btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        padding: 10px 18px;
-        border: 0;
+        padding: 12px 24px;
+        border: none;
         border-radius: 8px;
-        font-weight: 700;
-        font-size: 0.95rem;
+        font-weight: 600;
         cursor: pointer;
-        transition: transform 0.15s ease, background-color 0.2s ease,
-          opacity 0.2s ease;
-      }
-      .btn:focus {
-        outline: 2px solid rgba(59, 130, 246, 0.6);
-        outline-offset: 2px;
-      }
-      .btn:disabled {
-        opacity: 0.6;
-        cursor: not-allowed;
+        transition: var(--transition);
+        font-size: 1rem;
       }
 
       .btn-primary {
-        background: var(--primary-hover);
-        color: #fff;
-      }
-      .btn-primary:hover {
         background: var(--primary);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background: var(--primary-dark);
         transform: translateY(-2px);
       }
 
-      .btn-secondary {
-        background: var(--secondary);
-        color: #fff;
-      }
-      .btn-secondary:hover {
-        background: var(--surface-light);
+      .btn {
+        background: #e9ecef;
+        color: var(--dark);
       }
 
-      /* ===== Textareas & Results ===== */
-      .textarea,
-      .form-textarea {
-        min-height: 110px;
-        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-          "Liberation Mono", monospace;
-        line-height: 1.5;
-        resize: vertical;
+      .btn:hover {
+        background: #dee2e6;
+        transform: translateY(-2px);
       }
-      .result-success {
-        color: var(--success);
-        font-weight: 600;
+
+      /* Content Sections */
+      .content-section {
+        margin-bottom: 40px;
+        padding: 25px;
+        background: #f8f9fa;
+        border-radius: var(--border-radius);
       }
-      .result-info {
+
+      .content-section h2 {
+        color: var(--secondary);
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+      }
+
+      .content-section h3 {
         color: var(--primary);
+        margin: 25px 0 15px;
+        font-size: 1.3rem;
+      }
+
+      .content-section p {
+        margin-bottom: 15px;
+      }
+
+      .content-section ul {
+        margin-left: 20px;
+        margin-bottom: 20px;
+      }
+
+      .content-section li {
+        margin-bottom: 8px;
+      }
+
+      /* FAQ Section */
+      .faq-section {
+        background: white;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
+      .faq-item {
+        border-bottom: 1px solid #e9ecef;
+        margin-bottom: 10px;
+      }
+
+      .faq-question {
+        width: 100%;
+        padding: 20px;
+        text-align: left;
+        background: none;
+        border: none;
+        font-weight: 600;
+        color: var(--dark);
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.1rem;
+      }
+
+      .faq-question:hover {
+        background: #f8f9fa;
+      }
+
+      .faq-icon {
+        font-size: 1.5rem;
+        font-weight: 300;
+      }
+
+      .faq-answer {
+        padding: 0 20px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+
+      .faq-answer p {
+        padding: 15px 0;
+      }
+
+      .faq-item.active .faq-answer {
+        max-height: 500px;
+      }
+
+      .faq-item.active .faq-icon {
+        transform: rotate(45deg);
+      }
+
+      /* Ads */
+      .ad-wrap {
+        background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+        border: 2px dashed var(--accent);
+        border-radius: var(--border-radius);
+        padding: 20px;
+        margin-top: 25px;
+        position: relative;
+      }
+
+      .ad-label {
+        position: absolute;
+        top: -10px;
+        left: 20px;
+        background: var(--accent);
+        color: white;
+        padding: 3px 10px;
+        border-radius: 20px;
+        font-size: 0.8rem;
         font-weight: 600;
       }
 
-      /* ===== Badges & Pills ===== */
-      .badge {
-        background: var(--badge);
-        color: #fff;
-        padding: 4px 10px;
-        border-radius: 20px;
-        font-size: 0.75rem;
-      }
-      .pill {
-        font-size: 1rem;
-        padding: 1rem;
-        border-radius: 999px;
-        background: var(--background);
-        display: inline-block;
-        color: var(--text);
-      }
-      .pill-row {
-        margin: 2rem 0;
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
+      .ad-content {
+        color: var(--dark);
+        font-weight: 600;
+        text-align: center;
       }
 
-      /* ===== Ad box ===== */
-
-      /* ===== Utilities ===== */
-      .mono {
-        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-          "Liberation Mono", monospace;
-      }
-      .highlight {
-        background: rgba(59, 130, 246, 0.2);
+      /* Code */
+      code {
+        background: #e9ecef;
         padding: 2px 6px;
         border-radius: 4px;
-        font-weight: 600;
+        font-family: "Courier New", monospace;
+        font-size: 0.9rem;
       }
 
-      /* Optional: subtle custom scrollbar for dark UI */
-      ::-webkit-scrollbar {
-        width: 10px;
-        height: 10px;
+      /* Monospace textarea */
+      .mono {
+        font-family: "Courier New", monospace;
+        font-size: 1.1rem;
       }
-      ::-webkit-scrollbar-track {
-        background: var(--surface);
-      }
-      ::-webkit-scrollbar-thumb {
-        background: var(--border);
-        border-radius: 10px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: var(--surface-light);
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .container {
+          border-radius: 0;
+        }
+
+        .wrap {
+          padding: 20px;
+        }
+
+        .pill-row {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .pill {
+          width: 100%;
+        }
       }
     </style>
   </head>
@@ -1244,239 +1210,290 @@
       </div>
     </footer>
     <script>
-      // ===== Utilities (UTC-safe) =====
-      const pad2 = (n) => String(n).padStart(2, "0");
-      const todayStr = () => {
-        const t = new Date();
-        return `${t.getFullYear()}-${pad2(t.getMonth() + 1)}-${pad2(
-          t.getDate()
-        )}`;
-      };
-      const parseYMD = (s) => {
-        const [y, m, d] = (s || "").split("-").map(Number);
-        if (!y || !m || !d) return null;
-        return { y, m, d };
-      };
-      const toUTC = (o) => new Date(Date.UTC(o.y, o.m - 1, o.d));
-      const fromDate = (d) => ({
-        y: d.getUTCFullYear(),
-        m: d.getUTCMonth() + 1,
-        d: d.getUTCDate(),
-      });
-      const fmt = (d) =>
-        `${d.getUTCFullYear()}-${pad2(d.getUTCMonth() + 1)}-${pad2(
-          d.getUTCDate()
-        )}`;
-
-      const daysBetweenUTC = (A, B) => {
-        // difference in whole days: B - A
-        const ms =
-          Date.UTC(B.getUTCFullYear(), B.getUTCMonth(), B.getUTCDate()) -
-          Date.UTC(A.getUTCFullYear(), A.getUTCMonth(), A.getUTCDate());
-        return Math.round(ms / 86400000);
-      };
-
-      const addDaysUTC = (base, n) => {
-        const ms = Date.UTC(
-          base.getUTCFullYear(),
-          base.getUTCMonth(),
-          base.getUTCDate()
-        );
-        return new Date(ms + n * 86400000);
-      };
-
-      const diffYMD = (start, end) => {
-        // start/end are {y,m,d} objects (calendar diff)
-        let y = end.y - start.y;
-        let m = end.m - start.m;
-        let d = end.d - start.d;
-
-        if (d < 0) {
-          // borrow days from previous month of end
-          const prevMonth = new Date(Date.UTC(end.y, end.m - 1, 0)); // last day of (end.m - 1)
-          d += prevMonth.getUTCDate();
-          m--;
+      document.addEventListener("DOMContentLoaded", function () {
+        // Get today's date in YYYY-MM-DD format
+        function getToday() {
+          return new Date().toISOString().split("T")[0];
         }
-        if (m < 0) {
-          m += 12;
-          y--;
+
+        // Format date to readable string
+        function formatDate(date) {
+          return new Date(date).toLocaleDateString("en-US", {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          });
         }
-        return { y, m, d };
-      };
 
-      // ===== Bind elements =====
-      const yEl = document.getElementById("y");
-      yEl.textContent = new Date().getFullYear();
+        // Calculate days between two dates
+        function calculateDaysBetween(startDate, endDate) {
+          const start = new Date(startDate);
+          const end = new Date(endDate);
+          const diffTime = Math.abs(end - start);
+          return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        }
 
-      const untilEnd = document.getElementById("untilEnd");
-      const untilStart = document.getElementById("untilStart");
-      const outUntil = document.getElementById("outUntil");
+        // Calculate Y/M/D difference
+        function calculateYMD(startDate, endDate) {
+          const start = new Date(startDate);
+          const end = new Date(endDate);
 
-      const sincePast = document.getElementById("sincePast");
-      const sinceAsOf = document.getElementById("sinceAsOf");
-      const outSince = document.getElementById("outSince");
+          let years = end.getFullYear() - start.getFullYear();
+          let months = end.getMonth() - start.getMonth();
+          let days = end.getDate() - start.getDate();
 
-      const agoN = document.getElementById("agoN");
-      const agoAsOf = document.getElementById("agoAsOf");
-      const outAgo = document.getElementById("outAgo");
+          if (days < 0) {
+            months--;
+            // Get days in previous month
+            const prevMonth = new Date(end.getFullYear(), end.getMonth(), 0);
+            days += prevMonth.getDate();
+          }
 
-      const addBase = document.getElementById("addBase");
-      const addN = document.getElementById("addN");
-      const outAdd = document.getElementById("outAdd");
+          if (months < 0) {
+            years--;
+            months += 12;
+          }
 
-      const sinceStart = document.getElementById("sinceStart");
-      const sinceEnd = document.getElementById("sinceEnd");
-      const outSinceYMD = document.getElementById("outSinceYMD");
+          return { years, months, days };
+        }
 
-      // defaults
-      const today = todayStr();
-      untilStart.value = today;
-      sinceAsOf.value = today;
-      agoAsOf.value = today;
-      addBase.value = today;
-      sinceEnd.value = today;
+        // 1. Days Until Calculator
+        const untilStart = document.getElementById("untilStart");
+        const untilEnd = document.getElementById("untilEnd");
+        const btnUntil = document.getElementById("btnUntil");
+        const btnUntilReset = document.getElementById("btnUntilReset");
+        const outUntil = document.getElementById("outUntil");
 
-      // ===== Pills (quick-fill) =====
-      document.querySelectorAll("[data-fill]").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const v = btn.getAttribute("data-fill");
-          const now = new Date();
-          const year = now.getFullYear();
+        btnUntil.addEventListener("click", () => {
+          if (!untilEnd.value) {
+            outUntil.value = "Please enter an end date";
+            return;
+          }
 
-          if (v === "until-aug13") {
-            untilEnd.value = `${year}-${pad2(8)}-${pad2(13)}`;
-            document.getElementById("btnUntil").click();
-          } else if (v === "until-sep17") {
-            untilEnd.value = `${year}-${pad2(9)}-${pad2(17)}`;
-            document.getElementById("btnUntil").click();
-          } else if (v === "until-jun11") {
-            untilEnd.value = `${year}-${pad2(6)}-${pad2(11)}`;
-            document.getElementById("btnUntil").click();
-          } else if (v === "ago-2015") {
-            agoN.value = 2015;
-            document.getElementById("btnAgo").click();
-          } else if (v === "add-20") {
-            addN.value = 20;
-            document.getElementById("btnAdd").click();
-          } else if (v === "since-2018") {
-            sinceStart.value = `2018-01-01`;
-            document.getElementById("btnSinceYMD").click();
+          const startDate = untilStart.value || getToday();
+          const endDate = untilEnd.value;
+          const days = calculateDaysBetween(startDate, endDate);
+
+          outUntil.value = `${days} days from ${formatDate(
+            startDate
+          )} to ${formatDate(endDate)}`;
+        });
+
+        btnUntilReset.addEventListener("click", () => {
+          untilStart.value = "";
+          untilEnd.value = "";
+          outUntil.value = "";
+        });
+
+        // 2. Days Since Calculator
+        const sincePast = document.getElementById("sincePast");
+        const sinceAsOf = document.getElementById("sinceAsOf");
+        const btnSince = document.getElementById("btnSince");
+        const btnSinceReset = document.getElementById("btnSinceReset");
+        const outSince = document.getElementById("outSince");
+
+        btnSince.addEventListener("click", () => {
+          if (!sincePast.value) {
+            outSince.value = "Please enter a past date";
+            return;
+          }
+
+          const pastDate = sincePast.value;
+          const asOfDate = sinceAsOf.value || getToday();
+          const days = calculateDaysBetween(pastDate, asOfDate);
+
+          outSince.value = `${days} days have passed since ${formatDate(
+            pastDate
+          )} (as of ${formatDate(asOfDate)})`;
+        });
+
+        btnSinceReset.addEventListener("click", () => {
+          sincePast.value = "";
+          sinceAsOf.value = "";
+          outSince.value = "";
+        });
+
+        // 3. Days Ago Calculator
+        const agoN = document.getElementById("agoN");
+        const agoAsOf = document.getElementById("agoAsOf");
+        const btnAgo = document.getElementById("btnAgo");
+        const btnAgoReset = document.getElementById("btnAgoReset");
+        const outAgo = document.getElementById("outAgo");
+
+        btnAgo.addEventListener("click", () => {
+          if (!agoN.value) {
+            outAgo.value = "Please enter number of days";
+            return;
+          }
+
+          const n = parseInt(agoN.value);
+          const asOfDate = agoAsOf.value || getToday();
+          const resultDate = new Date(asOfDate);
+          resultDate.setDate(resultDate.getDate() - n);
+
+          outAgo.value = `${n} days before ${formatDate(
+            asOfDate
+          )} is ${formatDate(resultDate.toISOString().split("T")[0])}`;
+        });
+
+        btnAgoReset.addEventListener("click", () => {
+          agoN.value = "";
+          agoAsOf.value = "";
+          outAgo.value = "";
+        });
+
+        // 4. Add/Subtract Days Calculator
+        const addBase = document.getElementById("addBase");
+        const addN = document.getElementById("addN");
+        const btnAdd = document.getElementById("btnAdd");
+        const btnAddReset = document.getElementById("btnAddReset");
+        const outAdd = document.getElementById("outAdd");
+
+        btnAdd.addEventListener("click", () => {
+          if (!addN.value) {
+            outAdd.value = "Please enter number of days to add/subtract";
+            return;
+          }
+
+          const n = parseInt(addN.value);
+          const baseDate = addBase.value || getToday();
+          const resultDate = new Date(baseDate);
+          resultDate.setDate(resultDate.getDate() + n);
+
+          const operation = n >= 0 ? "after" : "before";
+          const absN = Math.abs(n);
+
+          outAdd.value = `${absN} days ${operation} ${formatDate(
+            baseDate
+          )} is ${formatDate(resultDate.toISOString().split("T")[0])}`;
+        });
+
+        btnAddReset.addEventListener("click", () => {
+          addBase.value = "";
+          addN.value = "";
+          outAdd.value = "";
+        });
+
+        // 5. Years/Months/Days Calculator
+        const sinceStart = document.getElementById("sinceStart");
+        const sinceEnd = document.getElementById("sinceEnd");
+        const btnSinceYMD = document.getElementById("btnSinceYMD");
+        const btnSinceYMDReset = document.getElementById("btnSinceYMDReset");
+        const outSinceYMD = document.getElementById("outSinceYMD");
+
+        btnSinceYMD.addEventListener("click", () => {
+          if (!sinceStart.value) {
+            outSinceYMD.value = "Please enter a start date";
+            return;
+          }
+
+          const startDate = sinceStart.value;
+          const endDate = sinceEnd.value || getToday();
+          const diff = calculateYMD(startDate, endDate);
+          const totalDays = calculateDaysBetween(startDate, endDate);
+
+          outSinceYMD.value =
+            `From ${formatDate(startDate)} to ${formatDate(endDate)}:\n` +
+            `${diff.years} years, ${diff.months} months, ${diff.days} days\n` +
+            `Total days: ${totalDays}`;
+        });
+
+        btnSinceYMDReset.addEventListener("click", () => {
+          sinceStart.value = "";
+          sinceEnd.value = "";
+          outSinceYMD.value = "";
+        });
+
+        // Pill buttons functionality
+        const pills = document.querySelectorAll(".pill");
+        pills.forEach((pill) => {
+          pill.addEventListener("click", () => {
+            const fillType = pill.dataset.fill;
+
+            switch (fillType) {
+              case "until-aug13":
+                const nextAug13 = new Date(new Date().getFullYear(), 7, 13);
+                if (nextAug13 < new Date()) {
+                  nextAug13.setFullYear(nextAug13.getFullYear() + 1);
+                }
+                untilEnd.value = nextAug13.toISOString().split("T")[0];
+                btnUntil.click();
+                break;
+
+              case "until-sep17":
+                const nextSep17 = new Date(new Date().getFullYear(), 8, 17);
+                if (nextSep17 < new Date()) {
+                  nextSep17.setFullYear(nextSep17.getFullYear() + 1);
+                }
+                untilEnd.value = nextSep17.toISOString().split("T")[0];
+                btnUntil.click();
+                break;
+
+              case "until-jun11":
+                const nextJun11 = new Date(new Date().getFullYear(), 5, 11);
+                if (nextJun11 < new Date()) {
+                  nextJun11.setFullYear(nextJun11.getFullYear() + 1);
+                }
+                untilEnd.value = nextJun11.toISOString().split("T")[0];
+                btnUntil.click();
+                break;
+
+              case "ago-2015":
+                agoN.value = 2015;
+                btnAgo.click();
+                break;
+
+              case "add-20":
+                addN.value = 20;
+                btnAdd.click();
+                break;
+
+              case "since-2018":
+                sinceStart.value = "2018-01-01";
+                btnSinceYMD.click();
+                break;
+            }
+
+            // Scroll to the relevant section
+            const sectionId = fillType.split("-")[0];
+            const section = document.getElementById(
+              sectionId === "ago" || sectionId === "add" ? sectionId : "since"
+            );
+            if (section) {
+              section.scrollIntoView({ behavior: "smooth" });
+            }
+          });
+        });
+
+        // FAQ functionality
+        const faqQuestions = document.querySelectorAll(".faq-question");
+        faqQuestions.forEach((question) => {
+          question.addEventListener("click", () => {
+            const item = question.parentElement;
+            item.classList.toggle("active");
+          });
+        });
+
+        // Initialize date inputs with today's date
+        const today = getToday();
+        document.querySelectorAll('input[type="date"]').forEach((input) => {
+          if (!input.id.includes("End") && !input.id.includes("Past")) {
+            input.value = today;
           }
         });
+
+        // Add some visual feedback for calculations
+        const calculateButtons = document.querySelectorAll(".btn-primary");
+        calculateButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+            this.style.transform = "scale(0.95)";
+            setTimeout(() => {
+              this.style.transform = "";
+            }, 150);
+          });
+        });
       });
-
-      // ===== Handlers =====
-      document.getElementById("btnUntil").onclick = () => {
-        const e = parseYMD(untilEnd.value);
-        if (!e) {
-          outUntil.value = "Select an end date.";
-          return;
-        }
-        const s = parseYMD(untilStart.value || todayStr());
-        const E = toUTC(e),
-          S = toUTC(s);
-        const diff = daysBetweenUTC(S, E);
-        const signWord =
-          diff >= 0 ? "day(s) until" : "day(s) ago (the date has passed)";
-        outUntil.value = `${Math.abs(diff)} ${signWord} ${fmt(E)}\nStart: ${fmt(
-          S
-        )} → End: ${fmt(E)}`;
-      };
-      document.getElementById("btnUntilReset").onclick = () => {
-        untilEnd.value = "";
-        untilStart.value = todayStr();
-        outUntil.value = "";
-      };
-
-      document.getElementById("btnSince").onclick = () => {
-        const p = parseYMD(sincePast.value);
-        if (!p) {
-          outSince.value = "Select the past date.";
-          return;
-        }
-        const a = parseYMD(sinceAsOf.value || todayStr());
-        const P = toUTC(p),
-          A = toUTC(a);
-        const diff = daysBetweenUTC(P, A);
-        if (diff < 0) {
-          outSince.value = `The selected date (${fmt(
-            P
-          )}) is in the future relative to ${fmt(A)}.`;
-        } else {
-          outSince.value = `${diff} day(s) since ${fmt(P)} (as of ${fmt(A)})`;
-        }
-      };
-      document.getElementById("btnSinceReset").onclick = () => {
-        sincePast.value = "";
-        sinceAsOf.value = todayStr();
-        outSince.value = "";
-      };
-
-      document.getElementById("btnAgo").onclick = () => {
-        const n = parseInt(agoN.value, 10);
-        if (!Number.isFinite(n) || n < 0) {
-          outAgo.value = "Enter N (non-negative integer).";
-          return;
-        }
-        const a = parseYMD(agoAsOf.value || todayStr());
-        const A = toUTC(a);
-        const target = addDaysUTC(A, -n);
-        outAgo.value = `${n} day(s) ago from ${fmt(A)} was ${fmt(target)}`;
-      };
-      document.getElementById("btnAgoReset").onclick = () => {
-        agoN.value = "";
-        agoAsOf.value = todayStr();
-        outAgo.value = "";
-      };
-
-      document.getElementById("btnAdd").onclick = () => {
-        const base = parseYMD(addBase.value || todayStr());
-        const N = Number(addN.value);
-        if (!Number.isFinite(N)) {
-          outAdd.value = "Enter a number of days (e.g., 20 or -20).";
-          return;
-        }
-        const B = toUTC(base);
-        const result = addDaysUTC(B, N);
-        const dir = N >= 0 ? "after" : "before";
-        outAdd.value = `${Math.abs(N)} day(s) ${dir} ${fmt(B)} is ${fmt(
-          result
-        )}`;
-      };
-      document.getElementById("btnAddReset").onclick = () => {
-        addBase.value = todayStr();
-        addN.value = "";
-        outAdd.value = "";
-      };
-
-      document.getElementById("btnSinceYMD").onclick = () => {
-        const s = parseYMD(sinceStart.value);
-        if (!s) {
-          outSinceYMD.value = "Select start date.";
-          return;
-        }
-        const e = parseYMD(sinceEnd.value || todayStr());
-        const S = toUTC(s),
-          E = toUTC(e);
-        if (E < S) {
-          outSinceYMD.value = `Error: End (${fmt(E)}) is before start (${fmt(
-            S
-          )}).`;
-          return;
-        }
-        const ymd = diffYMD(s, e);
-        const daysTotal = daysBetweenUTC(S, E);
-        outSinceYMD.value =
-          `${ymd.y} year(s), ${ymd.m} month(s), ${ymd.d} day(s)\n` +
-          `Total days: ${daysTotal.toLocaleString()}\nFrom ${fmt(S)} to ${fmt(
-            E
-          )}`;
-      };
-      document.getElementById("btnSinceYMDReset").onclick = () => {
-        sinceStart.value = "";
-        sinceEnd.value = todayStr();
-        outSinceYMD.value = "";
-      };
     </script>
 
     <script src="/assets/script.js" defer></script>
