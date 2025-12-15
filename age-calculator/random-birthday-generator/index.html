@@ -14,11 +14,6 @@
     <meta name="robots" content="index, follow" />
 
     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-
-    <link
       rel="canonical"
       href="https://utilityera.com/age-calculator/random-birthday-generator/"
     />
@@ -612,250 +607,270 @@
         </ul>
       </div>
     </section>
-    <div class="container">
-      <!-- Page Title -->
-      <section class="page-title">
-        <h1>Random Birthday Generator for Testing & Privacy</h1>
-        <p>Instantly generate a valid date of birth for testing or privacy.</p>
-      </section>
-      <div class="main-content">
-        <div class="options-panel">
-          <h2 class="section-title">Customize Your Random Birthdays</h2>
-
-          <div class="option-group">
-            <label class="option-label">Number of Birthdays to Generate</label>
-            <input
-              type="number"
-              id="birthdayCount"
-              min="1"
-              max="100"
-              value="10"
-            />
-          </div>
-
-          <div class="option-group">
-            <label class="option-label">Age Range</label>
-            <div style="display: flex; gap: 15px; align-items: center">
-              <div style="flex: 1">
-                <label
-                  style="
-                    display: block;
-                    font-size: 0.9rem;
-                    margin-bottom: 5px;
-                    color: var(--gray);
-                  "
-                  >Min Age</label
-                >
-                <input type="number" id="minAge" min="0" max="120" value="18" />
-              </div>
-              <div style="flex: 1">
-                <label
-                  style="
-                    display: block;
-                    font-size: 0.9rem;
-                    margin-bottom: 5px;
-                    color: var(--gray);
-                  "
-                  >Max Age</label
-                >
-                <input type="number" id="maxAge" min="1" max="120" value="80" />
-              </div>
-            </div>
-          </div>
-
-          <div class="option-group">
-            <label class="option-label">Date Format</label>
-            <select id="dateFormat">
-              <option value="mm/dd/yyyy">MM/DD/YYYY</option>
-              <option value="dd/mm/yyyy">DD/MM/YYYY</option>
-              <option value="yyyy-mm-dd">YYYY-MM-DD</option>
-              <option value="month dd, yyyy">Month DD, YYYY</option>
-            </select>
-          </div>
-
-          <div class="option-group">
-            <label class="option-label">Include Additional Information</label>
-            <div class="checkbox-group">
-              <div class="checkbox-item">
-                <input type="checkbox" id="includeAge" checked />
-                <label for="includeAge">Age</label>
-              </div>
-              <div class="checkbox-item">
-                <input type="checkbox" id="includeZodiac" checked />
-                <label for="includeZodiac">Zodiac Sign</label>
-              </div>
-              <div class="checkbox-item">
-                <input type="checkbox" id="includeDay" />
-                <label for="includeDay">Day of Week</label>
-              </div>
-            </div>
-          </div>
-
-          <div class="button-group">
-            <button class="generate-btn" id="generateBtn">
-              <i class="fas fa-birthday-cake"></i> Generate Birthday
-            </button>
-            <button class="copy-btn" id="copyBtn">
-              <i class="fas fa-copy"></i> Copy All
-            </button>
-            <button class="reset-btn" id="resetBtn">
-              <i class="fas fa-redo"></i> Reset
-            </button>
-          </div>
-        </div>
-
-        <div class="results-panel">
-          <h2 class="section-title">Generated Birthdays</h2>
-          <div class="birthday-results" id="birthdayResults">
-            <div style="text-align: center; padding: 50px 20px; color: #888">
-              <i
-                class="fas fa-birthday-cake"
-                style="font-size: 3rem; margin-bottom: 15px; color: #ddd"
-              ></i>
-              <p>
-                Your generated birthdays will appear here. Click "Generate
-                Birthdays" to get started.
-              </p>
-            </div>
-          </div>
-          <div class="counter" id="counter">Generated birthdays: 0</div>
-        </div>
-      </div>
-
-      <div class="content-section">
-        <h2>Why use a Fake Date of Birth Generator?</h2>
-
-        <p>
-          Protecting your digital privacy is important. When signing up for
-          non-essential services, many users prefer to use a
-          <strong>fake date of birth</strong> (260/mo volume) to avoid sharing
-          personal data.
-        </p>
-
-        <p>
-          This tool acts as a comprehensive
-          <strong>birthday date generator</strong> Whether you are a developer
-          testing a database or a writer creating character profiles, you can
-          get a <strong>random date of birth</strong> with a single click.
-        </p>
-
-        <p>
-          Simply set your year range, and our system will
-          <strong>random birthday</strong>logic to ensure every date is a valid
-          calendar day.
-        </p>
-      </div>
-      <section class="content-section" id="faq">
-        <h2 class="faq-title">
-          Birthday Generator – Frequently Asked Questions
-        </h2>
-
-        <div class="faq-container">
-          <!-- FAQ Item 1 -->
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false">
-              How does the Random Birthday Generator work?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Our tool acts as a <strong>birthday generator</strong> that
-                selects a random timestamp between your chosen start and end
-                years. It converts that timestamp into a readable Month, Day,
-                and Year format, ensuring all dates are valid calendar days.
-              </p>
-            </div>
-          </div>
-
-          <!-- FAQ Item 2 -->
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false">
-              Is it legal to use a fake date of birth?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Yes, using a <strong>fake date of birth</strong> is generally
-                legal for protecting your privacy on non-essential websites,
-                games, or social media, provided you are not using it to commit
-                fraud or evade age restrictions mandated by law.
-              </p>
-            </div>
-          </div>
-
-          <!-- FAQ Item 3 -->
-          <div class="faq-item">
-            <button class="faq-question" aria-expanded="false">
-              Can I generate a birthday for a specific age?
-              <span class="faq-icon">+</span>
-            </button>
-            <div class="faq-answer">
-              <p>
-                Yes. If you need a random date of birth for someone who is 25
-                years old, simply calculate the birth year (e.g., Current Year -
-                25) and set both the Start Year and End Year to that number in
-                the tool.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <!-- Footer -->
-    <footer>
+    <main>
       <div class="container">
-        <div class="footer-content">
-          <div class="footer-column">
-            <h3>Utilityera</h3>
-            <p>
-              Utilityera is a comprehensive online platform offering a wide
-              range of free web tools and calculators designed to simplify
-              everyday tasks.
-            </p>
+        <!-- Page Title -->
+        <section class="page-title">
+          <h1>Random Birthday Generator for Testing & Privacy</h1>
+          <p>
+            Instantly generate a valid date of birth for testing or privacy.
+          </p>
+        </section>
+        <div class="main-content">
+          <div class="options-panel">
+            <h2 class="section-title">Customize Your Random Birthdays</h2>
+
+            <div class="option-group">
+              <label class="option-label" for="birthdayCount"
+                >Number of Birthdays to Generate</label
+              >
+              <input
+                type="number"
+                id="birthdayCount"
+                min="1"
+                max="100"
+                value="10"
+              />
+            </div>
+
+            <div class="option-group">
+              <label class="option-label">Age Range</label>
+
+              <div style="display: flex; gap: 15px; align-items: center">
+                <div style="flex: 1">
+                  <label
+                    for="minAge"
+                    style="
+                      display: block;
+                      font-size: 0.9rem;
+                      margin-bottom: 5px;
+                      color: var(--gray);
+                    "
+                    >Min Age</label
+                  >
+                  <input
+                    type="number"
+                    id="minAge"
+                    min="0"
+                    max="120"
+                    value="18"
+                  />
+                </div>
+                <div style="flex: 1">
+                  <label
+                    for="maxAge"
+                    style="
+                      display: block;
+                      font-size: 0.9rem;
+                      margin-bottom: 5px;
+                      color: var(--gray);
+                    "
+                    >Max Age</label
+                  >
+                  <input
+                    type="number"
+                    id="maxAge"
+                    min="1"
+                    max="120"
+                    value="80"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="option-group">
+              <label class="option-label" for="dateFormat">Date Format</label>
+              <select id="dateFormat">
+                <option value="mm/dd/yyyy">MM/DD/YYYY</option>
+                <option value="dd/mm/yyyy">DD/MM/YYYY</option>
+                <option value="yyyy-mm-dd">YYYY-MM-DD</option>
+                <option value="month dd, yyyy">Month DD, YYYY</option>
+              </select>
+            </div>
+
+            <div class="option-group">
+              <label class="option-label">Include Additional Information</label>
+              <div class="checkbox-group">
+                <div class="checkbox-item">
+                  <input type="checkbox" id="includeAge" checked />
+                  <label for="includeAge">Age</label>
+                </div>
+                <div class="checkbox-item">
+                  <input type="checkbox" id="includeZodiac" checked />
+                  <label for="includeZodiac">Zodiac Sign</label>
+                </div>
+                <div class="checkbox-item">
+                  <input type="checkbox" id="includeDay" />
+                  <label for="includeDay">Day of Week</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="button-group">
+              <button class="generate-btn" id="generateBtn">
+                <i class="fas fa-birthday-cake"></i> Generate Birthday
+              </button>
+              <button class="copy-btn" id="copyBtn">
+                <i class="fas fa-copy"></i> Copy All
+              </button>
+              <button class="reset-btn" id="resetBtn">
+                <i class="fas fa-redo"></i> Reset
+              </button>
+            </div>
           </div>
 
-          <div class="footer-column">
-            <h3>Popular Tools</h3>
-            <ul class="footer-links">
-              <li><a href="/age-calculator/">Age Calculator</a></li>
-              <li><a href="/date-calculator/">Date Calculator</a></li>
-              <li><a href="/percent-calculator/">Percent Calculator</a></li>
-              <li><a href="/unit-converter/">Unit Converter</a></li>
-              <li><a href="/text-utilities/">Text Utilities</a></li>
-              <li><a href="/base64/">Base64 Tools</a></li>
-              <li><a href="/password-uuid/">Password Generator</a></li>
-              <li><a href="/image-resizer-compressor/">Image Tools</a></li>
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h3>Tool Categories</h3>
-            <ul class="footer-links">
-              <li><a href="/calculator/">Calculators</a></li>
-              <li><a href="/url-tools/">Url Tools</a></li>
-              <li><a href="/sha256/">SHA-256 Hash</a></li>
-              <li><a href="/json-formatter/">Json formatter</a></li>
-              <li><a href="/quick-notes/">Quick Notes </a></li>
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h3>Quick Links</h3>
-            <ul class="footer-links">
-              <li><a href="/">Home</a></li>
-              <li><a href="/about/">About Us</a></li>
-              <li><a href="/blog-article/">Blogs </a></li>
-            </ul>
+          <div class="results-panel">
+            <h2 class="section-title">Generated Birthdays</h2>
+            <div class="birthday-results" id="birthdayResults">
+              <div style="text-align: center; padding: 50px 20px; color: #888">
+                <i
+                  class="fas fa-birthday-cake"
+                  style="font-size: 3rem; margin-bottom: 15px; color: #ddd"
+                ></i>
+                <p>
+                  Your generated birthdays will appear here. Click "Generate
+                  Birthdays" to get started.
+                </p>
+              </div>
+            </div>
+            <div class="counter" id="counter">Generated birthdays: 0</div>
           </div>
         </div>
-        <div class="copyright">
+
+        <div class="content-section">
+          <h2>Why use a Fake Date of Birth Generator?</h2>
+
           <p>
-            &copy; <span id="currentYear">2025</span> Utilityera . All rights
-            reserved.
+            Protecting your digital privacy is important. When signing up for
+            non-essential services, many users prefer to use a
+            <strong>fake date of birth</strong> (260/mo volume) to avoid sharing
+            personal data.
+          </p>
+
+          <p>
+            This tool acts as a comprehensive
+            <strong>birthday date generator</strong> Whether you are a developer
+            testing a database or a writer creating character profiles, you can
+            get a <strong>random date of birth</strong> with a single click.
+          </p>
+
+          <p>
+            Simply set your year range, and our system will
+            <strong>random birthday</strong>logic to ensure every date is a
+            valid calendar day.
           </p>
         </div>
-      </div>
-    </footer>
+        <section class="content-section" id="faq">
+          <h2 class="faq-title">
+            Birthday Generator – Frequently Asked Questions
+          </h2>
 
+          <div class="faq-container">
+            <!-- FAQ Item 1 -->
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                How does the Random Birthday Generator work?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Our tool acts as a <strong>birthday generator</strong> that
+                  selects a random timestamp between your chosen start and end
+                  years. It converts that timestamp into a readable Month, Day,
+                  and Year format, ensuring all dates are valid calendar days.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                Is it legal to use a fake date of birth?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Yes, using a <strong>fake date of birth</strong> is generally
+                  legal for protecting your privacy on non-essential websites,
+                  games, or social media, provided you are not using it to
+                  commit fraud or evade age restrictions mandated by law.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                Can I generate a birthday for a specific age?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Yes. If you need a random date of birth for someone who is 25
+                  years old, simply calculate the birth year (e.g., Current Year
+                  - 25) and set both the Start Year and End Year to that number
+                  in the tool.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Footer -->
+      <footer>
+        <div class="container">
+          <div class="footer-content">
+            <div class="footer-column">
+              <h3>Utilityera</h3>
+              <p>
+                Utilityera is a comprehensive online platform offering a wide
+                range of free web tools and calculators designed to simplify
+                everyday tasks.
+              </p>
+            </div>
+
+            <div class="footer-column">
+              <h3>Popular Tools</h3>
+              <ul class="footer-links">
+                <li><a href="/age-calculator/">Age Calculator</a></li>
+                <li><a href="/date-calculator/">Date Calculator</a></li>
+                <li><a href="/percent-calculator/">Percent Calculator</a></li>
+                <li><a href="/unit-converter/">Unit Converter</a></li>
+                <li><a href="/text-utilities/">Text Utilities</a></li>
+                <li><a href="/base64/">Base64 Tools</a></li>
+                <li><a href="/password-uuid/">Password Generator</a></li>
+                <li><a href="/image-resizer-compressor/">Image Tools</a></li>
+              </ul>
+            </div>
+            <div class="footer-column">
+              <h3>Tool Categories</h3>
+              <ul class="footer-links">
+                <li><a href="/calculator/">Calculators</a></li>
+                <li><a href="/url-tools/">Url Tools</a></li>
+                <li><a href="/sha256/">SHA-256 Hash</a></li>
+                <li><a href="/json-formatter/">Json formatter</a></li>
+                <li><a href="/quick-notes/">Quick Notes </a></li>
+              </ul>
+            </div>
+            <div class="footer-column">
+              <h3>Quick Links</h3>
+              <ul class="footer-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about/">About Us</a></li>
+                <li><a href="/blog-article/">Blogs </a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="copyright">
+            <p>
+              &copy; <span id="currentYear">2025</span> Utilityera . All rights
+              reserved.
+            </p>
+          </div>
+        </div>
+      </footer>
+    </main>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         // Set current year in footer
