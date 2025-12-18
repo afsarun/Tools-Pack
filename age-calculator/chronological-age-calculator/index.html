@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary SEO -->
+    <title>Chronological Age Calculator | Exact Age from Date of Birth</title>
+    <meta
+      name="description"
+      content="Free Chronological Age Calculator. Calculate exact chronological age from date of birth to test date in years, months, and days. Ideal for assessments and official records."
+    />
+
+    <meta
+      name="robots"
+      content="index, follow, max-snippet:-1, max-image-preview:large"
+    />
+    <link
+      rel="canonical"
+      href="https://utilityera.com/age-calculator/chronological-age-calculator/"
+    />
+
+    <meta name="theme-color" content="#1E1E2F" />
+
+    <!-- Favicons -->
+    <link rel="icon" href="/assets/favicon.ico" sizes="any" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicon-32x32.png"
+    />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/assets/site.webmanifest" />
+
+    <!-- Hreflang -->
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://utilityera.com/age-calculator/chronological-age-calculator/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://utilityera.com/age-calculator/chronological-age-calculator/"
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Utilityera" />
+    <meta
+      property="og:title"
+      content="Chronological Age Calculator | Exact Age from Date of Birth"
+    />
+    <meta
+      property="og:description"
+      content="Calculate exact chronological age from birth date to test date in years, months, and days. Free and accurate."
+    />
+    <meta
+      property="og:url"
+      content="https://utilityera.com/age-calculator/chronological-age-calculator/"
+    />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="bn_BD" />
+    <meta
+      property="og:image"
+      content="https://utilityera.com/assets/og/age-calculator-en.webp"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Chronological Age Calculator showing exact age in years, months, and days"
+    />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Chronological Age Calculator | Exact Age from Date of Birth"
+    />
+    <meta
+      name="twitter:description"
+      content="Free chronological age calculator. Find exact age from date of birth to test date instantly."
+    />
+    <meta
+      name="twitter:image"
+      content="https://utilityera.com/assets/og/age-calculator-en.webp"
+    />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/style.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Chronological Age Calculator",
+        "url": "https://utilityera.com/age-calculator/chronological-age-calculator/",
+        "applicationCategory": "CalculatorApplication",
+        "operatingSystem": "All",
+        "description": "Free chronological age calculator to determine exact age from date of birth to test date in years, months, and days.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Utilityera",
+          "url": "https://utilityera.com/"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://utilityera.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Age Calculator",
+            "item": "https://utilityera.com/age-calculator/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Chronological Age Calculator",
+            "item": "https://utilityera.com/age-calculator/chronological-age-calculator/"
+          }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is chronological age?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Chronological age is the exact age of a person calculated from their date of birth to a specific test or reference date, expressed in years, months, and days."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do you calculate chronological age?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Chronological age is calculated by comparing the date of birth with a test date and counting the total elapsed years, months, and days between them."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why is chronological age important?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Chronological age is commonly used in educational assessments, psychological testing, medical records, and official documentation to ensure accurate age-based evaluation."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this chronological age calculator free to use?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, this chronological age calculator is completely free and works instantly without registration."
+            }
+          }
+        ]
+      }
+    </script>
+
+    <style>
+      /* RESET & BASE STYLES */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #fff;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      /* TOOL CONTAINER */
+      .calculator-wrapper {
+        background-color: #ffd700;
+        padding: 40px 20px;
+        max-width: 800px;
+        margin: 40px auto;
+        border-radius: 4px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 1.8rem;
+        color: #222;
+        margin-bottom: 40px;
+        font-weight: 700;
+      }
+
+      /* FORM GRID */
+      .input-group {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        /* Allow wrapping so label can move to top on mobile */
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .label-text {
+        width: 100px;
+        font-weight: 700;
+        font-size: 1.1rem;
+        text-align: right;
+        margin-right: 5px;
+        flex-shrink: 0; /* Prevent label from shrinking */
+      }
+
+      /* DROPDOWN STYLING */
+      select {
+        padding: 12px 5px; /* Reduced padding slightly to fit small screens */
+        font-size: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        background-color: #fff;
+        cursor: pointer;
+
+        /* EQUAL WIDTH SETTINGS */
+        flex: 1; /* Grow equally */
+        min-width: 0; /* Allow shrinking below content size if needed */
+        width: 100%; /* Ensure they fill their flex space */
+        text-overflow: ellipsis; /* Handle long month names gracefully */
+      }
+
+      select:focus {
+        outline: 2px solid #333;
+      }
+
+      /* BUTTON STYLES */
+      .btn-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        width: 100%;
+      }
+
+      button {
+        background-color: #2c2c2c;
+        color: white;
+        border: none;
+        padding: 12px 40px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: background 0.3s;
+      }
+
+      button:hover {
+        background-color: #000;
+      }
+
+      /* RESULT SECTION */
+      .result-section {
+        border-top: 2px solid #222;
+        padding-top: 30px;
+        text-align: center;
+        margin-top: 20px;
+        display: none;
+      }
+
+      .result-text {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #222;
+      }
+
+      /* SEO CONTENT */
+      .seo-content {
+        max-width: 800px;
+        margin: 0 auto 50px auto;
+        padding: 0 20px;
+      }
+      .seo-content h2 {
+        margin-top: 30px;
+        font-size: 1.4rem;
+      }
+      .seo-content p {
+        margin-bottom: 15px;
+        color: #555;
+      }
+
+      /* RESPONSIVE STYLES */
+      @media (max-width: 600px) {
+        .calculator-wrapper {
+          padding: 30px 15px;
+          margin: 20px auto;
+        }
+
+        /* On mobile, Label takes full width (top), Inputs stay in one row below */
+        .label-text {
+          width: 100%;
+          text-align: left;
+          margin-bottom: 5px;
+          margin-right: 0;
+        }
+
+        /* Inputs are already flex:1, so they will stay in a single row side-by-side */
+        .input-group {
+          gap: 5px; /* Smaller gap on mobile */
+        }
+
+        select {
+          padding: 10px 2px; /* Tighter padding for mobile */
+          font-size: 0.9rem; /* Slightly smaller font to prevent breaking */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav class="navbar">
+          <a class="logo" href="/" aria-label="Utility Era Home">
+            <i>⚡</i>
+            <span>Utility Era</span>
+          </a>
+          <button class="mobile-toggle" id="mobileToggle">☰</button>
+          <ul class="nav-links" id="navLinks">
+            <li><a href="/" aria-label="utilityera home ">Home</a></li>
+            <li class="dropdown">
+              <a href="#">Tools ▾</a>
+              <ul class="dropdown-menu">
+                <li><a href="/text-utilities/">Text Utilities</a></li>
+                <li><a href="/url-tools/">URL Tools</a></li>
+                <li><a href="/base64/">Base64 Tools</a></li>
+                <li><a href="/json-formatter/">JSON Formatter</a></li>
+                <li><a href="/sha256/">SHA-256 Hash</a></li>
+                <li><a href="/password-uuid/">Password Generator</a></li>
+                <li><a href="/uuid-v4/">UUID Generator</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#">Calculators ▾</a>
+              <ul class="dropdown-menu">
+                <li><a href="/age-calculator/">Age Calculator</a></li>
+                <li><a href="/date-calculator/">Date Calculator</a></li>
+                <li><a href="/percent-calculator/">Percent Calculator</a></li>
+                <li><a href="/calculator/">Basic Calculator</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#">Converters ▾</a>
+              <ul class="dropdown-menu">
+                <li><a href="/unit-converter/">Unit Converter</a></li>
+                <li><a href="/text-to-pdf/">Text to PDF</a></li>
+                <li><a href="/image-resizer-compressor/">Image Tools</a></li>
+                <li><a href="/compress-pdf/">PDF Compressor</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#">Productivity ▾</a>
+              <ul class="dropdown-menu">
+                <li><a href="/stopwatch-countdown/">Stopwatch & Timer</a></li>
+                <li><a href="/color-picker-contrast/">Color Picker</a></li>
+                <li><a href="/quick-notes/">Quick Notes</a></li>
+              </ul>
+            </li>
+
+            <li><a href="/blog-article/">Blog</a></li>
+            <li><a href="/contact/">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb">
+      <div class="container">
+        <ul class="breadcrumb-list">
+          <li class="breadcrumb-item">
+            <a href="/" aria-label="utilityera home ">Home</a>
+          </li>
+          <li class="breadcrumb-item"><a href="/#math">Math Tools</a></li>
+          <li class="breadcrumb-item active">Chronological Age Calculator</li>
+        </ul>
+      </div>
+    </section>
+    <div class="calculator-wrapper">
+      <h1>Let’s calculate the chronological age</h1>
+
+      <div class="input-group">
+        <div class="label-text">Birth Date:</div>
+        <select id="birthMonth" aria-label="Birth Month"></select>
+        <select id="birthDay" aria-label="Birth Day"></select>
+        <select id="birthYear" aria-label="Birth Year"></select>
+      </div>
+
+      <div class="input-group">
+        <div class="label-text">Test Date:</div>
+        <select id="testMonth" aria-label="Test Month"></select>
+        <select id="testDay" aria-label="Test Day"></select>
+        <select id="testYear" aria-label="Test Year"></select>
+      </div>
+
+      <div class="btn-container">
+        <button onclick="calculateChronologicalAge()">Calculate</button>
+      </div>
+
+      <div class="result-section" id="resultSection">
+        <p class="result-text" id="resultDisplay"></p>
+      </div>
+    </div>
+
+    <article class="seo-content">
+      <h2>What is a Chronological Age Calculator?</h2>
+      <p>
+        A <strong>chronological age calculator</strong> is a precise tool used
+        to determine an individual's exact age in years, months, and days.
+        Unlike a standard age counter, this calculation is frequently used in
+        educational assessments, medical records, and psychometric testing to
+        establish a baseline for development.
+      </p>
+
+      <h2>How to Calculate Chronological Age</h2>
+      <p>
+        To perform the calculation manually, you subtract the birth date from
+        the test date (or current date). The formula follows a specific order:
+      </p>
+      <ol style="margin-left: 20px; margin-bottom: 15px; color: #555">
+        <li>
+          Subtract the <strong>Days</strong>. (If the test day is smaller,
+          borrow 30 days from the month).
+        </li>
+        <li>
+          Subtract the <strong>Months</strong>. (If the test month is smaller,
+          borrow 12 months from the year).
+        </li>
+        <li>Subtract the <strong>Years</strong>.</li>
+      </ol>
+      <p>
+        Our online tool automates this process to ensure zero errors in your
+        reporting.
+      </p>
+    </article>
+    <div class="container">
+      <section class="faq-section content-section" id="faq">
+        <h2 class="faq-title">
+          Chronological Age Calculator – Frequently Asked Questions
+        </h2>
+
+        <div class="faq-container">
+          <div class="faq-item">
+            <button class="faq-question">
+              What is chronological age?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Chronological age is your exact age calculated from your date of
+                birth to a specific test or reference date. It is usually
+                expressed in years, months, and days.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              How do I calculate my chronological age?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Enter your date of birth and select a test date. If you want to
+                know your current chronological age, keep the test date set to
+                today and click <strong>Calculate</strong>.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Can I calculate age for a past or future date?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Yes. You can choose any past or future test date to calculate
+                chronological age for exams, assessments, or official records.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Why is chronological age important?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Chronological age is commonly used in education, psychology,
+                medical records, and government documents where accurate age
+                calculation is required.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>Utilityera</h3>
+            <p>
+              Utilityera is a comprehensive online platform offering a wide
+              range of free web tools and calculators designed to simplify
+              everyday tasks.
+            </p>
+          </div>
+
+          <div class="footer-column">
+            <h3>Popular Tools</h3>
+            <ul class="footer-links">
+              <li><a href="/age-calculator/">Age Calculator</a></li>
+              <li><a href="/date-calculator/">Date Calculator</a></li>
+              <li><a href="/percent-calculator/">Percent Calculator</a></li>
+              <li><a href="/unit-converter/">Unit Converter</a></li>
+              <li><a href="/text-utilities/">Text Utilities</a></li>
+              <li><a href="/base64/">Base64 Tools</a></li>
+              <li><a href="/password-uuid/">Password Generator</a></li>
+              <li><a href="/image-resizer-compressor/">Image Tools</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Tool Categories</h3>
+            <ul class="footer-links">
+              <li><a href="/calculator/">Calculators</a></li>
+              <li><a href="/url-tools/">Url Tools</a></li>
+              <li><a href="/sha256/">SHA-256 Hash</a></li>
+              <li><a href="/json-formatter/">Json formatter</a></li>
+              <li><a href="/quick-notes/">Quick Notes </a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="/">Home</a></li>
+              <li><a href="/about/">About Us</a></li>
+              <li><a href="/blog-article/">Blogs </a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2025 Utilityera . All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <script>
+      // 1. POPULATE DROPDOWNS
+      const months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+
+      function populateDropdowns() {
+        const fillSelect = (id, start, end, isMonth = false) => {
+          const select = document.getElementById(id);
+          for (let i = start; i <= end; i++) {
+            const option = document.createElement("option");
+            option.value = i;
+            // For months, display Short name on Mobile if needed?
+            // Keeping full name for now, flexbox handles width.
+            option.text = isMonth ? months[i] : i;
+            select.appendChild(option);
+          }
+        };
+
+        // Months (0-11)
+        fillSelect("birthMonth", 0, 11, true);
+        fillSelect("testMonth", 0, 11, true);
+
+        // Days (1-31)
+        fillSelect("birthDay", 1, 31);
+        fillSelect("testDay", 1, 31);
+
+        // Years
+        const currentYear = new Date().getFullYear();
+        const startYear = 1900;
+        const endYear = currentYear + 5;
+
+        const fillYear = (id) => {
+          const select = document.getElementById(id);
+          for (let i = endYear; i >= startYear; i--) {
+            const option = document.createElement("option");
+            option.value = i;
+            option.text = i;
+            select.appendChild(option);
+          }
+        };
+        fillYear("birthYear");
+        fillYear("testYear");
+
+        // Defaults
+        const today = new Date();
+        document.getElementById("testMonth").value = today.getMonth();
+        document.getElementById("testDay").value = today.getDate();
+        document.getElementById("testYear").value = today.getFullYear();
+
+        document.getElementById("birthYear").value = today.getFullYear() - 10;
+      }
+
+      // 2. CALCULATION LOGIC
+      function calculateChronologicalAge() {
+        let bMonth = parseInt(document.getElementById("birthMonth").value);
+        let bDay = parseInt(document.getElementById("birthDay").value);
+        let bYear = parseInt(document.getElementById("birthYear").value);
+
+        let tMonth = parseInt(document.getElementById("testMonth").value);
+        let tDay = parseInt(document.getElementById("testDay").value);
+        let tYear = parseInt(document.getElementById("testYear").value);
+
+        let days = tDay - bDay;
+        let months = tMonth - bMonth;
+        let years = tYear - bYear;
+
+        if (days < 0) {
+          // Precise calculation using days in previous month
+          let prevMonthDate = new Date(tYear, tMonth, 0);
+          let daysInPrevMonth = prevMonthDate.getDate();
+          days += daysInPrevMonth;
+          months--;
+        }
+
+        if (months < 0) {
+          months += 12;
+          years--;
+        }
+
+        const resultSection = document.getElementById("resultSection");
+        const resultText = document.getElementById("resultDisplay");
+
+        if (years < 0) {
+          resultText.innerText =
+            "Error: Test Date cannot be before Birth Date.";
+          resultText.style.color = "red";
+        } else {
+          resultText.innerHTML = `Chronological age is: ${years} Years, ${months} Months, ${days} Days`;
+          resultText.style.color = "#222";
+        }
+
+        resultSection.style.display = "block";
+      }
+
+      window.onload = populateDropdowns;
+    </script>
+  </body>
+</html>
