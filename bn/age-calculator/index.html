@@ -520,6 +520,314 @@
           font-size: 1.2rem;
         }
       }
+      :root {
+        /* Colors */
+        --primary: #4f46e5; /* indigo-600 */
+        --primary-hover: #4338ca; /* indigo-700 */
+        --primary-light: #e0e7ff; /* indigo-100 */
+        --primary-text: #312e81; /* indigo-900 */
+        --primary-bg-light: #eef2ff; /* indigo-50 */
+
+        --slate-50: #f8fafc;
+        --slate-100: #f1f5f9;
+        --slate-200: #e2e8f0;
+        --slate-300: #cbd5e1;
+        --slate-400: #94a3b8;
+        --slate-500: #64748b;
+        --slate-600: #475569;
+        --slate-700: #334155;
+        --slate-800: #1e293b;
+        --slate-900: #0f172a;
+        --white: #ffffff;
+
+        --yellow-50: #fefce8;
+        --yellow-100: #fef9c3;
+        --yellow-800: #854d0e;
+
+        --green-500: #22c55e;
+        --blue-600: #2563eb;
+        --blue-800: #1e40af;
+
+        /* Shadows */
+        --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+        --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1),
+          0 2px 4px -2px rgb(0 0 0 / 0.1);
+        --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+          0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+        --radius-md: 0.375rem;
+        --radius-lg: 0.5rem;
+        --radius-xl: 0.75rem;
+      }
+
+      /* --- 2. Base Styles --- */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: system-ui, -apple-system, sans-serif;
+        line-height: 1.6;
+        color: var(--slate-700);
+        background-color: var(--slate-50);
+        padding: 1rem;
+        max-width: var(--container-width);
+        margin: 0 auto;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        color: var(--slate-900);
+        font-weight: 700;
+        line-height: 1.3;
+        margin-bottom: 1rem;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+      }
+      h3 {
+        font-size: 1.25rem;
+      }
+
+      p {
+        margin-bottom: 1rem;
+      }
+
+      a {
+        color: var(--primary);
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: var(--primary-hover);
+        text-decoration: underline;
+      }
+
+      /* --- 3. Component Classes (Your Existing CSS) --- */
+      .content-section {
+        background: var(--white);
+        border-radius: var(--radius-lg);
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        border: 1px solid var(--slate-200);
+      }
+
+      .content-section h2 {
+        color: var(--primary-text);
+        border-bottom: 2px solid var(--primary-light);
+        padding-bottom: 0.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .content-section p {
+        color: var(--slate-700);
+      }
+
+      .content-section ul,
+      .content-section ol {
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+        color: var(--slate-700);
+      }
+
+      .content-section li {
+        margin-bottom: 0.5rem;
+      }
+
+      .card {
+        background: var(--white);
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--slate-200);
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .shadow-sm {
+        box-shadow: var(--shadow-sm);
+      }
+
+      .shadow-md {
+        box-shadow: var(--shadow-md);
+      }
+
+      .shadow-lg {
+        box-shadow: var(--shadow-lg);
+      }
+
+      .text-prose {
+        color: var(--slate-700);
+        line-height: 1.7;
+      }
+
+      .text-prose p {
+        margin-bottom: 0.75rem;
+      }
+
+      .list-disc {
+        list-style-type: disc;
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .list-disc li {
+        margin-bottom: 0.5rem;
+      }
+
+      .example-box {
+        background: var(--primary-bg-light);
+        border: 1px solid var(--primary-light);
+        border-radius: var(--radius-md);
+        padding: 1rem;
+        margin: 1rem 0;
+      }
+
+      .grid-cols-adaptive {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .unit-card {
+        background: var(--white);
+        border: 1px solid var(--slate-200);
+        border-radius: var(--radius-lg);
+        padding: 1.25rem;
+        transition: all 0.2s ease;
+      }
+
+      .unit-card:hover {
+        border-color: var(--primary);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .unit-card h2 {
+        color: var(--primary-text);
+        font-size: 1.25rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .unit-card p {
+        color: var(--slate-600);
+        margin-bottom: 1rem;
+      }
+
+      .manual-steps {
+        background: var(--white);
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--slate-200);
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .step-list {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .step-item {
+        position: relative;
+        padding-left: 3rem;
+        margin-bottom: 2rem;
+      }
+
+      .step-marker {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 2rem;
+        height: 2rem;
+        background: var(--primary);
+        color: var(--white);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 0.875rem;
+      }
+
+      .step-title {
+        color: var(--primary-text);
+        font-size: 1.125rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .code-snippet {
+        display: inline-block;
+        background: var(--slate-100);
+        padding: 0.25rem 0.5rem;
+        border-radius: var(--radius-md);
+        font-family: monospace;
+        color: var(--slate-800);
+        margin-top: 0.5rem;
+        border: 1px solid var(--slate-200);
+      }
+
+      .total-calc-box {
+        background: var(--green-500);
+        color: white;
+        padding: 1rem;
+        border-radius: var(--radius-md);
+        text-align: center;
+        margin-top: 1.5rem;
+      }
+
+      .mt-6 {
+        margin-top: 1.5rem;
+      }
+      .mb-3 {
+        margin-bottom: 0.75rem;
+      }
+      .mb-4 {
+        margin-bottom: 1rem;
+      }
+      .mb-6 {
+        margin-bottom: 1.5rem;
+      }
+      .mb-0 {
+        margin-bottom: 0;
+      }
+      .mb-2 {
+        margin-bottom: 0.5rem;
+      }
+
+      /* --- 4. Utility Classes --- */
+      .text-center {
+        text-align: center;
+      }
+      .font-bold {
+        font-weight: 700;
+      }
+      .text-sm {
+        font-size: 0.875rem;
+      }
+
+      /* --- 5. Responsive --- */
+      @media (max-width: 640px) {
+        .grid-cols-adaptive {
+          grid-template-columns: 1fr;
+        }
+
+        .step-item {
+          padding-left: 2.5rem;
+        }
+
+        h1 {
+          font-size: 1.75rem;
+        }
+        h2 {
+          font-size: 1.375rem;
+        }
+      }
     </style>
   </head>
 
@@ -785,6 +1093,261 @@
           </li>
         </ul>
       </article>
+      <!-- Optional header (matches your CSS) -->
+      <!-- Styled content using ONLY your existing CSS classes -->
+      <section class="card shadow-sm" style="padding: 1.5rem">
+        <h2>আজ আমার বয়স কত?</h2>
+        <p>
+          এই ক্যালকুলেটরটা আজকের তারিখ ধরে আপনার বয়স দেখায়। অন্য কোনো দিনের বয়স
+          দেখতে চাইলে (যেমন 2030 সালে), উপরের ক্যালকুলেটরে “হিসাবের তারিখ (As of
+          date)” বদলে দিন।
+        </p>
+
+        <div class="text-prose">
+          <p>
+            ফর্ম, ভর্তি, চাকরি, বা কোনো ডেডলাইনের জন্য বয়স লাগছে? অনেক সময় আজকের
+            বয়স নয়, নির্দিষ্ট একটা তারিখে বয়স চায়। তাই “হিসাবের তারিখ”-এ ফর্মে
+            যে তারিখ বলা আছে, ঠিক সেটাই দিন, তারপর আবার Calculate করুন।
+          </p>
+
+          <p>
+            পুরো জন্মতারিখ জানা নেই? “শুধু জন্মসাল (Birth year only)” দিন। তখন
+            ফলাফল একটানা একটা সংখ্যা না হয়ে রেঞ্জ দেখাবে, কারণ মাস/দিন না থাকলে
+            বোঝা যায় না ওই বছরে আপনার জন্মদিন হয়ে গেছে কি না।
+          </p>
+
+          <h3
+            class="mt-6 mb-3"
+            style="
+              font-size: 1.125rem;
+              font-weight: 700;
+              color: var(--slate-800);
+            "
+          >
+            সাধারণ ভুলগুলো
+          </h3>
+          <ul class="list-disc">
+            <li>
+              <strong>ভুল তারিখ দেওয়া:</strong> অনেক ফর্মে আজকের বয়স লাগে না,
+              কাট-অফ/নির্দিষ্ট তারিখে বয়স লাগে।
+            </li>
+            <li>
+              <strong>শুধু জন্মসাল দিলে:</strong> মাস/দিন ছাড়া একদম নির্দিষ্ট
+              বয়স বের করা যায় না।
+            </li>
+            <li>
+              <strong>“হিসাবের তারিখ” বদলে আবার Calculate না করা:</strong> আবার
+              হিসাব না করলে ফল আপডেট হবে না।
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="card shadow-sm" style="padding: 1.5rem">
+        <h2>আমি যদি 1988 সালে (বা যেকোনো বছরে) জন্মাই, আমার বয়স কত?</h2>
+
+        <p>
+          একদম নির্দিষ্ট বয়স জানতে পুরো জন্মতারিখ দিন। আপনি যদি শুধু জন্মসাল দেন
+          (যেমন 1988), তাহলে ক্যালকুলেটর দুইটা সম্ভাব্য বয়স (বা রেঞ্জ) দেখাবে।
+          কারণ “হিসাবের তারিখ” অনুযায়ী আপনার জন্মদিন হয়ে গেছে কি না সেটা আমরা
+          মাস/দিন ছাড়া নিশ্চিতভাবে বলতে পারি না।
+        </p>
+
+        <ul class="list-disc">
+          <li><strong>জন্মদিন হয়ে গেলে:</strong> বেশি বয়সটি দেখাবে।</li>
+          <li><strong>জন্মদিন এখনও বাকি থাকলে:</strong> কম বয়সটি দেখাবে।</li>
+        </ul>
+
+        <div class="example-box">
+          <p class="mb-2" style="font-weight: 700; color: var(--slate-800)">
+            উদাহরণ (1988)
+          </p>
+          <p id="example-1988" class="mb-0" style="color: var(--slate-700)">
+            লোড হচ্ছে…
+          </p>
+        </div>
+      </section>
+
+      <section class="card shadow-sm" style="padding: 1.5rem">
+        <h2>1969, 1987, 1994, 1998, বা 1986 সালে জন্ম হলে বয়স কত?</h2>
+        <p>
+          জনপ্রিয় কিছু জন্মসালের জন্য দ্রুত উত্তর (তবে ঠিক বয়স নির্ভর করে
+          জন্মদিন হয়ে গেছে কি না তার ওপর)।
+        </p>
+
+        <div class="grid-cols-adaptive" id="popular-years-grid"></div>
+
+        <p class="mt-4 mb-0" style="color: var(--slate-700)">
+          জনপ্রিয় জন্মসাল: <strong>1969</strong>, <strong>1986</strong>,
+          <strong>1987</strong>, <strong>1994</strong>, <strong>1998</strong>
+        </p>
+      </section>
+
+      <section class="card shadow-sm" style="padding: 1.5rem">
+        <h2>2030 সালে আমার বয়স কত হবে?</h2>
+        <p>
+          “হিসাবের তারিখ (As of date)” এ 2030 সালের যেকোনো দিন সেট করুন, তারপর
+          Calculate করুন। আপনি যদি শুধু জন্মসাল দেন, জন্মদিনের মাস/দিন জানা নেই
+          বলে দুইটা সম্ভাব্য বয়স দেখাতে পারে।
+        </p>
+
+        <div class="example-box">
+          <p class="mb-2" style="font-weight: 700; color: var(--slate-800)">
+            উদাহরণ (1998 → 2030)
+          </p>
+          <p class="mb-0" style="color: var(--slate-700)">
+            আপনার বয়স হবে <strong>31 বা 32</strong>, জন্মদিনের তারিখ অনুযায়ী।
+          </p>
+        </div>
+      </section>
+
+      <section class="manual-steps">
+        <h2>জন্মতারিখ থেকে হাতে-কলমে বয়স কীভাবে হিসাব করবেন</h2>
+        <p>
+          ক্যালকুলেটর ছাড়া হিসাব করতে চাইলে সহজ নিয়ম: আগে “শেষ জন্মদিন” বের
+          করুন, তারপর বছর-মাস-দিন হিসাব করুন। উদাহরণ হিসেবে ধরা যাক আজ
+          <strong>[আজকের তারিখ]</strong> এবং আপনার জন্ম
+          <strong>Dec 8, 2010</strong>।
+        </p>
+
+        <ol class="step-list">
+          <li class="step-item">
+            <span class="step-marker"><span>1</span></span>
+            <h3 class="step-title">শেষ জন্মদিন বের করে পূর্ণ বছর গণনা করুন</h3>
+            <p>
+              শেষ জন্মদিন = <strong>Dec 8, 2025</strong>
+              <br />
+              <span class="code-snippet">2025 - 2010 = 15 বছর</span>
+            </p>
+          </li>
+
+          <li class="step-item">
+            <span class="step-marker"><span>2</span></span>
+            <h3 class="step-title">
+              শেষ জন্মদিনের পর থেকে পূর্ণ মাস গণনা করুন
+            </h3>
+            <p>
+              <strong>Dec 8</strong> থেকে <strong>Jan 8</strong> = 1 পূর্ণ মাস
+              <br />
+              <span class="code-snippet">Dec 8 → Jan 8 = 1 মাস</span>
+            </p>
+          </li>
+
+          <li class="step-item" style="margin-bottom: 0">
+            <span class="step-marker"><span>3</span></span>
+            <h3 class="step-title">বাকি দিন যোগ করুন</h3>
+            <p class="mb-0">
+              <strong>Jan 8</strong> থেকে <strong>Jan 8</strong> = 0 দিন
+              <br />
+              <span class="code-snippet">8 - 8 = 0 দিন</span>
+            </p>
+          </li>
+        </ol>
+
+        <div class="total-calc-box">
+          <p class="mb-0" style="font-weight: 500">
+            মোট বয়স: <strong>15 বছর, 1 মাস, 0 দিন</strong>
+          </p>
+        </div>
+      </section>
+
+      <section class="manual-steps shadow-sm">
+        <h2>যদি আপনি শুধু জন্মসাল জানেন</h2>
+        <p class="mb-4">
+          মাস/দিন জানা না থাকলে শুধু জন্মসাল দিন। তখন বয়স রেঞ্জ আকারে আসবে, কারণ
+          “হিসাবের তারিখ”-এর আগে জন্মদিন হতে পারে, আবার পরেও হতে পারে।
+        </p>
+
+        <ul class="list-disc">
+          <li><strong>জন্মদিনের আগে:</strong> বয়স 1 বছর কম হবে।</li>
+          <li><strong>জন্মদিনের পরে:</strong> বয়স 1 বছর বেশি হবে।</li>
+        </ul>
+
+        <p class="mb-0">একদম নির্দিষ্ট ফল পেতে মাস ও দিন জানা লাগবে।</p>
+      </section>
+
+      <section class="grid-cols-adaptive">
+        <div class="unit-card">
+          <h2 style="font-size: 1.25rem">আমি কত দিন বয়সী?</h2>
+          <p>
+            Calculate করার পর আপনি মোট কত দিন বেঁচে আছেন সেটাও দেখবেন। “10,000
+            দিন” টাইপ মাইলস্টোন, হেলথ ট্র্যাকিং, বা কিছু ফর্মের জন্য এটা কাজে
+            লাগে।
+          </p>
+          <ul class="list-disc">
+            <li>জন্মতারিখ দিন।</li>
+            <li>“হিসাবের তারিখ” আজকের দিন রাখুন (অথবা বদলান)।</li>
+            <li>Calculate ক্লিক করে মোট দিন দেখুন।</li>
+          </ul>
+        </div>
+
+        <div class="unit-card">
+          <h2 style="font-size: 1.25rem">
+            একটা নির্দিষ্ট তারিখে আমার বয়স কত ছিল?
+          </h2>
+          <p>
+            অতীতের কোনো দিনের বয়স জানতে “হিসাবের তারিখ” এ ওই দিনটা দিন, তারপর
+            আবার Calculate করুন। গ্র্যাজুয়েশন, চাকরি শুরু, বা ডকুমেন্টের তারিখের
+            জন্য এটা খুব কাজের।
+          </p>
+          <ul class="list-disc">
+            <li>“হিসাবের তারিখ”-এ ইভেন্টের তারিখ দিন।</li>
+            <li>Calculate ক্লিক করে ওই দিনের বয়স দেখুন।</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="manual-steps">
+        <h2>এই ক্যালকুলেটর কীভাবে বয়স গণনা করে</h2>
+        <p class="mb-4">
+          জন্মতারিখ থেকে “হিসাবের তারিখ” পর্যন্ত সময় ধরে, ক্যালকুলেটরটি নিয়মিত
+          ক্যালেন্ডার ধরেই বয়স দেখায়: আগে বছর (কয়টা জন্মদিন পেরিয়েছে), তারপর
+          মাস, তারপর বাকি দিন।
+        </p>
+
+        <ul class="list-disc">
+          <li><strong>বছর:</strong> যতগুলো পূর্ণ জন্মদিন হয়েছে।</li>
+          <li>
+            <strong>মাস:</strong> শেষ জন্মদিনের পর যতগুলো পূর্ণ মাস হয়েছে।
+          </li>
+          <li><strong>দিন:</strong> পূর্ণ মাসের পর যে দিনগুলো বাকি থাকে।</li>
+        </ul>
+
+        <p class="mb-0">
+          অফিসিয়াল ডকুমেন্টে বয়স দেওয়ার সময় সবসময় সঠিক জন্মতারিখ এবং ফর্মে যে
+          নির্দিষ্ট তারিখ চাওয়া হয়েছে, সেটাই “হিসাবের তারিখ” হিসেবে দিন।
+        </p>
+      </section>
+
+      <section
+        class="card shadow-sm"
+        style="padding: 1.5rem; margin-bottom: 4rem"
+      >
+        <h2 style="font-size: 1.875rem">আমি কত ঘণ্টা ধরে বেঁচে আছি?</h2>
+        <p style="font-size: 1.125rem; color: var(--slate-700)">
+          আপনি যদি পুরো জন্মতারিখ দেন, ক্যালকুলেটর মোট দিন দেখায়। ঘণ্টা
+          আনুমানিকভাবে জানতে মোট দিনকে 24 দিয়ে গুণ করুন।
+        </p>
+        <p class="mb-0" style="font-size: 1.125rem; color: var(--slate-700)">
+          নোট: জন্মসময় এবং টাইম জোন জানা না থাকলে এটি দিনে-ভিত্তিক আনুমানিক
+          হিসাব।
+        </p>
+      </section>
+
+      <section class="card shadow-sm" style="padding: 1.5rem">
+        <h2>উদাহরণ: অতীতের একটি তারিখে বয়স</h2>
+        <p>
+          “হিসাবের তারিখ” বদলে আপনি যেকোনো অতীতের তারিখে বয়স বের করতে পারেন।
+          ডকুমেন্টে দেওয়া তারিখ, গ্র্যাজুয়েশন, চাকরি শুরুর দিন ইত্যাদির জন্য এটা
+          কাজে লাগে।
+        </p>
+
+        <ol class="list-disc">
+          <li>জন্মতারিখ দিন।</li>
+          <li>“হিসাবের তারিখ”-এ ইভেন্টের তারিখ দিন।</li>
+          <li>Calculate ক্লিক করে ওই দিনের বয়স দেখুন।</li>
+        </ol>
+      </section>
 
       <section class="faq-section content-section">
         <h2 class="faq-title">প্রশ্নোত্তর</h2>
@@ -1093,6 +1656,43 @@
           calculateAge();
         }
       }, 60000);
+
+      // Simple script to update example dates
+      document.addEventListener("DOMContentLoaded", function () {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = today.getMonth() + 1;
+        const day = today.getDate();
+
+        // Update example dates in the manual calculation section
+        const manualDateElement = document.querySelector(".manual-steps p");
+        if (manualDateElement) {
+          manualDateElement.innerHTML = manualDateElement.innerHTML
+            .replace(
+              "10 জানুয়ারি 2024",
+              `${day} ${getMonthName(month)} ${year}`
+            )
+            .replace("8 ডিসেম্বর, 2010", "8 ডিসেম্বর, 2010");
+        }
+
+        function getMonthName(month) {
+          const months = [
+            "জানুয়ারি",
+            "ফেব্রুয়ারি",
+            "মার্চ",
+            "এপ্রিল",
+            "মে",
+            "জুন",
+            "জুলাই",
+            "আগস্ট",
+            "সেপ্টেম্বর",
+            "অক্টোবর",
+            "নভেম্বর",
+            "ডিসেম্বর",
+          ];
+          return months[month - 1];
+        }
+      });
     </script>
 
     <script src="/assets/script.js" defer></script>
