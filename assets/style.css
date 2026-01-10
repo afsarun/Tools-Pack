@@ -351,11 +351,11 @@ footer {
   padding-left: 5px;
 }
 
-.copyright {
+.copyright p {
   text-align: center;
   padding-top: 1.5rem;
   border-top: 1px solid #495057;
-  color: #adb5bd;
+  color: #ffffff;
   font-size: 0.9rem;
 }
 

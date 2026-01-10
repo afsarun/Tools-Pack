@@ -419,7 +419,7 @@
         border: none;
         cursor: pointer;
         background-color: transparent;
-        color: var(--slate-500);
+        color: var(--slate-900);
         transition: all 0.2s;
       }
       .mode-btn.active {
@@ -929,8 +929,11 @@
               <form id="age-form" onsubmit="calculateAge(event)">
                 <div class="form-grid">
                   <div>
-                    <label class="input-label">Date of Birth</label>
+                    <label class="input-label" for="birth-date"
+                      >Date of Birth</label
+                    >
                     <input type="date" id="birth-date" class="input-field" />
+
                     <input
                       type="number"
                       id="birth-year"
@@ -938,11 +941,14 @@
                       min="1900"
                       max="2100"
                       class="input-field hidden"
+                      aria-label="Birth Year"
                     />
                   </div>
 
                   <div>
-                    <label class="input-label">As of Date</label>
+                    <label class="input-label" for="as-of-date"
+                      >As of Date</label
+                    >
                     <input type="date" id="as-of-date" class="input-field" />
                     <p class="helper-text">
                       Defaults to today. Change to calculate for 2030, etc.
@@ -1035,6 +1041,7 @@
               </p>
             </div>
           </div>
+
           <div class="related-tools-card">
             <h2 class="card-title">
               <i>🔧</i>
