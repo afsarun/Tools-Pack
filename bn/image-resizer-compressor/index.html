@@ -1257,7 +1257,7 @@
           );
 
           // Check if adding these files would exceed the 20 limit
-          if (images.length + imageFiles.length > 20) {
+          if (images.length + imageFiles.length > 100) {
             alert("আপনি একবারে সর্বোচ্চ ২০টি ইমেজ প্রক্রিয়া করতে পারেন।");
             return;
           }
@@ -1265,7 +1265,7 @@
           // Process each image file
           imageFiles.forEach((file) => {
             // Check file size (max 10MB)
-            if (file.size > 10 * 1024 * 1024) {
+            if (file.size > 100 * 1024 * 1024) {
               alert(`ফাইল ${file.name} খুব বড়। সর্বোচ্চ সাইজ ১০MB।`);
               return;
             }
